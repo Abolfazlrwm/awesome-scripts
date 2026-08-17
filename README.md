@@ -25,6 +25,8 @@
 | [🎨 پستر ایموجی پرمیوم](./premium-emoji-poster-cfworker) | JavaScript | ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker |
 | [🎡 Wheel of Actions](./wheel-of-actions) | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه |
 
+در حال توسعه و افزایش سورس ها ...
+
 ---
 
 ## 🚀 شروع سریع
