@@ -55,7 +55,7 @@ BOT_USERNAME = "یوزرنیم بات"
 REFERRAL_ENABLED       = True
 REFERRAL_REWARD_SENDER = 5_000
 REFERRAL_REWARD_JOINER = 1_000
-ADMIN_IDS = [آیدی_ادمین]
+ADMIN_IDS = [123456789]                              # لیست آیدی عددی مدیران
 
 FORCE_JOIN_CHANNEL = "یوزرنیم کانال"
 FORCE_JOIN_CHANNEL_LINK = "https://t.me/کانال"
