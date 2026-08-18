@@ -24,6 +24,7 @@
 | [📥 دانلودر اینستاگرام](./instagram-downloader-bot) | Python | دانلود پست/ریلز/استوری اینستاگرام با سیستم عضویت VIP |
 | [🎨 پستر ایموجی پرمیوم](./premium-emoji-poster-cfworker) | JavaScript | ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker |
 | [🎡 Wheel of Actions](./wheel-of-actions) | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه |
+| [🐱 ربات میو پوینت](./meow-point-bot) | Python | بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک |
 
 ---
 
