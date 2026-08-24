@@ -3,7 +3,7 @@
 # 🤖 Awesome Telegram Bots
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام
 
-![Bots](https://img.shields.io/badge/bots-9-blue)
+![Bots](https://img.shields.io/badge/bots-26-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Language](https://img.shields.io/badge/lang-Python%20%7C%20PHP%20%7C%20JS-orange)
 
