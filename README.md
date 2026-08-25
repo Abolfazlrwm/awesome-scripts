@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
-# 🤖 Awesome Telegram Bots
+# 🤖 Awesome Scripts
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزار های جانبی دیگه
 
 ![Bots](https://img.shields.io/badge/bots-26-blue)
