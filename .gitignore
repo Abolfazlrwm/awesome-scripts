@@ -216,3 +216,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- اضافه‌شده برای پروژه‌های جدید (Node.js bots, PowerShell, PyAutoGUI demo) ---
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Downloads Organizer (PowerShell) log
+DownloadOrganizer.log
+
+# Desktop Automation Demo (PyAutoGUI) output
+screenshot.png
+
+# OS junk
+Thumbs.db
