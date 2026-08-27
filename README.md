@@ -3,6 +3,7 @@
 # 🤖 Awesome Scripts
 
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزار های جانبی دیگه
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 ![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)
 ![Projects](https://img.shields.io/badge/projects-24-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
