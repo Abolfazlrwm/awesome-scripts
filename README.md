@@ -72,5 +72,9 @@
 ---
 
 <div align="center">
+  ## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Abolfazlrwm/awesome-scripts&type=Date)](https://star-history.com/#Abolfazlrwm/awesome-scripts&Date)
+
 ساخته‌شده توسط https://t.me/patrik_rwm برای جامعه‌ی توسعه‌دهندگان تلگرام و مردم ایران.
 </div>
