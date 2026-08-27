@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 سوال عمومی یا راهنمایی
+    url: https://github.com/Abolfazlrwm/awesome-scripts/discussions
+    about: برای سوالات عمومی (نه باگ، نه پیشنهاد پروژه)، از بخش Discussions استفاده کن
