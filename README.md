@@ -44,8 +44,8 @@
 
 | پروژه                                                                                                                               | زبان        | توضیح کوتاه                                                                            |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
-| [🎡 Wheel of Actions](./src/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/wheel-of-actions/)             | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه                                     |
-| [🪐 کاوشگر سه‌بعدی منظومه شمسی](./src/solar-explorer-3d) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/solar-explorer-3d/) | HTML/CSS/JS | شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات |
+| [🎡 Wheel of Actions](./src/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/)             | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه                                     |
+| [🪐 کاوشگر سه‌بعدی منظومه شمسی](./src/solar-explorer-3d) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/) | HTML/CSS/JS | شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات |
 
 ### 🖥 ابزارهای دسکتاپ (۳)
 
