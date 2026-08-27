@@ -4,6 +4,9 @@
 
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزار های جانبی دیگه
 
+=======
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)
 ![Projects](https://img.shields.io/badge/projects-24-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Language](https://img.shields.io/badge/lang-Python%20%7C%20HTML%2FJS%20%7C%20PHP%20%7C%20Node.js%20%7C%20C%23%20%7C%20Java%20%7C%20C%2B%2B%20%7C%20PowerShell-orange)
@@ -90,5 +93,9 @@
 ---
 
 <div align="center">
+  ## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Abolfazlrwm/awesome-scripts&type=Date)](https://star-history.com/#Abolfazlrwm/awesome-scripts&Date)
+
 ساخته‌شده توسط https://t.me/patrik_rwm برای جامعه‌ی توسعه‌دهندگان تلگرام و مردم ایران.
 </div>
