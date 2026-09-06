@@ -4,27 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Solar Explorer 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* reset & base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { overflow: hidden; font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a1a; color: #e0e8ff; user-select: none; }
+    html, body { width: 100%; height: 100%; }
+    body {
+      overflow: hidden;
+      font-family: 'Outfit', 'Segoe UI', 'Arial', sans-serif;
+      background: radial-gradient(ellipse at 50% 40%, #0d1130 0%, #05060f 60%, #010103 100%);
+      color: #e0e8ff;
+      user-select: none;
+    }
+
+    #canvasHolder { opacity: 0; transition: opacity 1.4s ease; }
+    #canvasHolder.ready { opacity: 1; }
+
+    /* cinematic vignette + grain overlay */
+    #vignette {
+      position: fixed; inset: 0; pointer-events: none; z-index: 5;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(2,3,10,0.55) 100%);
+    }
+    #grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 6; opacity: 0.035; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* loading screen */
+    #loader {
+      position: fixed; inset: 0; z-index: 50;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: #05060f;
+      transition: opacity 0.9s ease, visibility 0.9s ease;
+    }
+    #loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    #loader .sunSpin {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff3c4, #ffb44a 45%, #ff6a00 75%, transparent 78%);
+      box-shadow: 0 0 40px 10px rgba(255,140,40,0.55);
+      animation: loaderPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes loaderPulse { 0%,100% { transform: scale(0.85); opacity: 0.85; } 50% { transform: scale(1.05); opacity: 1; } }
+    #loader .loadTxt { margin-top: 22px; font-size: 0.75rem; letter-spacing: 3px; color: #9fb4e8; text-transform: uppercase; font-family: 'Space Mono', monospace; }
 
     /* UI glass panels */
     #ui {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
+      z-index: 10;
     }
     #ui > * { pointer-events: auto; }
 
     .glass {
       background: rgba(10, 14, 40, 0.55);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(80, 180, 255, 0.2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(120, 190, 255, 0.16);
       border-radius: 18px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
     }
+
+    @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeSlideLeft { from { opacity: 0; transform: translateX(-18px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeSlideRight { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+    @keyframes ringPulse { 0% { box-shadow: 0 0 0 0 rgba(90,170,255,0.55); } 70% { box-shadow: 0 0 0 8px rgba(90,170,255,0); } 100% { box-shadow: 0 0 0 0 rgba(90,170,255,0); } }
 
     /* top bar */
     #topbar {
@@ -35,48 +83,70 @@
       padding: 12px 24px;
       margin: 18px 22px;
       gap: 12px;
-      background: rgba(8, 12, 34, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(70, 160, 255, 0.25);
+      background: linear-gradient(135deg, rgba(14,18,46,0.72), rgba(8,12,34,0.6));
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(90, 170, 255, 0.22);
       border-radius: 40px;
+      animation: fadeSlideDown 0.7s cubic-bezier(0.2,0.9,0.25,1) both;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
     }
     #topbar .brand {
+      display: flex; align-items: center; gap: 8px;
       font-weight: 300;
       letter-spacing: 2px;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, #8ab4ff, #4a7aff);
+      font-size: 1.15rem;
+      background: linear-gradient(135deg, #ffe1a8, #8ab4ff 55%, #4a7aff);
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: brandShift 6s ease-in-out infinite;
     }
+    #topbar .brand .sunDot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff6d8, #ffb347 55%, #ff6a00 85%);
+      box-shadow: 0 0 10px 2px rgba(255,150,60,0.7);
+      animation: floatY 2.6s ease-in-out infinite;
+    }
+    @keyframes brandShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
     #topbar .controls {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     .ctrl-btn {
-      background: rgba(40, 70, 140, 0.3);
-      border: 1px solid rgba(100, 180, 255, 0.3);
+      position: relative;
+      background: rgba(40, 70, 140, 0.28);
+      border: 1px solid rgba(110, 190, 255, 0.28);
       color: #cce4ff;
-      padding: 5px 14px;
+      padding: 6px 14px;
       border-radius: 30px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 500;
       cursor: pointer;
-      transition: 0.2s;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
       letter-spacing: 0.5px;
       backdrop-filter: blur(4px);
+      overflow: hidden;
     }
-    .ctrl-btn:hover { background: rgba(60, 120, 255, 0.4); border-color: #6ab0ff; }
-    .ctrl-btn.active { background: rgba(60, 150, 255, 0.35); border-color: #6ab0ff; box-shadow: 0 0 12px rgba(70, 150, 255, 0.3); }
+    .ctrl-btn:hover { background: rgba(70, 130, 255, 0.4); border-color: #6ab0ff; transform: translateY(-1px); }
+    .ctrl-btn:active { transform: translateY(0) scale(0.96); }
+    .ctrl-btn.active {
+      background: linear-gradient(135deg, rgba(90,150,255,0.5), rgba(60,120,255,0.35));
+      border-color: #7fc0ff;
+      box-shadow: 0 0 16px rgba(90,160,255,0.45);
+    }
 
     #timeDisplay {
-      font-size: 0.8rem;
-      padding: 5px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      padding: 6px 16px;
       background: rgba(0,0,0,0.3);
       border-radius: 30px;
-      border: 1px solid rgba(100,180,255,0.15);
+      border: 1px solid rgba(110,190,255,0.18);
       color: #b0d0ff;
+      letter-spacing: 0.5px;
     }
 
     /* planet panel */
@@ -84,28 +154,32 @@
       position: absolute;
       bottom: 30px;
       left: 30px;
-      width: 260px;
-      padding: 18px 20px;
-      background: rgba(6, 10, 30, 0.7);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(70, 160, 255, 0.2);
+      width: 270px;
+      padding: 20px 22px;
+      background: linear-gradient(160deg, rgba(10,16,42,0.78), rgba(6,10,30,0.68));
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(90, 170, 255, 0.22);
       border-radius: 24px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
-      transition: 0.25s ease;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+      transition: box-shadow 0.4s ease;
       pointer-events: auto;
+      animation: fadeSlideLeft 0.8s 0.15s cubic-bezier(0.2,0.9,0.25,1) both;
     }
+    #infoPanel.updating { animation: infoRefresh 0.45s ease; }
+    @keyframes infoRefresh { 0% { opacity: 0.4; transform: translateY(4px) scale(0.99); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+    #infoPanel .headRow { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+    #infoPanel .swatch { width: 12px; height: 12px; border-radius: 50%; box-shadow: 0 0 10px 2px currentColor; flex-shrink: 0; }
     #infoPanel h2 {
       font-weight: 300;
-      font-size: 1.6rem;
-      margin-bottom: 6px;
-      background: linear-gradient(135deg, #b0d4ff, #5a8eff);
+      font-size: 1.55rem;
+      background: linear-gradient(135deg, #d3e6ff, #6fa2ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    #infoPanel .sub { font-size: 0.7rem; opacity: 0.7; letter-spacing: 1px; margin-bottom: 12px; }
-    #infoPanel .datalist { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 0.75rem; }
-    #infoPanel .datalist span { opacity: 0.7; }
-    #infoPanel .datalist strong { font-weight: 400; color: #b8d6ff; }
+    #infoPanel .sub { font-size: 0.68rem; opacity: 0.65; letter-spacing: 1.5px; margin-bottom: 14px; text-transform: uppercase; }
+    #infoPanel .datalist { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; font-size: 0.74rem; }
+    #infoPanel .datalist span { opacity: 0.6; }
+    #infoPanel .datalist strong { font-weight: 500; color: #bfdcff; font-family: 'Space Mono', monospace; font-size: 0.72rem; }
 
     /* planet list */
     #planetList {
@@ -114,94 +188,120 @@
       top: 90px;
       max-height: calc(100% - 180px);
       overflow-y: auto;
-      width: 140px;
+      width: 150px;
       padding: 12px 10px;
       background: rgba(6, 10, 30, 0.5);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(70, 160, 255, 0.15);
+      border: 1px solid rgba(90, 170, 255, 0.16);
       border-radius: 20px;
       display: flex;
       flex-direction: column;
       gap: 5px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(100,180,255,0.2) transparent;
+      scrollbar-color: rgba(110,190,255,0.25) transparent;
+      animation: fadeSlideRight 0.8s 0.2s cubic-bezier(0.2,0.9,0.25,1) both;
     }
     #planetList::-webkit-scrollbar { width: 4px; }
-    #planetList::-webkit-scrollbar-thumb { background: rgba(100,180,255,0.3); border-radius: 10px; }
+    #planetList::-webkit-scrollbar-thumb { background: rgba(110,190,255,0.35); border-radius: 10px; }
     .planet-item {
+      display: flex; align-items: center; gap: 8px;
       padding: 6px 10px;
       border-radius: 30px;
       font-size: 0.75rem;
       background: rgba(40, 70, 140, 0.15);
       border: 1px solid transparent;
       cursor: pointer;
-      transition: 0.15s;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
       text-align: left;
       color: #b8d0f0;
+      opacity: 0;
+      animation: fadeSlideRight 0.5s ease forwards;
     }
-    .planet-item:hover { background: rgba(60, 120, 255, 0.2); border-color: rgba(100,180,255,0.3); }
-    .planet-item.active { background: rgba(60, 150, 255, 0.2); border-color: #5a8eff; }
+    .planet-item .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 6px 1px currentColor; }
+    .planet-item:hover { background: rgba(70, 130, 255, 0.22); border-color: rgba(110,190,255,0.35); transform: translateX(-2px); }
+    .planet-item.active { background: linear-gradient(135deg, rgba(80,150,255,0.28), rgba(60,120,255,0.18)); border-color: #6ab0ff; animation: ringPulse 1.6s ease-out 1, fadeSlideRight 0.5s ease forwards; }
 
     #searchBox {
       background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(100,180,255,0.2);
+      border: 1px solid rgba(110,190,255,0.22);
       border-radius: 30px;
-      padding: 6px 16px;
+      padding: 7px 16px;
       color: #e0f0ff;
       font-size: 0.8rem;
-      width: 140px;
+      width: 150px;
       outline: none;
-      transition: 0.2s;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      font-family: 'Outfit', sans-serif;
     }
-    #searchBox:focus { border-color: #6ab0ff; background: rgba(0,0,0,0.5); }
+    #searchBox:focus { border-color: #6ab0ff; background: rgba(0,0,0,0.5); box-shadow: 0 0 0 3px rgba(90,160,255,0.18); }
     #searchBox::placeholder { color: #6080aa; }
+
+    /* fly-to toast */
+    #flyToast {
+      position: absolute; top: 100px; left: 50%; transform: translateX(-50%) translateY(-8px);
+      padding: 8px 20px; border-radius: 30px; font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #d7e8ff; background: rgba(10,16,42,0.7); border: 1px solid rgba(110,190,255,0.3);
+      backdrop-filter: blur(10px);
+      opacity: 0; pointer-events: none; transition: opacity 0.35s ease, transform 0.35s ease;
+      font-family: 'Space Mono', monospace;
+    }
+    #flyToast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     @media (max-width: 700px) {
       #topbar { flex-direction: column; align-items: stretch; margin: 12px; padding: 12px; }
       #infoPanel { left: 16px; bottom: 16px; width: 200px; padding: 14px; }
-      #planetList { right: 12px; top: 140px; width: 110px; }
+      #planetList { right: 12px; top: 150px; width: 112px; }
       #searchBox { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- UI OVERLAY -->
-  <div id="ui">
-    <!-- top bar -->
-    <div id="topbar">
-      <div class="brand">☀ Solar Explorer 3D</div>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-        <input id="searchBox" type="text" placeholder="Search planet..." />
-        <div class="controls">
-          <button class="ctrl-btn" id="pauseBtn">⏸</button>
-          <button class="ctrl-btn" data-speed="1">1×</button>
-          <button class="ctrl-btn" data-speed="10">10×</button>
-          <button class="ctrl-btn" data-speed="100">100×</button>
-          <button class="ctrl-btn" data-speed="1000">1000×</button>
-          <button class="ctrl-btn" data-speed="10000">10000×</button>
+  <div id="loader"><div class="sunSpin"></div><div class="loadTxt">Igniting the sun…</div></div>
+  <div id="vignette"></div>
+  <div id="grain"></div>
+
+  <div id="canvasHolder">
+    <!-- UI OVERLAY -->
+    <div id="ui">
+      <!-- top bar -->
+      <div id="topbar">
+        <div class="brand"><span class="sunDot"></span> Solar Explorer 3D</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <input id="searchBox" type="text" placeholder="Search planet..." />
+          <div class="controls">
+            <button class="ctrl-btn" id="pauseBtn">⏸</button>
+            <button class="ctrl-btn" data-speed="1">1×</button>
+            <button class="ctrl-btn" data-speed="10">10×</button>
+            <button class="ctrl-btn" data-speed="100">100×</button>
+            <button class="ctrl-btn" data-speed="1000">1000×</button>
+            <button class="ctrl-btn" data-speed="10000">10000×</button>
+          </div>
+          <div id="timeDisplay">YEAR 0.00</div>
         </div>
-        <div id="timeDisplay">Year 0.00</div>
       </div>
-    </div>
 
-    <!-- planet list -->
-    <div id="planetList"></div>
+      <!-- fly-to toast -->
+      <div id="flyToast">Flying to Earth…</div>
 
-    <!-- info panel -->
-    <div id="infoPanel">
-      <h2 id="pName">Earth</h2>
-      <div class="sub" id="pType">Terrestrial</div>
-      <div class="datalist" id="pData">
-        <span>Diameter</span><strong id="pDiameter">12,742 km</strong>
-        <span>Mass</span><strong id="pMass">5.97e24 kg</strong>
-        <span>Distance</span><strong id="pDistance">1.0 AU</strong>
-        <span>Orbit</span><strong id="pOrbit">365.25 d</strong>
-        <span>Rotation</span><strong id="pRotation">24.0 h</strong>
-        <span>Temp</span><strong id="pTemp">15 °C</strong>
-        <span>Moons</span><strong id="pMoons">1</strong>
-        <span>Gravity</span><strong id="pGravity">9.8 m/s²</strong>
-        <span>Comp.</span><strong id="pComp">Silicate</strong>
+      <!-- planet list -->
+      <div id="planetList"></div>
+
+      <!-- info panel -->
+      <div id="infoPanel">
+        <div class="headRow"><span class="swatch" id="pSwatch" style="color:#2266dd;background:#2266dd;"></span><h2 id="pName">Earth</h2></div>
+        <div class="sub" id="pType">Terrestrial</div>
+        <div class="datalist" id="pData">
+          <span>Diameter</span><strong id="pDiameter">12,742 km</strong>
+          <span>Mass</span><strong id="pMass">5.97e24 kg</strong>
+          <span>Distance</span><strong id="pDistance">1.0 AU</strong>
+          <span>Orbit</span><strong id="pOrbit">365.25 d</strong>
+          <span>Rotation</span><strong id="pRotation">24.0 h</strong>
+          <span>Temp</span><strong id="pTemp">15 °C</strong>
+          <span>Moons</span><strong id="pMoons">1</strong>
+          <span>Gravity</span><strong id="pGravity">9.8 m/s²</strong>
+          <span>Comp.</span><strong id="pComp">Silicate</strong>
+        </div>
       </div>
     </div>
   </div>
@@ -223,6 +323,9 @@
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
     // ============================================================
     // SECTION: CONFIGURATION
@@ -276,10 +379,11 @@
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
+    renderer.toneMappingExposure = 1.15;
     document.body.prepend(renderer.domElement);
 
     const labelRenderer = new CSS2DRenderer();
@@ -298,15 +402,28 @@
     controls.minDistance = 2;
     controls.target.set(0, 0, 0);
 
+    // ------------------------------------------------------------
+    // POST PROCESSING: bloom makes the sun & any emissive surface glow
+    // ------------------------------------------------------------
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      1.15,   // strength
+      0.55,   // radius
+      0.18    // threshold
+    );
+    composer.addPass(bloomPass);
+
     // ============================================================
     // SECTION: LIGHTING & BACKGROUND
     // ============================================================
     // ambient
-    const ambient = new THREE.AmbientLight(0x404060);
+    const ambient = new THREE.AmbientLight(0x404060, 1.1);
     scene.add(ambient);
 
     // sun light
-    const sunLight = new THREE.PointLight(0xffeedd, 1.8, 0, 0);
+    const sunLight = new THREE.PointLight(0xffeedd, 2.0, 0, 0);
     sunLight.position.set(0, 0, 0);
     sunLight.castShadow = true;
     sunLight.shadow.mapSize.width = 1024;
@@ -317,54 +434,115 @@
     fillLight.position.set(-20, 20, 30);
     scene.add(fillLight);
 
-    // stars
-    const starsGeometry = new THREE.BufferGeometry();
-    const starsCount = 6000;
-    const positions = new Float32Array(starsCount * 3);
-    for (let i = 0; i < starsCount * 3; i += 3) {
-      const r = 200 + Math.random() * 400;
+    // helper: small canvas texture generator for glows / rings
+    function makeRadialTexture(stops, size = 128) {
+      const c = document.createElement('canvas');
+      c.width = c.height = size;
+      const ctx = c.getContext('2d');
+      const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+      stops.forEach(([offset, color]) => g.addColorStop(offset, color));
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, size, size);
+      const tex = new THREE.CanvasTexture(c);
+      tex.needsUpdate = true;
+      return tex;
+    }
+
+    // twinkling starfield (custom shader so every star fades independently)
+    const starsCount = 7000;
+    const starPositions = new Float32Array(starsCount * 3);
+    const starPhases = new Float32Array(starsCount);
+    const starScales = new Float32Array(starsCount);
+    for (let i = 0; i < starsCount; i++) {
+      const r = 220 + Math.random() * 500;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
-      positions[i] = r * Math.sin(phi) * Math.cos(theta);
-      positions[i+1] = r * Math.sin(phi) * Math.sin(theta);
-      positions[i+2] = r * Math.cos(phi);
+      starPositions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      starPositions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      starPositions[i * 3 + 2] = r * Math.cos(phi);
+      starPhases[i] = Math.random() * Math.PI * 2;
+      starScales[i] = 0.5 + Math.random() * 1.8;
     }
-    starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const starsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.3, transparent: true, opacity: 0.9 });
+    const starsGeometry = new THREE.BufferGeometry();
+    starsGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+    starsGeometry.setAttribute('aPhase', new THREE.BufferAttribute(starPhases, 1));
+    starsGeometry.setAttribute('aScale', new THREE.BufferAttribute(starScales, 1));
+    const starsMat = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      uniforms: { uTime: { value: 0 } },
+      vertexShader: `
+        attribute float aPhase;
+        attribute float aScale;
+        uniform float uTime;
+        varying float vTwinkle;
+        void main() {
+          vTwinkle = 0.55 + 0.45 * sin(uTime * 1.6 + aPhase);
+          vec4 mv = modelViewMatrix * vec4(position, 1.0);
+          gl_PointSize = aScale * (220.0 / -mv.z);
+          gl_Position = projectionMatrix * mv;
+        }
+      `,
+      fragmentShader: `
+        varying float vTwinkle;
+        void main() {
+          vec2 uv = gl_PointCoord - 0.5;
+          float d = length(uv);
+          float alpha = smoothstep(0.5, 0.0, d) * vTwinkle;
+          gl_FragColor = vec4(1.0, 1.0, 1.0, alpha);
+        }
+      `
+    });
     const stars = new THREE.Points(starsGeometry, starsMat);
     scene.add(stars);
+
+    // subtle distant nebula haze (very low opacity colored sprites)
+    const nebulaTex = makeRadialTexture([[0, 'rgba(120,90,220,0.35)'], [0.5, 'rgba(60,40,120,0.12)'], [1, 'rgba(0,0,0,0)']]);
+    [[1, 0.3, -0.4, 0x5a4fd8], [-1.2, -0.2, 0.6, 0x2f6fb8]].forEach(([x, y, z, tint]) => {
+      const neb = new THREE.Sprite(new THREE.SpriteMaterial({ map: nebulaTex, color: tint, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending }));
+      neb.position.set(x * 260, y * 260, z * 260);
+      neb.scale.set(420, 420, 1);
+      scene.add(neb);
+    });
 
     // ============================================================
     // SECTION: PLANET SYSTEM
     // ============================================================
     const planets = {};
-    const orbits = [];
     const orbitLines = [];
     const planetMeshes = [];
     const labelObjects = [];
     const moonMeshes = [];
+    const glowSprites = [];
 
-    // helper: create orbit line
-    function createOrbitLine(radius, color = 0x446688, segments = 96) {
+    // helper: create orbit line (soft glowing dashed ring)
+    function createOrbitLine(radius, color = 0x446688, segments = 128) {
       const points = [];
       for (let i = 0; i <= segments; i++) {
         const angle = (i / segments) * Math.PI * 2;
         points.push(new THREE.Vector3(radius * Math.cos(angle), 0, radius * Math.sin(angle)));
       }
       const geo = new THREE.BufferGeometry().setFromPoints(points);
-      const mat = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.25 });
+      const mat = new THREE.LineDashedMaterial({ color, transparent: true, opacity: 0.35, dashSize: 1.4, gapSize: 0.9 });
       const line = new THREE.Line(geo, mat);
+      line.computeLineDistances();
       scene.add(line);
       orbitLines.push(line);
       return line;
     }
+
+    // corona sprite behind the sun (additive glow, pulses in the render loop)
+    const coronaTex = makeRadialTexture([[0, 'rgba(255,240,200,0.9)'], [0.25, 'rgba(255,170,60,0.55)'], [0.6, 'rgba(255,100,20,0.18)'], [1, 'rgba(255,80,0,0)']]);
+    const corona = new THREE.Sprite(new THREE.SpriteMaterial({ map: coronaTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    corona.scale.set(26, 26, 1);
+    scene.add(corona);
 
     // create sun
     const sunGeo = new THREE.SphereGeometry(PLANET_DATA.sun.radius, 48, 48);
     const sunMat = new THREE.MeshStandardMaterial({
       color: 0xffaa44,
       emissive: 0xff5500,
-      emissiveIntensity: 1.2,
+      emissiveIntensity: 1.4,
     });
     const sunMesh = new THREE.Mesh(sunGeo, sunMat);
     sunMesh.position.set(0, 0, 0);
@@ -377,6 +555,8 @@
       mercury: 0xbbaa99, venus: 0xe6b856, earth: 0x2266dd, mars: 0xc1440e,
       jupiter: 0xd8a27a, saturn: 0xe3c9a0, uranus: 0x7ec8e3, neptune: 0x3b4cb8, pluto: 0xccbbaa
     };
+    // planets that get a soft atmospheric rim glow
+    const atmosphereGlow = { earth: 0x66aaff, venus: 0xffcf8f, uranus: 0x9fe6ff, neptune: 0x6f8cff };
 
     planetKeys.forEach(key => {
       const data = PLANET_DATA[key];
@@ -394,7 +574,35 @@
       const angle = Math.random() * Math.PI * 2;
       mesh.position.set(dist * Math.cos(angle), 0, dist * Math.sin(angle));
       scene.add(mesh);
-      
+
+      // atmospheric fresnel-ish rim glow via a slightly larger backside shader shell
+      if (atmosphereGlow[key]) {
+        const atmoGeo = new THREE.SphereGeometry(radius * 1.18, 32, 32);
+        const atmoMat = new THREE.ShaderMaterial({
+          transparent: true,
+          depthWrite: false,
+          side: THREE.BackSide,
+          uniforms: { glowColor: { value: new THREE.Color(atmosphereGlow[key]) } },
+          vertexShader: `
+            varying vec3 vNormal;
+            void main() {
+              vNormal = normalize(normalMatrix * normal);
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `,
+          fragmentShader: `
+            varying vec3 vNormal;
+            uniform vec3 glowColor;
+            void main() {
+              float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.5);
+              gl_FragColor = vec4(glowColor, intensity * 0.9);
+            }
+          `
+        });
+        const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
+        mesh.add(atmoMesh);
+      }
+
       // store
       planets[key] = { mesh, data, distance: dist, angle, speed: 0.2 / (data.orbit ? parseFloat(data.orbit) || 1 : 1) };
       planetMeshes.push(mesh);
@@ -408,12 +616,14 @@
       labelDiv.textContent = data.name;
       labelDiv.style.color = '#cce4ff';
       labelDiv.style.fontSize = '12px';
+      labelDiv.style.fontFamily = "'Outfit', sans-serif";
       labelDiv.style.fontWeight = '300';
+      labelDiv.style.letterSpacing = '0.5px';
       labelDiv.style.textShadow = '0 0 12px rgba(0,0,0,0.8)';
-      labelDiv.style.background = 'rgba(0,0,0,0.3)';
+      labelDiv.style.background = 'rgba(0,0,0,0.32)';
       labelDiv.style.padding = '2px 10px';
       labelDiv.style.borderRadius = '12px';
-      labelDiv.style.border = '1px solid rgba(100,180,255,0.15)';
+      labelDiv.style.border = '1px solid rgba(110,190,255,0.18)';
       labelDiv.style.backdropFilter = 'blur(4px)';
       const label = new CSS2DObject(labelDiv);
       label.position.copy(mesh.position);
@@ -442,15 +652,34 @@
       moonMeshes.push({ mesh, parent: parent.mesh, dist: def.dist, angle, speed: 0.8 + Math.random() * 0.5, name: def.name });
     });
 
-    // Saturn rings
+    // Saturn rings (layered, gradient-textured for a less "flat" look)
     const saturnData = planets.saturn;
     if (saturnData) {
-      const ringGeo = new THREE.RingGeometry(3.2, 5.0, 64);
+      const ringTex = makeRadialTexture([
+        [0.0, 'rgba(0,0,0,0)'],
+        [0.35, 'rgba(200,178,139,0.05)'],
+        [0.5, 'rgba(224,201,158,0.55)'],
+        [0.62, 'rgba(180,150,110,0.25)'],
+        [0.75, 'rgba(224,201,158,0.6)'],
+        [0.9, 'rgba(200,178,139,0.15)'],
+        [1.0, 'rgba(0,0,0,0)']
+      ], 256);
+      const ringGeo = new THREE.RingGeometry(3.2, 5.0, 128);
+      // remap UVs radially so the gradient texture reads outward, not stretched
+      const posAttr = ringGeo.attributes.position;
+      const uv = ringGeo.attributes.uv;
+      const v3 = new THREE.Vector3();
+      for (let i = 0; i < posAttr.count; i++) {
+        v3.fromBufferAttribute(posAttr, i);
+        const d = (v3.length() - 3.2) / (5.0 - 3.2);
+        uv.setXY(i, d, 0.5);
+      }
       const ringMat = new THREE.MeshStandardMaterial({
-        color: 0xc8b28b,
+        map: ringTex,
+        color: 0xffffff,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.85,
         roughness: 0.8,
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
@@ -468,6 +697,7 @@
     const infoPanel = document.getElementById('infoPanel');
     const pName = document.getElementById('pName');
     const pType = document.getElementById('pType');
+    const pSwatch = document.getElementById('pSwatch');
     const pDiameter = document.getElementById('pDiameter');
     const pMass = document.getElementById('pMass');
     const pDistance = document.getElementById('pDistance');
@@ -477,12 +707,25 @@
     const pMoons = document.getElementById('pMoons');
     const pGravity = document.getElementById('pGravity');
     const pComp = document.getElementById('pComp');
+    const flyToast = document.getElementById('flyToast');
+
+    function hexOf(key) {
+      if (key === 'sun') return '#ffaa44';
+      const c = planetColors[key];
+      return c !== undefined ? '#' + c.toString(16).padStart(6, '0') : '#88aadd';
+    }
 
     function updateInfoPanel(key) {
       const data = PLANET_DATA[key];
       if (!data) return;
+      infoPanel.classList.remove('updating');
+      void infoPanel.offsetWidth; // restart animation
+      infoPanel.classList.add('updating');
       pName.textContent = data.name;
       pType.textContent = data.type || '';
+      const hex = hexOf(key);
+      pSwatch.style.color = hex;
+      pSwatch.style.background = hex;
       pDiameter.textContent = data.diameter || '—';
       pMass.textContent = data.mass || '—';
       pDistance.textContent = data.distance ? data.distance + ' AU' : '—';
@@ -494,26 +737,54 @@
       pComp.textContent = data.comp || '—';
     }
 
+    // ------------------------------------------------------------
+    // Smooth "fly to" camera animation
+    // ------------------------------------------------------------
+    const flyState = { active: false, t: 0, duration: 1.3, startPos: new THREE.Vector3(), endPos: new THREE.Vector3(), startTarget: new THREE.Vector3() };
+    let toastTimer = null;
+
+    function easeInOutCubic(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+    function flyTo(key) {
+      const targetPos = key === 'sun' ? new THREE.Vector3(0, 0, 0) : planets[key].mesh.position.clone();
+      const radius = PLANET_DATA[key].radius;
+      const viewDist = Math.max(radius * 7.5, 6) + 3;
+      const dir = new THREE.Vector3(0.6, 0.42, 1).normalize();
+      flyState.startPos.copy(camera.position);
+      flyState.endPos.copy(targetPos).add(dir.multiplyScalar(viewDist));
+      flyState.startTarget.copy(controls.target);
+      flyState.t = 0;
+      flyState.active = true;
+
+      flyToast.textContent = `Flying to ${PLANET_DATA[key].name}…`;
+      flyToast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => flyToast.classList.remove('show'), flyState.duration * 1000 + 200);
+    }
+
     // populate planet list
     const allKeys = ['sun', ...planetKeys];
-    allKeys.forEach(key => {
+    allKeys.forEach((key, idx) => {
       const data = PLANET_DATA[key];
       const item = document.createElement('div');
       item.className = 'planet-item';
-      item.textContent = data.name;
+      item.style.animationDelay = `${0.25 + idx * 0.045}s`;
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      const hex = hexOf(key);
+      dot.style.color = hex;
+      dot.style.background = hex;
+      const label = document.createElement('span');
+      label.textContent = data.name;
+      item.appendChild(dot);
+      item.appendChild(label);
       item.dataset.key = key;
       item.addEventListener('click', () => {
         document.querySelectorAll('.planet-item').forEach(el => el.classList.remove('active'));
         item.classList.add('active');
         updateInfoPanel(key);
-        // follow
-        if (key === 'sun') {
-          controls.target.set(0,0,0);
-        } else if (planets[key]) {
-          const pos = planets[key].mesh.position;
-          controls.target.copy(pos);
-        }
         CONFIG.followTarget = key;
+        flyTo(key);
       });
       planetListEl.appendChild(item);
     });
@@ -522,7 +793,7 @@
     searchBox.addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase();
       document.querySelectorAll('.planet-item').forEach(el => {
-        el.style.display = el.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+        el.style.display = el.textContent.toLowerCase().includes(q) ? 'flex' : 'none';
       });
     });
 
@@ -553,7 +824,7 @@
       const speed = CONFIG.speed * delta * 0.08; // scale
 
       // update planet angles
-      planetKeys.forEach(key => {
+      planetKeys.forEach((key, i) => {
         const p = planets[key];
         if (!p) return;
         const orbitSpeed = p.speed || 0.1;
@@ -566,7 +837,7 @@
         p.mesh.rotation.x = 0.1;
 
         // label
-        const label = labelObjects.find((l, idx) => idx === planetKeys.indexOf(key));
+        const label = labelObjects[i];
         if (label) {
           label.position.copy(p.mesh.position);
           label.position.y += p.data.radius + 0.8;
@@ -590,14 +861,14 @@
 
       // update time display
       CONFIG.time += speed * 0.001;
-      document.getElementById('timeDisplay').textContent = `Year ${CONFIG.time.toFixed(2)}`;
+      document.getElementById('timeDisplay').textContent = `YEAR ${CONFIG.time.toFixed(2)}`;
 
-      // follow target
+      // follow target (keeps orbit-controls target locked onto a moving planet)
       if (CONFIG.followTarget && CONFIG.followTarget !== 'sun' && planets[CONFIG.followTarget]) {
         const pos = planets[CONFIG.followTarget].mesh.position;
-        controls.target.lerp(pos, 0.05);
-      } else if (CONFIG.followTarget === 'sun') {
-        controls.target.lerp(new THREE.Vector3(0,0,0), 0.05);
+        if (!flyState.active) controls.target.lerp(pos, 0.05);
+      } else if (CONFIG.followTarget === 'sun' && !flyState.active) {
+        controls.target.lerp(new THREE.Vector3(0, 0, 0), 0.05);
       }
     }
 
@@ -607,20 +878,47 @@
     let clock = new THREE.Clock();
 
     function animate() {
-      const delta = clock.getDelta();
+      const delta = Math.min(clock.getDelta(), 0.05);
+      const elapsed = clock.getElapsedTime();
       updatePhysics(delta);
+
+      // camera fly-to tween
+      if (flyState.active) {
+        flyState.t += delta / flyState.duration;
+        const t = Math.min(flyState.t, 1);
+        const e = easeInOutCubic(t);
+        camera.position.lerpVectors(flyState.startPos, flyState.endPos, e);
+        const liveTarget = CONFIG.followTarget && CONFIG.followTarget !== 'sun' && planets[CONFIG.followTarget]
+          ? planets[CONFIG.followTarget].mesh.position
+          : new THREE.Vector3(0, 0, 0);
+        controls.target.lerpVectors(flyState.startTarget, liveTarget, e);
+        if (t >= 1) flyState.active = false;
+      }
 
       controls.update();
 
-      // sun glow
-      sunMesh.material.emissiveIntensity = 1.2 + 0.3 * Math.sin(Date.now() * 0.001);
+      // sun glow pulse + corona
+      const pulse = 1.3 + 0.35 * Math.sin(elapsed * 0.9);
+      sunMesh.material.emissiveIntensity = pulse;
+      corona.material.opacity = 0.75 + 0.15 * Math.sin(elapsed * 0.9);
+      corona.scale.setScalar(26 + Math.sin(elapsed * 0.9) * 1.5);
 
-      renderer.render(scene, camera);
+      // twinkle uniform + flowing orbit dashes
+      starsMat.uniforms.uTime.value = elapsed;
+      orbitLines.forEach(l => { l.material.dashOffset = -elapsed * 0.6; });
+
+      composer.render();
       labelRenderer.render(scene, camera);
       requestAnimationFrame(animate);
     }
 
     animate();
+
+    // reveal once first frame is ready
+    requestAnimationFrame(() => {
+      document.getElementById('loader').classList.add('hide');
+      document.getElementById('canvasHolder').classList.add('ready');
+    });
 
     // ============================================================
     // SECTION: RESPONSIVE
@@ -629,20 +927,15 @@
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      composer.setSize(window.innerWidth, window.innerHeight);
       labelRenderer.setSize(window.innerWidth, window.innerHeight);
     });
 
     // ============================================================
     // SECTION: EXTRA TOGGLES (orbit lines, labels)
     // ============================================================
-    // simple toggles via console for now, but we can add UI later
-    window.toggleOrbits = (visible) => {
-      orbitLines.forEach(l => l.visible = visible);
-    };
-    window.toggleLabels = (visible) => {
-      labelObjects.forEach(l => l.visible = visible);
-    };
-    // default on
+    window.toggleOrbits = (visible) => { orbitLines.forEach(l => l.visible = visible); };
+    window.toggleLabels = (visible) => { labelObjects.forEach(l => l.visible = visible); };
     toggleOrbits(true);
     toggleLabels(true);
 

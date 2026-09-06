@@ -2219,6 +2219,162 @@
   .tour-engine-modal .tour-btn-skip:hover {
     color: var(--tour-text, #1a1a1a);
   }
+
+  /* ============================================================
+     VISUAL POLISH LAYER — additive only, no existing rule removed.
+     Theme-aware (uses the same --accent / --brass-bright / --paper
+     variables as the rest of the app) so it works across every
+     theme and both LTR/RTL without touching any JS logic.
+     ============================================================ */
+
+  /* Slow-drifting aurora glow behind everything */
+  body::before{
+    content:'';
+    position:fixed;
+    inset:-20%;
+    z-index:-3;
+    background:
+      radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--accent) 35%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--brass-bright) 30%, transparent) 0%, transparent 42%),
+      radial-gradient(circle at 50% 90%, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 45%);
+    filter:blur(60px) saturate(1.1);
+    opacity:0.55;
+    animation:auroraDrift 22s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  @keyframes auroraDrift{
+    0%{ transform:translate3d(0,0,0) rotate(0deg) scale(1); }
+    50%{ transform:translate3d(1.5%,-2%,0) rotate(4deg) scale(1.08); }
+    100%{ transform:translate3d(-2%,1.5%,0) rotate(-3deg) scale(1.02); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    body::before{ animation:none; }
+  }
+
+  /* Shimmering title */
+  h1{
+    background:linear-gradient(100deg, var(--ink) 30%, var(--brass-bright) 50%, var(--ink) 70%);
+    background-size:220% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:titleShimmer 6s ease-in-out infinite;
+  }
+  @keyframes titleShimmer{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+
+  /* Wheel: idle breathing life + richer glow while spinning */
+  .wheel-wrap:not(.spinning){
+    animation:wheelIdleFloat 5s ease-in-out infinite;
+  }
+  @keyframes wheelIdleFloat{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-5px); }
+  }
+  .glow-ring{
+    background:radial-gradient(circle, color-mix(in srgb, var(--brass-bright) 25%, transparent) 0%, transparent 70%);
+    opacity:0.4;
+    animation:idleGlowBreath 4s ease-in-out infinite;
+  }
+  @keyframes idleGlowBreath{
+    0%,100%{ opacity:0.25; transform:translate(-50%,-50%) scale(0.97); }
+    50%{ opacity:0.55; transform:translate(-50%,-50%) scale(1.03); }
+  }
+  .pointer{
+    transition:filter 0.2s ease;
+  }
+  .wheel-wrap.spinning .pointer{
+    filter:drop-shadow(0 0 6px rgba(159,209,255,0.7));
+  }
+
+  /* Spin button: shine sweep on hover, punchier press */
+  .spin-btn{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .spin-btn::before{
+    content:'';
+    position:absolute;
+    top:0; left:-60%;
+    width:40%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform:skewX(-20deg);
+    transition:left 0.7s ease;
+    pointer-events:none;
+    z-index:1;
+  }
+  .spin-btn:hover:not(:disabled)::before{ left:130%; }
+  .spin-btn span{ position:relative; z-index:2; }
+  .spin-btn:active:not(:disabled){ transform:scale(0.94); }
+
+  /* Result value: brighter celebratory pop */
+  .result .value.show{
+    animation:resultPop 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes resultPop{
+    0%{ transform:translateY(6px) scale(0.85); }
+    60%{ transform:translateY(-2px) scale(1.06); }
+    100%{ transform:translateY(0) scale(1); }
+  }
+
+  /* Frosted, smoothly-fading modals instead of an instant display swap */
+  /* NOTE: .popover-backdrop is intentionally excluded here — it is
+     inserted/removed directly from the DOM by JS (never gets an
+     .open class), so it keeps its original always-visible-when-
+     present behaviour and only gains the blur below. */
+  .menu-backdrop,
+  .share-modal-backdrop,
+  .cal-modal-backdrop,
+  .survey-modal-backdrop{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    transition:opacity 0.28s ease, visibility 0.28s ease;
+  }
+  .menu-backdrop.open,
+  .share-modal-backdrop.open,
+  .cal-modal-backdrop.open,
+  .survey-modal-backdrop.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .popover-backdrop{
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+  }
+  .popover{
+    animation:modalPopIn 0.28s cubic-bezier(0.2,0.9,0.25,1) both;
+  }
+  .share-modal-backdrop.open .share-modal,
+  .cal-modal-backdrop.open .cal-modal,
+  .survey-modal-backdrop.open .survey-modal{
+    animation:modalPopIn 0.32s cubic-bezier(0.2,0.9,0.25,1) both;
+  }
+  @keyframes modalPopIn{
+    0%{ opacity:0; transform:translateY(10px) scale(0.96); }
+    100%{ opacity:1; transform:translateY(0) scale(1); }
+  }
+  .side-menu{
+    box-shadow:-24px 0 60px rgba(0,0,0,0.45);
+  }
+
+  /* Gentle lift on interactive rows/cards for a more tactile feel */
+  .survey-launch-btn:hover{ transform:translateY(-1px); }
+  .share-actions button:hover{ transform:translateY(-1px); }
+
+  @media (prefers-reduced-motion: reduce){
+    .wheel-wrap:not(.spinning), .glow-ring, h1{ animation:none !important; }
+  }
 </style>
 </head>
 <body>

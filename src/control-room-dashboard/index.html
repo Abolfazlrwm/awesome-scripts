@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اتاق فرمان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e1a;
+    --panel:#0f1424;
+    --line:rgba(255,255,255,.08);
+    --text:#e7eaf3;
+    --muted:#7c86a3;
+    --blue:#2aabee;
+    --violet:#7c5cfc;
+    --green:#28d17c;
+    --amber:#f5b544;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Vazirmatn', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body{
+    min-height:100vh;
+    padding:48px 20px 30px;
+    background-image:
+      radial-gradient(ellipse 800px 400px at 15% -10%, rgba(124,92,252,.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(42,171,238,.12), transparent 60%);
+  }
+  .wrap{ max-width:920px; margin:0 auto; }
+
+  /* Hero */
+  .hero{ text-align:center; margin-bottom:44px; }
+  .hero .eyebrow-line{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    color:var(--muted); font-size:13px; margin-bottom:18px;
+  }
+  .dot-live{
+    width:7px;height:7px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 0 0 rgba(40,209,124,.6);
+    animation:pulse-dot 1.8s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse-dot{
+    0%{box-shadow:0 0 0 0 rgba(40,209,124,.55);}
+    70%{box-shadow:0 0 0 8px rgba(40,209,124,0);}
+    100%{box-shadow:0 0 0 0 rgba(40,209,124,0);}
+  }
+  .hero h1{
+    font-size:15px;
+    font-weight:500;
+    color:var(--muted);
+    margin:0 0 6px;
+  }
+  .big-number{
+    font-family:'JetBrains Mono', monospace;
+    font-size:clamp(52px, 11vw, 92px);
+    font-weight:600;
+    line-height:1;
+    background:linear-gradient(90deg, #fff 30%, var(--blue) 75%, var(--violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    direction:ltr;
+  }
+  .hero p{
+    color:var(--muted);
+    font-size:14px;
+    max-width:440px;
+    margin:14px auto 0;
+    line-height:1.9;
+  }
+
+  /* Grid */
+  .grid{
+    display:grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap:16px;
+    margin-bottom:16px;
+  }
+  @media (max-width:720px){ .grid{ grid-template-columns:1fr; } }
+
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .panel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:13px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .panel-head span{ font-size:13px; color:var(--muted); }
+  .panel-head .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    direction:ltr;
+  }
+
+  /* Terminal */
+  .term{
+    padding:16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    line-height:2.05;
+    min-height:230px;
+    direction:ltr;
+    text-align:left;
+  }
+  .term .ln{ white-space:pre-wrap; word-break:break-word; opacity:0; animation:appear .25s forwards; }
+  .term .ok{ color:var(--green); }
+  .term .info{ color:var(--blue); }
+  .term .warn{ color:var(--amber); }
+  .term .tag2{ color:var(--muted); }
+  @keyframes appear{ to{opacity:1;} }
+  .cursor{
+    display:inline-block; width:7px; height:13px; background:var(--blue);
+    animation:blink 1s step-end infinite; vertical-align:middle; margin-right:2px;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* Bot status list */
+  .bots{ padding:6px 0; }
+  .bot-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  .bot-row:last-child{ border-bottom:none; }
+  .bot-name{ font-size:13.5px; }
+  .bot-right{ display:flex; align-items:center; gap:8px; direction:ltr; }
+  .bot-ping{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--muted);
+    min-width:44px;
+    text-align:left;
+  }
+  .status-dot{ width:6px; height:6px; border-radius:50%; background:var(--green); }
+  .status-dot.busy{ background:var(--amber); }
+
+  /* Ticker */
+  .ticker-panel{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:18px; padding:14px 18px; }
+  .ticker-info .sym{ font-size:13px; color:var(--muted); margin-bottom:4px; }
+  .ticker-info .price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:22px; font-weight:600; direction:ltr;
+  }
+  .price.up{ color:var(--green); }
+  .price.down{ color:#ef5a6f; }
+  canvas{ display:block; }
+
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:30px;
+    line-height:1.9;
+  }
+  footer a{ color:var(--blue); text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow-line"><span class="dot-live"></span><span>سرویس‌ها آنلاین هستند</span></div>
+    <h1>کاربران فعال شبکه</h1>
+    <div class="big-number" id="bigNumber">0</div>
+    <p>مجموعه‌ای از ربات‌ها و ابزارهایی که هم‌زمان در حال کار کردن‌اند — این یک نمایش زنده و شبیه‌سازی‌شده از عملکرد آن‌هاست.</p>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-head"><span>گزارش لحظه‌ای</span><span class="tag">deploy.log</span></div>
+      <div class="term" id="term"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><span>وضعیت ربات‌ها</span><span class="tag">status</span></div>
+      <div class="bots" id="botList"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><span>نرخ لحظه‌ای</span><span class="tag">price-ticker</span></div>
+    <div class="ticker-panel">
+      <div class="ticker-info">
+        <div class="sym">USDT / IRT</div>
+        <div class="price up" id="priceVal">۰</div>
+      </div>
+      <canvas id="chart" width="360" height="70"></canvas>
+    </div>
+  </div>
+
+  <footer>یک نمایش زنده از قابلیت‌های موجود در ریپازیتوری — <a href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank">awesome-scripts</a></footer>
+</div>
+
+<script>
+/* ---------- hero counter ---------- */
+(function countUp(){
+  const el = document.getElementById('bigNumber');
+  const target = 128430 + Math.floor(Math.random()*900);
+  const dur = 1600, start = performance.now();
+  function frame(t){
+    const p = Math.min(1, (t-start)/dur);
+    const eased = 1 - Math.pow(1-p, 3);
+    el.textContent = Math.floor(eased*target).toLocaleString('en-US');
+    if(p<1) requestAnimationFrame(frame);
+    else setInterval(()=>{
+      const wobble = target + Math.floor(Math.random()*40 - 20);
+      el.textContent = wobble.toLocaleString('en-US');
+    }, 2600);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- terminal log ---------- */
+const logs = [
+  ['ok',   '[OK]',   'ربات فروشگاهی — پردازش سفارش #4821 با موفقیت انجام شد'],
+  ['info', '[INFO]', 'اتصال Webhook برقرار است — تأخیر ۸۲ میلی‌ثانیه'],
+  ['info', '[INFO]', 'همگام‌سازی موجودی محصولات انجام شد'],
+  ['warn', '[WARN]', 'صف پیام‌ها در حال شلوغ شدن — پردازش موازی فعال شد'],
+  ['ok',   '[OK]',   'ربات اقتصادی — پاداش روزانه به ۳۴ کاربر ارسال شد'],
+  ['info', '[INFO]', 'بکاپ خودکار پایگاه‌داده تکمیل شد'],
+  ['ok',   '[OK]',   'ربات پشتیبانی — تیکت #291 بسته شد'],
+  ['info', '[INFO]', 'دریافت نرخ ارز جدید از منبع اصلی'],
+];
+const termEl = document.getElementById('term');
+let li = 0;
+function pushLine(){
+  const [cls, tag, msg] = logs[li % logs.length];
+  li++;
+  const line = document.createElement('div');
+  line.className = 'ln';
+  line.innerHTML = `<span class="tag2">${new Date().toLocaleTimeString('en-GB')}</span> <span class="${cls}">${tag}</span> ${msg}`;
+  termEl.appendChild(line);
+  while(termEl.children.length > 7) termEl.removeChild(termEl.firstChild);
+  termEl.scrollTop = termEl.scrollHeight;
+}
+for(let i=0;i<5;i++) pushLine();
+setInterval(pushLine, 2200);
+
+/* ---------- bot status list ---------- */
+const bots = [
+  'ربات فروشگاهی',
+  'اقتصاد سگ خوشحال',
+  'پشتیبانی تیکتینگ',
+  'نرخ لحظه‌ای ارز',
+  'نگهبان گروه',
+];
+const botListEl = document.getElementById('botList');
+bots.forEach(name=>{
+  const row = document.createElement('div');
+  row.className = 'bot-row';
+  const ping = 20 + Math.floor(Math.random()*60);
+  row.innerHTML = `
+    <span class="bot-name">${name}</span>
+    <span class="bot-right">
+      <span class="bot-ping">${ping}ms</span>
+      <span class="status-dot"></span>
+    </span>`;
+  botListEl.appendChild(row);
+});
+setInterval(()=>{
+  document.querySelectorAll('.bot-ping').forEach(el=>{
+    el.textContent = (18 + Math.floor(Math.random()*70)) + 'ms';
+  });
+  const dots = document.querySelectorAll('.status-dot');
+  const i = Math.floor(Math.random()*dots.length);
+  dots.forEach(d=>d.classList.remove('busy'));
+  if(Math.random() > 0.6) dots[i].classList.add('busy');
+}, 1800);
+
+/* ---------- price ticker + mini chart ---------- */
+const priceEl = document.getElementById('priceVal');
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+let price = 60250;
+let history = Array.from({length:40}, ()=> price);
+
+function stepPrice(){
+  const delta = (Math.random()-0.48) * 90;
+  price = Math.max(58000, price + delta);
+  history.push(price);
+  history.shift();
+  const isUp = delta >= 0;
+  priceEl.textContent = Math.round(price).toLocaleString('en-US');
+  priceEl.className = 'price ' + (isUp ? 'up' : 'down');
+  drawChart(isUp);
+}
+
+function drawChart(isUp){
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+  const min = Math.min(...history), max = Math.max(...history);
+  const range = (max - min) || 1;
+  ctx.beginPath();
+  history.forEach((v,i)=>{
+    const x = (i/(history.length-1)) * w;
+    const y = h - ((v-min)/range) * (h-10) - 5;
+    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  });
+  ctx.strokeStyle = isUp ? '#28d17c' : '#ef5a6f';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath();
+  const grad = ctx.createLinearGradient(0,0,0,h);
+  grad.addColorStop(0, isUp ? 'rgba(40,209,124,.18)' : 'rgba(239,90,111,.18)');
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+}
+stepPrice();
+setInterval(stepPrice, 1500);
+</script>
+</body>
+</html>
