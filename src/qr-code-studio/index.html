@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Code Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0e17; --panel:#11162a; --line:rgba(255,255,255,.08);
+    --text:#eef1fb; --muted:#8b93b4;
+    --accent1:#7c5cfc; --accent2:#2aabee; --green:#28d17c; --red:#ef5a6f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Vazirmatn',sans-serif;}
+  body{
+    min-height:100vh; padding:36px 18px 60px;
+    background-image:
+      radial-gradient(ellipse 900px 420px at 10% -10%, rgba(124,92,252,.18), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(42,171,238,.13), transparent 60%);
+  }
+  .wrap{max-width:1080px;margin:0 auto;}
+  .hero{text-align:center;margin-bottom:34px;}
+  .hero .eyebrow{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:12.5px;margin-bottom:12px;letter-spacing:.02em;}
+  .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(40,209,124,.6);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(40,209,124,.55);}70%{box-shadow:0 0 0 8px rgba(40,209,124,0);}100%{box-shadow:0 0 0 0 rgba(40,209,124,0);}}
+  .hero h1{
+    font-size:clamp(26px,5vw,40px); font-weight:800; margin:0 0 8px;
+    background:linear-gradient(90deg,#fff 20%,var(--accent2) 60%,var(--accent1));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{color:var(--muted);font-size:14px;max-width:480px;margin:0 auto;line-height:1.9;}
+
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+  @media (max-width:860px){.layout{grid-template-columns:1fr;}}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .panel-head{padding:14px 18px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+  .panel-head .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;direction:ltr;opacity:.7;}
+  .panel-body{padding:18px;}
+
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:7px;}
+  .field input[type="text"], .field textarea, .field select{
+    width:100%; background:#0a0e1c; border:1px solid var(--line); border-radius:8px;
+    padding:10px 12px; color:var(--text); font-family:inherit; font-size:14px;
+    outline:none; transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  .field textarea{resize:vertical;min-height:64px;}
+  .field input:focus, .field textarea:focus, .field select:focus{
+    border-color:var(--accent2); box-shadow:0 0 0 3px rgba(42,171,238,.15);
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+
+  .color-field{display:flex;align-items:center;gap:10px;background:#0a0e1c;border:1px solid var(--line);border-radius:8px;padding:8px 12px;}
+  .color-field input[type="color"]{
+    width:30px;height:30px;border:none;border-radius:6px;background:none;padding:0;cursor:pointer;
+  }
+  .color-field span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);direction:ltr;}
+
+  .switch-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;}
+  .switch-row label{font-size:13px;color:var(--text);}
+  .switch{position:relative;width:42px;height:24px;flex-shrink:0;}
+  .switch input{opacity:0;width:0;height:0;}
+  .slider-toggle{
+    position:absolute;inset:0;background:#232a44;border-radius:30px;cursor:pointer;transition:.2s;
+  }
+  .slider-toggle::before{
+    content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;
+    background:#fff;border-radius:50%;transition:.2s;
+  }
+  .switch input:checked + .slider-toggle{background:linear-gradient(90deg,var(--accent1),var(--accent2));}
+  .switch input:checked + .slider-toggle::before{transform:translateX(-18px);}
+  html[dir="rtl"] .switch input:checked + .slider-toggle::before{transform:translateX(-18px);}
+
+  .btn{
+    appearance:none;border:none;cursor:pointer;font-family:inherit;font-weight:600;font-size:13.5px;
+    padding:10px 16px;border-radius:9px;transition:transform .12s ease, box-shadow .18s ease, opacity .15s ease;
+  }
+  .btn:active{transform:scale(.96);}
+  .btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 8px 24px rgba(124,92,252,.35);}
+  .btn-primary:hover{box-shadow:0 10px 30px rgba(124,92,252,.5);}
+  .btn-ghost{background:#171d33;color:var(--text);border:1px solid var(--line);}
+  .btn-ghost:hover{background:#1d2440;}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;}
+  .preset-swatch{
+    width:34px;height:34px;border-radius:9px;cursor:pointer;border:2px solid transparent;
+    transition:transform .15s ease, border-color .15s ease; position:relative;
+  }
+  .preset-swatch:hover{transform:translateY(-2px);}
+  .preset-swatch.active{border-color:#fff;}
+
+  /* preview side */
+  .preview-panel{position:sticky; top:20px;}
+  .preview-stage{
+    display:flex;align-items:center;justify-content:center;padding:34px 18px;
+    background:
+      radial-gradient(circle at 50% 20%, rgba(124,92,252,.14), transparent 60%);
+  }
+  .qr-card{
+    background:#fff; border-radius:18px; padding:22px; box-shadow:0 30px 70px rgba(0,0,0,.55);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    animation:cardIn .5s cubic-bezier(.2,.9,.25,1) both;
+    transition:transform .25s ease;
+  }
+  .qr-card:hover{ transform:translateY(-3px); }
+  @keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+  #qrCanvasWrap{position:relative;width:260px;height:260px;}
+  #qrCanvasWrap canvas{width:100%;height:100%;image-rendering:pixelated;border-radius:6px;}
+  #logoOverlay{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    display:none; align-items:center; justify-content:center;
+    background:#fff; border-radius:10px; padding:5px;
+  }
+  #logoOverlay img{display:block; max-width:100%; max-height:100%; border-radius:6px;}
+  .qr-caption{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8b93b4;direction:ltr;}
+
+  .export-row{display:flex; gap:10px; padding:0 18px 20px; flex-wrap:wrap; justify-content:center;}
+
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:34px;line-height:1.9;}
+  footer a{color:var(--accent2);text-decoration:none;}
+
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span><span>کاملاً سمت مرورگر — بدون سرور، بدون ذخیره‌ی داده</span></div>
+    <h1>🔳 QR Code Studio</h1>
+    <p>یک بارکد QR سفارشی با رنگ، گرادینت و لوگوی دلخواه بساز و به‌صورت PNG یا SVG با کیفیت بالا دانلود کن.</p>
+  </div>
+
+  <div class="layout">
+    <!-- controls -->
+    <div class="panel">
+      <div class="panel-head"><span>تنظیمات</span><span class="tag">config</span></div>
+      <div class="panel-body">
+
+        <div class="field">
+          <label>متن یا لینک</label>
+          <textarea id="qrText" placeholder="https://example.com">https://github.com/Abolfazlrwm</textarea>
+        </div>
+
+        <div class="field">
+          <label>پیش‌فرض‌های رنگی</label>
+          <div class="presets" id="presets"></div>
+        </div>
+
+        <div class="field row2">
+          <div>
+            <label>رنگ اول</label>
+            <div class="color-field"><input type="color" id="colorA" value="#7c5cfc"><span id="colorAHex">#7C5CFC</span></div>
+          </div>
+          <div>
+            <label>رنگ دوم (گرادینت)</label>
+            <div class="color-field"><input type="color" id="colorB" value="#2aabee"><span id="colorBHex">#2AABEE</span></div>
+          </div>
+        </div>
+
+        <div class="switch-row">
+          <label>استفاده از گرادینت به‌جای رنگ ثابت</label>
+          <div class="switch"><input type="checkbox" id="useGradient" checked><span class="slider-toggle"></span></div>
+        </div>
+
+        <div class="field">
+          <label>رنگ پس‌زمینه</label>
+          <div class="color-field"><input type="color" id="colorBg" value="#ffffff"><span id="colorBgHex">#FFFFFF</span></div>
+        </div>
+
+        <div class="field row2">
+          <div>
+            <label>سطح تصحیح خطا</label>
+            <select id="ecLevel">
+              <option value="L">پایین (L)</option>
+              <option value="M">متوسط (M)</option>
+              <option value="Q">بالا (Q)</option>
+              <option value="H" selected>خیلی بالا (H) — پیشنهادی با لوگو</option>
+            </select>
+          </div>
+          <div>
+            <label>سایز خروجی</label>
+            <select id="qrSize">
+              <option value="512">512×512</option>
+              <option value="1024" selected>1024×1024</option>
+              <option value="2048">2048×2048</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>حاشیه (Quiet Zone)</label>
+          <select id="qrMargin">
+            <option value="1">کم</option>
+            <option value="2" selected>متوسط</option>
+            <option value="4">زیاد</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>لوگوی مرکزی (اختیاری)</label>
+          <input type="file" id="logoInput" accept="image/*">
+          <div class="btn-row" style="margin-top:8px;" id="logoActions" style="display:none;">
+            <button class="btn btn-ghost" id="clearLogoBtn" type="button">حذف لوگو</button>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="renderBtn">🔄 بروزرسانی پیش‌نمایش</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- preview -->
+    <div class="panel preview-panel">
+      <div class="panel-head"><span>پیش‌نمایش زنده</span><span class="tag">live-preview</span></div>
+      <div class="preview-stage">
+        <div class="qr-card">
+          <div id="qrCanvasWrap">
+            <canvas id="qrCanvas" width="1024" height="1024"></canvas>
+            <div id="logoOverlay"><img id="logoImg" alt="logo"></div>
+          </div>
+          <div class="qr-caption" id="qrCaption">1024×1024 · H</div>
+        </div>
+      </div>
+      <div class="export-row">
+        <button class="btn btn-primary" id="downloadPng">⬇️ دانلود PNG</button>
+        <button class="btn btn-ghost" id="downloadSvg">⬇️ دانلود SVG</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>بخشی از پروژه‌های <a href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank">awesome-scripts</a> — کاملاً رایگان و متن‌باز</footer>
+</div>
+
+<!-- Well-known, stable, MIT-licensed QR generator (soldair/node-qrcode browser build).
+     Only its documented public API is used: QRCode.toCanvas / toString. -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+(function(){
+  const els = {
+    text: document.getElementById('qrText'),
+    colorA: document.getElementById('colorA'),
+    colorB: document.getElementById('colorB'),
+    colorAHex: document.getElementById('colorAHex'),
+    colorBHex: document.getElementById('colorBHex'),
+    colorBg: document.getElementById('colorBg'),
+    colorBgHex: document.getElementById('colorBgHex'),
+    useGradient: document.getElementById('useGradient'),
+    ecLevel: document.getElementById('ecLevel'),
+    qrSize: document.getElementById('qrSize'),
+    qrMargin: document.getElementById('qrMargin'),
+    logoInput: document.getElementById('logoInput'),
+    logoOverlay: document.getElementById('logoOverlay'),
+    logoImg: document.getElementById('logoImg'),
+    clearLogoBtn: document.getElementById('clearLogoBtn'),
+    logoActions: document.getElementById('logoActions'),
+    canvas: document.getElementById('qrCanvas'),
+    canvasWrap: document.getElementById('qrCanvasWrap'),
+    caption: document.getElementById('qrCaption'),
+    renderBtn: document.getElementById('renderBtn'),
+    downloadPng: document.getElementById('downloadPng'),
+    downloadSvg: document.getElementById('downloadSvg'),
+    presets: document.getElementById('presets'),
+  };
+
+  let logoDataUrl = null;
+
+  const PRESETS = [
+    ['#7c5cfc', '#2aabee'],
+    ['#28d17c', '#0e9e6a'],
+    ['#ef5a6f', '#f5b544'],
+    ['#111111', '#444444'],
+    ['#ff5ec4', '#7c5cfc'],
+    ['#0a0e1c', '#2aabee'],
+  ];
+  PRESETS.forEach((pair, i) => {
+    const sw = document.createElement('div');
+    sw.className = 'preset-swatch' + (i === 0 ? ' active' : '');
+    sw.style.background = `linear-gradient(135deg, ${pair[0]}, ${pair[1]})`;
+    sw.addEventListener('click', () => {
+      els.colorA.value = pair[0];
+      els.colorB.value = pair[1];
+      syncHexLabels();
+      document.querySelectorAll('.preset-swatch').forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+      render();
+    });
+    els.presets.appendChild(sw);
+  });
+
+  function syncHexLabels(){
+    els.colorAHex.textContent = els.colorA.value.toUpperCase();
+    els.colorBHex.textContent = els.colorB.value.toUpperCase();
+    els.colorBgHex.textContent = els.colorBg.value.toUpperCase();
+  }
+  syncHexLabels();
+
+  function currentOptions(){
+    return {
+      text: els.text.value.trim() || ' ',
+      colorA: els.colorA.value,
+      colorB: els.colorB.value,
+      bg: els.colorBg.value,
+      gradient: els.useGradient.checked,
+      ec: els.ecLevel.value,
+      size: parseInt(els.qrSize.value, 10),
+      margin: parseInt(els.qrMargin.value, 10),
+    };
+  }
+
+  // Renders the QR as pure black-on-transparent, then colorizes it with a
+  // gradient (or flat color) via canvas compositing — keeps us on the
+  // library's fully documented API (toCanvas) while still getting a
+  // custom look.
+  function render(){
+    const opts = currentOptions();
+    els.canvas.width = opts.size;
+    els.canvas.height = opts.size;
+
+    QRCode.toCanvas(els.canvas, opts.text, {
+      errorCorrectionLevel: opts.ec,
+      margin: opts.margin,
+      width: opts.size,
+      color: { dark: '#000000ff', light: '#00000000' } // transparent background
+    }, function(err){
+      if(err){ console.error(err); return; }
+      const ctx = els.canvas.getContext('2d');
+
+      // paint the requested background first, underneath
+      const withBg = document.createElement('canvas');
+      withBg.width = opts.size; withBg.height = opts.size;
+      const bctx = withBg.getContext('2d');
+      bctx.fillStyle = opts.bg;
+      bctx.fillRect(0, 0, opts.size, opts.size);
+
+      // colorize the dark modules using source-in compositing
+      const colorLayer = document.createElement('canvas');
+      colorLayer.width = opts.size; colorLayer.height = opts.size;
+      const cctx = colorLayer.getContext('2d');
+      cctx.drawImage(els.canvas, 0, 0);
+      cctx.globalCompositeOperation = 'source-in';
+      if(opts.gradient){
+        const grad = cctx.createLinearGradient(0, 0, opts.size, opts.size);
+        grad.addColorStop(0, opts.colorA);
+        grad.addColorStop(1, opts.colorB);
+        cctx.fillStyle = grad;
+      } else {
+        cctx.fillStyle = opts.colorA;
+      }
+      cctx.fillRect(0, 0, opts.size, opts.size);
+
+      bctx.drawImage(colorLayer, 0, 0);
+      ctx.clearRect(0, 0, opts.size, opts.size);
+      ctx.drawImage(withBg, 0, 0);
+
+      // logo overlay (visual, drawn as a DOM element sized to the canvas box)
+      if(logoDataUrl){
+        els.logoOverlay.style.display = 'flex';
+        const plate = Math.round(opts.size * 0.22);
+        els.logoOverlay.style.width = plate + 'px';
+        els.logoOverlay.style.height = plate + 'px';
+        // also bake the logo into the exported canvas itself
+        const logoImgEl = new Image();
+        logoImgEl.onload = function(){
+          const plateSize = opts.size * 0.26;
+          const px = (opts.size - plateSize) / 2;
+          ctx.fillStyle = '#ffffff';
+          roundRect(ctx, px, px, plateSize, plateSize, plateSize * 0.18);
+          ctx.fill();
+          const inner = plateSize * 0.8;
+          const ipx = (opts.size - inner) / 2;
+          ctx.drawImage(logoImgEl, ipx, ipx, inner, inner);
+        };
+        logoImgEl.src = logoDataUrl;
+      } else {
+        els.logoOverlay.style.display = 'none';
+      }
+
+      els.caption.textContent = `${opts.size}×${opts.size} · ${opts.ec}`;
+    });
+  }
+
+  function roundRect(ctx, x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  // ---- events ----
+  ['input', 'change'].forEach(evt => {
+    [els.text, els.colorA, els.colorB, els.colorBg, els.useGradient, els.ecLevel, els.qrSize, els.qrMargin]
+      .forEach(el => el.addEventListener(evt, () => { syncHexLabels(); render(); }));
+  });
+  els.renderBtn.addEventListener('click', render);
+
+  els.logoInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      logoDataUrl = reader.result;
+      els.logoImg.src = logoDataUrl;
+      els.logoActions.style.display = 'flex';
+      render();
+    };
+    reader.readAsDataURL(file);
+  });
+  els.clearLogoBtn.addEventListener('click', () => {
+    logoDataUrl = null;
+    els.logoInput.value = '';
+    els.logoActions.style.display = 'none';
+    render();
+  });
+
+  // ---- exports ----
+  els.downloadPng.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'qr-code.png';
+    link.href = els.canvas.toDataURL('image/png');
+    link.click();
+  });
+
+  els.downloadSvg.addEventListener('click', () => {
+    const opts = currentOptions();
+    QRCode.toString(opts.text, {
+      type: 'svg',
+      errorCorrectionLevel: opts.ec,
+      margin: opts.margin,
+      color: { dark: '#000000', light: opts.bg }
+    }, function(err, svgString){
+      if(err){ console.error(err); return; }
+      // inject a gradient definition and repaint the dark path with it
+      const gradId = 'qrGrad';
+      let out = svgString;
+      if(opts.gradient){
+        const defs = `<defs><linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${opts.colorA}"/><stop offset="100%" stop-color="${opts.colorB}"/></linearGradient></defs>`;
+        out = out.replace(/<svg([^>]*)>/, `<svg$1>${defs}`);
+        out = out.replace(/fill="#000000"/g, `fill="url(#${gradId})"`);
+      } else {
+        out = out.replace(/fill="#000000"/g, `fill="${opts.colorA}"`);
+      }
+      const blob = new Blob([out], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.download = 'qr-code.svg';
+      link.href = url;
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

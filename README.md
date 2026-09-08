@@ -4,7 +4,7 @@
 
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزار های جانبی دیگه
 
-![Projects](https://img.shields.io/badge/projects-26-blue)
+![Projects](https://img.shields.io/badge/projects-30-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Language](https://img.shields.io/badge/lang-Python%20%7C%20HTML%2FJS%20%7C%20PHP%20%7C%20Node.js%20%7C%20C%23%20%7C%20Java%20%7C%20C%2B%2B%20%7C%20PowerShell-orange)
 ![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)
@@ -16,7 +16,7 @@
 
 ## 📦 فهرست پروژه‌ها
 
-### 🤖 ربات های تلگرام(20)
+### 🤖 ربات های تلگرام(22)
 
 | پروژه                                                     | زبان       | توضیح کوتاه                                                          |
 | --------------------------------------------------------- | ---------- | -------------------------------------------------------------------- |
@@ -40,14 +40,18 @@
 | [🌍 مترجم متن](./src/translator-bot)                          | Node.js    | ترجمه‌ی خودکار پیام‌ها                                               |
 | [🎫 پشتیبانی/تیکتینگ](./src/support-ticket-bot)               | Python     | ریلی پیام کاربر ↔ گروه پشتیبانی                                      |
 | [🆔 دریافت آیدی عددی](./src/digit-id-bot/)               | Python     | دریافت آیدی عددی کاربران در تلگرام                                     |
+| [⏰ یادآوری و تسک روزانه](./src/reminder-task-bot)            | Python     | یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite   |
+| [📄 خلاصه‌ساز لینک و متن](./src/link-summarizer-bot)          | Python     | خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی |
 
-### 🌐 ابزارهای وب (۳)
+### 🌐 ابزارهای وب (۵)
 
 | پروژه                                                                                                                               | زبان        | توضیح کوتاه                                                                            |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
 | [🎡 Wheel of Actions](./src/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/)             | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه                                     |
 | [🪐 کاوشگر سه‌بعدی منظومه شمسی](./src/solar-explorer-3d) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/) | HTML/CSS/JS | شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات |
 | [🎛 اتاق فرمان](./src/control-room-dashboard) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/) | HTML/CSS/JS | داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز                    |
+| [🔳 QR Code Studio](./src/qr-code-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) | HTML/CSS/JS | ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG                                     |
+| [🌍 World Clock Planner](./src/world-clock-planner) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/) | HTML/CSS/JS | برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر                  |
 
 ### 🖥 ابزارهای دسکتاپ (۳)
 

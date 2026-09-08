@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Clock Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e1a; --panel:#0f1424; --line:rgba(255,255,255,.08);
+    --text:#e7eaf3; --muted:#7c86a3;
+    --blue:#2aabee; --violet:#7c5cfc; --green:#28d17c; --amber:#f5b544; --red:#ef5a6f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Vazirmatn',sans-serif;-webkit-font-smoothing:antialiased;}
+  body{
+    min-height:100vh;padding:40px 18px 60px;
+    background-image:
+      radial-gradient(ellipse 900px 420px at 15% -10%, rgba(124,92,252,.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(42,171,238,.12), transparent 60%);
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+
+  .hero{text-align:center;margin-bottom:32px;}
+  .hero .eyebrow{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:12.5px;margin-bottom:12px;}
+  .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(40,209,124,.6);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(40,209,124,.55);}70%{box-shadow:0 0 0 8px rgba(40,209,124,0);}100%{box-shadow:0 0 0 0 rgba(40,209,124,0);}}
+  .hero h1{font-size:clamp(26px,5vw,38px);font-weight:800;margin:0 0 8px;
+    background:linear-gradient(90deg,#fff 20%,var(--blue) 60%,var(--violet));
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p{color:var(--muted);font-size:14px;max-width:480px;margin:0 auto;line-height:1.9;}
+
+  .toolbar{
+    display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  select, .btn{
+    font-family:inherit; font-size:13.5px;
+  }
+  select{
+    background:#0f1424; color:var(--text); border:1px solid var(--line); border-radius:9px;
+    padding:9px 12px; min-width:220px; outline:none;
+  }
+  .btn{
+    appearance:none;border:none;cursor:pointer;font-weight:600;
+    padding:9px 16px;border-radius:9px;transition:transform .12s ease, box-shadow .18s ease;
+  }
+  .btn:active{transform:scale(.96);}
+  .btn-primary{background:linear-gradient(135deg,var(--violet),var(--blue));color:#fff;box-shadow:0 8px 22px rgba(124,92,252,.35);}
+  .btn-ghost{background:#171d33;color:var(--text);border:1px solid var(--line);}
+  .btn-ghost:hover{background:#1d2440;}
+
+  /* global reference bar */
+  .ref-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px 22px; margin-bottom:20px;
+  }
+  .ref-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;}
+  .ref-head .label{font-size:12.5px;color:var(--muted);}
+  .ref-time{
+    font-family:'JetBrains Mono',monospace; font-size:26px; font-weight:700; direction:ltr;
+    color:var(--text);
+  }
+  .ref-date{font-size:12px;color:var(--muted);direction:ltr;}
+
+  .ruler-wrap{ position:relative; padding-top:6px; }
+  .ruler-track{
+    position:relative; height:34px; border-radius:8px; overflow:hidden;
+    background:linear-gradient(90deg,
+      #0c1120 0%, #131a33 18%, #2a3a66 30%, #6a86c9 42%, #cfe0ff 50%,
+      #6a86c9 58%, #2a3a66 70%, #131a33 82%, #0c1120 100%);
+    cursor:pointer;
+  }
+  .ruler-ticks{
+    position:absolute; inset:0; display:flex; pointer-events:none;
+  }
+  .ruler-ticks span{
+    flex:1; border-left:1px solid rgba(255,255,255,.08);
+    font-family:'JetBrains Mono',monospace; font-size:9px; color:rgba(255,255,255,.55);
+    display:flex; align-items:flex-end; justify-content:flex-start; padding:0 0 3px 3px;
+  }
+  .ruler-handle{
+    position:absolute; top:-6px; width:3px; height:46px; background:#fff;
+    box-shadow:0 0 10px 2px rgba(255,255,255,.7); border-radius:3px; transform:translateX(-50%);
+    pointer-events:none;
+  }
+  .ruler-handle::before{
+    content:''; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+    width:0;height:0; border-left:7px solid transparent; border-right:7px solid transparent;
+    border-top:8px solid #fff;
+  }
+
+  /* city rows */
+  .cities{ display:flex; flex-direction:column; gap:12px; }
+  .city-row{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:center;
+    animation:rowIn .4s cubic-bezier(.2,.9,.25,1) both;
+  }
+  @keyframes rowIn{ from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  @media (max-width:640px){ .city-row{ grid-template-columns:1fr; } }
+
+  .city-meta .name{ font-size:14.5px; font-weight:600; margin-bottom:2px; }
+  .city-meta .tz{ font-size:11px; color:var(--muted); direction:ltr; }
+  .city-meta .local-time{
+    font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:700; margin-top:6px; direction:ltr;
+  }
+  .city-meta .local-date{ font-size:10.5px; color:var(--muted); direction:ltr; }
+  .city-meta .remove-btn{
+    margin-top:8px; font-size:11px; color:var(--red); background:none; border:none; cursor:pointer;
+    padding:0; opacity:.75;
+  }
+  .city-meta .remove-btn:hover{ opacity:1; text-decoration:underline; }
+
+  .city-track-wrap{ position:relative; }
+  .city-track{
+    position:relative; height:26px; border-radius:7px; overflow:hidden;
+    background:linear-gradient(90deg,
+      #0c1120 0%, #131a33 18%, #2a3a66 30%, #6a86c9 42%, #cfe0ff 50%,
+      #6a86c9 58%, #2a3a66 70%, #131a33 82%, #0c1120 100%);
+  }
+  .work-hours-band{
+    position:absolute; top:0; bottom:0; background:rgba(40,209,124,.22);
+    border-left:1px solid rgba(40,209,124,.5); border-right:1px solid rgba(40,209,124,.5);
+  }
+  .city-marker{
+    position:absolute; top:-4px; width:2.5px; height:34px; background:#fff;
+    box-shadow:0 0 8px 2px rgba(255,255,255,.65); border-radius:3px; transform:translateX(-50%);
+  }
+  .city-marker-label{
+    position:absolute; top:-24px; transform:translateX(-50%);
+    font-family:'JetBrains Mono',monospace; font-size:10px; color:#fff;
+    background:rgba(0,0,0,.55); padding:2px 6px; border-radius:5px; white-space:nowrap;
+  }
+
+  .empty-state{
+    text-align:center; color:var(--muted); font-size:13px; padding:30px 10px;
+    border:1px dashed var(--line); border-radius:14px;
+  }
+
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;line-height:1.9;}
+  footer a{color:var(--blue);text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow"><span class="dot"></span><span>محاسبه‌ی لحظه‌ای — کاملاً سمت مرورگر</span></div>
+    <h1>🌍 World Clock Planner</h1>
+    <p>چند شهر رو اضافه کن، نوار زمان مشترک رو بکش و ببین یه ساعت خاص توی هر منطقه‌ی زمانی معادل چه ساعتیه — عالی برای هماهنگ کردن جلسات بین‌المللی.</p>
+  </div>
+
+  <div class="toolbar">
+    <select id="citySelect"></select>
+    <button class="btn btn-primary" id="addCityBtn">➕ افزودن شهر</button>
+    <button class="btn btn-ghost" id="nowBtn">🕐 برگشت به اکنون</button>
+  </div>
+
+  <div class="ref-panel">
+    <div class="ref-head">
+      <div>
+        <div class="label">زمان مرجع انتخاب‌شده (به وقت شما)</div>
+        <div class="ref-time" id="refTime">--:--</div>
+        <div class="ref-date" id="refDate">—</div>
+      </div>
+      <div class="label" id="refTzLabel">—</div>
+    </div>
+    <div class="ruler-wrap">
+      <div class="ruler-track" id="rulerTrack">
+        <div class="ruler-ticks" id="rulerTicks"></div>
+        <div class="ruler-handle" id="rulerHandle"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cities" id="citiesWrap">
+    <div class="empty-state" id="emptyState">هنوز شهری اضافه نکردی — از بالا یک شهر انتخاب کن و «افزودن شهر» رو بزن.</div>
+  </div>
+
+  <footer>بخشی از پروژه‌های <a href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank">awesome-scripts</a> — کاملاً رایگان و متن‌باز</footer>
+</div>
+
+<script>
+(function(){
+  // ---------- timezone list ----------
+  const FALLBACK_ZONES = [
+    'UTC','Asia/Tehran','Asia/Dubai','Asia/Istanbul','Europe/London','Europe/Berlin',
+    'Europe/Moscow','Asia/Kolkata','Asia/Shanghai','Asia/Tokyo','Asia/Seoul','Asia/Singapore',
+    'Australia/Sydney','America/New_York','America/Chicago','America/Denver','America/Los_Angeles',
+    'America/Sao_Paulo','Africa/Cairo','Africa/Johannesburg','Pacific/Auckland'
+  ];
+  let ZONES = FALLBACK_ZONES;
+  try{
+    if(typeof Intl.supportedValuesOf === 'function'){
+      const all = Intl.supportedValuesOf('timeZone');
+      if(Array.isArray(all) && all.length) ZONES = all;
+    }
+  }catch(e){ /* keep fallback */ }
+
+  const myTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+
+  const citySelect = document.getElementById('citySelect');
+  ZONES.forEach(z => {
+    const opt = document.createElement('option');
+    opt.value = z;
+    opt.textContent = z.replace(/_/g, ' ');
+    citySelect.appendChild(opt);
+  });
+  // sensible default selection different from local
+  const defaultPick = ZONES.find(z => z !== myTz) || ZONES[0];
+  citySelect.value = defaultPick;
+
+  // ---------- state ----------
+  // referenceOffsetMinutes: minutes from local midnight (of "today" in the
+  // browser's own timezone) representing the currently selected reference moment.
+  const now = new Date();
+  let refDate = new Date(now); // the actual Date object driving everything
+  const cities = []; // { tz, label }
+
+  // seed with the user's own timezone + one or two common ones
+  function addCity(tz){
+    if(cities.some(c => c.tz === tz)) return;
+    cities.push({ tz, label: tz.replace(/_/g, ' ') });
+    renderCities();
+  }
+
+  addCity(myTz);
+
+  // ---------- ruler ----------
+  const rulerTrack = document.getElementById('rulerTrack');
+  const rulerTicks = document.getElementById('rulerTicks');
+  const rulerHandle = document.getElementById('rulerHandle');
+  for(let h = 0; h < 24; h += 2){
+    const span = document.createElement('span');
+    span.textContent = String(h).padStart(2,'0');
+    rulerTicks.appendChild(span);
+  }
+
+  function minutesOfDay(d){
+    return d.getHours() * 60 + d.getMinutes();
+  }
+
+  function setRefFromRatio(ratio){
+    ratio = Math.min(1, Math.max(0, ratio));
+    const totalMinutes = Math.round(ratio * 24 * 60);
+    const base = new Date(refDate);
+    base.setHours(0, 0, 0, 0);
+    base.setMinutes(totalMinutes);
+    refDate = base;
+    renderAll();
+  }
+
+  let dragging = false;
+  function ratioFromEvent(e){
+    const rect = rulerTrack.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    // account for RTL: ruler is visually LTR-like a timeline, so measure from left edge regardless of page direction
+    const x = clientX - rect.left;
+    return x / rect.width;
+  }
+  rulerTrack.addEventListener('mousedown', (e) => { dragging = true; setRefFromRatio(ratioFromEvent(e)); });
+  window.addEventListener('mousemove', (e) => { if(dragging) setRefFromRatio(ratioFromEvent(e)); });
+  window.addEventListener('mouseup', () => dragging = false);
+  rulerTrack.addEventListener('touchstart', (e) => { dragging = true; setRefFromRatio(ratioFromEvent(e)); });
+  window.addEventListener('touchmove', (e) => { if(dragging) setRefFromRatio(ratioFromEvent(e)); });
+  window.addEventListener('touchend', () => dragging = false);
+
+  document.getElementById('nowBtn').addEventListener('click', () => {
+    refDate = new Date();
+    renderAll();
+  });
+
+  document.getElementById('addCityBtn').addEventListener('click', () => {
+    addCity(citySelect.value);
+  });
+
+  // ---------- rendering ----------
+  const refTimeEl = document.getElementById('refTime');
+  const refDateEl = document.getElementById('refDate');
+  const refTzLabelEl = document.getElementById('refTzLabel');
+  const citiesWrap = document.getElementById('citiesWrap');
+  const emptyState = document.getElementById('emptyState');
+
+  function formatInTz(date, tz, opts){
+    return new Intl.DateTimeFormat('en-GB', Object.assign({ timeZone: tz }, opts)).format(date);
+  }
+
+  function minutesOfDayInTz(date, tz){
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: tz, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }).formatToParts(date);
+    const h = parseInt(parts.find(p => p.type === 'hour').value, 10);
+    const m = parseInt(parts.find(p => p.type === 'minute').value, 10);
+    return h * 60 + m;
+  }
+
+  function renderRuler(){
+    const minsLocal = minutesOfDayInTz(refDate, myTz);
+    const ratio = minsLocal / (24 * 60);
+    rulerHandle.style.left = (ratio * 100) + '%';
+
+    refTimeEl.textContent = formatInTz(refDate, myTz, { hour:'2-digit', minute:'2-digit', hourCycle:'h23' });
+    refDateEl.textContent = formatInTz(refDate, myTz, { weekday:'short', year:'numeric', month:'short', day:'numeric' });
+    refTzLabelEl.textContent = myTz.replace(/_/g,' ') + ' (شما)';
+  }
+
+  function renderCities(){
+    citiesWrap.innerHTML = '';
+    if(cities.length === 0){
+      citiesWrap.appendChild(emptyState);
+      return;
+    }
+    cities.forEach((city, idx) => {
+      const row = document.createElement('div');
+      row.className = 'city-row';
+      row.style.animationDelay = (idx * 0.05) + 's';
+
+      const mins = minutesOfDayInTz(refDate, city.tz);
+      const ratio = mins / (24 * 60);
+
+      row.innerHTML = `
+        <div class="city-meta">
+          <div class="name">${city.label}</div>
+          <div class="tz">${city.tz}</div>
+          <div class="local-time" data-role="time"></div>
+          <div class="local-date" data-role="date"></div>
+          <button class="remove-btn" data-role="remove">✕ حذف</button>
+        </div>
+        <div class="city-track-wrap">
+          <div class="city-track">
+            <div class="work-hours-band" data-role="workband"></div>
+            <div class="city-marker" data-role="marker"></div>
+            <div class="city-marker-label" data-role="markerlabel"></div>
+          </div>
+        </div>
+      `;
+
+      // work-hours band: 09:00–18:00 local
+      const workband = row.querySelector('[data-role="workband"]');
+      const startRatio = (9 * 60) / (24 * 60);
+      const endRatio = (18 * 60) / (24 * 60);
+      workband.style.left = (startRatio * 100) + '%';
+      workband.style.width = ((endRatio - startRatio) * 100) + '%';
+
+      const marker = row.querySelector('[data-role="marker"]');
+      marker.style.left = (ratio * 100) + '%';
+      const markerLabel = row.querySelector('[data-role="markerlabel"]');
+      markerLabel.style.left = (ratio * 100) + '%';
+      markerLabel.textContent = formatInTz(refDate, city.tz, { hour:'2-digit', minute:'2-digit', hourCycle:'h23' });
+
+      row.querySelector('[data-role="time"]').textContent = formatInTz(refDate, city.tz, { hour:'2-digit', minute:'2-digit', hourCycle:'h23' });
+      row.querySelector('[data-role="date"]').textContent = formatInTz(refDate, city.tz, { weekday:'short', month:'short', day:'numeric' });
+
+      row.querySelector('[data-role="remove"]').addEventListener('click', () => {
+        cities.splice(idx, 1);
+        renderCities();
+      });
+
+      citiesWrap.appendChild(row);
+    });
+  }
+
+  function renderAll(){
+    renderRuler();
+    renderCities();
+  }
+
+  renderAll();
+
+  // live tick every 30s so "now" stays fresh if the user hasn't dragged the ruler
+  let userIsExploring = false;
+  rulerTrack.addEventListener('mousedown', () => userIsExploring = true);
+  rulerTrack.addEventListener('touchstart', () => userIsExploring = true);
+  document.getElementById('nowBtn').addEventListener('click', () => userIsExploring = false);
+
+  setInterval(() => {
+    if(!userIsExploring){
+      refDate = new Date();
+      renderAll();
+    }
+  }, 30000);
+})();
+</script>
+</body>
+</html>
