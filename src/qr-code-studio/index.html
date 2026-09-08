@@ -9,17 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0e17; --panel:#11162a; --line:rgba(255,255,255,.08);
-    --text:#eef1fb; --muted:#8b93b4;
-    --accent1:#7c5cfc; --accent2:#2aabee; --green:#28d17c; --red:#ef5a6f;
+    --bg:#08070a; --panel:#131011; --line:rgba(255,150,50,.12);
+    --text:#f5ece3; --muted:#a8968a;
+    --accent1:#ff7a1a; --accent2:#ffb347; --green:#28d17c; --red:#ef5a6f;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Vazirmatn',sans-serif;}
   body{
     min-height:100vh; padding:36px 18px 60px;
     background-image:
-      radial-gradient(ellipse 900px 420px at 10% -10%, rgba(124,92,252,.18), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(42,171,238,.13), transparent 60%);
+      radial-gradient(ellipse 900px 420px at 10% -10%, rgba(255,122,26,.20), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 0%, rgba(255,60,0,.14), transparent 60%);
   }
   .wrap{max-width:1080px;margin:0 auto;}
   .hero{text-align:center;margin-bottom:34px;}
@@ -50,7 +50,7 @@
   }
   .field textarea{resize:vertical;min-height:64px;}
   .field input:focus, .field textarea:focus, .field select:focus{
-    border-color:var(--accent2); box-shadow:0 0 0 3px rgba(42,171,238,.15);
+    border-color:var(--accent2); box-shadow:0 0 0 3px rgba(255,179,71,.18);
   }
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
@@ -81,8 +81,8 @@
     padding:10px 16px;border-radius:9px;transition:transform .12s ease, box-shadow .18s ease, opacity .15s ease;
   }
   .btn:active{transform:scale(.96);}
-  .btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 8px 24px rgba(124,92,252,.35);}
-  .btn-primary:hover{box-shadow:0 10px 30px rgba(124,92,252,.5);}
+  .btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#1a0f00;box-shadow:0 8px 24px rgba(255,122,26,.4);}
+  .btn-primary:hover{box-shadow:0 10px 30px rgba(255,122,26,.55);}
   .btn-ghost{background:#171d33;color:var(--text);border:1px solid var(--line);}
   .btn-ghost:hover{background:#1d2440;}
   .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
@@ -100,7 +100,7 @@
   .preview-stage{
     display:flex;align-items:center;justify-content:center;padding:34px 18px;
     background:
-      radial-gradient(circle at 50% 20%, rgba(124,92,252,.14), transparent 60%);
+      radial-gradient(circle at 50% 20%, rgba(255,122,26,.16), transparent 60%);
   }
   .qr-card{
     background:#fff; border-radius:18px; padding:22px; box-shadow:0 30px 70px rgba(0,0,0,.55);
@@ -110,7 +110,7 @@
   }
   .qr-card:hover{ transform:translateY(-3px); }
   @keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
-  #qrCanvasWrap{position:relative;width:260px;height:260px;}
+  #qrCanvasWrap{position:relative;width:260px;height:260px;overflow:hidden;border-radius:6px;}
   #qrCanvasWrap canvas{width:100%;height:100%;image-rendering:pixelated;border-radius:6px;}
   #logoOverlay{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
@@ -157,11 +157,11 @@
         <div class="field row2">
           <div>
             <label>رنگ اول</label>
-            <div class="color-field"><input type="color" id="colorA" value="#7c5cfc"><span id="colorAHex">#7C5CFC</span></div>
+            <div class="color-field"><input type="color" id="colorA" value="#ff7a1a"><span id="colorAHex">#FF7A1A</span></div>
           </div>
           <div>
             <label>رنگ دوم (گرادینت)</label>
-            <div class="color-field"><input type="color" id="colorB" value="#2aabee"><span id="colorBHex">#2AABEE</span></div>
+            <div class="color-field"><input type="color" id="colorB" value="#120600"><span id="colorBHex">#120600</span></div>
           </div>
         </div>
 
@@ -240,9 +240,11 @@
   <footer>بخشی از پروژه‌های <a href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank">awesome-scripts</a> — کاملاً رایگان و متن‌باز</footer>
 </div>
 
-<!-- Well-known, stable, MIT-licensed QR generator (soldair/node-qrcode browser build).
-     Only its documented public API is used: QRCode.toCanvas / toString. -->
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<!-- QR generation is vendored locally (vendor-qrcode.js, bundled from the
+     well-known, MIT-licensed soldair/node-qrcode library) so the tool works
+     fully offline and never depends on a CDN being reachable. Only its
+     documented public API is used: QRCode.toCanvas / toString. -->
+<script src="vendor-qrcode.js"></script>
 <script>
 (function(){
   const els = {
@@ -274,12 +276,12 @@
   let logoDataUrl = null;
 
   const PRESETS = [
-    ['#7c5cfc', '#2aabee'],
+    ['#ff7a1a', '#120600'],
+    ['#ffb347', '#000000'],
+    ['#ff4d00', '#1a0f00'],
     ['#28d17c', '#0e9e6a'],
     ['#ef5a6f', '#f5b544'],
-    ['#111111', '#444444'],
-    ['#ff5ec4', '#7c5cfc'],
-    ['#0a0e1c', '#2aabee'],
+    ['#7c5cfc', '#2aabee'],
   ];
   PRESETS.forEach((pair, i) => {
     const sw = document.createElement('div');
@@ -332,6 +334,15 @@
       color: { dark: '#000000ff', light: '#00000000' } // transparent background
     }, function(err){
       if(err){ console.error(err); return; }
+
+      // The qrcode library sets inline canvas.style.width/height equal to
+      // the raw pixel size (e.g. "1024px"), which — being an inline style —
+      // overrides our CSS "width:100%;height:100%" rule and makes the
+      // canvas balloon to its full native size, overflowing the 260px
+      // preview box. Force it back to fill its container correctly.
+      els.canvas.style.width = '100%';
+      els.canvas.style.height = '100%';
+
       const ctx = els.canvas.getContext('2d');
 
       // paint the requested background first, underneath
