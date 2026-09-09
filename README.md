@@ -4,7 +4,7 @@
 
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزار های جانبی دیگه
 
-![Projects](https://img.shields.io/badge/projects-30-blue)
+![Projects](https://img.shields.io/badge/projects-34-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Language](https://img.shields.io/badge/lang-Python%20%7C%20HTML%2FJS%20%7C%20PHP%20%7C%20Node.js%20%7C%20C%23%20%7C%20Java%20%7C%20C%2B%2B%20%7C%20PowerShell-orange)
 ![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)
@@ -16,7 +16,7 @@
 
 ## 📦 فهرست پروژه‌ها
 
-### 🤖 ربات های تلگرام(22)
+### 🤖 ربات های تلگرام(25)
 
 | پروژه                                                     | زبان       | توضیح کوتاه                                                          |
 | --------------------------------------------------------- | ---------- | -------------------------------------------------------------------- |
@@ -42,8 +42,11 @@
 | [🆔 دریافت آیدی عددی](./src/digit-id-bot/)               | Python     | دریافت آیدی عددی کاربران در تلگرام                                     |
 | [⏰ یادآوری و تسک روزانه](./src/reminder-task-bot)            | Python     | یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite   |
 | [📄 خلاصه‌ساز لینک و متن](./src/link-summarizer-bot)          | Python     | خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی |
+| [🌟 اشتراک‌گذاری کد](./src/code-share-bot)                    | Python     | ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار    |
+| [📰 جستجوگر مقالات دیجیاتو](./src/digiato-article-bot)        | Python     | جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی                        |
+| [🌐 آزادی‌نت (کانفیگ VPN)](./src/freedomnet-vpn-bot)          | Python     | توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل         |
 
-### 🌐 ابزارهای وب (۵)
+### 🌐 ابزارهای وب (۶)
 
 | پروژه                                                                                                                               | زبان        | توضیح کوتاه                                                                            |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
@@ -52,6 +55,7 @@
 | [🎛 اتاق فرمان](./src/control-room-dashboard) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/) | HTML/CSS/JS | داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز                    |
 | [🔳 QR Code Studio](./src/qr-code-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) | HTML/CSS/JS | ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG                                     |
 | [🌍 World Clock Planner](./src/world-clock-planner) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/) | HTML/CSS/JS | برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر                  |
+| [❌⭕ بازی دوز (OX)](./src/tic-tac-toe-game) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/) | HTML/CSS/JS | بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی                                            |
 
 ### 🖥 ابزارهای دسکتاپ (۳)
 

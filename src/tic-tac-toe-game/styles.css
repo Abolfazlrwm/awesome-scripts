@@ -1,0 +1,223 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/assets/fonts/font.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'CustomFont', sans-serif;
+    background: linear-gradient(135deg, #e0e0e0, #34495e);
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    touch-action: manipulation;
+}
+
+.game-container {
+    width: 75vw;
+    max-width: 340px;
+    background: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    position: relative;
+    margin-bottom: 100px;
+    font-family: 'CustomFont', sans-serif;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100%;
+    height: 90px;
+    background: #333;
+    border: 2px solid #444;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-family: 'CustomFont', sans-serif;
+}
+
+.cell.x::before {
+    content: 'X';
+    color: #1EE6FF;
+}
+
+.cell.o::before {
+    content: 'O';
+    color: #F50055;
+}
+
+.cell.animate-win {
+    animation: winAnimation 1s ease;
+}
+
+@keyframes winAnimation {
+    0% {transform: scale(1);}
+    50% {transform: scale(0.8);}
+    100% {transform: scale(1);}
+}
+
+.status {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #ecf0f1;
+    font-family: 'CustomFont', sans-serif;
+}
+
+.status span.player-x {
+    color: #1EE6FF;
+}
+
+.status span.player-o {
+    color: #F50055;
+}
+
+.result {
+    font-size: 1.4em;
+    font-weight: bold;
+    display: none;
+    color: #ecf0f1;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+    font-family: 'CustomFont', sans-serif;
+}
+
+.result.win {
+    color: #66FF0E;
+    transform: scale(1.1);
+}
+
+.result.lose {
+    color: #F50055;
+    transform: scale(1.1);
+}
+
+.result.tie {
+    color: #FFE300;
+    transform: scale(1.1);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.play-again,
+.support {
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 15px;
+    font-family: 'CustomFont', sans-serif;
+}
+
+.play-again {
+    background: #28a745;
+    color: #fff;
+    border: none;
+}
+
+.play-again:active {
+    color: #28a745;
+    background: #fff;
+}
+
+.support {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+}
+
+.support:active {
+    color: #007bff;
+    background-color: #fff;
+}
+
+*:focus,
+*:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ecf0f1;
+    font-size: 0.8em;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    font-family: 'CustomFont', sans-serif;
+}
+
+.footer-content {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.terms-link {
+    color: #8a2be2;
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        margin-bottom: 80px;
+    }
+
+    footer {
+        bottom: 20px;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 601px) {
+    .game-container {
+        margin-bottom: 100px;
+    }
+
+    footer {
+        bottom: 20px;
+        padding: 10px;
+    }
+}

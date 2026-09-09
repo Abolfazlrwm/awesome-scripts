@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/assets/fonts/font.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ParagraphFont';
+    src: url('/assets/fonts/paragraph.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'ParagraphFont', sans-serif;
+    background: linear-gradient(135deg, #e0e0e0, #34495e);
+    color: #e0e0e0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    width: 90vw;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    overflow: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-bottom: 3px solid #8a2be2;
+}
+
+h1 {
+    margin: 0;
+    color: #8a2be2;
+    font-family: 'CustomFont', sans-serif;
+    font-size: 1.4em;
+}
+
+main {
+    padding: 20px;
+    overflow: auto;
+    height: calc(100% - 60px);
+}
+
+h2 {
+    color: #8a2be2;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-family: 'CustomFont', sans-serif;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}

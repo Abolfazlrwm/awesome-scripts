@@ -1,0 +1,4 @@
+python-telegram-bot==20.7
+requests>=2.31.0,<2.33.0
+urllib3>=2.0.7,<3
+beautifulsoup4>=4.12.3,<5 
