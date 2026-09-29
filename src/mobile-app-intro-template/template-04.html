@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اپلیکیشن شما | یک تجربه بی‌نظیر</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* تعریف متغیرهای رنگی برای تم روشن و تاریک */
+        :root {
+            --bg-light: #f8fafc;
+            --bg-dark: #0b1120;
+            --card-light: #ffffff;
+            --card-dark: #1e293b;
+            --text-light: #0f172a;
+            --text-dark: #e2e8f0;
+            --text-muted-light: #475569;
+            --text-muted-dark: #94a3b8;
+            --border-light: #e2e8f0;
+            --border-dark: #334155;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+        }
+
+        html.dark {
+            color-scheme: dark;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        html.dark body {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        
+        /* --- افکت شیشه‌ای برای هدر --- */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(230, 230, 230, 0.5);
+        }
+        html.dark .glass-header {
+            background-color: rgba(11, 17, 32, 0.6);
+            border-bottom-color: rgba(51, 65, 85, 0.5);
+        }
+        
+        /* --- پس‌زمینه متحرک Aurora --- */
+        .aurora-bg { position: relative; background-color: #eef2ff; overflow: hidden; }
+        html.dark .aurora-bg { background-color: #1a2233; }
+        .aurora-bg::before, .aurora-bg::after {
+            content: ''; position: absolute; filter: blur(90px); border-radius: 50%; z-index: 0;
+            transition: background-color 0.3s ease;
+        }
+        .aurora-bg::before {
+            width: 450px; height: 450px; background-color: rgba(129, 140, 248, 0.25);
+            top: -120px; left: -180px; animation: aurora-move1 15s infinite alternate;
+        }
+        html.dark .aurora-bg::before { background-color: rgba(79, 70, 229, 0.2); }
+        .aurora-bg::after {
+            width: 400px; height: 400px; background-color: rgba(192, 132, 252, 0.2);
+            bottom: -150px; right: -120px; animation: aurora-move2 18s infinite alternate;
+        }
+        html.dark .aurora-bg::after { background-color: rgba(124, 58, 237, 0.2); }
+        @keyframes aurora-move1 { from { transform: translate(-20px, 30px) scale(1); } to { transform: translate(40px, -50px) scale(1.2); } }
+        @keyframes aurora-move2 { from { transform: translate(20px, -30px) scale(1); } to { transform: translate(-40px, 50px) scale(1.2); } }
+        
+        /* --- انیمیشن شناور و پارالاکس موس --- */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .floating-phone { animation: float 6s ease-in-out infinite; transform-style: preserve-3d; transition: transform 0.2s ease-out; }
+        .parallax-element { transition: transform 0.2s ease-out; }
+
+        /* --- استایل‌های عمومی کامپوننت‌ها --- */
+        .section-card { background-color: var(--card-light); border: 1px solid var(--border-light); transition: all 0.3s ease; }
+        html.dark .section-card { background-color: var(--card-dark); border-color: var(--border-dark); }
+        .slider-item, .testimonial-item { display: none; transition: opacity 0.7s ease-in-out; }
+        .slider-item.active, .testimonial-item.active { display: block; }
+        .fade-in-section { opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3.5 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">اپلیکیشن شما</h1>
+            <nav class="hidden md:flex items-center gap-2">
+                <a href="#features" class="px-3 py-2 rounded-md transition-colors">ویژگی‌ها</a>
+                <a href="#pricing" class="px-3 py-2 rounded-md transition-colors">قیمت‌گذاری</a>
+                <a href="#testimonials" class="px-3 py-2 rounded-md transition-colors">نظرات</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <a href="#download" class="bg-primary text-white px-5 py-2.5 rounded-full hover:bg-primary-hover transition-all duration-300 shadow-lg hover:shadow-indigo-400/50 dark:hover:shadow-indigo-500/40 transform hover:scale-105">دانلود</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="aurora-bg">
+            <div class="container relative z-10 mx-auto px-6 pt-24 pb-32 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h2 data-depth="0.1" class="parallax-element text-4xl md:text-6xl font-extrabold leading-tight mb-4">اپلیکیشنی که زندگی شما را متحول می‌کند</h2>
+                    <p data-depth="0.2" class="parallax-element text-lg md:text-xl text-muted-light dark:text-muted-dark mb-10">سادگی، قدرت و زیبایی را در یکجا تجربه کنید. بهره‌وری خود را به اوج برسانید.</p>
+                    <div data-depth="0.3" class="parallax-element flex justify-center items-center gap-4">
+                        <a href="#" class="flex items-center bg-slate-900 text-white pl-6 pr-5 py-3 rounded-xl hover:bg-slate-800 transition-all transform hover:scale-105 shadow-xl"><img src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg" class="w-8 h-8 ml-3" alt="Google Play"><div><span class="text-xs">دریافت از</span><p class="font-semibold text-base">گوگل پلی</p></div></a>
+                        <a href="#" class="flex items-center bg-slate-900 text-white pl-6 pr-5 py-3 rounded-xl hover:bg-slate-800 transition-all transform hover:scale-105 shadow-xl"><img src="https://www.svgrepo.com/show/303128/apple-app-store-logo.svg" class="w-8 h-8 ml-3" alt="App Store"><div><span class="text-xs">دانلود از</span><p class="font-semibold text-base">اپ استور</p></div></a>
+                    </div>
+                </div>
+                <div data-depth="0.15" class="parallax-element mt-24 flex justify-center floating-phone">
+                    <img src="https://placehold.co/320x640/ffffff/333333?text=App+UI" alt="تصویر اپلیکیشن" class="w-72 rounded-[2.5rem] shadow-2xl shadow-slate-400/50 dark:shadow-slate-900/80">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h3 class="text-3xl md:text-4xl font-bold">هر آنچه نیاز دارید، در یک اپلیکیشن</h3><p class="text-muted-light dark:text-muted-dark mt-3">ما به جزئیات فکر کرده‌ایم تا شما بهترین تجربه را داشته باشید.</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="section-card p-8 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 rounded-2xl"><div class="flex items-center justify-center h-16 w-16 rounded-2xl bg-indigo-100 text-indigo-600 mx-auto mb-6"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><h4 class="text-xl font-semibold mb-2">سرعت بی‌نظیر</h4><p class="text-muted-light dark:text-muted-dark">تجربه‌ای روان و بدون تاخیر در اجرای دستورات.</p></div>
+                    <div class="section-card p-8 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 rounded-2xl"><div class="flex items-center justify-center h-16 w-16 rounded-2xl bg-green-100 text-green-600 mx-auto mb-6"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div><h4 class="text-xl font-semibold mb-2">امنیت چندلایه</h4><p class="text-muted-light dark:text-muted-dark">حفاظت از اطلاعات شما با رمزنگاری پیشرفته.</p></div>
+                    <div class="section-card p-8 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 rounded-2xl"><div class="flex items-center justify-center h-16 w-16 rounded-2xl bg-purple-100 text-purple-600 mx-auto mb-6"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg></div><h4 class="text-xl font-semibold mb-2">طراحی هوشمند</h4><p class="text-muted-light dark:text-muted-dark">رابط کاربری ساده که کار با آن لذت‌بخش است.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-24 bg-slate-50 dark:bg-slate-900/50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h3 class="text-3xl md:text-4xl font-bold">پلن‌های متناسب با نیاز شما</h3><p class="text-muted-light dark:text-muted-dark mt-3">پلنی را انتخاب کنید که برای شما مناسب است.</p></div>
+                <div class="flex justify-center items-center mb-12 gap-4">
+                    <span>ماهانه</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="pricing-toggle" class="sr-only peer">
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-600"></div>
+                    </label>
+                    <span>سالیانه (۲۰٪ تخفیف)</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Pricing Card 1 -->
+                    <div class="section-card rounded-2xl p-8 flex flex-col"><h4 class="text-xl font-semibold mb-2">رایگان</h4><p class="text-muted-light dark:text-muted-dark mb-6">برای شروع و کارهای شخصی</p><div class="mb-6"><span class="text-4xl font-bold">۰</span> <span class="text-muted-light dark:text-muted-dark">تومان</span></div><ul class="space-y-4 mb-8 text-right flex-grow"><li>✓ ۱۰ پروژه</li><li>✓ ۳ عضو تیم</li><li>✓ ۲ گیگابایت فضا</li></ul><a href="#" class="w-full text-center bg-slate-200 dark:bg-slate-700 py-3 rounded-lg font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">شروع کنید</a></div>
+                    <!-- Pricing Card 2 (Recommended) -->
+                    <div class="section-card rounded-2xl p-8 flex flex-col border-2 border-primary relative"><div class="absolute top-0 -translate-y-1/2 right-1/2 translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">پیشنهادی</div><h4 class="text-xl font-semibold mb-2">حرفه‌ای</h4><p class="text-muted-light dark:text-muted-dark mb-6">برای تیم‌های کوچک و متوسط</p><div class="mb-6"><span class="text-4xl font-bold price" data-monthly="49" data-yearly="470">۴۹</span> <span class="text-muted-light dark:text-muted-dark">هزار تومان / ماه</span></div><ul class="space-y-4 mb-8 text-right flex-grow"><li>✓ پروژه‌های نامحدود</li><li>✓ ۱۰ عضو تیم</li><li>✓ ۵۰ گیگابایت فضا</li><li>✓ پشتیبانی ویژه</li></ul><a href="#" class="w-full text-center bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary-hover transition-colors">انتخاب پلن</a></div>
+                    <!-- Pricing Card 3 -->
+                    <div class="section-card rounded-2xl p-8 flex flex-col"><h4 class="text-xl font-semibold mb-2">سازمانی</h4><p class="text-muted-light dark:text-muted-dark mb-6">برای شرکت‌های بزرگ</p><div class="mb-6"><span class="text-4xl font-bold price" data-monthly="99" data-yearly="950">۹۹</span> <span class="text-muted-light dark:text-muted-dark">هزار تومان / ماه</span></div><ul class="space-y-4 mb-8 text-right flex-grow"><li>✓ همه ویژگی‌های حرفه‌ای</li><li>✓ اعضای نامحدود</li><li>✓ آنالیتیکس پیشرفته</li><li>✓ امنیت سازمانی (SSO)</li></ul><a href="#" class="w-full text-center bg-slate-200 dark:bg-slate-700 py-3 rounded-lg font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">تماس با ما</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h3 class="text-3xl md:text-4xl font-bold">کاربران ما چه می‌گویند؟</h3></div>
+                <div class="relative max-w-3xl mx-auto">
+                    <div id="testimonial-slider" class="relative h-48 flex items-center">
+                        <div class="testimonial-item active w-full text-center"><p class="text-xl italic">"این بهترین اپلیکیشنیه که تا حالا استفاده کردم! زندگیم رو منظم‌تر کرده."</p><p class="mt-4 font-semibold">- سارا رضایی</p></div>
+                        <div class="testimonial-item w-full text-center"><p class="text-xl italic">"پشتیبانی عالی و رابط کاربری فوق‌العاده. به همه پیشنهاد می‌کنم."</p><p class="mt-4 font-semibold">- علی محمدی</p></div>
+                        <div class="testimonial-item w-full text-center"><p class="text-xl italic">"ساده، سریع و کاربردی. دقیقاً همون چیزی که دنبالش بودم."</p><p class="mt-4 font-semibold">- مریم احمدی</p></div>
+                    </div>
+                    <button id="testimonial-prev" class="absolute top-1/2 -translate-y-1/2 -left-4 bg-white/80 dark:bg-slate-700/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-slate-700 transition-all z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <button id="testimonial-next" class="absolute top-1/2 -translate-y-1/2 -right-4 bg-white/80 dark:bg-slate-700/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-slate-700 transition-all z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-slate-50 dark:bg-slate-900/50 fade-in-section">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16"><h3 class="text-3xl md:text-4xl font-bold">سوالات متداول</h3></div>
+                <div class="space-y-4" id="faq-accordion">
+                    <div class="section-card rounded-lg p-1"><div class="accordion-header flex justify-between items-center p-4 cursor-pointer"><h4 class="font-semibold">آیا استفاده از پلن رایگان محدودیت زمانی دارد؟</h4><svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><div class="accordion-content px-4 pb-4"><p class="text-muted-light dark:text-muted-dark">خیر، پلن رایگان ما همیشه رایگان باقی خواهد ماند و هیچ محدودیت زمانی برای استفاده از آن وجود ندارد.</p></div></div>
+                    <div class="section-card rounded-lg p-1"><div class="accordion-header flex justify-between items-center p-4 cursor-pointer"><h4 class="font-semibold">آیا می‌توانم پلن خود را بعدا تغییر دهم؟</h4><svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><div class="accordion-content px-4 pb-4"><p class="text-muted-light dark:text-muted-dark">بله، شما هر زمان که بخواهید می‌توانید پلن خود را ارتقا یا کاهش دهید. تغییرات از دوره صورت‌حساب بعدی شما اعمال خواهد شد.</p></div></div>
+                    <div class="section-card rounded-lg p-1"><div class="accordion-header flex justify-between items-center p-4 cursor-pointer"><h4 class="font-semibold">چه روش‌های پرداختی را قبول می‌کنید؟</h4><svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div><div class="accordion-content px-4 pb-4"><p class="text-muted-light dark:text-muted-dark">ما تمامی کارت‌های عضو شتاب را برای پرداخت‌های ریالی و همچنین کارت‌های اعتباری بین‌المللی مانند Visa و Mastercard را برای پرداخت‌های ارزی می‌پذیریم.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="download" class="bg-gradient-to-r from-purple-600 to-indigo-700">
+            <div class="container mx-auto px-6 py-20 text-center"><h3 class="text-3xl md:text-4xl font-bold text-white">برای یک تغییر بزرگ آماده‌اید؟</h3><p class="text-indigo-100 mt-4 mb-8 text-lg max-w-2xl mx-auto">به هزاران کاربر راضی ما بپیوندید و همین امروز اپلیکیشن را رایگان دانلود کنید.</p><a href="#" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-100 transition-all transform hover:scale-105 shadow-2xl">همین حالا دانلود کنید</a></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-10">
+        <div class="container mx-auto px-6 text-center"><p>&copy; 1403 | تمامی حقوق برای «نام شرکت شما» محفوظ است.</p><div class="mt-4"><a href="#" class="hover:text-white px-2 transition-colors">حریم خصوصی</a><span class="text-slate-500">|</span><a href="#" class="hover:text-white px-2 transition-colors">تماس با ما</a></div></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- سیستم مدیریت تم (روشن/تاریک) ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+            // بررسی تم ذخیره شده یا تم سیستم
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                darkIcon.classList.toggle('hidden');
+                lightIcon.classList.toggle('hidden');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            // --- تابع عمومی برای ساخت اسلایدر ---
+            function createSlider(sliderId, itemsClass, nextBtnId, prevBtnId) {
+                const slider = document.getElementById(sliderId);
+                if (!slider) return null;
+                const items = slider.querySelectorAll(itemsClass);
+                const nextBtn = document.getElementById(nextBtnId);
+                const prevBtn = document.getElementById(prevBtnId);
+                let currentIndex = 0;
+
+                function showItem(index) {
+                    currentIndex = (index + items.length) % items.length;
+                    items.forEach((item, i) => {
+                        item.classList.toggle('active', i === currentIndex);
+                    });
+                }
+                nextBtn.addEventListener('click', () => showItem(currentIndex + 1));
+                prevBtn.addEventListener('click', () => showItem(currentIndex - 1));
+                showItem(0);
+                return { startAutoplay: (interval) => setInterval(() => showItem(currentIndex + 1), interval) };
+            }
+            const testimonialSlider = createSlider('testimonial-slider', '.testimonial-item', 'testimonial-next', 'testimonial-prev');
+            if (testimonialSlider) testimonialSlider.startAutoplay(6000);
+
+            // --- انیمیشن با اسکرول ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+            // --- پارالاکس با حرکت موس در بخش Hero ---
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const { clientX, clientY } = e;
+                    const { offsetWidth, offsetHeight } = heroSection;
+                    const x = (clientX / offsetWidth - 0.5) * 2; // -1 to 1
+                    const y = (clientY / offsetHeight - 0.5) * 2; // -1 to 1
+
+                    heroSection.querySelectorAll('.parallax-element').forEach(el => {
+                        const depth = el.getAttribute('data-depth');
+                        el.style.transform = `translate(${x * depth * 20}px, ${y * depth * 20}px)`;
+                    });
+                });
+            }
+
+            // --- منطق بخش قیمت‌گذاری ---
+            const pricingToggle = document.getElementById('pricing-toggle');
+            if(pricingToggle) {
+                pricingToggle.addEventListener('change', () => {
+                    const isYearly = pricingToggle.checked;
+                    document.querySelectorAll('.price').forEach(p => {
+                        p.textContent = isYearly ? p.dataset.yearly : p.dataset.monthly;
+                    });
+                });
+            }
+
+            // --- منطق آکاردئون FAQ ---
+            const accordion = document.getElementById('faq-accordion');
+            if(accordion) {
+                accordion.addEventListener('click', (e) => {
+                    const header = e.target.closest('.accordion-header');
+                    if (!header) return;
+                    
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('svg');
+                    
+                    // بستن بقیه آیتم‌ها
+                    header.parentElement.parentElement.querySelectorAll('.accordion-content').forEach(item => {
+                        if (item !== content) {
+                            item.style.maxHeight = null;
+                            item.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+                        }
+                    });
+
+                    // باز/بسته کردن آیتم فعلی
+                    icon.classList.toggle('rotate-180');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

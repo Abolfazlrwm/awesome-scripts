@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نکست جن - تجربه انیمیشنی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Animated background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: backgroundMove 20s linear infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes backgroundMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+        
+        /* Floating elements */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+        
+        /* Page entrance animation */
+        .page-enter {
+            animation: pageEnter 1s ease-out;
+        }
+        
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        /* Animated cards */
+        .animated-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animated-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .animated-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .animated-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Bouncing buttons */
+        .bounce-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+        
+        .bounce-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+        
+        .bounce-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .bounce-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .bounce-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+        
+        /* Pulsing icons */
+        .pulse-icon {
+            animation: pulse 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+        
+        /* Sliding text */
+        .slide-text {
+            animation: slideIn 1s ease-out;
+        }
+        
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Rotating elements */
+        .rotate-slow {
+            animation: rotateSlow 10s linear infinite;
+        }
+        
+        @keyframes rotateSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Morphing shapes */
+        .morph-shape {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 4s ease-in-out infinite;
+        }
+        
+        @keyframes morph {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: rotate(0deg);
+            }
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+                transform: rotate(90deg);
+            }
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+                transform: rotate(180deg);
+            }
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+                transform: rotate(270deg);
+            }
+        }
+        
+        /* Glowing text */
+        .glow-text {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                         0 0 20px rgba(255, 255, 255, 0.3),
+                         0 0 30px rgba(255, 255, 255, 0.2);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                           0 0 20px rgba(255, 255, 255, 0.3),
+                           0 0 30px rgba(255, 255, 255, 0.2);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                           0 0 30px rgba(255, 255, 255, 0.6),
+                           0 0 40px rgba(255, 255, 255, 0.4);
+            }
+        }
+        
+        /* Wobble animation */
+        .wobble {
+            animation: wobble 3s ease-in-out infinite;
+        }
+        
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        /* Fade in up animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Staggered animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        
+        /* Phone mockup animation */
+        .phone-float {
+            animation: phoneFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes phoneFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotateY(0deg);
+            }
+            50% { 
+                transform: translateY(-20px) rotateY(10deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .floating-shape {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="page-enter">
+    <!-- Animated background -->
+    <div class="animated-bg">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-50 p-6">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse slide-text">
+                    <div class="w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl pulse-icon">
+                        🌟
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-white glow-text">نکست جن</h1>
+                        <p class="text-sm text-white/80">تجربه انیمیشنی</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8 space-x-reverse">
+                    <a href="#features" class="text-white/90 hover:text-white transition-all duration-300 font-medium relative group">
+                        ویژگی‌ها
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-white/90 hover:text-white transition-all duration-300 font-medium relative group">
+                        درباره ما
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#download" class="text-white/90 hover:text-white transition-all duration-300 font-medium relative group">
+                        دانلود
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+                <button class="bounce-btn px-6 py-3 slide-text">
+                    شروع کنید
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8 fade-in-up stagger-1">
+                        <span class="inline-block bg-white/20 backdrop-blur-md text-white px-6 py-3 rounded-full text-sm font-medium wobble">
+                            🚀 نسخه انیمیشنی جدید
+                        </span>
+                    </div>
+                    <h2 class="text-6xl md:text-7xl font-bold mb-8 leading-tight text-white glow-text fade-in-up stagger-2">
+                        تجربه
+                        <br>
+                        <span class="bg-gradient-to-r from-pink-400 to-yellow-400 bg-clip-text text-transparent">
+                            جادویی
+                        </span>
+                    </h2>
+                    <p class="text-xl text-white/90 mb-10 leading-relaxed fade-in-up stagger-3">
+                        اپلیکیشنی با انیمیشن‌های زیبا، تعاملات جذاب و طراحی مدرن که تجربه‌ای فراموش‌نشدنی برایتان خلق می‌کند.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse mb-10 fade-in-up stagger-4">
+                        <button class="bounce-btn px-10 py-4 text-lg flex items-center justify-center space-x-3 space-x-reverse">
+                            <span class="text-2xl pulse-icon">🍎</span>
+                            <div class="text-right">
+                                <div class="text-sm opacity-90">دانلود از</div>
+                                <div class="font-bold">App Store</div>
+                            </div>
+                        </button>
+                        <button class="bounce-btn px-10 py-4 text-lg flex items-center justify-center space-x-3 space-x-reverse" style="background: linear-gradient(135deg, #4ecdc4, #44a08d);">
+                            <span class="text-2xl pulse-icon">🤖</span>
+                            <div class="text-right">
+                                <div class="text-sm opacity-90">دانلود از</div>
+                                <div class="font-bold">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-8 space-x-reverse text-white/80 fade-in-up stagger-5">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="text-green-400 pulse-icon">✨</span>
+                            <span>انیمیشن‌های زیبا</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="text-blue-400 pulse-icon">🎨</span>
+                            <span>طراحی مدرن</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="text-purple-400 pulse-icon">⚡</span>
+                            <span>تعاملات جذاب</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center fade-in-up stagger-6">
+                    <div class="relative">
+                        <div class="morph-shape absolute top-10 right-10 rotate-slow"></div>
+                        <div class="w-80 h-[600px] bg-white/10 backdrop-blur-md rounded-[3rem] p-6 phone-float border border-white/20">
+                            <div class="w-full h-full bg-gradient-to-br from-purple-600 to-pink-600 rounded-[2.5rem] flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-white/30 rounded-full"></div>
+                                <div class="text-center text-white">
+                                    <div class="text-6xl mb-6 pulse-icon">📱</div>
+                                    <div class="text-2xl font-bold mb-3 glow-text">رابط جادویی</div>
+                                    <div class="text-sm opacity-80 mb-6">تجربه انیمیشنی</div>
+                                    <div class="flex justify-center space-x-2 space-x-reverse">
+                                        <div class="w-3 h-3 bg-white/60 rounded-full animate-bounce"></div>
+                                        <div class="w-3 h-3 bg-white/60 rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                                        <div class="w-3 h-3 bg-white/60 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-transparent animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-5xl font-bold mb-6 text-white glow-text fade-in-up">ویژگی‌های جادویی</h3>
+                <p class="text-xl text-white/90 max-w-2xl mx-auto fade-in-up stagger-1">
+                    امکانات فوق‌العاده با انیمیشن‌های زیبا
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="animated-card p-8 text-center fade-in-up stagger-1">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl flex items-center justify-center text-3xl pulse-icon">
+                        🎭
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">انیمیشن‌های زیبا</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        حرکات نرم و طبیعی که تجربه کاربری را به سطح جدیدی می‌برد
+                    </p>
+                </div>
+                
+                <div class="animated-card p-8 text-center fade-in-up stagger-2">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-3xl pulse-icon">
+                        🎨
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">طراحی مدرن</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        رابط کاربری زیبا با رنگ‌های شاد و طراحی معاصر
+                    </p>
+                </div>
+                
+                <div class="animated-card p-8 text-center fade-in-up stagger-3">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center text-3xl pulse-icon">
+                        ⚡
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">تعاملات جذاب</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        واکنش‌های هوشمند و تعاملات سرگرم‌کننده در هر لمس
+                    </p>
+                </div>
+                
+                <div class="animated-card p-8 text-center fade-in-up stagger-4">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center text-3xl pulse-icon">
+                        🌈
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">رنگ‌های زنده</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        پالت رنگی شاد و انرژی‌بخش که روحیه شما را بهتر می‌کند
+                    </p>
+                </div>
+                
+                <div class="animated-card p-8 text-center fade-in-up stagger-5">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-indigo-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl pulse-icon">
+                        🎪
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">تجربه سرگرم‌کننده</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        استفاده از اپلیکیشن تبدیل به یک تجربه لذت‌بخش می‌شود
+                    </p>
+                </div>
+                
+                <div class="animated-card p-8 text-center fade-in-up stagger-6">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center text-3xl pulse-icon">
+                        🚀
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-white">عملکرد سریع</h4>
+                    <p class="text-white/80 leading-relaxed">
+                        انیمیشن‌های روان و سریع بدون هیچ‌گونه کندی یا لگ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="animated-card p-12 max-w-4xl mx-auto">
+                <h3 class="text-5xl font-bold mb-6 text-white glow-text fade-in-up">همین حالا تجربه کنید</h3>
+                <p class="text-xl text-white/90 mb-10 fade-in-up stagger-1">
+                    وارد دنیای جادویی انیمیشن‌ها شوید و تجربه‌ای فراموش‌نشدنی داشته باشید
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse mb-12">
+                    <button class="bounce-btn px-12 py-5 text-lg flex items-center justify-center space-x-4 space-x-reverse fade-in-up stagger-2">
+                        <span class="text-3xl pulse-icon">🍎</span>
+                        <div class="text-right">
+                            <div class="text-sm opacity-90">دانلود از</div>
+                            <div class="font-bold text-lg">App Store</div>
+                        </div>
+                    </button>
+                    <button class="bounce-btn px-12 py-5 text-lg flex items-center justify-center space-x-4 space-x-reverse fade-in-up stagger-3" style="background: linear-gradient(135deg, #4ecdc4, #44a08d);">
+                        <span class="text-3xl pulse-icon">🤖</span>
+                        <div class="text-right">
+                            <div class="text-sm opacity-90">دانلود از</div>
+                            <div class="font-bold text-lg">Google Play</div>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center fade-in-up stagger-4">
+                        <div class="text-4xl mb-4 pulse-icon">🎉</div>
+                        <div class="font-bold text-white mb-2">کاملاً رایگان</div>
+                        <div class="text-sm text-white/70">بدون هزینه مخفی</div>
+                    </div>
+                    <div class="text-center fade-in-up stagger-5">
+                        <div class="text-4xl mb-4 pulse-icon">✨</div>
+                        <div class="font-bold text-white mb-2">انیمیشن‌های زیبا</div>
+                        <div class="text-sm text-white/70">تجربه بصری فوق‌العاده</div>
+                    </div>
+                    <div class="text-center fade-in-up stagger-6">
+                        <div class="text-4xl mb-4 pulse-icon">🎭</div>
+                        <div class="font-bold text-white mb-2">تعاملات جذاب</div>
+                        <div class="text-sm text-white/70">هر لمس یک تجربه</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 relative">
+        <div class="container mx-auto px-6">
+            <div class="animated-card p-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-4 space-x-reverse mb-4 md:mb-0">
+                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-xl pulse-icon">
+                            🌟
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white glow-text">نکست جن</h4>
+                            <p class="text-sm text-white/70">تجربه انیمیشنی</p>
+                        </div>
+                    </div>
+                    <div class="text-center text-white/70">
+                        <p>© ۲۰۲۴ نکست جن. ساخته شده با ❤️ و انیمیشن</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth animations and interactions
+        
+        // Initialize animations on scroll
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scrolling
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Enhanced button interactions
+        function initButtonEffects() {
+            document.querySelectorAll('.bounce-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.4);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.8s ease-out;
+                        pointer-events: none;
+                        z-index: 0;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => ripple.remove(), 800);
+
+                    // Handle download buttons
+                    if (this.textContent.includes('App Store') || this.textContent.includes('Google Play')) {
+                        const store = this.textContent.includes('App Store') ? 'App Store' : 'Google Play';
+                        
+                        // Animate button
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                        
+                        // Show success message
+                        setTimeout(() => {
+                            this.innerHTML = `
+                                <span class="text-2xl">✨</span>
+                                <div class="text-right">
+                                    <div class="text-sm opacity-90">در حال هدایت به</div>
+                                    <div class="font-bold">${store}</div>
+                                </div>
+                            `;
+                            
+                            setTimeout(() => {
+                                alert(`🎉 خوش آمدید به دنیای جادویی!\n\n✨ در حال هدایت به ${store} برای دانلود اپلیکیشن انیمیشنی...\n\n🎭 آماده تجربه‌ای فراموش‌نشدنی باشید!`);
+                                location.reload();
+                            }, 1000);
+                        }, 500);
+                    }
+                });
+
+                // Hover effects
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // Add ripple animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for floating shapes
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const shapes = document.querySelectorAll('.floating-shape');
+                
+                shapes.forEach((shape, index) => {
+                    const speed = 0.5 + (index * 0.2);
+                    const yPos = -(scrolled * speed);
+                    shape.style.transform += ` translateY(${yPos}px)`;
+                });
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollAnimations();
+            initSmoothScroll();
+            initButtonEffects();
+            initParallax();
+            
+            // Add loaded class for final animations
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+        });
+
+        // Performance optimization
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                console.log('🎭 اپلیکیشن انیمیشنی آماده است!');
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf479b40d0d790',t:'MTc1NDY1ODg5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

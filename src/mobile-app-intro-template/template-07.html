@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نکست جن - اپلیکیشن پیشرفته</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        /* Performance optimizations */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Advanced gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            position: relative;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        /* Advanced card animations */
+        .card-advanced {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .card-advanced:hover::before {
+            left: 100%;
+        }
+        
+        .card-advanced:hover {
+            transform: translateY(-10px) rotateX(5deg) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Premium button effects */
+        .btn-premium {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        
+        .btn-premium:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-premium:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+        
+        /* Advanced text gradient */
+        .text-gradient-advanced {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Premium phone mockup */
+        .phone-premium {
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(145deg, #1f2937, #374151, #4b5563);
+            border-radius: 35px;
+            padding: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .phone-premium::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #6b7280, #9ca3af, #6b7280);
+            border-radius: 2px;
+        }
+        
+        .phone-premium:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(-5deg);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+        }
+        
+        .screen-premium {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screen-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        }
+        
+        /* Advanced floating animation */
+        .float-advanced {
+            animation: floatAdvanced 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatAdvanced {
+            0%, 100% { 
+                transform: translateY(0px) rotateZ(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) rotateZ(1deg); 
+            }
+            50% { 
+                transform: translateY(-25px) rotateZ(0deg); 
+            }
+            75% { 
+                transform: translateY(-15px) rotateZ(-1deg); 
+            }
+        }
+        
+        /* Particle system */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.8), transparent);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Scroll reveal animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .reveal-up.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Advanced icon animations */
+        .icon-bounce {
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        /* Glowing effects */
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glow-blue:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Loading animation */
+        .loading-bar {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #3b82f6);
+            background-size: 200% 100%;
+            animation: loadingShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes loadingShine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Responsive optimizations */
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 3rem 0;
+            }
+            
+            .phone-premium {
+                width: 220px;
+                height: 440px;
+                padding: 20px;
+            }
+            
+            .card-advanced:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+        }
+        
+        /* Performance optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+        
+        .gpu-accelerated {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #1d4ed8, #0891b2);
+        }
+    </style>
+</head>
+<body class="gradient-bg text-gray-800">
+    <!-- Advanced Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 gpu-accelerated">
+        <div class="loading-bar"></div>
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3 space-x-reverse reveal-left">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center text-white text-xl glow-blue icon-bounce">
+                        ⭐
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gradient-advanced">نکست جن</h1>
+                        <p class="text-xs text-gray-500">اپلیکیشن پیشرفته</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8 space-x-reverse reveal-up">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 transition-all duration-300 font-medium relative group">
+                        ویژگی‌ها
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-all duration-300 font-medium relative group">
+                        درباره ما
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#download" class="text-gray-600 hover:text-blue-600 transition-all duration-300 font-medium relative group">
+                        دانلود
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+                <button class="btn-premium text-white px-8 py-3 rounded-xl font-medium reveal-right will-change-transform">
+                    شروع کنید
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Advanced Hero Section -->
+    <section class="section-padding pt-24 min-h-screen flex items-center relative overflow-hidden">
+        <div class="particles-container" id="particles"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-left">
+                    <div class="mb-6">
+                        <span class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                            🚀 نسخه جدید منتشر شد
+                        </span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+                        اپلیکیشن
+                        <span class="text-gradient-advanced">نسل آینده</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-10 leading-relaxed">
+                        تجربه‌ای انقلابی با هوش مصنوعی پیشرفته، طراحی مدرن و عملکرد فوق‌العاده. آینده در دستان شماست.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse mb-8">
+                        <button class="btn-premium text-white px-10 py-4 rounded-xl font-medium flex items-center justify-center space-x-3 space-x-reverse will-change-transform">
+                            <span class="text-2xl">🍎</span>
+                            <div class="text-right">
+                                <div class="text-sm opacity-90">دانلود از</div>
+                                <div class="font-bold">App Store</div>
+                            </div>
+                        </button>
+                        <button class="btn-premium text-white px-10 py-4 rounded-xl font-medium flex items-center justify-center space-x-3 space-x-reverse will-change-transform">
+                            <span class="text-2xl">🤖</span>
+                            <div class="text-right">
+                                <div class="text-sm opacity-90">دانلود از</div>
+                                <div class="font-bold">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-8 space-x-reverse text-sm text-gray-500">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="text-green-500">✓</span>
+                            <span>رایگان برای همیشه</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="text-green-500">✓</span>
+                            <span>بدون تبلیغات</span>
+                        </div>
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="text-green-500">✓</span>
+                            <span>امنیت کامل</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center reveal-right">
+                    <div class="phone-premium float-advanced will-change-transform">
+                        <div class="screen-premium">
+                            <div class="text-center relative z-10">
+                                <div class="text-5xl mb-6 icon-bounce">📱</div>
+                                <div class="text-xl font-bold mb-2">رابط هوشمند</div>
+                                <div class="text-sm opacity-75 mb-6">تجربه نسل آینده</div>
+                                <div class="flex justify-center space-x-2 space-x-reverse">
+                                    <div class="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                    <div class="w-3 h-3 bg-blue-600 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">1M+</div>
+                    <p class="text-gray-600">کاربر فعال</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">50K+</div>
+                    <p class="text-gray-600">دانلود روزانه</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">4.8</div>
+                    <p class="text-gray-600">امتیاز کاربران</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">24/7</div>
+                    <p class="text-gray-600">پشتیبانی</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold mb-4">ویژگی‌های کلیدی</h3>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    امکانات پیشرفته و کاربردی که کار شما را آسان‌تر می‌کند
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-advanced bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-lg reveal-up will-change-transform" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-8 glow-blue icon-bounce">
+                        🚀
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">سرعت فوق‌العاده</h4>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        عملکرد برق‌آسا با بهینه‌سازی پیشرفته و پردازش موازی برای تجربه‌ای بی‌نظیر
+                    </p>
+                    <div class="mt-6 flex items-center text-blue-600 font-medium">
+                        <span>بیشتر بدانید</span>
+                        <span class="mr-2">←</span>
+                    </div>
+                </div>
+                
+                <div class="card-advanced bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-lg reveal-up will-change-transform" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-8 glow-blue icon-bounce">
+                        🎨
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">طراحی مدرن</h4>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        رابط کاربری زیبا و شهودی با طراحی مینیمال و تجربه کاربری استثنایی
+                    </p>
+                    <div class="mt-6 flex items-center text-purple-600 font-medium">
+                        <span>بیشتر بدانید</span>
+                        <span class="mr-2">←</span>
+                    </div>
+                </div>
+                
+                <div class="card-advanced bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-lg reveal-up will-change-transform" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center text-3xl mb-8 glow-blue icon-bounce">
+                        🔒
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">امنیت پیشرفته</h4>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        حفاظت چندلایه با رمزگذاری پیشرفته و احراز هویت دو مرحله‌ای
+                    </p>
+                    <div class="mt-6 flex items-center text-green-600 font-medium">
+                        <span>بیشتر بدانید</span>
+                        <span class="mr-2">←</span>
+                    </div>
+                </div>
+                
+                <div class="card-advanced bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-lg reveal-up will-change-transform" style="animation-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-3xl mb-8 glow-blue icon-bounce">
+                        📊
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">هوش مصنوعی</h4>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        تحلیل هوشمند داده‌ها با الگوریتم‌های یادگیری ماشین پیشرفته
+                    </p>
+                    <div class="mt-6 flex items-center text-orange-600 font-medium">
+                        <span>بیشتر بدانید</span>
+                        <span class="mr-2">←</span>
+                    </div>
+                </div>
+                
+                <div class="card-advanced bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-lg reveal-up will-change-transform" style="animation-delay: 0.5s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center text-3xl mb-8 glow-blue icon-bounce">
+                        🌐
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">همگام‌سازی ابری</h4>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        دسترسی به اطلاعات در همه‌جا با همگام‌سازی لحظه‌ای و پشتیبان‌گیری خودکار
+                    </p>
+                    <div class="mt-6 flex items-center text-cyan-600 font-medium">
+                        <span>بیشتر بدانید</span>
+                        <span class="mr-2">←</span>
+                    </div>
+                </div>
+                
+                <div class="card-advanced bg-white/70 backdrop-blur-sm p-10 rounded-2xl shadow-lg reveal-up will-change-transform" style="animation-delay: 0.6s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center text-3xl mb-8 glow-blue icon-bounce">
+                        ⚡
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-gray-800">به‌روزرسانی هوشمند</h4>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        دریافت خودکار آخرین ویژگی‌ها و بهبودهای امنیتی بدون وقفه در کار
+                    </p>
+                    <div class="mt-6 flex items-center text-pink-600 font-medium">
+                        <span>بیشتر بدانید</span>
+                        <span class="mr-2">←</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">چرا نکست جن؟</h3>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        ما با هدف ساخت بهترین تجربه کاربری و ارائه ابزارهای مدرن، این اپلیکیشن را طراحی کرده‌ایم.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                            <span class="text-gray-700">رایگان برای همیشه</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                            <span class="text-gray-700">بدون تبلیغات مزاحم</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                            <span class="text-gray-700">پشتیبانی ۲۴ ساعته</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                            <span class="text-gray-700">به‌روزرسانی مداوم</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="phone-mockup float-animation">
+                        <div class="screen">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">⚙️</div>
+                                <div class="text-lg font-medium">تنظیمات</div>
+                                <div class="text-sm opacity-75">ساده و کاربردی</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold mb-4">نظرات کاربران</h3>
+                <p class="text-lg text-gray-600">تجربه کاربران ما از استفاده این اپلیکیشن</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white p-8 rounded-xl shadow-sm">
+                    <div class="text-yellow-400 text-xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "واقعاً اپلیکیشن فوق‌العاده‌ای است. طراحی زیبا و کارکرد عالی."
+                    </p>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">👨</div>
+                        <div>
+                            <div class="font-medium">علی محمدی</div>
+                            <div class="text-sm text-gray-500">کاربر</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-xl shadow-sm">
+                    <div class="text-yellow-400 text-xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "سرعت و کیفیت بی‌نظیر. همیشه از این اپلیکیشن استفاده می‌کنم."
+                    </p>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">👩</div>
+                        <div>
+                            <div class="font-medium">مریم احمدی</div>
+                            <div class="text-sm text-gray-500">کاربر</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-xl shadow-sm">
+                    <div class="text-yellow-400 text-xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "بهترین اپلیکیشنی که تا حالا استفاده کرده‌ام. پیشنهاد می‌کنم."
+                    </p>
+                    <div class="flex items-center space-x-3 space-x-reverse">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">👨</div>
+                        <div>
+                            <div class="font-medium">حسین رضایی</div>
+                            <div class="text-sm text-gray-500">کاربر</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="section-padding bg-blue-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold mb-4">همین حالا دانلود کنید</h3>
+            <p class="text-xl mb-8 opacity-90">
+                تجربه جدید را از دست ندهید و همین امروز شروع کنید
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse mb-12">
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium flex items-center justify-center space-x-3 space-x-reverse hover:bg-gray-50 transition-colors">
+                    <span class="text-2xl">🍎</span>
+                    <div class="text-right">
+                        <div class="text-sm">دانلود از</div>
+                        <div class="font-bold">App Store</div>
+                    </div>
+                </button>
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-medium flex items-center justify-center space-x-3 space-x-reverse hover:bg-gray-50 transition-colors">
+                    <span class="text-2xl">🤖</span>
+                    <div class="text-right">
+                        <div class="text-sm">دانلود از</div>
+                        <div class="font-bold">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl mb-3">🆓</div>
+                    <div class="font-medium mb-2">کاملاً رایگان</div>
+                    <div class="text-sm opacity-75">بدون هزینه پنهان</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-3">🚫</div>
+                    <div class="font-medium mb-2">بدون تبلیغات</div>
+                    <div class="text-sm opacity-75">تجربه خالص</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-3">🔒</div>
+                    <div class="font-medium mb-2">امن و مطمئن</div>
+                    <div class="text-sm opacity-75">حریم خصوصی محفوظ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white section-padding">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-xl">
+                            ⭐
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold">نکست جن</h4>
+                            <p class="text-sm text-gray-400">اپلیکیشن مدرن</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        بهترین تجربه کاربری را با ما تجربه کنید.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">محصولات</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">اپلیکیشن موبایل</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">نسخه وب</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">پشتیبانی</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">راهنما</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">تماس با ما</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">سوالات متداول</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold mb-4">شرکت</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">درباره ما</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">تیم</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">اخبار</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>© ۲۰۲۴ نکست جن. تمام حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Performance optimized JavaScript
+        
+        // Throttle function for performance
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Advanced particle system
+        class ParticleSystem {
+            constructor(container) {
+                this.container = container;
+                this.particles = [];
+                this.maxParticles = 15;
+                this.init();
+            }
+
+            init() {
+                this.createParticles();
+                this.animate();
+            }
+
+            createParticles() {
+                for (let i = 0; i < this.maxParticles; i++) {
+                    setTimeout(() => this.createParticle(), i * 200);
+                }
+            }
+
+            createParticle() {
+                if (this.particles.length >= this.maxParticles) return;
+
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                this.container.appendChild(particle);
+                this.particles.push(particle);
+
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                        this.particles = this.particles.filter(p => p !== particle);
+                    }
+                }, 8000);
+            }
+
+            animate() {
+                setInterval(() => {
+                    if (this.particles.length < this.maxParticles) {
+                        this.createParticle();
+                    }
+                }, 600);
+            }
+        }
+
+        // Initialize particle system
+        document.addEventListener('DOMContentLoaded', () => {
+            const particlesContainer = document.getElementById('particles');
+            if (particlesContainer) {
+                new ParticleSystem(particlesContainer);
+            }
+        });
+
+        // Advanced scroll reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, index * 100);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Apply reveal animations
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+
+        // Smooth scrolling with easing
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const targetPosition = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Advanced button interactions
+        document.querySelectorAll('.btn-premium').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.5);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+
+                // Download functionality
+                if (this.textContent.includes('App Store') || this.textContent.includes('Google Play')) {
+                    const store = this.textContent.includes('App Store') ? 'App Store' : 'Google Play';
+                    
+                    // Show loading state
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="animate-spin">⏳</span> در حال بارگذاری...';
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                        alert(`🚀 در حال هدایت به ${store} برای دانلود اپلیکیشن پیشرفته...\n\n✨ آماده تجربه نسل آینده باشید!`);
+                    }, 1500);
+                }
+            });
+        });
+
+        // Add ripple animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for floating elements
+        let ticking = false;
+        
+        const updateParallax = throttle(() => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.float-advanced');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.1 + (index * 0.02);
+                const yPos = -(scrolled * speed);
+                element.style.transform += ` translateY(${yPos}px)`;
+            });
+        }, 16);
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Loading bar animation
+        window.addEventListener('load', () => {
+            const loadingBar = document.querySelector('.loading-bar');
+            if (loadingBar) {
+                setTimeout(() => {
+                    loadingBar.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingBar.style.display = 'none';
+                    }, 500);
+                }, 1000);
+            }
+        });
+
+        // Advanced card interactions
+        document.querySelectorAll('.card-advanced').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotateX(5deg) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0) scale(1)';
+            });
+        });
+
+        // Preload critical resources
+        const preloadResources = () => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'style';
+            link.href = 'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap';
+            document.head.appendChild(link);
+        };
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            preloadResources();
+            
+            // Add loaded class for animations
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+        });
+
+        // Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+                }, 0);
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf39dc2734d77f',t:'MTc1NDY1ODMzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

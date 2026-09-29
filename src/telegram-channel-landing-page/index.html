@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کانال پیشرفته - تجربه دیجیتال نوین</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --dark: #0f0f23;
+            --darker: #050510;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: var(--darker);
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Advanced Background */
+        .hero-bg {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f23 0%, #050510 100%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundShift {
+            0%, 100% { 
+                background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%; 
+            }
+            50% { 
+                background-position: 100% 100%, 0% 0%, 80% 20%, 100% 100%; 
+            }
+        }
+        
+        /* Glassmorphism Enhanced */
+        .glass-ultra {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Navigation Ultra Modern */
+        .nav-ultra {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 12px 24px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-ultra.scrolled {
+            background: rgba(15, 15, 35, 0.95);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Buttons Ultra Modern */
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Typography Enhanced */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #a855f7 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        
+        /* Animations Ultra Smooth */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-in {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Floating Elements */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-delayed {
+            animation: float 6s ease-in-out infinite 2s;
+        }
+        
+        /* Particle Effect */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(99, 102, 241, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 15s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Advanced Grid */
+        .grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Scroll Reveal Enhanced */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Progress Bars Advanced */
+        .progress-modern {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            height: 6px;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-modern::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: progressShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Team Cards Ultra Modern */
+        .team-card-modern {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .team-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card-modern:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .team-card-modern:hover {
+            transform: translateY(-12px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Stats Counter Enhanced */
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stat-card:hover::after {
+            opacity: 1;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .nav-ultra {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                transform: none;
+                border-radius: 20px;
+            }
+            
+            .glass-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            
+            .team-card-modern:hover {
+                transform: translateY(-6px);
+            }
+        }
+        
+        /* Custom Scrollbar Ultra */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+        
+        /* Loading States */
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div class="particles fixed inset-0 z-0"></div>
+    
+    <!-- Ultra Modern Navigation -->
+    <nav class="nav-ultra">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-6 space-x-reverse">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <i class="fab fa-telegram-plane text-white text-lg"></i>
+                    </div>
+                    <span class="font-bold text-lg">کانال پیشرفته</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6 space-x-reverse text-sm">
+                    <a href="#home" class="hover:text-indigo-400 transition-colors">خانه</a>
+                    <a href="#about" class="hover:text-indigo-400 transition-colors">درباره</a>
+                    <a href="#team" class="hover:text-indigo-400 transition-colors">تیم</a>
+                    <a href="#features" class="hover:text-indigo-400 transition-colors">ویژگی‌ها</a>
+                    <a href="#contact" class="hover:text-indigo-400 transition-colors">تماس</a>
+                </div>
+            </div>
+            
+            <button onclick="joinChannel()" class="btn-gradient px-6 py-2 rounded-full text-sm font-semibold">
+                عضویت
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section Ultra Modern -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Hero Icon -->
+                <div class="w-32 h-32 mx-auto glass-ultra rounded-full flex items-center justify-center mb-12 float scale-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fab fa-telegram-plane text-white text-3xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Main Title -->
+                <h1 class="text-7xl md:text-9xl font-black mb-8 text-gradient fade-up">
+                    کانال آینده
+                </h1>
+                
+                <p class="text-2xl md:text-4xl font-light mb-16 text-gray-300 fade-up" style="animation-delay: 0.3s;">
+                    تجربه دیجیتال نوین با فناوری پیشرفته
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 fade-up" style="animation-delay: 0.6s;">
+                    <button onclick="joinChannel()" class="btn-gradient px-12 py-5 rounded-full text-xl font-bold inline-flex items-center">
+                        <i class="fab fa-telegram-plane ml-3 text-2xl"></i>
+                        عضویت فوری
+                    </button>
+                    <button onclick="scrollToSection('about')" class="btn-outline px-12 py-5 rounded-full text-xl font-semibold">
+                        کشف کنید
+                    </button>
+                </div>
+                
+                <!-- Stats Grid Ultra Modern -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 fade-up" style="animation-delay: 0.9s;">
+                    <div class="stat-card rounded-3xl p-8 text-center relative z-10">
+                        <div class="text-5xl font-black text-gradient counter mb-3" data-target="25000">0</div>
+                        <div class="text-sm text-gray-400 font-medium">عضو فعال</div>
+                    </div>
+                    <div class="stat-card rounded-3xl p-8 text-center relative z-10">
+                        <div class="text-5xl font-black text-gradient counter mb-3" data-target="5000">0</div>
+                        <div class="text-sm text-gray-400 font-medium">محتوای منحصر</div>
+                    </div>
+                    <div class="stat-card rounded-3xl p-8 text-center relative z-10">
+                        <div class="text-5xl font-black text-gradient counter mb-3" data-target="24">0</div>
+                        <div class="text-sm text-gray-400 font-medium">ساعت آنلاین</div>
+                    </div>
+                    <div class="stat-card rounded-3xl p-8 text-center relative z-10">
+                        <div class="text-5xl font-black text-gradient counter mb-3" data-target="99">0</div>
+                        <div class="text-sm text-gray-400 font-medium">رضایت کاربران</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section Ultra Modern -->
+    <section id="about" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-24 reveal">
+                    <h2 class="text-6xl md:text-8xl font-black mb-8 text-gradient">درباره ما</h2>
+                    <p class="text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+                        ما پیشگامان تحول دیجیتال هستیم که با استفاده از جدیدترین فناوری‌ها، 
+                        تجربه‌ای بی‌نظیر از محتوای دیجیتال ارائه می‌دهیم
+                    </p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Mission Card -->
+                    <div class="glass-card rounded-3xl p-12 reveal slide-in">
+                        <div class="flex items-center mb-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center ml-6">
+                                <i class="fas fa-rocket text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gradient">ماموریت ما</h3>
+                        </div>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center mt-1 ml-4 flex-shrink-0">
+                                    <i class="fas fa-check text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-3">نوآوری مستمر</h4>
+                                    <p class="text-gray-400">ارائه محتوای پیشرفته با استفاده از آخرین فناوری‌های روز دنیا</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center mt-1 ml-4 flex-shrink-0">
+                                    <i class="fas fa-check text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-3">جامعه هوشمند</h4>
+                                    <p class="text-gray-400">ایجاد اکوسیستمی از متخصصان و علاقه‌مندان فناوری</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mt-1 ml-4 flex-shrink-0">
+                                    <i class="fas fa-check text-white text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xl mb-3">پشتیبانی هوشمند</h4>
+                                    <p class="text-gray-400">سیستم پشتیبانی مبتنی بر هوش مصنوعی با پاسخگویی فوری</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Card -->
+                    <div class="glass-card rounded-3xl p-12 reveal" style="animation-delay: 0.3s;">
+                        <div class="flex items-center mb-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center ml-6">
+                                <i class="fas fa-chart-line text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-gradient">عملکرد فوق‌العاده</h3>
+                        </div>
+                        
+                        <div class="space-y-10">
+                            <div>
+                                <div class="flex justify-between mb-4">
+                                    <span class="font-bold text-xl">رضایت کاربران</span>
+                                    <span class="text-2xl font-bold text-gradient">99%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-3">
+                                    <div class="progress-modern w-[99%] rounded-full" style="animation-delay: 0.5s;"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-4">
+                                    <span class="font-bold text-xl">کیفیت محتوا</span>
+                                    <span class="text-2xl font-bold text-gradient">97%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-3">
+                                    <div class="progress-modern w-[97%] rounded-full" style="animation-delay: 0.7s;"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-4">
+                                    <span class="font-bold text-xl">سرعت پاسخ</span>
+                                    <span class="text-2xl font-bold text-gradient">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-3">
+                                    <div class="progress-modern w-[95%] rounded-full" style="animation-delay: 0.9s;"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-4">
+                                    <span class="font-bold text-xl">نوآوری</span>
+                                    <span class="text-2xl font-bold text-gradient">98%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-3">
+                                    <div class="progress-modern w-[98%] rounded-full" style="animation-delay: 1.1s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section Ultra Modern -->
+    <section id="team" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-6xl md:text-8xl font-black mb-8 text-gradient">تیم نخبگان</h2>
+                <p class="text-2xl text-gray-400 max-w-4xl mx-auto">
+                    متخصصان برتر با سال‌ها تجربه در حوزه‌های مختلف فناوری
+                </p>
+            </div>
+            
+            <div class="grid-modern max-w-7xl mx-auto">
+                <!-- Team Member 1 -->
+                <div class="team-card-modern rounded-3xl p-10 text-center reveal">
+                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 rounded-full flex items-center justify-center mb-8 float">
+                        <i class="fas fa-user-tie text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3 text-gradient">دکتر علی احمدی</h3>
+                    <p class="text-indigo-400 text-lg mb-6 font-semibold">مدیر عامل و بنیانگذار</p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        دکترای مهندسی کامپیوتر با بیش از ۱۲ سال تجربه در حوزه هوش مصنوعی و فناوری‌های نوین
+                    </p>
+                    <div class="flex justify-center space-x-4 space-x-reverse">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fab fa-telegram-plane text-white"></i>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-white"></i>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fab fa-linkedin text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-card-modern rounded-3xl p-10 text-center reveal" style="animation-delay: 0.2s;">
+                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-green-500 via-teal-600 to-blue-500 rounded-full flex items-center justify-center mb-8 float-delayed">
+                        <i class="fas fa-palette text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3 text-gradient">سارا محمدی</h3>
+                    <p class="text-indigo-400 text-lg mb-6 font-semibold">مدیر خلاقیت و طراحی</p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        کارشناس ارشد طراحی گرافیک و UX/UI با تخصص در ایجاد تجربه‌های بصری خیره‌کننده
+                    </p>
+                    <div class="flex justify-center space-x-4 space-x-reverse">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fab fa-telegram-plane text-white"></i>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-white"></i>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-500 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fab fa-dribbble text-white"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-card-modern rounded-3xl p-10 text-center reveal" style="animation-delay: 0.4s;">
+                    <div class="w-32 h-32 mx-auto bg-gradient-to-br from-purple-500 via-pink-600 to-red-500 rounded-full flex items-center justify-center mb-8 float">
+                        <i class="fas fa-cogs text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-3 text-gradient">محمد رضایی</h3>
+                    <p class="text-indigo-400 text-lg mb-6 font-semibold">مدیر فنی و DevOps</p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        متخصص زیرساخت و امنیت سایبری با مسئولیت نگهداری سیستم‌های پیچیده و مقیاس‌پذیر
+                    </p>
+                    <div class="flex justify-center space-x-4 space-x-reverse">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fab fa-telegram-plane text-white"></i>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-white"></i>
+                        </div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-gray-800 to-black rounded-xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                            <i class="fab fa-github text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Section -->
+            <div class="mt-32">
+                <div class="text-center mb-16 reveal">
+                    <h3 class="text-5xl font-bold mb-6 text-gradient">تیم مدیریت</h3>
+                    <p class="text-xl text-gray-400">ادمین‌های متخصص و با تجربه</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="glass-card rounded-3xl p-10 reveal">
+                        <div class="flex items-center mb-8">
+                            <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center ml-6">
+                                <i class="fas fa-crown text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gradient">ادمین اصلی</h4>
+                                <p class="text-indigo-400 text-lg">@SuperAdmin</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            مسئول کلی استراتژی، تصمیم‌گیری‌های مهم و نظارت بر کیفیت کلی پلتفرم
+                        </p>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-10 reveal" style="animation-delay: 0.2s;">
+                        <div class="flex items-center mb-8">
+                            <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center ml-6">
+                                <i class="fas fa-shield-alt text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-gradient">ادمین محتوا</h4>
+                                <p class="text-indigo-400 text-lg">@ContentMaster</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            متخصص بررسی، تایید و کیوریت محتوا با تمرکز بر کیفیت و ارزش افزوده
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section Ultra Modern -->
+    <section id="features" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-6xl md:text-8xl font-black mb-8 text-gradient">ویژگی‌های منحصر</h2>
+                <p class="text-2xl text-gray-400 max-w-4xl mx-auto">
+                    فناوری‌های پیشرفته که تجربه شما را متحول می‌کند
+                </p>
+            </div>
+            
+            <div class="grid-modern max-w-7xl mx-auto">
+                <div class="glass-card rounded-3xl p-10 reveal">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl flex items-center justify-center mb-8">
+                        <i class="fas fa-bolt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-gradient">سرعت نور</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">محتوای جدید در کمتر از یک ثانیه در دسترس شما قرار می‌گیرد</p>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-10 reveal" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center mb-8">
+                        <i class="fas fa-brain text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-gradient">هوش مصنوعی</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">سیستم هوشمند تشخیص علایق و ارائه محتوای شخصی‌سازی شده</p>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-10 reveal" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mb-8">
+                        <i class="fas fa-shield-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-gradient">امنیت مطلق</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">رمزنگاری پیشرفته و حفاظت کامل از اطلاعات شخصی کاربران</p>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-10 reveal" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-3xl flex items-center justify-center mb-8">
+                        <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-gradient">آموزش تعاملی</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">دوره‌های آموزشی تعاملی با واقعیت مجازی و شبیه‌سازی</p>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-10 reveal" style="animation-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-pink-500 rounded-3xl flex items-center justify-center mb-8">
+                        <i class="fas fa-users text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-gradient">شبکه اجتماعی</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">پلتفرم تعامل مستقیم با متخصصان و سایر کاربران</p>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-10 reveal" style="animation-delay: 0.5s;">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mb-8">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-gradient">نوآوری مداوم</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">به‌روزرسانی مستمر با آخرین فناوری‌های روز دنیا</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section Ultra Modern -->
+    <section id="contact" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="mb-24 reveal">
+                    <h2 class="text-6xl md:text-8xl font-black mb-8 text-gradient">در تماس باشید</h2>
+                    <p class="text-2xl text-gray-400">
+                        آماده پاسخگویی به سوالات و همکاری با شما هستیم
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-20">
+                    <div class="glass-card rounded-3xl p-12 reveal">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                            <i class="fab fa-telegram-plane text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-6 text-gradient">کانال اصلی</h3>
+                        <p class="text-gray-400 mb-8 text-lg">برای دریافت آخرین محتوا و اطلاعات</p>
+                        <button onclick="joinChannel()" class="btn-gradient px-10 py-4 rounded-2xl font-bold text-lg">
+                            عضویت فوری
+                        </button>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-12 reveal" style="animation-delay: 0.2s;">
+                        <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-500 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                            <i class="fas fa-headset text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-6 text-gradient">پشتیبانی هوشمند</h3>
+                        <p class="text-gray-400 mb-8 text-lg">پاسخگویی فوری با هوش مصنوعی</p>
+                        <div class="glass-ultra px-8 py-4 rounded-2xl font-mono text-indigo-400 text-xl">
+                            @AISupport
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-16 reveal">
+                    <h3 class="text-4xl font-bold mb-8 text-gradient">آماده تحول دیجیتال؟</h3>
+                    <p class="text-2xl text-gray-400 mb-12">
+                        به انقلاب دیجیتال بپیوندید و آینده را همین امروز تجربه کنید
+                    </p>
+                    <button onclick="joinChannel()" class="btn-gradient px-20 py-6 rounded-full text-3xl font-black inline-flex items-center">
+                        <i class="fab fa-telegram-plane ml-4 text-4xl"></i>
+                        شروع ماجراجویی
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Ultra Modern -->
+    <footer class="py-20 border-t border-gray-800 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-12 mb-16">
+                    <div>
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center ml-4">
+                                <i class="fab fa-telegram-plane text-white text-xl"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gradient">کانال پیشرفته</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            پیشگام تحول دیجیتال و ارائه‌دهنده تجربه‌های نوین فناوری
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-xl mb-6 text-gradient">دسترسی سریع</h4>
+                        <ul class="space-y-4 text-gray-400">
+                            <li><a href="#about" class="hover:text-indigo-400 transition-colors">درباره ما</a></li>
+                            <li><a href="#team" class="hover:text-indigo-400 transition-colors">تیم نخبگان</a></li>
+                            <li><a href="#features" class="hover:text-indigo-400 transition-colors">ویژگی‌ها</a></li>
+                            <li><a href="#contact" class="hover:text-indigo-400 transition-colors">تماس</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-xl mb-6 text-gradient">خدمات ویژه</h4>
+                        <ul class="space-y-4 text-gray-400">
+                            <li>آموزش تعاملی</li>
+                            <li>مشاوره تخصصی</li>
+                            <li>پشتیبانی هوشمند</li>
+                            <li>محتوای اختصاصی</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-xl mb-6 text-gradient">ارتباط مستقیم</h4>
+                        <ul class="space-y-4 text-gray-400">
+                            <li>@AdvancedChannel</li>
+                            <li>@AISupport</li>
+                            <li>پشتیبانی ۲۴/۷</li>
+                            <li>پاسخگویی فوری</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-12 text-center">
+                    <p class="text-gray-500 text-lg">© 2024 کانال پیشرفته - آینده امروز شروع می‌شود</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Particles System
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Enhanced Navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav-ultra');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Advanced Join Channel Function
+        function joinChannel() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/90 backdrop-blur-lg flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="glass-ultra rounded-3xl p-12 max-w-lg w-full text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10"></div>
+                    <div class="relative z-10">
+                        <div class="w-28 h-28 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mb-8">
+                            <i class="fab fa-telegram-plane text-white text-4xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-6 text-gradient">عضویت در کانال پیشرفته</h3>
+                        <p class="text-gray-400 mb-10 text-lg leading-relaxed">
+                            آیا آماده تجربه آینده دیجیتال هستید؟ به بزرگترین جامعه فناوری ایران بپیوندید!
+                        </p>
+                        <div class="flex gap-6">
+                            <button onclick="window.open('https://t.me/YourAdvancedChannel', '_blank'); document.body.removeChild(this.closest('.fixed'))" 
+                                    class="flex-1 btn-gradient px-8 py-5 rounded-2xl font-bold text-lg">
+                                <i class="fab fa-telegram-plane ml-2"></i>
+                                بله، عضو می‌شوم
+                            </button>
+                            <button onclick="document.body.removeChild(this.closest('.fixed'))" 
+                                    class="flex-1 btn-outline px-8 py-5 rounded-2xl font-semibold">
+                                بعداً
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Add entrance animation
+            setTimeout(() => {
+                modal.querySelector('.glass-ultra').style.transform = 'scale(1)';
+                modal.querySelector('.glass-ultra').style.opacity = '1';
+            }, 100);
+        }
+
+        // Smooth Scroll
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Enhanced Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current).toLocaleString('fa-IR');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString('fa-IR');
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Advanced Scroll Reveal
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.reveal').forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initScrollReveal();
+            
+            // Counter animation trigger
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        counterObserver.disconnect();
+                    }
+                });
+            });
+            
+            const statsSection = document.querySelector('.counter');
+            if (statsSection) {
+                counterObserver.observe(statsSection);
+            }
+            
+            // Smooth page entrance
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 1s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Performance optimization
+        let ticking = false;
+        function updateOnScroll() {
+            // Scroll-based animations
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    // Add scroll-based effects here
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', updateOnScroll);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96c1b26a6244ded5',t:'MTc1NDY4NDI0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اپلیکیشن شما | یک تجربه بی‌نظیر</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* تعریف متغیرهای رنگی برای سفارشی‌سازی آسان */
+        :root {
+            --primary-color: #4f46e5; /* indigo-600 */
+            --secondary-color: #7c3aed; /* purple-600 */
+            --bg-light: #f8fafc; /* slate-50 */
+            --bg-dark: #0f172a; /* slate-900 */
+            --text-light: #f1f5f9; /* slate-100 */
+            --text-dark: #1e293b; /* slate-800 */
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        /* --- افکت شیشه‌ای برای هدر --- */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* --- پس‌زمینه متحرک Aurora --- */
+        .aurora-bg {
+            position: relative;
+            background-color: #eef2ff; /* indigo-50 */
+            overflow: hidden;
+        }
+        .aurora-bg::before, .aurora-bg::after {
+            content: '';
+            position: absolute;
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .aurora-bg::before {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(129, 140, 248, 0.3); /* indigo-300 */
+            top: -100px;
+            left: -150px;
+            animation: aurora-move1 15s infinite alternate;
+        }
+        .aurora-bg::after {
+            width: 350px;
+            height: 350px;
+            background-color: rgba(192, 132, 252, 0.3); /* purple-300 */
+            bottom: -120px;
+            right: -100px;
+            animation: aurora-move2 18s infinite alternate;
+        }
+        @keyframes aurora-move1 {
+            from { transform: translate(-20px, 30px) scale(1); }
+            to { transform: translate(40px, -50px) scale(1.2); }
+        }
+        @keyframes aurora-move2 {
+            from { transform: translate(20px, -30px) scale(1); }
+            to { transform: translate(-40px, 50px) scale(1.2); }
+        }
+        
+        /* --- انیمیشن شناور برای موبایل --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .floating-phone {
+            animation: float 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+        .floating-phone img {
+             transform: rotateY(-15deg) rotateX(10deg);
+        }
+
+        /* --- استایل‌های عمومی --- */
+        .slider-item, .testimonial-item { display: none; transition: opacity 0.7s ease-in-out; }
+        .slider-item.active, .testimonial-item.active { display: block; }
+        .slider-dot { transition: all 0.3s ease; }
+
+        .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-slate-900">اپلیکیشن شما</h1>
+            <nav class="hidden md:flex items-center gap-2">
+                <a href="#features" class="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-md transition-colors">ویژگی‌ها</a>
+                <a href="#testimonials" class="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-md transition-colors">نظرات</a>
+                <a href="#screenshots" class="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-md transition-colors">گالری</a>
+            </nav>
+            <a href="#download" class="bg-indigo-600 text-white px-5 py-2.5 rounded-full hover:bg-indigo-700 transition-all duration-300 shadow-lg hover:shadow-indigo-300 transform hover:scale-105">دانلود کنید</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="aurora-bg">
+            <div class="container relative z-10 mx-auto px-6 pt-24 pb-32 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-4">اپلیکیشنی که زندگی شما را متحول می‌کند</h2>
+                    <p class="text-lg md:text-xl text-slate-600 mb-10">سادگی، قدرت و زیبایی را در یکجا تجربه کنید. بهره‌وری خود را به اوج برسانید.</p>
+                    <div class="flex justify-center items-center gap-4">
+                        <a href="#" class="flex items-center bg-slate-900 text-white pl-6 pr-5 py-3 rounded-xl hover:bg-slate-800 transition-all transform hover:scale-105 shadow-xl">
+                            <img src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg" class="w-8 h-8 ml-3" alt="Google Play">
+                            <div><span class="text-xs">دریافت از</span><p class="font-semibold text-base">گوگل پلی</p></div>
+                        </a>
+                        <a href="#" class="flex items-center bg-slate-900 text-white pl-6 pr-5 py-3 rounded-xl hover:bg-slate-800 transition-all transform hover:scale-105 shadow-xl">
+                            <img src="https://www.svgrepo.com/show/303128/apple-app-store-logo.svg" class="w-8 h-8 ml-3" alt="App Store">
+                            <div><span class="text-xs">دانلود از</span><p class="font-semibold text-base">اپ استور</p></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-24 flex justify-center floating-phone">
+                    <img src="https://placehold.co/320x640/ffffff/333333?text=App+UI" alt="تصویر اپلیکیشن" class="w-72 rounded-[2.5rem] shadow-2xl shadow-slate-400/50">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="bg-white py-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900">هر آنچه نیاز دارید، در یک اپلیکیشن</h3>
+                    <p class="text-slate-600 mt-3">ما به جزئیات فکر کرده‌ایم تا شما بهترین تجربه را داشته باشید.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 bg-slate-100/50 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:bg-white hover:-translate-y-2 border border-transparent hover:border-indigo-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-2xl bg-indigo-100 text-indigo-600 mx-auto mb-6"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                        <h4 class="text-xl font-semibold mb-2 text-center">سرعت بی‌نظیر</h4>
+                        <p class="text-slate-600 text-center">تجربه‌ای روان و بدون تاخیر در اجرای دستورات و بارگذاری اطلاعات.</p>
+                    </div>
+                    <div class="p-8 bg-slate-100/50 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:bg-white hover:-translate-y-2 border border-transparent hover:border-indigo-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-2xl bg-green-100 text-green-600 mx-auto mb-6"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                        <h4 class="text-xl font-semibold mb-2 text-center">امنیت چندلایه</h4>
+                        <p class="text-slate-600 text-center">اطلاعات شما با بالاترین استانداردهای امنیتی محافظت می‌شود.</p>
+                    </div>
+                    <div class="p-8 bg-slate-100/50 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:bg-white hover:-translate-y-2 border border-transparent hover:border-indigo-200">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-2xl bg-purple-100 text-purple-600 mx-auto mb-6"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg></div>
+                        <h4 class="text-xl font-semibold mb-2 text-center">طراحی هوشمند</h4>
+                        <p class="text-slate-600 text-center">رابط کاربری ساده و جذاب که کار با آن لذت‌بخش و آسان است.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="bg-slate-100 py-24 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900">کاربران ما چه می‌گویند؟</h3>
+                </div>
+                <div class="relative max-w-3xl mx-auto">
+                    <div id="testimonial-slider" class="relative h-48 flex items-center">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-item active w-full text-center">
+                            <p class="text-xl italic text-slate-700">"این بهترین اپلیکیشنیه که تا حالا استفاده کردم! زندگیم رو منظم‌تر کرده."</p>
+                            <p class="mt-4 font-semibold text-slate-900">- سارا رضایی</p>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-item w-full text-center">
+                            <p class="text-xl italic text-slate-700">"پشتیبانی عالی و رابط کاربری فوق‌العاده. به همه پیشنهاد می‌کنم."</p>
+                            <p class="mt-4 font-semibold text-slate-900">- علی محمدی</p>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-item w-full text-center">
+                            <p class="text-xl italic text-slate-700">"ساده، سریع و کاربردی. دقیقاً همون چیزی که دنبالش بودم."</p>
+                            <p class="mt-4 font-semibold text-slate-900">- مریم احمدی</p>
+                        </div>
+                    </div>
+                     <!-- Controls -->
+                    <button id="testimonial-prev" class="absolute top-1/2 -translate-y-1/2 -left-4 bg-white/80 p-2 rounded-full shadow-md hover:bg-white transition-all z-10">
+                        <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="testimonial-next" class="absolute top-1/2 -translate-y-1/2 -right-4 bg-white/80 p-2 rounded-full shadow-md hover:bg-white transition-all z-10">
+                        <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Slider Section -->
+        <section id="screenshots" class="py-24 bg-white fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-900">گالری تصاویر اپلیکیشن</h3>
+                    <p class="text-slate-600 mt-3">با محیط کاربری اپلیکیشن ما بیشتر آشنا شوید.</p>
+                </div>
+                <div class="relative max-w-5xl mx-auto">
+                    <div id="slider" class="relative h-96 md:h-[36rem] w-full flex items-center justify-center overflow-hidden rounded-2xl bg-slate-100 shadow-inner">
+                        <div class="slider-item active"><img src="https://placehold.co/900x600/dbeafe/3b82f6?text=Screenshot+1" alt="اسکرین شات 1" class="mx-auto max-h-full object-contain rounded-lg"></div>
+                        <div class="slider-item"><img src="https://placehold.co/900x600/d1fae5/10b981?text=Screenshot+2" alt="اسکرین شات 2" class="mx-auto max-h-full object-contain rounded-lg"></div>
+                        <div class="slider-item"><img src="https://placehold.co/900x600/fef3c7/f59e0b?text=Screenshot+3" alt="اسکرین شات 3" class="mx-auto max-h-full object-contain rounded-lg"></div>
+                    </div>
+                    <button id="prevBtn" class="absolute top-1/2 -translate-y-1/2 -left-5 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-all z-10"><svg class="w-7 h-7 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+                    <button id="nextBtn" class="absolute top-1/2 -translate-y-1/2 -right-5 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white transition-all z-10"><svg class="w-7 h-7 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                    <div id="slider-dots" class="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="download" class="bg-gradient-to-r from-purple-600 to-indigo-700 fade-in-section">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-white">برای یک تغییر بزرگ آماده‌اید؟</h3>
+                <p class="text-indigo-100 mt-4 mb-8 text-lg max-w-2xl mx-auto">به هزاران کاربر راضی ما بپیوندید و همین امروز اپلیکیشن را رایگان دانلود کنید.</p>
+                <a href="#" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-100 transition-all transform hover:scale-105 shadow-2xl">همین حالا دانلود کنید</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 1403 | تمامی حقوق برای «نام شرکت شما» محفوظ است.</p>
+            <div class="mt-4"><a href="#" class="text-slate-400 hover:text-white px-2 transition-colors">حریم خصوصی</a><span class="text-slate-500">|</span><a href="#" class="text-slate-400 hover:text-white px-2 transition-colors">تماس با ما</a></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- تابع عمومی برای ساخت اسلایدر ---
+            function createSlider(sliderId, itemsClass, nextBtnId, prevBtnId, dotsContainerId) {
+                const slider = document.getElementById(sliderId);
+                if (!slider) return;
+                
+                const items = slider.querySelectorAll(itemsClass);
+                const nextBtn = document.getElementById(nextBtnId);
+                const prevBtn = document.getElementById(prevBtnId);
+                const dotsContainer = dotsContainerId ? document.getElementById(dotsContainerId) : null;
+                let currentIndex = 0;
+
+                function showItem(index) {
+                    currentIndex = (index + items.length) % items.length;
+                    items.forEach((item, i) => {
+                        item.classList.toggle('active', i === currentIndex);
+                        item.style.opacity = i === currentIndex ? '1' : '0';
+                    });
+                    if (dotsContainer) updateDots();
+                }
+
+                function updateDots() {
+                    dotsContainer.innerHTML = '';
+                    items.forEach((_, i) => {
+                        const dot = document.createElement('button');
+                        dot.classList.add('slider-dot', 'w-3', 'h-3', 'rounded-full');
+                        dot.classList.toggle('bg-indigo-600', i === currentIndex);
+                        dot.classList.toggle('bg-slate-300', i !== currentIndex);
+                        dot.classList.toggle('w-5', i === currentIndex);
+                        dot.addEventListener('click', () => showItem(i));
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+
+                nextBtn.addEventListener('click', () => showItem(currentIndex + 1));
+                prevBtn.addEventListener('click', () => showItem(currentIndex - 1));
+                
+                showItem(0);
+                return {
+                    startAutoplay: (interval) => setInterval(() => showItem(currentIndex + 1), interval)
+                };
+            }
+
+            // --- راه‌اندازی اسلایدرها ---
+            const screenshotSlider = createSlider('slider', '.slider-item', 'nextBtn', 'prevBtn', 'slider-dots');
+            if (screenshotSlider) screenshotSlider.startAutoplay(5000);
+            
+            const testimonialSlider = createSlider('testimonial-slider', '.testimonial-item', 'testimonial-next', 'testimonial-prev', null);
+            if (testimonialSlider) testimonialSlider.startAutoplay(6000);
+
+
+            // --- اسکریپت انیمیشن با اسکرول ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // برای اجرای فقط یک بار
+                    }
+                });
+            }, { threshold: 0.15 });
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+
+</body>
+</html>

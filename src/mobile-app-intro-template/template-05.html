@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اپلیکیشن نسل آینده - تجربه فراتر از تصور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        .ultra-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 15%, #f093fb 30%, #f5576c 45%, #4facfe 60%, #00f2fe 75%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: ultraGradientShift 12s ease infinite;
+        }
+        
+        @keyframes ultraGradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .neo-morphism {
+            background: linear-gradient(145deg, #f0f0f0, #cacaca);
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+        }
+        
+        .feature-card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1), rgba(240, 147, 251, 0.1));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
+        }
+        
+        .feature-card-3d:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-card-3d:hover {
+            transform: translateY(-20px) rotateX(10deg) rotateY(5deg) scale(1.05);
+            box-shadow: 0 40px 80px rgba(102, 126, 234, 0.4);
+        }
+        
+        .holographic-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            margin: 0 auto 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        
+        .holographic-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .feature-card-3d:hover .holographic-icon::before {
+            animation: holographicSweep 1.5s ease-in-out;
+            opacity: 1;
+        }
+        
+        @keyframes holographicSweep {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .phone-3d {
+            width: 320px;
+            height: 640px;
+            background: linear-gradient(145deg, #2d3748, #1a202c);
+            border-radius: 40px;
+            padding: 30px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 
+                0 50px 100px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        
+        .phone-3d:hover {
+            transform: translateY(-15px) rotateX(15deg) rotateY(-10deg) scale(1.05);
+            box-shadow: 
+                0 70px 140px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        
+        .screen-3d {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
+        }
+        
+        .liquid-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            transform-style: preserve-3d;
+        }
+        
+        .liquid-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .liquid-button:hover::before {
+            left: 100%;
+        }
+        
+        .liquid-button:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        
+        .floating-3d {
+            animation: floating3D 4s ease-in-out infinite;
+        }
+        
+        @keyframes floating3D {
+            0%, 100% { 
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) rotateX(5deg) rotateY(2deg); 
+            }
+            50% { 
+                transform: translateY(-25px) rotateX(0deg) rotateY(-2deg); 
+            }
+            75% { 
+                transform: translateY(-15px) rotateX(-5deg) rotateY(2deg); 
+            }
+        }
+        
+        .text-holographic {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: holographicText 3s ease-in-out infinite;
+        }
+        
+        @keyframes holographicText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .particle-system {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.8), transparent);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .stats-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s ease;
+        }
+        
+        .stats-3d:hover {
+            transform: translateZ(20px) rotateX(10deg);
+        }
+        
+        .testimonial-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+        }
+        
+        .testimonial-3d:hover {
+            transform: translateY(-10px) rotateX(5deg) scale(1.02);
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .magnetic-effect {
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .section-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent);
+            animation: orbFloat 20s linear infinite;
+        }
+        
+        @keyframes orbFloat {
+            0% { transform: translate(0, 100vh) scale(0); }
+            10% { transform: translate(10vw, 80vh) scale(1); }
+            20% { transform: translate(-5vw, 60vh) scale(1.2); }
+            30% { transform: translate(15vw, 40vh) scale(0.8); }
+            40% { transform: translate(-10vw, 20vh) scale(1.1); }
+            50% { transform: translate(20vw, 0vh) scale(0.9); }
+            60% { transform: translate(-15vw, -20vh) scale(1.3); }
+            70% { transform: translate(25vw, -40vh) scale(0.7); }
+            80% { transform: translate(-20vw, -60vh) scale(1); }
+            90% { transform: translate(30vw, -80vh) scale(0.5); }
+            100% { transform: translate(-25vw, -100vh) scale(0); }
+        }
+        
+        .premium-shadow {
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.3),
+                0 0 40px rgba(118, 75, 162, 0.2),
+                0 0 60px rgba(240, 147, 251, 0.1);
+        }
+        
+        .ultra-blur {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator"></div>
+    
+    <!-- Interactive Background -->
+    <div class="interactive-bg">
+        <div class="bg-orb" style="width: 200px; height: 200px; left: 10%; animation-delay: 0s;"></div>
+        <div class="bg-orb" style="width: 150px; height: 150px; left: 60%; animation-delay: 5s;"></div>
+        <div class="bg-orb" style="width: 300px; height: 300px; left: 80%; animation-delay: 10s;"></div>
+    </div>
+
+    <!-- Advanced Header -->
+    <header class="ultra-gradient glass-morphism ultra-blur fixed w-full top-0 z-50 premium-shadow">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="w-14 h-14 holographic-icon floating-3d">
+                        <span class="text-2xl">🌟</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-black text-holographic">نکست جن</h1>
+                        <p class="text-xs opacity-80">اپلیکیشن نسل آینده</p>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex space-x-8 space-x-reverse">
+                    <a href="#features" class="magnetic-effect hover:text-blue-300 transition-all duration-300 font-semibold">ویژگی‌ها</a>
+                    <a href="#experience" class="magnetic-effect hover:text-purple-300 transition-all duration-300 font-semibold">تجربه</a>
+                    <a href="#innovation" class="magnetic-effect hover:text-pink-300 transition-all duration-300 font-semibold">نوآوری</a>
+                    <a href="#download" class="magnetic-effect hover:text-cyan-300 transition-all duration-300 font-semibold">دانلود</a>
+                </nav>
+                <button class="liquid-button glass-morphism px-6 py-3 rounded-2xl font-bold">
+                    شروع کنید
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ultra Hero Section -->
+    <section class="ultra-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="particle-system">
+            <!-- Particles will be generated by JavaScript -->
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="section-reveal">
+                <h2 class="text-7xl md:text-9xl font-black mb-8 text-holographic leading-tight">
+                    آینده
+                    <br>
+                    <span class="text-white">در دستان شما</span>
+                </h2>
+                <p class="text-2xl md:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
+                    تجربه‌ای فراتر از تصور با هوش مصنوعی کوانتومی، واقعیت مجازی و طراحی هولوگرافیک
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row justify-center items-center space-y-8 lg:space-y-0 lg:space-x-8 lg:space-x-reverse mb-16 section-reveal">
+                <button class="liquid-button glass-morphism px-16 py-8 rounded-3xl flex items-center space-x-6 space-x-reverse font-black text-2xl premium-shadow">
+                    <span class="text-5xl">🍎</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="text-2xl">App Store</div>
+                    </div>
+                </button>
+                <button class="liquid-button glass-morphism px-16 py-8 rounded-3xl flex items-center space-x-6 space-x-reverse font-black text-2xl premium-shadow">
+                    <span class="text-5xl">🤖</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="text-2xl">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="phone-3d mx-auto floating-3d section-reveal">
+                <div class="screen-3d ultra-gradient">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-8xl mb-8 floating-3d">🌌</div>
+                            <div class="text-3xl font-black mb-4 text-holographic">رابط کوانتومی</div>
+                            <div class="text-xl opacity-90">تعامل با آینده</div>
+                            <div class="mt-8 flex justify-center space-x-3 space-x-reverse">
+                                <div class="w-4 h-4 bg-white rounded-full floating-3d"></div>
+                                <div class="w-4 h-4 bg-blue-300 rounded-full floating-3d" style="animation-delay: 0.5s;"></div>
+                                <div class="w-4 h-4 bg-purple-300 rounded-full floating-3d" style="animation-delay: 1s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultra Stats Section -->
+    <section class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="stats-3d glass-morphism p-8 rounded-3xl text-center premium-shadow section-reveal">
+                    <div class="text-6xl font-black text-holographic stats-counter" data-target="10000000">0</div>
+                    <p class="text-xl font-bold mt-4 opacity-90">کاربر جهانی</p>
+                    <p class="text-sm opacity-70 mt-2">در ۱۹۵ کشور</p>
+                </div>
+                <div class="stats-3d glass-morphism p-8 rounded-3xl text-center premium-shadow section-reveal">
+                    <div class="text-6xl font-black text-holographic stats-counter" data-target="500000">0</div>
+                    <p class="text-xl font-bold mt-4 opacity-90">دانلود روزانه</p>
+                    <p class="text-sm opacity-70 mt-2">رشد ۳۰۰٪</p>
+                </div>
+                <div class="stats-3d glass-morphism p-8 rounded-3xl text-center premium-shadow section-reveal">
+                    <div class="text-6xl font-black text-holographic stats-counter" data-target="99">0</div>
+                    <p class="text-xl font-bold mt-4 opacity-90">درصد رضایت</p>
+                    <p class="text-sm opacity-70 mt-2">بازخورد کاربران</p>
+                </div>
+                <div class="stats-3d glass-morphism p-8 rounded-3xl text-center premium-shadow section-reveal">
+                    <div class="text-6xl font-black text-holographic stats-counter" data-target="24">0</div>
+                    <p class="text-xl font-bold mt-4 opacity-90">ساعت پشتیبانی</p>
+                    <p class="text-sm opacity-70 mt-2">هوش مصنوعی</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revolutionary Features -->
+    <section id="features" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h3 class="text-6xl md:text-7xl font-black mb-8 text-holographic">تکنولوژی کوانتومی</h3>
+                <p class="text-3xl opacity-90 max-w-4xl mx-auto">ویژگی‌هایی که مرزهای ممکن را جابجا می‌کند</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="feature-card-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="holographic-icon">🧠</div>
+                    <h4 class="text-3xl font-black mb-6 text-holographic">هوش مصنوعی کوانتومی</h4>
+                    <p class="text-xl leading-relaxed opacity-90">پردازش کوانتومی با قدرت ۱۰۰۰ برابر سریع‌تر از سیستم‌های معمولی</p>
+                    <div class="mt-8 space-y-3">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                            <span class="opacity-80">یادگیری عمیق</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+                            <span class="opacity-80">پیش‌بینی آینده</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="holographic-icon">🌐</div>
+                    <h4 class="text-3xl font-black mb-6 text-holographic">واقعیت مجازی ۸K</h4>
+                    <p class="text-xl leading-relaxed opacity-90">غوطه‌وری کامل در دنیای مجازی با کیفیت فوق‌العاده</p>
+                    <div class="mt-8 space-y-3">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                            <span class="opacity-80">تجربه ۳۶۰ درجه</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-3 h-3 bg-cyan-400 rounded-full"></div>
+                            <span class="opacity-80">تعامل حسی</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="holographic-icon">🔮</div>
+                    <h4 class="text-3xl font-black mb-6 text-holographic">رابط هولوگرافیک</h4>
+                    <p class="text-xl leading-relaxed opacity-90">کنترل اپلیکیشن با حرکات دست در فضای سه‌بعدی</p>
+                    <div class="mt-8 space-y-3">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-3 h-3 bg-pink-400 rounded-full"></div>
+                            <span class="opacity-80">کنترل ژستی</span>
+                        </div>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                            <span class="opacity-80">نمایش سه‌بعدی</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="holographic-icon">⚡</div>
+                    <h4 class="text-3xl font-black mb-6 text-holographic">پردازش نوری</h4>
+                    <p class="text-xl leading-relaxed opacity-90">سرعت نور در پردازش داده‌ها با تکنولوژی فوتونیک</p>
+                </div>
+                
+                <div class="feature-card-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="holographic-icon">🛡️</div>
+                    <h4 class="text-3xl font-black mb-6 text-holographic">امنیت کوانتومی</h4>
+                    <p class="text-xl leading-relaxed opacity-90">رمزگذاری غیرقابل شکست با اصول مکانیک کوانتوم</p>
+                </div>
+                
+                <div class="feature-card-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="holographic-icon">🌌</div>
+                    <h4 class="text-3xl font-black mb-6 text-holographic">اتصال کیهانی</h4>
+                    <p class="text-xl leading-relaxed opacity-90">ارتباط بی‌درنگ با کاربران در سراسر کهکشان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Experience Showcase -->
+    <section id="experience" class="py-32 ultra-gradient relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h3 class="text-6xl md:text-7xl font-black mb-8">تجربه سه‌بعدی</h3>
+                <p class="text-3xl opacity-90">نگاهی به آینده تعامل انسان و ماشین</p>
+            </div>
+            
+            <div class="flex justify-center items-center space-x-16 space-x-reverse">
+                <div class="phone-3d floating-3d section-reveal">
+                    <div class="screen-3d bg-gradient-to-br from-emerald-400 via-cyan-500 to-blue-600">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-7xl mb-8 floating-3d">🎯</div>
+                                <div class="text-3xl font-black mb-4">داشبورد هوشمند</div>
+                                <div class="text-xl opacity-90">تحلیل پیشرفته داده</div>
+                                <div class="mt-8 grid grid-cols-2 gap-3 px-6">
+                                    <div class="glass-morphism rounded-2xl p-4 text-center">
+                                        <div class="text-2xl font-bold">۸۵٪</div>
+                                        <div class="text-sm opacity-80">کارایی</div>
+                                    </div>
+                                    <div class="glass-morphism rounded-2xl p-4 text-center">
+                                        <div class="text-2xl font-bold">۹۲٪</div>
+                                        <div class="text-sm opacity-80">دقت</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-3d floating-3d section-reveal" style="animation-delay: 1s;">
+                    <div class="screen-3d bg-gradient-to-br from-pink-400 via-red-500 to-orange-500">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-7xl mb-8 floating-3d">🚀</div>
+                                <div class="text-3xl font-black mb-4">کنترل مأموریت</div>
+                                <div class="text-xl opacity-90">مدیریت پروژه‌های پیچیده</div>
+                                <div class="mt-8 space-y-3 px-6">
+                                    <div class="glass-morphism rounded-xl p-3 flex justify-between items-center">
+                                        <span class="text-sm">مأموریت آلفا</span>
+                                        <div class="w-16 h-2 bg-white bg-opacity-30 rounded-full">
+                                            <div class="w-12 h-2 bg-white rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <div class="glass-morphism rounded-xl p-3 flex justify-between items-center">
+                                        <span class="text-sm">پروژه بتا</span>
+                                        <div class="w-16 h-2 bg-white bg-opacity-30 rounded-full">
+                                            <div class="w-8 h-2 bg-white rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-3d floating-3d section-reveal" style="animation-delay: 2s;">
+                    <div class="screen-3d bg-gradient-to-br from-violet-400 via-purple-500 to-indigo-600">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-7xl mb-8 floating-3d">⚙️</div>
+                                <div class="text-3xl font-black mb-4">تنظیمات کوانتومی</div>
+                                <div class="text-xl opacity-90">کنترل کامل سیستم</div>
+                                <div class="mt-8 space-y-4 px-6">
+                                    <div class="glass-morphism rounded-xl p-4">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-sm">قدرت پردازش</span>
+                                            <span class="text-sm">۹۸٪</span>
+                                        </div>
+                                        <div class="w-full h-2 bg-white bg-opacity-30 rounded-full">
+                                            <div class="w-full h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Testimonials -->
+    <section class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 section-reveal">
+                <h3 class="text-6xl md:text-7xl font-black mb-8 text-holographic">تجربه کاربران</h3>
+                <p class="text-3xl opacity-90">صدای کسانی که آینده را لمس کرده‌اند</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="testimonial-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="text-6xl mb-8">⭐⭐⭐⭐⭐</div>
+                    <p class="text-2xl leading-relaxed mb-8 italic opacity-90">"این اپلیکیشن واقعاً از آینده آمده. تجربه‌ای که هرگز فکرش را نمی‌کردم ممکن باشد!"</p>
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <div class="w-16 h-16 holographic-icon text-2xl">👨‍💼</div>
+                        <div>
+                            <div class="text-xl font-bold">دکتر علی محمدی</div>
+                            <div class="opacity-70">مدیرعامل تکنولوژی</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="text-6xl mb-8">⭐⭐⭐⭐⭐</div>
+                    <p class="text-2xl leading-relaxed mb-8 italic opacity-90">"کیفیت و نوآوری در سطحی که تصورش را نداشتم. واقعاً انقلابی در دنیای موبایل!"</p>
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <div class="w-16 h-16 holographic-icon text-2xl">👩‍🎨</div>
+                        <div>
+                            <div class="text-xl font-bold">سارا کریمی</div>
+                            <div class="opacity-70">طراح UX/UI</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-3d glass-morphism p-12 rounded-4xl premium-shadow section-reveal">
+                    <div class="text-6xl mb-8">⭐⭐⭐⭐⭐</div>
+                    <p class="text-2xl leading-relaxed mb-8 italic opacity-90">"سرعت، زیبایی و قدرت در یک بسته. این همان چیزی است که دنیا منتظرش بود."</p>
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <div class="w-16 h-16 holographic-icon text-2xl">👨‍💻</div>
+                        <div>
+                            <div class="text-xl font-bold">امیر حسینی</div>
+                            <div class="opacity-70">توسعه‌دهنده نرم‌افزار</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultimate Download Section -->
+    <section id="download" class="py-32 ultra-gradient relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center">
+            <div class="section-reveal">
+                <h3 class="text-6xl md:text-8xl font-black mb-12">آماده ورود به آینده؟</h3>
+                <p class="text-3xl mb-16 max-w-4xl mx-auto opacity-90 leading-relaxed">
+                    همین الان تجربه‌ای فراتر از تصور را آغاز کنید و جزء اولین کاربران نسل آینده باشید
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row justify-center items-center space-y-8 lg:space-y-0 lg:space-x-12 lg:space-x-reverse mb-16 section-reveal">
+                <button class="liquid-button glass-morphism px-20 py-10 rounded-4xl flex items-center space-x-8 space-x-reverse font-black text-3xl premium-shadow">
+                    <span class="text-6xl">🍎</span>
+                    <div class="text-right">
+                        <div class="text-lg opacity-80">دانلود از</div>
+                        <div class="text-3xl">App Store</div>
+                        <div class="text-sm opacity-60">iOS 17+ پشتیبانی</div>
+                    </div>
+                </button>
+                <button class="liquid-button glass-morphism px-20 py-10 rounded-4xl flex items-center space-x-8 space-x-reverse font-black text-3xl premium-shadow">
+                    <span class="text-6xl">🤖</span>
+                    <div class="text-right">
+                        <div class="text-lg opacity-80">دانلود از</div>
+                        <div class="text-3xl">Google Play</div>
+                        <div class="text-sm opacity-60">Android 14+ پشتیبانی</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="glass-morphism rounded-4xl p-12 max-w-4xl mx-auto section-reveal">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl mb-4">🆓</div>
+                        <div class="text-xl font-bold mb-2">رایگان برای همیشه</div>
+                        <div class="opacity-70">بدون هزینه پنهان</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl mb-4">🚫</div>
+                        <div class="text-xl font-bold mb-2">بدون تبلیغات</div>
+                        <div class="opacity-70">تجربه خالص</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl mb-4">🛡️</div>
+                        <div class="text-xl font-bold mb-2">امنیت کامل</div>
+                        <div class="opacity-70">حریم خصوصی محفوظ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultra Premium Footer -->
+    <footer class="py-20 glass-morphism ultra-blur">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-5 gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-4 space-x-reverse mb-6">
+                        <div class="w-16 h-16 holographic-icon floating-3d">
+                            <span class="text-3xl">🌟</span>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-black text-holographic">نکست جن</h4>
+                            <p class="opacity-70">اپلیکیشن نسل آینده</p>
+                        </div>
+                    </div>
+                    <p class="text-xl opacity-90 leading-relaxed mb-8">
+                        ما آینده تکنولوژی را امروز به دستان شما می‌آوریم. تجربه‌ای که هرگز فراموش نخواهید کرد.
+                    </p>
+                    <div class="flex space-x-6 space-x-reverse">
+                        <a href="#" class="w-12 h-12 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all">📧</a>
+                        <a href="#" class="w-12 h-12 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all">📱</a>
+                        <a href="#" class="w-12 h-12 glass-morphism rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all">🌐</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="text-xl font-bold mb-6 text-holographic">محصولات</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-blue-300 transition-all">اپلیکیشن موبایل</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-purple-300 transition-all">نسخه دسکتاپ</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-pink-300 transition-all">API توسعه‌دهندگان</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-cyan-300 transition-all">پلاگین‌ها</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-xl font-bold mb-6 text-holographic">پشتیبانی</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-blue-300 transition-all">مرکز راهنمایی</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-purple-300 transition-all">تماس با ما</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-pink-300 transition-all">گزارش مشکل</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-cyan-300 transition-all">انجمن کاربران</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-xl font-bold mb-6 text-holographic">شرکت</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-blue-300 transition-all">درباره ما</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-purple-300 transition-all">تیم ما</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-pink-300 transition-all">فرصت‌های شغلی</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 hover:text-cyan-300 transition-all">اخبار و مقالات</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-20 pt-8 text-center">
+                <p class="text-lg opacity-80 mb-4">© ۲۰۲۴ نکست جن. تمام حقوق محفوظ است.</p>
+                <p class="opacity-60">ساخته شده با ❤️ برای آینده بهتر</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Advanced Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const maxHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrolled / maxHeight) * 100;
+            document.querySelector('.scroll-indicator').style.transform = `scaleX(${progress / 100})`;
+            
+            // Enhanced Parallax
+            const parallaxElements = document.querySelectorAll('.floating-3d');
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.3 + (index * 0.1);
+                element.style.transform += ` translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Advanced Intersection Observer
+        const advancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, index * 100);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.section-reveal').forEach(el => {
+            advancedObserver.observe(el);
+        });
+
+        // Ultra Stats Counter
+        function ultraAnimateCounter(element, target) {
+            let current = 0;
+            const increment = target / 200;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString('fa-IR');
+                
+                // Add glow effect during counting
+                element.style.textShadow = `0 0 20px rgba(102, 126, 234, ${Math.random() * 0.5 + 0.5})`;
+            }, 15);
+        }
+
+        const ultraStatsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.target);
+                    ultraAnimateCounter(counter, target);
+                    ultraStatsObserver.unobserve(counter);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stats-counter').forEach(counter => {
+            ultraStatsObserver.observe(counter);
+        });
+
+        // Magnetic Effect for Interactive Elements
+        document.querySelectorAll('.magnetic-effect').forEach(element => {
+            element.addEventListener('mousemove', (e) => {
+                const rect = element.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Advanced Particle System
+        function createAdvancedParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            
+            const colors = ['rgba(102, 126, 234, 0.8)', 'rgba(118, 75, 162, 0.8)', 'rgba(240, 147, 251, 0.8)'];
+            particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+            
+            document.querySelector('.particle-system').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        // Create particles continuously
+        setInterval(createAdvancedParticle, 500);
+
+        // Ultra Download Button Effects
+        document.querySelectorAll('.liquid-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const isAppStore = this.textContent.includes('App Store');
+                const store = isAppStore ? 'App Store' : 'Google Play';
+                
+                // Create ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+                
+                // Enhanced feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    alert(`🚀 در حال هدایت به ${store} برای دانلود اپلیکیشن نسل آینده...\n\n✨ آماده تجربه‌ای فراتر از تصور باشید!`);
+                }, 150);
+            });
+        });
+
+        // Add ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Smooth Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Advanced 3D Card Effects
+        document.querySelectorAll('.feature-card-3d, .testimonial-3d, .stats-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Dynamic Background Orbs
+        function createBackgroundOrb() {
+            const orb = document.createElement('div');
+            orb.className = 'bg-orb';
+            orb.style.width = orb.style.height = (Math.random() * 200 + 100) + 'px';
+            orb.style.left = Math.random() * 100 + '%';
+            orb.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            orb.style.animationDelay = Math.random() * 5 + 's';
+            
+            document.querySelector('.interactive-bg').appendChild(orb);
+            
+            setTimeout(() => {
+                orb.remove();
+            }, 25000);
+        }
+
+        // Create background orbs periodically
+        setInterval(createBackgroundOrb, 8000);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create initial particles
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createAdvancedParticle, i * 200);
+            }
+            
+            // Create initial orbs
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createBackgroundOrb, i * 3000);
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf07c5f0235ebe',t:'MTc1NDY1NjI4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

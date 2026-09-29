@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اپلیکیشن موبایل - دانلود رایگان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .parallax {
+            transform: translateY(0);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .parallax-slow {
+            transform: translateY(0);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .feature-card:hover .app-icon {
+            transform: rotateY(180deg) scale(1.1);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+        
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(145deg, #2d3748, #1a202c);
+            border-radius: 35px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .phone-mockup:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .download-btn:hover::before {
+            left: 100%;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .screenshot-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 2rem;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-4 fixed w-full top-0 z-50 shadow-2xl backdrop-blur-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center floating">
+                    <span class="text-2xl">🚀</span>
+                </div>
+                <h1 class="text-2xl font-bold">اپلیکیشن فوق‌العاده</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="#features" class="hover:text-blue-200 transition-all duration-300 font-medium">ویژگی‌ها</a>
+                <a href="#screenshots" class="hover:text-blue-200 transition-all duration-300 font-medium">تصاویر</a>
+                <a href="#stats" class="hover:text-blue-200 transition-all duration-300 font-medium">آمار</a>
+                <a href="#download" class="hover:text-blue-200 transition-all duration-300 font-medium">دانلود</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white pt-28 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="parallax-slow absolute top-20 right-10 w-40 h-40 bg-white rounded-full floating"></div>
+            <div class="parallax absolute top-40 left-20 w-24 h-24 bg-white rounded-full floating" style="animation-delay: 1s;"></div>
+            <div class="parallax-slow absolute bottom-20 right-1/3 w-20 h-20 bg-white rounded-full floating" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="fade-in">
+                <h2 class="text-6xl md:text-7xl font-extrabold mb-8 parallax">
+                    <span class="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                        آینده در دستان شما
+                    </span>
+                </h2>
+                <p class="text-2xl mb-12 max-w-3xl mx-auto parallax-slow leading-relaxed">
+                    تجربه‌ای انقلابی در دنیای موبایل با هوش مصنوعی پیشرفته و طراحی بی‌نظیر
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-6 md:space-x-reverse mb-16 fade-in">
+                <button class="download-btn bg-black text-white px-12 py-6 rounded-2xl flex items-center space-x-4 space-x-reverse font-bold text-lg">
+                    <span class="text-3xl">🍎</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="text-xl">App Store</div>
+                    </div>
+                </button>
+                <button class="download-btn bg-green-600 text-white px-12 py-6 rounded-2xl flex items-center space-x-4 space-x-reverse font-bold text-lg">
+                    <span class="text-3xl">📱</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="text-xl">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="phone-mockup mx-auto parallax floating">
+                <div class="phone-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 text-white">
+                    <div class="text-center">
+                        <div class="text-7xl mb-6 floating">🌟</div>
+                        <div class="text-2xl font-bold mb-2">صفحه اصلی</div>
+                        <div class="text-lg opacity-90">رابط کاربری هوشمند</div>
+                        <div class="mt-6 flex justify-center space-x-2 space-x-reverse">
+                            <div class="w-3 h-3 bg-white rounded-full pulse"></div>
+                            <div class="w-3 h-3 bg-white rounded-full pulse" style="animation-delay: 0.5s;"></div>
+                            <div class="w-3 h-3 bg-white rounded-full pulse" style="animation-delay: 1s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="1000000">0</div>
+                    <p class="text-xl text-gray-600 font-semibold">کاربر فعال</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="50000">0</div>
+                    <p class="text-xl text-gray-600 font-semibold">دانلود روزانه</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="99">0</div>
+                    <p class="text-xl text-gray-600 font-semibold">درصد رضایت</p>
+                </div>
+                <div class="fade-in">
+                    <div class="stats-counter" data-target="24">0</div>
+                    <p class="text-xl text-gray-600 font-semibold">پشتیبانی ساعته</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-5xl font-extrabold text-gray-800 mb-6">ویژگی‌های انقلابی</h3>
+                <p class="text-2xl text-gray-600 max-w-3xl mx-auto">تکنولوژی‌های پیشرفته که تجربه شما را متحول می‌کند</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="feature-card bg-white p-10 rounded-3xl shadow-xl text-center fade-in">
+                    <div class="app-icon">🤖</div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">هوش مصنوعی</h4>
+                    <p class="text-gray-600 text-lg leading-relaxed">الگوریتم‌های پیشرفته یادگیری ماشین برای تجربه شخصی‌سازی شده</p>
+                </div>
+                
+                <div class="feature-card bg-white p-10 rounded-3xl shadow-xl text-center fade-in">
+                    <div class="app-icon">⚡</div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">سرعت نور</h4>
+                    <p class="text-gray-600 text-lg leading-relaxed">عملکرد فوق‌العاده سریع با بهینه‌سازی پیشرفته و کش هوشمند</p>
+                </div>
+                
+                <div class="feature-card bg-white p-10 rounded-3xl shadow-xl text-center fade-in">
+                    <div class="app-icon">🛡️</div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">امنیت نظامی</h4>
+                    <p class="text-gray-600 text-lg leading-relaxed">رمزگذاری پیشرفته و حفاظت چندلایه از اطلاعات حساس</p>
+                </div>
+                
+                <div class="feature-card bg-white p-10 rounded-3xl shadow-xl text-center fade-in">
+                    <div class="app-icon">🎨</div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">طراحی آینده‌نگر</h4>
+                    <p class="text-gray-600 text-lg leading-relaxed">رابط کاربری مدرن با انیمیشن‌های روان و تعامل طبیعی</p>
+                </div>
+                
+                <div class="feature-card bg-white p-10 rounded-3xl shadow-xl text-center fade-in">
+                    <div class="app-icon">🌐</div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">دسترسی همه‌جا</h4>
+                    <p class="text-gray-600 text-lg leading-relaxed">کار آفلاین کامل با همگام‌سازی هوشمند هنگام اتصال</p>
+                </div>
+                
+                <div class="feature-card bg-white p-10 rounded-3xl shadow-xl text-center fade-in">
+                    <div class="app-icon">💎</div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-6">تجربه پریمیوم</h4>
+                    <p class="text-gray-600 text-lg leading-relaxed">کیفیت بالا در تمام جزئیات با پشتیبانی اختصاصی VIP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="py-20 bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-5xl font-extrabold mb-6">نگاهی به داخل اپلیکیشن</h3>
+                <p class="text-2xl opacity-90 max-w-3xl mx-auto">صفحات زیبا و کاربردی که تجربه فوق‌العاده‌ای ارائه می‌دهند</p>
+            </div>
+            
+            <div class="flex justify-center items-center space-x-10 space-x-reverse overflow-x-auto pb-8">
+                <div class="phone-mockup flex-shrink-0 fade-in">
+                    <div class="phone-screen bg-gradient-to-br from-emerald-400 via-cyan-500 to-blue-600 text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-6 floating">📊</div>
+                            <div class="text-2xl font-bold mb-3">داشبورد هوشمند</div>
+                            <div class="text-lg opacity-90">تحلیل داده‌های پیشرفته</div>
+                            <div class="mt-8 space-y-2">
+                                <div class="bg-white bg-opacity-20 rounded-full h-2 mx-4">
+                                    <div class="bg-white rounded-full h-2 w-3/4"></div>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-full h-2 mx-4">
+                                    <div class="bg-white rounded-full h-2 w-1/2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-mockup flex-shrink-0 fade-in">
+                    <div class="phone-screen bg-gradient-to-br from-pink-400 via-red-500 to-orange-500 text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-6 floating" style="animation-delay: 1s;">🎯</div>
+                            <div class="text-2xl font-bold mb-3">هدف‌گذاری</div>
+                            <div class="text-lg opacity-90">برنامه‌ریزی هوشمند</div>
+                            <div class="mt-8 grid grid-cols-2 gap-2 px-4">
+                                <div class="bg-white bg-opacity-20 rounded-lg p-2 text-sm">هدف ۱</div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-2 text-sm">هدف ۲</div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-2 text-sm">هدف ۳</div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-2 text-sm">هدف ۴</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-mockup flex-shrink-0 fade-in">
+                    <div class="phone-screen bg-gradient-to-br from-violet-400 via-purple-500 to-indigo-600 text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-6 floating" style="animation-delay: 2s;">⚙️</div>
+                            <div class="text-2xl font-bold mb-3">تنظیمات پیشرفته</div>
+                            <div class="text-lg opacity-90">کنترل کامل</div>
+                            <div class="mt-8 space-y-3 px-4">
+                                <div class="flex justify-between items-center bg-white bg-opacity-20 rounded-lg p-3">
+                                    <span class="text-sm">حالت تیره</span>
+                                    <div class="w-8 h-4 bg-white rounded-full"></div>
+                                </div>
+                                <div class="flex justify-between items-center bg-white bg-opacity-20 rounded-lg p-3">
+                                    <span class="text-sm">اعلان‌ها</span>
+                                    <div class="w-8 h-4 bg-white bg-opacity-50 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-3 space-x-reverse mt-8">
+                <div class="nav-dot active"></div>
+                <div class="nav-dot"></div>
+                <div class="nav-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-5xl font-extrabold text-gray-800 mb-6">نظرات کاربران</h3>
+                <p class="text-2xl text-gray-600">آنچه کاربران درباره ما می‌گویند</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-3xl text-center fade-in">
+                    <div class="text-5xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-lg text-gray-700 mb-6 italic">"بهترین اپلیکیشنی که تا حالا استفاده کرده‌ام. واقعاً زندگی‌ام را تغییر داده!"</p>
+                    <div class="font-bold text-gray-800">علی احمدی</div>
+                    <div class="text-gray-500">کارآفرین</div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-3xl text-center fade-in">
+                    <div class="text-5xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-lg text-gray-700 mb-6 italic">"طراحی فوق‌العاده و عملکرد بی‌نقص. همه چیز دقیقاً همان‌طور که انتظار داشتم."</p>
+                    <div class="font-bold text-gray-800">مریم کریمی</div>
+                    <div class="text-gray-500">طراح گرافیک</div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-3xl text-center fade-in">
+                    <div class="text-5xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-lg text-gray-700 mb-6 italic">"پشتیبانی عالی و به‌روزرسانی‌های مداوم. واقعاً حرفه‌ای!"</p>
+                    <div class="font-bold text-gray-800">حسین رضایی</div>
+                    <div class="text-gray-500">مدیر فروش</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="fade-in">
+                <h3 class="text-5xl font-extrabold mb-8">آماده تجربه آینده؟</h3>
+                <p class="text-2xl mb-12 max-w-3xl mx-auto opacity-90">همین الان اپلیکیشن را دانلود کنید و وارد دنیای جدیدی از امکانات شوید</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8 md:space-x-reverse mb-12 fade-in">
+                <button class="download-btn bg-black text-white px-14 py-7 rounded-2xl flex items-center space-x-5 space-x-reverse font-bold text-xl">
+                    <span class="text-4xl">🍎</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="text-2xl">App Store</div>
+                    </div>
+                </button>
+                <button class="download-btn bg-green-600 text-white px-14 py-7 rounded-2xl flex items-center space-x-5 space-x-reverse font-bold text-xl">
+                    <span class="text-4xl">📱</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="text-2xl">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="text-lg opacity-90 fade-in">
+                <p class="mb-4">✅ رایگان برای همیشه | ✅ بدون تبلیغات مزاحم | ✅ پشتیبانی ۲۴/۷</p>
+                <p class="text-sm opacity-70">بیش از ۱ میلیون کاربر به ما اعتماد کرده‌اند</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                            <span class="text-xl">🚀</span>
+                        </div>
+                        <h4 class="text-xl font-bold">اپلیکیشن فوق‌العاده</h4>
+                    </div>
+                    <p class="text-gray-400">آینده تکنولوژی در دستان شما</p>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold mb-4">لینک‌های مفید</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">درباره ما</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ویژگی‌ها</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">قیمت‌گذاری</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold mb-4">پشتیبانی</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">مرکز راهنمایی</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">تماس با ما</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">گزارش باگ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="font-bold mb-4">قوانین</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">حریم خصوصی</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">شرایط استفاده</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">کوکی‌ها</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">© ۲۰۲۴ اپلیکیشن فوق‌العاده. تمام حقوق محفوظ است.</p>
+                <div class="flex justify-center space-x-6 space-x-reverse mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-2xl">📧</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-2xl">📱</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-2xl">🌐</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            const parallaxSlowElements = document.querySelectorAll('.parallax-slow');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            
+            parallaxSlowElements.forEach(element => {
+                const speed = 0.2;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stats counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString('fa-IR');
+            }, 20);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.target);
+                    animateCounter(counter, target);
+                    statsObserver.unobserve(counter);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stats-counter').forEach(counter => {
+            statsObserver.observe(counter);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced download button functionality
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const isAppStore = this.textContent.includes('App Store');
+                const store = isAppStore ? 'App Store' : 'Google Play';
+                
+                // Add click effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                alert(`🚀 در حال هدایت به ${store} برای دانلود اپلیکیشن فوق‌العاده...`);
+            });
+        });
+
+        // Screenshot slider navigation
+        const navDots = document.querySelectorAll('.nav-dot');
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                navDots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+
+        // Enhanced feature cards interaction
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.03) rotateX(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+            });
+        });
+
+        // Add dynamic background particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+                left: ${Math.random() * 100}vw;
+                top: 100vh;
+                animation: float-up 8s linear infinite;
+            `;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 8000);
+        }
+
+        // Add CSS for particle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float-up {
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf02b916aafd4d',t:'MTc1NDY1NjA3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

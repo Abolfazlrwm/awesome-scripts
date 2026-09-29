@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>نام اپلیکیشن شما — سریع، امن و ساده</title>
+  <meta name="description" content="قالب تک‌صفحه‌ای معرفی اپلیکیشن وب؛ واکنش‌گرا، سبک، RTL، با سئو و حالت تیره. آماده برای قرار دادن اسکرین‌شات، ویژگی‌ها و قیمت‌ها." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="نام اپلیکیشن شما" />
+  <meta property="og:description" content="هر آنچه برای معرفی اپلیکیشن وب نیاز دارید، در یک صفحه." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="favicon.png" />
+  <link rel="icon" href="favicon.png" />
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg-elev: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --brand: #0ea5e9;
+      --brand-600: #0284c7;
+      --acc: #22c55e;
+      --danger:#ef4444;
+      --ring: rgba(14,165,233,.35);
+      --card: #0f172a;
+      color-scheme: dark;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #ffffff;
+        --bg-elev:#f8fafc;
+        --text:#0f172a;
+        --muted:#475569;
+        --brand:#0ea5e9;
+        --brand-600:#0284c7;
+        --acc:#16a34a;
+        --danger:#dc2626;
+        --ring: rgba(14,165,233,.25);
+        --card:#ffffff;
+        color-scheme: light;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.7;
+      scroll-behavior:smooth;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin-inline:auto;padding:0 20px}
+    .btn{
+      display:inline-flex;align-items:center;gap:.6rem;
+      background: var(--brand);
+      color: #fff;
+      border:none;border-radius:12px;padding:.8rem 1.1rem;
+      font-weight:700;cursor:pointer;box-shadow: 0 6px 18px rgba(14,165,233,.25);
+      transition:.2s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: var(--brand-600)}
+    .btn.outline{
+      background: transparent; color: var(--brand); border:1px solid var(--brand); box-shadow:none;
+    }
+    .tag{
+      display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.3px;
+      color: var(--brand); background: color-mix(in oklab, var(--brand) 12%, transparent);
+      border:1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+      padding:.3rem .6rem;border-radius:999px;
+    }
+    header{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--bg), transparent 15%);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: .8rem 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:.6rem; font-weight:900; font-size:1.05rem;
+    }
+    .brand .logo{
+      width:28px; height:28px; border-radius:8px;
+      background: linear-gradient(135deg, var(--brand), #60a5fa);
+      display:grid; place-items:center; color:#fff; font-weight:900;
+      box-shadow: 0 6px 18px rgba(14,165,233,.35);
+    }
+    nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0}
+    nav a{padding:.5rem .7rem; border-radius:8px; color: var(--muted)}
+    nav a:hover{background: color-mix(in oklab, var(--text) 6%, transparent); color: var(--text)}
+    .menu-btn{display:none; background:none; border:1px solid color-mix(in oklab, var(--text) 10%, transparent); border-radius:8px; padding:.5rem}
+    @media (max-width: 860px){
+      nav ul{
+        position: fixed; inset-inline:0; top:56px; background: var(--bg);
+        padding: 1rem 20px; border-top:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+        display:none; flex-direction:column;
+      }
+      nav ul[data-open="true"]{display:flex}
+      .menu-btn{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{
+      position:relative; overflow:hidden;
+      padding: 64px 0 24px;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--brand) 18%, transparent), transparent 60%),
+        radial-gradient(900px 500px at 10% -20%, color-mix(in oklab, #60a5fa 16%, transparent), transparent 60%);
+      border-bottom:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    }
+    .hero-grid{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items:center;
+    }
+    @media (max-width: 860px){ .hero-grid{grid-template-columns:1fr} }
+    .kicker{margin: 8px 0}
+    .title{
+      font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin: 8px 0 12px; font-weight:900;
+    }
+    .subtitle{color: var(--muted); font-size:1.02rem; margin: 0 0 18px}
+    .hero-cta{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:10px}
+    .hero-shot{
+      border:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      background: var(--card); border-radius:16px; padding:10px;
+      box-shadow: 0 10px 30px rgba(2,8,23,.25);
+    }
+    .mock-toolbar{
+      display:flex; justify-content:space-between; align-items:center; gap:.6rem; padding:.5rem .6rem; border-bottom:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    }
+    .dots{display:flex; gap:.35rem}
+    .dot{width:9px; height:9px; border-radius:999px}
+    .screen{
+      aspect-ratio: 16/10; background:
+        linear-gradient(180deg, color-mix(in oklab, var(--brand) 10%, transparent), transparent),
+        linear-gradient(90deg, color-mix(in oklab, #22c55e 4%, transparent), transparent 35%, color-mix(in oklab, #60a5fa 6%, transparent) 65%),
+        repeating-linear-gradient(0deg, color-mix(in oklab, var(--text) 6%, transparent), transparent 6px, transparent 24px);
+      border-radius:10px;
+    }
+
+    /* Sections */
+    section{padding:56px 0}
+    section .sec-head{margin-bottom:20px}
+    .sec-title{font-size: clamp(22px, 3vw, 28px); font-weight:900}
+    .sec-sub{color: var(--muted); margin-top:6px}
+
+    /* Features */
+    .features{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;
+    }
+    @media (max-width: 860px){ .features{grid-template-columns:1fr} }
+    .card{
+      background: var(--card);
+      border:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius:14px; padding:16px;
+      transition:.2s ease; height:100%;
+    }
+    .card:hover{transform: translateY(-3px); box-shadow: 0 10px 28px rgba(2,8,23,.20)}
+    .icon{
+      width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+      background: color-mix(in oklab, var(--brand) 16%, transparent); color: var(--brand);
+      margin-bottom:10px;
+    }
+    .card h3{margin:6px 0 6px; font-size:1.05rem}
+    .card p{color: var(--muted); margin:0}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns: 1.6fr 1fr; gap:16px}
+    .gallery .col{display:grid; gap:16px}
+    .shot{
+      border:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius:12px; overflow:hidden; background: var(--card);
+      aspect-ratio: 16/10;
+      background-image: linear-gradient(180deg, color-mix(in oklab, var(--text) 3%, transparent), transparent), repeating-linear-gradient(45deg, color-mix(in oklab, var(--text) 6%, transparent), transparent 10px, transparent 28px);
+    }
+    @media (max-width: 860px){ .gallery{grid-template-columns:1fr} }
+
+    /* Pricing */
+    .pricing{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    @media (max-width: 860px){ .pricing{grid-template-columns:1fr} }
+    .price{
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .price .amount{font-weight:900; font-size:1.6rem}
+    .price ul{margin:0; padding:0; list-style:none; display:grid; gap:.4rem; color: var(--muted)}
+    .price li::before{content:"✓"; color: var(--acc); margin-inline-start: .4rem}
+
+    /* FAQ */
+    .faq{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media (max-width: 860px){ .faq{grid-template-columns:1fr} }
+    details{
+      background: var(--card); border:1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius:12px; padding:12px 14px;
+    }
+    summary{cursor:pointer; font-weight:700}
+    details[open]{outline: 2px solid var(--ring)}
+
+    /* Contact */
+    .contact{
+      display:grid; grid-template-columns: 1fr 1fr; gap:16px
+    }
+    @media (max-width: 860px){ .contact{grid-template-columns:1fr} }
+    .form fieldset{border:none; padding:0; margin:0; display:grid; gap:10px}
+    .field{display:grid; gap:6px}
+    label{font-weight:700}
+    input, textarea{
+      background: var(--bg-elev); color: var(--text);
+      border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      border-radius:10px; padding:.7rem .8rem; outline:none; transition:.15s ease;
+    }
+    input:focus, textarea:focus{border-color: var(--brand); box-shadow: 0 0 0 4px var(--ring)}
+    .note{color: var(--muted); font-size:.9rem}
+
+    /* Footer */
+    footer{
+      padding:30px 0; color: var(--muted);
+      border-top:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+    }
+
+    /* Utilities */
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    @media (max-width: 860px){ .grid-2{grid-template-columns:1fr} }
+    .center{display:flex; align-items:center; justify-content:center}
+    .mb-4{margin-bottom:16px}
+    .mt-2{margin-top:8px}
+    .mt-4{margin-top:16px}
+    .muted{color: var(--muted)}
+    .pill{padding:.25rem .6rem; border-radius:999px; background: var(--bg-elev); border:1px solid color-mix(in oklab, var(--text) 10%, transparent)}
+    .hidden{display:none}
+
+    /* Accessibility */
+    .skip{position:absolute; inset-inline-start:8px; top:-40px; background:#000; color:#fff; padding:.5rem .8rem; border-radius:8px}
+    .skip:focus{top:8px}
+
+    /* Back to top */
+    .to-top{
+      position: fixed; inset-inline-end:16px; inset-block-end:16px; z-index:40;
+      width:44px; height:44px; border-radius:12px; border:none;
+      display:none; align-items:center; justify-content:center; cursor:pointer;
+      background: var(--brand); color:#fff; box-shadow: 0 8px 24px rgba(14,165,233,.35);
+    }
+    .to-top[data-show="true"]{display:flex}
+
+    /* Anchor offset for sticky header */
+    section[id]{scroll-margin-top: 80px}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">پرش به محتوا</a>
+
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="لوگوی اپلیکیشن">
+        <div class="logo" aria-hidden="true">A</div>
+        <span>نام اپلیکیشن شما</span>
+        <span class="pill">نسخه 1.0</span>
+      </div>
+
+      <nav aria-label="منوی اصلی">
+        <button class="menu-btn" aria-label="باز و بسته کردن منو" id="menuToggle">
+          <!-- آیکن منو -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <ul id="menu">
+          <li><a href="#home">خانه</a></li>
+          <li><a href="#features">ویژگی‌ها</a></li>
+          <li><a href="#screens">اسکرین‌شات</a></li>
+          <li><a href="#pricing">قیمت‌ها</a></li>
+          <li><a href="#faq">پرسش‌های متداول</a></li>
+          <li><a href="#contact">ارتباط</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker"><span class="tag">جدید</span></div>
+          <h1 class="title">با «نام اپلیکیشن شما» کارها را <span style="color:var(--brand)">سریع‌تر</span> و <span style="color:#22c55e">هوشمندتر</span> انجام بده</h1>
+          <p class="subtitle">اپلیکیشن وب سبک و امن برای مدیریت روزانه—بدون نصب، همیشه در دسترس. شروع سریع، تجربه روان، و امکانات کامل برای تیم‌ها و فردها.</p>
+          <div class="hero-cta">
+            <a class="btn" href="#contact" aria-label="شروع استفاده">
+              <!-- آیکن فلش -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              همین حالا شروع کن
+            </a>
+            <a class="btn outline" href="#screens" aria-label="مشاهده دمو">
+              <!-- آیکن پخش -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5v14l11-7-11-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              مشاهده دمو
+            </a>
+          </div>
+          <p class="note mt-4">نیاز به نصب ندارد • مناسب موبایل و دسکتاپ • پشتیبانی از حالت تیره</p>
+        </div>
+
+        <div class="hero-shot" aria-label="پیش‌نمایش اپلیکیشن">
+          <div class="mock-toolbar">
+            <div class="dots">
+              <span class="dot" style="background:#ef4444"></span>
+              <span class="dot" style="background:#f59e0b"></span>
+              <span class="dot" style="background:#22c55e"></span>
+            </div>
+            <span class="muted" style="font-size:.9rem">app.yourdomain.com</span>
+            <span class="pill">Live</span>
+          </div>
+          <div class="screen"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="sec-title">چرا این اپلیکیشن؟</h2>
+          <p class="sec-sub">سه دلیل ساده برای انتخاب شما. می‌توانید متن‌ها را با مزیت‌های واقعی محصول‌تان جایگزین کنید.</p>
+        </div>
+
+        <div class="features">
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.2 2 7L12 17l-6.5 3.2 2-7L2 9h7l3-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>سرعت برق‌آسا</h3>
+            <p>طراحی شده با تمرکز بر عملکرد؛ بارگذاری سریع و تعویض صفحات بدون تاخیر محسوس.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm-1 10.5l5-5M8.5 12A1.5 1.5 0 1010 13.5 1.5 1.5 0 008.5 12z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>امنیت جدی</h3>
+            <p>رمزنگاری سرتاسری، کنترل دسترسی و لاگ‌گیری برای آرامش خاطر شما و تیمتان.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>ساده و روان</h3>
+            <p>رابط کاربری مینیمال، بدون شلوغی؛ آنچه نیاز دارید همیشه جلو چشم شماست.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section id="screens">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="sec-title">اسکرین‌شات‌ها</h2>
+          <p class="sec-sub">نمایی از محیط کاربری؛ تصاویر واقعی اپلیکیشن را جایگزین این نمونه‌ها کنید.</p>
+        </div>
+
+        <div class="gallery">
+          <div class="col">
+            <div class="shot" aria-label="اسکرین‌شات ۱"></div>
+            <div class="shot" aria-label="اسکرین‌شات ۲"></div>
+          </div>
+          <div class="col">
+            <div class="shot" aria-label="اسکرین‌شات ۳"></div>
+            <div class="shot" aria-label="اسکرین‌شات ۴"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="sec-title">پلن‌های قیمت‌گذاری</h2>
+          <p class="sec-sub">از رایگان شروع کنید و هر وقت نیاز داشتید ارتقا دهید.</p>
+        </div>
+
+        <div class="pricing">
+          <article class="card price">
+            <span class="tag">شروع</span>
+            <h3>رایگان</h3>
+            <div class="amount">۰ تومان / ماه</div>
+            <ul>
+              <li>۱ پروژه فعال</li>
+              <li>۱ کاربر</li>
+              <li>حافظه محدود</li>
+            </ul>
+            <a class="btn mt-2" href="#contact">شروع رایگان</a>
+          </article>
+
+          <article class="card price">
+            <span class="tag">محبوب</span>
+            <h3>حرفه‌ای</h3>
+            <div class="amount">۹۹٬۰۰۰ تومان / ماه</div>
+            <ul>
+              <li>پروژه‌های نامحدود</li>
+              <li>۵ کاربر</li>
+              <li>پشتیبانی ایمیلی</li>
+            </ul>
+            <a class="btn mt-2" href="#contact">انتخاب پلن</a>
+          </article>
+
+          <article class="card price">
+            <span class="tag">تیمی</span>
+            <h3>سازمانی</h3>
+            <div class="amount">تماس بگیرید</div>
+            <ul>
+              <li>SSO و SAML</li>
+              <li>پشتیبانی ۲۴/۷</li>
+              <li>قرارداد SLA</li>
+            </ul>
+            <a class="btn mt-2" href="#contact">درخواست دمو</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / CTA -->
+    <section>
+      <div class="container grid-2">
+        <div class="card">
+          <h3>کاربران چه می‌گویند</h3>
+          <p class="muted">«بعد از مهاجرت به این اپ، زمان انجام کارها ۴۰٪ کمتر شد. تجربه کاربریش عالیه.» — یک مشتری خوشحال</p>
+          <p class="muted">«راه‌اندازی سریع و بدون پیچیدگی. تیم ما خیلی زود باهاش اخت شد.» — مدیر محصول</p>
+        </div>
+        <div class="card center" style="flex-direction:column; text-align:center">
+          <h3>آماده‌ای شروع کنی؟</h3>
+          <p class="muted">نسخه رایگان را امتحان کن یا یک دمو رزرو کن.</p>
+          <div class="mt-2">
+            <a class="btn" href="#contact">همین حالا شروع کن</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="sec-title">پرسش‌های متداول</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>آیا نیاز به نصب است؟</summary>
+            <p class="muted">خیر؛ اپلیکیشن کاملاً تحت وب است و روی همه دستگاه‌ها در دسترس خواهد بود.</p>
+          </details>
+          <details>
+            <summary>چطور می‌توانم داده‌ها را صادر کنم؟</summary>
+            <p class="muted">از بخش تنظیمات، امکان خروجی گرفتن به CSV/JSON در دسترس است.</p>
+          </details>
+          <details>
+            <summary>آیا حالت آفلاین هم پشتیبانی می‌شود؟</summary>
+            <p class="muted">بله؛ با فعال‌سازی PWA، بخش‌هایی از اپ در حالت آفلاین قابل استفاده هستند.</p>
+          </details>
+          <details>
+            <summary>آیا محدودیت کاربر وجود دارد؟</summary>
+            <p class="muted">بسته به پلن انتخابی؛ در پلن سازمانی تعداد کاربران نامحدود است.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="sec-title">ارتباط با ما</h2>
+          <p class="sec-sub">سوال داری؟ فرم زیر را پر کن؛ کمتر از ۲۴ ساعت پاسخ می‌دهیم.</p>
+        </div>
+
+        <div class="contact">
+          <form class="card form" id="contactForm" aria-label="فرم تماس">
+            <fieldset>
+              <div class="field">
+                <label for="name">نام</label>
+                <input id="name" name="name" type="text" placeholder="نام شما" required />
+              </div>
+              <div class="field">
+                <label for="email">ایمیل</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label for="msg">پیام</label>
+                <textarea id="msg" name="message" rows="5" placeholder="پیام شما..." required></textarea>
+              </div>
+              <button class="btn" type="submit">ارسال پیام</button>
+              <p id="formNote" class="note hidden">پیام شما با موفقیت ارسال شد. ممنون!</p>
+            </fieldset>
+          </form>
+
+          <div class="card">
+            <h3>اطلاعات تماس</h3>
+            <p class="muted">تبریز، آذربایجان شرقی</p>
+            <p class="muted">ایمیل: hello@yourdomain.com</p>
+            <p class="muted">تلفن: ۰۴۱-xxxxxxx</p>
+            <div class="mt-4">
+              <span class="pill">ساعت پاسخگویی: ۹ تا ۱۸</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid-2">
+        <p>© <span id="year"></span> نام اپلیکیشن شما. همه حقوق محفوظ است.</p>
+        <p style="text-align:end">
+          <a href="#home">بازگشت به بالا</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="بازگشت به بالا">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5m0 0l-7 7m7-7l7 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script>
+    // سال جاری در فوتر
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // منوی موبایل
+    const menuBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      const open = menu.getAttribute('data-open') === 'true';
+      menu.setAttribute('data-open', !open);
+    });
+    // بستن منو بعد از کلیک روی لینک
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.setAttribute('data-open', false);
+    }));
+
+    // دکمه بازگشت به بالا
+    const toTop = document.getElementById('toTop');
+    const toggleTop = () => {
+      toTop.setAttribute('data-show', window.scrollY > 600);
+    };
+    window.addEventListener('scroll', toggleTop);
+    toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    toggleTop();
+
+    // فرم تماس (دمو)
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      note.classList.remove('hidden');
+      form.reset();
+    });
+  </script>
+</body>
+</html>

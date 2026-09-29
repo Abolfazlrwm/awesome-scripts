@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نکست جن - پلتفرم ساده و مدرن</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: #0f172a;
+            min-height: 100vh;
+        }
+        
+        .clean-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .clean-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .clean-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .clean-btn:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+        }
+        
+        .clean-btn-outline {
+            background: rgba(255, 255, 255, 0.8);
+            color: #1e293b;
+            border: 2px solid rgba(226, 232, 240, 0.8);
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+        
+        .clean-btn-outline:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #1e293b;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px 0 rgba(30, 41, 59, 0.15);
+        }
+        
+        .text-primary {
+            color: #0f172a;
+        }
+        
+        .text-secondary {
+            color: #64748b;
+        }
+        
+        .text-muted {
+            color: #94a3b8;
+        }
+        
+        .border-light {
+            border-color: rgba(226, 232, 240, 0.8);
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+        
+        .device-mockup {
+            width: 320px;
+            height: 640px;
+            background: linear-gradient(145deg, #f0f9ff, #dbeafe);
+            border: 6px solid #3b82f6;
+            border-radius: 45px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 25px 60px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .device-mockup:hover {
+            transform: translateY(-5px) rotateY(5deg);
+            box-shadow: 0 35px 70px -12px rgba(0, 0, 0, 0.35);
+        }
+        
+        .device-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 39px;
+            padding: 50px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .device-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .device-mockup::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 6px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 3px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+        }
+        
+        .device-mockup::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border: 3px solid #3b82f6;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+        }
+        
+        .feature-icon {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25);
+            background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+        }
+        
+        .stat-number {
+            font-size: 52px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .nav-link {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: #1a1a1a;
+        }
+        
+        .logo {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .header-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="py-6 header-glass sticky top-0 z-50">
+        <div class="container-custom">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="logo">N</div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-primary">نکست جن</h1>
+                        <p class="text-sm text-muted">پلتفرم مدرن</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8 space-x-reverse">
+                    <a href="#home" class="nav-link">خانه</a>
+                    <a href="#features" class="nav-link">ویژگی‌ها</a>
+                    <a href="#about" class="nav-link">درباره ما</a>
+                    <a href="#contact" class="nav-link">تماس</a>
+                </nav>
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <button class="clean-btn px-8 py-3 text-lg">شروع کنید</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="section-padding">
+        <div class="container-custom">
+            <div class="grid-2">
+                <div>
+                    <h2 class="text-6xl font-bold text-primary mb-6 leading-tight">
+                        ساده،<br>
+                        مدرن،<br>
+                        کارآمد
+                    </h2>
+                    <p class="text-xl text-secondary mb-8 leading-relaxed">
+                        نکست جن پلتفرمی است که با طراحی مینیمال و عملکرد بالا، تجربه کاربری بی‌نظیری ارائه می‌دهد.
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse mb-12">
+                        <button class="clean-btn px-8 py-4 text-lg">دانلود اپ</button>
+                        <button class="clean-btn-outline px-8 py-4 text-lg">مشاهده دمو</button>
+                    </div>
+                    <div class="grid-4">
+                        <div class="text-center">
+                            <div class="stat-number">1M+</div>
+                            <div class="text-secondary">کاربر</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number">4.8</div>
+                            <div class="text-secondary">امتیاز</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number">50+</div>
+                            <div class="text-secondary">کشور</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number">99%</div>
+                            <div class="text-secondary">رضایت</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="device-mockup">
+                        <div class="device-screen">
+                            <div class="text-4xl mb-6">📱</div>
+                            <h3 class="text-2xl font-bold mb-4">نکست جن</h3>
+                            <p class="text-secondary mb-8">رابط کاربری ساده و زیبا</p>
+                            <div class="space-y-4 w-full">
+                                <div class="clean-card p-4">
+                                    <div class="flex justify-between items-center">
+                                        <span>عملکرد</span>
+                                        <span class="font-bold">عالی</span>
+                                    </div>
+                                </div>
+                                <div class="clean-card p-4">
+                                    <div class="flex justify-between items-center">
+                                        <span>سرعت</span>
+                                        <span class="font-bold">بالا</span>
+                                    </div>
+                                </div>
+                                <div class="clean-card p-4">
+                                    <div class="flex justify-between items-center">
+                                        <span>امنیت</span>
+                                        <span class="font-bold">کامل</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);">
+        <div class="container-custom">
+            <div class="text-center mb-16">
+                <h3 class="text-5xl font-bold text-primary mb-6">ویژگی‌های کلیدی</h3>
+                <p class="text-xl text-secondary max-w-3xl mx-auto">
+                    نکست جن با ویژگی‌های منحصربه‌فرد و طراحی مدرن، تجربه‌ای متفاوت ارائه می‌دهد
+                </p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="clean-card p-8 text-center">
+                    <div class="feature-icon mx-auto">⚡</div>
+                    <h4 class="text-2xl font-bold mb-4">سرعت بالا</h4>
+                    <p class="text-secondary leading-relaxed">
+                        عملکرد فوق‌العاده سریع با بهینه‌سازی پیشرفته و پردازش موثر داده‌ها
+                    </p>
+                </div>
+                
+                <div class="clean-card p-8 text-center">
+                    <div class="feature-icon mx-auto">🔒</div>
+                    <h4 class="text-2xl font-bold mb-4">امنیت کامل</h4>
+                    <p class="text-secondary leading-relaxed">
+                        حفاظت کامل از اطلاعات شخصی با استفاده از آخرین تکنولوژی‌های امنیتی
+                    </p>
+                </div>
+                
+                <div class="clean-card p-8 text-center">
+                    <div class="feature-icon mx-auto">🎯</div>
+                    <h4 class="text-2xl font-bold mb-4">دقت بالا</h4>
+                    <p class="text-secondary leading-relaxed">
+                        نتایج دقیق و قابل اعتماد با استفاده از الگوریتم‌های پیشرفته
+                    </p>
+                </div>
+                
+                <div class="clean-card p-8 text-center">
+                    <div class="feature-icon mx-auto">📱</div>
+                    <h4 class="text-2xl font-bold mb-4">طراحی واکنش‌گرا</h4>
+                    <p class="text-secondary leading-relaxed">
+                        سازگار با تمام دستگاه‌ها و اندازه‌های صفحه نمایش مختلف
+                    </p>
+                </div>
+                
+                <div class="clean-card p-8 text-center">
+                    <div class="feature-icon mx-auto">🌐</div>
+                    <h4 class="text-2xl font-bold mb-4">دسترسی جهانی</h4>
+                    <p class="text-secondary leading-relaxed">
+                        قابل دسترس در سراسر جهان با پشتیبانی از زبان‌های مختلف
+                    </p>
+                </div>
+                
+                <div class="clean-card p-8 text-center">
+                    <div class="feature-icon mx-auto">⚙️</div>
+                    <h4 class="text-2xl font-bold mb-4">قابلیت تنظیم</h4>
+                    <p class="text-secondary leading-relaxed">
+                        امکان شخصی‌سازی کامل بر اساس نیازها و سلیقه کاربران
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section-padding">
+        <div class="container-custom">
+            <div class="clean-card p-16 text-center">
+                <h3 class="text-4xl font-bold text-primary mb-12">آمار و ارقام</h3>
+                <div class="grid-4">
+                    <div>
+                        <div class="stat-number">1,000,000+</div>
+                        <div class="text-secondary text-lg">کاربر فعال</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">4.8/5</div>
+                        <div class="text-secondary text-lg">امتیاز کاربران</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">50+</div>
+                        <div class="text-secondary text-lg">کشور</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">99.9%</div>
+                        <div class="text-secondary text-lg">آپتایم</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="section-padding" style="background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%);">
+        <div class="container-custom text-center">
+            <h3 class="text-5xl font-bold text-primary mb-6">دانلود نکست جن</h3>
+            <p class="text-xl text-secondary mb-12 max-w-2xl mx-auto">
+                همین الان نکست جن را دانلود کنید و تجربه جدیدی از کار با تکنولوژی داشته باشید
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 sm:space-x-reverse mb-16">
+                <button class="clean-btn px-12 py-6 text-xl flex items-center justify-center space-x-4 space-x-reverse">
+                    <span class="text-3xl">📱</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="font-bold">App Store</div>
+                    </div>
+                </button>
+                <button class="clean-btn-outline px-12 py-6 text-xl flex items-center justify-center space-x-4 space-x-reverse">
+                    <span class="text-3xl">🤖</span>
+                    <div class="text-right">
+                        <div class="text-sm opacity-80">دانلود از</div>
+                        <div class="font-bold">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="grid-3 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="text-4xl mb-4">🆓</div>
+                    <div class="font-bold text-primary mb-2">کاملاً رایگان</div>
+                    <div class="text-secondary">بدون هزینه پنهان</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <div class="font-bold text-primary mb-2">نصب آسان</div>
+                    <div class="text-secondary">تنها چند ثانیه</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <div class="font-bold text-primary mb-2">بروزرسانی خودکار</div>
+                    <div class="text-secondary">همیشه جدیدترین نسخه</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section-padding border-t border-light">
+        <div class="container-custom">
+            <div class="grid-4 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 space-x-reverse mb-6">
+                        <div class="logo">N</div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">نکست جن</h4>
+                            <p class="text-sm text-muted">پلتفرم مدرن</p>
+                        </div>
+                    </div>
+                    <p class="text-secondary leading-relaxed">
+                        نکست جن با هدف ساده‌سازی تکنولوژی و ارائه بهترین تجربه کاربری طراحی شده است.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-lg font-bold text-primary mb-4">محصولات</h5>
+                    <ul class="space-y-2 text-secondary">
+                        <li><a href="#" class="nav-link">اپلیکیشن موبایل</a></li>
+                        <li><a href="#" class="nav-link">نسخه وب</a></li>
+                        <li><a href="#" class="nav-link">API</a></li>
+                        <li><a href="#" class="nav-link">مستندات</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-lg font-bold text-primary mb-4">پشتیبانی</h5>
+                    <ul class="space-y-2 text-secondary">
+                        <li><a href="#" class="nav-link">راهنما</a></li>
+                        <li><a href="#" class="nav-link">سوالات متداول</a></li>
+                        <li><a href="#" class="nav-link">تماس با ما</a></li>
+                        <li><a href="#" class="nav-link">گزارش مشکل</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5 class="text-lg font-bold text-primary mb-4">شرکت</h5>
+                    <ul class="space-y-2 text-secondary">
+                        <li><a href="#" class="nav-link">درباره ما</a></li>
+                        <li><a href="#" class="nav-link">تیم</a></li>
+                        <li><a href="#" class="nav-link">فرصت‌های شغلی</a></li>
+                        <li><a href="#" class="nav-link">بلاگ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-light pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-secondary mb-4 md:mb-0">
+                        © ۱۴۰۳ نکست جن. تمامی حقوق محفوظ است.
+                    </div>
+                    <div class="flex items-center space-x-6 space-x-reverse text-secondary">
+                        <a href="#" class="nav-link">حریم خصوصی</a>
+                        <a href="#" class="nav-link">شرایط استفاده</a>
+                        <a href="#" class="nav-link">کوکی‌ها</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple button interactions
+        document.querySelectorAll('.clean-btn, .clean-btn-outline').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('دانلود') || this.textContent.includes('App Store') || this.textContent.includes('Google Play')) {
+                    alert('در حال هدایت به فروشگاه...');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf89be43bdd24b',t:'MTc1NDY2MTYwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

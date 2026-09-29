@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نکست جن - پلتفرم نسل آینده</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Advanced Background System */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(120, 219, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 60% 40%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: cosmicShift 20s ease-in-out infinite;
+        }
+        
+        @keyframes cosmicShift {
+            0%, 100% { 
+                filter: hue-rotate(0deg) brightness(1);
+                transform: scale(1);
+            }
+            25% { 
+                filter: hue-rotate(90deg) brightness(1.2);
+                transform: scale(1.05);
+            }
+            50% { 
+                filter: hue-rotate(180deg) brightness(0.9);
+                transform: scale(0.95);
+            }
+            75% { 
+                filter: hue-rotate(270deg) brightness(1.1);
+                transform: scale(1.02);
+            }
+        }
+        
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: starsMove 50s linear infinite;
+        }
+        
+        @keyframes starsMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100px); }
+        }
+        
+        /* Premium Glass Cards */
+        .premium-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(102, 126, 234, 0.8), 
+                rgba(255, 119, 198, 0.8),
+                rgba(120, 219, 255, 0.8),
+                transparent);
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .premium-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            transition: left 1s ease;
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.2),
+                0 0 50px rgba(102, 126, 234, 0.1),
+                inset 0 0 50px rgba(255, 255, 255, 0.05);
+        }
+        
+        .premium-card:hover::after {
+            left: 100%;
+        }
+        
+        /* Advanced Button System */
+        .neo-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 
+                0 8px 32px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .neo-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .neo-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+        
+        .neo-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(102, 126, 234, 0.4),
+                0 0 40px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .neo-btn:hover::before {
+            left: 100%;
+        }
+        
+        .neo-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .neo-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        /* Holographic Text Effects */
+        .holo-text {
+            background: linear-gradient(135deg, 
+                #667eea 0%, 
+                #764ba2 25%, 
+                #f093fb 50%, 
+                #667eea 75%, 
+                #764ba2 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: holoShift 4s ease-in-out infinite;
+            text-shadow: 
+                0 0 30px rgba(102, 126, 234, 0.5),
+                0 0 60px rgba(255, 119, 198, 0.3);
+        }
+        
+        @keyframes holoShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* 3D Phone Showcase */
+        .phone-3d-showcase {
+            width: 320px;
+            height: 640px;
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            border-radius: 40px;
+            padding: 20px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 1s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.3),
+                inset 0 0 50px rgba(255, 255, 255, 0.1);
+        }
+        
+        .phone-3d-showcase::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #7f8c8d, #95a5a6, #7f8c8d);
+            border-radius: 2px;
+        }
+        
+        .phone-3d-showcase:hover {
+            transform: translateY(-20px) rotateX(15deg) rotateY(-10deg) scale(1.05);
+        }
+        
+        .phone-screen-showcase {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .phone-screen-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: screenShimmer 5s ease-in-out infinite;
+        }
+        
+        @keyframes screenShimmer {
+            0%, 100% { opacity: 0.5; transform: rotate(0deg); }
+            50% { opacity: 1; transform: rotate(1deg); }
+        }
+        
+        /* Morphing Blobs */
+        .morph-blob-advanced {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, 
+                rgba(102, 126, 234, 0.3), 
+                rgba(255, 119, 198, 0.3), 
+                rgba(120, 219, 255, 0.3));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphAdvanced 12s ease-in-out infinite;
+            position: absolute;
+            filter: blur(3px);
+            opacity: 0.6;
+        }
+        
+        @keyframes morphAdvanced {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: rotate(0deg) scale(1);
+            }
+            20% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+                transform: rotate(72deg) scale(1.1);
+            }
+            40% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+                transform: rotate(144deg) scale(0.9);
+            }
+            60% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+                transform: rotate(216deg) scale(1.05);
+            }
+            80% {
+                border-radius: 45% 55% 40% 60% / 70% 30% 60% 40%;
+                transform: rotate(288deg) scale(0.95);
+            }
+        }
+        
+        /* Advanced Animations */
+        .slide-in-up {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: slideInUp 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+        }
+        
+        .slide-in-down {
+            opacity: 0;
+            transform: translateY(-60px);
+            animation: slideInDown 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            animation: slideInLeft 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            animation: slideInRight 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Stagger Animation Delays */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-900 { animation-delay: 0.9s; }
+        .delay-1000 { animation-delay: 1s; }
+        
+        /* Floating Animation */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Pulse Glow */
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.8);
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Loading Dots */
+        .loading-dots {
+            display: inline-flex;
+            gap: 6px;
+        }
+        
+        .loading-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: loadingDots 1.4s ease-in-out infinite both;
+        }
+        
+        .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes loadingDots {
+            0%, 80%, 100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-radius: 4px;
+            transition: width 2s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progressShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2, #f093fb);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .morph-blob-advanced {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .phone-3d-showcase {
+                width: 280px;
+                height: 560px;
+            }
+            
+            .premium-card:hover {
+                transform: translateY(-8px) scale(1.01);
+            }
+        }
+        
+        /* Performance Optimizations */
+        .gpu-accelerated {
+            transform: translateZ(0);
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+        
+        /* Tab System */
+        .tab-button {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Modal System */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+    </style>
+</head>
+<body class="gpu-accelerated">
+    <!-- Advanced Background System -->
+    <div class="cosmic-bg"></div>
+    <div class="stars-bg"></div>
+    
+    <!-- Morphing Blobs -->
+    <div class="morph-blob-advanced" style="top: 5%; right: 5%; animation-delay: 0s;"></div>
+    <div class="morph-blob-advanced" style="bottom: 10%; left: 10%; animation-delay: 4s;"></div>
+    <div class="morph-blob-advanced" style="top: 50%; right: 15%; animation-delay: 8s;"></div>
+
+    <!-- Navigation Header -->
+    <header class="relative z-50 p-6">
+        <div class="container mx-auto">
+            <div class="premium-card p-6">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-6 space-x-reverse slide-in-left">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-3xl flex items-center justify-center text-2xl pulse-glow floating">
+                            🚀
+                        </div>
+                        <div>
+                            <h1 class="text-3xl font-black holo-text">نکست جن</h1>
+                            <p class="text-sm text-gray-400 font-medium">پلتفرم نسل آینده</p>
+                        </div>
+                    </div>
+                    <nav class="hidden lg:flex space-x-10 space-x-reverse">
+                        <a href="#home" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                            خانه
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#features" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                            ویژگی‌ها
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#versions" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                            نسخه‌ها
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#team" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                            تیم ما
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#blog" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                            بلاگ
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="#contact" class="text-gray-300 hover:text-white transition-all duration-300 font-medium relative group">
+                            تماس
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </nav>
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <button class="neo-btn px-8 py-3 slide-in-right">
+                            شروع کنید
+                        </button>
+                        <button class="neo-btn px-6 py-3 slide-in-right delay-100" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                            ورود
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative py-20">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <div class="mb-10 slide-in-up delay-100">
+                        <span class="inline-block premium-card px-8 py-4 text-lg font-bold text-white floating pulse-glow">
+                            🌟 نسخه 3.0 منتشر شد!
+                        </span>
+                    </div>
+                    <h2 class="text-8xl md:text-9xl font-black mb-10 leading-tight slide-in-up delay-200">
+                        <span class="text-white">آینده</span>
+                        <br>
+                        <span class="holo-text">اینجاست</span>
+                    </h2>
+                    <p class="text-2xl text-gray-300 mb-12 leading-relaxed slide-in-up delay-300">
+                        پلتفرم انقلابی نکست جن با هوش مصنوعی پیشرفته، رابط کاربری نسل آینده و قابلیت‌های بی‌نظیر که تجربه دیجیتال شما را به سطحی جدید می‌برد.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8 sm:space-x-reverse mb-16 slide-in-up delay-400">
+                        <button class="neo-btn px-16 py-6 text-xl flex items-center justify-center space-x-4 space-x-reverse">
+                            <span class="text-4xl">📱</span>
+                            <div class="text-right">
+                                <div class="text-sm opacity-90">دانلود از</div>
+                                <div class="font-bold text-2xl">App Store</div>
+                            </div>
+                        </button>
+                        <button class="neo-btn px-16 py-6 text-xl flex items-center justify-center space-x-4 space-x-reverse" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                            <span class="text-4xl">🤖</span>
+                            <div class="text-right">
+                                <div class="text-sm opacity-90">دانلود از</div>
+                                <div class="font-bold text-2xl">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-8 slide-in-up delay-500">
+                        <div class="text-center">
+                            <div class="text-4xl font-black holo-text mb-2">5M+</div>
+                            <div class="text-gray-400 font-medium">کاربر فعال</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-black holo-text mb-2">4.9★</div>
+                            <div class="text-gray-400 font-medium">امتیاز کاربران</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-black holo-text mb-2">150+</div>
+                            <div class="text-gray-400 font-medium">کشور</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center slide-in-right delay-600">
+                    <div class="relative">
+                        <div class="phone-3d-showcase gpu-accelerated">
+                            <div class="phone-screen-showcase">
+                                <div class="text-center text-white">
+                                    <div class="text-7xl mb-8 floating">🌟</div>
+                                    <div class="text-3xl font-black mb-4 holo-text">نکست جن 3.0</div>
+                                    <div class="text-lg opacity-90 mb-8">تجربه نسل آینده</div>
+                                    <div class="space-y-4 mb-8">
+                                        <div class="premium-card p-4 text-sm">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <span>هوش مصنوعی</span>
+                                                <span>95%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 95%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="premium-card p-4 text-sm">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <span>عملکرد</span>
+                                                <span>98%</span>
+                                            </div>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 98%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="loading-dots text-white">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-7xl font-black mb-8 holo-text slide-in-up">ویژگی‌های انقلابی</h3>
+                <p class="text-2xl text-gray-300 max-w-4xl mx-auto slide-in-up delay-100">
+                    نکست جن با بیش از 50 ویژگی پیشرفته، تجربه‌ای کاملاً جدید از تکنولوژی ارائه می‌دهد
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+                <div class="premium-card p-10 text-center slide-in-up delay-100 gpu-accelerated">
+                    <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-3xl flex items-center justify-center text-4xl pulse-glow floating">
+                        🧠
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">هوش مصنوعی پیشرفته</h4>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        سیستم AI نسل جدید با قابلیت یادگیری عمیق، پردازش زبان طبیعی و تشخیص الگو برای تجربه‌ای شخصی‌سازی شده
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 space-x-reverse text-sm text-gray-400">
+                        <span>🎯 دقت 99.5%</span>
+                        <span>⚡ پردازش فوری</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-10 text-center slide-in-up delay-200 gpu-accelerated">
+                    <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-green-500 via-teal-600 to-blue-500 rounded-3xl flex items-center justify-center text-4xl pulse-glow floating">
+                        🎨
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">طراحی نسل آینده</h4>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        رابط کاربری انقلابی با انیمیشن‌های 3D، افکت‌های نوری پیشرفته و طراحی تطبیقی که با سلیقه شما تغییر می‌کند
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 space-x-reverse text-sm text-gray-400">
+                        <span>🌈 تم‌های نامحدود</span>
+                        <span>📱 طراحی تطبیقی</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-10 text-center slide-in-up delay-300 gpu-accelerated">
+                    <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-purple-500 via-pink-600 to-red-500 rounded-3xl flex items-center justify-center text-4xl pulse-glow floating">
+                        🚀
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">عملکرد فوق‌سریع</h4>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        موتور بهینه‌سازی شده با پردازش GPU، کش هوشمند و الگوریتم‌های پیشرفته برای سرعت بی‌نظیر
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 space-x-reverse text-sm text-gray-400">
+                        <span>⚡ 120fps</span>
+                        <span>🔋 کم‌مصرف</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-10 text-center slide-in-up delay-400 gpu-accelerated">
+                    <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-yellow-500 via-orange-600 to-red-500 rounded-3xl flex items-center justify-center text-4xl pulse-glow floating">
+                        🔒
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">امنیت کوانتومی</h4>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        سیستم امنیتی نسل آینده با رمزنگاری کوانتومی، احراز هویت بیومتریک و حفاظت چندلایه
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 space-x-reverse text-sm text-gray-400">
+                        <span>🛡️ رمزنگاری 256-bit</span>
+                        <span>👁️ تشخیص بیومتریک</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-10 text-center slide-in-up delay-500 gpu-accelerated">
+                    <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 rounded-3xl flex items-center justify-center text-4xl pulse-glow floating">
+                        🌐
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">اتصال جهانی</h4>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        شبکه جهانی با سرورهای پراکنده، پشتیبانی از 5G/6G و قابلیت همگام‌سازی فوری در تمام دستگاه‌ها
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 space-x-reverse text-sm text-gray-400">
+                        <span>🌍 150+ کشور</span>
+                        <span>📡 5G/6G آماده</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-10 text-center slide-in-up delay-600 gpu-accelerated">
+                    <div class="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-500 rounded-3xl flex items-center justify-center text-4xl pulse-glow floating">
+                        🎮
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 text-white">تعامل هوشمند</h4>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        سیستم تعامل پیشرفته با پشتیبانی از حرکات، صدا، نگاه و حتی فکر برای کنترل کامل
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 space-x-reverse text-sm text-gray-400">
+                        <span>👋 کنترل حرکتی</span>
+                        <span>🗣️ فرمان صوتی</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Features Showcase -->
+            <div class="premium-card p-12 mb-20 slide-in-up delay-700">
+                <h4 class="text-4xl font-bold text-center mb-12 holo-text">قابلیت‌های پیشرفته</h4>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">🎯</div>
+                        <h5 class="font-bold text-white mb-2">تشخیص هوشمند</h5>
+                        <p class="text-sm text-gray-400">تشخیص خودکار نیازها</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">🔮</div>
+                        <h5 class="font-bold text-white mb-2">پیش‌بینی رفتار</h5>
+                        <p class="text-sm text-gray-400">پیش‌بینی عملکرد کاربر</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">🌊</div>
+                        <h5 class="font-bold text-white mb-2">انیمیشن مایع</h5>
+                        <p class="text-sm text-gray-400">حرکات طبیعی و روان</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">💎</div>
+                        <h5 class="font-bold text-white mb-2">کیفیت الماسی</h5>
+                        <p class="text-sm text-gray-400">جزئیات فوق‌العاده</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">🎵</div>
+                        <h5 class="font-bold text-white mb-2">صدای فضایی</h5>
+                        <p class="text-sm text-gray-400">تجربه صوتی 3D</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">🌈</div>
+                        <h5 class="font-bold text-white mb-2">رنگ‌های زنده</h5>
+                        <p class="text-sm text-gray-400">طیف رنگی گسترده</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">⚡</div>
+                        <h5 class="font-bold text-white mb-2">پردازش فوری</h5>
+                        <p class="text-sm text-gray-400">پاسخ در میلی‌ثانیه</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-4">🔄</div>
+                        <h5 class="font-bold text-white mb-2">به‌روزرسانی خودکار</h5>
+                        <p class="text-sm text-gray-400">همیشه جدیدترین نسخه</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Version History Section -->
+    <section id="versions" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-7xl font-black mb-8 holo-text slide-in-up">تاریخچه نسخه‌ها</h3>
+                <p class="text-2xl text-gray-300 max-w-4xl mx-auto slide-in-up delay-100">
+                    سفر تکاملی نکست جن از ابتدا تا امروز
+                </p>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Version 3.0 -->
+                <div class="premium-card p-12 slide-in-left delay-100">
+                    <div class="flex flex-col lg:flex-row items-center gap-12">
+                        <div class="lg:w-1/3">
+                            <div class="w-32 h-32 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-3xl flex items-center justify-center text-5xl pulse-glow floating mx-auto">
+                                🚀
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3">
+                            <div class="flex items-center gap-4 mb-6">
+                                <h4 class="text-4xl font-black holo-text">نسخه 3.0</h4>
+                                <span class="premium-card px-4 py-2 text-sm font-bold text-green-400">جدیدترین</span>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-6">
+                                انقلاب در تجربه کاربری با هوش مصنوعی نسل جدید، رابط کاربری کاملاً بازطراحی شده و قابلیت‌های فوق‌پیشرفته
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">ویژگی‌های جدید:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• هوش مصنوعی GPT-4 پیشرفته</li>
+                                        <li>• رابط کاربری 3D تعاملی</li>
+                                        <li>• پشتیبانی از واقعیت افزوده</li>
+                                        <li>• سیستم امنیتی کوانتومی</li>
+                                        <li>• انیمیشن‌های مایع پیشرفته</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">بهبودها:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• سرعت 300% بیشتر</li>
+                                        <li>• مصرف باتری 50% کمتر</li>
+                                        <li>• 25 زبان جدید</li>
+                                        <li>• پشتیبانی از 5G/6G</li>
+                                        <li>• رفع 200+ باگ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>📅 انتشار: آذر 1403</span>
+                                <span>💾 حجم: 150MB</span>
+                                <span>⭐ امتیاز: 4.9/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Version 2.5 -->
+                <div class="premium-card p-12 slide-in-right delay-200">
+                    <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                        <div class="lg:w-1/3">
+                            <div class="w-32 h-32 bg-gradient-to-br from-green-500 via-teal-600 to-blue-500 rounded-3xl flex items-center justify-center text-5xl pulse-glow floating mx-auto">
+                                ⚡
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3">
+                            <div class="flex items-center gap-4 mb-6">
+                                <h4 class="text-4xl font-black holo-text">نسخه 2.5</h4>
+                                <span class="premium-card px-4 py-2 text-sm font-bold text-blue-400">پایدار</span>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-6">
+                                تمرکز بر عملکرد و پایداری با بهینه‌سازی‌های عمیق، رفع باگ‌های مهم و افزودن قابلیت‌های کاربردی
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">ویژگی‌های کلیدی:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• موتور رندرینگ جدید</li>
+                                        <li>• سیستم کش هوشمند</li>
+                                        <li>• پشتیبانی از تم تاریک</li>
+                                        <li>• ویجت‌های تعاملی</li>
+                                        <li>• همگام‌سازی ابری</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">آمار عملکرد:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• سرعت بارگذاری: 2x</li>
+                                        <li>• کاهش کرش: 90%</li>
+                                        <li>• بهبود UI: 150%</li>
+                                        <li>• رضایت کاربران: 95%</li>
+                                        <li>• دانلود: 2M+</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>📅 انتشار: مهر 1403</span>
+                                <span>💾 حجم: 120MB</span>
+                                <span>⭐ امتیاز: 4.7/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Version 2.0 -->
+                <div class="premium-card p-12 slide-in-left delay-300">
+                    <div class="flex flex-col lg:flex-row items-center gap-12">
+                        <div class="lg:w-1/3">
+                            <div class="w-32 h-32 bg-gradient-to-br from-purple-500 via-pink-600 to-red-500 rounded-3xl flex items-center justify-center text-5xl pulse-glow floating mx-auto">
+                                🎨
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3">
+                            <div class="flex items-center gap-4 mb-6">
+                                <h4 class="text-4xl font-black holo-text">نسخه 2.0</h4>
+                                <span class="premium-card px-4 py-2 text-sm font-bold text-purple-400">بازطراحی</span>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-6">
+                                بازطراحی کامل رابط کاربری با طراحی مدرن، انیمیشن‌های روان و تجربه کاربری بهبود یافته
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">تغییرات عمده:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• طراحی Material Design 3</li>
+                                        <li>• انیمیشن‌های میکرو</li>
+                                        <li>• سیستم رنگ‌بندی جدید</li>
+                                        <li>• تایپوگرافی بهبود یافته</li>
+                                        <li>• آیکون‌های بازطراحی شده</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">بازخورد کاربران:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• "طراحی فوق‌العاده!" - علی</li>
+                                        <li>• "خیلی روان شده" - مریم</li>
+                                        <li>• "عاشق رنگ‌هاش شدم" - حسین</li>
+                                        <li>• "بهترین اپ سال" - فاطمه</li>
+                                        <li>• "حرف نداره!" - محمد</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>📅 انتشار: خرداد 1403</span>
+                                <span>💾 حجم: 95MB</span>
+                                <span>⭐ امتیاز: 4.5/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Version 1.0 -->
+                <div class="premium-card p-12 slide-in-right delay-400">
+                    <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                        <div class="lg:w-1/3">
+                            <div class="w-32 h-32 bg-gradient-to-br from-yellow-500 via-orange-600 to-red-500 rounded-3xl flex items-center justify-center text-5xl pulse-glow floating mx-auto">
+                                🌟
+                            </div>
+                        </div>
+                        <div class="lg:w-2/3">
+                            <div class="flex items-center gap-4 mb-6">
+                                <h4 class="text-4xl font-black holo-text">نسخه 1.0</h4>
+                                <span class="premium-card px-4 py-2 text-sm font-bold text-yellow-400">تاریخی</span>
+                            </div>
+                            <p class="text-xl text-gray-300 mb-6">
+                                آغاز سفر نکست جن با ویژگی‌های پایه، طراحی ساده و تمرکز بر عملکرد اصلی
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">ویژگی‌های اولیه:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• رابط کاربری ساده</li>
+                                        <li>• عملکرد پایه</li>
+                                        <li>• پشتیبانی از فارسی</li>
+                                        <li>• سیستم اعلان‌ها</li>
+                                        <li>• تنظیمات اولیه</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-white mb-3">دستاوردها:</h5>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li>• 100K دانلود در ماه اول</li>
+                                        <li>• ورود به تاپ 10</li>
+                                        <li>• جایزه بهترین اپ</li>
+                                        <li>• رضایت 85% کاربران</li>
+                                        <li>• پایه‌گذاری برند</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>📅 انتشار: فروردین 1403</span>
+                                <span>💾 حجم: 45MB</span>
+                                <span>⭐ امتیاز: 4.2/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-7xl font-black mb-8 holo-text slide-in-up">تیم خلاق</h3>
+                <p class="text-2xl text-gray-300 max-w-4xl mx-auto slide-in-up delay-100">
+                    متخصصان برتر که نکست جن را به واقعیت تبدیل کردند
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="premium-card p-8 text-center slide-in-up delay-100">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl">
+                        👨‍💻
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">علی احمدی</h4>
+                    <p class="text-purple-400 mb-4">مدیر فنی</p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        10 سال تجربه در توسعه نرم‌افزار و رهبری تیم‌های فنی
+                    </p>
+                    <div class="flex justify-center space-x-3 space-x-reverse">
+                        <span class="text-2xl">🏆</span>
+                        <span class="text-2xl">💻</span>
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-8 text-center slide-in-up delay-200">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-red-600 rounded-full flex items-center justify-center text-3xl">
+                        👩‍🎨
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">مریم کریمی</h4>
+                    <p class="text-pink-400 mb-4">طراح ارشد UI/UX</p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        متخصص طراحی تجربه کاربری با 8 سال سابقه
+                    </p>
+                    <div class="flex justify-center space-x-3 space-x-reverse">
+                        <span class="text-2xl">🎨</span>
+                        <span class="text-2xl">✨</span>
+                        <span class="text-2xl">💎</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-8 text-center slide-in-up delay-300">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-3xl">
+                        👨‍🔬
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">حسین رضایی</h4>
+                    <p class="text-green-400 mb-4">متخصص هوش مصنوعی</p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        دکترای هوش مصنوعی و 12 سال تجربه تحقیقاتی
+                    </p>
+                    <div class="flex justify-center space-x-3 space-x-reverse">
+                        <span class="text-2xl">🧠</span>
+                        <span class="text-2xl">🔬</span>
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                </div>
+                
+                <div class="premium-card p-8 text-center slide-in-up delay-400">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center text-3xl">
+                        👩‍💼
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">فاطمه نوری</h4>
+                    <p class="text-yellow-400 mb-4">مدیر محصول</p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        MBA و 9 سال تجربه در مدیریت محصولات دیجیتال
+                    </p>
+                    <div class="flex justify-center space-x-3 space-x-reverse">
+                        <span class="text-2xl">📊</span>
+                        <span class="text-2xl">🎯</span>
+                        <span class="text-2xl">📈</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Stats -->
+            <div class="premium-card p-12 mt-20 slide-in-up delay-500">
+                <h4 class="text-4xl font-bold text-center mb-12 holo-text">آمار تیم</h4>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-5xl font-black holo-text mb-4">25+</div>
+                        <div class="text-gray-300">متخصص</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-black holo-text mb-4">150+</div>
+                        <div class="text-gray-300">سال تجربه</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-black holo-text mb-4">50+</div>
+                        <div class="text-gray-300">پروژه موفق</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl font-black holo-text mb-4">10+</div>
+                        <div class="text-gray-300">جایزه</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-7xl font-black mb-8 holo-text slide-in-up">بلاگ و اخبار</h3>
+                <p class="text-2xl text-gray-300 max-w-4xl mx-auto slide-in-up delay-100">
+                    آخرین اخبار، آپدیت‌ها و مقالات تخصصی
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <article class="premium-card p-8 slide-in-up delay-100">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6 flex items-center justify-center text-4xl">
+                        🚀
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">انتشار نسخه 3.0 نکست جن</h4>
+                    <p class="text-gray-300 mb-6">
+                        نسخه جدید نکست جن با قابلیت‌های انقلابی و هوش مصنوعی پیشرفته منتشر شد...
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-400">
+                        <span>📅 5 آذر 1403</span>
+                        <span>👁️ 2.5K بازدید</span>
+                    </div>
+                </article>
+                
+                <article class="premium-card p-8 slide-in-up delay-200">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl mb-6 flex items-center justify-center text-4xl">
+                        🧠
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">آینده هوش مصنوعی در موبایل</h4>
+                    <p class="text-gray-300 mb-6">
+                        بررسی روندهای آینده هوش مصنوعی و تأثیر آن بر اپلیکیشن‌های موبایل...
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-400">
+                        <span>📅 28 آبان 1403</span>
+                        <span>👁️ 1.8K بازدید</span>
+                    </div>
+                </article>
+                
+                <article class="premium-card p-8 slide-in-up delay-300">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-6 flex items-center justify-center text-4xl">
+                        🎨
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">اصول طراحی UI/UX مدرن</h4>
+                    <p class="text-gray-300 mb-6">
+                        راهنمای کامل طراحی رابط کاربری مدرن و اصول تجربه کاربری بهینه...
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-400">
+                        <span>📅 15 آبان 1403</span>
+                        <span>👁️ 3.2K بازدید</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-32 relative">
+        <div class="container mx-auto px-6 text-center">
+            <div class="premium-card p-20 max-w-6xl mx-auto">
+                <h3 class="text-8xl font-black mb-10 holo-text slide-in-up">همین الان دانلود کنید</h3>
+                <p class="text-3xl text-gray-300 mb-16 slide-in-up delay-100">
+                    به بیش از 5 میلیون کاربر راضی بپیوندید و تجربه نسل آینده را آغاز کنید
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-8 sm:space-y-0 sm:space-x-12 sm:space-x-reverse mb-20">
+                    <button class="neo-btn px-20 py-8 text-2xl flex items-center justify-center space-x-6 space-x-reverse slide-in-up delay-200">
+                        <span class="text-5xl">📱</span>
+                        <div class="text-right">
+                            <div class="text-lg opacity-90">دانلود از</div>
+                            <div class="font-bold text-3xl">App Store</div>
+                            <div class="text-sm opacity-75">iOS 14.0+</div>
+                        </div>
+                    </button>
+                    <button class="neo-btn px-20 py-8 text-2xl flex items-center justify-center space-x-6 space-x-reverse slide-in-up delay-300" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                        <span class="text-5xl">🤖</span>
+                        <div class="text-right">
+                            <div class="text-lg opacity-90">دانلود از</div>
+                            <div class="font-bold text-3xl">Google Play</div>
+                            <div class="text-sm opacity-75">Android 8.0+</div>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-5 gap-8 mb-16">
+                    <div class="text-center slide-in-up delay-400">
+                        <div class="text-6xl mb-6 floating">🆓</div>
+                        <div class="font-bold text-white mb-3 text-xl">کاملاً رایگان</div>
+                        <div class="text-gray-400">بدون هزینه پنهان یا اشتراک اجباری</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-500">
+                        <div class="text-6xl mb-6 floating">⚡</div>
+                        <div class="font-bold text-white mb-3 text-xl">فوق‌سریع</div>
+                        <div class="text-gray-400">عملکرد 120fps و پاسخ‌دهی فوری</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-600">
+                        <div class="text-6xl mb-6 floating">🔒</div>
+                        <div class="font-bold text-white mb-3 text-xl">امن و مطمئن</div>
+                        <div class="text-gray-400">رمزنگاری کوانتومی و حریم خصوصی</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-700">
+                        <div class="text-6xl mb-6 floating">🌍</div>
+                        <div class="font-bold text-white mb-3 text-xl">جهانی</div>
+                        <div class="text-gray-400">پشتیبانی از 50+ زبان و 150+ کشور</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-800">
+                        <div class="text-6xl mb-6 floating">🏆</div>
+                        <div class="font-bold text-white mb-3 text-xl">برنده جوایز</div>
+                        <div class="text-gray-400">بهترین اپ سال و جایزه نوآوری</div>
+                    </div>
+                </div>
+                
+                <!-- User Reviews -->
+                <div class="premium-card p-12 mb-16 slide-in-up delay-900">
+                    <h4 class="text-4xl font-bold text-center mb-12 holo-text">نظرات کاربران</h4>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <span class="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">"بهترین اپی که تا حالا استفاده کردم! طراحیش فوق‌العاده و سرعتش بی‌نظیره."</p>
+                            <div class="font-bold text-white">علی محمدی</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <span class="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">"هوش مصنوعیش واقعاً کار می‌کنه! انگار منو می‌شناسه و درست همون چیزی رو پیشنهاد می‌ده که می‌خوام."</p>
+                            <div class="font-bold text-white">مریم احمدی</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex justify-center mb-4">
+                                <span class="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <p class="text-gray-300 mb-4">"من که عاشق انیمیشن‌هاش شدم! هر بار که بازش می‌کنم حال می‌کنم."</p>
+                            <div class="font-bold text-white">حسین رضایی</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Download Stats -->
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="text-center slide-in-up delay-1000">
+                        <div class="text-5xl font-black holo-text mb-4">5M+</div>
+                        <div class="text-gray-300 font-medium">دانلود</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-1000">
+                        <div class="text-5xl font-black holo-text mb-4">4.9★</div>
+                        <div class="text-gray-300 font-medium">امتیاز</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-1000">
+                        <div class="text-5xl font-black holo-text mb-4">98%</div>
+                        <div class="text-gray-300 font-medium">رضایت</div>
+                    </div>
+                    <div class="text-center slide-in-up delay-1000">
+                        <div class="text-5xl font-black holo-text mb-4">24/7</div>
+                        <div class="text-gray-300 font-medium">پشتیبانی</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h3 class="text-7xl font-black mb-8 holo-text slide-in-up">تماس با ما</h3>
+                <p class="text-2xl text-gray-300 max-w-4xl mx-auto slide-in-up delay-100">
+                    سوال، پیشنهاد یا نظری دارید؟ ما همیشه آماده شنیدن صدای شما هستیم
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="slide-in-left delay-200">
+                    <div class="premium-card p-12">
+                        <h4 class="text-3xl font-bold mb-8 holo-text">اطلاعات تماس</h4>
+                        <div class="space-y-8">
+                            <div class="flex items-center space-x-6 space-x-reverse">
+                                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl">
+                                    📧
+                                </div>
+                                <div>
+                                    <div class="font-bold text-white mb-2">ایمیل</div>
+                                    <div class="text-gray-300">info@nextgen.ir</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-6 space-x-reverse">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center text-2xl">
+                                    📱
+                                </div>
+                                <div>
+                                    <div class="font-bold text-white mb-2">تلفن</div>
+                                    <div class="text-gray-300">021-1234-5678</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-6 space-x-reverse">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center text-2xl">
+                                    📍
+                                </div>
+                                <div>
+                                    <div class="font-bold text-white mb-2">آدرس</div>
+                                    <div class="text-gray-300">تهران، خیابان ولیعصر، پلاک 123</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h5 class="text-xl font-bold text-white mb-6">شبکه‌های اجتماعی</h5>
+                            <div class="flex space-x-6 space-x-reverse">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-xl cursor-pointer hover:scale-110 transition-transform">
+                                    📘
+                                </div>
+                                <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-600 rounded-xl flex items-center justify-center text-xl cursor-pointer hover:scale-110 transition-transform">
+                                    📷
+                                </div>
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl flex items-center justify-center text-xl cursor-pointer hover:scale-110 transition-transform">
+                                    🐦
+                                </div>
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center text-xl cursor-pointer hover:scale-110 transition-transform">
+                                    💼
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slide-in-right delay-300">
+                    <div class="premium-card p-12">
+                        <h4 class="text-3xl font-bold mb-8 holo-text">پیام بفرستید</h4>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-white font-medium mb-3">نام و نام خانوادگی</label>
+                                <input type="text" class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors" placeholder="نام خود را وارد کنید">
+                            </div>
+                            <div>
+                                <label class="block text-white font-medium mb-3">ایمیل</label>
+                                <input type="email" class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors" placeholder="ایمیل خود را وارد کنید">
+                            </div>
+                            <div>
+                                <label class="block text-white font-medium mb-3">موضوع</label>
+                                <select class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white focus:border-purple-500 focus:outline-none transition-colors">
+                                    <option value="">موضوع را انتخاب کنید</option>
+                                    <option value="support">پشتیبانی فنی</option>
+                                    <option value="feature">درخواست ویژگی</option>
+                                    <option value="bug">گزارش باگ</option>
+                                    <option value="business">همکاری تجاری</option>
+                                    <option value="other">سایر</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-white font-medium mb-3">پیام</label>
+                                <textarea rows="5" class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors resize-none" placeholder="پیام خود را بنویسید..."></textarea>
+                            </div>
+                            <button type="submit" class="neo-btn w-full py-4 text-lg">
+                                ارسال پیام
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="premium-card p-12">
+                <div class="grid lg:grid-cols-4 gap-12 mb-12">
+                    <div>
+                        <div class="flex items-center space-x-4 space-x-reverse mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-3xl flex items-center justify-center text-2xl pulse-glow">
+                                🚀
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black holo-text">نکست جن</h4>
+                                <p class="text-gray-400">پلتفرم نسل آینده</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">
+                            نکست جن با هدف ایجاد تجربه‌ای منحصربه‌فرد و پیشرفته در دنیای دیجیتال طراحی شده است.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-xl font-bold text-white mb-6">محصولات</h5>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">اپلیکیشن موبایل</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">نسخه وب</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">API توسعه‌دهندگان</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">پلاگین‌ها</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-xl font-bold text-white mb-6">پشتیبانی</h5>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">مرکز راهنمایی</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">سوالات متداول</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">تماس با ما</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">گزارش باگ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-xl font-bold text-white mb-6">شرکت</h5>
+                        <ul class="space-y-3 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">درباره ما</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">تیم ما</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">فرصت‌های شغلی</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">اخبار و بلاگ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-white/10 pt-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="text-gray-400 mb-4 md:mb-0">
+                            © ۱۴۰۳ نکست جن. تمامی حقوق محفوظ است.
+                        </div>
+                        <div class="flex items-center space-x-6 space-x-reverse text-gray-400">
+                            <a href="#" class="hover:text-white transition-colors">حریم خصوصی</a>
+                            <a href="#" class="hover:text-white transition-colors">شرایط استفاده</a>
+                            <a href="#" class="hover:text-white transition-colors">کوکی‌ها</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Advanced JavaScript for Premium Experience
+        
+        class NextGenApp {
+            constructor() {
+                this.init();
+            }
+            
+            init() {
+                this.initScrollAnimations();
+                this.initButtonEffects();
+                this.initSmoothScroll();
+                this.initParallax();
+                this.initProgressBars();
+                this.initFormHandling();
+                this.initMobileMenu();
+                this.initPerformanceMonitoring();
+            }
+            
+            initScrollAnimations() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.slide-in-up, .slide-in-down, .slide-in-left, .slide-in-right, .fade-in, .scale-in').forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                    observer.observe(el);
+                });
+            }
+            
+            initButtonEffects() {
+                document.querySelectorAll('.neo-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        this.createRippleEffect(button, e);
+                        
+                        if (button.textContent.includes('App Store') || button.textContent.includes('Google Play')) {
+                            this.handleDownload(button);
+                        } else if (button.textContent.includes('ارسال پیام')) {
+                            this.handleContactForm(e);
+                        }
+                    });
+                });
+            }
+            
+            createRippleEffect(button, e) {
+                const ripple = document.createElement('div');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height) * 2;
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 1s ease-out;
+                    pointer-events: none;
+                    z-index: 0;
+                `;
+                
+                button.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 1000);
+            }
+            
+            handleDownload(button) {
+                const store = button.textContent.includes('App Store') ? 'App Store' : 'Google Play';
+                const originalHTML = button.innerHTML;
+                
+                // Show loading state
+                button.innerHTML = `
+                    <div class="loading-dots text-white">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span class="mr-4">در حال بارگذاری...</span>
+                `;
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.innerHTML = `
+                        <span class="text-4xl">✨</span>
+                        <div class="text-right">
+                            <div class="text-sm opacity-90">هدایت به</div>
+                            <div class="font-bold text-2xl">${store}</div>
+                        </div>
+                    `;
+                    
+                    setTimeout(() => {
+                        this.showDownloadModal(store);
+                        
+                        // Reset button
+                        setTimeout(() => {
+                            button.innerHTML = originalHTML;
+                            button.disabled = false;
+                        }, 3000);
+                    }, 1000);
+                }, 2000);
+            }
+            
+            showDownloadModal(store) {
+                const modal = document.createElement('div');
+                modal.className = 'modal active';
+                modal.innerHTML = `
+                    <div class="modal-content premium-card p-12 text-center max-w-2xl mx-4">
+                        <div class="text-8xl mb-8 floating">🚀</div>
+                        <h3 class="text-4xl font-bold holo-text mb-6">موفقیت آمیز!</h3>
+                        <p class="text-xl text-gray-300 mb-8">
+                            در حال هدایت به ${store} برای دانلود نکست جن...
+                        </p>
+                        <div class="premium-card p-6 mb-8">
+                            <div class="grid grid-cols-3 gap-6 text-center">
+                                <div>
+                                    <div class="text-3xl mb-2">📱</div>
+                                    <div class="text-sm text-gray-400">نصب آسان</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl mb-2">⚡</div>
+                                    <div class="text-sm text-gray-400">سرعت بالا</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl mb-2">🔒</div>
+                                    <div class="text-sm text-gray-400">امنیت کامل</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loading-dots text-purple-400 justify-center">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    setTimeout(() => modal.remove(), 300);
+                }, 4000);
+                
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        setTimeout(() => modal.remove(), 300);
+                    }
+                });
+            }
+            
+            handleContactForm(e) {
+                e.preventDefault();
+                const form = e.target.closest('form');
+                const formData = new FormData(form);
+                
+                // Show success message
+                const successModal = document.createElement('div');
+                successModal.className = 'modal active';
+                successModal.innerHTML = `
+                    <div class="modal-content premium-card p-12 text-center max-w-lg mx-4">
+                        <div class="text-6xl mb-6">✅</div>
+                        <h3 class="text-3xl font-bold text-white mb-4">پیام ارسال شد!</h3>
+                        <p class="text-gray-300 mb-6">
+                            پیام شما با موفقیت ارسال شد. ما در اسرع وقت با شما تماس خواهیم گرفت.
+                        </p>
+                        <button class="neo-btn px-8 py-3" onclick="this.closest('.modal').remove()">
+                            متشکرم
+                        </button>
+                    </div>
+                `;
+                
+                document.body.appendChild(successModal);
+                form.reset();
+            }
+            
+            initSmoothScroll() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            initParallax() {
+                let ticking = false;
+                
+                const updateParallax = () => {
+                    const scrolled = window.pageYOffset;
+                    
+                    document.querySelectorAll('.morph-blob-advanced').forEach((blob, index) => {
+                        const speed = 0.2 + (index * 0.1);
+                        const yPos = scrolled * speed;
+                        blob.style.transform += ` translateY(${yPos}px)`;
+                    });
+                    
+                    // Parallax for floating elements
+                    document.querySelectorAll('.floating').forEach((element, index) => {
+                        const speed = 0.1 + (index * 0.05);
+                        const yPos = Math.sin(scrolled * 0.01 + index) * 10;
+                        element.style.transform += ` translateY(${yPos}px)`;
+                    });
+                    
+                    ticking = false;
+                };
+                
+                const requestTick = () => {
+                    if (!ticking) {
+                        requestAnimationFrame(updateParallax);
+                        ticking = true;
+                    }
+                };
+                
+                window.addEventListener('scroll', requestTick);
+            }
+            
+            initProgressBars() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const progressFill = entry.target.querySelector('.progress-fill');
+                            if (progressFill) {
+                                const width = progressFill.style.width;
+                                progressFill.style.width = '0%';
+                                setTimeout(() => {
+                                    progressFill.style.width = width;
+                                }, 100);
+                            }
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.progress-bar').forEach(bar => {
+                    observer.observe(bar);
+                });
+            }
+            
+            initFormHandling() {
+                // Add form validation and enhancement
+                document.querySelectorAll('input, textarea, select').forEach(field => {
+                    field.addEventListener('focus', function() {
+                        this.parentElement.classList.add('focused');
+                    });
+                    
+                    field.addEventListener('blur', function() {
+                        if (!this.value) {
+                            this.parentElement.classList.remove('focused');
+                        }
+                    });
+                });
+            }
+            
+            initMobileMenu() {
+                // Add mobile menu functionality if needed
+                const mobileMenuButton = document.querySelector('.mobile-menu-button');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                
+                if (mobileMenuButton && mobileMenu) {
+                    mobileMenuButton.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('active');
+                    });
+                }
+            }
+            
+            initPerformanceMonitoring() {
+                // Monitor performance and log metrics
+                if ('performance' in window) {
+                    window.addEventListener('load', () => {
+                        const loadTime = performance.now();
+                        console.log(`🚀 نکست جن بارگذاری شد در ${Math.round(loadTime)}ms`);
+                        
+                        // Log navigation timing
+                        const navigation = performance.getEntriesByType('navigation')[0];
+                        if (navigation) {
+                            console.log('📊 آمار عملکرد:', {
+                                'زمان DNS': Math.round(navigation.domainLookupEnd - navigation.domainLookupStart),
+                                'زمان اتصال': Math.round(navigation.connectEnd - navigation.connectStart),
+                                'زمان پاسخ': Math.round(navigation.responseEnd - navigation.requestStart),
+                                'زمان رندر': Math.round(navigation.loadEventEnd - navigation.responseEnd)
+                            });
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Add advanced CSS animations
+        const advancedStyles = document.createElement('style');
+        advancedStyles.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .focused {
+                transform: translateY(-2px);
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        `;
+        document.head.appendChild(advancedStyles);
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            new NextGenApp();
+            console.log('🚀 نکست جن - پلتفرم نسل آینده آماده است!');
+            console.log('💎 نسخه 3.0 - با تمام قابلیت‌های پیشرفته');
+        });
+        
+        // Add service worker for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('🔧 Service Worker ثبت شد');
+                    })
+                    .catch(error => {
+                        console.log('❌ خطا در ثبت Service Worker');
+                    });
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf64c05483d798',t:'MTc1NDY2MDA5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

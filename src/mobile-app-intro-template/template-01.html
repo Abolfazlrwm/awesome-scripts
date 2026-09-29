@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اپلیکیشن موبایل - دانلود رایگان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .parallax {
+            transform: translateY(0);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .parallax-slow {
+            transform: translateY(0);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .screenshot-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+        
+        .phone-mockup {
+            width: 250px;
+            height: 500px;
+            background: #1f2937;
+            border-radius: 30px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #374151;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-4 fixed w-full top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                    <span class="text-xl">📱</span>
+                </div>
+                <h1 class="text-xl font-bold">اپلیکیشن من</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6 space-x-reverse">
+                <a href="#features" class="hover:text-blue-200 transition-colors">ویژگی‌ها</a>
+                <a href="#screenshots" class="hover:text-blue-200 transition-colors">تصاویر</a>
+                <a href="#download" class="hover:text-blue-200 transition-colors">دانلود</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white pt-24 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="parallax-slow absolute top-20 right-10 w-32 h-32 bg-white rounded-full"></div>
+            <div class="parallax absolute top-40 left-20 w-20 h-20 bg-white rounded-full"></div>
+            <div class="parallax-slow absolute bottom-20 right-1/3 w-16 h-16 bg-white rounded-full"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-5xl font-bold mb-6 parallax">بهترین اپلیکیشن موبایل</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto parallax-slow">تجربه‌ای جدید و هیجان‌انگیز در دنیای موبایل. با ویژگی‌های منحصر به فرد و طراحی زیبا</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 md:space-x-reverse mb-12">
+                <button class="download-btn bg-black text-white px-8 py-4 rounded-xl flex items-center space-x-3 space-x-reverse font-semibold">
+                    <span>🍎</span>
+                    <div class="text-right">
+                        <div class="text-xs">دانلود از</div>
+                        <div class="text-lg">App Store</div>
+                    </div>
+                </button>
+                <button class="download-btn bg-green-600 text-white px-8 py-4 rounded-xl flex items-center space-x-3 space-x-reverse font-semibold">
+                    <span>📱</span>
+                    <div class="text-right">
+                        <div class="text-xs">دانلود از</div>
+                        <div class="text-lg">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="phone-mockup mx-auto parallax">
+                <div class="phone-screen">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">📱</div>
+                        <div class="text-lg font-semibold">صفحه اصلی اپ</div>
+                        <div class="text-sm text-gray-500 mt-2">رابط کاربری زیبا</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-gray-800 mb-4">ویژگی‌های برجسته</h3>
+                <p class="text-xl text-gray-600">امکانات فوق‌العاده‌ای که زندگی شما را آسان‌تر می‌کند</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="app-icon mx-auto">⚡</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">سرعت بالا</h4>
+                    <p class="text-gray-600">عملکرد فوق‌العاده سریع و بهینه‌سازی شده برای تمام دستگاه‌ها</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="app-icon mx-auto">🔒</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">امنیت کامل</h4>
+                    <p class="text-gray-600">حفاظت کامل از اطلاعات شخصی با بالاترین استانداردهای امنیتی</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="app-icon mx-auto">🎨</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">طراحی زیبا</h4>
+                    <p class="text-gray-600">رابط کاربری مدرن و جذاب با تجربه کاربری بی‌نظیر</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="app-icon mx-auto">🌐</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">دسترسی آفلاین</h4>
+                    <p class="text-gray-600">امکان استفاده از اپلیکیشن حتی بدون اتصال به اینترنت</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="app-icon mx-auto">🔄</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">همگام‌سازی</h4>
+                    <p class="text-gray-600">همگام‌سازی خودکار اطلاعات در تمام دستگاه‌های شما</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="app-icon mx-auto">💬</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-4">پشتیبانی ۲۴/۷</h4>
+                    <p class="text-gray-600">تیم پشتیبانی حرفه‌ای آماده کمک به شما در هر زمان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-gray-800 mb-4">نمای کلی از اپلیکیشن</h3>
+                <p class="text-xl text-gray-600">تصاویری از صفحات مختلف اپلیکیشن</p>
+            </div>
+            
+            <div class="flex justify-center items-center space-x-8 space-x-reverse overflow-x-auto pb-4">
+                <div class="phone-mockup flex-shrink-0">
+                    <div class="phone-screen bg-gradient-to-br from-blue-400 to-purple-500 text-white">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🏠</div>
+                            <div class="text-lg font-semibold">صفحه اصلی</div>
+                            <div class="text-sm opacity-80 mt-2">داشبورد کاربری</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-mockup flex-shrink-0">
+                    <div class="phone-screen bg-gradient-to-br from-green-400 to-blue-500 text-white">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">📊</div>
+                            <div class="text-lg font-semibold">آمار و گزارش</div>
+                            <div class="text-sm opacity-80 mt-2">تحلیل داده‌ها</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-mockup flex-shrink-0">
+                    <div class="phone-screen bg-gradient-to-br from-purple-400 to-pink-500 text-white">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">⚙️</div>
+                            <div class="text-lg font-semibold">تنظیمات</div>
+                            <div class="text-sm opacity-80 mt-2">شخصی‌سازی اپ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold mb-6">همین حالا دانلود کنید</h3>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">اپلیکیشن را رایگان دانلود کرده و از تمام امکانات آن بهره‌مند شوید</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6 md:space-x-reverse mb-8">
+                <button class="download-btn bg-black text-white px-10 py-5 rounded-xl flex items-center space-x-4 space-x-reverse font-semibold text-lg">
+                    <span class="text-2xl">🍎</span>
+                    <div class="text-right">
+                        <div class="text-sm">دانلود از</div>
+                        <div class="text-xl">App Store</div>
+                    </div>
+                </button>
+                <button class="download-btn bg-green-600 text-white px-10 py-5 rounded-xl flex items-center space-x-4 space-x-reverse font-semibold text-lg">
+                    <span class="text-2xl">📱</span>
+                    <div class="text-right">
+                        <div class="text-sm">دانلود از</div>
+                        <div class="text-xl">Google Play</div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="text-sm opacity-80">
+                <p>✅ رایگان برای همیشه | ✅ بدون تبلیغات مزاحم | ✅ پشتیبانی کامل</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 space-x-reverse mb-4">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span>📱</span>
+                </div>
+                <h4 class="text-lg font-bold">اپلیکیشن من</h4>
+            </div>
+            <p class="text-gray-400 mb-4">بهترین تجربه موبایل را با ما داشته باشید</p>
+            <div class="flex justify-center space-x-6 space-x-reverse text-sm">
+                <a href="#" class="hover:text-blue-400 transition-colors">حریم خصوصی</a>
+                <a href="#" class="hover:text-blue-400 transition-colors">شرایط استفاده</a>
+                <a href="#" class="hover:text-blue-400 transition-colors">تماس با ما</a>
+            </div>
+            <div class="mt-4 text-sm text-gray-500">
+                © ۲۰۲۴ تمام حقوق محفوظ است
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            const parallaxSlowElements = document.querySelectorAll('.parallax-slow');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            
+            parallaxSlowElements.forEach(element => {
+                const speed = 0.2;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download button functionality
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const isAppStore = this.textContent.includes('App Store');
+                const store = isAppStore ? 'App Store' : 'Google Play';
+                alert(`در حال هدایت به ${store} برای دانلود اپلیکیشن...`);
+                
+                // In a real app, you would redirect to actual store URLs:
+                // window.open(isAppStore ? 'https://apps.apple.com/...' : 'https://play.google.com/store/apps/details?id=...', '_blank');
+            });
+        });
+
+        // Feature cards hover effect enhancement
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96befdf8257afd4d',t:'MTc1NDY1NTg4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
