@@ -4,7 +4,7 @@
 
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزار های جانبی دیگه
 
-![Projects](https://img.shields.io/badge/projects-34-blue)
+![Projects](https://img.shields.io/badge/projects-38-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Language](https://img.shields.io/badge/lang-Python%20%7C%20HTML%2FJS%20%7C%20PHP%20%7C%20Node.js%20%7C%20C%23%20%7C%20Java%20%7C%20C%2B%2B%20%7C%20PowerShell-orange)
 ![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)
@@ -16,7 +16,7 @@
 
 ## 📦 فهرست پروژه‌ها
 
-### 🤖 ربات های تلگرام(25)
+### 🤖 ربات های تلگرام(27)
 
 | پروژه                                                     | زبان       | توضیح کوتاه                                                          |
 | --------------------------------------------------------- | ---------- | -------------------------------------------------------------------- |
@@ -45,8 +45,10 @@
 | [🌟 اشتراک‌گذاری کد](./src/code-share-bot)                    | Python     | ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار    |
 | [📰 جستجوگر مقالات دیجیاتو](./src/digiato-article-bot)        | Python     | جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی                        |
 | [🌐 آزادی‌نت (کانفیگ VPN)](./src/freedomnet-vpn-bot)          | Python     | توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل         |
+| [🔍 شناسایی فرستنده‌ی فورواردی](./src/forward-info-bot)       | PHP        | نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده از کاربر، ربات یا کانال |
+| [🎰 قرعه‌کشی و گیوای](./src/lottery-giveaway-bot)             | Python     | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل      |
 
-### 🌐 ابزارهای وب (۶)
+### 🌐 ابزارهای وب (۸)
 
 | پروژه                                                                                                                               | زبان        | توضیح کوتاه                                                                            |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
@@ -56,11 +58,13 @@
 | [🔳 QR Code Studio](./src/qr-code-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) | HTML/CSS/JS | ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG                                     |
 | [🌍 World Clock Planner](./src/world-clock-planner) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/) | HTML/CSS/JS | برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر                  |
 | [❌⭕ بازی دوز (OX)](./src/tic-tac-toe-game) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/) | HTML/CSS/JS | بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی                                            |
+| [📱 قالب معرفی اپلیکیشن](./src/mobile-app-intro-template) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) | HTML/CSS/JS | ۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل                       |
+| [📢 صفحه فرود کانال تلگرام](./src/telegram-channel-landing-page) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) | HTML/CSS/JS | لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی                            |
 
 ### 🖥 ابزارهای دسکتاپ (۳)
 
 | پروژه                                                    | زبان       | توضیح کوتاه                                                              |
-| -------------------------------------------------------- | ---------- | ------------------------------------------------------------------------ |
+| --------------------------------------------------------- | ---------- | ------------------------------------------------------------------------ |
 | [🗂 مرتب‌کننده پوشه Downloads](./src/downloads-organizer)    | PowerShell | دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل     |
 | [🖱 ابزار اتوماسیون دسکتاپ](./src/pyautogui-automation-demo) | Python     | تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان |
 | [🖥 مانیتور سیستم](./src/system-monitor-gui)                 | Python     | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6       |

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>قالب معرفی اپلیکیشن موبایل — ۱۲ طرح</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap');
+  :root{
+    --bg:#160F26; --bg2:#1E1538; --ink:#F3EFFF; --muted:#A79BC9;
+    --accent:#F2B705; --line:rgba(243,239,255,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; font-family:'Vazirmatn',sans-serif;
+    background:radial-gradient(circle at 20% 0%, var(--bg2), var(--bg) 60%);
+    color:var(--ink); padding:56px 20px 80px;
+  }
+  .wrap{max-width:980px; margin:0 auto;}
+  .eyebrow{color:var(--accent); font-weight:700; font-size:14px; margin-bottom:10px;}
+  h1{font-size:clamp(28px,5vw,44px); font-weight:900; line-height:1.3; margin:0 0 14px; max-width:14ch;}
+  p.lead{color:var(--muted); font-size:16px; max-width:56ch; line-height:1.9; margin:0 0 48px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;}
+  a.card{
+    display:block; text-decoration:none; color:var(--ink);
+    background:rgba(255,255,255,0.03); border:1px solid var(--line);
+    border-radius:10px; padding:22px 20px; transition:border-color .15s ease, background .15s ease;
+  }
+  a.card:hover{border-color:var(--accent); background:rgba(242,183,5,0.06);}
+  .num{font-weight:900; font-size:22px; color:var(--accent); margin-bottom:6px;}
+  .style{font-size:15px; color:var(--ink); font-weight:500;}
+  .file{font-size:12px; color:var(--muted); margin-top:8px; direction:ltr; text-align:right;}
+  footer{margin-top:56px; color:var(--muted); font-size:13px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Mobile App Intro Template Pack</div>
+    <h1>۱۲ قالب معرفی اپلیکیشن، آماده برای شخصی‌سازی</h1>
+    <p class="lead">هر کارت یکی از ۱۲ صفحه‌ی فرود مستقل رو باز می‌کنه. هر فایل خودش کامله — فقط متن، رنگ و لینک دانلود رو با اپلیکیشن خودتون جایگزین کنید.</p>
+    <div class="grid" id="grid"></div>
+    <footer>بخشی از مجموعه‌ی <a href="https://github.com/Abolfazlrwm/awesome-scripts" style="color:var(--accent)">awesome-scripts</a></footer>
+  </div>
+<script>
+  const items = [
+    ["۰۱","معرفی ساده و دانلود رایگان"],
+    ["۰۲","معرفی ساده و دانلود رایگان — نسخه‌ی جایگزین"],
+    ["۰۳","تجربه‌ی بی‌نظیر — طرح مینیمال"],
+    ["۰۴","تجربه‌ی بی‌نظیر — طرح جایگزین"],
+    ["۰۵","نسل آینده — طراحی مدرن پیشرفته"],
+    ["۰۶","نکست‌جن — پلتفرم ساده و مدرن"],
+    ["۰۷","نکست‌جن — طراحی مدرن"],
+    ["۰۸","نکست‌جن — تجربه‌ی انیمیشنی"],
+    ["۰۹","نکست‌جن — طراحی مدرن (تنوع رنگی)"],
+    ["۱۰","نکست‌جن — پلتفرم نسل آینده (کامل‌ترین نسخه)"],
+    ["۱۱","نکست‌جن — نسخه‌ی سبک"],
+    ["۱۲","نکست‌جن — نسخه‌ی جایگزین سبک"],
+  ];
+  const grid = document.getElementById('grid');
+  items.forEach((it, i) => {
+    const n = String(i+1).padStart(2,'0');
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = `template-${n}.html`;
+    a.innerHTML = `<div class="num">${it[0]}</div><div class="style">${it[1]}</div><div class="file">template-${n}.html</div>`;
+    grid.appendChild(a);
+  });
+</script>
+</body>
+</html>
