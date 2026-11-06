@@ -1,0 +1,27 @@
+name: Bug report
+description: Report something broken or unexpected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Describe the bug and the exact steps to reproduce it.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      placeholder: e.g. v1.0.0 or commit sha
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / output
+      render: shell
