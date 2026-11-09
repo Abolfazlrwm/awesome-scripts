@@ -1,0 +1,7 @@
+error_log
+data/*/
+dokme/*/
+Robat/*/
+!data/index.html
+!dokme/index.html
+!Robat/index.html
