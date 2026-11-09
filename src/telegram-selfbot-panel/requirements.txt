@@ -1,0 +1,10 @@
+telethon>=1.34
+python-telegram-bot>=21.0
+aiohttp>=3.9
+qrcode[pil]>=7.4
+python-dotenv>=1.0
+
+# optional feature upgrades (bot works without them, features auto-disable)
+Pillow>=10.0
+gTTS>=2.5
+yt-dlp

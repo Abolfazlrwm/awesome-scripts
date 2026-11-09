@@ -1,0 +1,6 @@
+user_session*
+state.json
+state_backup.json
+state_emergency_backup.json
+state_restore_upload.json
+media_cache/
