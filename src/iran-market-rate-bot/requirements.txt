@@ -1,0 +1,7 @@
+python-telegram-bot>=21.0
+requests>=2.31
+numpy>=1.26
+Pillow>=10.0
+arabic-reshaper>=3.0
+python-bidi>=0.4.2
+python-dotenv>=1.0
