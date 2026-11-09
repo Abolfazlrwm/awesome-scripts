@@ -3,12 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-
-**38 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**46 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-
-![Projects](https://img.shields.io/badge/projects-38-blue)
+![Projects](https://img.shields.io/badge/projects-46-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Abolfazlrwm/awesome-scripts?style=flat&logo=github)
@@ -36,10 +34,18 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 27
+### 🤖 Telegram bots — 35
 
 | Project | Lang | What it does |
 | --- | --- | --- |
+| [telegram-selfbot-panel](./src/telegram-selfbot-panel) | Python | 42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler |
+| [multi-account-manager](./src/multi-account-manager) | Python | Multi-account control center — sync mode, operation workers, per-account DBs, owner panel |
+| [iran-market-rate-bot](./src/iran-market-rate-bot) | Python | Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list |
+| [emoji-forge-bot](./src/emoji-forge-bot) | Python | Custom emoji pack rebranding (TGS/WEBM) — pipeline, tests, systemd deploy |
+| [starzify-shop-bot](./src/starzify-shop-bot) | Python | Stars/Premium/Gifts/Crypto shop replica — wallet, referrals, admin panel |
+| [v2ray-shop-bot](./src/v2ray-shop-bot) | Python | V2Ray/OpenVPN config shop — card-to-card payments, wallet, admin panel |
+| [php-bot-maker](./src/php-bot-maker) | PHP | Bot-maker platform — users build bots, coin economy, marketplace with moderation |
+| [channel-submission-bot](./src/channel-submission-bot) | PHP | Users submit posts, admin approves → auto-published to the channel |
 | [advanced-shop-bot](./src/advanced-shop-bot) | Python | Full shop bot — product catalog, cart, coupons, card-to-card payment |
 | [subscription-shop-bot](./src/subscription-shop-bot) | Python | Automated subscription selling, lucky wheel, reseller system |
 | [happydog-economy-bot](./src/happydog-economy-bot) | Python | Group economy game — pets, fishing, factories, city hall, national leadership |
@@ -115,10 +121,18 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (27)
+#### 🤖 ربات‌های تلگرام (35)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
+| [🎛 سلف‌بات پنل‌دار](./src/telegram-selfbot-panel) | Python | سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی |
+| [👥 مدیریت چند اکانت همزمان](./src/multi-account-manager) | Python | مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک |
+| [💸 نرخ لحظه‌ای بازار](./src/iran-market-rate-bot) | Python | نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار |
+| [🎨 اموجی فورج AI](./src/emoji-forge-bot) | Python | ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd |
+| [⭐ فروشگاه استارز و گیفت](./src/starzify-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — بازسازی Starzify |
+| [🌐 فروشگاه کانفیگ V2Ray](./src/v2ray-shop-bot) | Python | فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین |
+| [🏭 ربات‌ساز PHP](./src/php-bot-maker) | PHP | پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش |
+| [📮 ربات پست کانال](./src/channel-submission-bot) | PHP | کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود |
 | [🛍 ربات فروشگاهی پیشرفته](./src/advanced-shop-bot) | Python | فروشگاه‌ساز کامل با تنوع محصول، سبد خرید، کوپن و پرداخت کارت‌به‌کارت |
 | [💳 ربات فروش اشتراک/کانفیگ](./src/subscription-shop-bot) | Python | فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی |
 | [🐕 هاپ‌داگ (ربات اقتصادی گروهی)](./src/happydog-economy-bot) | Python | بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی |
@@ -204,6 +218,6 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 <div align="center">
 
-Built by [@patrik_rwm](https://t.me/patrik_rwm) · ساخته‌شده توسط [@patrik_rwm](https://t.me/patrik_rwm) برای جامعه‌ی توسعه‌دهندگان تلگرام و مردم ایران 🇮🇷
+Maintained by [@Abolfazl_rwm](https://t.me/Abolfazl_rwm) · نگهداری و توسعه توسط [@Abolfazl_rwm](https://t.me/Abolfazl_rwm) برای جامعه‌ی توسعه‌دهندگان تلگرام و مردم ایران 🇮🇷
 
 </div>
