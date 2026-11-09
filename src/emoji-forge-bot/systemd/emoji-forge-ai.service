@@ -1,0 +1,16 @@
+[Unit]
+Description=Emoji Forge AI Telegram bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=YOUR_USER
+WorkingDirectory=/opt/emoji-forge-ai
+EnvironmentFile=/opt/emoji-forge-ai/.env
+ExecStart=/opt/emoji-forge-ai/.venv/bin/python /opt/emoji-forge-ai/run.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
