@@ -1,0 +1,7 @@
+sessions/
+databases/
+data/
+logs/
+temp/
+*.session
+*.session-journal

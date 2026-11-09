@@ -1,0 +1,7 @@
+telethon>=1.34
+python-dotenv>=1.0
+
+# optional performance upgrades (pure-Python fallbacks exist)
+uvloop>=0.19; sys_platform != "win32"
+orjson>=3.9
+aiofiles>=23.2
