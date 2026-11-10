@@ -1,0 +1,28 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  catalog-and-projects:
+    name: Catalog & project validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Check catalog data is up to date
+        run: python tools/generate_catalog.py --check
+
+      - name: Validate project folders & secrets hygiene
+        run: python tools/validate_projects.py
