@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awesome Scripts — 46 ready-to-run projects</title>
+<meta name="description" content="Interactive catalog of 46 complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+<script src="data/catalog.js"></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c2129;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #4493f8;
+    --accent-2: #bc8cff;
+    --chip: #21262d;
+    --chip-hover: #30363d;
+    --ok: #3fb950;
+    --shadow: 0 8px 24px rgba(1, 4, 9, 0.6);
+    --header-bg: rgba(13, 17, 23, 0.82);
+  }
+  html[data-theme="light"] {
+    --bg: #f6f8fa;
+    --panel: #ffffff;
+    --panel-2: #f0f3f6;
+    --border: #d0d7de;
+    --text: #1f2328;
+    --muted: #656d76;
+    --accent: #0969da;
+    --accent-2: #8250df;
+    --chip: #eaeef2;
+    --chip-hover: #d8dee4;
+    --ok: #1a7f37;
+    --shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+    --header-bg: rgba(246, 248, 250, 0.85);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", -apple-system, "Vazirmatn", Tahoma, "Noto Sans Arabic", sans-serif;
+    line-height: 1.55;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+  }
+  .brand:hover { text-decoration: none; }
+  .brand .logo { font-size: 26px; }
+  .header-stats { display: flex; gap: 8px; flex-wrap: wrap; }
+  .stat-chip {
+    background: var(--chip);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 12px;
+    font-size: 12.5px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .stat-chip b { color: var(--text); font-weight: 600; }
+  .header-actions { margin-inline-start: auto; display: flex; gap: 8px; align-items: center; }
+  .icon-btn {
+    background: var(--chip);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s ease;
+  }
+  .icon-btn:hover { background: var(--chip-hover); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 44px 20px 8px;
+    text-align: center;
+  }
+  .hero h1 {
+    margin: 0 0 10px;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.15;
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p.sub { margin: 0 auto; max-width: 720px; color: var(--muted); font-size: 16.5px; }
+  .hero .badges { margin-top: 14px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+
+  /* ---------- toolbar ---------- */
+  .toolbar { max-width: 1200px; margin: 0 auto; padding: 26px 20px 6px; }
+  .search-wrap { position: relative; max-width: 760px; margin: 0 auto; }
+  .search-wrap .magnifier {
+    position: absolute;
+    inset-inline-start: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 16px;
+    pointer-events: none;
+  }
+  #search {
+    width: 100%;
+    padding: 13px 46px 13px 44px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    font-size: 15.5px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  html[dir="rtl"] #search { padding: 13px 44px 13px 46px; }
+  #search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(68, 147, 248, 0.25); }
+  .kbd-hint {
+    position: absolute;
+    inset-inline-end: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--muted);
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 1px 8px;
+    pointer-events: none;
+  }
+  .chips {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .chip {
+    background: var(--chip);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+  }
+  .chip:hover { background: var(--chip-hover); color: var(--text); }
+  .chip.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .lang-filter {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  select#lang {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* ---------- results ---------- */
+  .results-meta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 20px 0;
+    color: var(--muted);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    animation: rise 0.35s ease backwards;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .cat-tag { font-size: 12.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; }
+  .lang-badge {
+    margin-inline-start: auto;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    border-radius: 999px;
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+  .card h3 { margin: 0; font-size: 17px; line-height: 1.35; }
+  .card h3 a { color: var(--text); }
+  .card h3 a:hover { color: var(--accent); }
+  .card .desc { color: var(--muted); font-size: 14px; margin: 0; flex-grow: 1; }
+  .card-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+  .act {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    font-size: 13px;
+    border-radius: 8px;
+    padding: 5px 12px;
+    transition: all 0.15s ease;
+  }
+  .act:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .act.demo { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .act.demo:hover { filter: brightness(1.12); color: #fff; }
+  .empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    font-size: 16px;
+  }
+  .empty .big { font-size: 44px; margin-bottom: 10px; }
+
+  /* ---------- footer ---------- */
+  footer.site {
+    border-top: 1px solid var(--border);
+    padding: 26px 20px 34px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  footer.site .heart { color: #f85149; }
+  footer.site .meta { margin-top: 6px; font-size: 12.5px; opacity: 0.85; }
+
+  @media (max-width: 640px) {
+    .hero { padding-top: 30px; }
+    .header-actions { margin-inline-start: 0; width: 100%; justify-content: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="./">
+      <span class="logo">🤖</span>
+      <span>Awesome&nbsp;Scripts</span>
+    </a>
+    <div class="header-stats" id="headerStats"></div>
+    <div class="header-actions">
+      <a class="icon-btn" id="ghLink" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 id="heroTitle">46 ready-to-run projects. One repository.</h1>
+  <p class="sub" id="heroSub">
+    Complete Telegram bots, web tools and desktop utilities — every folder is a full app with a
+    step-by-step README. Search it, filter it, ship it.
+  </p>
+  <div class="badges" id="heroBadges"></div>
+</section>
+
+<section class="toolbar">
+  <div class="search-wrap">
+    <span class="magnifier">🔎</span>
+    <input id="search" type="search" autocomplete="off" spellcheck="false"
+           placeholder="Search 46 projects — name, feature or language…" aria-label="Search projects">
+    <span class="kbd-hint">/</span>
+  </div>
+  <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
+  <div class="lang-filter">
+    <select id="lang" aria-label="Filter by language"></select>
+  </div>
+</section>
+
+<div class="results-meta">
+  <span id="resultCount"></span>
+  <span id="filterHint"></span>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<footer class="site">
+  <div id="footerMain">
+    Released under the MIT License · Maintained with <span class="heart">♥</span> by
+    <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">@Abolfazl_rwm</a>
+  </div>
+  <div class="meta" id="footerMeta"></div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var REPO = "https://github.com/Abolfazlrwm/awesome-scripts";
+  var data = window.AWESOME_CATALOG || null;
+  if (!data || !data.projects || !data.projects.length) {
+    document.getElementById("grid").innerHTML =
+      '<div class="empty"><div class="big">⚠️</div>Catalog data failed to load. ' +
+      'Please open this page on <a href="' + REPO + '">GitHub</a> or generate it with ' +
+      '<code>python tools/generate_catalog.py</code>.</div>';
+    return;
+  }
+
+  var T = {
+    en: {
+      heroTitle: data.count + " ready-to-run projects. One repository.",
+      heroSub: "Complete Telegram bots, web tools and desktop utilities — every folder is a full app with a step-by-step README. Search it, filter it, ship it.",
+      searchPlaceholder: "Search " + data.count + " projects — name, feature or language…",
+      all: "All", allCount: "All " + data.count,
+      showing: "Showing {x} of {y} projects",
+      noFilter: "No filters applied", filtered: "Filtered by: {v}",
+      none: "No projects match your search.", noneHint: "Try another keyword or clear the filters.",
+      folder: "Folder", readme: "README", demo: "Live demo",
+      categoryLabels: { "telegram-bot": "Telegram Bot", "web-tool": "Web Tool", "desktop-tool": "Desktop Tool" },
+      categoryChips: { "all": "🧩 All {n}", "telegram-bot": "🤖 Telegram Bots {n}", "web-tool": "🌐 Web Tools {n}", "desktop-tool": "🖥️ Desktop Tools {n}" },
+      updated: "Catalog updated: {d} · Auto-generated from README.md",
+      projects: "projects", languages: "languages"
+    },
+    fa: {
+      heroTitle: data.count + " پروژه‌ی آماده‌ی اجرا، در یک مخزن.",
+      heroSub: "ربات‌های تلگرام، ابزارهای وب و برنامه‌های دسکتاپ — هر پوشه یک اپلیکیشن کامل با README گام‌به‌گام است. جستجو کن، فیلتر کن، استفاده کن.",
+      searchPlaceholder: "جستجو در " + data.count + " پروژه — نام، قابلیت یا زبان…",
+      all: "همه", allCount: "همه (" + data.count + ")",
+      showing: "نمایش {x} از {y} پروژه",
+      noFilter: "بدون فیلتر", filtered: "فیلترشده بر اساس: {v}",
+      none: "پروژه‌ای با این جستجو پیدا نشد.", noneHint: "کلیدواژه‌ی دیگری امتحان کن یا فیلترها را پاک کن.",
+      folder: "پوشه", readme: "راهنما", demo: "دمو زنده",
+      categoryLabels: { "telegram-bot": "ربات تلگرام", "web-tool": "ابزار وب", "desktop-tool": "ابزار دسکتاپ" },
+      categoryChips: { "all": "🧩 همه ({n})", "telegram-bot": "🤖 ربات‌های تلگرام ({n})", "web-tool": "🌐 ابزارهای وب ({n})", "desktop-tool": "🖥️ ابزارهای دسکتاپ ({n})" },
+      updated: "آخرین به‌روزرسانی کاتالوگ: {d} · تولید خودکار از README.md",
+      projects: "پروژه", languages: "زبان"
+    }
+  };
+
+  var state = {
+    query: "",
+    category: "all",
+    language: "all",
+    lang: localStorage.getItem("as_lang") || "en",
+    theme: localStorage.getItem("as_theme") ||
+      (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var grid = $("grid"), searchEl = $("search"), langSel = $("lang");
+
+  function fmt(str, vars) {
+    return str.replace(/\{(\w+)\}/g, function (_, k) { return vars[k]; });
+  }
+  function t(key) { return T[state.lang][key]; }
+
+  /* ---------- theme + language ---------- */
+  function applyTheme() {
+    document.documentElement.setAttribute("data-theme", state.theme);
+    $("themeBtn").textContent = state.theme === "dark" ? "☀️" : "🌙";
+    localStorage.setItem("as_theme", state.theme);
+  }
+  function applyLang() {
+    var fa = state.lang === "fa";
+    document.documentElement.lang = fa ? "fa" : "en";
+    document.documentElement.dir = fa ? "rtl" : "ltr";
+    $("langBtn").textContent = fa ? "EN" : "فا";
+    $("heroTitle").textContent = t("heroTitle");
+    $("heroSub").textContent = t("heroSub");
+    searchEl.placeholder = t("searchPlaceholder");
+    $("ghLink").textContent = fa ? "⭐ گیت‌هاب" : "⭐ GitHub";
+    localStorage.setItem("as_lang", state.lang);
+    buildChips();
+    buildLangSelect();
+    render();
+  }
+
+  /* ---------- toolbar ---------- */
+  function buildChips() {
+    var stats = data.stats.categories;
+    var counts = { all: data.count, "telegram-bot": stats["telegram-bot"] || 0, "web-tool": stats["web-tool"] || 0, "desktop-tool": stats["desktop-tool"] || 0 };
+    var html = "";
+    ["all", "telegram-bot", "web-tool", "desktop-tool"].forEach(function (key) {
+      var label = fmt(t("categoryChips")[key], { n: counts[key] });
+      html += '<button type="button" class="chip' + (state.category === key ? " active" : "") +
+        '" data-cat="' + key + '">' + label + "</button>";
+    });
+    $("catChips").innerHTML = html;
+    Array.prototype.forEach.call($("catChips").children, function (btn) {
+      btn.addEventListener("click", function () {
+        state.category = btn.getAttribute("data-cat");
+        buildChips();
+        render();
+      });
+    });
+  }
+
+  function buildLangSelect() {
+    var langs = Object.keys(data.stats.languages).sort();
+    var html = '<option value="all">🌐 ' + t("all") + " — " + t("languages") + "</option>";
+    langs.forEach(function (l) {
+      html += '<option value="' + l + '">' + l + " (" + data.stats.languages[l] + ")</option>";
+    });
+    langSel.innerHTML = html;
+    langSel.value = state.language;
+  }
+
+  function buildHeaderStats() {
+    var nl = Object.keys(data.stats.languages).length;
+    var fa = state.lang === "fa";
+    $("headerStats").innerHTML =
+      '<span class="stat-chip"><b>' + data.count + "</b> " + t("projects") + "</span>" +
+      '<span class="stat-chip"><b>' + nl + "</b> " + t("languages") + "</span>" +
+      '<span class="stat-chip"><b>MIT</b></span>';
+    var stars = data.repo ? "" : "";
+    $("heroBadges").innerHTML =
+      '<span class="stat-chip">🧩 <b>' + data.count + "</b> " + t("projects") + "</span>" +
+      '<span class="stat-chip">⭐ <a href="' + REPO + '/stargazers" target="_blank" rel="noopener">' + (fa ? "استار بده" : "Star the repo") + "</a></span>" +
+      '<span class="stat-chip">🚀 <a href="' + REPO + '/releases" target="_blank" rel="noopener">' + (fa ? "ریلیزها" : "Releases") + "</a></span>";
+  }
+
+  /* ---------- rendering ---------- */
+  function matches(p) {
+    if (state.category !== "all" && p.category !== state.category) return false;
+    if (state.language !== "all" && p.language !== state.language) return false;
+    if (!state.query) return true;
+    var q = state.query.toLowerCase();
+    var hay = [p.slug, p.name_en, p.name_fa, p.description_en, p.description_fa, p.language, p.category]
+      .join(" ").toLowerCase();
+    return q.split(/\s+/).every(function (part) { return hay.indexOf(part) !== -1; });
+  }
+
+  function card(p, i) {
+    var fa = state.lang === "fa";
+    var title = fa ? (p.name_fa || p.name_en) : p.name_en;
+    var desc = fa ? (p.description_fa || p.description_en) : p.description_en;
+    var label = t("categoryLabels")[p.category] || p.category;
+    var icon = (data.category_icons && data.category_icons[p.category]) || "📦";
+    var actions =
+      '<a class="act" href="' + REPO + "/tree/main/" + p.path + '" target="_blank" rel="noopener">📂 ' + t("folder") + "</a>" +
+      '<a class="act" href="' + REPO + "/blob/main/" + p.path + '/README.md" target="_blank" rel="noopener">📖 ' + t("readme") + "</a>" +
+      (p.demo ? '<a class="act demo" href="' + p.demo + '" target="_blank" rel="noopener">▶ ' + t("demo") + "</a>" : "");
+    return (
+      '<article class="card" style="animation-delay:' + Math.min(i * 25, 400) + 'ms">' +
+        '<div class="card-top">' +
+          '<span class="cat-tag">' + icon + " " + label + "</span>" +
+          '<span class="lang-badge">' + p.language + "</span>" +
+        "</div>" +
+        '<h3><a href="' + REPO + "/tree/main/" + p.path + '" target="_blank" rel="noopener">' + title + "</a></h3>" +
+        '<p class="desc">' + desc + "</p>" +
+        '<div class="card-actions">' + actions + "</div>" +
+      "</article>"
+    );
+  }
+
+  function render() {
+    var visible = data.projects.filter(matches);
+    var fa = state.lang === "fa";
+
+    var meta = fmt(t("showing"), { x: visible.length, y: data.projects.length });
+    $("resultCount").textContent = meta;
+
+    var active = [];
+    if (state.category !== "all") active.push(t("categoryLabels")[state.category]);
+    if (state.language !== "all") active.push(state.language);
+    if (state.query) active.push("“" + state.query + "”");
+    $("filterHint").textContent = active.length
+      ? fmt(t("filtered"), { v: active.join(fa ? " ، " : " · ") })
+      : t("noFilter");
+
+    if (!visible.length) {
+      grid.innerHTML =
+        '<div class="empty"><div class="big">🔍</div><div>' + t("none") + "</div><div style='font-size:13px;margin-top:6px'>" + t("noneHint") + "</div></div>";
+      return;
+    }
+    grid.innerHTML = visible.map(card).join("");
+    buildHeaderStats();
+  }
+
+  /* ---------- events ---------- */
+  var debounce;
+  searchEl.addEventListener("input", function () {
+    clearTimeout(debounce);
+    debounce = setTimeout(function () {
+      state.query = searchEl.value.trim();
+      render();
+    }, 120);
+  });
+  langSel.addEventListener("change", function () {
+    state.language = langSel.value;
+    render();
+  });
+  $("themeBtn").addEventListener("click", function () {
+    state.theme = state.theme === "dark" ? "light" : "dark";
+    applyTheme();
+  });
+  $("langBtn").addEventListener("click", function () {
+    state.lang = state.lang === "en" ? "fa" : "en";
+    applyLang();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== searchEl) {
+      e.preventDefault();
+      searchEl.focus();
+    } else if (e.key === "Escape" && document.activeElement === searchEl) {
+      searchEl.value = "";
+      state.query = "";
+      render();
+      searchEl.blur();
+    }
+  });
+
+  /* ---------- boot ---------- */
+  applyTheme();
+  buildHeaderStats();
+  applyLang();
+  $("footerMeta").textContent = fmt(t("updated"), { d: (data.generated_at || "").replace("T", " ").slice(0, 16) || "—" });
+})();
+</script>
+</body>
+</html>
