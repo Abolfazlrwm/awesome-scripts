@@ -1,0 +1,543 @@
+{
+  "repo": "Abolfazlrwm/awesome-scripts",
+  "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
+  "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
+  "generated_at": "2026-11-11T11:04:33+03:30",
+  "count": 46,
+  "stats": {
+    "categories": {
+      "telegram-bot": 35,
+      "web-tool": 8,
+      "desktop-tool": 3
+    },
+    "languages": {
+      "Python": 23,
+      "PHP": 5,
+      "HTML/CSS/JS": 8,
+      "PowerShell": 1,
+      "Node.js": 5,
+      "JavaScript": 1,
+      "Java": 1,
+      "C++": 1,
+      "C#": 1
+    }
+  },
+  "category_labels_en": {
+    "telegram-bot": "Telegram Bot",
+    "web-tool": "Web Tool",
+    "desktop-tool": "Desktop Tool"
+  },
+  "category_icons": {
+    "telegram-bot": "🤖",
+    "web-tool": "🌐",
+    "desktop-tool": "🖥️"
+  },
+  "projects": [
+    {
+      "slug": "advanced-shop-bot",
+      "path": "src/advanced-shop-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Advanced Shop Bot",
+      "description_en": "Full shop bot — product catalog, cart, coupons, card-to-card payment",
+      "demo": null,
+      "name_fa": "ربات فروشگاهی پیشرفته",
+      "description_fa": "فروشگاه‌ساز کامل با تنوع محصول، سبد خرید، کوپن و پرداخت کارت‌به‌کارت"
+    },
+    {
+      "slug": "ai-chat-assistant-bot",
+      "path": "src/ai-chat-assistant-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "AI Chat Assistant Bot",
+      "description_en": "Chat with GPT / DeepSeek / Grok + full admin panel",
+      "demo": null,
+      "name_fa": "چت هوش مصنوعی",
+      "description_fa": "چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل"
+    },
+    {
+      "slug": "channel-submission-bot",
+      "path": "src/channel-submission-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Channel Submission Bot",
+      "description_en": "Users submit posts, admin approves → auto-published to the channel",
+      "demo": null,
+      "name_fa": "ربات پست کانال",
+      "description_fa": "کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود"
+    },
+    {
+      "slug": "code-share-bot",
+      "path": "src/code-share-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Code Share Bot",
+      "description_en": "Store, search & share code snippets with syntax highlighting",
+      "demo": null,
+      "name_fa": "اشتراک‌گذاری کد",
+      "description_fa": "ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار"
+    },
+    {
+      "slug": "connect4-minesweeper-bot",
+      "path": "src/connect4-minesweeper-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Connect4 & Minesweeper Bot",
+      "description_en": "Connect-4 & Minesweeper group games with ranking and a leaderboard",
+      "demo": null,
+      "name_fa": "دوز و مین‌یاب",
+      "description_fa": "بازی گروهی دوز (Connect4) و مین‌یاب با رنکینگ و لیدربورد"
+    },
+    {
+      "slug": "control-room-dashboard",
+      "path": "src/control-room-dashboard",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Control Room Dashboard",
+      "description_en": "Live simulated dashboard — bot status, real-time logs, FX rates",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/",
+      "name_fa": "اتاق فرمان",
+      "description_fa": "داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز"
+    },
+    {
+      "slug": "digiato-article-bot",
+      "path": "src/digiato-article-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Digiato Article Bot",
+      "description_en": "Search & extract Digiato articles with pagination",
+      "demo": null,
+      "name_fa": "جستجوگر مقالات دیجیاتو",
+      "description_fa": "جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی"
+    },
+    {
+      "slug": "digit-id-bot",
+      "path": "src/digit-id-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Digit ID Bot",
+      "description_en": "Get any Telegram user's numeric ID",
+      "demo": null,
+      "name_fa": "دریافت آیدی عددی",
+      "description_fa": "دریافت آیدی عددی کاربران در تلگرام"
+    },
+    {
+      "slug": "downloads-organizer",
+      "path": "src/downloads-organizer",
+      "category": "desktop-tool",
+      "language": "PowerShell",
+      "name_en": "Downloads Organizer",
+      "description_en": "Auto-sort Downloads by file type — with reports and full logging",
+      "demo": null,
+      "name_fa": "مرتب‌کننده پوشه Downloads",
+      "description_fa": "دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل"
+    },
+    {
+      "slug": "emoji-forge-bot",
+      "path": "src/emoji-forge-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Emoji Forge Bot",
+      "description_en": "Custom emoji pack rebranding (TGS/WEBM) — pipeline, tests, systemd deploy",
+      "demo": null,
+      "name_fa": "اموجی فورج AI",
+      "description_fa": "ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd"
+    },
+    {
+      "slug": "file-store-bot",
+      "path": "src/file-store-bot",
+      "category": "telegram-bot",
+      "language": "Node.js",
+      "name_en": "File Store Bot",
+      "description_en": "File storage with dedicated download links",
+      "demo": null,
+      "name_fa": "ذخیره فایل و لینک‌ساز",
+      "description_fa": "ذخیره‌ی فایل و ساخت لینک اختصاصی دانلود"
+    },
+    {
+      "slug": "forward-info-bot",
+      "path": "src/forward-info-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Forward Info Bot",
+      "description_en": "Reveal the original sender of forwarded messages",
+      "demo": null,
+      "name_fa": "شناسایی فرستنده‌ی فورواردی",
+      "description_fa": "نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده"
+    },
+    {
+      "slug": "freedomnet-vpn-bot",
+      "path": "src/freedomnet-vpn-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Freedomnet VPN Bot",
+      "description_en": "VPN config distribution — QR codes, server ping tests, admin panel",
+      "demo": null,
+      "name_fa": "آزادی‌نت (کانفیگ VPN)",
+      "description_fa": "توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل"
+    },
+    {
+      "slug": "group-guardian-bot",
+      "path": "src/group-guardian-bot",
+      "category": "telegram-bot",
+      "language": "Node.js",
+      "name_en": "Group Guardian Bot",
+      "description_en": "Anti-spam, entry captcha, word filtering, auto-warnings",
+      "demo": null,
+      "name_fa": "نگهبان گروه",
+      "description_fa": "ضدهرزنامه، کپچای ورود، فیلتر کلمه و اخطار خودکار"
+    },
+    {
+      "slug": "happydog-economy-bot",
+      "path": "src/happydog-economy-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "HappyDog Economy Bot",
+      "description_en": "Group economy game — pets, fishing, factories, city hall, national leadership",
+      "demo": null,
+      "name_fa": "هاپ‌داگ (ربات اقتصادی گروهی)",
+      "description_fa": "بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی"
+    },
+    {
+      "slug": "instagram-downloader-bot",
+      "path": "src/instagram-downloader-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Instagram Downloader Bot",
+      "description_en": "Instagram posts/reels/stories downloader with VIP membership",
+      "demo": null,
+      "name_fa": "دانلودر اینستاگرام",
+      "description_fa": "دانلود پست/ریلز/استوری اینستاگرام با سیستم عضویت VIP"
+    },
+    {
+      "slug": "iran-market-rate-bot",
+      "path": "src/iran-market-rate-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Iran Market Rate Bot",
+      "description_en": "Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list",
+      "demo": null,
+      "name_fa": "نرخ لحظه‌ای بازار",
+      "description_fa": "نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار"
+    },
+    {
+      "slug": "link-summarizer-bot",
+      "path": "src/link-summarizer-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Link Summarizer Bot",
+      "description_en": "Summarize links & text — offline by default, upgradeable with an LLM",
+      "demo": null,
+      "name_fa": "خلاصه‌ساز لینک و متن",
+      "description_fa": "خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی"
+    },
+    {
+      "slug": "lottery-giveaway-bot",
+      "path": "src/lottery-giveaway-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Lottery Giveaway Bot",
+      "description_en": "Giveaways with mandatory join, referrals, admin panel",
+      "demo": null,
+      "name_fa": "قرعه‌کشی و گیوای",
+      "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل"
+    },
+    {
+      "slug": "meow-point-bot",
+      "path": "src/meow-point-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Meow Point Bot",
+      "description_en": "Cat-themed group economy — wars, bank, points",
+      "demo": null,
+      "name_fa": "ربات میو پوینت",
+      "description_fa": "بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک"
+    },
+    {
+      "slug": "mobile-app-intro-template",
+      "path": "src/mobile-app-intro-template",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Mobile App Intro Template",
+      "description_en": "12 responsive landing pages for mobile app promotion",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/",
+      "name_fa": "قالب معرفی اپلیکیشن",
+      "description_fa": "۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل"
+    },
+    {
+      "slug": "multi-account-manager",
+      "path": "src/multi-account-manager",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Multi Account Manager",
+      "description_en": "Multi-account control center — sync mode, operation workers, per-account DBs, owner panel",
+      "demo": null,
+      "name_fa": "مدیریت چند اکانت همزمان",
+      "description_fa": "مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک"
+    },
+    {
+      "slug": "php-bot-maker",
+      "path": "src/php-bot-maker",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "PHP Bot Maker",
+      "description_en": "Bot-maker platform — users build bots, coin economy, marketplace with moderation",
+      "demo": null,
+      "name_fa": "ربات‌ساز PHP",
+      "description_fa": "پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش"
+    },
+    {
+      "slug": "premium-emoji-poster-cfworker",
+      "path": "src/premium-emoji-poster-cfworker",
+      "category": "telegram-bot",
+      "language": "JavaScript",
+      "name_en": "Premium Emoji Poster (CF Worker)",
+      "description_en": "Channel posting with premium emojis — runs on Cloudflare Workers",
+      "demo": null,
+      "name_fa": "پستر ایموجی پرمیوم",
+      "description_fa": "ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker"
+    },
+    {
+      "slug": "price-ticker-bot",
+      "path": "src/price-ticker-bot",
+      "category": "telegram-bot",
+      "language": "Node.js",
+      "name_en": "Price Ticker Bot",
+      "description_en": "Crypto prices, price alerts, auto channel updates",
+      "demo": null,
+      "name_fa": "نرخ لحظه‌ای رمزارز",
+      "description_fa": "قیمت رمزارز، هشدار قیمت، آپدیت خودکار کانال"
+    },
+    {
+      "slug": "pyautogui-automation-demo",
+      "path": "src/pyautogui-automation-demo",
+      "category": "desktop-tool",
+      "language": "Python",
+      "name_en": "PyAutoGUI Automation Demo",
+      "description_en": "Desktop automation CLI — auto-typing, screenshots, clicks (PyAutoGUI)",
+      "demo": null,
+      "name_fa": "ابزار اتوماسیون دسکتاپ",
+      "description_fa": "تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان"
+    },
+    {
+      "slug": "qr-code-studio",
+      "path": "src/qr-code-studio",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "QR Code Studio",
+      "description_en": "Custom QR codes — colors, gradients, logo, PNG/SVG export",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/",
+      "name_fa": "QR Code Studio",
+      "description_fa": "ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG"
+    },
+    {
+      "slug": "quiz-trivia-bot",
+      "path": "src/quiz-trivia-bot",
+      "category": "telegram-bot",
+      "language": "Java",
+      "name_en": "Quiz Trivia Bot",
+      "description_en": "Group quiz competitions with a leaderboard",
+      "demo": null,
+      "name_fa": "کوییز و مسابقه",
+      "description_fa": "مسابقه‌ی گروهی با لیدربورد"
+    },
+    {
+      "slug": "reminder-task-bot",
+      "path": "src/reminder-task-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Reminder Task Bot",
+      "description_en": "One-time/daily reminders — task list with buttons, snooze, SQLite",
+      "demo": null,
+      "name_fa": "یادآوری و تسک روزانه",
+      "description_fa": "یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite"
+    },
+    {
+      "slug": "rss-news-bot",
+      "path": "src/rss-news-bot",
+      "category": "telegram-bot",
+      "language": "C++",
+      "name_en": "RSS News Bot",
+      "description_en": "Auto-post new feed items to a channel",
+      "demo": null,
+      "name_fa": "اعلان RSS",
+      "description_fa": "پست خودکار مطالب جدید فید به کانال"
+    },
+    {
+      "slug": "solar-explorer-3d",
+      "path": "src/solar-explorer-3d",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Solar Explorer 3D",
+      "description_en": "Interactive 3D solar system (Three.js) — time control, planet info",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/",
+      "name_fa": "کاوشگر سه‌بعدی منظومه شمسی",
+      "description_fa": "شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات"
+    },
+    {
+      "slug": "starzify-shop-bot",
+      "path": "src/starzify-shop-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Starzify Shop Bot",
+      "description_en": "Stars/Premium/Gifts/Crypto shop replica — wallet, referrals, admin panel",
+      "demo": null,
+      "name_fa": "فروشگاه استارز و گیفت",
+      "description_fa": "فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — بازسازی Starzify"
+    },
+    {
+      "slug": "subscription-shop-bot",
+      "path": "src/subscription-shop-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Subscription Shop Bot",
+      "description_en": "Automated subscription selling, lucky wheel, reseller system",
+      "demo": null,
+      "name_fa": "ربات فروش اشتراک/کانفیگ",
+      "description_fa": "فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی"
+    },
+    {
+      "slug": "support-ticket-bot",
+      "path": "src/support-ticket-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Support Ticket Bot",
+      "description_en": "Relay user messages ↔ a private support group",
+      "demo": null,
+      "name_fa": "پشتیبانی/تیکتینگ",
+      "description_fa": "ریلی پیام کاربر ↔ گروه پشتیبانی"
+    },
+    {
+      "slug": "system-monitor-gui",
+      "path": "src/system-monitor-gui",
+      "category": "desktop-tool",
+      "language": "Python",
+      "name_en": "System Monitor GUI",
+      "description_en": "Live CPU/RAM/disk monitor with a PyQt6 GUI",
+      "demo": null,
+      "name_fa": "مانیتور سیستم",
+      "description_fa": "نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6"
+    },
+    {
+      "slug": "telegram-channel-landing-page",
+      "path": "src/telegram-channel-landing-page",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Telegram Channel Landing Page",
+      "description_en": "Single-file landing page for Telegram channels & brands",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/",
+      "name_fa": "صفحه فرود کانال تلگرام",
+      "description_fa": "لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی"
+    },
+    {
+      "slug": "telegram-selfbot-panel",
+      "path": "src/telegram-selfbot-panel",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Telegram Selfbot Panel",
+      "description_en": "42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler",
+      "demo": null,
+      "name_fa": "سلف‌بات پنل‌دار",
+      "description_fa": "سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی"
+    },
+    {
+      "slug": "telethon-session-manager",
+      "path": "src/telethon-session-manager",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Telethon Session Manager",
+      "description_en": "Multi-account automation with Telethon (join, reactions)",
+      "demo": null,
+      "name_fa": "مدیریت اکانت و سشن",
+      "description_fa": "جوین و ری‌اکشن خودکار با چند اکانت تلگرام (Telethon)"
+    },
+    {
+      "slug": "tic-tac-toe-game",
+      "path": "src/tic-tac-toe-game",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Tic-Tac-Toe Game",
+      "description_en": "Classic tic-tac-toe against an AI",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/",
+      "name_fa": "بازی دوز (OX)",
+      "description_fa": "بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی"
+    },
+    {
+      "slug": "translator-bot",
+      "path": "src/translator-bot",
+      "category": "telegram-bot",
+      "language": "Node.js",
+      "name_en": "Translator Bot",
+      "description_en": "Auto-translate messages",
+      "demo": null,
+      "name_fa": "مترجم متن",
+      "description_fa": "ترجمه‌ی خودکار پیام‌ها"
+    },
+    {
+      "slug": "uptime-monitor-bot",
+      "path": "src/uptime-monitor-bot",
+      "category": "telegram-bot",
+      "language": "C#",
+      "name_en": "Uptime Monitor Bot",
+      "description_en": "Website/server uptime checks + HTML status page",
+      "demo": null,
+      "name_fa": "مانیتور آپ‌تایم",
+      "description_fa": "چک سایت/سرور + پنل وضعیت HTML"
+    },
+    {
+      "slug": "url-shortener-bot",
+      "path": "src/url-shortener-bot",
+      "category": "telegram-bot",
+      "language": "Node.js",
+      "name_en": "URL Shortener Bot",
+      "description_en": "Link shortening with click analytics",
+      "demo": null,
+      "name_fa": "کوتاه‌کننده لینک",
+      "description_fa": "کوتاه‌سازی لینک با آمار کلیک"
+    },
+    {
+      "slug": "v2ray-shop-bot",
+      "path": "src/v2ray-shop-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "V2RAY Shop Bot",
+      "description_en": "V2Ray/OpenVPN config shop — card-to-card payments, wallet, admin panel",
+      "demo": null,
+      "name_fa": "فروشگاه کانفیگ V2Ray",
+      "description_fa": "فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین"
+    },
+    {
+      "slug": "wheel-of-actions",
+      "path": "src/wheel-of-actions",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Wheel Of Actions",
+      "description_en": "Spin-the-wheel task prioritizer",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/",
+      "name_fa": "Wheel of Actions",
+      "description_fa": "ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه"
+    },
+    {
+      "slug": "world-clock-planner",
+      "path": "src/world-clock-planner",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "World Clock Planner",
+      "description_en": "International meeting planner — shared time bar, day/night per city",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/",
+      "name_fa": "World Clock Planner",
+      "description_fa": "برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر"
+    },
+    {
+      "slug": "youtube-downloader-bot",
+      "path": "src/youtube-downloader-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Youtube Downloader Bot",
+      "description_en": "YouTube video/audio downloader",
+      "demo": null,
+      "name_fa": "دانلودر یوتیوب",
+      "description_fa": "دانلود ویدیو/صدا از یوتیوب"
+    }
+  ]
+}
