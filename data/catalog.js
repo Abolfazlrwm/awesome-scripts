@@ -4,18 +4,18 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-11T11:04:33+03:30",
-  "count": 46,
+  "generated_at": "2026-11-11T17:31:09+03:30",
+  "count": 49,
   "stats": {
     "categories": {
-      "telegram-bot": 35,
-      "web-tool": 8,
-      "desktop-tool": 3
+      "telegram-bot": 36,
+      "desktop-tool": 4,
+      "web-tool": 9
     },
     "languages": {
-      "Python": 23,
+      "Python": 25,
       "PHP": 5,
-      "HTML/CSS/JS": 8,
+      "HTML/CSS/JS": 9,
       "PowerShell": 1,
       "Node.js": 5,
       "JavaScript": 1,
@@ -67,6 +67,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "ربات پست کانال",
       "description_fa": "کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود"
+    },
+    {
+      "slug": "clipboard-history-manager",
+      "path": "src/clipboard-history-manager",
+      "category": "desktop-tool",
+      "language": "Python",
+      "name_en": "Clipboard History Manager",
+      "description_en": "Searchable clipboard history — pins, dedup, JSON persistence (tkinter)",
+      "demo": null,
+      "name_fa": "تاریخچه کلیپ‌بورد",
+      "description_fa": "تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON"
     },
     {
       "slug": "code-share-bot",
@@ -223,6 +234,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار"
     },
     {
+      "slug": "jalali-date-tools",
+      "path": "src/jalali-date-tools",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Jalali Date Tools",
+      "description_en": "Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline)",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/",
+      "name_fa": "تقویم جلالی",
+      "description_fa": "تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین"
+    },
+    {
       "slug": "link-summarizer-bot",
       "path": "src/link-summarizer-bot",
       "category": "telegram-bot",
@@ -287,6 +309,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "ربات‌ساز PHP",
       "description_fa": "پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش"
+    },
+    {
+      "slug": "poll-vote-bot",
+      "path": "src/poll-vote-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Poll Vote Bot",
+      "description_en": "Polls with live vote buttons, rendered result cards, CSV export — no framework",
+      "demo": null,
+      "name_fa": "نظرسنجی و رأی‌گیری",
+      "description_fa": "نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک"
     },
     {
       "slug": "premium-emoji-poster-cfworker",

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awesome Scripts — 46 ready-to-run projects</title>
-<meta name="description" content="Interactive catalog of 46 complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
+<title>Awesome Scripts — ready-to-run projects catalog</title>
+<meta name="description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <script src="data/catalog.js"></script>
 <style>
@@ -434,6 +434,9 @@
     $("heroSub").textContent = t("heroSub");
     searchEl.placeholder = t("searchPlaceholder");
     $("ghLink").textContent = fa ? "⭐ گیت‌هاب" : "⭐ GitHub";
+    document.title = fa
+      ? data.count + " پروژه‌ی آماده‌ی اجرا — Awesome Scripts"
+      : data.count + " ready-to-run projects — Awesome Scripts";
     localStorage.setItem("as_lang", state.lang);
     buildChips();
     buildLangSelect();
