@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**46 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**49 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-46-blue)
+![Projects](https://img.shields.io/badge/projects-49-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -37,7 +37,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 35
+### 🤖 Telegram bots — 36
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -76,8 +76,9 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [freedomnet-vpn-bot](./src/freedomnet-vpn-bot) | Python | VPN config distribution — QR codes, server ping tests, admin panel |
 | [forward-info-bot](./src/forward-info-bot) | PHP | Reveal the original sender of forwarded messages |
 | [lottery-giveaway-bot](./src/lottery-giveaway-bot) | Python | Giveaways with mandatory join, referrals, admin panel |
+| [poll-vote-bot](./src/poll-vote-bot) | Python | Polls with live vote buttons, rendered result cards, CSV export — no framework |
 
-### 🌐 Web tools — 8
+### 🌐 Web tools — 9
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -89,14 +90,16 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [tic-tac-toe-game](./src/tic-tac-toe-game) | HTML/CSS/JS | Classic tic-tac-toe against an AI | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/) |
 | [mobile-app-intro-template](./src/mobile-app-intro-template) | HTML/CSS/JS | 12 responsive landing pages for mobile app promotion | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) |
 | [telegram-channel-landing-page](./src/telegram-channel-landing-page) | HTML/CSS/JS | Single-file landing page for Telegram channels & brands | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) |
+| [jalali-date-tools](./src/jalali-date-tools) | HTML/CSS/JS | Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline) | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) |
 
-### 🖥 Desktop tools — 3
+### 🖥 Desktop tools — 4
 
 | Project | Lang | What it does |
 | --- | --- | --- |
 | [downloads-organizer](./src/downloads-organizer) | PowerShell | Auto-sort Downloads by file type — with reports and full logging |
 | [pyautogui-automation-demo](./src/pyautogui-automation-demo) | Python | Desktop automation CLI — auto-typing, screenshots, clicks (PyAutoGUI) |
 | [system-monitor-gui](./src/system-monitor-gui) | Python | Live CPU/RAM/disk monitor with a PyQt6 GUI |
+| [clipboard-history-manager](./src/clipboard-history-manager) | Python | Searchable clipboard history — pins, dedup, JSON persistence (tkinter) |
 
 > 🚧 More projects are on the way — hit **Star** / **Watch** to catch the new ones.
 
@@ -144,7 +147,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (35)
+#### 🤖 ربات‌های تلگرام (36)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -183,8 +186,9 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🌐 آزادی‌نت (کانفیگ VPN)](./src/freedomnet-vpn-bot) | Python | توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل |
 | [🔍 شناسایی فرستنده‌ی فورواردی](./src/forward-info-bot) | PHP | نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده |
 | [🎰 قرعه‌کشی و گیوای](./src/lottery-giveaway-bot) | Python | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل |
+| [🗳 نظرسنجی و رأی‌گیری](./src/poll-vote-bot) | Python | نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک |
 
-#### 🌐 ابزارهای وب (8)
+#### 🌐 ابزارهای وب (9)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -196,14 +200,16 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [❌⭕ بازی دوز (OX)](./src/tic-tac-toe-game) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/) | HTML/CSS/JS | بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی |
 | [📱 قالب معرفی اپلیکیشن](./src/mobile-app-intro-template) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) | HTML/CSS/JS | ۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل |
 | [📢 صفحه فرود کانال تلگرام](./src/telegram-channel-landing-page) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) | HTML/CSS/JS | لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی |
+| [🗓 تقویم جلالی](./src/jalali-date-tools) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) | HTML/CSS/JS | تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین |
 
-#### 🖥 ابزارهای دسکتاپ (3)
+#### 🖥 ابزارهای دسکتاپ (4)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
 | [🗂 مرتب‌کننده پوشه Downloads](./src/downloads-organizer) | PowerShell | دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل |
 | [🖱 ابزار اتوماسیون دسکتاپ](./src/pyautogui-automation-demo) | Python | تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان |
 | [🖥 مانیتور سیستم](./src/system-monitor-gui) | Python | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6 |
+| [📋 تاریخچه کلیپ‌بورد](./src/clipboard-history-manager) | Python | تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON |
 
 > 🚧 در حال توسعه و افزودن سورس‌های جدید هستم — با **Star** و **Watch** از پروژه‌های تازه باخبر شوید.
 
