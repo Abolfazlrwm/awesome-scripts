@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Validate before release
+        run: |
+          python tools/generate_catalog.py --check
+          python tools/validate_projects.py --quiet
+
+      - name: Build release notes
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 "${GITHUB_REF_NAME}^" 2>/dev/null || true)
+          RANGE="${PREV_TAG:+${PREV_TAG}..}${GITHUB_REF_NAME}"
+          {
+            echo "## 📦 What's in this release"
+            echo
+            python tools/generate_catalog.py --stats
+            echo
+            echo "## 🛠 Changes"
+            echo
+            git log --no-merges --max-count=60 --pretty=format:"- %s (%h)" "$RANGE"
+            echo
+            echo
+            echo "**Full catalog:** open \`src/\` or browse the [interactive site](https://abolfazlrwm.github.io/awesome-scripts/)."
+          } > release_notes.md
+          cat release_notes.md
+
+      - name: Pack source archive
+        run: |
+          zip -qr "awesome-scripts-${GITHUB_REF_NAME}.zip" src README.md LICENSE
+          ls -lh awesome-scripts-*.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release_notes.md
+          generate_release_notes: true
+          files: awesome-scripts-*.zip
