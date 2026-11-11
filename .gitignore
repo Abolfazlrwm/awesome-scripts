@@ -231,3 +231,8 @@ screenshot.png
 
 # OS junk
 Thumbs.db
+
+# runtime artifacts of the bots
+*.db
+*.session
+bot_session*

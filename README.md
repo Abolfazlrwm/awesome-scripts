@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**49 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**56 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-49-blue)
+![Projects](https://img.shields.io/badge/projects-56-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -37,10 +37,17 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 36
+### 🤖 Telegram bots — 43
 
 | Project | Lang | What it does |
 | --- | --- | --- |
+| [life-simulator-bot](./src/life-simulator-bot) | Python | Full life-simulation game — jobs & skills, bank cards, real estate, companies, free market, crime & jail |
+| [todo-miniapp-worker](./src/todo-miniapp-worker) | JavaScript | ToDoList Mini App as one Cloudflare Worker — API + bot webhook + cron reminders + embedded frontend on D1 |
+| [spotify-music-bot](./src/spotify-music-bot) | Python | Spotify link & YouTube Music search downloader — 320 kbps with original cover art + ID3 tags |
+| [voicecall-userbot](./src/voicecall-userbot) | Python | VoiceChat userbot + admin panel — auto join, YouTube/music playback, playlists, live radio streams |
+| [winland-giveaway-bot](./src/winland-giveaway-bot) | Python | WinLand-style giveaways — multi-prize draws, referral points, mandatory channel join, admin panel |
+| [post-manager-bot](./src/post-manager-bot) | Python | Channel post manager with colored inline buttons (Bot API 7.10+ styles) and live preview |
+| [channel-likes-bot](./src/channel-likes-bot) | Python | Reposts anything sent to the bot into your channel with a live one-per-user like button |
 | [telegram-selfbot-panel](./src/telegram-selfbot-panel) | Python | 42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler |
 | [multi-account-manager](./src/multi-account-manager) | Python | Multi-account control center — sync mode, operation workers, per-account DBs, owner panel |
 | [iran-market-rate-bot](./src/iran-market-rate-bot) | Python | Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list |
@@ -147,10 +154,17 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (36)
+#### 🤖 ربات‌های تلگرام (43)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
+| [🌆 شبیه‌ساز زندگی](./src/life-simulator-bot) | Python | بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان |
+| [✅ تودولیست مینی‌اپ](./src/todo-miniapp-worker) | JavaScript | مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1 |
+| [🎧 دانلودر موزیک اسپاتیفای](./src/spotify-music-bot) | Python | دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3 |
+| [🎙 یوزربات ویس‌چت](./src/voicecall-userbot) | Python | یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده |
+| [🎁 گیوای وین‌لند](./src/winland-giveaway-bot) | Python | گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین |
+| [🎨 مدیریت پست رنگی](./src/post-manager-bot) | Python | مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار |
+| [❤️ لایک پست کانال](./src/channel-likes-bot) | Python | هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک |
 | [🎛 سلف‌بات پنل‌دار](./src/telegram-selfbot-panel) | Python | سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی |
 | [👥 مدیریت چند اکانت همزمان](./src/multi-account-manager) | Python | مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک |
 | [💸 نرخ لحظه‌ای بازار](./src/iran-market-rate-bot) | Python | نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار |

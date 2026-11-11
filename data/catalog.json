@@ -2,21 +2,21 @@
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-11T17:31:09+03:30",
-  "count": 49,
+  "generated_at": "2026-11-12T03:10:54+03:30",
+  "count": 56,
   "stats": {
     "categories": {
-      "telegram-bot": 36,
+      "telegram-bot": 43,
       "desktop-tool": 4,
       "web-tool": 9
     },
     "languages": {
-      "Python": 25,
+      "Python": 31,
       "PHP": 5,
       "HTML/CSS/JS": 9,
       "PowerShell": 1,
       "Node.js": 5,
-      "JavaScript": 1,
+      "JavaScript": 2,
       "Java": 1,
       "C++": 1,
       "C#": 1
@@ -54,6 +54,17 @@
       "demo": null,
       "name_fa": "چت هوش مصنوعی",
       "description_fa": "چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل"
+    },
+    {
+      "slug": "channel-likes-bot",
+      "path": "src/channel-likes-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Channel Likes Bot",
+      "description_en": "Reposts anything sent to the bot into your channel with a live one-per-user like button",
+      "demo": null,
+      "name_fa": "لایک پست کانال",
+      "description_fa": "هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک"
     },
     {
       "slug": "channel-submission-bot",
@@ -243,6 +254,17 @@
       "description_fa": "تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین"
     },
     {
+      "slug": "life-simulator-bot",
+      "path": "src/life-simulator-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Life Simulator Bot",
+      "description_en": "Full life-simulation game — jobs & skills, bank cards, real estate, companies, free market, crime & jail",
+      "demo": null,
+      "name_fa": "شبیه‌ساز زندگی",
+      "description_fa": "بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان"
+    },
+    {
       "slug": "link-summarizer-bot",
       "path": "src/link-summarizer-bot",
       "category": "telegram-bot",
@@ -318,6 +340,17 @@
       "demo": null,
       "name_fa": "نظرسنجی و رأی‌گیری",
       "description_fa": "نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک"
+    },
+    {
+      "slug": "post-manager-bot",
+      "path": "src/post-manager-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Post Manager Bot",
+      "description_en": "Channel post manager with colored inline buttons (Bot API 7.10+ styles) and live preview",
+      "demo": null,
+      "name_fa": "مدیریت پست رنگی",
+      "description_fa": "مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار"
     },
     {
       "slug": "premium-emoji-poster-cfworker",
@@ -408,6 +441,17 @@
       "description_fa": "شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات"
     },
     {
+      "slug": "spotify-music-bot",
+      "path": "src/spotify-music-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Spotify Music Bot",
+      "description_en": "Spotify link & YouTube Music search downloader — 320 kbps with original cover art + ID3 tags",
+      "demo": null,
+      "name_fa": "دانلودر موزیک اسپاتیفای",
+      "description_fa": "دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3"
+    },
+    {
       "slug": "starzify-shop-bot",
       "path": "src/starzify-shop-bot",
       "category": "telegram-bot",
@@ -496,6 +540,17 @@
       "description_fa": "بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی"
     },
     {
+      "slug": "todo-miniapp-worker",
+      "path": "src/todo-miniapp-worker",
+      "category": "telegram-bot",
+      "language": "JavaScript",
+      "name_en": "ToDoList Mini App (CF Worker)",
+      "description_en": "ToDoList Mini App as one Cloudflare Worker — API + bot webhook + cron reminders + embedded frontend on D1",
+      "demo": null,
+      "name_fa": "تودولیست مینی‌اپ",
+      "description_fa": "مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1"
+    },
+    {
       "slug": "translator-bot",
       "path": "src/translator-bot",
       "category": "telegram-bot",
@@ -540,6 +595,17 @@
       "description_fa": "فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین"
     },
     {
+      "slug": "voicecall-userbot",
+      "path": "src/voicecall-userbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "VoiceChat Userbot Panel",
+      "description_en": "VoiceChat userbot + admin panel — auto join, YouTube/music playback, playlists, live radio streams",
+      "demo": null,
+      "name_fa": "یوزربات ویس‌چت",
+      "description_fa": "یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده"
+    },
+    {
       "slug": "wheel-of-actions",
       "path": "src/wheel-of-actions",
       "category": "web-tool",
@@ -549,6 +615,17 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/",
       "name_fa": "Wheel of Actions",
       "description_fa": "ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه"
+    },
+    {
+      "slug": "winland-giveaway-bot",
+      "path": "src/winland-giveaway-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "WinLand Giveaway Bot",
+      "description_en": "WinLand-style giveaways — multi-prize draws, referral points, mandatory channel join, admin panel",
+      "demo": null,
+      "name_fa": "گیوای وین‌لند",
+      "description_fa": "گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین"
     },
     {
       "slug": "world-clock-planner",

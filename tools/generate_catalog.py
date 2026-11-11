@@ -65,6 +65,9 @@ NAME_OVERRIDES = {
     "pyautogui-automation-demo": "PyAutoGUI Automation Demo",
     "connect4-minesweeper-bot": "Connect4 & Minesweeper Bot",
     "premium-emoji-poster-cfworker": "Premium Emoji Poster (CF Worker)",
+    "todo-miniapp-worker": "ToDoList Mini App (CF Worker)",
+    "voicecall-userbot": "VoiceChat Userbot Panel",
+    "winland-giveaway-bot": "WinLand Giveaway Bot",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
