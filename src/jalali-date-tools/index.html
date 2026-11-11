@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jalali Date Tools — تقویم جلالی</title>
+<meta name="description" content="تبدیل تاریخ شمسی/میلادی، محاسبه سن، فاصله بین دو تاریخ و ساعت زنده — کاملاً آفلاین و سمت کاربر. Jalali ↔ Gregorian converter, age and date-diff tools, fully offline.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓️</text></svg>">
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c2129;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #4493f8;
+    --accent-2: #bc8cff;
+    --ok: #3fb950;
+    --danger: #f85149;
+  }
+  html[data-theme="light"] {
+    --bg: #f6f8fa;
+    --panel: #ffffff;
+    --panel-2: #f0f3f6;
+    --border: #d0d7de;
+    --text: #1f2328;
+    --muted: #656d76;
+    --accent: #0969da;
+    --accent-2: #8250df;
+    --ok: #1a7f37;
+    --danger: #cf222e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Vazirmatn", "Segoe UI", Tahoma, -apple-system, sans-serif;
+    line-height: 1.6;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 18px 16px 40px; }
+  header.page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 14px 0 6px;
+  }
+  header.page .logo { font-size: 30px; }
+  header.page h1 { font-size: 21px; margin: 0; flex: 1; min-width: 200px; }
+  header.page h1 small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; }
+  .btn {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 14px; }
+  .tab {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 10px;
+    padding: 9px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .card h2 { margin: 0 0 4px; font-size: 17px; }
+  .card p.hint { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1; }
+  .field > label { font-size: 12.5px; color: var(--muted); }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+  select, input[type="date"], input[type="number"] {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 9px;
+    padding: 9px 11px;
+    font-size: 14.5px;
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+  }
+  select:focus, input:focus { border-color: var(--accent); }
+  .j-date { display: flex; gap: 8px; }
+  .j-date select:nth-child(1) { max-width: 110px; }
+  .j-date select:nth-child(2) { max-width: 130px; }
+  .j-date select:nth-child(3) { max-width: 95px; }
+
+  .result {
+    margin-top: 16px;
+    background: var(--panel-2);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+  .result .big { font-size: 19px; font-weight: 800; color: var(--accent); }
+  .result .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .result .err { color: var(--danger); font-size: 14px; }
+  .pill {
+    display: inline-block;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-inline-start: 6px;
+  }
+
+  .today-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 8px; }
+  .today-box { background: var(--panel-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .today-box .lbl { color: var(--muted); font-size: 12px; }
+  .today-box .val { font-size: 17px; font-weight: 700; margin-top: 3px; }
+  .today-box .clock { font-size: 30px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .bar { height: 8px; background: var(--panel); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; margin-top: 10px; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+  footer { text-align: center; color: var(--muted); font-size: 12.5px; padding: 22px 0 4px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <span class="logo">🗓️</span>
+    <h1 id="title">تقویم جلالی — ابزارهای تاریخ<small id="subtitle">تبدیل، سن، فاصله و ساعت — کاملاً آفلاین</small></h1>
+    <button class="btn" id="langBtn" type="button">EN</button>
+    <button class="btn" id="themeBtn" type="button">☀️</button>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <!-- ---------- converter ---------- -->
+  <section class="card" id="tab-convert">
+    <h2 id="convTitle">تبدیل تاریخ</h2>
+    <p class="hint" id="convHint">تاریخ را در هر تقویم وارد کنید؛ دیگری بلافاصله به‌روز می‌شود.</p>
+    <div class="row">
+      <div class="field">
+        <label id="lblJ">تاریخ شمسی (جلالی)</label>
+        <div class="j-date">
+          <select id="jy"></select><select id="jm"></select><select id="jd"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label id="lblG">تاریخ میلادی (گرگوری)</label>
+        <input type="date" id="gDate">
+      </div>
+    </div>
+    <div class="result" id="convOut"></div>
+  </section>
+
+  <!-- ---------- age ---------- -->
+  <section class="card" id="tab-age" hidden>
+    <h2 id="ageTitle">محاسبه سن</h2>
+    <p class="hint" id="ageHint">تاریخ تولد را وارد کنید تا سن دقیق، روز تولد و شمارش معکوس تولد بعدی را ببینید.</p>
+    <div class="row">
+      <div class="field">
+        <label id="lblBirthJ">تاریخ تولد — شمسی</label>
+        <div class="j-date">
+          <select id="by"></select><select id="bm"></select><select id="bd"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label id="lblBirthG">یا میلادی</label>
+        <input type="date" id="birthG">
+      </div>
+    </div>
+    <div class="result" id="ageOut"></div>
+  </section>
+
+  <!-- ---------- diff ---------- -->
+  <section class="card" id="tab-diff" hidden>
+    <h2 id="diffTitle">فاصله بین دو تاریخ</h2>
+    <p class="hint" id="diffHint">فاصله‌ی دقیق بین دو تاریخ را بر حسب روز و هفته محاسبه کنید.</p>
+    <div class="row">
+      <div class="field">
+        <label id="lblFrom">از تاریخ (شمسی)</label>
+        <div class="j-date">
+          <select id="fy"></select><select id="fm"></select><select id="fd"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label id="lblTo">تا تاریخ (شمسی)</label>
+        <div class="j-date">
+          <select id="ty"></select><select id="tm"></select><select id="td"></select>
+        </div>
+      </div>
+    </div>
+    <div class="result" id="diffOut"></div>
+  </section>
+
+  <!-- ---------- today ---------- -->
+  <section class="card" id="tab-today" hidden>
+    <h2 id="todayTitle">امروز و ساعت زنده</h2>
+    <p class="hint" id="todayHint">بر اساس منطقه‌ی زمانی تهران (Asia/Tehran).</p>
+    <div class="today-grid">
+      <div class="today-box">
+        <div class="lbl" id="clockLbl">ساعت تهران</div>
+        <div class="clock" id="clock">--:--:--</div>
+      </div>
+      <div class="today-box">
+        <div class="lbl" id="lblTodayJ">امروز — شمسی</div>
+        <div class="val" id="todayJ">—</div>
+      </div>
+      <div class="today-box">
+        <div class="lbl" id="lblTodayG">امروز — میلادی</div>
+        <div class="val" id="todayG">—</div>
+      </div>
+    </div>
+    <div class="result">
+      <span class="sub" id="yearProgressLbl">پیشرفت سال شمسی</span>
+      <div class="bar"><i id="yearBar" style="width:0%"></i></div>
+      <div class="sub" id="yearProgressTxt">—</div>
+    </div>
+  </section>
+
+  <footer>
+    <span id="footTxt">ساخته‌شده برای مجموعه‌ی</span>
+    <a href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">awesome-scripts</a>
+    · <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">@Abolfazl_rwm</a>
+    · <span id="footNote">بدون سرور، بدون ردیابی — همه‌ی محاسبات در مرورگر شما</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ================= Jalali <-> Gregorian core =================
+     Port of the well-known jalaali-js algorithm (Behrang Noruzi Niya,
+     MIT — based on Birashk/Aghili cycles), verified against
+     jdatetime for 1925..2124. Days are represented as JDN. */
+  function div(a, b) { return ~~(a / b); }
+  function mod(a, b) { return a - ~~(a / b) * b; }
+
+  var BREAKS = [-61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210, 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178];
+
+  function jalCal(jy) {
+    var bl = BREAKS.length, gy = jy + 621, leapJ = -14, jp = BREAKS[0], jm, jump = 0, n, i;
+    for (i = 1; i < bl; i += 1) {
+      jm = BREAKS[i];
+      jump = jm - jp;
+      if (jy < jm) break;
+      leapJ = leapJ + div(jump, 33) * 8 + div(mod(jump, 33), 4);
+      jp = jm;
+    }
+    n = jy - jp;
+    leapJ = leapJ + div(n, 33) * 8 + div(mod(n, 33) + 3, 4);
+    if (mod(jump, 33) === 4 && jump - n === 4) leapJ += 1;
+    var leapG = div(gy, 4) - div((div(gy, 100) + 1) * 3, 4) - 150;
+    var march = 20 + leapJ - leapG;
+    if (jump - n < 6) n = n - jump + div(jump + 4, 33) * 33;
+    var leap = mod(mod(n + 1, 33) - 1, 4);
+    if (leap === -1) leap = 4;
+    return { leap: leap, gy: gy, march: march };
+  }
+
+  function g2d(gy, gm, gd) {
+    var d = div((gy + div(gm - 8, 6) + 100100) * 1461, 4) + div(153 * mod(gm + 9, 12) + 2, 5) + gd - 34840408;
+    return d - div(div(gy + 100100 + div(gm - 8, 6), 100) * 3, 4) + 752;
+  }
+
+  function d2g(jdn) {
+    var j = 4 * jdn + 139361631;
+    j = j + div(div(4 * jdn + 183187720, 146097) * 3, 4) * 4 - 3908;
+    var i = div(mod(j, 1461), 4) * 5 + 308;
+    return {
+      gd: div(mod(i, 153), 5) + 1,
+      gm: mod(div(i, 153), 12) + 1,
+      gy: div(j, 1461) - 100100 + div(8 - (mod(div(i, 153), 12) + 1), 6)
+    };
+  }
+
+  function j2d(jy, jm, jd) {
+    var r = jalCal(jy);
+    return g2d(r.gy, 3, r.march) + (jm - 1) * 31 - div(jm, 7) * (jm - 7) + jd - 1;
+  }
+
+  function d2j(jdn) {
+    var gy = d2g(jdn).gy, jy = gy - 621, r = jalCal(jy), jdn1f = g2d(gy, 3, r.march), k;
+    k = jdn - jdn1f;
+    if (k >= 0) {
+      if (k <= 185) return { jy: jy, jm: 1 + div(k, 31), jd: mod(k, 31) + 1 };
+      k -= 186;
+    } else {
+      jy -= 1;
+      k += 179;
+      if (r.leap === 1) k += 1;
+    }
+    return { jy: jy, jm: 7 + div(k, 30), jd: mod(k, 30) + 1 };
+  }
+
+  function jIsLeap(jy) { return jalCal(jy).leap === 0; }
+  function jMonthLen(jy, jm) {
+    if (jm <= 6) return 31;
+    if (jm <= 11) return 30;
+    return jIsLeap(jy) ? 30 : 29;
+  }
+  function jIsValid(jy, jm, jd) {
+    return jm >= 1 && jm <= 12 && jd >= 1 && jd <= jMonthLen(jy, jm);
+  }
+
+  /* ================= i18n ================= */
+  var FA_MONTHS = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"];
+  var EN_MONTHS = ["Farvardin", "Ordibehesht", "Khordad", "Tir", "Mordad", "Shahrivar", "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"];
+  var GR_MONTHS_FA = ["ژانویه", "فوریه", "مارس", "آپریل", "مه", "ژوئن", "ژوئیه", "اوت", "سپتامبر", "اکتبر", "نوامبر", "دسامبر"];
+  var GR_MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var FA_WEEK = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
+  var EN_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  var T = {
+    fa: {
+      title: "تقویم جلالی — ابزارهای تاریخ",
+      subtitle: "تبدیل، سن، فاصله و ساعت — کاملاً آفلاین",
+      langBtn: "EN",
+      tabs: { convert: "🔄 تبدیل تاریخ", age: "🎂 محاسبه سن", diff: "📏 فاصله دو تاریخ", today: "🕐 امروز" },
+      convTitle: "تبدیل تاریخ", convHint: "تاریخ را در هر تقویم وارد کنید؛ دیگری بلافاصله به‌روز می‌شود.",
+      lblJ: "تاریخ شمسی (جلالی)", lblG: "تاریخ میلادی (گرگوری)",
+      ageTitle: "محاسبه سن", ageHint: "تاریخ تولد را وارد کنید تا سن دقیق، روز تولد و شمارش معکوس تولد بعدی را ببینید.",
+      lblBirthJ: "تاریخ تولد — شمسی", lblBirthG: "یا میلادی",
+      diffTitle: "فاصله بین دو تاریخ", diffHint: "فاصله‌ی دقیق بین دو تاریخ را بر حسب روز و هفته محاسبه کنید.",
+      lblFrom: "از تاریخ (شمسی)", lblTo: "تا تاریخ (شمسی)",
+      todayTitle: "امروز و ساعت زنده", todayHint: "بر اساس منطقه‌ی زمانی تهران (Asia/Tehran).",
+      clockLbl: "ساعت تهران", lblTodayJ: "امروز — شمسی", lblTodayG: "امروز — میلادی",
+      yearProgressLbl: "پیشرفت سال شمسی",
+      footTxt: "ساخته‌شده برای مجموعه‌ی ", footNote: "بدون سرور، بدون ردیابی — همه‌ی محاسبات در مرورگر شما",
+      weekday: "روز هفته", dayOfYear: "روزِ سال",
+      ageYears: "سال", ageMonths: "ماه", ageDaysLbl: "روز",
+      ageDays: "کل روزهای زندگی", ageBorn: "متولدِ",
+      ageNext: "تولد بعدی", ageNextIn: "روز دیگر", ageToday: "امروز تولدت است! 🎉",
+      diffDays: "فاصله", diffWeeks: "هفته و", diffAnd: "روز", diffSame: "دو تاریخ یکسان‌اند.",
+      daysWord: "روز", convEqual: "معادل"
+    },
+    en: {
+      title: "Jalali Date Tools",
+      subtitle: "Converter, age, date-diff and live clock — fully offline",
+      langBtn: "فا",
+      tabs: { convert: "🔄 Converter", age: "🎂 Age", diff: "📏 Date diff", today: "🕐 Today" },
+      convTitle: "Date converter", convHint: "Enter a date in either calendar — the other updates instantly.",
+      lblJ: "Jalali (Solar Hijri) date", lblG: "Gregorian date",
+      ageTitle: "Age calculator", ageHint: "Enter your birth date for exact age, birth weekday and next-birthday countdown.",
+      lblBirthJ: "Birth date — Jalali", lblBirthG: "or Gregorian",
+      diffTitle: "Days between two dates", diffHint: "Compute the exact distance between two dates in days and weeks.",
+      lblFrom: "From (Jalali)", lblTo: "To (Jalali)",
+      todayTitle: "Today & live clock", todayHint: "Based on the Asia/Tehran timezone.",
+      clockLbl: "Tehran time", lblTodayJ: "Today — Jalali", lblTodayG: "Today — Gregorian",
+      yearProgressLbl: "Jalali year progress",
+      footTxt: "Built for the ", footNote: "No server, no tracking — everything runs in your browser",
+      weekday: "Weekday", dayOfYear: "Day of year",
+      ageYears: "years", ageMonths: "months", ageDaysLbl: "days",
+      ageDays: "Total days alive", ageBorn: "Born on a",
+      ageNext: "Next birthday", ageNextIn: "days to go", ageToday: "Today is your birthday! 🎉",
+      diffDays: "Distance", diffWeeks: "weeks and", diffAnd: "days", diffSame: "The two dates are identical.",
+      daysWord: "days", convEqual: "equals"
+    }
+  };
+
+  var state = { lang: localStorage.getItem("jt_lang") || "fa" };
+  var theme = localStorage.getItem("jt_theme") ||
+    (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+
+  function t(key) { return T[state.lang][key]; }
+  function jMonths() { return state.lang === "fa" ? FA_MONTHS : EN_MONTHS; }
+  function grMonths() { return state.lang === "fa" ? GR_MONTHS_FA : GR_MONTHS_EN; }
+  function fmtJ(j) {
+    var months = jMonths();
+    return j.jd + " " + months[j.jm - 1] + " " + j.jy;
+  }
+  function fmtG(g) {
+    var months = grMonths();
+    return g.gd + " " + months[g.gm - 1] + " " + g.gy;
+  }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function $id(x) { return document.getElementById(x); }
+  function faNum(n) {
+    return state.lang === "fa" ? n.toLocaleString("fa-IR") : n.toLocaleString("en-US");
+  }
+
+  /* ---- Tehran "today" via Intl (no server, timezone-correct) ---- */
+  function tehranNow() {
+    var now = new Date();
+    var parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Tehran", year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
+    }).formatToParts(now);
+    function get(type) {
+      var v = parts.find(function (p) { return p.type === type; });
+      return v ? v.value : "";
+    }
+    return {
+      y: +get("year"), m: +get("month"), d: +get("day"),
+      hh: +get("hour") % 24, mm: +get("minute"), ss: +get("second")
+    };
+  }
+
+  /* ================= reusable Jalali select sets ================= */
+  var J_YEAR_MIN = 1300, J_YEAR_MAX = 1500;
+  function fillYears(sel, selected) {
+    var html = "";
+    for (var y = J_YEAR_MAX; y >= J_YEAR_MIN; y -= 1) {
+      html += '<option value="' + y + '">' + y + "</option>";
+    }
+    sel.innerHTML = html;
+    if (selected) sel.value = String(selected);
+  }
+  function fillMonths(sel, selected) {
+    var months = jMonths(), html = "";
+    for (var i = 0; i < 12; i += 1) {
+      html += '<option value="' + (i + 1) + '">' + (i + 1) + " — " + months[i] + "</option>";
+    }
+    sel.innerHTML = html;
+    if (selected) sel.value = String(selected);
+  }
+  function fillDays(sel, jy, jm, jd) {
+    var len = jMonthLen(jy, jm), html = "", d;
+    for (d = 1; d <= 31; d += 1) {
+      html += '<option value="' + d + '"' + (d > len ? " disabled" : "") + ">" + d + "</option>";
+    }
+    sel.innerHTML = html;
+    sel.value = String(Math.min(jd, len));
+  }
+  function readJ(ySel, mSel, dSel) { return { jy: +ySel.value, jm: +mSel.value, jd: +dSel.value }; }
+  function writeJ(ySel, mSel, dSel, j) {
+    fillYears(ySel, j.jy);
+    fillMonths(mSel, j.jm);
+    fillDays(dSel, j.jy, j.jm, j.jd);
+  }
+  function jSelects(yId, mId, dId, onChange) {
+    var y = $id(yId), m = $id(mId), d = $id(dId);
+    [y, m, d].forEach(function (sel) { sel.addEventListener("change", onChange); });
+    return { y: y, m: m, d: d };
+  }
+
+  /* ================= tabs ================= */
+  var TABS = ["convert", "age", "diff", "today"];
+  function buildTabs() {
+    $id("tabs").innerHTML = TABS.map(function (key) {
+      return '<button type="button" class="tab" data-tab="' + key + '">' + t("tabs")[key] + "</button>";
+    }).join("");
+    Array.prototype.forEach.call($id("tabs").children, function (btn) {
+      btn.addEventListener("click", function () { showTab(btn.getAttribute("data-tab")); });
+    });
+  }
+  function showTab(name) {
+    TABS.forEach(function (key) { $id("tab-" + key).hidden = key !== name; });
+    Array.prototype.forEach.call($id("tabs").children, function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-tab") === name);
+    });
+  }
+
+  /* ================= converter ================= */
+  var convJ = jSelects("jy", "jm", "jd", function () { onJChange(); });
+  var gInput = $id("gDate");
+
+  function setGFromJ(j) {
+    var g = d2g(j2d(j.jy, j.jm, j.jd));
+    gInput.value = g.gy + "-" + pad(g.gm) + "-" + pad(g.gd);
+    return g;
+  }
+  function onJChange() {
+    var j = readJ(convJ.y, convJ.m, convJ.d);
+    if (!jIsValid(j.jy, j.jm, j.jd)) return;
+    fillDays(convJ.d, j.jy, j.jm, j.jd);
+    renderConv(j);
+  }
+  function onGChange() {
+    if (!gInput.value) return;
+    var p = gInput.value.split("-");
+    var j = d2j(g2d(+p[0], +p[1], +p[2]));
+    writeJ(convJ.y, convJ.m, convJ.d, j);
+    renderConv(j);
+  }
+  function renderConv(j) {
+    var g = setGFromJ(j);
+    var jdn = j2d(j.jy, j.jm, j.jd);
+    var gg = d2g(jdn);
+    var wd = new Date(Date.UTC(gg.gy, gg.gm - 1, gg.gd)).getUTCDay();
+    var weeks = state.lang === "fa" ? FA_WEEK : EN_WEEK;
+    var dayIdx = (wd + 1) % 7; /* Persian week starts on Saturday */
+    var doy = jdn - j2d(j.jy, 1, 1) + 1;
+    $id("convOut").innerHTML =
+      '<span class="big">' + fmtJ(j) + "</span> " + t("convEqual") +
+      ' <span class="big">' + fmtG(g) + "</span>" +
+      '<div class="sub">' + t("weekday") + ": <b>" + weeks[dayIdx] + "</b>" +
+      ' <span class="pill">' + t("dayOfYear") + ": " + faNum(doy) + "</span></div>";
+  }
+
+  /* ================= age ================= */
+  var ageJ = jSelects("by", "bm", "bd", function () { onAgeJChange(); });
+  var birthInput = $id("birthG");
+
+  function onAgeJChange() {
+    var j = readJ(ageJ.y, ageJ.m, ageJ.d);
+    if (!jIsValid(j.jy, j.jm, j.jd)) return;
+    fillDays(ageJ.d, j.jy, j.jm, j.jd);
+    var g = d2g(j2d(j.jy, j.jm, j.jd));
+    birthInput.value = g.gy + "-" + pad(g.gm) + "-" + pad(g.gd);
+    renderAge(j);
+  }
+  function onAgeGChange() {
+    if (!birthInput.value) return;
+    var p = birthInput.value.split("-");
+    var j = d2j(g2d(+p[0], +p[1], +p[2]));
+    writeJ(ageJ.y, ageJ.m, ageJ.d, j);
+    renderAge(j);
+  }
+  function renderAge(bj) {
+    var now = tehranNow();
+    var nowJdn = g2d(now.y, now.m, now.d);
+    var nowJ = d2j(nowJdn);
+    var bJdn = j2d(bj.jy, bj.jm, bj.jd);
+    if (bJdn > nowJdn) {
+      $id("ageOut").innerHTML = '<span class="err">' +
+        (state.lang === "fa" ? "تاریخ تولد در آینده است!" : "Birth date is in the future!") + "</span>";
+      return;
+    }
+    /* exact calendar age: last anniversary of the birth month/day */
+    var years = nowJ.jy - bj.jy;
+    var annivJdn = j2d(nowJ.jy, bj.jm, Math.min(bj.jd, jMonthLen(nowJ.jy, bj.jm)));
+    if (annivJdn > nowJdn) {
+      years -= 1;
+      annivJdn = j2d(nowJ.jy - 1, bj.jm, Math.min(bj.jd, jMonthLen(nowJ.jy - 1, bj.jm)));
+    }
+    /* months + leftover days since that anniversary (year-wrapping safe) */
+    var annivJ = d2j(annivJdn);
+    var months = (nowJ.jy - annivJ.jy) * 12 + (nowJ.jm - annivJ.jm);
+    if (nowJ.jd < annivJ.jd) months -= 1;
+    var anchorY = annivJ.jy + Math.floor((annivJ.jm - 1 + months) / 12);
+    var anchorM = ((annivJ.jm - 1 + months) % 12) + 1;
+    var anchorD = Math.min(bj.jd, jMonthLen(anchorY, anchorM));
+    var days = nowJdn - j2d(anchorY, anchorM, anchorD);
+
+    var gBorn = d2g(bJdn);
+    var wd = new Date(Date.UTC(gBorn.gy, gBorn.gm - 1, gBorn.gd)).getUTCDay();
+    var weeks = state.lang === "fa" ? FA_WEEK : EN_WEEK;
+    var dayIdx = (wd + 1) % 7;
+
+    var nextJdn = j2d(nowJ.jy, bj.jm, Math.min(bj.jd, jMonthLen(nowJ.jy, bj.jm)));
+    if (nextJdn <= nowJdn) nextJdn = j2d(nowJ.jy + 1, bj.jm, Math.min(bj.jd, jMonthLen(nowJ.jy + 1, bj.jm)));
+    var toNext = nextJdn - nowJdn;
+
+    var L = T[state.lang];
+    $id("ageOut").innerHTML =
+      '<span class="big">' + faNum(years) + " " + L.ageYears + "</span>" +
+      '<div class="sub">' + faNum(years) + " " + L.ageYears + " و " + faNum(months) + " " + L.ageMonths +
+      " و " + faNum(days) + " " + L.ageDaysLbl + "</div>" +
+      '<div class="sub">' + L.ageDays + ": <b>" + faNum(nowJdn - bJdn) + "</b></div>" +
+      '<div class="sub">' + L.ageBorn + " <b>" + weeks[dayIdx] + "</b> — " + L.ageNext + ": <b>" +
+      (toNext === 0 ? L.ageToday : faNum(toNext) + " " + L.ageNextIn) + "</b></div>";
+  }
+
+  /* ================= diff ================= */
+  var fromJ = jSelects("fy", "fm", "fd", renderDiff);
+  var toJ = jSelects("ty", "tm", "td", renderDiff);
+  function renderDiff() {
+    var a = readJ(fromJ.y, fromJ.m, fromJ.d);
+    var b = readJ(toJ.y, toJ.m, toJ.d);
+    if (!jIsValid(a.jy, a.jm, a.jd) || !jIsValid(b.jy, b.jm, b.jd)) return;
+    var d1 = j2d(a.jy, a.jm, a.jd), d2 = j2d(b.jy, b.jm, b.jd);
+    var dist = Math.abs(d2 - d1);
+    var w = Math.floor(dist / 7), r = dist % 7;
+    var L = T[state.lang];
+    $id("diffOut").innerHTML = d1 === d2
+      ? '<span class="big">' + L.diffSame + "</span>"
+      : '<span class="big">' + L.diffDays + ": " + faNum(dist) + " " + L.daysWord + "</span>" +
+        '<div class="sub">= ' + faNum(w) + " " + L.diffWeeks + " " + faNum(r) + " " + L.diffAnd + "</div>";
+  }
+
+  /* ================= today ================= */
+  function renderToday() {
+    var now = tehranNow();
+    $id("clock").textContent = pad(now.hh) + ":" + pad(now.mm) + ":" + pad(now.ss);
+    var jdn = g2d(now.y, now.m, now.d);
+    var j = d2j(jdn);
+    $id("todayJ").textContent = fmtJ(j) + " — " +
+      (state.lang === "fa" ? FA_WEEK : EN_WEEK)[(new Date(Date.UTC(now.y, now.m - 1, now.d)).getUTCDay() + 1) % 7];
+    $id("todayG").textContent = fmtG({ gy: now.y, gm: now.m, gd: now.d });
+    var start = j2d(j.jy, 1, 1), end = j2d(j.jy, 12, jMonthLen(j.jy, 12));
+    var dayOfYear = jdn - start + 1, total = end - start + 1;
+    var pct = Math.round((dayOfYear / total) * 100);
+    $id("yearBar").style.width = pct + "%";
+    $id("yearProgressTxt").textContent =
+      (state.lang === "fa"
+        ? "روزِ " + faNum(dayOfYear) + " از " + faNum(total) + " روز سال " + faNum(j.jy) + " (" + faNum(pct) + "٪)"
+        : "Day " + faNum(dayOfYear) + " of " + faNum(total) + " days in " + faNum(j.jy) + " (" + faNum(pct) + "%)");
+  }
+
+  /* ================= language / theme ================= */
+  function applyLang() {
+    var fa = state.lang === "fa";
+    document.documentElement.lang = fa ? "fa" : "en";
+    document.documentElement.dir = fa ? "rtl" : "ltr";
+    localStorage.setItem("jt_lang", state.lang);
+    $id("title").firstChild.nodeValue = t("title");
+    $id("subtitle").textContent = t("subtitle");
+    $id("langBtn").textContent = t("langBtn");
+    ["convTitle", "convHint", "lblJ", "lblG", "ageTitle", "ageHint", "lblBirthJ", "lblBirthG",
+     "diffTitle", "diffHint", "lblFrom", "lblTo", "todayTitle", "todayHint", "clockLbl",
+     "lblTodayJ", "lblTodayG", "yearProgressLbl", "footTxt", "footNote"].forEach(function (key) {
+      var el = $id(key);
+      if (el && t(key)) el.textContent = t(key);
+    });
+    buildTabs();
+    var c = readJ(convJ.y, convJ.m, convJ.d);
+    fillMonths(convJ.m, c.jm); fillDays(convJ.d, c.jy, c.jm, c.jd);
+    var b = readJ(ageJ.y, ageJ.m, ageJ.d);
+    fillMonths(ageJ.m, b.jm); fillDays(ageJ.d, b.jy, b.jm, b.jd);
+    var f = readJ(fromJ.y, fromJ.m, fromJ.d);
+    fillMonths(fromJ.m, f.jm); fillDays(fromJ.d, f.jy, f.jm, f.jd);
+    var to = readJ(toJ.y, toJ.m, toJ.d);
+    fillMonths(toJ.m, to.jm); fillDays(toJ.d, to.jy, to.jm, to.jd);
+    renderConv(c);
+    renderAge(b);
+    renderDiff();
+    renderToday();
+  }
+
+  $id("langBtn").addEventListener("click", function () {
+    state.lang = state.lang === "fa" ? "en" : "fa";
+    applyLang();
+  });
+  $id("themeBtn").addEventListener("click", function () {
+    theme = theme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+    $id("themeBtn").textContent = theme === "dark" ? "☀️" : "🌙";
+    localStorage.setItem("jt_theme", theme);
+  });
+
+  gInput.addEventListener("change", onGChange);
+  birthInput.addEventListener("change", onAgeGChange);
+
+  /* ================= boot ================= */
+  document.documentElement.setAttribute("data-theme", theme);
+  $id("themeBtn").textContent = theme === "dark" ? "☀️" : "🌙";
+
+  var now = tehranNow();
+  var todayJ = d2j(g2d(now.y, now.m, now.d));
+  [convJ, ageJ, fromJ].forEach(function (set) { writeJ(set.y, set.m, set.d, todayJ); });
+  var nm = todayJ.jm === 12 ? 1 : todayJ.jm + 1;
+  var ny = todayJ.jm === 12 ? todayJ.jy + 1 : todayJ.jy;
+  writeJ(toJ.y, toJ.m, toJ.d, { jy: ny, jm: nm, jd: Math.min(todayJ.jd, jMonthLen(ny, nm)) });
+  setGFromJ(todayJ);
+  birthInput.value = now.y - 25 + "-" + pad(now.m) + "-" + pad(now.d);
+
+  applyLang();
+  showTab("convert");
+  setInterval(renderToday, 1000);
+})();
+</script>
+</body>
+</html>
