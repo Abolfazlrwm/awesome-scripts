@@ -8,6 +8,8 @@ offline in the browser**: no server, no build step, no external libraries.
 
 ---
 
+![پیش‌نمایش Jalali Date Tools](docs/preview.jpg)
+
 ## ✨ Features — امکانات
 
 | | |

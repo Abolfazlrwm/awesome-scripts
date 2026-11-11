@@ -5,6 +5,8 @@
 ![Responsive](https://img.shields.io/badge/Responsive-Yes-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Mobile App Intro Template](docs/preview.jpg)
+
 ## 📖 توضیحات
 
 مجموعه‌ای از **۱۲ قالب صفحه‌ی فرود (Landing Page)** آماده و ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل. هر فایل یک صفحه‌ی مستقل و کامل (HTML + CSS + JS درون‌خطی) است — کافیست فایل موردنظر را باز کرده و متن، رنگ‌بندی و لینک‌های دانلود را با محتوای اپلیکیشن خودتان جایگزین کنید.

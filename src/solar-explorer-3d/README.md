@@ -7,6 +7,8 @@
 ![No Backend](https://img.shields.io/badge/backend-none%20needed-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Solar Explorer 3D](docs/preview.jpg)
+
 ## ✨ امکانات
 
 - ☀️ شبیه‌سازی خورشید و همه سیارات منظومه شمسی به همراه چند قمر (از جمله ماه) و حلقه‌های زحل

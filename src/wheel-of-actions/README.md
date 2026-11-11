@@ -1,10 +1,12 @@
-﻿# 🎡 Wheel of Actions | چرخ اولویت‌بندی تسک‌های روزانه
+# 🎡 Wheel of Actions | چرخ اولویت‌بندی تسک‌های روزانه
 
 یک ابزار وب کاملاً سمت کاربر (بدون نیاز به سرور یا بک‌اند) برای کمک به تصمیم‌گیری روزانه — کارهایت را با امتیاز وزن‌دهی کن، بچرخان و بگذار چرخ به‌صورت آماری در طول زمان دقیقاً به همون نسبتی که خواستی، وقتت را بین کارها تقسیم کند.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg)
 ![No Backend](https://img.shields.io/badge/backend-none%20needed-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Wheel Of Actions](docs/preview.jpg)
 
 ## ✨ امکانات
 

@@ -6,6 +6,8 @@
 ![No Backend](https://img.shields.io/badge/backend-none%20needed-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Tic-Tac-Toe Game](docs/preview.jpg)
+
 ## ✨ امکانات
 
 - 🤖 بازی در برابر هوش مصنوعی (اول بلاک/برد رو بررسی می‌کنه، بعد حرکت تصادفی)

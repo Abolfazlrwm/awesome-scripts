@@ -6,6 +6,8 @@
 ![No Backend](https://img.shields.io/badge/backend-none%20needed-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش World Clock Planner](docs/preview.jpg)
+
 ## ✨ امکانات
 
 - ➕ افزودن هر تعداد شهر/منطقه‌ی زمانی (لیست کامل مناطق زمانی استاندارد IANA)

@@ -5,6 +5,8 @@
 ![Responsive](https://img.shields.io/badge/Responsive-Yes-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Telegram Channel Landing Page](docs/preview.jpg)
+
 ## 📖 توضیحات
 
 یک صفحه‌ی فرود (Landing Page) تک‌فایلی، مدرن و ریسپانسیو برای معرفی یک کانال یا برند تلگرامی. مناسب برای زمانی که می‌خواهید قبل از عضویت، بازدیدکننده یک صفحه‌ی حرفه‌ای و جذاب ببیند.

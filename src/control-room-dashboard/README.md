@@ -6,6 +6,8 @@
 ![No Backend](https://img.shields.io/badge/backend-none%20needed-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Control Room Dashboard](docs/preview.jpg)
+
 ## ✨ امکانات
 
 - 🔢 شمارنده‌ی انیمیشنی «کاربران فعال شبکه» با افکت easing

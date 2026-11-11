@@ -6,6 +6,8 @@
 ![No Backend](https://img.shields.io/badge/backend-none%20needed-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش QR Code Studio](docs/preview.jpg)
+
 ## ✨ امکانات
 
 - 🎨 رنگ ثابت یا گرادینت دو رنگه برای ماژول‌های QR
