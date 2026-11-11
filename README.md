@@ -9,6 +9,7 @@
 ![Projects](https://img.shields.io/badge/projects-46-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
+[![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Abolfazlrwm/awesome-scripts?style=flat&logo=github)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
@@ -21,6 +22,8 @@
 ## ✨ About
 
 Every project here is a **complete, runnable application** — not a snippet. Open any folder under [`src/`](./src), follow its README, and you have a working bot, tool or site in minutes. The collection spans **8 languages** (Python, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
+
+> 🧭 Prefer browsing? Open the **[interactive catalog](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, dark mode and full Persian (RTL) mode. Stable versions are published under [Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases).
 
 ## 🚀 Quick start
 
@@ -97,6 +100,26 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 > 🚧 More projects are on the way — hit **Star** / **Watch** to catch the new ones.
 
+## 🧰 Repo tooling
+
+The catalog is machine-checked — the README tables above are the single source of truth and everything else is generated from them:
+
+```bash
+# regenerate data/catalog.json + data/catalog.js after editing the README tables
+python tools/generate_catalog.py
+
+# CI mode — fails when README tables and catalog data drift apart
+python tools/generate_catalog.py --check
+
+# quality gate: every src/ folder must ship a README + runnable code, and no
+# secrets (tokens, API keys, credential literals) may be committed anywhere
+python tools/validate_projects.py
+```
+
+Both checks run automatically on every push and PR via the **Validate** workflow, and tagged
+versions (`v*`) are turned into [GitHub Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases)
+with notes and a source ZIP by the **Release** workflow.
+
 ## 🤝 Contributing
 
 Want to add a project or fix a bug? Read [CONTRIBUTING.md](./CONTRIBUTING.md), then open a [PR](https://github.com/Abolfazlrwm/awesome-scripts/compare) or an [issue](https://github.com/Abolfazlrwm/awesome-scripts/issues/new/choose).
@@ -115,7 +138,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### مجموعه‌ای از سورس‌های آماده و حرفه‌ای ربات تلگرام و ابزارهای جانبی
 
-🌐 [**English**](#english) · **فارسی**
+🌐 [**English**](#english) · **فارسی** · 🧭 [کاتالوگ تعاملی](https://abolfazlrwm.github.io/awesome-scripts/) · 🚀 [ریلیزها](https://github.com/Abolfazlrwm/awesome-scripts/releases)
 
 </div>
 
@@ -183,6 +206,24 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🖥 مانیتور سیستم](./src/system-monitor-gui) | Python | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6 |
 
 > 🚧 در حال توسعه و افزودن سورس‌های جدید هستم — با **Star** و **Watch** از پروژه‌های تازه باخبر شوید.
+
+### 🧰 ابزارهای مخزن
+
+کاتالوگ به‌صورت ماشینی کنترل می‌شود — جدول‌های README بالا تنها منبع حقیقت هستند و بقیه از روی آن‌ها تولید می‌شوند:
+
+```bash
+# بعد از ویرایش جدول‌های README، داده‌های کاتالوگ را دوباره بساز
+python tools/generate_catalog.py
+
+# حالت CI — اگر README و داده‌های کاتالوگ ناهماهنگ باشند خطا می‌دهد
+python tools/generate_catalog.py --check
+
+# دروازه کیفیت: هر پوشه در src/ باید README + کد قابل اجرا داشته باشد و
+# هیچ توکن یا کلید مخفی‌ای در هیچ‌جای مخزن نباشد
+python tools/validate_projects.py
+```
+
+هر دو چک به‌صورت خودکار روی هر پش و PR با ورک‌فلو **Validate** اجرا می‌شوند و تگ‌های نسخه (`v*`) با ورک‌فلو **Release** به [ریلیز گیت‌هاب](https://github.com/Abolfazlrwm/awesome-scripts/releases) با یادداشت و فایل ZIP تبدیل می‌شوند.
 
 ### 🚀 شروع سریع
 
