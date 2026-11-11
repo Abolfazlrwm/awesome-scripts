@@ -1,0 +1,8 @@
+{
+  "bot_token": "YOUR_BOT_TOKEN_HERE",
+  "admin_ids": [
+    123456789
+  ],
+  "channel_username": "",
+  "download_quality": "320kbps"
+}

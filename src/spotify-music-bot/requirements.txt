@@ -1,0 +1,6 @@
+pyTelegramBotAPI==4.36.1
+ytmusicapi==1.12.3
+yt-dlp>=2026.8.19
+mutagen==1.48.1
+requests>=2.31.0
+pillow>=10.0.0
