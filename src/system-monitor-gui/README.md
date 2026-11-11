@@ -7,6 +7,8 @@
 ![Cross Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش System Monitor GUI](docs/preview.png)
+
 ## ✨ امکانات
 
 - 📊 نمایش زنده و آپدیت‌شونده (هر ۱ ثانیه) درصد مصرف CPU، RAM و Disk

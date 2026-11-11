@@ -8,6 +8,8 @@ you keep re-typing — and lets you re-copy, pin or clean it with one click.
 
 ---
 
+![پیش‌نمایش Clipboard History Manager](docs/preview.png)
+
 ## ✨ Features — امکانات
 
 | | |

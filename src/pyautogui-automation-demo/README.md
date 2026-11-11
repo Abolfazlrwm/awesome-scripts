@@ -6,6 +6,8 @@
 ![PyAutoGUI](https://img.shields.io/badge/PyAutoGUI-automation-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش PyAutoGUI Automation Demo](docs/preview.png)
+
 ## ✨ امکانات
 
 - ⏳ شمارش معکوس قبل از شروع، تا فرصت کنی پنجره مقصد را باز/فعال کنی

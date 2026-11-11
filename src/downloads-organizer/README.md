@@ -6,6 +6,8 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D6.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Downloads Organizer](docs/preview.png)
+
 ## ✨ امکانات
 
 - 📁 دسته‌بندی خودکار به ۱۲ گروه: Documents, Archives, Images, Videos, Audio, Executables, Development, Design, Fonts, Temporary, Installers, Other
