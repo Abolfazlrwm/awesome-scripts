@@ -488,14 +488,30 @@
   }
 
   /* ---------- rendering ---------- */
+  /* Persian-aware text folding: visitors may type Arabic ye/kef, skip the
+     ZWNJ, add diacritics or use Eastern-Arabic digits — fold every form
+     so one query matches all of them. */
+  function faFold(s) {
+    return String(s || "").toLowerCase()
+      .replace(/[\u064B-\u0655\u0670\u0640]/g, "")               // harakat, tanvin, tatweel
+      .replace(/\u064A/g, "\u06CC").replace(/\u0643/g, "\u06A9") // Arabic ye/kef -> Persian
+      .replace(/\u0629/g, "\u0647")                              // teh marbuta -> heh
+      .replace(/[\u0660-\u0669\u06F0-\u06F9]/g, function (ch) {  // Eastern digits -> ASCII
+        var c = ch.charCodeAt(0);
+        return String.fromCharCode(c <= 0x0669 ? c - 0x0660 + 48 : c - 0x06F0 + 48);
+      })
+      .replace(/[\u200B-\u200F\u202A-\u202E\uFEFF]/g, "");       // ZWNJ, bidi marks, BOM
+  }
+
   function matches(p) {
     if (state.category !== "all" && p.category !== state.category) return false;
     if (state.language !== "all" && p.language !== state.language) return false;
     if (!state.query) return true;
-    var q = state.query.toLowerCase();
-    var hay = [p.slug, p.name_en, p.name_fa, p.description_en, p.description_fa, p.language, p.category]
-      .join(" ").toLowerCase();
-    return q.split(/\s+/).every(function (part) { return hay.indexOf(part) !== -1; });
+    var q = faFold(state.query);
+    var hay = faFold(
+      [p.slug, p.name_en, p.name_fa, p.description_en, p.description_fa, p.language, p.category].join(" ")
+    );
+    return q.split(/\s+/).every(function (part) { return !part || hay.indexOf(part) !== -1; });
   }
 
   function card(p, i) {
