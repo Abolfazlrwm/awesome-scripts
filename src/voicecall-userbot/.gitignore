@@ -1,0 +1,10 @@
+.env
+downloads/
+data/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+bot.pid
+bot.log
+.runtime-bin/

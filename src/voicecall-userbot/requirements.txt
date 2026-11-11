@@ -1,0 +1,6 @@
+Telethon>=1.40.0,<2.0.0
+py-tgcalls>=2.3.3,<3.0.0
+python-dotenv>=1.0.1,<2.0.0
+qrcode[pil]>=7.4.2,<9.0.0
+imageio-ffmpeg>=0.6.0,<0.7.0
+yt-dlp>=2025.1.15,<2027.0.0

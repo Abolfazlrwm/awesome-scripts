@@ -1,0 +1,8 @@
+services:
+  voicecall-userbot:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./downloads:/app/downloads
+      - ./data:/app/data

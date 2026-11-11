@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+cd "$(dirname "$0")"
+PID_FILE="$PWD/bot.pid"
+LOG_FILE="$PWD/bot.log"
+PYTHON_BIN="$PWD/venv/bin/python"
+
+running_pid() {
+  [[ -f "$PID_FILE" ]] || return 1
+  local pid
+  pid="$(<"$PID_FILE")"
+  [[ "$pid" =~ ^[0-9]+$ ]] || return 1
+  kill -0 "$pid" 2>/dev/null || return 1
+  printf "%s" "$pid"
+}
+
+start_bot() {
+  if pid="$(running_pid)"; then
+    echo "Bot az ghabl faal ast (PID: $pid)."
+    return
+  fi
+  [[ -x "$PYTHON_BIN" ]] || { echo "Aval ./install.sh ra ejra konid."; exit 1; }
+  [[ -f .env ]] || { echo ".env vojood nadarad; aval ./install.sh ra ejra konid."; exit 1; }
+  nohup "$PYTHON_BIN" launcher.py >>"$LOG_FILE" 2>&1 &
+  pid=$!
+  printf "%s\n" "$pid" > "$PID_FILE"
+  sleep 2
+  if kill -0 "$pid" 2>/dev/null; then
+    echo "Bot ejra shod (PID: $pid)."
+  else
+    echo "Ejraye bot namovafagh bod. Log:"
+    tail -n 30 "$LOG_FILE" || true
+    exit 1
+  fi
+}
+
+stop_bot() {
+  if ! pid="$(running_pid)"; then
+    echo "Bot faal nist."
+    rm -f "$PID_FILE"
+    return
+  fi
+  kill "$pid"
+  for _ in {1..10}; do
+    kill -0 "$pid" 2>/dev/null || break
+    sleep 1
+  done
+  if kill -0 "$pid" 2>/dev/null; then
+    echo "Stop adi anjam nashod; PID $pid ra check konid."
+    exit 1
+  fi
+  rm -f "$PID_FILE"
+  echo "Bot motavaqef shod."
+}
+
+repair_audio() {
+  [[ -x "$PYTHON_BIN" ]] || { echo "Aval ./install.sh ra ejra konid."; exit 1; }
+  "$PYTHON_BIN" -m pip install -r requirements.txt
+  mkdir -p .runtime-bin
+  local ffmpeg_path
+  ffmpeg_path="$($PYTHON_BIN -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')"
+  ln -sfn "$ffmpeg_path" .runtime-bin/ffmpeg
+  chmod +x "$ffmpeg_path" .runtime-bin/ffmpeg
+  if .runtime-bin/ffmpeg -version >/dev/null 2>&1; then
+    echo "FFmpeg local dorost shod: $ffmpeg_path"
+  else
+    echo "FFmpeg rooye in host ghabel-e ejra nist. Ba support-e host tamas begirid."
+    exit 1
+  fi
+}
+
+case "${1:-}" in
+  start) start_bot ;;
+  stop) stop_bot ;;
+  restart) stop_bot; start_bot ;;
+  repair-audio) repair_audio ;;
+  status)
+    if pid="$(running_pid)"; then echo "Bot faal ast (PID: $pid)."; else echo "Bot faal nist."; fi
+    ;;
+  logs) touch "$LOG_FILE"; tail -f "$LOG_FILE" ;;
+  *) echo "Estefade: ./botctl {start|stop|restart|status|logs|repair-audio}"; exit 1 ;;
+esac
