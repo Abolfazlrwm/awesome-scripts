@@ -260,8 +260,18 @@ def main() -> None:
                 problems.append("data/catalog.json is stale — README changed? re-run the generator")
         if not js_path.exists():
             problems.append("data/catalog.js is missing")
-        elif js_path.read_bytes() != js_bytes:
-            problems.append("data/catalog.js is stale — re-run the generator")
+        else:
+            js_text = js_path.read_text(encoding="utf-8")
+            payload = re.search(r"window\.AWESOME_CATALOG = (.+);\s*$", js_text, re.S)
+            if not payload:
+                problems.append("data/catalog.js is malformed")
+            else:
+                old_js = json.loads(payload.group(1))
+                new_js = json.loads(json.dumps(catalog))
+                old_js.pop("generated_at", None)
+                new_js.pop("generated_at", None)
+                if old_js != new_js:
+                    problems.append("data/catalog.js is stale — re-run the generator")
         if problems:
             for problem in problems:
                 print(f"✗ {problem}", file=sys.stderr)
