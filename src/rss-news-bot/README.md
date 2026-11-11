@@ -6,6 +6,8 @@
 ![libcurl](https://img.shields.io/badge/uses-libcurl-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش RSS News Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - 📡 بررسی دوره‌ای چند فید RSS هم‌زمان (پیش‌فرض هر ۵ دقیقه)

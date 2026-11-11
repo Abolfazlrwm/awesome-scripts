@@ -6,6 +6,8 @@ source/server is not accessible; its supplier and payment backends are TODO
 stubs here (see "What is stubbed" below). See `REPORT.md` for the full
 exploration report.
 
+![پیش‌نمایش Starzify Shop Bot](docs/preview.png)
+
 ## Setup
 
 ```bash

@@ -6,6 +6,8 @@
 ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-20+-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Link Summarizer Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - 🔗 پشتیبانی از لینک — استخراج خودکار متن اصلی صفحه (حذف منو، فوتر، تبلیغات)

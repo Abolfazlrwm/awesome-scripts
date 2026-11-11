@@ -1,10 +1,12 @@
-﻿# 📥 ربات دانلود از اینستاگرام (Instagram Downloader)
+# 📥 ربات دانلود از اینستاگرام (Instagram Downloader)
 
 ربات دانلود پست، ریلز و استوری اینستاگرام با کیفیت اصلی، همراه با سیستم محدودیت روزانه، عضویت VIP نامحدود و دعوت دوستان.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![pyTelegramBotAPI](https://img.shields.io/badge/pyTelegramBotAPI-latest-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Instagram Downloader Bot](docs/preview.png)
 
 ## ✨ امکانات
 

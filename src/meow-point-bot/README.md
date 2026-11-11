@@ -6,6 +6,8 @@
 ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-latest-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Meow Point Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - `/meow` — جمع‌آوری امتیاز با کول‌داون (هر ۵ دقیقه)

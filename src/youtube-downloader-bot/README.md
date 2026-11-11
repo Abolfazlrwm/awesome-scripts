@@ -6,6 +6,8 @@
 ![yt-dlp](https://img.shields.io/badge/powered%20by-yt--dlp-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Youtube Downloader Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - 🎥 دانلود ویدیو با کیفیت تا 480p

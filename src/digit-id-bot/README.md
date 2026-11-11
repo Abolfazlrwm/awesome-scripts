@@ -5,6 +5,8 @@ This bot also allows you to extract the numeric ID of **any forwarded message** 
 
 ---
 
+![پیش‌نمایش Digit ID Bot](docs/preview.png)
+
 ## ✨ Features
 
 - 🆔 Displays the user's **numeric Telegram ID**.

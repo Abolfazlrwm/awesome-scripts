@@ -1,10 +1,12 @@
-﻿# 🐕 هاپ‌داگ | ربات اقتصادی و سرگرمی گروهی
+# 🐕 هاپ‌داگ | ربات اقتصادی و سرگرمی گروهی
 
 کامل‌ترین ربات اقتصادی/بازی گروهی برای تلگرام — از هاپ‌زدن ساده تا مدیریت شهر، انتخابات شهرداری و حتی رهبری ملی! کاربران با هاپ‌زدن پوینت جمع می‌کنند، سگ می‌خرند، ماهیگیری می‌کنند، کارخانه می‌سازند و در اقتصاد گروه شرکت می‌کنند.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-20+-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش HappyDog Economy Bot](docs/preview.png)
 
 ## ✨ امکانات
 

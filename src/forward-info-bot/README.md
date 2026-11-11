@@ -4,6 +4,8 @@
 ![Telegram Bot API](https://img.shields.io/badge/Telegram%20Bot%20API-Webhook-26A5E4?logo=telegram&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Forward Info Bot](docs/preview.png)
+
 ## 📖 توضیحات
 
 ربات کوچک و کاربردی تلگرامی که وقتی کاربر یک پیام را از یک **کاربر دیگر**، **ربات دیگر** یا یک **کانال** به آن فوروارد می‌کند، اطلاعات فرستنده‌ی اصلی (آیدی عددی، نام، یوزرنیم یا آیدی کانال) را نمایش می‌دهد. همچنین آیدی عددی هر کاربری که برای اولین بار با ربات صحبت می‌کند را در فایل `members.txt` ذخیره می‌کند.

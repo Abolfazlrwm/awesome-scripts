@@ -6,6 +6,8 @@
 ![No dependencies](https://img.shields.io/badge/dependencies-none-success.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Quiz Trivia Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - ❓ مسابقه‌ی ۵ سوالی با دکمه‌های شیشه‌ای (چهار گزینه)

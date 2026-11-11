@@ -7,6 +7,8 @@
 ![CoinGecko API](https://img.shields.io/badge/API-CoinGecko-8DC647.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Price Ticker Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - 📊 نمایش نرخ لحظه‌ای رمزارزهای محبوب (BTC, ETH, USDT, BNB, XRP, DOGE, TON و ...) به همراه درصد تغییر ۲۴ ساعته

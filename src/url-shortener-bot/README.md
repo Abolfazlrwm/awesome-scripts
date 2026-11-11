@@ -6,6 +6,8 @@
 ![node-telegram-bot-api](https://img.shields.io/badge/node--telegram--bot--api-0.66-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش URL Shortener Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - ✂️ کوتاه کردن هر لینکی با فقط فرستادنش برای ربات

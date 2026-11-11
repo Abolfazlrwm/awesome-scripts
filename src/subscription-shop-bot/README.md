@@ -1,10 +1,12 @@
-﻿# 💳 ربات فروش اشتراک و کانفیگ (Subscription Shop Bot)
+# 💳 ربات فروش اشتراک و کانفیگ (Subscription Shop Bot)
 
 ربات فروش خودکار اشتراک/کانفیگ از یک مخزن داخلی، با سیستم نمایندگی، گردونه‌ی شانس و کیف پول داخلی. مناسب برای فروش کانفیگ، اشتراک سرویس یا هر محصول دیجیتال تکرارشونده.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![pyTelegramBotAPI](https://img.shields.io/badge/pyTelegramBotAPI-latest-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Subscription Shop Bot](docs/preview.png)
 
 ## ✨ امکانات
 

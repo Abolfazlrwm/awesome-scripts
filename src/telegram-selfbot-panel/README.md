@@ -6,6 +6,8 @@ A **42+ feature Telegram self-bot** built on **Telethon** (user session) + **pyt
 
 <p align="center"><i>Main inline panel — write «پنل» anywhere to open it</i></p>
 
+![پیش‌نمایش Telegram Selfbot Panel](docs/preview.png)
+
 ## ✨ Highlights
 
 - 🎛 **Inline control panel** — 40+ buttons across 3 pages, fully Persian UI

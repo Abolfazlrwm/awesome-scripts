@@ -1,10 +1,12 @@
-﻿# 🎮 ربات بازی دوز و مین‌یاب (Connect4 & Minesweeper)
+# 🎮 ربات بازی دوز و مین‌یاب (Connect4 & Minesweeper)
 
 ربات بازی گروهی تلگرام با دو بازی کلاسیک: دوز (Connect4) و مین‌یاب دو نفره، همراه با سیستم رنکینگ جهانی و گروهی، تاج هفتگی و لیدربورد.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-20+-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Connect4 & Minesweeper Bot](docs/preview.png)
 
 ## ✨ امکانات
 

@@ -2,6 +2,8 @@
 
 A single-file PHP bot (`bot.php`, no database needed) that turns a Telegram channel into a **community-powered posting wall**: users send their post to the bot, the admin reviews it, and approved posts get published to the channel. Includes mandatory channel join, per-user state machine, editable bot texts and file-based JSON storage.
 
+![پیش‌نمایش Channel Submission Bot](docs/preview.png)
+
 ## ✨ Features
 
 - 📨 **Submit flow** — user sends text/photo/video → bot confirms «received» → admin gets inline **Publish / Reject** buttons

@@ -1,3 +1,5 @@
+![پیش‌نمایش Digiato Article Bot](docs/preview.png)
+
 ## ربات تلگرام جستجو و استخراج مقاله دیجیاتو (python-telegram-bot 20.7)
 
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)

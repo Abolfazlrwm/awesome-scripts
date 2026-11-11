@@ -1,10 +1,12 @@
-﻿# 🛍 ربات فروشگاهی پیشرفته (Advanced Shop Bot)
+# 🛍 ربات فروشگاهی پیشرفته (Advanced Shop Bot)
 
 یک فروشگاه‌ساز کامل برای تلگرام — دقیقاً شبیه یک سایت فروشگاهی حرفه‌ای، اما تمام‌وکمال داخل تلگرام. محصولات با تنوع رنگ/سایز/مدل، سبد خرید هوشمند، کوپن تخفیف، پرداخت کارت‌به‌کارت، سیستم رفرال و پنل مدیریت کامل.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-22.7+-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Advanced Shop Bot](docs/preview.png)
 
 ## ✨ امکانات
 

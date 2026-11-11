@@ -6,6 +6,8 @@
 ![HTML/CSS](https://img.shields.io/badge/status%20page-HTML%2FCSS-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![پیش‌نمایش Uptime Monitor Bot](docs/preview.png)
+
 ## ✨ امکانات
 
 - ⏱ بررسی دوره‌ای سایت‌ها (پیش‌فرض هر ۶۰ ثانیه)

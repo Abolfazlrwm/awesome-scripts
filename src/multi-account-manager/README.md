@@ -4,6 +4,8 @@ A self-hosted **multi-account control center** for Telegram built with **Teletho
 
 ![Console demo](docs/demo-console.png)
 
+![پیش‌نمایش Multi Account Manager](docs/preview.png)
+
 ## ✨ Highlights
 
 - 👥 **Account management** — `add account +989…` walks you through code/2FA login, sessions are stored locally in `sessions/`; `account list`, `del account`

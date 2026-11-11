@@ -1,10 +1,12 @@
-﻿# 🎨 ربات پستر ایموجی پرمیوم (Cloudflare Worker)
+# 🎨 ربات پستر ایموجی پرمیوم (Cloudflare Worker)
 
 ربات ارسال پست حرفه‌ای به کانال با پشتیبانی کامل از ایموجی‌های پرمیوم و اختصاصی تلگرام (Custom Emoji) — کاملاً رایگان و روی زیرساخت Cloudflare Workers اجرا می‌شود.
 
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020.svg)
 ![D1 Database](https://img.shields.io/badge/Cloudflare-D1-F38020.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Premium Emoji Poster (CF Worker)](docs/preview.png)
 
 ## ✨ امکانات
 

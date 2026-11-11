@@ -1,9 +1,11 @@
-﻿# 🧠 ربات چت با هوش مصنوعی (AI Chat Assistant)
+# 🧠 ربات چت با هوش مصنوعی (AI Chat Assistant)
 
 ربات چت هوش مصنوعی چندمدله برای تلگرام — پشتیبانی از GPT، DeepSeek و Grok، با پنل مدیریت کامل و قابل تنظیم از داخل ربات.
 
 ![PHP](https://img.shields.io/badge/PHP-7.4+-777BB4.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش AI Chat Assistant Bot](docs/preview.png)
 
 ## ✨ امکانات
 

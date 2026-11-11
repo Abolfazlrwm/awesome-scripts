@@ -4,6 +4,8 @@ A Telegram bot for **custom emoji pack personalization** (TGS/WEBM): rebrand any
 
 This is a **full engineering project** (not a single script): pipeline package, animation engine, TGS validation, importer guard, admin panel, processing queue, test-suite, systemd deployment and an installer.
 
+![پیش‌نمایش Emoji Forge Bot](docs/preview.png)
+
 ## ✨ Highlights
 
 - 🧠 **Brain providers** — built-in rule engine (free, offline), or plug **any OpenAI-compatible endpoint** (OpenAI / OpenRouter / local server) via `AI_API_KEY`; auto-falls-back to rules on errors

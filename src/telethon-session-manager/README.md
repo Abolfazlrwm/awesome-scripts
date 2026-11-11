@@ -1,10 +1,12 @@
-﻿# 🔐 ربات مدیریت اکانت و سشن (Telethon Session Manager)
+# 🔐 ربات مدیریت اکانت و سشن (Telethon Session Manager)
 
 ربات مدیریت چند اکانت تلگرام از طریق Telethon. با افزودن اکانت‌های خودت به ربات، می‌توانی به‌صورت خودکار با آن‌ها به گروه/کانال جوین بزنی یا روی پست‌ها ری‌اکشن ثبت کنی.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![Telethon](https://img.shields.io/badge/Telethon-latest-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+![پیش‌نمایش Telethon Session Manager](docs/preview.png)
 
 ## ✨ امکانات
 

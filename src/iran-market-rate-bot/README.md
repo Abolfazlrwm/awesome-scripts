@@ -7,6 +7,8 @@ A Telegram bot that answers any price question in **Persian natural text** and r
 
 <p align="center"><i>Real outputs — rendered from live market data (2026-11-09)</i></p>
 
+![پیش‌نمایش Iran Market Rate Bot](docs/preview.png)
+
 ## ✨ Highlights
 
 - 💬 **Zero-UI natural input** — just write `دلار`, `100 یورو`, `2 سکه`, `۰٫۵ بیتکوین`, `100 تومن دلار` (convert) or `نرخ ارز` (full list)
