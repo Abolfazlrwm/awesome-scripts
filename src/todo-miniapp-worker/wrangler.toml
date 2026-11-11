@@ -1,0 +1,19 @@
+name = "todolist-miniapp"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# یادآورها هر یک دقیقه چک می‌شوند (Reminder Dispatcher داخل worker.js)
+[triggers]
+crons = ["* * * * *"]
+
+# دیتابیس D1 — بعد از ساخت با `wrangler d1 create todolist`،
+# database_id واقعی را اینجا بگذارید
+[[d1_databases]]
+binding = "DB"
+database_name = "todolist"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Secrets (با `wrangler secret put ...` ست کنید — در این فایل نباشند):
+#   BOT_TOKEN      توکن ربات از @BotFather
+#   MINI_APP_URL   آدرس HTTPS خودِ همین Worker (Mini App)
+#   BOT_USERNAME   اختیاری — یوزرنیم ربات بدون @ (برای لینک اشتراک‌گذاری)
