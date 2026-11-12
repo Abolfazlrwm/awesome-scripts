@@ -1,0 +1,5 @@
+python-telegram-bot>=21.0
+httpx
+jdatetime
+tzdata
+python-dotenv
