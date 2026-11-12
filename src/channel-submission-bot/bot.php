@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 
 // =====================================================
 // تنظیمات
@@ -8,10 +9,10 @@ $BOT_TOKEN = "PUT_BOT_TOKEN_HERE";       // توکن ربات از @BotFather
 
 $ADMIN_ID = 0;                           // آیدی عددی ادمین — مثال: 123456789
 
-$CHANNEL = "@your_channel";              // کانال انتشار پست‌ها (با @)
+$CHANNEL = "@Abolfazl_rwm";              // کانال انتشار پست‌ها (با @)
 
 // کانال عضویت اجباری
-$FORCE_CHANNEL = "@your_force_channel";  // کانال عضویت اجباری (با @)
+$FORCE_CHANNEL = "@Abolfazl_rwm";  // کانال عضویت اجباری (با @)
 
 $API = "https://api.telegram.org/bot" . $BOT_TOKEN;
 
@@ -999,7 +1000,7 @@ if (isset($update["callback_query"])) {
             $story .
             "\n\n\n" .
             "برای ارسال متن👇\n" .
-            "@nashnassho_robot";
+            "@Abolfazl_rwm";
 
 
         $sent =

@@ -21,8 +21,8 @@ A single-file PHP bot (`bot.php`, no database needed) that turns a Telegram chan
 ```php
 $BOT_TOKEN     = "PUT_BOT_TOKEN_HERE";       // token from @BotFather
 $ADMIN_ID      = 0;                          // your numeric ID, e.g. 123456789
-$CHANNEL       = "@your_channel";            // target channel (with @)
-$FORCE_CHANNEL = "@your_force_channel";      // force-join channel (with @)
+$CHANNEL       = "@Abolfazl_rwm";            // target channel (with @)
+$FORCE_CHANNEL = "@Abolfazl_rwm";      // force-join channel (with @)
 ```
 
 2. Upload to a PHP host (cURL enabled) and set the webhook:
@@ -69,8 +69,8 @@ User                    Bot                       Admin
 ```php
 $BOT_TOKEN     = "PUT_BOT_TOKEN_HERE";       // توکن از @BotFather
 $ADMIN_ID      = 0;                          // آیدی عددی خودت، مثلا 123456789
-$CHANNEL       = "@your_channel";            // کانال انتشار (با @)
-$FORCE_CHANNEL = "@your_force_channel";      // کانال عضویت اجباری (با @)
+$CHANNEL       = "@Abolfazl_rwm";            // کانال انتشار (با @)
+$FORCE_CHANNEL = "@Abolfazl_rwm";      // کانال عضویت اجباری (با @)
 ```
 
 ۲) روی هاست آپلود کن و وبهوک ست کن:
