@@ -1,5 +1,7 @@
 # 🌍 ربات مترجم متن (Translator Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 هر متنی برای ربات بفرستی، خودکار ترجمه‌ش می‌کنه. از یک API رایگان و بدون نیاز به ثبت‌نام استفاده می‌کند.
 
 ![Node.js](https://img.shields.io/badge/node.js-18+-339933.svg)

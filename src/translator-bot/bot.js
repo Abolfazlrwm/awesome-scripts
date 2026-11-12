@@ -1,3 +1,4 @@
+// Telegram: @Abolfazl_rwm
 // ========== ربات مترجم متن (Translator Bot) ==========
 // از API رایگان MyMemory برای ترجمه استفاده می‌کند (بدون نیاز به کلید API)
 
