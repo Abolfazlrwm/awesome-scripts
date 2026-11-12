@@ -1,5 +1,7 @@
 # 🎙 VoiceChat Userbot Panel — پنل یوزربات ویس‌چت تلگرام
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A Telethon **userbot + bot panel** that joins Telegram Voice Chats and streams media
 into them: connect by public/private invite links (up to 20 per batch), auto-enter
 any **already-active** Voice Chat, play local audio files, search & play YouTube via

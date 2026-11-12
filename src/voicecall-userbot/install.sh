@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
