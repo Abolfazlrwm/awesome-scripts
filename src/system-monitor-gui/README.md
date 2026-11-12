@@ -1,5 +1,7 @@
 # 🖥 مانیتور سیستم | System Monitor (PyQt6)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 یک اپلیکیشن دسکتاپ سبک با PyQt6 برای مشاهده لحظه‌ای مصرف CPU، RAM و دیسک، به همراه یک تب اطلاعات کلی سیستم.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB.svg)
