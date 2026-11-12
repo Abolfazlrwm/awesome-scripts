@@ -1,12 +1,13 @@
+# Telegram: @Abolfazl_rwm
 # -*- coding: utf-8 -*-
 """
-Starzify — from-scratch replica of @Starzify_Bot (visible behaviour only)
-=========================================================================
+Abolfazl Stars Shop — single-file shop bot (visible-behaviour rebuild)
+======================================================================
 Single-file bot built with aiogram 3.x + SQLite (stdlib sqlite3).
 
 What this is:
-  * A clean-room re-implementation of everything a normal user can SEE in
-    @Starzify_Bot: forced-join gate, welcome text, the stretched (kashida)
+  * A clean-room re-implementation of a complete stars/premium/gifts shop
+    experience: forced-join gate, welcome text, the stretched (kashida)
     reply keyboard, the coloured inline product menu, Stars / Premium /
     crypto / gifts / reactions / boost shops, wallet top-up, account,
     challenges (dice & bowling), referral system, support & order tracking,
@@ -92,9 +93,9 @@ ADMIN_IDS = {
 # Forced-join channels (also editable in the settings table / admin panel).
 REQUIRED_CHANNELS = [
     c.strip() for c in os.environ.get(
-        "REQUIRED_CHANNELS", "@StarziFy,@StarziFyReport").split(",") if c.strip()
+        "REQUIRED_CHANNELS", "@Abolfazl_rwm,@Abolfazl_rwm").split(",") if c.strip()
 ]
-SUPPORT_USERNAME = os.environ.get("SUPPORT_USERNAME", "@StarziFYHelp")
+SUPPORT_USERNAME = os.environ.get("SUPPORT_USERNAME", "@Abolfazl_rwm")
 DB_PATH = os.environ.get("DB_PATH", os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "bot.db"))
 
@@ -457,7 +458,7 @@ BOT_USERNAME = ""  # filled in main() via get_me()
 # ---------------------------------------------------------------------------
 
 WELCOME_TEXT = (
-    "🌟 به استارزیفای ، مرجع اصلی خرید استارز ، تون و پرمیوم تلگرام خوش آمدید! 🌟\n"
+    "🌟 به ابوالفضل ، مرجع اصلی خرید استارز ، تون و پرمیوم تلگرام خوش آمدید! 🌟\n"
     "با بهترین قیمت و تحویل سریع 🚀 خدمات موردنیاز خود را با خیال راحت تهیه کنید.\n"
     "\n"
     "🛍️ خدمات ما:\n"
@@ -475,8 +476,8 @@ WELCOME_TEXT = (
 GATE_TEXT = (
     "⚠️ برای استفاده از ربات، باید در کانالهای زیر عضو شوید:\n"
     "\n"
-    "📢 @StarziFy\n"
-    "📣 @StarziFyReport"
+    "📢 @Abolfazl_rwm\n"
+    "📣 @Abolfazl_rwm"
 )
 GATE_SUCCESS_POPUP = "✅ عضویت شما با موفقیت تأیید شد!"
 GATE_FAIL_POPUP = "❌ هنوز در همه کانال‌ها عضو نشده‌اید!\nلطفاً ابتدا عضو شوید و دوباره تلاش کنید."
@@ -563,7 +564,7 @@ TOPUP_TEXT = (
     "💳 پرداخت ریالی – پس از واریز ، موجودی شما به سرعت با تایید پشتیبانی شارژ میشود.\n"
     "💰 پرداخت با ارز دیجیتال – پرداختها به صورت آنی و لحظهای انجام میشوند و موجودی شما بلافاصله شارژ میشود.\n"
     "\n"
-    "🎥 آموزش افزایش موجودی: https://t.me/StarziFYHelp/3\n"
+    "🎥 آموزش افزایش موجودی: https://t.me/Abolfazl_rwm\n"
     "اگر با نحوه شارژ کیف پول آشنایی ندارید ، روی «آموزش افزایش موجودی» کلیک کنید و ویدیوی آموزشی را مشاهده نمایید.\n"
     "\n"
     "🚀 فرآیند افزایش موجودی ساده ، سریع و امن است و پس از پرداخت میتوانید به راحتی از تمامی خدمات ربات استفاده کنید ✔️"
@@ -581,23 +582,23 @@ VERIFICATION_REQUIRED_TEXT = (
 )
 
 SUPPORT_TEXT = (
-    "🎧 پشتیبانی استارزیفای 🎧\n"
+    "🎧 پشتیبانی ابوالفضل 🎧\n"
     "\n"
-    "💬 پشتیبانی آنلاین: @StarziFYHelp\n"
-    "📢 آیدی پشتیبانی دوم: @Starzify_Sup\n"
-    "👥 گروه گفتگو: @StarziFy_Chat\n"
+    "💬 پشتیبانی آنلاین: @Abolfazl_rwm\n"
+    "📢 آیدی پشتیبانی دوم: @Abolfazl_rwm\n"
+    "👥 گروه گفتگو: @Abolfazl_rwm\n"
     "\n"
     "⏰ پشتیبانی ۲۴ ساعته، حتی در روزهای تعطیل\n"
     "📌 برای پیگیری سفارش، کد رهگیری را برای پشتیبانی ارسال کنید."
 )
 
 TRUST_TEXT = (
-    "🛡 اعتماد و نمادهای استارزیفای\n"
+    "🛡 اعتماد و نمادهای ابوالفضل\n"
     "\n"
-    "📢 کانال اصلی و اطلاع‌رسانی: @StarziFy\n"
-    "📣 کانال گزارش سفارش‌ها و رسیدها: @StarziFyReport\n"
-    "👥 گروه گفتگوی کاربران: @StarziFy_Chat\n"
-    "🎧 پشتیبانی: @StarziFYHelp\n"
+    "📢 کانال اصلی و اطلاع‌رسانی: @Abolfazl_rwm\n"
+    "📣 کانال گزارش سفارش‌ها و رسیدها: @Abolfazl_rwm\n"
+    "👥 گروه گفتگوی کاربران: @Abolfazl_rwm\n"
+    "🎧 پشتیبانی: @Abolfazl_rwm\n"
     "\n"
     "✅ همه سفارش‌ها به صورت خودکار و آنی تحویل داده می‌شوند و در صورت بروز"
     " مشکل، مبلغ به کیف پول شما بازگردانده می‌شود."
@@ -856,11 +857,11 @@ async def show_shop_menu(message: Message, state: FSMContext):
 
 def support_kb() -> InlineKeyboardMarkup:
     return ikb([
-        [btn("ارتباط غیرمستقیم 📧", url="https://t.me/StarziFYHelp",
+        [btn("ارتباط غیرمستقیم 📧", url="https://t.me/Abolfazl_rwm",
              style=STYLE_PRIMARY),
-         btn("ارتباط مستقیم 💬", url="https://t.me/Starzify_Sup",
+         btn("ارتباط مستقیم 💬", url="https://t.me/Abolfazl_rwm",
              style=STYLE_PRIMARY)],
-        [btn("گروه استارزیفای 👥", url="https://t.me/StarziFy_Chat",
+        [btn("گروه ابوالفضل 👥", url="https://t.me/Abolfazl_rwm",
              style=STYLE_SUCCESS)],
         [btn("بــرگـشـت", "nav:main")],
     ])
@@ -1296,7 +1297,7 @@ CRYPTO_INTRO = (
 TON_INTRO = (
     "💎 خرید تون‌کوین (TON)\n"
     "\n"
-    "سه روش خرید تون در استارزیفای:\n"
+    "سه روش خرید تون در ابوالفضل:\n"
     "🔹 فعال‌سازی کیف پول: دریافت 0.1 تون برای فعال‌سازی کیف پول تون شما"
     " با قیمت ثابت.\n"
     "🔹 کیف پول شخصی: خرید تون و انتقال به آدرس کیف پول شخصی شما.\n"
@@ -1935,7 +1936,7 @@ def challenges_kb() -> InlineKeyboardMarkup:
 async def challenges_menu(call: CallbackQuery, state: FSMContext):
     await call.answer()
     await call.message.answer(
-        "🎲 چالش‌های روزانه استارزیفای 🎳\n"
+        "🎲 چالش‌های روزانه ابوالفضل 🎳\n"
         "\n"
         "🎯 هر روز در هر بازی یک شانس رایگان دارید!\n"
         "🎁 جوایز به موجودی انتخابی شما اضافه می‌شود.\n"
@@ -2055,7 +2056,7 @@ async def referral_banner(call: CallbackQuery, state: FSMContext):
     await call.message.answer(
         "🖼 بنر دعوت شما\n"
         "━━━━━━━━━━━━━━━\n"
-        "🌟 استارزیفای 🌟\n"
+        "🌟 ابوالفضل 🌟\n"
         "⭐️ خرید آنی استارز و پرمیوم تلگرام\n"
         "🎁 همین حالا عضو شو و جایزه بگیر!\n"
         f"🔗 {link}\n"
@@ -2217,7 +2218,7 @@ async def cmd_admin(message: Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         return
     await state.clear()
-    await message.answer("👑 پنل مدیریت استارزیفای", reply_markup=admin_kb())
+    await message.answer("👑 پنل مدیریت ابوالفضل", reply_markup=admin_kb())
 
 
 @router.callback_query(F.data == "adm:stats")
@@ -2360,7 +2361,7 @@ async def admin_home(call: CallbackQuery, state: FSMContext):
     if not is_admin(call.from_user.id):
         return
     await call.answer()
-    await call.message.answer("👑 پنل مدیریت استارزیفای", reply_markup=admin_kb())
+    await call.message.answer("👑 پنل مدیریت ابوالفضل", reply_markup=admin_kb())
 
 
 @router.callback_query(F.data.startswith("admset:"))
@@ -2587,7 +2588,7 @@ async def main() -> None:
     bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     global BOT_USERNAME
     me = await bot.get_me()
-    BOT_USERNAME = me.username or "Starzify_Bot"
+    BOT_USERNAME = me.username or "Abolfazl_Bot"
     dp = Dispatcher()
     dp.include_router(router)
     log.info("Starting replica as @%s (admins: %s)", BOT_USERNAME, ADMIN_IDS)

@@ -1,12 +1,12 @@
-# Starzify — replica of @Starzify_Bot (from scratch)
+# Abolfazl Stars Shop — built from scratch
 
-A clean-room re-implementation of the **visible behaviour** of `@Starzify_Bot`,
+A clean-room stars/premium/gifts shop implementation,
 built in one file (`bot.py`, aiogram 3.x + SQLite). The original bot's real
 source/server is not accessible; its supplier and payment backends are TODO
 stubs here (see "What is stubbed" below). See `REPORT.md` for the full
 exploration report.
 
-![پیش‌نمایش Starzify Shop Bot](docs/preview.png)
+![پیش‌نمایش Abolfazl Shop Bot](docs/preview.png)
 
 ## Setup
 
@@ -20,7 +20,7 @@ python3 bot.py
 
 ## What's inside
 
-- **Forced-join gate** for `@StarziFy` + `@StarziFyReport` (configurable via
+- **Forced-join gate** for `@Abolfazl_rwm` + `@Abolfazl_rwm` (configurable via
   `.env` / settings table; admins exempt) with the «🔍 بررسی عضویت 🔍» check
   button.
 - **Main reply keyboard** with the original's stretched (kashida) labels and
@@ -95,9 +95,9 @@ bot, read its `custom_emoji_id` from `message.entities`, paste the IDs into
 
 ## 🇮🇷 نسخه فارسی
 
-# استارزایف — بازسازی @Starzify_Bot از صفر
+# فروشگاه استارز ابوالفضل — ساخته‌شده از صفر
 
-بازسازی **رفتار ظاهری** ربات `@Starzify_Bot` با aiogram 3.x و SQLite در یک فایل `bot.py`. سورس اصلی ربات در دسترس نیست؛ بخش تأمین‌کننده و درگاه پرداخت این نسخه **استاب (TODO)** است — فهرست کامل در بخش "What is stubbed" و گزارش کامل در `REPORT.md`.
+بازسازی کامل منوها و جریان خرید با aiogram 3.x و SQLite در یک فایل `bot.py`. سورس اصلی ربات در دسترس نیست؛ بخش تأمین‌کننده و درگاه پرداخت این نسخه **استاب (TODO)** است — فهرست کامل در بخش "What is stubbed" و گزارش کامل در `REPORT.md`.
 
 ## نصب
 
