@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# Telegram: @Abolfazl_rwm
 """Clipboard History Manager — مدیریت تاریخچه‌ی کلیپ‌بورد.
 
 A lightweight desktop app (tkinter, no heavy deps) that keeps a searchable

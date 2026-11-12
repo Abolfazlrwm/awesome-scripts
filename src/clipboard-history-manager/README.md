@@ -1,5 +1,7 @@
 # 📋 Clipboard History Manager — مدیریت تاریخچه‌ی کلیپ‌بورد
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A lightweight **desktop clipboard manager** (tkinter, stdlib + `pyperclip`) that keeps
 a searchable history of everything you copy — snippets, links, commands, card numbers
 you keep re-typing — and lets you re-copy, pin or clean it with one click.
