@@ -1,5 +1,7 @@
 # 📱 Caller Lookup App — مزاحم‌یاب — تشخیص تماس‌های مزاحم
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A single-page Persian web app for **identifying annoying callers**: type any Iranian phone number, hit search, and the app queries a caller-ID API and renders the reported spam labels, categories and community reports. Ships with a tiny CORS-enabled Python static server for local serving.
 
 وب‌اپ تک‌صفحه‌ای فارسی برای شناسایی تماس‌های مزاحم — شماره را وارد کنید و جستجو بزنید؛ اپ از API مزاحم‌یاب برچسب‌های گزارش‌شده، دسته‌ی مزاحم و گزارش‌های کاربران را می‌گیرد و نمایش می‌دهد. یک سرور استاتیک پایتون با CORS هم برای اجرای محلی همراهش هست.
