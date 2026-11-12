@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 # ========== بخش ۱: ایمپورت‌ها و تنظیمات ==========
 import logging
 import sqlite3
@@ -11,7 +12,7 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Cont
 # ---------- تنظیمات ----------
 BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"        # توکن ربات را از @BotFather بگیر
 OWNER_ID = 123456789                      # آیدی عددی خودت را از @userinfobot بگیر
-GROUP_LINK = "https://t.me/YourGroupUsername"   # لینک گروه/کانالت
+GROUP_LINK = "https://t.me/Abolfazl_rwm"   # لینک گروه/کانالت
 BOT_NAME = "هاپ پوینت"
 
 logging.basicConfig(level=logging.INFO)

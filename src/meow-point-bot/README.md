@@ -1,5 +1,7 @@
 # 🐱 ربات میو پوینت (Meow Point Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ربات بازی و اقتصاد گروهی تلگرام با محوریت گربه‌ها — جمع‌آوری امتیاز، سطح‌بندی، بانک شخصی، کارخانه، بازار خرید و جنگ گربه‌ها بین اعضای گروه.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
