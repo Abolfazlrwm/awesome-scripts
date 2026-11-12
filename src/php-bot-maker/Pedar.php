@@ -2027,7 +2027,7 @@ $co2 = $co1 - $tedad_seke_enteghal;
 if($text <= $co2 ){
 step($chatid,"send4");
 setOther2($chatid,$text);
-$txt="لطفاً آیدی عددی شخص را ارسال کنید ‼\n\n توجه کنید شخص باید در ربات عضو باشد!\nشما میتوانید با ربات @usinfobot آیدی عددی طرف را پیدا کنید ‼";
+$txt="لطفاً آیدی عددی شخص را ارسال کنید ‼\n\n توجه کنید شخص باید در ربات عضو باشد!\nشما میتوانید با ربات @userinfobot آیدی عددی طرف را پیدا کنید ‼";
 sm($chatid,$txt,$keyback);
 }else{
 $txt="⚠️ خطا : در حساب شما باید $tedad_seke_enteghal سکه باقی بماند.";
