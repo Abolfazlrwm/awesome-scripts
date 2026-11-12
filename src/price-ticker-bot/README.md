@@ -1,5 +1,7 @@
 # 💰 ربات نرخ لحظه‌ای رمزارز (Price Ticker Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 نمایش قیمت لحظه‌ای رمزارزهای محبوب (از CoinGecko، کاملاً رایگان و بدون نیاز به کلید API)، هشدار قیمت شخصی برای هر کاربر و ارسال خودکار آپدیت قیمت به گروه یا کانال در بازه‌های زمانی مشخص.
 
 ![Node.js](https://img.shields.io/badge/node.js-18+-339933.svg)
