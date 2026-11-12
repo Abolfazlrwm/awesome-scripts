@@ -28,6 +28,8 @@ pip install -r requirements.txt
 ```powershell
 $env:BOT_TOKEN = "توکن_ربات_شما"
 # تعداد صفحات جستجو (اختیاری، پیش‌فرض 2)
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
 $env:MAX_PAGES = "2"
 ```
 
