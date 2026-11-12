@@ -1,5 +1,7 @@
 # ⭐ GiftiX Stars Shop Bot — ربات فروشگاه استارز GiftiX
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A **digital-goods storefront** for Telegram — sell Telegram Stars, Premium subscriptions, gifts and TON from one bot. SQLModel/SQLAlchemy data model, wallet with payment-gateway deposits, referral rewards, order tracking IDs, support tickets, surveys, backups and a complete admin panel.
 
 فروشگاه‌ساز کالای دیجیتال برای تلگرام — فروش استارز، پریمیوم، گیفت و TON با کیف پول و درگاه پرداخت، سیستم رفرال، شناسه پیگیری سفارش، تیکت پشتیبانی، نظرسنجی، بکاپ و پنل مدیریت کامل. (نسخه‌ی فعلی با متن انگلیسی اجرا می‌شود؛ جدول TEXTS برای ترجمه‌ی فارسی آماده است.)

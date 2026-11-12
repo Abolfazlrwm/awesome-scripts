@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 # ============================================================
 #    GiftIx -  
 # ============================================================
@@ -460,7 +461,7 @@ async def premium_select(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["step"] = "premium_username"
     
     await query.edit_message_text(
-        f"        ( @   @):\n\n: @Eli_as13",
+        f"        ( @   @):\n\n: @Abolfazl_rwm",
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(" ", callback_data="products")],
         ])
