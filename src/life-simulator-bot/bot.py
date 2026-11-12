@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#سازنده @IgnisConfig
+# Telegram: @Abolfazl_rwm
 import re
 import sqlite3
 import random

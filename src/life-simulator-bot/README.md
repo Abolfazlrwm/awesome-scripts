@@ -1,5 +1,7 @@
 # 🌆 Life Simulator Bot — ربات شبیه‌ساز زندگی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A complete **life-simulation economy game** for Telegram in a single Python file —
 jobs and skill trees, banking with card numbers and loans, real-estate and vehicle
 markets, companies, a player-driven free market, missions, crime & jail, marriage,
