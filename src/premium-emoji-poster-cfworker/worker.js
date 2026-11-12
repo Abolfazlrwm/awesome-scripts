@@ -1,10 +1,11 @@
+// Telegram: @Abolfazl_rwm
 /**
  * ربات ارسال پست به کانال با پشتیبانی از ایموجی پرمیوم (Custom Emoji)
  * روی Cloudflare Worker + D1 Database اجرا می‌شود
  */
 
-const EMOJI_REFERENCE_CHANNEL = "@YourEmojiReferenceChannel";
-const DONATE_URL = "https://t.me/YourUsername";
+const EMOJI_REFERENCE_CHANNEL = "@Abolfazl_rwm";
+const DONATE_URL = "https://t.me/Abolfazl_rwm";
 
 const COLOR_CYCLE = ["✦", "✧", "✦"];
 function colorLabel(index, label) {

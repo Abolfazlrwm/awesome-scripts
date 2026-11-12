@@ -1,5 +1,7 @@
 # 🎨 ربات پستر ایموجی پرمیوم (Cloudflare Worker)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ربات ارسال پست حرفه‌ای به کانال با پشتیبانی کامل از ایموجی‌های پرمیوم و اختصاصی تلگرام (Custom Emoji) — کاملاً رایگان و روی زیرساخت Cloudflare Workers اجرا می‌شود.
 
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020.svg)
