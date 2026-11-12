@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes, ChatMemberHandler, MessageHandler, filters, InlineQueryHandler
@@ -317,16 +318,16 @@ async def post_weekly_results(context: ContextTypes.DEFAULT_TYPE):
         message += f"{i}. {display_name}{crowns} - {score} امتیاز\n"
 
     message += "\nتبریک به برنده‌ها!"
-    message += "@YourBotUsername"
+    message += "@Abolfazl_rwm"
 
     try:
         await context.bot.send_message(
-            chat_id="@YourChannelUsername",
+            chat_id="@Abolfazl_rwm",
             text=message,
             parse_mode='Markdown'
         )
     except Exception as e:
-        logger.error(f"Error posting weekly results to @YourChannelUsername: {e}")
+        logger.error(f"Error posting weekly results to @Abolfazl_rwm: {e}")
 
 def get_group_top_10(chat_id):
     conn = sqlite3.connect('game_bot.db')
@@ -398,7 +399,7 @@ async def post_group_results(chat_id, context: ContextTypes.DEFAULT_TYPE):
         message += f"{i}. {display_name}{crowns} - {score} امتیاز\n"
 
     message += "\nتبریک به برنده‌ها!"
-    message += f"@YourBotUsername"
+    message += f"@Abolfazl_rwm"
 
     try:
         sent_message = await context.bot.send_message(
@@ -1419,7 +1420,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 InlineKeyboardButton("۵۰ برتر", callback_data="global_lb"),
                 InlineKeyboardButton("آمار من", callback_data="my_stats")
             ],
-            [InlineKeyboardButton("افزودن به گروه", url="https://t.me/YourBotUsername?startgroup=start")]
+            [InlineKeyboardButton("افزودن به گروه", url="https://t.me/Abolfazl_rwm?startgroup=start")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -2134,7 +2135,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 موفق باشی!
 """
     keyboard = InlineKeyboardMarkup([[
-        InlineKeyboardButton("افزودن به گروه", url="https://t.me/YourBotUsername?startgroup=start")
+        InlineKeyboardButton("افزودن به گروه", url="https://t.me/Abolfazl_rwm?startgroup=start")
     ]])
     await update.message.reply_text(text, parse_mode='Markdown', reply_markup=keyboard)
 

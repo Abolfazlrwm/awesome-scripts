@@ -1,5 +1,7 @@
 # 🎮 ربات بازی دوز و مین‌یاب (Connect4 & Minesweeper)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ربات بازی گروهی تلگرام با دو بازی کلاسیک: دوز (Connect4) و مین‌یاب دو نفره، همراه با سیستم رنکینگ جهانی و گروهی، تاج هفتگی و لیدربورد.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
