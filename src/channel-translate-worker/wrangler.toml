@@ -1,0 +1,11 @@
+name = "yaraav-translate-bot"
+main = "worker.js"
+compatibility_date = "2024-12-01"
+
+[vars]
+# TELEGRAM_TOKEN و OWNER_ID را داخل worker.js یا به‌صورت Secret ست کنید:
+# wrangler secret put TELEGRAM_TOKEN
+
+[[kv_namespaces]]
+binding = "YARAAV_DB"
+id = "YOUR_KV_NAMESPACE_ID"
