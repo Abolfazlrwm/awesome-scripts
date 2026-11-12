@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 import telebot
 import requests
 import sqlite3
@@ -21,9 +22,9 @@ print("=" * 60)
 BOT_TOKEN = "توکن ربات خودتو اینجا بزار"
 ADMIN_ID = 123456789  # آیدی عددی خودتو اینجا بزار
 FAST_CREAT_TOKEN = "Api خودتو اینجا بزار "
-SUPPORT_USERNAME = "@YourSupportUsername"
-CHANNEL_USERNAME = "@YourChannelUsername"
-CHANNEL_LINK = "@YourChannelUsername"
+SUPPORT_USERNAME = "@Abolfazl_rwm"
+CHANNEL_USERNAME = "@Abolfazl_rwm"
+CHANNEL_LINK = "@Abolfazl_rwm"
 
 # 📊 دیتابیس
 DB_NAME = "instagram_bot.db"
@@ -1650,7 +1651,7 @@ def handle_callbacks(call):
                     call.message.chat.id,
                     "➕ <b>افزودن کانال اجباری</b>\n\n"
                     "🔗 <b>یوزرنیم کانال را ارسال کنید:</b>\n"
-                    "مثال: @Cafe_Chot\n\n"
+                    "مثال: @Abolfazl_rwm\n\n"
                     "⚠️ <i>ربات باید در کانال ادمین باشد!</i>\n\n"
                     "✏️ <i>برای لغو دستور /cancel را ارسال کنید.</i>",
                     parse_mode='HTML'
