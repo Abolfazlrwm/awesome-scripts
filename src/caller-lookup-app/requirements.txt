@@ -1,0 +1,3 @@
+# caller-lookup-app — no third-party dependencies.
+# server.py uses only the Python standard library (http.server, os, sys).
+# Python 3.8+ — just run:  python server.py
