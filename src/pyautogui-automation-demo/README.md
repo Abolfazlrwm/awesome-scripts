@@ -1,5 +1,7 @@
 # 🖱 ابزار اتوماسیون دسکتاپ | Desktop Automation Demo (PyAutoGUI)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 یک ابزار خط‌فرمان سبک و امن برای تست اتوماسیون دسکتاپ با PyAutoGUI: تایپ خودکار متن، گرفتن اسکرین‌شات و کلیک روی مختصات دلخواه — همه از طریق آرگومان‌های قابل تنظیم.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB.svg)
