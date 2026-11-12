@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 # -*- coding: utf-8 -*-
 """
 ربات مدیریت پست با دکمه‌های رنگی (Bot API 7.10+)
@@ -31,8 +32,8 @@ BOT_TOKEN = "PUT_YOUR_BOT_TOKEN_HERE"
 
 # آیدی یا یوزرنیم چنلی که پیام‌ها نهایتا اونجا پست میشن (ربات باید ادمین اون چنل باشه)
 # چنل خصوصی: عددی که با -100 شروع میشه، مثلا "-1001234567890"
-# چنل عمومی: یوزرنیم با @ ، مثلا "@your_channel_username"
-TARGET_CHANNEL_ID = "@your_channel_username"
+# چنل عمومی: یوزرنیم با @ ، مثلا "@Abolfazl_rwm"
+TARGET_CHANNEL_ID = "@Abolfazl_rwm"
 
 # لیست آیدی عددی ادمین‌هایی که اجازه دارن با ربات کار کنن
 # آیدی عددی خودتو از رباتی مثل @userinfobot بگیر
@@ -184,7 +185,7 @@ def handle_session_message(chat_id, text):
         send_message(
             chat_id,
             "🔗 حالا لینک چنل یا بات رو بفرست.\n"
-            "مثال: https://t.me/mychannel یا https://t.me/mybot",
+            "مثال: https://t.me/Abolfazl_rwm یا https://t.me/Abolfazl_rwm",
         )
         return True
 

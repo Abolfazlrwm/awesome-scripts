@@ -1,5 +1,7 @@
 # 🎨 Post Manager Bot — ربات مدیریت پست با دکمه‌های رنگی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A tiny but sharp **channel post manager** for Telegram. Build a persistent library
 of colored inline buttons (Bot API 7.10+ button styles), then compose a post and
 publish it to your target channel with **all saved buttons attached** — with a live
@@ -36,7 +38,7 @@ Fill the config block at the top of `bot.py`:
 
 ```python
 BOT_TOKEN = "PUT_YOUR_BOT_TOKEN_HERE"       # از @BotFather
-TARGET_CHANNEL_ID = "@your_channel_username"  # یا "-1001234567890"
+TARGET_CHANNEL_ID = "@Abolfazl_rwm"  # یا "-1001234567890"
 ADMIN_IDS = [123456789]                     # از @userinfobot
 ```
 
