@@ -1,5 +1,7 @@
 # 🗂 مرتب‌کننده پوشه Downloads | Downloads Folder Organizer
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 اسکریپت پاورشل برای مرتب‌سازی خودکار فایل‌های شلوغ پوشه Downloads (یا هر پوشه دلخواه دیگر) بر اساس نوع فایل، به همراه گزارش کامل از عملیات انجام‌شده.
 
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE.svg)
