@@ -1,5 +1,7 @@
 # 🗓️ Jalali Date Tools — تقویم جلالی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A complete, single-file web toolkit for the Persian (Solar Hijri / Jalali) calendar —
 converter, age calculator, date-diff and a live Tehran clock. Everything runs **fully
 offline in the browser**: no server, no build step, no external libraries.
