@@ -39,7 +39,7 @@ Discover digital identities with ease! 😎
 
 Dunno what is DigitID? press /help
 💬 Ready? Forward a message or send a username to see the magic!
-└── @RezDigitIDBot
+└── @Abolfazl_rwm
 '''
     return message
 
@@ -179,7 +179,7 @@ def register(bot: TeleBot):
 ├ نام: {name}
 ├ یوزرنیم: {username}
 ├ آیدی عددی: `{user_id_fwd}` 🆔
-└ @RezDigitIDBot
+└ @Abolfazl_rwm
 """
             bot.send_message(message.chat.id, response, parse_mode="Markdown")
             return
@@ -194,7 +194,7 @@ def register(bot: TeleBot):
 ├ عنوان: {title}
 ├ یوزرنیم: {chat_username}
 ├ آیدی عددی: `{chat_id}` 🆔
-└ @RezDigitIDBot
+└ @Abolfazl_rwm
 """
             bot.send_message(message.chat.id, response, parse_mode="Markdown")
             return

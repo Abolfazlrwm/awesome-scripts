@@ -104,7 +104,7 @@ MIT License
 
 ## 🌐 Connect
 
-- ✉️ Contact the author: [@ItsRezNum](https://t.me/ItsRezNum)
+- ✉️ Contact the author: [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
 
 ---
 

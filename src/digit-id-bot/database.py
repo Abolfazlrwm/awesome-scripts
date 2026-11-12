@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 """
 database.py
 Simple SQLite wrapper for storing and retrieving users.

@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 """
 main.py
 Application entrypoint: initializes DB, creates bot, registers handlers and starts polling.
