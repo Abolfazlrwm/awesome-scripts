@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 
 define('BEARER_TOKEN', getenv('X_BEARER_TOKEN') ?: 'AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA');
 define('USER_AGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');

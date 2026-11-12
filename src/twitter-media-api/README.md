@@ -1,5 +1,7 @@
 # 🐦 Twitter Media API — API دانلود مدیا از X (توییتر)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A tiny PHP endpoint that resolves any tweet URL into its **media files** — performs the guest-token handshake against api.x.com, calls the TweetDetail GraphQL operation, and returns JSON with all photo/video variants. Perfect as a downloader backend.
 
 یک اندپوینت کوچک PHP که هر لینک توییت را به فایل‌های مدیایش تبدیل می‌کند — احراز guest-token با api.x.com، فراخوانی GraphQL تعریف TweetDetail و خروجی JSON شامل همه‌ی نسخه‌های عکس/ویدیو. مناسب به‌عنوان بک‌اند دانلودر.

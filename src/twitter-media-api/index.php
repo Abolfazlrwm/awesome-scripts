@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 
 header('Content-Type: application/json;charset=utf-8');
 
@@ -200,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     $clean = parse($responseData);
                     echo json_encode([
                         'status' => 200,
-                        'developer' => 't.me/Mr_Kigga',
+                        'developer' => 't.me/Abolfazl_rwm',
                         'data' => $clean
                     ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
