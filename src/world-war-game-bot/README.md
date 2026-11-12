@@ -1,5 +1,7 @@
 # 🌍 World War Game Bot — ربات جنگ جهانی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A full **geopolitical war simulator** for Telegram — found a country, build an army and an economy, attack NPC states or other players, trade oil, run companies, join clans, bet on wars and even launch nukes. 20+ inline menus, one SQLite database, one Python file.
 
 شبیه‌ساز کامل جنگ و ژئوپلیتیک برای تلگرام — تاسیس کشور، ارتش و اقتصاد، حمله به کشورهای NPC و کاربران، بازار نفت و تسلیحات، کلن، شرط‌بندی و حتی حمله اتمی. یک فایل پایتون و یک دیتابیس SQLite.
