@@ -1,5 +1,7 @@
 # 🔗 URL Shortener PHP Bot — کوتاه‌کننده لینک (نسخه PHP و پایتون)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A dual-implementation **URL shortener bot** — the same product in PHP and Python. Send a link, get a TinyURL short back; settings (start/help text, force join) live in SQLite and are editable from the admin panel; flood control and user blocking included.
 
 ربات کوتاه‌کننده لینک با دو پیاده‌سازی هم‌ارز (PHP و پایتون) — لینک بفرست، نسخه کوتاه TinyURL بگیر؛ تنظیمات متن استارت/راهنما و جوین اجباری در SQLite است و از پنل ادمین قابل ویرایش است؛ کنترل فلود و بلاک کاربر هم دارد.

@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 define('BOT_TOKEN', getenv('BOT_TOKEN') ?: 'توکن ربات'); //توکن ربات 
 define('ADMIN_ID', 123456789); //آیدی عددی ادمین 
 
@@ -170,7 +171,7 @@ function handleSetForceJoin($chat_id, $user_id, $args) {
         return;
     }
     if (empty($args)) {
-        sendMessage($chat_id, "لطفاً آیدی کانال را وارد کنید (مثال: /set_force_join @YourChannel)");
+        sendMessage($chat_id, "لطفاً آیدی کانال را وارد کنید (مثال: /set_force_join @Abolfazl_rwm)");
         return;
     }
     $channel_id = $args[0];

@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 import sqlite3
 import time
 import requests
@@ -165,7 +166,7 @@ async def set_force_join(update: Update, context: CallbackContext):
         await update.message.reply_text("شما دسترسی ندارید.")
         return
     if not context.args:
-        await update.message.reply_text("لطفاً آیدی کانال را وارد کنید (مثال: /set_force_join @YourChannel)")
+        await update.message.reply_text("لطفاً آیدی کانال را وارد کنید (مثال: /set_force_join @Abolfazl_rwm)")
         return
     channel_id = context.args[0]
     with db_lock:
