@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 import os
 import random
 import qrcode

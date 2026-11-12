@@ -1,5 +1,7 @@
 # 🌐 ربات آزادی‌نت (FreedomNet VPN Config Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 یک ربات تلگرامی برای توزیع کانفیگ‌های VPN (VLESS/Trojan) بین کاربران، همراه با پنل مدیریت کامل، تولید QR کد برای اتصال سریع، تست پینگ سرورها و راهنمای بررسی نشت DNS.
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
