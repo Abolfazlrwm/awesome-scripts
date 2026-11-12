@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 
 import asyncio, json, logging, os, uuid, time, re, math, random, io
 import qrcode
@@ -1505,8 +1506,8 @@ async def cb(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "🔗 **تنظیم کانال عضویت اجباری**\n\n"
                 "آیدی یا لینک کانال را بفرست.\n\n"
                 "مثال:\n"
-                "`@MyChannel`\n"
-                "`https://t.me/MyChannel`\n\n"
+                "`@Abolfazl_rwm`\n"
+                "`https://t.me/Abolfazl_rwm`\n\n"
                 "لغو: `لغو`",
                 parse_mode="Markdown",
                 reply_markup=back_btn()
@@ -3112,7 +3113,7 @@ async def text_in(event):
                     await event.reply(
                         "❌ این کانال لینک عمومی ندارد.\n"
                         "برای این نسخه یک کانال دارای @username وارد کن.\n\n"
-                        "مثال: `@MyChannel`"
+                        "مثال: `@Abolfazl_rwm`"
                     )
                     return
 
