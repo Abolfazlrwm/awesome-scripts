@@ -1,4 +1,5 @@
 <?php /* In the name of Allah = بسم اللّه الرّحمن الرّحیم */
+// Telegram: @Abolfazl_rwm
 
 /**
  * @فارسی : توابع زمان و تاریخ هجری شمسی (جلالی) در پی اچ پی
@@ -340,13 +341,13 @@ function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_n
 
 » In The Name Of God «
 
-Source Name »  Legacy Self
+Source Name »  jdf — Jalali Date Functions
 
 Other » Api Helper
 
-Coder » T.me/Aquarvis
+Telegram » @Abolfazl_rwm
 
-Channel » T.me/LegacySource
+GitHub » Abolfazlrwm/awesome-scripts
 
 */
 	/* Time */

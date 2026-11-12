@@ -1,5 +1,7 @@
 # 🪙 PHP Coin Manager Bot — ربات مدیریت سکه و سفارش (PHP)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A classic Persian **coin-economy bot** in pure PHP: users earn/spend coins, order real-view services, top up balances, and admins run the whole shop from an inline panel — user management, ban/unban, broadcasts, stats and gift coins. Ships with `jdf.php` (Jalali dates) and a shared helper class.
 
 ربات اقتصادی سکه به زبان PHP — کاربرها سکه جمع می‌کنند، سفارش بازدید ثبت می‌کنند، موجودی شارژ می‌کنند و ادمین‌ها از پنل اینلاین همه‌چیز را مدیریت می‌کنند: مدیریت کاربران، بلاک/آنبلاک، پیام همگانی، آمار و هدیه سکه. همراه با jdf.php برای تاریخ شمسی.
