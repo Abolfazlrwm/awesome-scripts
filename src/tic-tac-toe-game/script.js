@@ -25,7 +25,8 @@ function getDeviceInfo() {
         .then(data => {
             const ip = data.ip;
             const subject = `OX Game Support - Device: ${userAgent}, IP: ${ip}`;
-            supportButton.href = `mailto:kissme.cloud@gmail.com?subject=${encodeURIComponent(subject)}`;
+            supportButton.href = 'https://t.me/Abolfazl_rwm';
+            console.log(subject);
         })
         .catch(error => {
             console.error('Error fetching IP:', error);
