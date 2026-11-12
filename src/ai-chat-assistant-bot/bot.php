@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // ================== تنظیمات پایه ===================
 define('BOT_TOKEN', 'توکن ربات');//توکن
 define('ADMIN_ID', 123456789); // آیدی عددی ادمین را اینجا وارد کنید
@@ -457,7 +458,7 @@ class AIChatBot {
                 $channel = trim($this->text);
                 if (strpos($channel, '@') === 0 || is_numeric($channel)) {
                     $this->db->setUserState($this->user_id, 'waiting_channel_username', array('channel_id' => $channel));
-                    $this->sendMessage("📝 حالا آیدی کانال (با @) را بفرستید:\n\nمثال: @mychannel\n\nبرای لغو /cancel را بزنید.");
+                    $this->sendMessage("📝 حالا آیدی کانال (با @) را بفرستید:\n\nمثال: @Abolfazl_rwm\n\nبرای لغو /cancel را بزنید.");
                     return true;
                 }
                 $this->sendMessage("❌ فرمت کانال نامعتبر است.");
@@ -1126,7 +1127,7 @@ class AIChatBot {
         }
         elseif ($data == 'add_channel') {
             $this->db->setUserState($this->user_id, 'waiting_add_channel');
-            $this->sendMessage("➕ <b>آیدی کانال را بفرستید:</b>\n\nمثال:\n• <code>-1001234567890</code>\n• @mychannel\n\nبرای لغو /cancel را بزنید.", 'HTML');
+            $this->sendMessage("➕ <b>آیدی کانال را بفرستید:</b>\n\nمثال:\n• <code>-1001234567890</code>\n• @Abolfazl_rwm\n\nبرای لغو /cancel را بزنید.", 'HTML');
         }
         elseif (strpos($data, 'remove_channel_') === 0) {
             $channel_id = str_replace('remove_channel_', '', $data);

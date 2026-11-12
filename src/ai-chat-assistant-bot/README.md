@@ -1,5 +1,7 @@
 # 🧠 ربات چت با هوش مصنوعی (AI Chat Assistant)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ربات چت هوش مصنوعی چندمدله برای تلگرام — پشتیبانی از GPT، DeepSeek و Grok، با پنل مدیریت کامل و قابل تنظیم از داخل ربات.
 
 ![PHP](https://img.shields.io/badge/PHP-7.4+-777BB4.svg)
