@@ -1,6 +1,6 @@
 # 🏭 PHP Bot Maker (IR Creator)
 
-A complete **"bot-maker platform"** written in classic PHP + MySQL: your users build their **own Telegram bots** inside your main bot, earn/ spend coins, invite friends (referrals), and **sell & buy bots and digital products** in a built-in marketplace with admin moderation. Ships with a captcha generator, chart renderer and a channel-post search API. A battle-tested Persian ecosystem script from the IRCreator era — published here with PHP 7/8 compatibility fixes.
+A complete **"bot-maker platform"** written in classic PHP + MySQL: your users build their **own Telegram bots** inside your main bot, earn/ spend coins, invite friends (referrals), and **sell & buy bots and digital products** in a built-in marketplace with admin moderation. Ships with a captcha generator, chart renderer and a channel-post search API. A battle-tested Persian ecosystem script with years of field use — published here with PHP 7/8 compatibility fixes.
 
 ![پیش‌نمایش PHP Bot Maker](docs/preview.png)
 

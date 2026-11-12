@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // IR Creator
 function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
 

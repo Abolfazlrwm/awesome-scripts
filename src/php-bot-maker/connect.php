@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 if($con==null){
 $con=mysqli_connect("localhost","USER","PASSWORD","USERNAME");
 }

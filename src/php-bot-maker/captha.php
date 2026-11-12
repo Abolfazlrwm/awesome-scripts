@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // IR Creator
 // مسیر فایل‌ها
 $style1 = __DIR__ . '/1.jpg';

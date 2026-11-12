@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // IR Creator
 ob_start();
 error_reporting(0);

@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // IR Creator
 ob_start();
 header("HTTP/1.0 200 OK");
@@ -636,7 +637,7 @@ step($chatid,"");
 				}
 elseif($text=="entqal"){
   sm($chatid,"Please Wait");
-$idbot = "IRCreatorBot";
+$idbot = "Abolfazl_Robot";
 $newconnect = mysqli_connect("localhost","USERNAME","PASSWORD","USERID"); // دیتابیس
 if (mysqli_connect_errno($con))
  {
