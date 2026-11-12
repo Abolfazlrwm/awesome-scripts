@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>مزاحم‌یاب</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 30%, #151a2b, #07090f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Vazir', 'Segoe UI', sans-serif;
+      padding: 1.5rem 1.5rem 6rem 1.5rem;
+      position: relative;
+      color: #eef3ff;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(20, 140, 255, 0.07) 0%, transparent 70%);
+      top: -200px;
+      left: -150px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(160, 80, 255, 0.06) 0%, transparent 70%);
+      bottom: -100px;
+      right: -100px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .glass-card {
+      background: rgba(16, 20, 38, 0.50);
+      backdrop-filter: blur(18px) saturate(190%);
+      -webkit-backdrop-filter: blur(18px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 56px;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 40px 70px -24px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+      width: 100%;
+      position: relative;
+      min-height: 380px;
+    }
+
+    /* state wrappers */
+    .state-form {
+      transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s ease;
+    }
+    .state-form.hidden {
+      opacity: 0;
+      transform: scale(0.96) translateY(10px);
+      pointer-events: none;
+      position: absolute;
+      width: calc(100% - 4.4rem);
+      left: 2.2rem;
+      top: 2.8rem;
+    }
+
+    .state-result {
+      display: none;
+      opacity: 0;
+      transform: scale(0.95) translateY(16px);
+    }
+    .state-result.active {
+      display: block;
+      animation: resultFadeIn 0.7s cubic-bezier(0.16, 1, 0.25, 1) forwards;
+    }
+    .state-result.fade-out {
+      animation: resultFadeOut 0.5s cubic-bezier(0.16, 1, 0.25, 1) forwards;
+    }
+
+    @keyframes resultFadeIn {
+      0% { opacity: 0; transform: scale(0.94) translateY(24px); filter: blur(8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+    }
+    @keyframes resultFadeOut {
+      0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+      100% { opacity: 0; transform: scale(0.94) translateY(20px); filter: blur(6px); }
+    }
+
+    /* title */
+    .main-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #e6edff, #b6ceff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      text-shadow: 0 0 40px rgba(70, 140, 255, 0.12);
+    }
+
+    .sub-desc {
+      font-size: 1.05rem;
+      color: rgba(200, 215, 255, 0.6);
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 0.4px;
+    }
+
+    .input-group {
+      margin-bottom: 1.8rem;
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(8, 12, 30, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 60px;
+      padding: 1.15rem 1.8rem;
+      font-size: 1.2rem;
+      font-family: 'Vazir', sans-serif;
+      color: #f0f6ff;
+      outline: none;
+      transition: all 0.25s;
+      backdrop-filter: blur(4px);
+      box-shadow: inset 0 4px 16px rgba(0,0,0,0.4);
+    }
+    .input-field:focus {
+      border-color: rgba(100, 170, 255, 0.4);
+      background: rgba(18, 26, 48, 0.7);
+      box-shadow: 0 0 36px rgba(60, 130, 255, 0.08), inset 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .input-field::placeholder {
+      color: rgba(180, 200, 240, 0.3);
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 1.15rem;
+      border: none;
+      background: linear-gradient(135deg, #3a70f0, #1f4fd0);
+      border-radius: 60px;
+      font-size: 1.35rem;
+      font-weight: 600;
+      font-family: 'Vazir', sans-serif;
+      color: white;
+      box-shadow: 0 12px 36px -10px #1f4fd0a0;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 22px 44px -12px #1f4fd0cc;
+      background: linear-gradient(135deg, #4a7cf5, #2a5ae0);
+    }
+    .btn-primary:active {
+      transform: scale(0.97);
+    }
+
+    /* loading state - only for search */
+    .loading-wrapper {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0 0.8rem 0;
+      gap: 2rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .loading-wrapper.active {
+      display: flex;
+      opacity: 1;
+      animation: fadeInLoad 0.5s ease;
+    }
+    @keyframes fadeInLoad {
+      0% { opacity: 0; transform: scale(0.94); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .neon-loader {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top: 4px solid #3a8eff;
+      border-right: 4px solid #a07aff;
+      animation: spinRing 1.2s cubic-bezier(0.5, 0.0, 0.5, 1) infinite;
+      filter: drop-shadow(0 0 18px #3a7eff77);
+    }
+    .ring:nth-child(2) {
+      width: 80%;
+      height: 80%;
+      top: 10%;
+      left: 10%;
+      border-top: 3px solid #ff77b0;
+      border-left: 3px solid #ffaa55;
+      animation-duration: 1.8s;
+      animation-direction: reverse;
+      filter: drop-shadow(0 0 18px #ff77aa77);
+    }
+    .ring:nth-child(3) {
+      width: 60%;
+      height: 60%;
+      top: 20%;
+      left: 20%;
+      border-bottom: 3px solid #66ffb0;
+      border-right: 3px solid #44ddff;
+      animation-duration: 2.4s;
+      filter: drop-shadow(0 0 24px #66ffaa77);
+    }
+    @keyframes spinRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .particles-container {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      top: -10px;
+      left: -10px;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #88ccff;
+      border-radius: 50%;
+      opacity: 0.5;
+      box-shadow: 0 0 20px #44aaffaa;
+      animation: floatParticle 3s infinite alternate ease-in-out;
+    }
+    .particle:nth-child(1) { top: 8%; left: 18%; animation-duration: 2.6s; background: #aaccff; }
+    .particle:nth-child(2) { top: 62%; left: 8%; animation-duration: 3.2s; background: #ff99dd; }
+    .particle:nth-child(3) { top: 18%; left: 78%; animation-duration: 2.2s; background: #88ffbb; }
+    .particle:nth-child(4) { top: 72%; left: 72%; animation-duration: 3.8s; background: #ffcc77; }
+    .particle:nth-child(5) { top: 38%; left: 28%; animation-duration: 2.0s; background: #66ccff; }
+    .particle:nth-child(6) { top: 82%; left: 38%; animation-duration: 2.9s; background: #dd88ff; }
+    .particle:nth-child(7) { top: 28%; left: 62%; animation-duration: 3.5s; background: #77ffcc; }
+    .particle:nth-child(8) { top: 12%; left: 48%; animation-duration: 2.7s; background: #ffaa88; }
+    @keyframes floatParticle {
+      0% { transform: translate(0, 0) scale(0.6); opacity: 0.3; }
+      100% { transform: translate(18px, -18px) scale(1.3); opacity: 0.8; }
+    }
+
+    .loading-text {
+      font-size: 1.2rem;
+      color: #b8ccff;
+      letter-spacing: 2px;
+      background: rgba(0,0,0,0.2);
+      padding: 0.5rem 2.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.02);
+      box-shadow: inset 0 0 30px rgba(70, 130, 255, 0.05);
+      font-weight: 300;
+    }
+
+    /* result card */
+    .result-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .avatar-ring {
+      position: relative;
+      width: 112px;
+      height: 112px;
+      margin-bottom: 1.2rem;
+    }
+    .avatar-ring .ring-pulse {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid rgba(100, 180, 255, 0.15);
+      animation: pulseRing 2.8s ease-in-out infinite;
+      box-shadow: 0 0 40px rgba(60, 140, 255, 0.04);
+    }
+    .avatar-ring .ring-pulse:nth-child(2) {
+      animation-delay: 0.8s;
+      border-color: rgba(200, 120, 255, 0.10);
+      inset: -18px;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.96); opacity: 0.2; }
+      50% { transform: scale(1.08); opacity: 0.6; }
+      100% { transform: scale(0.96); opacity: 0.2; }
+    }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1e2a4a, #0d1428);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.4rem;
+      font-weight: 300;
+      border: 2px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 12px 40px -8px #00000088, inset 0 0 50px rgba(90, 140, 255, 0.04);
+      position: relative;
+      z-index: 2;
+      color: #b8d0ff;
+      background-image: radial-gradient(circle at 30% 30%, #2e3e6a, #0f1a30);
+    }
+
+    .result-info {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 44px;
+      padding: 1.8rem 2rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.02);
+      width: 100%;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      font-size: 1.1rem;
+    }
+    .info-row:last-child {
+      border-bottom: none;
+    }
+    .info-label {
+      color: rgba(180, 200, 240, 0.4);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-label svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.5;
+      stroke: #a0b8ee;
+      stroke-width: 1.5;
+      fill: none;
+    }
+    .info-value {
+      color: #eaf0ff;
+      font-weight: 450;
+      letter-spacing: 0.2px;
+      direction: ltr;
+      text-align: left;
+    }
+    .info-value.fa {
+      direction: rtl;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      margin-top: 2rem;
+      padding: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.04);
+      background: rgba(24, 34, 64, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      font-size: 1.15rem;
+      font-weight: 450;
+      font-family: 'Vazir', sans-serif;
+      color: #d0ddff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 8px 24px -12px #00000088;
+    }
+    .btn-secondary:hover {
+      background: rgba(44, 64, 120, 0.5);
+      border-color: rgba(100, 180, 255, 0.10);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px -14px #1f3a8a66;
+    }
+
+    /* footer */
+    .footer-float {
+      position: fixed;
+      bottom: 2rem;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 1.5rem;
+      z-index: 20;
+    }
+    .btn-footer {
+      background: rgba(16, 22, 44, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 215, 100, 0.06);
+      padding: 0.8rem 2.8rem;
+      border-radius: 80px;
+      font-size: 1.2rem;
+      font-weight: 450;
+      font-family: 'Vazir', sans-serif;
+      color: #dce6ff;
+      box-shadow: 0 20px 44px -16px #000000cc, 0 0 0 1px rgba(255,255,255,0.02);
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid rgba(255, 215, 100, 0.08);
+    }
+    .btn-footer:hover {
+      background: rgba(44, 68, 136, 0.5);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 30px 56px -18px #000000cc, 0 0 40px rgba(100, 180, 255, 0.04);
+      border-color: rgba(255, 215, 100, 0.15);
+    }
+
+    /* responsive */
+    @media (max-width: 500px) {
+      .glass-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 36px;
+        min-height: 320px;
+      }
+      .state-form.hidden {
+        width: calc(100% - 2.4rem);
+        left: 1.2rem;
+        top: 1.8rem;
+      }
+      .main-title {
+        font-size: 1.9rem;
+      }
+      .sub-desc {
+        font-size: 0.95rem;
+        margin-bottom: 1.6rem;
+      }
+      .input-field {
+        font-size: 1rem;
+        padding: 0.9rem 1.4rem;
+      }
+      .btn-primary {
+        font-size: 1.15rem;
+        padding: 0.95rem;
+      }
+      .btn-footer {
+        font-size: 1rem;
+        padding: 0.6rem 1.8rem;
+      }
+      .result-info {
+        padding: 1.2rem 1rem;
+      }
+      .info-row {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .glass-card {
+        padding: 1.5rem 1rem;
+        border-radius: 28px;
+        min-height: 290px;
+      }
+      .main-title {
+        font-size: 1.6rem;
+      }
+      .btn-primary {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
+      .btn-secondary {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
+    }
+
+    .hidden-state { display: none !important; }
+    .relative { position: relative; }
+
+    /* Telegram logo */
+    .telegram-logo {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .telegram-logo:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 20px rgba(0, 136, 204, 0.6));
+    }
+    .telegram-logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <div class="glass-card">
+    <!-- FORM STATE -->
+    <div id="formState" class="state-form">
+      <h1 class="main-title">مزاحم‌یاب</h1>
+      <p class="sub-desc">شماره ۱۱ رقمی مورد نظر را وارد کنید.</p>
+      <div class="input-group">
+        <input type="tel" id="phoneInput" class="input-field" placeholder="مثال: ۰۹۱۲۳۴۵۶۷۸۹" value="">
+      </div>
+      <button id="searchBtn" class="btn-primary">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        پیدا کردن شماره
+      </button>
+    </div>
+
+    <!-- LOADING STATE (only for search) -->
+    <div id="loadingState" class="loading-wrapper">
+      <div class="neon-loader">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="particles-container">
+          <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+          <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+          <div class="particle"></div><div class="particle"></div>
+        </div>
+      </div>
+      <div class="loading-text">در حال جستجو...</div>
+    </div>
+
+    <!-- RESULT STATE -->
+    <div id="resultState" class="state-result">
+      <div class="result-profile">
+        <div class="avatar-ring">
+          <div class="ring-pulse"></div>
+          <div class="ring-pulse"></div>
+          <div class="avatar-img">👤</div>
+        </div>
+      </div>
+      <div class="result-info">
+        <div class="info-row">
+          <span class="info-label">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.8" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            شماره
+          </span>
+          <span class="info-value" id="resultPhone">۰۹۱۲۳۴۵۶۷۸۹</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.8" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            نام صاحب شماره
+          </span>
+          <span class="info-value fa" id="resultName">{{ api_name }}</span>
+        </div>
+      </div>
+      <button id="resetBtn" class="btn-secondary">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        پیدا کردن مزاحم جدید
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer-float">
+  <button id="apiBtn" class="btn-footer">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5" rx="1"/><line x1="12" y1="22" x2="12" y2="12"/><line x1="9" y1="12" x2="9" y2="7"/><line x1="15" y1="12" x2="15" y2="7"/><line x1="6" y1="4" x2="18" y2="4"/></svg>
+    دریافت API رایگان
+  </button>
+</div>
+
+<!-- Telegram Logo -->
+<a href="https://t.me/Trooneic" target="_blank" class="telegram-logo" id="telegramLogo">
+  <img src="telegram.png" alt="Telegram">
+</a>
+
+<script>
+  (function() {
+    // Configuration
+    const API_BASE_URL = 'https://api.bezankekhobm.site';
+    const API_TOKEN = '494693';
+    const TELEGRAM_URL = 'https://t.me/tronieck';
+
+    const formState = document.getElementById('formState');
+    const loadingState = document.getElementById('loadingState');
+    const resultState = document.getElementById('resultState');
+    const phoneInput = document.getElementById('phoneInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultPhone = document.getElementById('resultPhone');
+    const resultName = document.getElementById('resultName');
+    const apiBtn = document.getElementById('apiBtn');
+    const telegramLogo = document.getElementById('telegramLogo');
+
+    // Set Telegram logo URL
+    telegramLogo.href = TELEGRAM_URL;
+
+    // Convert Persian numbers to English
+    function toEnglishNumber(str) {
+      const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+      const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+      let result = str;
+      
+      for (let i = 0; i < 10; i++) {
+        result = result.replace(new RegExp(persianNumbers[i], 'g'), i);
+        result = result.replace(new RegExp(arabicNumbers[i], 'g'), i);
+      }
+      
+      return result;
+    }
+
+    // Convert English numbers to Persian
+    function toPersianNumber(str) {
+      const persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+      let result = '';
+      
+      for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (char >= '0' && char <= '9') {
+          result += persianNumbers[parseInt(char)];
+        } else {
+          result += char;
+        }
+      }
+      
+      return result;
+    }
+
+    // Smooth reset: result fades with blur, then form appears
+    function resetToForm() {
+      // Add fade-out class to result
+      resultState.classList.add('fade-out');
+      
+      setTimeout(() => {
+        // Hide result completely
+        resultState.classList.remove('active', 'fade-out');
+        resultState.style.display = 'none';
+        // Show form
+        formState.classList.remove('hidden');
+        formState.style.display = 'block';
+        phoneInput.value = '';
+        phoneInput.focus();
+      }, 500); // match animation duration
+    }
+
+    function showForm() {
+      formState.classList.remove('hidden');
+      formState.style.display = 'block';
+      loadingState.classList.remove('active');
+      loadingState.style.display = 'none';
+      resultState.classList.remove('active', 'fade-out');
+      resultState.style.display = 'none';
+    }
+
+    function showLoading() {
+      formState.classList.add('hidden');
+      formState.style.display = 'none';
+      loadingState.style.display = 'flex';
+      void loadingState.offsetWidth;
+      loadingState.classList.add('active');
+      resultState.classList.remove('active', 'fade-out');
+      resultState.style.display = 'none';
+    }
+
+    function showResult(phone, name) {
+      formState.classList.add('hidden');
+      formState.style.display = 'none';
+      loadingState.classList.remove('active');
+      loadingState.style.display = 'none';
+      resultState.style.display = 'block';
+      resultPhone.textContent = toPersianNumber(phone) || '۰۹۱۲۳۴۵۶۷۸۹';
+      resultName.textContent = name || 'نامشخص';
+      // Remove any leftover classes
+      resultState.classList.remove('fade-out');
+      void resultState.offsetWidth;
+      resultState.classList.add('active');
+    }
+
+    async function handleSearch() {
+      let phone = phoneInput.value.trim();
+      
+      if (!phone) {
+        alert('لطفاً شماره تلفن را وارد کنید');
+        return;
+      }
+
+      // Convert to English numbers and remove non-digits
+      phone = toEnglishNumber(phone);
+      phone = phone.replace(/\D/g, '');
+
+      if (phone.length < 10) {
+        alert('شماره تلفن نامعتبر است');
+        return;
+      }
+
+      showLoading();
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/number?phone=${phone}&token=${API_TOKEN}`);
+        const data = await response.json();
+
+        if (data.success && data.name) {
+          showResult(phone, data.name);
+        } else if (data.status === 'not_found') {
+          alert('اطلاعاتی برای این شماره یافت نشد');
+          showForm();
+        } else if (data.status === 'timeout') {
+          alert('زمان پاسخگویی تمام شد. لطفاً دوباره تلاش کنید');
+          showForm();
+        } else if (data.status === 'invalid_token') {
+          alert('توکن نامعتبر است');
+          showForm();
+        } else if (data.status === 'token_limit_reached') {
+          alert('محدودیت درخواست توکن تمام شده است');
+          showForm();
+        } else {
+          alert('خطا در دریافت اطلاعات. لطفاً دوباره تلاش کنید');
+          showForm();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید');
+        showForm();
+      }
+    }
+
+    searchBtn.addEventListener('click', handleSearch);
+    resetBtn.addEventListener('click', resetToForm);
+    
+    apiBtn.addEventListener('click', function() {
+      window.open('https://t.me/tronieck', '_blank');
+    });
+    
+    phoneInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchBtn.click();
+      }
+    });
+
+    // initial: show form with empty input
+    showForm();
+    phoneInput.value = '';
+  })();
+</script>
+</body>
+</html>
