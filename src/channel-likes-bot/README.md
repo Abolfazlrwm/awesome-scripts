@@ -1,5 +1,7 @@
 # ❤️ Channel Likes Bot — ربات پست کانال با دکمه‌ی لایک
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A Telethon-powered bot that turns **anything you send it** into a channel post with
 a live **❤ like button** — every user can like once, the counter on the button
 updates in place, and all likes are stored in SQLite.
