@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**56 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**70 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-56-blue)
+![Projects](https://img.shields.io/badge/projects-70-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -37,11 +37,21 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 43
+### 🤖 Telegram bots — 53
 
 | Project | Lang | What it does |
 | --- | --- | --- |
 | [life-simulator-bot](./src/life-simulator-bot) | Python | Full life-simulation game — jobs & skills, bank cards, real estate, companies, free market, crime & jail |
+| [city-builder-bot](./src/city-builder-bot) | Python | City-building strategy game — tech tree, diplomacy & trade, happiness economy, random events |
+| [world-war-game-bot](./src/world-war-game-bot) | Python | Geopolitical war simulator — countries, NPC raids & nukes, oil/arms/stock markets, clans, VIP |
+| [military-alliance-bot](./src/military-alliance-bot) | Python | Military strategy game — land/air/navy forces, trade & war declarations, billion-cost alliances |
+| [giftix-stars-shop-bot](./src/giftix-stars-shop-bot) | Python | Stars/Premium/Gift/TON storefront — wallet & gateways, referrals, order tracking, tickets |
+| [member-tag-manager-bot](./src/member-tag-manager-bot) | Python | Real member tags (setChatMemberTag), premium-emoji relay, personal invite links with join counters |
+| [channel-translate-worker](./src/channel-translate-worker) | JavaScript | Cloudflare Worker stamps fa/en/ru translate buttons onto channel posts (Gemini + Google fallback) |
+| [perfect-ai-chat-bot](./src/perfect-ai-chat-bot) | PHP | Chat-to-channel bridge — member messages forward into your channel, sessions, owner panel |
+| [ai-self-coding-bot](./src/ai-self-coding-bot) | PHP | Self-coding experiment — OpenRouter Llama-3 writes & appends PHP into its own bot file (owner-only) |
+| [php-coin-manager-bot](./src/php-coin-manager-bot) | PHP | Coin economy & view-order shop — balances, top-ups, admin panel, Jalali dates, zero dependencies |
+| [url-shortener-php-bot](./src/url-shortener-php-bot) | PHP | URL shortener in PHP & Python — TinyURL, flood control, block list, DB-editable texts, force join |
 | [todo-miniapp-worker](./src/todo-miniapp-worker) | JavaScript | ToDoList Mini App as one Cloudflare Worker — API + bot webhook + cron reminders + embedded frontend on D1 |
 | [spotify-music-bot](./src/spotify-music-bot) | Python | Spotify link & YouTube Music search downloader — 320 kbps with original cover art + ID3 tags |
 | [voicecall-userbot](./src/voicecall-userbot) | Python | VoiceChat userbot + admin panel — auto join, YouTube/music playback, playlists, live radio streams |
@@ -85,11 +95,15 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [lottery-giveaway-bot](./src/lottery-giveaway-bot) | Python | Giveaways with mandatory join, referrals, admin panel |
 | [poll-vote-bot](./src/poll-vote-bot) | Python | Polls with live vote buttons, rendered result cards, CSV export — no framework |
 
-### 🌐 Web tools — 9
+### 🌐 Web tools — 13
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
 | [wheel-of-actions](./src/wheel-of-actions) | HTML/CSS/JS | Spin-the-wheel task prioritizer | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/) |
+| [twitter-media-api](./src/twitter-media-api) | PHP | Tweet URL → media JSON — guest-token auth, GraphQL TweetDetail, all photo/video variants |
+| [caller-lookup-app](./src/caller-lookup-app) | HTML/CSS/JS | Persian spam-caller lookup — search a number, see labels & community reports | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/) |
+| [backend-dev-portfolio](./src/backend-dev-portfolio) | HTML/CSS/JS | Single-file dark portfolio for backend & bot developers — zero dependencies | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/) |
+| [ton-nft-marketplace](./src/ton-nft-marketplace) | HTML/CSS/JS | TON Connect NFT marketplace UI — gallery, buy modal, fa/en language toggle | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/) |
 | [solar-explorer-3d](./src/solar-explorer-3d) | HTML/CSS/JS | Interactive 3D solar system (Three.js) — time control, planet info | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/) |
 | [control-room-dashboard](./src/control-room-dashboard) | HTML/CSS/JS | Live simulated dashboard — bot status, real-time logs, FX rates | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/) |
 | [qr-code-studio](./src/qr-code-studio) | HTML/CSS/JS | Custom QR codes — colors, gradients, logo, PNG/SVG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) |
@@ -154,11 +168,21 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (43)
+#### 🤖 ربات‌های تلگرام (53)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
 | [🌆 شبیه‌ساز زندگی](./src/life-simulator-bot) | Python | بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان |
+| [🏙 ربات شهرساز](./src/city-builder-bot) | Python | بازی استراتژیک شهرسازی — درخت فناوری، دیپلماسی و تجارت، اقتصاد شادی، رویدادهای تصادفی و پنل ادمین |
+| [🌍 ربات جنگ جهانی](./src/world-war-game-bot) | Python | شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP |
+| [🎖 ربات نبرد و اتحاد نظامی](./src/military-alliance-bot) | Python | استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی |
+| [⭐ فروشگاه استارز GiftiX](./src/giftix-stars-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت |
+| [🏷 مدیریت تگ اعضا](./src/member-tag-manager-bot) | Python | تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود |
+| [🌐 ترجمه‌گر پست کانال](./src/channel-translate-worker) | JavaScript | دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker |
+| [💬 چت عمومی کانال](./src/perfect-ai-chat-bot) | PHP | پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک |
+| [🤖 ربات خودساز AI](./src/ai-self-coding-bot) | PHP | آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک |
+| [🪙 مدیریت سکه و سفارش](./src/php-coin-manager-bot) | PHP | اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی |
+| [🔗 کوتاه‌کننده لینک PHP](./src/url-shortener-php-bot) | PHP | دو نسخه PHP و پایتون — TinyURL، کنترل فلود، بلاک کاربر و متن‌های قابل ویرایش از پنل |
 | [✅ تودولیست مینی‌اپ](./src/todo-miniapp-worker) | JavaScript | مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1 |
 | [🎧 دانلودر موزیک اسپاتیفای](./src/spotify-music-bot) | Python | دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3 |
 | [🎙 یوزربات ویس‌چت](./src/voicecall-userbot) | Python | یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده |
@@ -202,11 +226,15 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🎰 قرعه‌کشی و گیوای](./src/lottery-giveaway-bot) | Python | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل |
 | [🗳 نظرسنجی و رأی‌گیری](./src/poll-vote-bot) | Python | نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک |
 
-#### 🌐 ابزارهای وب (9)
+#### 🌐 ابزارهای وب (13)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
 | [🎡 Wheel of Actions](./src/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/) | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه |
+| [🐦 API مدیا توییتر](./src/twitter-media-api) | PHP | لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو |
+| [📱 مزاحم‌یاب](./src/caller-lookup-app) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/) | HTML/CSS/JS | جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران |
+| [🧑‍💻 رزومه بک‌اند](./src/backend-dev-portfolio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/) | HTML/CSS/JS | رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس |
+| [💎 مارکت‌پلیس NFT تون](./src/ton-nft-marketplace) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/) | HTML/CSS/JS | اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی |
 | [🪐 کاوشگر سه‌بعدی منظومه شمسی](./src/solar-explorer-3d) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/) | HTML/CSS/JS | شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات |
 | [🎛 اتاق فرمان](./src/control-room-dashboard) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/) | HTML/CSS/JS | داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز |
 | [🔳 QR Code Studio](./src/qr-code-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) | HTML/CSS/JS | ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG |

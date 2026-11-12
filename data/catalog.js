@@ -4,21 +4,21 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-12T03:10:54+03:30",
-  "count": 56,
+  "generated_at": "2026-11-12T08:57:48+03:30",
+  "count": 70,
   "stats": {
     "categories": {
-      "telegram-bot": 43,
-      "desktop-tool": 4,
-      "web-tool": 9
+      "telegram-bot": 53,
+      "web-tool": 13,
+      "desktop-tool": 4
     },
     "languages": {
-      "Python": 31,
-      "PHP": 5,
-      "HTML/CSS/JS": 9,
+      "Python": 36,
+      "PHP": 10,
+      "HTML/CSS/JS": 12,
+      "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
-      "JavaScript": 2,
       "Java": 1,
       "C++": 1,
       "C#": 1
@@ -58,6 +58,39 @@ window.AWESOME_CATALOG = {
       "description_fa": "چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل"
     },
     {
+      "slug": "ai-self-coding-bot",
+      "path": "src/ai-self-coding-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "AI Self-Coding Bot",
+      "description_en": "Self-coding experiment — OpenRouter Llama-3 writes & appends PHP into its own bot file (owner-only)",
+      "demo": null,
+      "name_fa": "ربات خودساز AI",
+      "description_fa": "آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک"
+    },
+    {
+      "slug": "backend-dev-portfolio",
+      "path": "src/backend-dev-portfolio",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Backend Dev Portfolio",
+      "description_en": "Single-file dark portfolio for backend & bot developers — zero dependencies",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/",
+      "name_fa": "رزومه بک‌اند",
+      "description_fa": "رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس"
+    },
+    {
+      "slug": "caller-lookup-app",
+      "path": "src/caller-lookup-app",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Caller Lookup App",
+      "description_en": "Persian spam-caller lookup — search a number, see labels & community reports",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/",
+      "name_fa": "مزاحم‌یاب",
+      "description_fa": "جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران"
+    },
+    {
       "slug": "channel-likes-bot",
       "path": "src/channel-likes-bot",
       "category": "telegram-bot",
@@ -78,6 +111,28 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "ربات پست کانال",
       "description_fa": "کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود"
+    },
+    {
+      "slug": "channel-translate-worker",
+      "path": "src/channel-translate-worker",
+      "category": "telegram-bot",
+      "language": "JavaScript",
+      "name_en": "Channel Translate Worker",
+      "description_en": "Cloudflare Worker stamps fa/en/ru translate buttons onto channel posts (Gemini + Google fallback)",
+      "demo": null,
+      "name_fa": "ترجمه‌گر پست کانال",
+      "description_fa": "دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker"
+    },
+    {
+      "slug": "city-builder-bot",
+      "path": "src/city-builder-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "City Builder Bot",
+      "description_en": "City-building strategy game — tech tree, diplomacy & trade, happiness economy, random events",
+      "demo": null,
+      "name_fa": "ربات شهرساز",
+      "description_fa": "بازی استراتژیک شهرسازی — درخت فناوری، دیپلماسی و تجارت، اقتصاد شادی، رویدادهای تصادفی و پنل ادمین"
     },
     {
       "slug": "clipboard-history-manager",
@@ -201,6 +256,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل"
     },
     {
+      "slug": "giftix-stars-shop-bot",
+      "path": "src/giftix-stars-shop-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "GiftiX Stars Shop Bot",
+      "description_en": "Stars/Premium/Gift/TON storefront — wallet & gateways, referrals, order tracking, tickets",
+      "demo": null,
+      "name_fa": "فروشگاه استارز GiftiX",
+      "description_fa": "فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت"
+    },
+    {
       "slug": "group-guardian-bot",
       "path": "src/group-guardian-bot",
       "category": "telegram-bot",
@@ -289,6 +355,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل"
     },
     {
+      "slug": "member-tag-manager-bot",
+      "path": "src/member-tag-manager-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Member Tag Manager Bot",
+      "description_en": "Real member tags (setChatMemberTag), premium-emoji relay, personal invite links with join counters",
+      "demo": null,
+      "name_fa": "مدیریت تگ اعضا",
+      "description_fa": "تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود"
+    },
+    {
       "slug": "meow-point-bot",
       "path": "src/meow-point-bot",
       "category": "telegram-bot",
@@ -298,6 +375,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "ربات میو پوینت",
       "description_fa": "بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک"
+    },
+    {
+      "slug": "military-alliance-bot",
+      "path": "src/military-alliance-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Military Alliance Bot",
+      "description_en": "Military strategy game — land/air/navy forces, trade & war declarations, billion-cost alliances",
+      "demo": null,
+      "name_fa": "ربات نبرد و اتحاد نظامی",
+      "description_fa": "استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی"
     },
     {
       "slug": "mobile-app-intro-template",
@@ -322,6 +410,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک"
     },
     {
+      "slug": "perfect-ai-chat-bot",
+      "path": "src/perfect-ai-chat-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Perfect AI Chat Bot",
+      "description_en": "Chat-to-channel bridge — member messages forward into your channel, sessions, owner panel",
+      "demo": null,
+      "name_fa": "چت عمومی کانال",
+      "description_fa": "پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک"
+    },
+    {
       "slug": "php-bot-maker",
       "path": "src/php-bot-maker",
       "category": "telegram-bot",
@@ -331,6 +430,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "ربات‌ساز PHP",
       "description_fa": "پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش"
+    },
+    {
+      "slug": "php-coin-manager-bot",
+      "path": "src/php-coin-manager-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "PHP Coin Manager Bot",
+      "description_en": "Coin economy & view-order shop — balances, top-ups, admin panel, Jalali dates, zero dependencies",
+      "demo": null,
+      "name_fa": "مدیریت سکه و سفارش",
+      "description_fa": "اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی"
     },
     {
       "slug": "poll-vote-bot",
@@ -553,6 +663,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1"
     },
     {
+      "slug": "ton-nft-marketplace",
+      "path": "src/ton-nft-marketplace",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "TON NFT Marketplace",
+      "description_en": "TON Connect NFT marketplace UI — gallery, buy modal, fa/en language toggle",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/",
+      "name_fa": "مارکت‌پلیس NFT تون",
+      "description_fa": "اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی"
+    },
+    {
       "slug": "translator-bot",
       "path": "src/translator-bot",
       "category": "telegram-bot",
@@ -562,6 +683,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "مترجم متن",
       "description_fa": "ترجمه‌ی خودکار پیام‌ها"
+    },
+    {
+      "slug": "twitter-media-api",
+      "path": "src/twitter-media-api",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "Twitter Media API",
+      "description_en": "Tweet URL → media JSON — guest-token auth, GraphQL TweetDetail, all photo/video variants",
+      "demo": null,
+      "name_fa": "API مدیا توییتر",
+      "description_fa": "لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو"
     },
     {
       "slug": "uptime-monitor-bot",
@@ -584,6 +716,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "کوتاه‌کننده لینک",
       "description_fa": "کوتاه‌سازی لینک با آمار کلیک"
+    },
+    {
+      "slug": "url-shortener-php-bot",
+      "path": "src/url-shortener-php-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "URL Shortener PHP Bot",
+      "description_en": "URL shortener in PHP & Python — TinyURL, flood control, block list, DB-editable texts, force join",
+      "demo": null,
+      "name_fa": "کوتاه‌کننده لینک PHP",
+      "description_fa": "دو نسخه PHP و پایتون — TinyURL، کنترل فلود، بلاک کاربر و متن‌های قابل ویرایش از پنل"
     },
     {
       "slug": "v2ray-shop-bot",
@@ -639,6 +782,17 @@ window.AWESOME_CATALOG = {
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/",
       "name_fa": "World Clock Planner",
       "description_fa": "برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر"
+    },
+    {
+      "slug": "world-war-game-bot",
+      "path": "src/world-war-game-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "World War Game Bot",
+      "description_en": "Geopolitical war simulator — countries, NPC raids & nukes, oil/arms/stock markets, clans, VIP",
+      "demo": null,
+      "name_fa": "ربات جنگ جهانی",
+      "description_fa": "شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP"
     },
     {
       "slug": "youtube-downloader-bot",

@@ -68,6 +68,12 @@ NAME_OVERRIDES = {
     "todo-miniapp-worker": "ToDoList Mini App (CF Worker)",
     "voicecall-userbot": "VoiceChat Userbot Panel",
     "winland-giveaway-bot": "WinLand Giveaway Bot",
+    "giftix-stars-shop-bot": "GiftiX Stars Shop Bot",
+    "php-coin-manager-bot": "PHP Coin Manager Bot",
+    "url-shortener-php-bot": "URL Shortener PHP Bot",
+    "ton-nft-marketplace": "TON NFT Marketplace",
+    "twitter-media-api": "Twitter Media API",
+    "ai-self-coding-bot": "AI Self-Coding Bot",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
