@@ -1,11 +1,12 @@
 <?php
+// Telegram: @Abolfazl_rwm
 error_reporting(0);
 
 // توکن ربات را از متغیر محیطی BOT_TOKEN می‌خواند؛ در صورت نبود، به مقدار پیش‌فرض برمی‌گردد
 $bot_token = getenv('BOT_TOKEN') ?: 'YOUR_BOT_TOKEN_HERE';
 
-//  نوشته شده توسط: @cod_arshiya تلگرام
-//  آیدی کانال تلگرام: @cod_arshiya0
+//  نوشته شده توسط: @Abolfazl_rwm تلگرام
+//  آیدی کانال تلگرام: @Abolfazl_rwm
 
 @$Update = json_decode(file_get_contents('php://input'));
 if(isset($Update)){
@@ -70,5 +71,5 @@ if(isset($Update)){
 }
 
 
-//  نوشته شده توسط: @cod_arshiya تلگرام
-//  آیدی کانال تلگرام: @cod_arshiya0
+//  نوشته شده توسط: @Abolfazl_rwm تلگرام
+//  آیدی کانال تلگرام: @Abolfazl_rwm

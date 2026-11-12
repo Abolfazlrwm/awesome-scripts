@@ -1,5 +1,7 @@
 # 🔎 Forward Info Bot | ربات نمایش اطلاعات پیام فورواردی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4?logo=php&logoColor=white)
 ![Telegram Bot API](https://img.shields.io/badge/Telegram%20Bot%20API-Webhook-26A5E4?logo=telegram&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
