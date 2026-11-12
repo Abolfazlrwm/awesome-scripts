@@ -4,7 +4,7 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-12T08:57:48+03:30",
+  "generated_at": "2026-11-12T09:39:43+03:30",
   "count": 70,
   "stats": {
     "categories": {
@@ -572,7 +572,7 @@ window.AWESOME_CATALOG = {
       "description_en": "Stars/Premium/Gifts/Crypto shop replica — wallet, referrals, admin panel",
       "demo": null,
       "name_fa": "فروشگاه استارز و گیفت",
-      "description_fa": "فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — بازسازی Starzify"
+      "description_fa": "فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl"
     },
     {
       "slug": "subscription-shop-bot",

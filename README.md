@@ -25,6 +25,8 @@ Every project here is a **complete, runnable application** — not a snippet. Op
 
 > 🧭 Prefer browsing? Open the **[interactive catalog](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, dark mode and full Persian (RTL) mode. Stable versions are published under [Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases).
 
+> 📬 **Contact / custom projects:** Telegram [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ## 🚀 Quick start
 
 ```bash
@@ -166,6 +168,8 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 </div>
 
+> 📬 **ارتباط و سفارش پروژه:** تلگرام [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ### 📦 فهرست پروژه‌ها
 
 #### 🤖 ربات‌های تلگرام (53)
@@ -193,7 +197,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [👥 مدیریت چند اکانت همزمان](./src/multi-account-manager) | Python | مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک |
 | [💸 نرخ لحظه‌ای بازار](./src/iran-market-rate-bot) | Python | نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار |
 | [🎨 اموجی فورج AI](./src/emoji-forge-bot) | Python | ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd |
-| [⭐ فروشگاه استارز و گیفت](./src/starzify-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — بازسازی Starzify |
+| [⭐ فروشگاه استارز و گیفت](./src/starzify-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl |
 | [🌐 فروشگاه کانفیگ V2Ray](./src/v2ray-shop-bot) | Python | فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین |
 | [🏭 ربات‌ساز PHP](./src/php-bot-maker) | PHP | پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش |
 | [📮 ربات پست کانال](./src/channel-submission-bot) | PHP | کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود |
