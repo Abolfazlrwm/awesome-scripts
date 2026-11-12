@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 # 🔧 تنظیمات CodeShareBot
 
 import os
@@ -115,10 +116,10 @@ HELP_TEXT = """
 
 # 📞 اطلاعات پشتیبانی
 SUPPORT_INFO = {
-    "email": "support@codesharebot.com",
-    "telegram": "@CodeShareBot_Support",
-    "website": "www.codesharebot.com",
-    "github": "https://github.com/username/CodeShareBot",
+    "email": "via Telegram: @Abolfazl_rwm",
+    "telegram": "@Abolfazl_rwm",
+    "website": "github.com/Abolfazlrwm/awesome-scripts",
+    "github": "https://github.com/Abolfazlrwm/awesome-scripts",
 }
 
 # 🔄 تنظیمات لاگ

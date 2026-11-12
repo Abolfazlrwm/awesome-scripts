@@ -1,5 +1,7 @@
 # 🌟 CodeShareBot - ربات اشتراک‌گذاری کد
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![python-telegram-bot](https://img.shields.io/badge/python--telegram--bot-20+-2CA5E0.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -196,9 +198,9 @@ UPLOADS_DIR = "پوشه آپلودها"
 
 ## 📞 پشتیبانی
 
-- 📧 ایمیل: support@codesharebot.com
-- 💬 تلگرام: @CodeShareBot_Support
-- 🌐 وب‌سایت: www.codesharebot.com
+- 📧 ایمیل: via Telegram: @Abolfazl_rwm
+- 💬 تلگرام: @Abolfazl_rwm
+- 🌐 وب‌سایت: github.com/Abolfazlrwm/awesome-scripts
 
 ---
 
