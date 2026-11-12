@@ -1,5 +1,7 @@
 # 📰 ربات اعلان خودکار فید RSS (RSS News Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 فید RSS هر سایت خبری یا وبلاگی رو بهش معرفی کن، خودش هر چند دقیقه چک می‌کنه و پست‌های جدید رو خودکار توی کانال یا گروهت پست می‌کنه.
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-00599C.svg)
