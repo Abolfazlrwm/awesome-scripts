@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 # ============================================================
 # ربات فروش کانفیگ نسخه نهایی ۵.۰
 # قابلیت‌ها: خرید اشتراک | گرونه شانس | تست | سرویس‌های من
@@ -1184,7 +1185,7 @@ def join_set_channel(call):
         bot.answer_callback_query(call.id, "دسترسی ندارید!", show_alert=True)
         return
     user_states[user_id] = "join_set_channel"
-    bot.edit_message_text("✏️ *تغییر کانال*\nلطفاً آیدی کانال جدید را وارد کنید:\nمثال: `@my_channel`", call.message.chat.id, call.message.message_id, parse_mode='Markdown')
+    bot.edit_message_text("✏️ *تغییر کانال*\nلطفاً آیدی کانال جدید را وارد کنید:\nمثال: `@Abolfazl_rwm`", call.message.chat.id, call.message.message_id, parse_mode='Markdown')
 
 @bot.callback_query_handler(func=lambda call: call.data == "join_back")
 def join_back(call):

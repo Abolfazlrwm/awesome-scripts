@@ -1,5 +1,7 @@
 # 💳 ربات فروش اشتراک و کانفیگ (Subscription Shop Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ربات فروش خودکار اشتراک/کانفیگ از یک مخزن داخلی، با سیستم نمایندگی، گردونه‌ی شانس و کیف پول داخلی. مناسب برای فروش کانفیگ، اشتراک سرویس یا هر محصول دیجیتال تکرارشونده.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
@@ -39,7 +41,7 @@ pip install -r requirements.txt
 |---|---|
 | `API_TOKEN` | توکن ربات از [@BotFather](https://t.me/BotFather) |
 | `OWNER_ID` | آیدی عددی مالک ربات از [@userinfobot](https://t.me/userinfobot) |
-| `CHANNEL_ID` | آیدی کانال جوین اجباری (مثال: `@mychannel`) |
+| `CHANNEL_ID` | آیدی کانال جوین اجباری (مثال: `@Abolfazl_rwm`) |
 | `CARD_NUMBER` | شماره کارت برای دریافت وجه |
 | `CARD_NAME` | نام صاحب کارت |
 | `REFERRAL_BONUS` | مقدار پاداش معرفی (پیش‌فرض ۵۰۰۰) |
