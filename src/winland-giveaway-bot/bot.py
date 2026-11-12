@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# Telegram: @Abolfazl_rwm
 """
 🤖 WinLand-style Giveaway & Raffle Bot — Professional Version
 Telegram Giveaway/Raffle Bot with Admin Panel, Multi-Giveaway, Referral & Points System
@@ -33,10 +35,10 @@ CONFIG = {
     
     "ADMIN_IDS": [123456789],  # آیدی عددی ادمین‌ها
     
-    "CHANNEL_USERNAME": "@YourChannel",  # کانال اصلی برای عضوگیری
+    "CHANNEL_USERNAME": "@Abolfazl_rwm",  # کانال اصلی برای عضوگیری
     "CHANNEL_ID": -1001234567890,  # آیدی عددی کانال
     
-    "SUPPORT_LINK": "https://t.me/your_support",
+    "SUPPORT_LINK": "https://t.me/Abolfazl_rwm",
     "BOT_USERNAME": "YourBot",  # یوزرنیم بات بدون @
     
     # تنظیمات گیو‌آوی

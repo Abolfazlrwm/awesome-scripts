@@ -1,5 +1,7 @@
 # 🎁 WinLand Giveaway Bot — ربات گیوای و قرعه‌کشی حرفه‌ای
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A **WinLand-style giveaway & raffle bot** with a points economy: run multiple
 giveaways at once, grow the channel with mandatory join + referrals, and draw 1–50
 winners fairly. Admin panel, participant tracking and SQLite storage — one clean
@@ -19,7 +21,7 @@ winners fairly. Admin panel, participant tracking and SQLite storage — one cle
 | 🎟 **Multi-giveaway** | up to 10 active giveaways, each with its own prize text, winners and participants |
 | 🏆 **1–50 winners** | fair random draw from actual participants, with per-winner announcements |
 | ⭐ **Points economy** | join bonus 25, daily bonus 10, **referral bonus 50** per invited friend |
-| 📢 **Mandatory channel join** | participation gated on `@YourChannel` membership (checked on demand) |
+| 📢 **Mandatory channel join** | participation gated on `@Abolfazl_rwm` membership (checked on demand) |
 | 🧲 **Referral engine** | every user gets a `?start=<id>` deep link; rewards are credited automatically |
 | 📊 **Status & participants** | live buttons for giveaway status and the participant list |
 | ⏳ **Anti-abuse** | 24h participation cooldown, max-active-giveaway caps |
@@ -40,7 +42,7 @@ Fill the `CONFIG` dict at the top of `bot.py`:
 CONFIG = {
     "BOT_TOKEN": "YOUR_BOT_TOKEN_HERE",   # از @BotFather
     "ADMIN_IDS": [123456789],             # آیدی عددی ادمین‌ها
-    "CHANNEL_USERNAME": "@YourChannel",   # کانال عضویت اجباری
+    "CHANNEL_USERNAME": "@Abolfazl_rwm",   # کانال عضویت اجباری
     "CHANNEL_ID": -1001234567890,
     "BOT_USERNAME": "YourBot",            # بدون @ — برای لینک رفرال
     ...
