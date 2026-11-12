@@ -1,5 +1,7 @@
 # 🏷 Member Tag Manager Bot — ربات مدیریت تگ اعضا
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A Telethon + Bot-API hybrid that gives your group **real member tags** (Telegram's `setChatMemberTag`), premium-emoji message relay, personal invite links with join counters, join-request approvals, and intro cards (`اسم - شهر - سن`). One Python file + SQLite.
 
 ترکیب Telethon و Bot API برای گروه‌ها — تگ واقعی اعضا با متد setChatMemberTag تلگرام، ریلی پیام‌های ادمین با ایموجی پرمیوم، لینک دعوت اختصاصی هر کاربر با شمارش ورود، تایید درخواست عضویت و کارت معرفی (اسم-شهر-سن). یک فایل پایتون + SQLite.
