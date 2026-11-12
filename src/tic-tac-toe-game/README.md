@@ -1,5 +1,7 @@
 # ❌⭕ OX — بازی دوز کلاسیک با هوش مصنوعی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 بازی دوز (Tic-Tac-Toe) کلاسیک، تک‌نفره در برابر هوش مصنوعی — با انیمیشن برد، دکمه‌ی شروع دوباره و صفحات جداگانه‌ی حریم خصوصی و قوانین استفاده.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg)

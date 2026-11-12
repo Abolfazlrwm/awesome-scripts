@@ -1,3 +1,4 @@
+// Telegram: @Abolfazl_rwm
 const cells = document.querySelectorAll('.cell');
 const status = document.querySelector('.status');
 const resultDiv = document.getElementById('result');
