@@ -1,5 +1,7 @@
 # 🌐 Channel Translate Worker — ربات ترجمه‌گر پست کانال (Cloudflare)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A **Cloudflare Worker** that adds live translate buttons to any channel post — forward a post to the bot, it stamps 🇮🇷 / 🇬🇧 / 🇷🇺 buttons under the original in your channel, and readers get instant Gemini-powered translations (Google fallback). Full owner panel, user accounts, per-user Gemini API keys and force-join — all state in Workers KV.
 
 یک Cloudflare Worker که دکمه‌های ترجمه زنده به پست‌های کانال اضافه می‌کند — پست را به پیوی ربات فوروارد کن؛ زیر همان پست در کانال دکمه‌های ترجمه می‌نشیند و خواننده‌ها ترجمه‌ی فوری با Gemini (با فالبک گوگل) می‌گیرند. پنل مالک، حساب کاربری، API اختصاصی و جوین اجباری — همه‌ی داده‌ها در KV.
