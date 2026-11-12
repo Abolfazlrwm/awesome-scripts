@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>TON NFT Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- TonConnect UI -->
+  <script src="https://unpkg.com/@tonconnect/ui@2.0.2/dist/tonconnect-ui.min.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #0b0e14;
+      color: #eef2f6;
+      padding-bottom: 100px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-header {
+      padding: 16px 16px 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: rgba(11, 14, 20, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .wallet-btn {
+      background: linear-gradient(135deg, #3f2b96, #6c4fc7);
+      border: none;
+      border-radius: 40px;
+      padding: 8px 18px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .wallet-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(63, 43, 150, 0.4);
+    }
+
+    .wallet-btn.connected {
+      background: linear-gradient(135deg, #0f7b3a, #1a9d4a);
+    }
+
+    .wallet-btn i {
+      font-size: 1rem;
+    }
+
+    .wallet-address {
+      font-size: 0.7rem;
+      opacity: 0.8;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 4px;
+      background: #1a1f29;
+      padding: 3px;
+      border-radius: 30px;
+      border: 1px solid #2a3140;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #8892b0;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .lang-btn.active {
+      background: #3f2b96;
+      color: white;
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: #ccd6f6;
+    }
+
+    .refresh-btn {
+      background: transparent;
+      border: none;
+      color: #8892b0;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: 0.3s;
+      padding: 4px 8px;
+      border-radius: 50%;
+    }
+
+    .refresh-btn:hover {
+      color: #ccd6f6;
+      transform: rotate(90deg);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .wallet-selector {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      background: #1a1f29;
+      padding: 4px 8px;
+      border-radius: 30px;
+      border: 1px solid #2a3140;
+    }
+
+    .wallet-selector select {
+      background: transparent;
+      border: none;
+      color: #eef2f6;
+      padding: 4px 8px;
+      outline: none;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .wallet-selector select option {
+      background: #1a1f29;
+      color: #eef2f6;
+    }
+
+    .stats-bar {
+      padding: 8px 16px;
+      max-width: 600px;
+      margin: 8px auto 0;
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      justify-content: space-around;
+      background: #1a1f29;
+      border-radius: 16px;
+      border: 1px solid #2a3140;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .stat-item .stat-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f0f4ff;
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.6rem;
+      color: #8892b0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-item .stat-label i {
+      font-size: 0.6rem;
+    }
+
+    .controls {
+      padding: 12px 16px 8px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 8px;
+      background: #1a1f29;
+      border-radius: 60px;
+      padding: 4px;
+      border: 1px solid #2a3140;
+    }
+
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 10px 16px;
+      color: #eef2f6;
+      outline: none;
+      font-size: 0.85rem;
+    }
+
+    .search-box input::placeholder {
+      color: #5a6a8a;
+    }
+
+    .search-box button {
+      background: #3f2b96;
+      border: none;
+      border-radius: 40px;
+      padding: 8px 18px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+
+    .search-box button:hover {
+      transform: scale(1.05);
+      background: #5a3fb8;
+    }
+
+    .sort-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 4px 0;
+      flex-wrap: nowrap;
+    }
+
+    .sort-btn {
+      background: #1a1f29;
+      border: 1px solid #2a3140;
+      border-radius: 40px;
+      padding: 5px 14px;
+      color: #8892b0;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: 0.3s;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .sort-btn i {
+      font-size: 0.65rem;
+    }
+
+    .sort-btn:hover,
+    .sort-btn.active {
+      background: #3f2b96;
+      color: white;
+      border-color: #3f2b96;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 16px;
+      padding: 12px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .nft-card {
+      background: #1a1f29;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+      transition: all 0.25s ease;
+      border: 1px solid #2a3140;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .nft-card:hover {
+      transform: translateY(-4px);
+      border-color: #5a6a8a;
+      box-shadow: 0 20px 32px rgba(0, 20, 40, 0.7);
+    }
+
+    .nft-card .card-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(63, 43, 150, 0.9);
+      padding: 2px 8px;
+      border-radius: 16px;
+      font-size: 0.55rem;
+      color: white;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 2;
+    }
+
+    .nft-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      background: #2a3140;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nft-image:hover {
+      transform: scale(1.02);
+    }
+
+    .nft-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #f0f4ff;
+    }
+
+    .nft-collection {
+      font-size: 0.65rem;
+      color: #8892b0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nft-collection i {
+      font-size: 0.55rem;
+    }
+
+    .nft-price {
+      margin-top: 6px;
+      background: #0f141e;
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #2f3a4b;
+      color: #b9d0ff;
+      width: fit-content;
+    }
+
+    .nft-price i {
+      color: #f0b34b;
+      font-size: 0.65rem;
+    }
+
+    .nft-price span {
+      font-weight: 600;
+      color: #e6edff;
+    }
+
+    .nft-owner {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid #2a3140;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.6rem;
+      color: #8892b0;
+    }
+
+    .nft-owner .owner-address {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #b9d0ff;
+      cursor: pointer;
+      padding: 1px 6px;
+      border-radius: 10px;
+      background: rgba(63, 43, 150, 0.15);
+      transition: 0.3s;
+      font-size: 0.6rem;
+    }
+
+    .nft-owner .owner-address:hover {
+      background: rgba(63, 43, 150, 0.35);
+    }
+
+    .nft-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 6px 8px;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 50px;
+    }
+
+    .action-btn.buy {
+      background: linear-gradient(135deg, #0f7b3a, #1a9d4a);
+      color: white;
+    }
+
+    .action-btn.buy:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(26, 157, 74, 0.3);
+    }
+
+    .action-btn.sell {
+      background: linear-gradient(135deg, #b8860b, #d4a017);
+      color: white;
+    }
+
+    .action-btn.sell:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+    }
+
+    .action-btn.offer {
+      background: linear-gradient(135deg, #1a3a6a, #2a5a9a);
+      color: white;
+    }
+
+    .action-btn.offer:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(42, 90, 154, 0.3);
+    }
+
+    .status-message {
+      text-align: center;
+      padding: 40px 20px;
+      color: #7a84a0;
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-message i {
+      font-size: 2.5rem;
+      color: #3a4a6a;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    .bottom-menu {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 400px;
+      background: rgba(20, 26, 38, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 6px 10px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 999;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .bottom-menu .menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: #7e8aa8;
+      font-size: 0.5rem;
+      gap: 2px;
+      padding: 4px 8px;
+      border-radius: 40px;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      min-width: 38px;
+    }
+
+    .bottom-menu .menu-item i {
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .bottom-menu .menu-item span {
+      font-weight: 500;
+      opacity: 0.7;
+      transition: 0.2s;
+      font-size: 0.5rem;
+    }
+
+    .bottom-menu .menu-item.active {
+      color: #b9d0ff;
+    }
+
+    .bottom-menu .menu-item.active i {
+      transform: translateY(-3px) scale(1.1);
+      color: #b9d0ff;
+      text-shadow: 0 0 16px rgba(100, 150, 255, 0.4);
+    }
+
+    .bottom-menu .menu-item:hover i {
+      transform: scale(1.15);
+      color: #d0ddff;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(31, 41, 58, 0.95);
+      padding: 10px 20px;
+      border-radius: 40px;
+      color: #b9d0ff;
+      font-weight: 500;
+      font-size: 0.8rem;
+      border: 1px solid #3a4a6a;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 90%;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      background: #1a1f29;
+      border-radius: 24px;
+      padding: 24px;
+      max-width: 400px;
+      width: 100%;
+      border: 1px solid #2a3140;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.8);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-header h2 {
+      font-size: 1.2rem;
+      color: #f0f4ff;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: #8892b0;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .modal-close:hover {
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modal-body .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .modal-body .input-group label {
+      font-size: 0.75rem;
+      color: #8892b0;
+    }
+
+    .modal-body .input-group input,
+    .modal-body .input-group select {
+      background: #0f141e;
+      border: 1px solid #2a3140;
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: #eef2f6;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .modal-body .input-group input:focus,
+    .modal-body .input-group select:focus {
+      border-color: #3f2b96;
+    }
+
+    .modal-body .input-group input::placeholder {
+      color: #5a6a8a;
+    }
+
+    .modal-footer {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-footer button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.85rem;
+    }
+
+    .modal-footer .btn-confirm {
+      background: linear-gradient(135deg, #0f7b3a, #1a9d4a);
+      color: white;
+    }
+
+    .modal-footer .btn-confirm:hover {
+      transform: scale(1.02);
+    }
+
+    .modal-footer .btn-cancel {
+      background: #2a3140;
+      color: #8892b0;
+    }
+
+    .modal-footer .btn-cancel:hover {
+      background: #3a4a6a;
+    }
+
+    ::-webkit-scrollbar { width: 4px; background: #141a24; }
+    ::-webkit-scrollbar-thumb { background: #2f3a4b; border-radius: 12px; }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        padding: 8px 12px;
+      }
+      .bottom-menu {
+        padding: 4px 6px;
+        width: calc(100% - 16px);
+        bottom: 12px;
+      }
+      .bottom-menu .menu-item {
+        min-width: 32px;
+        padding: 3px 4px;
+      }
+      .bottom-menu .menu-item i { font-size: 1.1rem; }
+      .bottom-menu .menu-item span { font-size: 0.45rem; }
+      .app-header h1 { font-size: 1.2rem; }
+      .wallet-btn { padding: 6px 12px; font-size: 0.7rem; }
+      .wallet-address { max-width: 70px; }
+      .stats-bar { gap: 8px; padding: 6px 12px; }
+      .stat-item .stat-value { font-size: 0.9rem; }
+      .controls { padding: 8px 12px; }
+      .search-box input { font-size: 0.8rem; padding: 8px 12px; }
+      .action-btn { font-size: 0.55rem; padding: 4px 6px; }
+      .modal { padding: 16px; margin: 10px; }
+      .wallet-selector select { font-size: 0.65rem; padding: 2px 4px; }
+    }
+
+    body.ltr { direction: ltr; }
+    body.ltr .nft-card .card-badge { right: auto; left: 6px; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <h1><i class="fas fa-store" style="margin-right: 6px; color: #7b93d0;"></i> <span id="pageTitle">بازار NFT</span></h1>
+    </div>
+    <div class="header-actions">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="fa" id="langFa">فا</button>
+        <button class="lang-btn" data-lang="en" id="langEn">En</button>
+      </div>
+      <button class="refresh-btn" id="refreshBtn"><i class="fas fa-sync-alt"></i></button>
+      
+      <!-- Wallet Selector -->
+      <div class="wallet-selector" id="walletSelector">
+        <i class="fas fa-wallet" style="color: #8892b0; font-size: 0.8rem;"></i>
+        <select id="walletSelect">
+          <!-- Options will be added dynamically -->
+        </select>
+      </div>
+      
+      <button class="wallet-btn" id="walletBtn">
+        <i class="fas fa-plug"></i>
+        <span id="walletText">اتصال ولت</span>
+        <span class="wallet-address" id="walletAddress"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-bar" id="statsBar">
+    <div class="stat-item">
+      <span class="stat-value" id="totalCount">0</span>
+      <span class="stat-label"><i class="fas fa-images"></i> <span id="totalLabel">مجموع</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="collectionCount">0</span>
+      <span class="stat-label"><i class="fas fa-layer-group"></i> <span id="collectionLabel">مجموعه</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="avgPrice">0</span>
+      <span class="stat-label"><i class="fas fa-coins"></i> <span id="avgLabel">میانگین قیمت</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value" id="walletBalance">0</span>
+      <span class="stat-label"><i class="fas fa-money-bill-wave"></i> <span id="balanceLabel">موجودی</span></span>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="جستجوی NFT ..." />
+      <button id="searchBtn"><i class="fas fa-search"></i> <span id="searchLabel">جستجو</span></button>
+    </div>
+    <div class="sort-row" id="sortRow">
+      <button class="sort-btn active" data-sort="default"><i class="fas fa-list"></i> <span class="sort-label">پیش‌فرض</span></button>
+      <button class="sort-btn" data-sort="name"><i class="fas fa-sort-alpha-down"></i> <span class="sort-label">نام</span></button>
+      <button class="sort-btn" data-sort="price_high"><i class="fas fa-arrow-up"></i> <span class="sort-label">قیمت (بیشترین)</span></button>
+      <button class="sort-btn" data-sort="price_low"><i class="fas fa-arrow-down"></i> <span class="sort-label">قیمت (کمترین)</span></button>
+      <button class="sort-btn" data-sort="recent"><i class="fas fa-clock"></i> <span class="sort-label">جدیدترین</span></button>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery" id="nftGallery">
+    <div class="status-message">
+      <i class="fas fa-spinner fa-pulse"></i>
+      <span id="loadingText">در حال بارگذاری NFT ها ...</span>
+    </div>
+  </div>
+
+  <!-- Bottom Menu -->
+  <nav class="bottom-menu">
+    <button class="menu-item active" data-tab="gallery">
+      <i class="fas fa-th-large"></i>
+      <span>گالری</span>
+    </button>
+    <button class="menu-item" data-tab="explore">
+      <i class="fas fa-compass"></i>
+      <span>اکتشاف</span>
+    </button>
+    <button class="menu-item" data-tab="wallet">
+      <i class="fas fa-wallet"></i>
+      <span>ولت</span>
+    </button>
+    <button class="menu-item" data-tab="analytics">
+      <i class="fas fa-chart-pie"></i>
+      <span>آمار</span>
+    </button>
+    <button class="menu-item" data-tab="settings">
+      <i class="fas fa-sliders-h"></i>
+      <span>تنظیمات</span>
+    </button>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">خرید NFT</h2>
+        <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <div class="input-group">
+          <label id="modalNftLabel">NFT</label>
+          <input type="text" id="modalNftName" disabled />
+        </div>
+        <div class="input-group">
+          <label id="modalPriceLabel">قیمت (TON)</label>
+          <input type="number" id="modalPrice" step="0.01" min="0" />
+        </div>
+        <div class="input-group">
+          <label id="modalActionLabel">نوع تراکنش</label>
+          <select id="modalAction">
+            <option value="buy">خرید</option>
+            <option value="sell">فروش</option>
+            <option value="offer">پیشنهاد</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="modalCancel">لغو</button>
+        <button class="btn-confirm" id="modalConfirm">تایید</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ============================================================
+      // CONFIG - Multiple Wallets
+      // ============================================================
+      const CONFIG = {
+        // آرایه‌ای از آدرس‌های ولت
+        wallets: [
+          {
+            name: 'ولت اصلی',
+            address: 'UQDhAKC1OW7eQzajufHbYU_xR7mL4bRmf7oZI8chU7EysQvv'
+          },
+          {
+            name: 'ولت دوم',
+            address: 'UQCIDJittMdK3CItmrCD1JpFnsuayMPkb-2kbx9IF3nmx4qa'
+          },
+          {
+            name: 'ولت سوم',
+            address: 'EQD4p4nZKw5kLgXPEJ9L4L4L4L4L4L4L4L4L4L4L4L4L4L4L4' // نمونه
+          }
+        ],
+        baseUrl: 'https://tonapi.io/v2',
+        manifestUrl: 'https://raw.githubusercontent.com/ton-connect/demo-dapp/main/public/tonconnect-manifest.json'
+      };
+
+      // ============================================================
+      // STATE
+      // ============================================================
+      let currentLang = 'fa';
+      let allNFTs = [];
+      let filteredNFTs = [];
+      let currentSort = 'default';
+      let searchQuery = '';
+      let walletConnected = false;
+      let walletAddress = '';
+      let walletBalance = '0';
+      let selectedNFT = null;
+      let connector = null;
+      let currentWalletIndex = 0; // اندیس ولت فعال
+
+      // ============================================================
+      // DOM Elements
+      // ============================================================
+      const gallery = document.getElementById('nftGallery');
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const refreshBtn = document.getElementById('refreshBtn');
+      const langFa = document.getElementById('langFa');
+      const langEn = document.getElementById('langEn');
+      const totalCount = document.getElementById('totalCount');
+      const collectionCount = document.getElementById('collectionCount');
+      const avgPrice = document.getElementById('avgPrice');
+      const walletBalanceEl = document.getElementById('walletBalance');
+      const walletBtn = document.getElementById('walletBtn');
+      const walletText = document.getElementById('walletText');
+      const walletAddressEl = document.getElementById('walletAddress');
+      const walletSelect = document.getElementById('walletSelect');
+      
+      // Modal
+      const modalOverlay = document.getElementById('modalOverlay');
+      const modalClose = document.getElementById('modalClose');
+      const modalCancel = document.getElementById('modalCancel');
+      const modalConfirm = document.getElementById('modalConfirm');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalNftName = document.getElementById('modalNftName');
+      const modalPrice = document.getElementById('modalPrice');
+      const modalAction = document.getElementById('modalAction');
+      const modalNftLabel = document.getElementById('modalNftLabel');
+      const modalPriceLabel = document.getElementById('modalPriceLabel');
+      const modalActionLabel = document.getElementById('modalActionLabel');
+
+      // ============================================================
+      // TRANSLATIONS
+      // ============================================================
+      const translations = {
+        fa: {
+          pageTitle: 'بازار NFT',
+          totalLabel: 'مجموع',
+          collectionLabel: 'مجموعه',
+          avgLabel: 'میانگین قیمت',
+          balanceLabel: 'موجودی',
+          searchPlaceholder: 'جستجوی NFT ...',
+          searchLabel: 'جستجو',
+          loadingText: 'در حال بارگذاری NFT ها ...',
+          noNFTs: 'هیچ NFT ای پیدا نشد',
+          error: 'خطا در بارگذاری NFT ها',
+          sortDefault: 'پیش‌فرض',
+          sortName: 'نام',
+          sortPriceHigh: 'قیمت (بیشترین)',
+          sortPriceLow: 'قیمت (کمترین)',
+          sortRecent: 'جدیدترین',
+          menuGallery: 'گالری',
+          menuExplore: 'اکتشاف',
+          menuWallet: 'ولت',
+          menuAnalytics: 'آمار',
+          menuSettings: 'تنظیمات',
+          owner: 'مالک',
+          collection: 'مجموعه',
+          price: 'قیمت',
+          unknown: 'نامشخص',
+          buy: 'خرید',
+          sell: 'فروش',
+          offer: 'پیشنهاد',
+          connectWallet: 'اتصال ولت',
+          connected: 'متصل شد',
+          buyNft: 'خرید NFT',
+          sellNft: 'فروش NFT',
+          offerNft: 'پیشنهاد قیمت',
+          nftLabel: 'NFT',
+          priceLabel: 'قیمت (TON)',
+          actionLabel: 'نوع تراکنش',
+          cancel: 'لغو',
+          confirm: 'تایید',
+          transactionSuccess: 'تراکنش با موفقیت انجام شد!',
+          transactionFailed: 'خطا در انجام تراکنش',
+          pleaseConnectWallet: 'لطفا ابتدا ولت خود را متصل کنید',
+          insufficientBalance: 'موجودی کافی نیست',
+          switchWallet: 'تغییر ولت',
+          walletLabel: 'انتخاب ولت'
+        },
+        en: {
+          pageTitle: 'NFT Market',
+          totalLabel: 'Total',
+          collectionLabel: 'Collections',
+          avgLabel: 'Avg Price',
+          balanceLabel: 'Balance',
+          searchPlaceholder: 'Search NFT ...',
+          searchLabel: 'Search',
+          loadingText: 'Loading NFTs ...',
+          noNFTs: 'No NFTs found',
+          error: 'Error loading NFTs',
+          sortDefault: 'Default',
+          sortName: 'Name',
+          sortPriceHigh: 'Price (High)',
+          sortPriceLow: 'Price (Low)',
+          sortRecent: 'Recent',
+          menuGallery: 'Gallery',
+          menuExplore: 'Explore',
+          menuWallet: 'Wallet',
+          menuAnalytics: 'Analytics',
+          menuSettings: 'Settings',
+          owner: 'Owner',
+          collection: 'Collection',
+          price: 'Price',
+          unknown: 'Unknown',
+          buy: 'Buy',
+          sell: 'Sell',
+          offer: 'Offer',
+          connectWallet: 'Connect Wallet',
+          connected: 'Connected',
+          buyNft: 'Buy NFT',
+          sellNft: 'Sell NFT',
+          offerNft: 'Make Offer',
+          nftLabel: 'NFT',
+          priceLabel: 'Price (TON)',
+          actionLabel: 'Transaction Type',
+          cancel: 'Cancel',
+          confirm: 'Confirm',
+          transactionSuccess: 'Transaction successful!',
+          transactionFailed: 'Transaction failed',
+          pleaseConnectWallet: 'Please connect your wallet first',
+          insufficientBalance: 'Insufficient balance',
+          switchWallet: 'Switch Wallet',
+          walletLabel: 'Select Wallet'
+        }
+      };
+
+      // ============================================================
+      // LANGUAGE FUNCTIONS
+      // ============================================================
+      function setLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        document.getElementById('pageTitle').textContent = t.pageTitle;
+        document.getElementById('totalLabel').textContent = t.totalLabel;
+        document.getElementById('collectionLabel').textContent = t.collectionLabel;
+        document.getElementById('avgLabel').textContent = t.avgLabel;
+        document.getElementById('balanceLabel').textContent = t.balanceLabel;
+        searchInput.placeholder = t.searchPlaceholder;
+        document.getElementById('searchLabel').textContent = t.searchLabel;
+        document.getElementById('loadingText').textContent = t.loadingText;
+
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+          const label = btn.querySelector('.sort-label');
+          const sortType = btn.dataset.sort;
+          const labels = {
+            'default': t.sortDefault,
+            'name': t.sortName,
+            'price_high': t.sortPriceHigh,
+            'price_low': t.sortPriceLow,
+            'recent': t.sortRecent
+          };
+          label.textContent = labels[sortType] || sortType;
+        });
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+          const span = item.querySelector('span');
+          const tab = item.dataset.tab;
+          const tabNames = {
+            'gallery': t.menuGallery,
+            'explore': t.menuExplore,
+            'wallet': t.menuWallet,
+            'analytics': t.menuAnalytics,
+            'settings': t.menuSettings
+          };
+          span.textContent = tabNames[tab] || tab;
+        });
+
+        if (walletConnected) {
+          walletText.textContent = t.connected;
+        } else {
+          walletText.textContent = t.connectWallet;
+        }
+
+        updateModalText();
+        updateWalletSelector();
+
+        document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
+        document.documentElement.lang = lang;
+        document.body.className = lang === 'en' ? 'ltr' : '';
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        renderNFTs(filteredNFTs);
+        updateStats(filteredNFTs);
+      }
+
+      function updateModalText() {
+        const t = translations[currentLang];
+        const action = modalAction.value;
+        const titles = {
+          'buy': t.buyNft,
+          'sell': t.sellNft,
+          'offer': t.offerNft
+        };
+        modalTitle.textContent = titles[action] || t.buyNft;
+        modalNftLabel.textContent = t.nftLabel;
+        modalPriceLabel.textContent = t.priceLabel;
+        modalActionLabel.textContent = t.actionLabel;
+        modalCancel.textContent = t.cancel;
+        modalConfirm.textContent = t.confirm;
+
+        const options = modalAction.querySelectorAll('option');
+        options.forEach(opt => {
+          const values = {
+            'buy': t.buy,
+            'sell': t.sell,
+            'offer': t.offer
+          };
+          opt.textContent = values[opt.value] || opt.value;
+        });
+      }
+
+      function updateWalletSelector() {
+        const t = translations[currentLang];
+        walletSelect.innerHTML = '';
+        CONFIG.wallets.forEach((wallet, index) => {
+          const option = document.createElement('option');
+          option.value = index;
+          const shortAddr = wallet.address.slice(0, 6) + '...' + wallet.address.slice(-4);
+          option.textContent = `${wallet.name} (${shortAddr})`;
+          if (index === currentWalletIndex) {
+            option.selected = true;
+          }
+          walletSelect.appendChild(option);
+        });
+      }
+
+      // ============================================================
+      // API FUNCTIONS
+      // ============================================================
+      async function fetchFromTonAPI(endpoint) {
+        const url = `${CONFIG.baseUrl}${endpoint}`;
+        try {
+          const response = await fetch(url, {
+            headers: { 'Accept': 'application/json' }
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return await response.json();
+        } catch (err) {
+          console.warn('TonAPI error:', err);
+          return null;
+        }
+      }
+
+      async function getMyNFTs(address) {
+        const data = await fetchFromTonAPI(`/accounts/${address}/nfts?limit=100`);
+        return data?.nft_items || [];
+      }
+
+      async function getWalletBalance(address) {
+        const data = await fetchFromTonAPI(`/accounts/${address}`);
+        return data?.balance || '0';
+      }
+
+      // ============================================================
+      // GET NFTs FROM ALL WALLETS
+      // ============================================================
+      async function getAllWalletsNFTs() {
+        const allItems = [];
+        for (const wallet of CONFIG.wallets) {
+          try {
+            const items = await getMyNFTs(wallet.address);
+            // اضافه کردن اطلاعات ولت به هر NFT
+            items.forEach(nft => {
+              nft._walletAddress = wallet.address;
+              nft._walletName = wallet.name;
+            });
+            allItems.push(...items);
+          } catch (error) {
+            console.warn(`Error loading NFTs for wallet ${wallet.name}:`, error);
+          }
+        }
+        return allItems;
+      }
+
+      // ============================================================
+      // WALLET CONNECT
+      // ============================================================
+      function initWalletConnect() {
+        try {
+          connector = new TonConnectUI({
+            manifestUrl: CONFIG.manifestUrl,
+            buttonRootId: 'walletBtn'
+          });
+
+          if (connector.connected) {
+            handleWalletConnection(connector.wallet);
+          }
+
+          connector.onStatusChange((wallet) => {
+            if (wallet) {
+              handleWalletConnection(wallet);
+            } else {
+              handleWalletDisconnection();
+            }
+          });
+
+        } catch (error) {
+          console.warn('TonConnect init error:', error);
+          walletBtn.addEventListener('click', simpleWalletConnect);
+        }
+      }
+
+      function handleWalletConnection(wallet) {
+        walletConnected = true;
+        walletAddress = wallet.account.address;
+        const t = translations[currentLang];
+        walletText.textContent = t.connected;
+        walletAddressEl.textContent = formatAddress(walletAddress);
+        walletBtn.classList.add('connected');
+        
+        getWalletBalance(walletAddress).then(balance => {
+          const bal = parseFloat(balance) / 1e9;
+          walletBalance = bal.toFixed(2);
+          walletBalanceEl.textContent = `${walletBalance} TON`;
+        });
+
+        showToast(`${t.connected}: ${formatAddress(walletAddress)}`);
+        loadNFTs();
+      }
+
+      function handleWalletDisconnection() {
+        walletConnected = false;
+        walletAddress = '';
+        const t = translations[currentLang];
+        walletText.textContent = t.connectWallet;
+        walletAddressEl.textContent = '';
+        walletBtn.classList.remove('connected');
+        walletBalanceEl.textContent = '0';
+        loadNFTs();
+      }
+
+      function simpleWalletConnect() {
+        const t = translations[currentLang];
+        if (walletConnected) {
+          handleWalletDisconnection();
+          return;
+        }
+
+        const demoAddress = CONFIG.wallets[currentWalletIndex].address;
+        walletAddress = demoAddress;
+        walletConnected = true;
+        walletText.textContent = t.connected;
+        walletAddressEl.textContent = formatAddress(demoAddress);
+        walletBtn.classList.add('connected');
+        walletBalanceEl.textContent = '100.00 TON';
+        showToast(`${t.connected}: ${formatAddress(demoAddress)}`);
+        loadNFTs();
+      }
+
+      function formatAddress(addr) {
+        if (!addr) return '';
+        if (addr.length <= 12) return addr;
+        return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+      }
+
+      // ============================================================
+      // SORT FUNCTIONS
+      // ============================================================
+      function sortNFTs(items, sortType) {
+        const sorted = [...items];
+        switch (sortType) {
+          case 'name':
+            return sorted.sort((a, b) => {
+              const nameA = (a.metadata?.name || a.name || '').toLowerCase();
+              const nameB = (b.metadata?.name || b.name || '').toLowerCase();
+              return nameA.localeCompare(nameB);
+            });
+          case 'price_high':
+            return sorted.sort((a, b) => getPrice(b) - getPrice(a));
+          case 'price_low':
+            return sorted.sort((a, b) => getPrice(a) - getPrice(b));
+          case 'recent':
+            return sorted.sort((a, b) => (b.index || 0) - (a.index || 0));
+          default:
+            return sorted;
+        }
+      }
+
+      function getPrice(nft) {
+        let price = 0;
+        const priceValue = nft.sale?.price || nft.price || nft.last_price || null;
+        if (priceValue) {
+          if (typeof priceValue === 'object' && priceValue.value) {
+            price = parseFloat(priceValue.value) / Math.pow(10, priceValue.decimals || 9);
+          } else if (typeof priceValue === 'number') {
+            price = priceValue;
+          } else if (typeof priceValue === 'string') {
+            price = parseFloat(priceValue) || 0;
+          }
+        }
+        return price;
+      }
+
+      function formatPrice(price) {
+        if (price === 0 || isNaN(price)) return translations[currentLang].unknown;
+        return `${price.toFixed(2)} TON`;
+      }
+
+      // ============================================================
+      // TOAST
+      // ============================================================
+      function showToast(message) {
+        const existing = document.querySelector('.toast');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 500);
+        }, 3000);
+      }
+
+      // ============================================================
+      // UPDATE STATS
+      // ============================================================
+      function updateStats(items) {
+        const total = items.length;
+        totalCount.textContent = total;
+
+        const collections = new Set();
+        items.forEach(nft => {
+          const col = nft.collection?.name || nft.collection?.metadata?.name || 'Unknown';
+          collections.add(col);
+        });
+        collectionCount.textContent = collections.size;
+
+        let totalPrice = 0;
+        let priceCount = 0;
+        items.forEach(nft => {
+          const price = getPrice(nft);
+          if (price > 0) {
+            totalPrice += price;
+            priceCount++;
+          }
+        });
+        const avg = priceCount > 0 ? (totalPrice / priceCount) : 0;
+        avgPrice.textContent = avg > 0 ? `${avg.toFixed(2)} TON` : translations[currentLang].unknown;
+      }
+
+      // ============================================================
+      // MODAL
+      // ============================================================
+      function openModal(nft, action = 'buy') {
+        const t = translations[currentLang];
+        selectedNFT = nft;
+        
+        modalNftName.value = nft.metadata?.name || nft.name || `NFT #${nft.index || ''}`;
+        const price = getPrice(nft);
+        modalPrice.value = price > 0 ? price : '';
+        modalAction.value = action;
+        
+        updateModalText();
+        modalOverlay.classList.add('show');
+      }
+
+      function closeModal() {
+        modalOverlay.classList.remove('show');
+        selectedNFT = null;
+      }
+
+      async function confirmTransaction() {
+        const t = translations[currentLang];
+        
+        if (!walletConnected) {
+          showToast(t.pleaseConnectWallet);
+          return;
+        }
+
+        const price = parseFloat(modalPrice.value);
+        if (!price || price <= 0) {
+          showToast('لطفا قیمت معتبر وارد کنید');
+          return;
+        }
+
+        const action = modalAction.value;
+
+        const btn = modalConfirm;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        
+        try {
+          const balance = parseFloat(walletBalance);
+          if (action === 'buy' && balance < price) {
+            showToast(t.insufficientBalance);
+            btn.disabled = false;
+            btn.textContent = t.confirm;
+            return;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          
+          if (action === 'buy') {
+            const newBalance = (parseFloat(walletBalance) - price).toFixed(2);
+            walletBalance = newBalance;
+            walletBalanceEl.textContent = `${newBalance} TON`;
+          } else if (action === 'sell') {
+            const newBalance = (parseFloat(walletBalance) + price).toFixed(2);
+            walletBalance = newBalance;
+            walletBalanceEl.textContent = `${newBalance} TON`;
+          }
+
+          showToast(`${t.transactionSuccess} (${action}: ${price} TON)`);
+          closeModal();
+          
+        } catch (error) {
+          console.error('Transaction error:', error);
+          showToast(t.transactionFailed);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = t.confirm;
+        }
+      }
+
+      // ============================================================
+      // RENDER
+      // ============================================================
+      function renderNFTs(items) {
+        const t = translations[currentLang];
+
+        if (!items || items.length === 0) {
+          gallery.innerHTML = `
+            <div class="status-message">
+              <i class="fas fa-image"></i>
+              <span>${t.noNFTs}</span>
+            </div>
+          `;
+          return;
+        }
+
+        let html = '';
+        for (const nft of items) {
+          const imageUrl = nft.metadata?.image || nft.metadata?.image_data ||
+            nft.metadata?.thumbnail || nft.metadata?.cover ||
+            'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect fill="%232a3140" width="100" height="100"/%3E%3Ctext x="50" y="55" font-size="30" text-anchor="middle" fill="%235a6a8a" font-family="sans-serif"%3E?%3C/text%3E%3C/svg%3E';
+
+          const name = nft.metadata?.name || nft.name || `NFT #${nft.index || ''}`;
+          const collectionName = nft.collection?.name || nft.collection?.metadata?.name || t.collection;
+          const price = getPrice(nft);
+          const priceStr = price > 0 ? formatPrice(price) : t.unknown;
+
+          const owner = nft.owner?.address || nft.address || '';
+          const shortOwner = owner ? `${owner.slice(0, 6)}...${owner.slice(-4)}` : '';
+
+          const nftAddress = nft.address || nft.id || '';
+          const collectionAddress = nft.collection?.address || '';
+          
+          // بررسی اینکه آیا NFT متعلق به ولت فعلی است یا خیر
+          const isOwner = owner === walletAddress || owner === CONFIG.wallets[currentWalletIndex]?.address;
+
+          // نمایش ولت مالک
+          const walletInfo = nft._walletName ? ` (${nft._walletName})` : '';
+
+          html += `
+            <div class="nft-card">
+              <div class="card-badge"><i class="fas fa-tag"></i> ${isOwner ? 'مالک' : 'NFT'}</div>
+              <img class="nft-image" src="${imageUrl}" alt="${name}" loading="lazy" 
+                   onclick="window.open('https://getgems.io/collection/${collectionAddress}/${nftAddress}', '_blank')"
+                   onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%232a3140%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%235a6a8a%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'">
+              <div class="nft-name">${name}</div>
+              <div class="nft-collection"><i class="fas fa-layer-group"></i> ${collectionName} ${walletInfo}</div>
+              <div class="nft-price"><i class="fas fa-coins"></i> <span>${priceStr}</span></div>
+              
+              ${owner ? `
+                <div class="nft-owner">
+                  <i class="fas fa-user"></i>
+                  <span class="owner-address" onclick="copyAddress('${owner}')">${shortOwner}</span>
+                </div>
+              ` : ''}
+              
+              <div class="nft-actions">
+                ${!isOwner ? `
+                  <button class="action-btn buy" onclick="openBuyModal('${nftAddress}')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>${t.buy}</span>
+                  </button>
+                  <button class="action-btn offer" onclick="openOfferModal('${nftAddress}')">
+                    <i class="fas fa-handshake"></i>
+                    <span>${t.offer}</span>
+                  </button>
+                ` : `
+                  <button class="action-btn sell" onclick="openSellModal('${nftAddress}')">
+                    <i class="fas fa-tag"></i>
+                    <span>${t.sell}</span>
+                  </button>
+                `}
+              </div>
+            </div>
+          `;
+        }
+
+        gallery.innerHTML = html;
+        updateStats(items);
+      }
+
+      // ============================================================
+      // GLOBAL FUNCTIONS
+      // ============================================================
+      window.copyAddress = function(address) {
+        navigator.clipboard.writeText(address).then(() => {
+          showToast('کپی شد!');
+        });
+      };
+
+      window.openBuyModal = function(address) {
+        const nft = allNFTs.find(n => (n.address || n.id) === address);
+        if (nft) openModal(nft, 'buy');
+      };
+
+      window.openSellModal = function(address) {
+        const nft = allNFTs.find(n => (n.address || n.id) === address);
+        if (nft) openModal(nft, 'sell');
+      };
+
+      window.openOfferModal = function(address) {
+        const nft = allNFTs.find(n => (n.address || n.id) === address);
+        if (nft) openModal(nft, 'offer');
+      };
+
+      // ============================================================
+      // LOAD NFTs
+      // ============================================================
+      async function loadNFTs() {
+        const t = translations[currentLang];
+        gallery.innerHTML = `
+          <div class="status-message">
+            <i class="fas fa-spinner fa-pulse"></i>
+            <span>${t.loadingText}</span>
+          </div>
+        `;
+
+        try {
+          let items;
+          if (walletConnected) {
+            // اگر ولت متصل است، فقط NFT های همان ولت را نشان بده
+            items = await getMyNFTs(walletAddress);
+          } else {
+            // اگر ولت متصل نیست، همه NFT های همه ولت‌ها را نشان بده
+            items = await getAllWalletsNFTs();
+          }
+          allNFTs = items;
+          applyFiltersAndSort();
+        } catch (error) {
+          console.error('Error loading NFTs:', error);
+          gallery.innerHTML = `
+            <div class="status-message">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>${t.error}</span>
+            </div>
+          `;
+        }
+      }
+
+      // ============================================================
+      // FILTER & SORT
+      // ============================================================
+      function applyFiltersAndSort() {
+        let filtered = allNFTs;
+        if (searchQuery.trim()) {
+          const query = searchQuery.trim().toLowerCase();
+          filtered = filtered.filter(nft => {
+            const name = (nft.metadata?.name || nft.name || '').toLowerCase();
+            const collection = (nft.collection?.name || nft.collection?.metadata?.name || '').toLowerCase();
+            return name.includes(query) || collection.includes(query);
+          });
+        }
+
+        filtered = sortNFTs(filtered, currentSort);
+        filteredNFTs = filtered;
+        renderNFTs(filtered);
+      }
+
+      // ============================================================
+      // EVENT LISTENERS
+      // ============================================================
+
+      // Language
+      langFa.addEventListener('click', () => setLanguage('fa'));
+      langEn.addEventListener('click', () => setLanguage('en'));
+
+      // Search
+      searchBtn.addEventListener('click', () => {
+        searchQuery = searchInput.value;
+        applyFiltersAndSort();
+      });
+
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          searchQuery = searchInput.value;
+          applyFiltersAndSort();
+        }
+      });
+
+      // Sort
+      document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentSort = this.dataset.sort;
+          applyFiltersAndSort();
+        });
+      });
+
+      // Refresh
+      refreshBtn.addEventListener('click', function() {
+        const icon = this.querySelector('i');
+        icon.style.transition = 'transform 0.8s ease';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(() => { 
+          icon.style.transform = 'rotate(0deg)'; 
+        }, 900);
+        loadNFTs();
+      });
+
+      // Wallet Selector
+      walletSelect.addEventListener('change', function() {
+        const index = parseInt(this.value);
+        currentWalletIndex = index;
+        const t = translations[currentLang];
+        const wallet = CONFIG.wallets[index];
+        showToast(`${t.switchWallet}: ${wallet.name}`);
+        
+        // به‌روزرسانی آدرس ولت در صورت اتصال
+        if (walletConnected) {
+          walletAddress = wallet.address;
+          walletAddressEl.textContent = formatAddress(wallet.address);
+          loadNFTs();
+        } else {
+          // اگر ولت متصل نیست، فقط NFT های ولت انتخاب شده را نمایش بده
+          loadNFTs();
+        }
+      });
+
+      // Wallet Connect
+      walletBtn.addEventListener('click', function() {
+        if (connector) {
+          if (connector.connected) {
+            connector.disconnect();
+          } else {
+            connector.connect();
+          }
+        } else {
+          simpleWalletConnect();
+        }
+      });
+
+      // Modal
+      modalClose.addEventListener('click', closeModal);
+      modalCancel.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+      });
+      modalConfirm.addEventListener('click', confirmTransaction);
+      modalAction.addEventListener('change', updateModalText);
+
+      // Bottom menu
+      document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+          document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+
+          const tab = this.dataset.tab;
+          if (tab !== 'gallery') {
+            const t = translations[currentLang];
+            const tabNames = {
+              'explore': t.menuExplore,
+              'wallet': t.menuWallet,
+              'analytics': t.menuAnalytics,
+              'settings': t.menuSettings
+            };
+            showToast(`${tabNames[tab] || tab} · ${currentLang === 'fa' ? 'به زودی' : 'coming soon'}`);
+          }
+        });
+      });
+
+      // ============================================================
+      // INIT
+      // ============================================================
+      // Initialize wallet selector
+      updateWalletSelector();
+
+      // Initialize wallet
+      initWalletConnect();
+
+      // Load NFTs
+      loadNFTs();
+
+    })();
+  </script>
+</body>
+</html>
