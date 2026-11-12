@@ -1,4 +1,4 @@
-# ویتوری رایگان | free v2ray — کپی ربات @ShopVipIr_Bot
+# ویتوری رایگان | free v2ray — فروشگاه کانفیگ با برند Abolfazl
 
 ربات فروشگاهی تلگرام (فروش کانفیگ V2Ray / OpenVPN، کیف پول، سرویس تست رایگان) — بازنویسی تمیز و از صفر بر اساس رفتار ظاهری ربات اصلی، با aiogram 3.x و SQLite در یک فایل `bot.py`.
 
@@ -33,7 +33,7 @@ python bot.py
 
 ## رفتارهای کلیدی
 
-- **گیت عضویت اجباری:** فقط گروه `@SATO_GP` (قابل تنظیم از پنل ادمین: روشن/خاموش + نام کانال).
+- **گیت عضویت اجباری:** فقط گروه `@Abolfazl_rwm` (قابل تنظیم از پنل ادمین: روشن/خاموش + نام کانال).
 - **منوی اصلی، فروشگاه** (V2ray ‏۲٬۰۰۰ تومان، Open vpn ‏۴٬۰۰۰، V2ray - حجمی ‏۱۵٬۰۰۰، V2ray 20gb ‏۵۰٬۰۰۰ تومان — همه ۳۰ روزه و قابل ویرایش از پنل ادمین).
 - **پرداخت کارت‌به‌کارت** با ارسال رسید عکس و تأیید/رد ادمین؛ شماره کارت پیش‌فرض `6219861430412378` به نام «عربزاده» (قابل ویرایش).
 - **پرداخت از کیف پول، کد تخفیف، کیف پول** (شارژ کارت‌به‌کارت با حداقل ۱۰٬۰۰۰ تومان، شارژ با استارز تلگرام XTR با نرخ ۵٬۰۰۰ تومان برای هر استار، کد هدیه، ادامهٔ پرداخت فاکتور پرداخت‌نشده).
@@ -56,7 +56,7 @@ python bot.py
 
 ## 🇬🇧 English summary
 
-# Free V2Ray Shop — replica of @ShopVipIr_Bot
+# Free V2Ray Shop — by Abolfazl
 
 A Telegram shop bot (selling **V2Ray / OpenVPN configs**, wallet, free trial service) — rewritten cleanly from scratch based on the original bot's visible behaviour, with **aiogram 3.x + SQLite** in a single `bot.py` file.
 

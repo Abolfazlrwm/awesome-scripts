@@ -1,11 +1,12 @@
+# Telegram: @Abolfazl_rwm
 # -*- coding: utf-8 -*-
 """
-ShopVipIr — from-scratch replica of @ShopVipIr_Bot («ویتوری رایگان | free v2ray»)
+Abolfazl V2Ray Shop — single-file shop bot («ویتوری رایگان | free v2ray»)
 ================================================================================
 Single-file bot built with aiogram 3.x + SQLite (stdlib sqlite3).
 
-A clean-room re-implementation of everything a normal user can SEE in
-@ShopVipIr_Bot: forced-join gate (@SATO_GP), main menu, V2Ray / OpenVPN shop,
+A clean-room re-implementation of everything a normal user can SEE in a full shop bot:
+forced-join gate, main menu, V2Ray / OpenVPN shop,
 card-to-card payment with receipt approval, wallet (card / Telegram Stars /
 gift code), free trial service, my-services with .ovpn config delivery,
 connection guide, referral, support tickets, plus a full admin panel.
@@ -76,7 +77,7 @@ def _load_dotenv(path: str = ".env") -> None:
 _load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-BOT_USERNAME = os.environ.get("BOT_USERNAME", "ShopVipIr_Bot")
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "Abolfazl_Bot")
 ADMIN_IDS = {
     int(x) for x in os.environ.get("ADMIN_IDS", "").replace(";", ",").split(",")
     if x.strip().lstrip("-").isdigit()
@@ -93,7 +94,7 @@ log = logging.getLogger("shopvip-replica")
 # Custom emoji IDs — EMPTY (no premium emojis observed in the original).
 # ---------------------------------------------------------------------------
 CUSTOM_EMOJI_IDS = {
-    # No premium/custom emoji anywhere in @ShopVipIr_Bot — all standard
+    # No premium/custom emoji anywhere in @Abolfazl_rwm — all standard
     # Unicode emoji. Keys kept only so btn() call-sites stay uniform with
     # the other replicas; every value is None on purpose.
     "shop": None,
@@ -265,7 +266,7 @@ def generate_config_text(service_name: str, plan_name: str, gb, user_id) -> str:
     visible delivery behaviour (a .ovpn document) is replicated here.
     """
     return (
-        "# ShopVipIr — placeholder config (TODO: real panel integration)\n"
+        "# Abolfazl — placeholder config (TODO: real panel integration)\n"
         f"# service: {service_name}\n"
         f"# plan: {plan_name} ({gb} GB)\n"
         f"# user: {user_id}\n"
@@ -300,11 +301,11 @@ DEFAULT_SETTINGS = {
     "card_number": "6219861430412378",
     "card_holder": "عربزاده",
     "gate_enabled": "1",
-    "gate_channel": "@SATO_GP",
+    "gate_channel": "@Abolfazl_rwm",
     "min_wallet_charge": "10000",
     "stars_rate": "5000",          # Toman per 1 Telegram Star
     "referral_reward": "2500",     # Toman, credited on referred first purchase
-    "support_url": "https://t.me/SATO_GP",  # placeholder — see REPORT.md
+    "support_url": "https://t.me/Abolfazl_rwm",  # placeholder — see REPORT.md
 }
 
 DEFAULT_PRODUCTS = [
@@ -642,7 +643,7 @@ GUIDE_TEXT = """📖 راهنمای اتصال سرویس‌ها
 💎 IR VIP SHOP | اتصال سریع و پایدار"""
 
 GATE_TEXT = ("📢 برای استفاده از ربات، ابتدا در کانال زیر عضو شوید:\n"
-             "@SATO_GP\n"
+             "@Abolfazl_rwm\n"
              "سپس دکمهٔ «بررسی عضویت» را بزنید.")
 
 
@@ -767,7 +768,7 @@ def referral_text(user_id, bot_username) -> str:
 # ---------------------------------------------------------------------------
 
 def kb_gate():
-    channel = get_setting("gate_channel", "@SATO_GP").lstrip("@")
+    channel = get_setting("gate_channel", "@Abolfazl_rwm").lstrip("@")
     return styled_kb([
         [B("📢 عضویت در کانال", url=f"https://t.me/{channel}")],
         [B("✅ بررسی عضویت", "check_join")],
@@ -872,7 +873,7 @@ def kb_stars():
 def kb_guide():
     return styled_kb([
         [B("📦 سرویس‌های من", "menu:myservices")],
-        [B("🎧 تلگرام", url=get_setting("support_url", "https://t.me/SATO_GP"))],
+        [B("🎧 تلگرام", url=get_setting("support_url", "https://t.me/Abolfazl_rwm"))],
         [B("🏠 منوی اصلی", "menu:main")],
     ])
 
@@ -977,7 +978,7 @@ async def is_gate_member(bot: Bot, user_id) -> bool:
         return True
     if get_setting("gate_enabled", "1") != "1":
         return True
-    channel = get_setting("gate_channel", "@SATO_GP")
+    channel = get_setting("gate_channel", "@Abolfazl_rwm")
     try:
         member = await bot.get_chat_member(channel, user_id)
         return member.status not in ("left", "kicked")
@@ -2349,7 +2350,7 @@ async def main() -> None:
         BotCommand(command="start", description="منوی اصلی"),
         BotCommand(command="help", description="راهنمای اتصال"),
     ])
-    log.info("ShopVipIr replica starting (admins: %s)", sorted(ADMIN_IDS))
+    log.info("Abolfazl replica starting (admins: %s)", sorted(ADMIN_IDS))
     await dp.start_polling(bot)
 
 
