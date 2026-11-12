@@ -1,5 +1,7 @@
 # 💬 Perfect AI Chat Bot — ربات چت عمومی کانال
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A structured PHP bot that turns your channel into a **live chat room**: members open a chat session with the bot and every message they send is instantly forwarded into the channel — with throttling, channel management, force join, broadcasts and an owner panel. Multi-file PHP (config / functions / handlers) with JSON storage.
 
 ربات PHP چندفایلی که کانال شما را به اتاق چت زنده تبدیل می‌کند — کاربران با ربات چت می‌کنند و پیام‌هایشان بلافاصله در کانال فوروارد می‌شود؛ همراه با مدیریت کانال، جوین اجباری، پیام همگانی و پنل مالک. داده‌ها در JSON ذخیره می‌شود.
