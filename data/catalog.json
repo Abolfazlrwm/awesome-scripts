@@ -2,17 +2,17 @@
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-12T09:39:43+03:30",
-  "count": 70,
+  "generated_at": "2026-11-12T10:51:36+03:30",
+  "count": 74,
   "stats": {
     "categories": {
-      "telegram-bot": 53,
-      "web-tool": 13,
+      "telegram-bot": 56,
+      "web-tool": 14,
       "desktop-tool": 4
     },
     "languages": {
-      "Python": 36,
-      "PHP": 10,
+      "Python": 38,
+      "PHP": 12,
       "HTML/CSS/JS": 12,
       "JavaScript": 3,
       "PowerShell": 1,
@@ -54,6 +54,17 @@
       "demo": null,
       "name_fa": "چت هوش مصنوعی",
       "description_fa": "چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل"
+    },
+    {
+      "slug": "ai-chat-webapp-php",
+      "path": "src/ai-chat-webapp-php",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "AI Chat Webapp PHP",
+      "description_en": "Single-file OpenRouter chat web app — conversation history, Markdown, light/dark theme, RTL UI",
+      "demo": null,
+      "name_fa": "چت هوش مصنوعی وب",
+      "description_fa": "چت‌اپ تک‌فایلی با OpenRouter — تاریخچه گفتگوها، Markdown، تم روشن/تیره و رابط فارسی"
     },
     {
       "slug": "ai-self-coding-bot",
@@ -254,6 +265,17 @@
       "description_fa": "توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل"
     },
     {
+      "slug": "giftix-premium-shop-bot",
+      "path": "src/giftix-premium-shop-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Giftix Premium Shop Bot",
+      "description_en": "Full GiftiX storefront — Stars/Premium/Gifts/TON with live Nobitex rates, profit engine, referral commission, tickets",
+      "demo": null,
+      "name_fa": "فروشگاه کامل GiftiX",
+      "description_fa": "فروش استارز/پریمیوم/گیفت/تون با نرخ زنده‌ی نوبیتکس، موتور سود، کمیسیون رفرال و تیکت پشتیبانی"
+    },
+    {
       "slug": "giftix-stars-shop-bot",
       "path": "src/giftix-stars-shop-bot",
       "category": "telegram-bot",
@@ -329,6 +351,17 @@
       "demo": null,
       "name_fa": "شبیه‌ساز زندگی",
       "description_fa": "بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان"
+    },
+    {
+      "slug": "likes-challenges-php-bot",
+      "path": "src/likes-challenges-php-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Likes Challenges PHP Bot",
+      "description_en": "Channel growth suite — auto-likes, like/speed challenges, coin economy with card & Zibal payments, web installer",
+      "demo": null,
+      "name_fa": "لایک و چالش کانال",
+      "description_fa": "لایک خودکار پست‌ها، چالش لایک و سرعتی، اقتصاد سکه با پرداخت کارت و زیبال، نصب‌کننده‌ی وب"
     },
     {
       "slug": "link-summarizer-bot",
@@ -494,6 +527,17 @@
       "demo": null,
       "name_fa": "ابزار اتوماسیون دسکتاپ",
       "description_fa": "تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان"
+    },
+    {
+      "slug": "pyrogram-selfbot-manager",
+      "path": "src/pyrogram-selfbot-manager",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Pyrogram Selfbot Manager",
+      "description_en": "Pyrogram account manager — phone login, live name clock (10 fonts), secretary & guards, session security",
+      "demo": null,
+      "name_fa": "مدیریت سلف‌بات Pyrogram",
+      "description_fa": "مدیریت اکانت با لاگین شماره‌ای، ساعت زنده روی اسم با ۱۰ فونت، منشی و گاردها، امنیت سشن"
     },
     {
       "slug": "qr-code-studio",

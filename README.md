@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**70 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**74 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-70-blue)
+![Projects](https://img.shields.io/badge/projects-74-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -39,7 +39,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 53
+### 🤖 Telegram bots — 56
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -48,6 +48,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [world-war-game-bot](./src/world-war-game-bot) | Python | Geopolitical war simulator — countries, NPC raids & nukes, oil/arms/stock markets, clans, VIP |
 | [military-alliance-bot](./src/military-alliance-bot) | Python | Military strategy game — land/air/navy forces, trade & war declarations, billion-cost alliances |
 | [giftix-stars-shop-bot](./src/giftix-stars-shop-bot) | Python | Stars/Premium/Gift/TON storefront — wallet & gateways, referrals, order tracking, tickets |
+| [giftix-premium-shop-bot](./src/giftix-premium-shop-bot) | Python | Full GiftiX storefront — Stars/Premium/Gifts/TON with live Nobitex rates, profit engine, referral commission, tickets |
 | [member-tag-manager-bot](./src/member-tag-manager-bot) | Python | Real member tags (setChatMemberTag), premium-emoji relay, personal invite links with join counters |
 | [channel-translate-worker](./src/channel-translate-worker) | JavaScript | Cloudflare Worker stamps fa/en/ru translate buttons onto channel posts (Gemini + Google fallback) |
 | [perfect-ai-chat-bot](./src/perfect-ai-chat-bot) | PHP | Chat-to-channel bridge — member messages forward into your channel, sessions, owner panel |
@@ -60,7 +61,9 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [winland-giveaway-bot](./src/winland-giveaway-bot) | Python | WinLand-style giveaways — multi-prize draws, referral points, mandatory channel join, admin panel |
 | [post-manager-bot](./src/post-manager-bot) | Python | Channel post manager with colored inline buttons (Bot API 7.10+ styles) and live preview |
 | [channel-likes-bot](./src/channel-likes-bot) | Python | Reposts anything sent to the bot into your channel with a live one-per-user like button |
+| [likes-challenges-php-bot](./src/likes-challenges-php-bot) | PHP | Channel growth suite — auto-likes, like/speed challenges, coin economy with card & Zibal payments, web installer |
 | [telegram-selfbot-panel](./src/telegram-selfbot-panel) | Python | 42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler |
+| [pyrogram-selfbot-manager](./src/pyrogram-selfbot-manager) | Python | Pyrogram account manager — phone login, live name clock (10 fonts), secretary & guards, session security |
 | [multi-account-manager](./src/multi-account-manager) | Python | Multi-account control center — sync mode, operation workers, per-account DBs, owner panel |
 | [iran-market-rate-bot](./src/iran-market-rate-bot) | Python | Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list |
 | [emoji-forge-bot](./src/emoji-forge-bot) | Python | Custom emoji pack rebranding (TGS/WEBM) — pipeline, tests, systemd deploy |
@@ -97,12 +100,13 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [lottery-giveaway-bot](./src/lottery-giveaway-bot) | Python | Giveaways with mandatory join, referrals, admin panel |
 | [poll-vote-bot](./src/poll-vote-bot) | Python | Polls with live vote buttons, rendered result cards, CSV export — no framework |
 
-### 🌐 Web tools — 13
+### 🌐 Web tools — 14
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
 | [wheel-of-actions](./src/wheel-of-actions) | HTML/CSS/JS | Spin-the-wheel task prioritizer | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/) |
 | [twitter-media-api](./src/twitter-media-api) | PHP | Tweet URL → media JSON — guest-token auth, GraphQL TweetDetail, all photo/video variants |
+| [ai-chat-webapp-php](./src/ai-chat-webapp-php) | PHP | Single-file OpenRouter chat web app — conversation history, Markdown, light/dark theme, RTL UI |
 | [caller-lookup-app](./src/caller-lookup-app) | HTML/CSS/JS | Persian spam-caller lookup — search a number, see labels & community reports | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/) |
 | [backend-dev-portfolio](./src/backend-dev-portfolio) | HTML/CSS/JS | Single-file dark portfolio for backend & bot developers — zero dependencies | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/) |
 | [ton-nft-marketplace](./src/ton-nft-marketplace) | HTML/CSS/JS | TON Connect NFT marketplace UI — gallery, buy modal, fa/en language toggle | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/) |
@@ -172,7 +176,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (53)
+#### 🤖 ربات‌های تلگرام (56)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -181,6 +185,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🌍 ربات جنگ جهانی](./src/world-war-game-bot) | Python | شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP |
 | [🎖 ربات نبرد و اتحاد نظامی](./src/military-alliance-bot) | Python | استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی |
 | [⭐ فروشگاه استارز GiftiX](./src/giftix-stars-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت |
+| [🛒 فروشگاه کامل GiftiX](./src/giftix-premium-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/تون با نرخ زنده‌ی نوبیتکس، موتور سود، کمیسیون رفرال و تیکت پشتیبانی |
 | [🏷 مدیریت تگ اعضا](./src/member-tag-manager-bot) | Python | تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود |
 | [🌐 ترجمه‌گر پست کانال](./src/channel-translate-worker) | JavaScript | دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker |
 | [💬 چت عمومی کانال](./src/perfect-ai-chat-bot) | PHP | پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک |
@@ -193,7 +198,9 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🎁 گیوای وین‌لند](./src/winland-giveaway-bot) | Python | گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین |
 | [🎨 مدیریت پست رنگی](./src/post-manager-bot) | Python | مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار |
 | [❤️ لایک پست کانال](./src/channel-likes-bot) | Python | هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک |
+| [❤️ لایک و چالش کانال](./src/likes-challenges-php-bot) | PHP | لایک خودکار پست‌ها، چالش لایک و سرعتی، اقتصاد سکه با پرداخت کارت و زیبال، نصب‌کننده‌ی وب |
 | [🎛 سلف‌بات پنل‌دار](./src/telegram-selfbot-panel) | Python | سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی |
+| [🤖 مدیریت سلف‌بات Pyrogram](./src/pyrogram-selfbot-manager) | Python | مدیریت اکانت با لاگین شماره‌ای، ساعت زنده روی اسم با ۱۰ فونت، منشی و گاردها، امنیت سشن |
 | [👥 مدیریت چند اکانت همزمان](./src/multi-account-manager) | Python | مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک |
 | [💸 نرخ لحظه‌ای بازار](./src/iran-market-rate-bot) | Python | نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار |
 | [🎨 اموجی فورج AI](./src/emoji-forge-bot) | Python | ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd |
@@ -230,12 +237,13 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🎰 قرعه‌کشی و گیوای](./src/lottery-giveaway-bot) | Python | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل |
 | [🗳 نظرسنجی و رأی‌گیری](./src/poll-vote-bot) | Python | نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک |
 
-#### 🌐 ابزارهای وب (13)
+#### 🌐 ابزارهای وب (14)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
 | [🎡 Wheel of Actions](./src/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/) | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه |
 | [🐦 API مدیا توییتر](./src/twitter-media-api) | PHP | لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو |
+| [💬 چت هوش مصنوعی وب](./src/ai-chat-webapp-php) | PHP | چت‌اپ تک‌فایلی با OpenRouter — تاریخچه گفتگوها، Markdown، تم روشن/تیره و رابط فارسی |
 | [📱 مزاحم‌یاب](./src/caller-lookup-app) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/) | HTML/CSS/JS | جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران |
 | [🧑‍💻 رزومه بک‌اند](./src/backend-dev-portfolio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/) | HTML/CSS/JS | رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس |
 | [💎 مارکت‌پلیس NFT تون](./src/ton-nft-marketplace) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/) | HTML/CSS/JS | اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی |
