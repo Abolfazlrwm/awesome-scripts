@@ -1,5 +1,7 @@
 # 🎰 Lottery & Giveaway Bot | ربات قرعه‌کشی و گیوای
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![aiogram](https://img.shields.io/badge/aiogram-3.x-2CA5E0?logo=telegram&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
