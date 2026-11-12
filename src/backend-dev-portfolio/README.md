@@ -1,5 +1,7 @@
 # 🧑‍💻 Backend Dev Portfolio — رزومه‌ی تک‌فایلی توسعه‌دهنده بک‌اند
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A zero-dependency **single-file portfolio** for backend / bot developers — hero section, about, tools & skills, contact links, all in one dark responsive `index.html` you can drop on any static host (GitHub Pages, cPanel, S3).
 
 رزومه‌ی تک‌فایلی و بدون وابستگی برای توسعه‌دهندگان بک‌اند و ربات‌نویس — بخش معرفی، ابزارها و مهارت‌ها و راه‌های ارتباطی در یک `index.html` تیره و ریسپانسیو که روی هر هاست استاتیک مستقیم بالا می‌آید.
