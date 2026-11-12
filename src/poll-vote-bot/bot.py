@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# Telegram: @Abolfazl_rwm
 """Poll & Vote Bot — نظرسنجی و رأی‌گیری برای تلگرام.
 
 A dependency-light Telegram bot for building polls inside groups and private chats:

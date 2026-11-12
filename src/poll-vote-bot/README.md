@@ -1,5 +1,7 @@
 # 🗳 Poll & Vote Bot — ربات نظرسنجی و رأی‌گیری
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A complete Telegram bot for building polls with **live counters and rendered result
 cards** — no framework, plain `requests` long-polling, one SQLite file. Easy to audit,
 easy to extend, works in groups and private chats.
