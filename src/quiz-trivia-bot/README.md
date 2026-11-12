@@ -1,5 +1,7 @@
 # 🎯 ربات کوییز و مسابقه (Quiz & Trivia Bot)
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 سوالات چهارگزینه‌ای توی گروه می‌پرسه، اولین نفری که جواب درست بده امتیاز می‌گیره، و یک لیدربورد کامل برای هر گروه نگه می‌داره.
 
 ![Java](https://img.shields.io/badge/Java-21+-ED8B00.svg)
