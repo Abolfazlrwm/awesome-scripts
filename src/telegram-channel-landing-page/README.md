@@ -1,5 +1,7 @@
 # 📢 Telegram Channel Landing Page | صفحه‌ی فرود کانال تلگرام
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white)
 ![Responsive](https://img.shields.io/badge/Responsive-Yes-success)
