@@ -1,5 +1,7 @@
 # 💎 TON NFT Marketplace — مارکت‌پلیس NFT روی تون
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A **TON-connect NFT marketplace UI** in one HTML file — connect a TON wallet (tonconnect-ui), browse the NFT gallery, inspect card details, list/buy with TON pricing, and switch between Persian/English. Perfect starter dApp for TON collections.
 
 رابط مارکت‌پلیس NFT با اتصال TON در یک فایل HTML — اتصال والت با tonconnect-ui، گالری NFT، جزئیات کارت، خرید و لیست‌کردن با قیمت TON و سوییچ فارسی/انگلیسی. نقطه‌ی شروع عالی برای dApp کالکشن‌های تون.
