@@ -1,5 +1,7 @@
 # 🏙 City Builder Bot — ربات شهرساز
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A deep **city-building strategy game** for Telegram — one big Python file on SQLite. Grow a settlement from a village into a metropolis: research a technology tree, balance happiness against taxes, construct buildings with realistic costs, sign diplomacy and trade agreements with other mayors, and roll with random world events.
 
 بازی استراتژیک شهرسازی برای تلگرام در یک فایل پایتون روی SQLite — درخت فناوری، شادی و مالیات، ساخت‌وساز، دیپلماسی و قرارداد تجارت با شهردارهای دیگر و رویدادهای تصادفی.

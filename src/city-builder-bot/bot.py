@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 import logging
 import sqlite3
 import re
@@ -183,7 +184,7 @@ def init_db():
                 value TEXT
             )
         """)
-        c.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('required_channel', '@YourChannelUsername')")
+        c.execute("INSERT OR IGNORE INTO settings (key, value) VALUES ('required_channel', '@Abolfazl_rwm')")
         
         # Market Trades table
         c.execute("""
@@ -1383,8 +1384,8 @@ def process_offline_production(user_id: int):
 # ---------------------------------------------------------
 async def check_force_join(user_id: int, context: ContextTypes.DEFAULT_TYPE) -> bool:
     """Checks if the user has joined the mandatory channel."""
-    channel = get_setting('required_channel', '@YourChannelUsername')
-    if not channel or channel == "@YourChannelUsername" or not channel.startswith("@"):
+    channel = get_setting('required_channel', '@Abolfazl_rwm')
+    if not channel or channel == "@Abolfazl_rwm" or not channel.startswith("@"):
         return True
     try:
         member = await context.bot.get_chat_member(chat_id=channel, user_id=user_id)
