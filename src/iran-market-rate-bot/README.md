@@ -32,7 +32,7 @@ python main.py
 ```
 
 1. Create a bot with [@BotFather](https://t.me/BotFather) → put the token in `.env`.
-2. Optional: set `FOOTER=@YourHandle` — it is printed on every rendered image.
+2. Optional: set `FOOTER=@Abolfazl_rwm` — it is printed on every rendered image.
 3. Send any price question to your bot. Fonts download automatically on first run.
 
 ## 📖 Examples
@@ -81,7 +81,7 @@ python main.py
 ```
 
 1. از [@BotFather](https://t.me/BotFather) یک ربات بساز و توکنش رو در `.env` بگذار.
-2. اختیاری: `FOOTER=@YourHandle` — امضای پایین همه کارت‌هاست.
+2. اختیاری: `FOOTER=@Abolfazl_rwm` — امضای پایین همه کارت‌هاست.
 3. هر سؤال قیمتی رو به ربات بفرست. فونت‌ها در اولین اجرا خودکار دانلود می‌شن.
 
 ## 📖 مثال‌ها
