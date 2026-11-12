@@ -1,5 +1,7 @@
 # 🎖 Military Alliance Bot — ربات نبرد و اتحاد نظامی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A heavyweight **military strategy game** — pick a real country (USA, Iran, Turkey…), command land / air / naval forces, run arms shops and import-export trading, declare wars, launch percentage-based attacks, and form mega-alliances that cost billions. A 21-state ConversationHandler drives the whole flow in one Python file.
 
 بازی استراتژی نظامی سنگین‌وزن — کشورت را انتخاب کن، نیروی زمینی/هوایی/دریایی فرمان بده، بازار تسلیحات و تجارت واردات/صادرات بساز، اعلام جنگ کن و اتحادهای میلیاردی تشکیل بده. همه‌چیز با یک ConversationHandler ۲۱ مرحله‌ای.
