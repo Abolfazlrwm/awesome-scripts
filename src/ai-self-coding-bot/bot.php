@@ -1,4 +1,5 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // این فایل به صورت داینامیک توسط هوش مصنوعی تکمیل می‌شود.
 $string = file_get_contents("php://input");
 $update = json_decode($string, true);
@@ -19,6 +20,6 @@ function bot($method, $datas=[]){
 $chat_id = $update['message']['chat']['id'] ?? null;
 $message = $update['message']['text'] ?? null;
 
-// --- کدهای تولید شده توسط فرهاد از اینجا به بعد اضافه می‌شوند ---
+// --- کدهای تولید شده توسط ابوالفضل از اینجا به بعد اضافه می‌شوند ---
 
 

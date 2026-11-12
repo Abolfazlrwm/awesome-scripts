@@ -1,5 +1,7 @@
 # 🤖 AI Self-Coding Bot — ربات خودساز با هوش مصنوعی
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A wild experiment: a PHP Telegram bot that **writes its own code**. Message the owner bot starting with its name — «قابلیت جدید اضافه کن…» or «ارور لاگ رو بررسی کن» — and it calls OpenRouter (Llama-3-70B), gets new PHP back, and appends it into its own `bot.php`, then reports back. Bug-fix mode even feeds the host `error_log` tail to the model.
 
 یک آزمایش جالب: ربات تلگرام PHP که کد خودش را خودش می‌نویسد — پیام‌تان را با نام ربات شروع کنید («قابلیت جدید…» یا «ارور لاگ رو بررسی کن»)؛ ربات به OpenRouter وصل می‌شود (Llama-3-70B)، PHP می‌گیرد و به انتهای `bot.php` خودش اضافه می‌کند و نتیجه را گزارش می‌دهد. حالت رفع باگ حتی انتهای error_log هاست را هم برای مدل می‌فرستد.
@@ -25,18 +27,18 @@ A wild experiment: a PHP Telegram bot that **writes its own code**. Message the 
 cd src/ai-self-coding-bot
 export BOT_TOKEN="123:ABC..."       # توکن ربات
 export OWNER_ID="123456789"         # فقط مالک می‌تواند برنامه‌نویسی کند
-export OPENROUTER_KEY="sk-or-..."   # در farhad.php یا متغیر محیطی
-# وبهوک را روی farhad.php ست کنید (کنترلر اصلی):
-curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<host>/farhad.php"
+export OPENROUTER_KEY="sk-or-..."   # در abolfazl.php یا متغیر محیطی
+# وبهوک را روی abolfazl.php ست کنید (کنترلر اصلی):
+curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://<host>/abolfazl.php"
 ```
 
-حالا در پیوی ربات بنویسید: «پسرم فرهاد یک دستور /help جدید اضافه کن» — و بقیه‌اش با AI!
+حالا در پیوی ربات بنویسید: «پسرم ابوالفضل یک دستور /help جدید اضافه کن» — و بقیه‌اش با AI!
 
 ## 📁 Files — فایل‌ها
 
 ```
 ai-self-coding-bot/
-├── farhad.php           # کنترلر: درخواست → OpenRouter → تزریق کد
+├── abolfazl.php           # کنترلر: درخواست → OpenRouter → تزریق کد
 ├── bot.php              # فایل هدف که AI کدش را کامل می‌کند
 └── docs/preview.png
 ```

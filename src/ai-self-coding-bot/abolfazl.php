@@ -1,11 +1,12 @@
 <?php
+// Telegram: @Abolfazl_rwm
 // =======================================================
 // تنظیمات اصلی - اختصاصی شده با اطلاعات شما
 // =======================================================
 define('API_KEY', getenv('BOT_TOKEN') ?: 'توکن ربات'); 
 define('OPENROUTER_KEY', ''); 
 define('OWNER_ID', (int) (getenv('OWNER_ID') ?: 0)); 
-define('BOT_NAME', 'پسرم فرهاد');
+define('BOT_NAME', 'پسرم ابوالفضل');
 define('TARGET_FILE', 'bot.php'); 
 define('ERROR_LOG_FILE', 'error_log');
 
