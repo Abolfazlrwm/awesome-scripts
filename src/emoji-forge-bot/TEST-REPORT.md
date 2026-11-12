@@ -178,7 +178,7 @@ api.telegram.org از این محیط کار می‌کند، ولی توکن و�
 - تست‌ها: **۶۳ آزمایش، همه پاس** (۲ آزمایش جدید ویرایش TGS و فونت).
 - تصحیح ادعای قبلی: نام برند را می‌توان داخل TGS گذاشت — نه به‌صورت رستر،
   بلکه به‌صورت لایه شکل برداری: حروف فونت TrueType با fontTools به مسیرهای
-  Lottie (کوادراتیک به کیوبیک) تبدیل می‌شوند و به‌عنوان لایه «E30TZ Brand»
+  Lottie (کوادراتیک به کیوبیک) تبدیل می‌شوند و به‌عنوان لایه «Abolfazl_rwm Brand»
   بالای انیمیشن می‌نشینند. نمونه فایل ۰۰۱: +۶۵۸ بایت، هنوز زیر ۶۴KB.
 - حذف واقعی: tgs_remove_layers لایه‌های لوگو را از JSON حذف می‌کند، نه فقط
   پنهان؛ لایه‌های پدر لایه‌های دیگر فقط پنهان می‌شوند تا انیمیشن نشکند.
@@ -221,7 +221,7 @@ api.telegram.org از این محیط کار می‌کند، ولی توکن و�
   کی‌فریمی هم بازرنگی می‌شوند (قبلاً رد می‌شدند).
 - تغییر اصلی ۲ — جایگزینی دقیق لوگو: باکس روی‌صفحه لوگوی قبلی از ترکیب
   کامل زنجیره تبدیل (لایه + والدها + پیش‌کمپ، با نمونه‌برداری کی‌فریم)
-  محاسبه می‌شود و متن E30TZ با اندازه‌ای که آن باکس را در عرض و ارتفاع
+  محاسبه می‌شود و متن Abolfazl_rwm با اندازه‌ای که آن باکس را در عرض و ارتفاع
   پر کند (۲۴ تا ۲۲۰) در همان‌جا می‌نشیند؛ فقط در سطح اصلی، بدون لایه
   داخل asset (مشکوکِ شکست v3). سه باگ رندر که با گرید دیده شد و رفع شد:
   (الف) لایه متن آخرِ لیست بود و در Lottie زیر همه شکل‌ها می‌رفت —
@@ -264,7 +264,7 @@ api.telegram.org از این محیط کار می‌کند، ولی توکن و�
   می‌گذاشت؛ هم چیدمان (stacking) را می‌شکست و هم رابطهٔ والد/انیمیشن را از دست
   می‌داد.
 - پیاده‌سازی (`src/emoji_forge/v5.py`، حالت `"v5"` در `pipeline.py`):
-  لایهٔ متن برداری E30TZ دقیقاً در شاخصِ لایهٔ لوگوی قبلی، در همان scope
+  لایهٔ متن برداری Abolfazl_rwm دقیقاً در شاخصِ لایهٔ لوگوی قبلی، در همان scope
   (سطح بالا یا همان asset — شامل comp_2 برای بنرهای ۱۷–۱۹)، با همان والد،
   با کپیِ عین ks (موقعیت، anchor، مقیاس، چرخش — شامل ۱۸۰ درجه، شفافیت، همهٔ
   کی‌فریم‌ها) و همان ip/op جایگزین می‌شود. اگر خود لوگو والدِ لایه‌های دیگر
@@ -277,7 +277,7 @@ api.telegram.org از این محیط کار می‌کند، ولی توکن و�
   کامل مقیاس والد/پری‌کامپ حل می‌شود؛ بدون clamp قدیمی ۵۴–۱۱۰ (دقیق بودن مهم‌تر
   است). برای لوگوهای متنی (SVN/اینترنت) لبهٔ چپ متن با لبهٔ چپ لوگوی قبلی
   تراز می‌شود، نه مرکز — چون مرکزِ متن بنر خارج از قاب است و تراز مرکزی
-  «E30TZ» را کاملاً خارج از قاب می‌انداخت (باگِ دیده‌شده در رندر v5 اولیهٔ
+  «Abolfazl_rwm» را کاملاً خارج از قاب می‌انداخت (باگِ دیده‌شده در رندر v5 اولیهٔ
   فایل ۰۱۷). بقیهٔ v4 حفظ شده: بازرنگی انتخابی تم (آبی→قرمز، سوژه‌ها حفظ)،
   حذف شکل مشترک پک، هرس لایه‌های خالی ty=4، اعتبارسنجی.
 - باگ‌های زنجیرهٔ ماتریس که در مسیر v5 پیدا و اصلاح شد (در `v4.py` و `v5.py`):
@@ -298,7 +298,7 @@ api.telegram.org از این محیط کار می‌کند، ولی توکن و�
   رندرهای اصل در برابر v5 در ۰/۲۵/۵۰/۷۵/۱۰۰٪ در ‎/tmp/v5_qa/‎
   (`file_NN_orig_vs_v5.png` + `v5_midframe_grid.png`) با چشم بررسی شد:
   فایل ۰۰۱ مثلث خاکستری v4 دیگر نیست (لایهٔ emblem جایگزین شد)؛ فایل ۰۰۹
-  جلو E30TZ در جای مثلث بزرگ و پشت گوشی E30TZ کوچک در جای لوگوی کوچک؛
+  جلو Abolfazl_rwm در جای مثلث بزرگ و پشت گوشی Abolfazl_rwm کوچک در جای لوگوی کوچک؛
   فایل‌های ۱۷–۱۹ «E3» دقیقاً در جای «SV» قبلی؛ فایل ۰۰۴ شکل مورب روی متن
   مانده (چیدمانِ درست، برخلاف v4)؛ فایل‌های ۱۷–۱۹ نشانگر (cursor) روی متن
   مانده است. نمونه‌های ks عیناً برابر تأیید شد (فایل‌های ۱۳، ۲۰، ۹، ۱:
@@ -309,7 +309,7 @@ api.telegram.org از این محیط کار می‌کند، ولی توکن و�
   نقطه‌ای می‌خواهد).
 - موارد صادقانهٔ باقی‌مانده: فایل ۰۱۱ متن دقیق ولی کوچک (اندازه ۱۶) در جای
   نشان عمودی TON — طبق مشخصات عمداً بزرگ نشده است. فایل ۰۱۵ متن دقیق ولی
-  کوچک (اندازه ۱۱) در جای $SVN. فایل‌های ۱۷–۱۹ فقط بخش چپ «E30TZ» (حدود
+  کوچک (اندازه ۱۱) در جای $SVN. فایل‌های ۱۷–۱۹ فقط بخش چپ «Abolfazl_rwm» (حدود
   «E3») در قاب دیده می‌شود، دقیقاً مثل «SV» قبلی که فقط بخش چپش دیده می‌شد —
   این وفاداری به جای لوگوی قبلی است، نه باگ؛ اگر کاربر نام کامل را خوانا
   بخواهد، باید جای/اندازهٔ بنر را عمداً تغییر داد (خارج از مشخصات v5).
@@ -395,7 +395,7 @@ clamped to doc op. File 005's 4.02 s duration remains a warning only
 - Validator: 0 blocked files in v6 finals; v5 file 016 reconstruction
   flagged with 3 issues (regression test).
 - QA (scripts/qa_v5.py against v6 dirs): pack-common shapes 0 in all
-  20, E30TZ present in all 20, blue pixels ~0.000 in 18 files (file
+  20, Abolfazl_rwm present in all 20, blue pixels ~0.000 in 18 files (file
   006 flame blue preserved by design). Renders: /tmp/v6_qa/
   file_NN_orig_vs_v5.png, midframe grid /tmp/v6_qa/v6_midframe_grid.png
   (copy ~/workspace/v6_midframe_grid.png).
@@ -405,12 +405,12 @@ clamped to doc op. File 005's 4.02 s duration remains a warning only
 - Backup: ~/workspace/Emoji-Forge-AI-v25-2026-10-29.tar.gz.
 - NOT verified: Telegram-side rendering, live publish.
 
-## v7 — Accuracy audit & repair + EHSAN logo (2026-10-29)
+## v7 — Accuracy audit & repair + Abolfazl logo (2026-10-29)
 
 User verdict on v6 (09:08): some layers that should NOT have been
 deleted were deleted (file 011's spinning coin named explicitly),
 classification "not precise enough", animations still wrong. Same
-message supplied a new logo (`logo.png`, EHSAN wordmark + E30TZ) with
+message supplied a new logo (`logo.png`, Abolfazl wordmark + Abolfazl_rwm) with
 a new controlling rule that OVERRIDES the v5 exact-size rule for the
 brand element: the logo is always BIG and readable — target on-screen
 width >= 70% of canvas (358px) unless the old logo was already wider.
@@ -418,7 +418,7 @@ width >= 70% of canvas (358px) unless the old logo was already wider.
 ### Logo vectorisation (scripts/trace_logo.py)
 - Cropped to the alpha bbox (2917x1269), traced the alpha mask with
   VTracer 0.6.15 (binary/spline) into SVG, converted to Lottie bezier
-  subpaths in `src/emoji_forge/ehsan_logo_shapes.json` (512-wide local
+  subpaths in `src/emoji_forge/abolfazl_logo_shapes.json` (512-wide local
   space). Two converter bugs found and fixed by rendering, not by
   assumption: VTracer's per-path `translate()` transforms were being
   dropped, and hole winding must be normalised by signed area
@@ -476,8 +476,8 @@ original-vs-v6 difference frames in /tmp/v7_qa/diff/.
   CDC (inside the badge disc). Secondary slots keep the old logo's
   exact on-screen size; the big rule applies to the main element.
 - Everything else follows v5 (verbatim ks / index / scope / parent)
-  + v6 normalisation, extended to the "EHSAN Logo" name; the
-  validator's brand-layer rules now also match "EHSAN".
+  + v6 normalisation, extended to the "Abolfazl Logo" name; the
+  validator's brand-layer rules now also match "Abolfazl".
 
 ### Logo size per file (on-screen width at the reference frame)
 Target: max(358px, old logo width). Centre: old logo's centre,
@@ -490,7 +490,7 @@ text behaved, at the user's requested size.
 ### Animation fidelity, numeric (scripts/fidelity_v7.py)
 Old logo vs brand element, every 5th frame, full transform chain.
 centre/traj = max centre deviation / max trajectory deviation after
-removing the median offset (px). v6 = text, v7 = EHSAN logo.
+removing the median offset (px). v6 = text, v7 = Abolfazl logo.
 
 | file | old W | logo W | shift | v6 centre/traj | v7 centre/traj | v7 rot | v7 opa |
 |---|---|---|---|---|---|---|---|
@@ -538,7 +538,7 @@ Structural causes, found and addressed:
   frame-for-frame through the full parent/precomp chain.
 
 ### Validation / tests / QA
-- Validator (improved, EHSAN-aware): 0 blocked on all 20 finals;
+- Validator (improved, Abolfazl-aware): 0 blocked on all 20 finals;
   1 warning total (file 005 duration 4.02s — the original pack's own
   file, warning by design).
 - Sizes: 11,613–50,920 bytes (all < 64KB; the traced logo adds
@@ -549,7 +549,7 @@ Structural causes, found and addressed:
   square/frame kept on 013, disc + secondary on 017, alternating
   slot on 016).
 - QA (scripts/qa_v7.py): pack-common signatures remaining 0/20;
-  EHSAN Logo present 20/20; blue fraction -> ~0.000 in 18 files
+  Abolfazl Logo present 20/20; blue fraction -> ~0.000 in 18 files
   (file 006 flame stays blue by design — subject preservation;
   file 011 0.008 from the boy's shirt). Per-file orig-vs-v7 strips
   and the midframe grid in /tmp/v7_qa/ (grid also at
@@ -583,7 +583,7 @@ Structural causes, found and addressed:
 
 ## v8 — Scale correction: precise contain-fit (2026-10-29)
 
-User verdict on v7 (09:59): the EHSAN logo is "way too big — the
+User verdict on v7 (09:59): the Abolfazl logo is "way too big — the
 scales must be measured precisely so it fits in the frame and is
 logical in shape, appearance and subject". This SUPERSEDES v7's
 always-big rule (>=358px). v8's rule, for every brand element
@@ -598,7 +598,7 @@ always-big rule (>=358px). v8's rule, for every brand element
 - Small results are correct now: precision beats size.
 
 Method: v8 does NOT rebuild from originals. `src/emoji_forge/v8.py`
-transforms the v7 finals — only each "EHSAN Logo" group is
+transforms the v7 finals — only each "Abolfazl Logo" group is
 re-solved (scripts/build_v8.py). A canonical diff that erases logo
 content on both sides proves the non-logo content of every v8
 final is IDENTICAL to its v7 final (audit repairs, restored coin
@@ -664,7 +664,7 @@ chain scales the old element the same way.)
   instance whose box sits off-canvas, so it reads as overflow by
   construction; through the on-canvas instances the logo renders
   inside the banner (see strips).
-- QA (scripts/qa_v8.py): pack-common signatures 0/20, EHSAN logo
+- QA (scripts/qa_v8.py): pack-common signatures 0/20, Abolfazl logo
   present 20/20, blue fraction ~0.000 in 18 files (file 006 flame
   blue by design, file 011 0.008 from the boy's shirt). Banner
   white-disc cleanliness: 0 dark pixels inside the disc interior
@@ -715,16 +715,16 @@ the running bot was NOT restarted, and no token was used by this build.
   with status/quota buttons + preset buttons + free numeric input
   via awaiting state, and commands /users /approve /reject /block
   /unblock /quota /admin.
-- Bot branding (branding.py): "TZ Emojis" / "EHSAN • E30TZ" in the
+- Bot branding (branding.py): "Abolfazl" / "Abolfazl • @Abolfazl_rwm" in the
   welcome and help/about texts, ZIP/report captions, and publish
   completion messages. Set-title rule: a user/plan-provided title is
   kept exactly with NO suffix; only the bot-generated default title
-  gets " • TZ Emojis". Owner-only /apply_branding calls setMyName
-  ("TZ Emojis | ایموجی‌ساز"), setMyShortDescription,
+  gets " • Abolfazl". Owner-only /apply_branding calls setMyName
+  ("Abolfazl | ایموجی‌ساز"), setMyShortDescription,
   setMyDescription and setMyCommands — coded and mock-tested, NOT
   executed. User outputs keep the user's own brand; the admin
   credit toggle (settings.py, default OFF) only adds the standard
-  watermark mechanism with "TZ Emojis" for users who have not set
+  watermark mechanism with "Abolfazl" for users who have not set
   their own watermark.
 - Generic audit (audit.py): pack-agnostic classification —
   pack-common geometry is PRIMARY, generic brand-name patterns are
@@ -745,7 +745,7 @@ the running bot was NOT restarted, and no token was used by this build.
   strip engine; raster text font is selectable (image_engine
   FONT_STYLES: bold_sans/serif/mono, cycled from advanced settings).
   v7/v8 engines were parameterised for arbitrary logo assets with
-  default arguments preserving the owner's EHSAN behaviour exactly.
+  default arguments preserving the owner's Abolfazl behaviour exactly.
 - Robustness: publish_single_file on the bot (v6 repair plan wired)
   with the validator gate before upload for TGS + 3s spacing +
   retry_after; startup self-check (selfcheck.py, no network) prints

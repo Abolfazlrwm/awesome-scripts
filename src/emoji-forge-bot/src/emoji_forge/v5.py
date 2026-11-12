@@ -683,7 +683,7 @@ def _make_text_group(shapes, offset, stroke_w=2.0, stroke_rgb=(0.0, 0.0, 0.0)):
          "a": {"a": 0, "k": [0, 0]}, "s": {"a": 0, "k": [100, 100]},
          "r": {"a": 0, "k": 0}, "o": {"a": 0, "k": 100},
          "sk": {"a": 0, "k": 0}, "sa": {"a": 0, "k": 0}, "nm": "Transform"}],
-        "nm": "E30TZ", "bm": 0, "hd": False}
+        "nm": "Abolfazl_rwm", "bm": 0, "hd": False}
 
 
 def _resolve_parent(doc: dict, scope, layers, layer: dict, deleted_inds: set):
@@ -1074,7 +1074,7 @@ def process_tgs_v5(data: bytes, brand, hide_names: set, item_index: int = 0,
                         # TEXT logos read left-to-right: align the LEFT
                         # edge, not the centre. The old banner text's
                         # centre is off-frame right (box 390->1267);
-                        # centre-aligning a shorter "E30TZ" puts it
+                        # centre-aligning a shorter "Abolfazl_rwm" puts it
                         # entirely off-frame (v5 file 017 invisible).
                         # Left-edge alignment keeps the readable start
                         # exactly where the old text's start was.

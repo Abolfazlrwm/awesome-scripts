@@ -26,7 +26,7 @@ def run_self_check(data_dir: str) -> tuple[bool, list]:
             lines.append(f"data dir {sub or '.'}: FAILED ({exc})")
 
     shapes = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                          "ehsan_logo_shapes.json")
+                          "abolfazl_logo_shapes.json")
     try:
         with open(shapes, encoding="utf-8") as fh:
             payload = json.load(fh)

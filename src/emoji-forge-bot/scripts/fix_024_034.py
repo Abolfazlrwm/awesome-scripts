@@ -126,7 +126,7 @@ def fix_024():
     for layer in doc.get("layers") or []:
         if "Brand" in str(layer.get("nm")):
             shapes, _w = text_to_lottie_shapes(
-                "TZ Emojis",
+                "Abolfazl",
                 "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
                 54.0)
             layer["shapes"] = shapes

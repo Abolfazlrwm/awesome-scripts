@@ -18,7 +18,7 @@ EMOJI_FORGE_TOKEN='<توکن>' .venv/bin/python run.py
 
 ```
 [forge] self-check OK: ... (یا PROBLEMS با دلیل مشخص)
-[forge] bot running as @tzemoji_ai (id 9071017807)
+[forge] bot running as @Abolfazl_rwm (id 9071017807)
 ```
 
 ## ۲) اعمال برند ربات (فقط مالک، یک بار)
@@ -29,7 +29,7 @@ EMOJI_FORGE_TOKEN='<توکن>' .venv/bin/python run.py
 /apply_branding
 ```
 
-این دستور نام ربات («TZ Emojis | ایموجی‌ساز»)، توضیح کوتاه، توضیح
+این دستور نام ربات («Abolfazl | ایموجی‌ساز»)، توضیح کوتاه، توضیح
 کامل و فهرست دستورها را با متدهای رسمی تلگرام تنظیم می‌کند و نتیجه
 هر چهار بخش را در چت گزارش می‌دهد. این دستور فقط برای مالک کار
 می‌کند و خودکار اجرا نمی‌شود.

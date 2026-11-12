@@ -1,6 +1,6 @@
 <?php
 /**
- * TZ Emojis Bot (Emoji Forge) — پنل وضعیت سبک برای cPanel
+ * Abolfazl Bot (Emoji Forge) — پنل وضعیت سبک برای cPanel
  *
  * Tiny status panel. Login with PANEL_KEY (stored in ../.env by the
  * installer). NEVER prints secret values — only which keys are set.
@@ -65,7 +65,7 @@ $dataPresent = is_dir($ROOT . '/data');
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>پنل وضعیت TZ Emojis</title>
+<title>پنل وضعیت Abolfazl</title>
 <style>
 body{font-family:Tahoma,Vazirmatn,sans-serif;background:#0f2a1d;color:#e9f5ee;margin:0;padding:1rem}
 .card{max-width:720px;margin:1rem auto;background:#173b29;border-radius:14px;padding:1.4rem}
@@ -82,7 +82,7 @@ a{color:#ffd166}
 </head>
 <body>
 <div class="card">
-<h1>📊 پنل وضعیت ربات TZ Emojis</h1>
+<h1>📊 پنل وضعیت ربات Abolfazl</h1>
 
 <?php if ($panelKey === ''): ?>
   <div class="warn">⚠️ در فایل .env هیچ PANEL_KEY تنظیم نشده است؛ پنل قفل است.

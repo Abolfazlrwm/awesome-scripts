@@ -1,9 +1,9 @@
-"""Trace the user's EHSAN logo PNG to Lottie vector shapes (v7).
+"""Trace the user's Abolfazl logo PNG to Lottie vector shapes (v7).
 
 Reads data/projects/forge-20261029-054353-3749ea/logo.png, crops to the
 alpha bbox, traces the alpha mask with VTracer (binary/spline), converts
 SVG paths to Lottie bezier subpaths (holes reversed for nonzero-winding
-fills) and writes src/emoji_forge/ehsan_logo_shapes.json in a 512-wide
+fills) and writes src/emoji_forge/abolfazl_logo_shapes.json in a 512-wide
 local space (origin at the logo bbox top-left). Also renders a fidelity
 check (traced vector vs original PNG alpha) to /tmp/logo_work/.
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 LOGO_PNG = Path("data/projects/forge-20261029-054353-3749ea/logo.png")
-OUT_JSON = Path("src/emoji_forge/ehsan_logo_shapes.json")
+OUT_JSON = Path("src/emoji_forge/abolfazl_logo_shapes.json")
 WORK = Path("/tmp/logo_work")
 
 TOKEN_RE = re.compile(r"([MLCQZ])|(-?\d*\.?\d+(?:e[-+]?\d+)?)")

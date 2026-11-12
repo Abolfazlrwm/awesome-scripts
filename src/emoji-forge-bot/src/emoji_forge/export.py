@@ -22,7 +22,7 @@ def build_report(project_id: str, set_name: str, results: list) -> dict:
 
 def report_markdown(report: dict) -> str:
     lines = [
-        f"# گزارش خروجی TZ Emojis — پروژه {report['project_id']}",
+        f"# گزارش خروجی Abolfazl — پروژه {report['project_id']}",
         "",
         f"پک: {report.get('set_name') or 'نامشخص'} — موفق: {report['ok']} / کل: {report['total']} / ناموفق: {report['failed']}",
         "",

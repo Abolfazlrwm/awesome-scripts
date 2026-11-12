@@ -39,7 +39,7 @@ def scene_box(doc, mark):
 
 
 def logo_boxes(doc):
-    """On-screen boxes of the 'E30TZ Logo Black' groups in a final."""
+    """On-screen boxes of the 'Abolfazl_rwm Logo Black' groups in a final."""
     out = []
 
     def walk_items(items, mat, frame):
@@ -47,7 +47,7 @@ def logo_boxes(doc):
             if not isinstance(it, dict) or it.get("ty") != "gr":
                 continue
             m2 = v5._mat_mul(mat, v5._group_tr_matrix(it, frame))
-            if it.get("nm") == "E30TZ Logo Black":
+            if it.get("nm") == "Abolfazl_rwm Logo Black":
                 subs = [s for s in (it.get("it") or [])
                         if not (isinstance(s, dict) and s.get("ty") == "tr")]
                 try:

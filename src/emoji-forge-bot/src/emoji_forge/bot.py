@@ -56,8 +56,8 @@ from emoji_forge.storage import (
 )
 from emoji_forge.telegram_api import TelegramApi
 
-# v9: the bot's own identity texts come from branding.py (TZ Emojis /
-# EHSAN • E30TZ). User outputs keep the USER's brand — see branding.py.
+# v9: the bot's own identity texts come from branding.py (Abolfazl /
+# Abolfazl • @Abolfazl_rwm). User outputs keep the USER's brand — see branding.py.
 START_TEXT = welcome_text()
 
 HELP_TEXT = help_text()
@@ -599,12 +599,12 @@ class Bot:
         self.send(chat_id, f"{verb_fa}\n" + self.registry.describe_user(rec),
                   admin_user_keyboard(uid))
         if status == "approved":
-            self.send(uid, "✅ دسترسی شما به TZ Emojis تأیید شد! /start را بزنید و شروع کنید.",
+            self.send(uid, "✅ دسترسی شما به Abolfazl تأیید شد! /start را بزنید و شروع کنید.",
                       main_menu())
         elif status == "rejected":
-            self.send(uid, "❌ درخواست دسترسی شما به TZ Emojis رد شد.")
+            self.send(uid, "❌ درخواست دسترسی شما به Abolfazl رد شد.")
         elif status == "blocked":
-            self.send(uid, "⛔ دسترسی شما به TZ Emojis مسدود شد.")
+            self.send(uid, "⛔ دسترسی شما به Abolfazl مسدود شد.")
 
     def _handle_admin_callback(self, query: dict, data: str, chat_id: int, user_id: int) -> bool:
         """Owner-only admin callbacks. Returns True when handled.
@@ -657,7 +657,7 @@ class Bot:
             self.send(chat_id,
                       f"🏷 اعتبار ربات در خروجی کاربران {state} شد.\n"
                       "وقتی روشن است، فقط برای کاربرانی که واترمارک خودشان را تنظیم نکرده‌اند، "
-                      "واترمارک «TZ Emojis» با سازوکار استاندارد واترمارک اضافه می‌شود. "
+                      "واترمارک «Abolfazl» با سازوکار استاندارد واترمارک اضافه می‌شود. "
                       "برند خود کاربر هرگز بازنویسی نمی‌شود.",
                       admin_menu())
         else:
@@ -1478,7 +1478,7 @@ class Bot:
             me = self.api.get_me()
             set_name = build_set_name(project_id, me.get("username", ""))
             # v9 title rule: a title the user/plan set is kept exactly;
-            # only the bot-generated default gets the " • TZ Emojis"
+            # only the bot-generated default gets the " • Abolfazl"
             # suffix (see branding.publish_title).
             title = publish_title(job.get("set_title"), project_id)
             # v10 checkpoint: resume where a previous run stopped.

@@ -103,7 +103,7 @@ def _dedupe_keyframes(node) -> int:
 
 
 def _normalise_brand_text(doc: dict) -> dict:
-    """Normalise every 'E30TZ Brand' layer to the accepted v3 shape.
+    """Normalise every 'Abolfazl_rwm Brand' layer to the accepted v3 shape.
     Returns counts: clamped, o_added, r_added, baked."""
     doc_op = doc.get("op") or 0
     stats = {"clamped": 0, "o_added": 0, "r_added": 0, "baked": 0}
@@ -111,7 +111,7 @@ def _normalise_brand_text(doc: dict) -> dict:
     scopes += [a.get("layers") or [] for a in doc.get("assets") or []]
     for layers in scopes:
         for layer in layers:
-            if "E30TZ" not in str(layer.get("nm", "")):
+            if "Abolfazl_rwm" not in str(layer.get("nm", "")):
                 continue
             if doc_op and (layer.get("op") or 0) > doc_op:
                 layer["op"] = doc_op

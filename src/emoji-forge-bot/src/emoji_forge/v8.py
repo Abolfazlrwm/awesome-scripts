@@ -1,6 +1,6 @@
 """v8 engine: SCALE CORRECTION of v7 — precise contain-fit logos.
 
-Why v8 exists (user feedback on v7, 2026-10-29 09:59): the EHSAN
+Why v8 exists (user feedback on v7, 2026-10-29 09:59): the Abolfazl
 logo at v7's "always big" rule (>=358px wide) is "way too big — the
 scales must be measured precisely so it fits in the frame and is
 logical in shape, appearance and subject". That instruction
@@ -20,7 +20,7 @@ SUPERSEDES the big rule. v8's rule, for every brand element:
     CORRECT now: precise and logical beats big.
 
 Implementation strategy: v8 does NOT rebuild from originals. It
-transforms the v7 finals — the only thing replaced is each "EHSAN
+transforms the v7 finals — the only thing replaced is each "Abolfazl
 Logo" group, re-solved for contain-fit. Everything else in the v7
 finals (audit repairs, restored coin/disc layers, theme recolour,
 the banner disc fix, file 016's proven-empty comp_1) is preserved
@@ -50,7 +50,7 @@ from .v7 import (
     classify_group, element_trajectory, make_logo_group, median_visible,
 )
 
-LOGO_NAME = "EHSAN Logo"
+LOGO_NAME = "Abolfazl Logo"
 
 
 # ------------------------------------------------------------------
@@ -69,7 +69,7 @@ def contain_fit_scale(unit_w: float, unit_h: float,
 def _logo_screen_size(matrix, k, logo_w=None, logo_h=None):
     """On-screen axis-aligned size of the logo rect (0,0)-(W*k, H*k)
     under `matrix`. Sizes are exactly linear in k. W/H default to
-    the EHSAN asset; v9 user logos pass their own traced dims."""
+    the Abolfazl asset; v9 user logos pass their own traced dims."""
     logo_w = LOGO_W if logo_w is None else float(logo_w)
     logo_h = LOGO_H if logo_h is None else float(logo_h)
     corners = [(0, 0), (logo_w * k, 0), (0, logo_h * k), (logo_w * k, logo_h * k)]
@@ -90,7 +90,7 @@ def solve_logo_group_fit(matrix, box_w, box_h, desired_centre, clamp,
     final guard shrinks k if rounding pushed either dimension over
     the box: the result never overflows the box.
     logo_asset (v9): a traced user logo {"width","height","subpaths",
-    "name"}; defaults to the owner's EHSAN asset.
+    "name"}; defaults to the owner's Abolfazl asset.
     """
     _asset = logo_asset or {}
     logo_w = _asset.get("width")
@@ -193,7 +193,7 @@ def _group_has_stroke(group) -> bool:
 
 def enumerate_logo_elements(doc, logo_name: str = LOGO_NAME):
     """Every brand logo element in a v7/v8 final doc (named
-    `logo_name` — "EHSAN Logo" for the owner's asset, "Brand Logo"
+    `logo_name` — "Abolfazl Logo" for the owner's asset, "Brand Logo"
     for a v9 user's traced logo).
 
     Returns [{kind: "layer"|"group", scope, layer, group_index,
@@ -347,7 +347,7 @@ _LOGO_TOKEN = {"ty": "gr", "nm": LOGO_NAME, "it": [], "__logo__": True}
 
 
 def canonical_without_logo(doc):
-    """Deep copy of a doc with every EHSAN logo group's CONTENT
+    """Deep copy of a doc with every Abolfazl logo group's CONTENT
     erased (paths/fill/stroke/transform), so two builds can be
     diffed on everything EXCEPT the logo groups themselves."""
     doc = copy.deepcopy(doc)

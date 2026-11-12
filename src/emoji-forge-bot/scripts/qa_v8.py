@@ -5,7 +5,7 @@ Renders each original and each v8 final at 0/25/50/75/100% into
 /tmp/v8_qa/file_NN_orig_vs_v8.png, builds the midframe grid at
 /tmp/v8_qa/v8_midframe_grid.png (copied to ~/workspace/), and checks:
   (a) pack-common watermark signatures remaining in finals (must be 0)
-  (b) an "EHSAN Logo" brand element present in every final
+  (b) an "Abolfazl Logo" brand element present in every final
   (c) blue-pixel fraction down vs original (theme recolour intact)
   (d) fitted logo median width (from the v8 fidelity measurement)
   (e) banner white-disc cleanliness (017-019): dark pixels inside

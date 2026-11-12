@@ -22,7 +22,7 @@ from emoji_forge.v7 import BIG_TARGET_W, process_tgs_v7  # noqa: E402
 from emoji_forge.validate_tgs import validate_tgs_bytes  # noqa: E402
 
 # Banner files: the old SVN text was 877px wide (aspect ~6.7), so the
-# default "never narrower than the old logo" rule made the EHSAN logo
+# default "never narrower than the old logo" rule made the Abolfazl logo
 # (aspect ~2.3) 381px tall and it towered over the banner. These files
 # use the standard big target width (358px, ~156px tall) instead.
 BANNER_FILES = {17, 18, 19}

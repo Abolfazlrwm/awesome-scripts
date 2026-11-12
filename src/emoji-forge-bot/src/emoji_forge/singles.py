@@ -51,7 +51,7 @@ def _logo_was_placed(out_bytes: bytes) -> bool:
                 return True
     return False
 
-SINGLES_SET_TITLE = "ایموجی‌های من | TZ Emojis"
+SINGLES_SET_TITLE = "ایموجی‌های من | Abolfazl"
 
 # Telegram rejects a createNewStickerSet whose name is invalid or
 # already occupied; these substrings in the (redacted) error text mark

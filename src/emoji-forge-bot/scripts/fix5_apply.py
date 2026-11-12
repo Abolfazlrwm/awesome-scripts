@@ -1,4 +1,4 @@
-"""Fix-5 apply: put the E30TZ logo into the ORIGINAL mark slots.
+"""Fix-5 apply: put the Abolfazl_rwm logo into the ORIGINAL mark slots.
 
 Modes:
   SHELL — rebuild the mark's core group in the final with logo
@@ -32,8 +32,8 @@ spec.loader.exec_module(fix4)
 BASE = os.path.join(os.path.dirname(__file__), "..", "data",
                     "projects", "forge-20261029-072531-16e1fc")
 STAGE = os.path.join(BASE, "final_fix5")
-BRAND_NAMES = {"E30TZ", "TZ Emojis", "TZ Emojis Brand"}
-LOGO_NAMES = {"E30TZ Logo Black", "E30TZ Logo Cyan", "E30TZ Logo Shadow"}
+BRAND_NAMES = {"Abolfazl_rwm", "Abolfazl", "Abolfazl Brand"}
+LOGO_NAMES = {"Abolfazl_rwm Logo Black", "Abolfazl_rwm Logo Cyan", "Abolfazl_rwm Logo Shadow"}
 TR0 = {"ty": "tr", "p": {"a": 0, "k": [0, 0]}, "a": {"a": 0, "k": [0, 0]},
        "s": {"a": 0, "k": [100, 100]}, "r": {"a": 0, "k": 0},
        "o": {"a": 0, "k": 100}, "sk": {"a": 0, "k": 0},
@@ -109,11 +109,11 @@ def logo_group_for_box(fx, fy, fw, fh, flip=False):
     if flip:
         items = fix4._logo_items((-(fx + fw), fy, -fx, fy + fh))
         wrap = {"ty": "gr", "it": items + [dict(TR0, s={"a": 0, "k": [-100, 100]})],
-                "nm": "E30TZ", "bm": 0, "hd": False}
+                "nm": "Abolfazl_rwm", "bm": 0, "hd": False}
         return wrap
     return {"ty": "gr", "it": fix4._logo_items((fx, fy, fx + fw, fy + fh))
             + [copy.deepcopy(TR0)],
-            "nm": "E30TZ", "bm": 0, "hd": False}
+            "nm": "Abolfazl_rwm", "bm": 0, "hd": False}
 
 
 def scene_insert(doc, box):
@@ -121,7 +121,7 @@ def scene_insert(doc, box):
     grp = logo_group_for_box(x0, y0, x1 - x0, y1 - y0)
     inds = [l.get("ind", 0) for l in doc.get("layers") or []]
     layer = {
-        "ty": 4, "nm": "E30TZ Logo Layer", "ind": (max(inds) + 1 if inds else 1),
+        "ty": 4, "nm": "Abolfazl_rwm Logo Layer", "ind": (max(inds) + 1 if inds else 1),
         "ks": {"o": {"a": 0, "k": 100}, "r": {"a": 0, "k": 0},
                "p": {"a": 0, "k": [0, 0, 0]}, "a": {"a": 0, "k": [0, 0, 0]},
                "s": {"a": 0, "k": [100, 100, 100]}},
@@ -186,7 +186,7 @@ def shell_insert(fdoc, odoc, ref):
     tr_items = [s for s in (core.get("it") or [])
                 if isinstance(s, dict) and s.get("ty") == "tr"]
     core["it"] = [grp] + tr_items
-    core["nm"] = "E30TZ"
+    core["nm"] = "Abolfazl_rwm"
     return True
 
 

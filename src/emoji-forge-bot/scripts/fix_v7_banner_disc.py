@@ -7,15 +7,15 @@ Problem (verified by solo/recolour renders of file 017):
   1. The disc's OWN logo slot: comp_2 layer "Logo in" -> comp_3, which
      in the original held the white "CDC Outlines" triangle (white fill,
      no stroke -> invisible on the white disc). v7 replaced it with the
-     EHSAN logo WITH a dark stroke, so it shows as an outlined ghost.
-  2. The main EHSAN logo in comp_2 is 358.4px wide (banner fix) and its
+     Abolfazl logo WITH a dark stroke, so it shows as an outlined ghost.
+  2. The main Abolfazl logo in comp_2 is 358.4px wide (banner fix) and its
      left edge extends over the disc; its dark stroke paints outlined
      letters on the white disc. In the original the SVN text started at
      the banner, clear of the disc (verified by recolouring the
      original text layer red: zero pixels over the disc).
 
 Fix (structure-preserving, main logo layer itself untouched):
-  1. Disc slot (comp_3): remove the stroke from the EHSAN group ->
+  1. Disc slot (comp_3): remove the stroke from the Abolfazl group ->
      white fill only, invisible on the white disc exactly like the
      original CDC mark.
   2. comp_2: lift the "Logo CIrcle" layer (the white disc silhouette)
@@ -127,7 +127,7 @@ def fix_doc(doc):
         for layer in asset["layers"]:
             if layer.get("ty") == 0 and layer.get("refId") in assets:
                 slot_layers = assets[layer["refId"]]["layers"]
-                if any(str(l.get("nm", "")) == "EHSAN Logo" for l in slot_layers):
+                if any(str(l.get("nm", "")) == "Abolfazl Logo" for l in slot_layers):
                     banner, slot_asset = asset, assets[layer["refId"]]
         if banner is not None:
             break
@@ -135,13 +135,13 @@ def fix_doc(doc):
         raise ValueError("banner precomp with disc slot not found")
 
     layers = banner["layers"]
-    main_logo = next(l for l in layers if str(l.get("nm", "")) == "EHSAN Logo")
+    main_logo = next(l for l in layers if str(l.get("nm", "")) == "Abolfazl Logo")
     main_logo_before = copy.deepcopy(main_logo)
     circle = next(l for l in layers if str(l.get("nm", "")) == "Logo CIrcle")
 
     # 1) Disc slot: stroke-less (white fill only), like the original.
     slot_logo = next(l for l in slot_asset["layers"]
-                     if str(l.get("nm", "")) == "EHSAN Logo")
+                     if str(l.get("nm", "")) == "Abolfazl Logo")
     strokes_removed = _strip_strokes(slot_logo)
 
     # 2) White disc above the text: unparent it (baking the composed

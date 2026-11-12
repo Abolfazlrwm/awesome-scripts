@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 #!/usr/bin/env bash
 # شروع ربات در پس‌زمینه (بدون systemd) — Start the bot with nohup.
 set -euo pipefail

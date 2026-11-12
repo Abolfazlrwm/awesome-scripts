@@ -76,7 +76,7 @@ def main():
         trajs = {}
         for tag, ddir in (("v7", V7_DIR), ("v8", V8_DIR)):
             fdoc = load_tgs(open(final_path(ddir, idx), "rb").read())
-            fs, fl, fb = brand_element(fdoc, {"EHSAN Logo"}, want_scope=scope)
+            fs, fl, fb = brand_element(fdoc, {"Abolfazl Logo"}, want_scope=scope)
             if fl is None:
                 res[tag] = {"frames_compared": 0, "note": "brand element not found"}
                 continue

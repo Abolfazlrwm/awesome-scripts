@@ -1,6 +1,6 @@
 """Rebuild Ehsan's single-emoji test properly:
-edited file -> remove added 'TZ Emojis' text layer, remove the TON
-diamond on the bicep, put the E30TZ logo (halo) in the diamond's slot."""
+edited file -> remove added 'Abolfazl' text layer, remove the TON
+diamond on the bicep, put the Abolfazl_rwm logo (halo) in the diamond's slot."""
 import copy, glob, gzip, json, os, sys
 sys.path.insert(0, 'src')
 sys.path.insert(0, 'scripts')
@@ -28,7 +28,7 @@ def render(doc, frame=15):
 
 doc = load(SRC)
 # 1) drop the added brand text layer
-doc['layers'] = [l for l in doc['layers'] if l.get('nm') != 'TZ Emojis Brand']
+doc['layers'] = [l for l in doc['layers'] if l.get('nm') != 'Abolfazl Brand']
 
 base = render(doc)
 def region_diff(img):
@@ -91,7 +91,7 @@ print('diamond local box:', [round(v, 1) for v in lbox])
 logo = _logo_items(lbox)
 old_tr = [x for x in (grp.get('it') or []) if isinstance(x, dict) and x.get('ty') == 'tr']
 grp['it'] = logo + (old_tr if old_tr else [copy.deepcopy(TR0)])
-grp['nm'] = 'E30TZ Logo Slot'
+grp['nm'] = 'Abolfazl_rwm Logo Slot'
 
 # 4) every group must end with a tr (Telegram importer rule)
 def ensure_tr(items):

@@ -1,5 +1,5 @@
 """Fix-12: file 162 ONLY — remove the «استور مهدی» calligraphy
-baked into the book cover and seat the halo E30TZ logo in its
+baked into the book cover and seat the halo Abolfazl_rwm logo in its
 exact slot.
 
 Diagnosis (renders via rlottie from_tgs + hide-by-position):

@@ -135,7 +135,7 @@ def get_group(doc, scope, li, path):
         items = node.get('it') or []
     return node
 
-def replace_group_with_logo(doc, scope, li, path, box=None, rename='E30TZ Logo Slot'):
+def replace_group_with_logo(doc, scope, li, path, box=None, rename='Abolfazl_rwm Logo Slot'):
     """Replace the target group's artwork with the halo logo fitted
     to the group's own local artwork box; keep its own tr."""
     g = get_group(doc, scope, li, path)

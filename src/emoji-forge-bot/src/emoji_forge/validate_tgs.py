@@ -14,7 +14,7 @@ Blocking checks (local, no Telegram call):
 - OUR brand layers' structural rules (the proven file-016 v5 cause:
   op clamped to doc op, explicit o and r in ks, group transform
   p = [0,0]) — applied to any layer whose name marks it as a brand
-  layer ("Brand", or the historical E30TZ/EHSAN names).
+  layer ("Brand", or the historical Abolfazl_rwm/Abolfazl names).
 
 Demoted to WARNINGS on direct Telegram evidence (2026-10-29): in the
 EmojiStoreMehdi publish, files 001–011 were ACCEPTED by Telegram
@@ -38,7 +38,7 @@ from .importer_guard import (
 
 def _is_brand_layer(name: str) -> bool:
     n = str(name or "")
-    return "Brand" in n or "E30TZ" in n or "EHSAN" in n
+    return "Brand" in n or "Abolfazl_rwm" in n or "Abolfazl" in n
 
 
 def validate_tgs_bytes(data: bytes, index: int = 0):

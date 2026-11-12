@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 #!/usr/bin/env bash
 # توقف رباتی که با start.sh اجرا شده است — Stop the nohup-started bot.
 set -euo pipefail

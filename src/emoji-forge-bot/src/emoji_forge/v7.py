@@ -1,12 +1,12 @@
-"""v7 engine: accuracy audit + repair pass, with the user's EHSAN logo.
+"""v7 engine: accuracy audit + repair pass, with the user's Abolfazl logo.
 
 Why v7 exists (user feedback on v6, 2026-10-29 09:08):
   * Some layers that should NOT have been deleted were deleted
     (file 011's spinning coin is the known case), and classification
     was not precise enough.
-  * The brand element is no longer the "E30TZ" text: it is the user's
-    own EHSAN wordmark logo (traced to vector by
-    scripts/trace_logo.py into ehsan_logo_shapes.json), and per the
+  * The brand element is no longer the "Abolfazl_rwm" text: it is the user's
+    own Abolfazl wordmark logo (traced to vector by
+    scripts/trace_logo.py into abolfazl_logo_shapes.json), and per the
     user's explicit override its on-screen size must ALWAYS be big
     and readable — target width >= 70% of canvas (358px) unless the
     old logo was already wider — centred on the old logo's centre
@@ -34,14 +34,14 @@ Pipeline for one TGS:
         replaced in place inside its asset instead of leaving the
         slot blank.
   3. LOGO SWAP: every brand element (main + secondary) gets the
-     traced EHSAN logo group instead of the text shapes. Main logo:
+     traced Abolfazl logo group instead of the text shapes. Main logo:
      big-size rule. Secondary slots: exact old on-screen size (they
      live inside small carriers/discs; the big rule applies to the
      main brand element). White fill + thin dark stroke, like the
      v5/v6 text readability device.
   4. v6-style normalisation (op clamp, explicit o/r, group offsets
      baked, redundant keyframes deduped, unused assets pruned),
-     extended to the "EHSAN Logo" name.
+     extended to the "Abolfazl Logo" name.
 
 Classification helpers (classify_layer / classify_group) live here
 so the audit script and the engine share one rule set.
@@ -67,7 +67,7 @@ from .v5 import (
 )
 from .v6 import _bake_group_offset, _dedupe_keyframes
 
-_LOGO_PATH = Path(__file__).with_name("ehsan_logo_shapes.json")
+_LOGO_PATH = Path(__file__).with_name("abolfazl_logo_shapes.json")
 _LOGO = json.loads(_LOGO_PATH.read_text())
 LOGO_W = float(_LOGO["width"])    # 512.0 in traced local space
 LOGO_H = float(_LOGO["height"])   # ~222.74
@@ -256,12 +256,12 @@ def _scaled_subpath(sp, k):
             "c": sp["c"]}
 
 
-def make_logo_group(k: float, offset, subpaths=None, logo_name: str = "EHSAN Logo") -> dict:
+def make_logo_group(k: float, offset, subpaths=None, logo_name: str = "Abolfazl Logo") -> dict:
     """A traced logo as a Lottie group: white fill + thin dark
     stroke (the v5/v6 readability device), paths pre-scaled by k in
     shape space, group transform at scale 100 with position offset.
 
-    subpaths/logo_name default to the owner's traced EHSAN logo;
+    subpaths/logo_name default to the owner's traced Abolfazl logo;
     v9 passes a USER's traced logo asset here instead (same format:
     {"width": 512-wide local space, "height", "subpaths"})."""
     items = []
@@ -295,7 +295,7 @@ def _clamp_centre(cx, cy, w, h):
 
 def solve_logo_group(matrix, target_w, desired_centre, clamp,
                      logo_w=None, logo_h=None, subpaths=None,
-                     logo_name: str = "EHSAN Logo"):
+                     logo_name: str = "Abolfazl Logo"):
     """Solve (logo_group, achieved) for a brand element.
 
     matrix: full on-screen matrix at the reference frame.
@@ -303,7 +303,7 @@ def solve_logo_group(matrix, target_w, desired_centre, clamp,
     desired_centre: on-screen centre to aim for. When clamp is True
     the centre is shifted the minimum amount that keeps the logo on
     canvas; the shift is reported in `achieved`.
-    logo_w/logo_h/subpaths default to the EHSAN asset (v9 user logos
+    logo_w/logo_h/subpaths default to the Abolfazl asset (v9 user logos
     pass their own traced asset instead).
     """
     logo_w = LOGO_W if logo_w is None else float(logo_w)
@@ -391,14 +391,14 @@ def process_tgs_v7(data: bytes, brand, hide_names: set, item_index: int = 0,
     381px tall over the banner. There the target is BIG_TARGET_W
     (358px, ~156px tall, close to the old text's 130px height)."""
     signatures = pack_common_signatures or set()
-    # v9: the logo asset defaults to the owner's traced EHSAN logo;
+    # v9: the logo asset defaults to the owner's traced Abolfazl logo;
     # a user logo traced by logo_vector.trace_logo_image has the same
     # shape and can be dropped in (its groups/layers take its name).
     _asset = logo_asset or {}
     _logo_subpaths = _asset.get("subpaths")
     _logo_w = _asset.get("width")
     _logo_h = _asset.get("height")
-    _logo_name = str(_asset.get("name") or "EHSAN Logo")
+    _logo_name = str(_asset.get("name") or "Abolfazl Logo")
     orig = load_tgs(data)
     out5, warnings, placement = process_tgs_v5(
         data, brand, hide_names, item_index, signatures)
@@ -450,7 +450,7 @@ def process_tgs_v7(data: bytes, brand, hide_names: set, item_index: int = 0,
                         continue
                     kept.append(item)
                 # Placeholder brand group at the first logo group's
-                # index (the logo swap replaces it with the EHSAN
+                # index (the logo swap replaces it with the Abolfazl
                 # logo). Sized like v5 would have, as a sane fallback.
                 logo_group_orig = groups[classes.index("LOGO/BRAND")]
                 gb_pts = _group_bbox([logo_group_orig], (1, 0, 0, 1, 0, 0))
@@ -606,7 +606,7 @@ def process_tgs_v7(data: bytes, brand, hide_names: set, item_index: int = 0,
     if restored or any("composite" in r for r in info["repairs"]):
         tgs_selective_theme_recolor(doc)
 
-    # --- Logo swap: text -> traced EHSAN logo, big-size rule (main).
+    # --- Logo swap: text -> traced Abolfazl logo, big-size rule (main).
     def old_element(scope, layer, local_bbox):
         traj = element_trajectory(orig, scope, layer, local_bbox,
                                   _sample_frames(orig))
@@ -727,7 +727,7 @@ def process_tgs_v7(data: bytes, brand, hide_names: set, item_index: int = 0,
     for _sc, layers in _scopes(doc):
         for layer in layers:
             nm = str(layer.get("nm", ""))
-            if "E30TZ" not in nm and "EHSAN" not in nm and _logo_name not in nm:
+            if "Abolfazl_rwm" not in nm and "Abolfazl" not in nm and _logo_name not in nm:
                 continue
             if doc_op and (layer.get("op") or 0) > doc_op:
                 layer["op"] = doc_op

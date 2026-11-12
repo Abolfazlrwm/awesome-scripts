@@ -1,6 +1,6 @@
 <?php
 /**
- * TZ Emojis Bot (Emoji Forge) — نصب‌کننده‌ی تحت وب برای هاست cPanel
+ * Abolfazl Bot (Emoji Forge) — نصب‌کننده‌ی تحت وب برای هاست cPanel
  *
  * Web installer wizard for shared/cPanel hosting (Passenger Python App).
  * Self-contained, PHP >= 7.4, no framework.
@@ -181,7 +181,7 @@ if not _started:
 
 def application(environ, start_response):
     start_response("200 OK", [("Content-Type", "text/plain; charset=utf-8")])
-    return ["TZ Emojis bot is running (Telegram polling).".encode("utf-8")]
+    return ["Abolfazl bot is running (Telegram polling).".encode("utf-8")]
 PYEOF;
         if (file_put_contents($APP_PY, $appPy) === false) {
             $errors[] = 'نوشتن app.py ناموفق بود؛ دسترسی نوشتن دایرکتوری اصلی را بررسی کنید.';
@@ -199,7 +199,7 @@ PYEOF;
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>نصب ربات TZ Emojis — cPanel</title>
+<title>نصب ربات Abolfazl — cPanel</title>
 <style>
 body{font-family:Tahoma,Vazirmatn,sans-serif;background:#0f2a1d;color:#e9f5ee;margin:0;padding:1rem}
 .card{max-width:760px;margin:1rem auto;background:#173b29;border-radius:14px;padding:1.4rem;box-shadow:0 8px 30px rgba(0,0,0,.35)}
@@ -219,7 +219,7 @@ small{opacity:.85}
 </head>
 <body>
 <div class="card">
-<h1>🤖 نصب ربات TZ Emojis روی هاست cPanel</h1>
+<h1>🤖 نصب ربات Abolfazl روی هاست cPanel</h1>
 
 <?php if ($done): ?>
   <h2 class="ok">✅ نصب کامل شد</h2>
@@ -240,7 +240,7 @@ small{opacity:.85}
     <li><b>Application URL</b> را یک زیردامنه/مسیر خالی انتخاب کنید (مثلاً <code>bot</code>).</li>
     <li><b>Application startup file</b> = <code>app.py</code> و <b>Entry point</b> = <code>application</code>.</li>
     <li>روی <b>Create</b> بزنید؛ بعد در همان صفحه دستور <b>Run Pip Install</b> را با فایل <code>requirements.txt</code> اجرا کنید.</li>
-    <li>دکمه‌ی <b>Restart</b> را بزنید و آدرس اپ را باز کنید؛ باید متن «TZ Emojis bot is running» را ببینید.</li>
+    <li>دکمه‌ی <b>Restart</b> را بزنید و آدرس اپ را باز کنید؛ باید متن «Abolfazl bot is running» را ببینید.</li>
     <li>در تلگرام به ربات <b>/start</b> بفرستید.</li>
   </ol>
 

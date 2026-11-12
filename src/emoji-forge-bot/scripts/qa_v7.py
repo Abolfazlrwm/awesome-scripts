@@ -5,7 +5,7 @@ Renders each original and each v7 final at 0/25/50/75/100% into
 /tmp/v7_qa/file_NN_orig_vs_v7.png, builds the midframe grid at
 /tmp/v7_qa/v7_midframe_grid.png (copied to ~/workspace/), and checks:
   (a) pack-common watermark signatures remaining in finals (must be 0)
-  (b) an "EHSAN Logo" brand element present in every final
+  (b) an "Abolfazl Logo" brand element present in every final
   (c) blue-pixel fraction down vs original (theme recolour intact)
   (d) per-file logo on-screen width at the median visible frame
       (from fidelity measurement; target >= 358px or old width)
@@ -43,11 +43,11 @@ def has_logo(doc):
                                           for a in doc.get("assets") or []]
     for layers in scopes:
         for layer in layers:
-            if str(layer.get("nm", "")) == "EHSAN Logo":
+            if str(layer.get("nm", "")) == "Abolfazl Logo":
                 return True
             for item in layer.get("shapes") or []:
                 if isinstance(item, dict) and item.get("ty") == "gr" \
-                        and str(item.get("nm", "")) == "EHSAN Logo":
+                        and str(item.get("nm", "")) == "Abolfazl Logo":
                     return True
     return False
 
@@ -95,14 +95,14 @@ def main():
     for i, fr in enumerate(frames):
         proof.paste(render_frame(p11, fr, 256), ((i % 4) * 256, (i // 4) * 256))
     proof.save(os.path.join(OUT, "file_11_coin_proof.png"))
-    # Coin-only variant: strip the EHSAN group from the TON layer.
+    # Coin-only variant: strip the Abolfazl group from the TON layer.
     import copy as _copy
     d11 = load_tgs(open(p11, "rb").read())
     for layer in d11.get("layers") or []:
         if layer.get("nm") == "TON":
             layer["shapes"] = [g for g in layer.get("shapes") or []
                                if not (isinstance(g, dict)
-                                       and str(g.get("nm", "")) == "EHSAN Logo")]
+                                       and str(g.get("nm", "")) == "Abolfazl Logo")]
     tmp = os.path.join(OUT, "file_11_nologo.json")
     with open(tmp, "w") as fh:
         json.dump(d11, fh)

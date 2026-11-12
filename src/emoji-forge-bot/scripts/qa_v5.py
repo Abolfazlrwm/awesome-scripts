@@ -5,7 +5,7 @@ Renders each original and each v5 final at 0/25/50/75/100% of its
 animation with lottie+cairosvg, builds contact grids in /tmp/v5_qa/,
 and reports structural + pixel checks:
   (a) pack-common watermark signatures remaining in finals (must be 0)
-  (b) an "E30TZ Brand" top-level text layer present in every final
+  (b) an "Abolfazl_rwm Brand" top-level text layer present in every final
   (c) blue-pixel fraction in rendered frames: theme blue down vs
       original, warm/yellow pixels preserved within tolerance
 Pixel checks are evidence, not proof: the grids are for human

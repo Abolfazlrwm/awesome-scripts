@@ -1,6 +1,7 @@
+# Telegram: @Abolfazl_rwm
 #!/usr/bin/env bash
 # ─────────────────────────────────────────────────────────────────────
-# TZ Emojis Bot (Emoji Forge) — نصب‌کننده‌ی سرور | Server installer
+# Abolfazl Bot (Emoji Forge) — نصب‌کننده‌ی سرور | Server installer
 # Idempotent: اجرای دوباره امن است؛ مقادیر قبلی .env حفظ می‌شوند.
 #
 # استفاده:
@@ -37,7 +38,7 @@ ok()   { printf '  \033[1;32m✓\033[0m %s\n' "$*"; }
 warn() { printf '  \033[1;33m!\033[0m %s\n' "$*"; }
 die()  { printf '\n\033[1;31m✗ خطا:\033[0m %s\n' "$*" >&2; exit 1; }
 
-say "TZ Emojis Bot — نصب روی سرور"
+say "Abolfazl Bot — نصب روی سرور"
 echo "  مسیر نصب: $ROOT"
 
 # ── ۱) سیستم‌عامل و پیش‌نیازها ───────────────────────────────────────
@@ -148,7 +149,7 @@ if command -v systemctl >/dev/null 2>&1 && [ -d /run/systemd/system ] && [ "$(id
   RUN_USER="${SUDO_USER:-root}"
   cat > "/etc/systemd/system/${SERVICE_NAME}.service" <<EOF
 [Unit]
-Description=TZ Emojis Bot (Emoji Forge)
+Description=Abolfazl Bot (Emoji Forge)
 After=network-online.target
 Wants=network-online.target
 

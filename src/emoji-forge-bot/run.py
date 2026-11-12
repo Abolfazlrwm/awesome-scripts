@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 """Entry point. Without a token it prints the secure-setup guide and exits 2 —
 it never pretends the bot is running."""
 import os

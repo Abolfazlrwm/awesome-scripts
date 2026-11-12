@@ -1,6 +1,6 @@
 """User-logo vectorisation (v9): trace ANY uploaded logo image to
 Lottie vector shapes, in the same asset format as the owner's traced
-EHSAN logo (ehsan_logo_shapes.json): {"name", "width": 512.0,
+Abolfazl logo (abolfazl_logo_shapes.json): {"name", "width": 512.0,
 "height", "subpaths": [{v, i, o, c}]} in a 512-wide local space.
 
 Method (same as scripts/trace_logo.py, generalised): build a binary

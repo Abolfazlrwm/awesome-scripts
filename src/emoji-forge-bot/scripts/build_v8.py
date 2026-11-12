@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build v8 finals: v7 finals with every EHSAN logo re-solved for
+"""Build v8 finals: v7 finals with every Abolfazl logo re-solved for
 PRECISE CONTAIN-FIT inside the old logo's on-screen box.
 
 User order 2026-10-29 09:59 (supersedes v7's "always big" rule):

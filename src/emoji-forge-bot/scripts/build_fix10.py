@@ -2,16 +2,16 @@
 
 176: restore the deleted 'LOGO PLACE' layer (wrapped_content ind=19)
      and its asset comp_0 from the ORIGINAL; inside comp_0 replace the
-     injected mark artwork with the halo E30TZ logo contain-fitted
+     injected mark artwork with the halo Abolfazl_rwm logo contain-fitted
      into the mark's drawn local box, expressed in the layer's own
      shape space (original layer ks kept). Drop the inert
-     'TZ Emojis Brand' layer inside comp_0_1 (renders 0 px).
+     'Abolfazl Brand' layer inside comp_0_1 (renders 0 px).
 052: refill the emptied precomp mark layer (asset
      {e4ce82d4-...} ind=1) with the halo logo fitted to the mark's
      drawn local box (layer ks kept, box inverse-mapped into shape
      space); transplant the gutted hand layer's (top ind=10) shapes
      from final_backup_fix3 (intact, colours identical to original);
-     remove the bottom fallback 'TZ Emojis Brand' top layer ind=12.
+     remove the bottom fallback 'Abolfazl Brand' top layer ind=12.
 
 Stages to final_fix10/. final/ is NOT touched.
 """
@@ -88,7 +88,7 @@ def build_176():
     assert layer1.get("ind") == 1
     shape_box = inv_box(mark_box, layer1["ks"])
     layer1["shapes"] = fix4._logo_items(shape_box)
-    layer1["nm"] = "E30TZ Logo"
+    layer1["nm"] = "Abolfazl_rwm Logo"
     layer1["op"] = 120  # asset/doc op; was 180 (dead range), brand rule
     # layers 2..6 are empty placeholders in the original; keep verbatim.
 
@@ -104,11 +104,11 @@ def build_176():
     assert fwc["layers"][18].get("ind") == 20
     fwc["layers"].insert(18, layer19)
 
-    # drop the inert 'TZ Emojis Brand' layer inside comp_0_1
+    # drop the inert 'Abolfazl Brand' layer inside comp_0_1
     fc01 = asset(fdoc, "comp_0_1")
     before = len(fc01.get("layers") or [])
     fc01["layers"] = [l for l in fc01.get("layers") or []
-                      if l.get("nm") != "TZ Emojis Brand"]
+                      if l.get("nm") != "Abolfazl Brand"]
     dropped = before - len(fc01["layers"])
 
     out = os.path.join(STAGE, os.path.basename(FIN176))
@@ -148,7 +148,7 @@ def build_052():
     before = len(fdoc["layers"])
     fdoc["layers"] = [l for l in fdoc["layers"]
                       if not (l.get("ind") == 12
-                              and l.get("nm") == "TZ Emojis Brand")]
+                              and l.get("nm") == "Abolfazl Brand")]
     assert len(fdoc["layers"]) == before - 1, "brand layer not removed"
 
     out = os.path.join(STAGE, os.path.basename(FIN052))

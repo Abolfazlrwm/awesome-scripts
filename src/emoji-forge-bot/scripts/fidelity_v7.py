@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Numeric animation fidelity: old logo vs v6 text vs v7 EHSAN logo.
+"""Numeric animation fidelity: old logo vs v6 text vs v7 Abolfazl logo.
 
 For each file, the OLD logo element (found with v5's own selection
 logic) and the brand element in the v6 and v7 finals are tracked at
@@ -157,8 +157,8 @@ def main():
         old_traj = element_trajectory(doc, scope, layer, bbox, frames)
         res = {"element": f"{scope or 'top'}:{layer.get('nm') if layer else '?'}"
                  }
-        for tag, ddir, names in (("v6", V6_DIR, {"E30TZ Brand"}),
-                                 ("v7", V7_DIR, {"EHSAN Logo"})):
+        for tag, ddir, names in (("v6", V6_DIR, {"Abolfazl_rwm Brand"}),
+                                 ("v7", V7_DIR, {"Abolfazl Logo"})):
             fdoc = load_tgs(open(final_path(ddir, idx), "rb").read())
             fs, fl, fb = brand_element(fdoc, names, want_scope=scope)
             if fl is None:
@@ -174,8 +174,8 @@ def main():
             ot = element_trajectory(doc, "comp_1", cdc,
                                     _layer_shape_bbox(cdc), frames)
             res["slot2_old"] = {"frames": len(ot)}
-            for tag, ddir, names in (("v6", V6_DIR, {"E30TZ Brand"}),
-                                     ("v7", V7_DIR, {"EHSAN Logo"})):
+            for tag, ddir, names in (("v6", V6_DIR, {"Abolfazl_rwm Brand"}),
+                                     ("v7", V7_DIR, {"Abolfazl Logo"})):
                 fdoc = load_tgs(open(final_path(ddir, idx), "rb").read())
                 fa = next((a for a in fdoc.get("assets") or []
                            if a.get("id") == "comp_1"), None)

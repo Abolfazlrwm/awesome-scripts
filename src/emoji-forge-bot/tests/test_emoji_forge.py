@@ -975,12 +975,12 @@ class TestTgsLayerEditAndFonts(unittest.TestCase):
         self.assertNotIn("LogoBadge", [l.get("nm") for l in doc["layers"]])
         style, font_path, desc = choose_font_for_tgs(doc, 0)
         self.assertTrue(style and font_path)
-        name = tgs_add_text_layer(doc, "E30TZ", font_path, size=36.0)
-        self.assertIn("E30TZ", name)
+        name = tgs_add_text_layer(doc, "Abolfazl_rwm", font_path, size=36.0)
+        self.assertIn("Abolfazl_rwm", name)
         out = dump_tgs(doc)
         self.assertLessEqual(len(out), 65536)
         doc2 = load_tgs(out)
-        self.assertIn("E30TZ Brand", [l.get("nm") for l in doc2["layers"]])
+        self.assertIn("Abolfazl_rwm Brand", [l.get("nm") for l in doc2["layers"]])
 
     def test_font_choice_varies_by_subject(self):
         # Ehsan's standing choice (2026-10-29) supersedes the old
@@ -1131,7 +1131,7 @@ class TestV4Engine(unittest.TestCase):
     def test_selective_recolor_blue_to_red_subject_and_warm_kept(self):
         from emoji_forge.v4 import tgs_selective_theme_recolor
         from emoji_forge.brand import BrandProfile
-        brand = BrandProfile(brand_name="E30TZ", primary_hex="#FF0000")
+        brand = BrandProfile(brand_name="Abolfazl_rwm", primary_hex="#FF0000")
         doc = self._doc([
             self._shape_layer(1, "shield", [0, 0.4, 1, 1]),
             self._shape_layer(2, "head", [0, 0.4, 1, 1]),
@@ -1152,7 +1152,7 @@ class TestV4Engine(unittest.TestCase):
     def test_selective_recolor_keyframed_flat_and_gradient(self):
         from emoji_forge.v4 import tgs_selective_theme_recolor
         from emoji_forge.brand import BrandProfile
-        brand = BrandProfile(brand_name="E30TZ", primary_hex="#FF0000")
+        brand = BrandProfile(brand_name="Abolfazl_rwm", primary_hex="#FF0000")
         layer = self._shape_layer(1, "banner", [0, 0, 1, 1])
         # Keyframed flat fill.
         layer["shapes"][0]["it"][1]["c"] = {"a": 1, "k": [
@@ -1201,11 +1201,11 @@ class TestV4Engine(unittest.TestCase):
         # font picker via brand font path if available, else skip.
         try:
             from emoji_forge.brand import font_path_for
-            fp = font_path_for(BrandProfile(brand_name="E30TZ", primary_hex="#FF0000"))
+            fp = font_path_for(BrandProfile(brand_name="Abolfazl_rwm", primary_hex="#FF0000"))
         except Exception:
             self.skipTest("no font available for text layer test")
-        name, size, bw, bh = v4mod.add_top_level_text_from_box(doc2, "E30TZ", fp, med2, traj2)
-        self.assertEqual(doc2["layers"][0]["nm"], "E30TZ Brand")
+        name, size, bw, bh = v4mod.add_top_level_text_from_box(doc2, "Abolfazl_rwm", fp, med2, traj2)
+        self.assertEqual(doc2["layers"][0]["nm"], "Abolfazl_rwm Brand")
         self.assertGreater(size, 24)
 
     def test_parent_logo_layer_becomes_null_not_hidden(self):
@@ -1242,7 +1242,7 @@ class TestV4Engine(unittest.TestCase):
         issues3, _ = validate_tgs_bytes(b"x" * (64 * 1024 + 1), 5)
         self.assertTrue(any("5" in i for i in issues3))
         # Our own brand layer breaking the v3 shape rules: still blocking.
-        doc4 = self._doc([self._shape_layer(1, "TZ Emojis Brand", [1, 0, 0, 1])])
+        doc4 = self._doc([self._shape_layer(1, "Abolfazl Brand", [1, 0, 0, 1])])
         doc4["layers"][0]["op"] = (doc4.get("op") or 180) + 50
         issues4, _ = validate_tgs_bytes(gzip.compress(json.dumps(doc4).encode()), 9)
         self.assertTrue(any("9" in i for i in issues4))
@@ -1270,9 +1270,9 @@ class TestV5InPlace(unittest.TestCase):
         from emoji_forge.brand import BrandProfile
         from emoji_forge.v5 import process_tgs_v5
         self.process = process_tgs_v5
-        self.brand = BrandProfile(brand_name="E30TZ", primary_hex="#FF0000",
+        self.brand = BrandProfile(brand_name="Abolfazl_rwm", primary_hex="#FF0000",
                                   secondary_hex="#D8F3DC", gradient_enabled=False,
-                                  full_recolor=False, watermark_text="TZ Emojis")
+                                  full_recolor=False, watermark_text="Abolfazl")
         self.hide = {"LOGO PLACE", "Logo", "CDC Outlines"}
 
     def _synthetic_doc(self):
@@ -1322,7 +1322,7 @@ class TestV5InPlace(unittest.TestCase):
         self.assertEqual(placement["kind"], "layer")
         self.assertEqual(placement["index"], 1)  # same list position as CDC
         layer = doc["layers"][1]
-        self.assertIn("E30TZ", layer["nm"])
+        self.assertIn("Abolfazl_rwm", layer["nm"])
         self.assertEqual(layer["ind"], 2)  # same ind
         self.assertEqual(layer["ip"], 0)
         self.assertEqual(layer["op"], 60)
@@ -1359,7 +1359,7 @@ class TestV5InPlace(unittest.TestCase):
         }
         out, _w, placement = self.process(dump_tgs(doc), self.brand, {"Logo"})
         fdoc = load_tgs(out)
-        text = [l for l in fdoc["layers"] if "E30TZ" in l["nm"]][0]
+        text = [l for l in fdoc["layers"] if "Abolfazl_rwm" in l["nm"]][0]
         self.assertEqual(text.get("parent"), 10)  # parent preserved
 
     def test_asset_scope_insertion(self):
@@ -1389,8 +1389,8 @@ class TestV5InPlace(unittest.TestCase):
         self.assertEqual(placement["scope"], "comp_0")
         self.assertEqual(placement["kind"], "layer")
         asset_layers = fdoc["assets"][0]["layers"]
-        self.assertTrue(any("E30TZ" in l["nm"] for l in asset_layers))
-        self.assertFalse(any("E30TZ" in l["nm"] for l in fdoc["layers"]))
+        self.assertTrue(any("Abolfazl_rwm" in l["nm"] for l in asset_layers))
+        self.assertFalse(any("Abolfazl_rwm" in l["nm"] for l in fdoc["layers"]))
 
     def test_on_screen_size_with_scale_chain(self):
         # Text size must account for the full parent/precomp scale chain:
@@ -1402,9 +1402,9 @@ class TestV5InPlace(unittest.TestCase):
         _style, font_path, _desc = choose_font_for_tgs({"layers": []}, 0)
         # Identity matrix vs 50% matrix, same target box 100x50.
         size_full, _s1, _b1 = _solve_text_size(
-            "E30TZ", font_path, 100, 50, (1, 0, 0, 1, 0, 0), (-50, -25, 50, 25))
+            "Abolfazl_rwm", font_path, 100, 50, (1, 0, 0, 1, 0, 0), (-50, -25, 50, 25))
         size_half, _s2, _b2 = _solve_text_size(
-            "E30TZ", font_path, 100, 50, (0.5, 0, 0, 0.5, 0, 0), (-50, -25, 50, 25))
+            "Abolfazl_rwm", font_path, 100, 50, (0.5, 0, 0, 0.5, 0, 0), (-50, -25, 50, 25))
         self.assertGreater(size_half, size_full * 1.8)
 
     # ---- v6 tests ------------------------------------------------
@@ -1442,7 +1442,7 @@ class TestV5InPlace(unittest.TestCase):
         doc = load_tgs(out)
         for a in doc.get("assets") or []:
             for l in a["layers"]:
-                if "E30TZ" in str(l.get("nm")):
+                if "Abolfazl_rwm" in str(l.get("nm")):
                     self.assertEqual(l["op"], 180)
                     self.assertEqual((l["ks"]["o"] or {}).get("k"), 100)
                     self.assertEqual((l["ks"]["r"] or {}).get("k"), 0)
@@ -1485,7 +1485,7 @@ class TestV5InPlace(unittest.TestCase):
 
 
 class TestV7AccuracyAndLogo(unittest.TestCase):
-    """v7: audit-driven repairs + traced EHSAN logo (big-size rule)."""
+    """v7: audit-driven repairs + traced Abolfazl logo (big-size rule)."""
 
     ORIG = "data/projects/forge-20261028-155740-3f1382/originals"
 
@@ -1497,9 +1497,9 @@ class TestV7AccuracyAndLogo(unittest.TestCase):
             self.skipTest("original pack not present")
         from emoji_forge.brand import BrandProfile
         from emoji_forge.animation_engine import load_tgs, pack_common_signatures
-        self.brand = BrandProfile(brand_name="E30TZ", primary_hex="#FF0000",
+        self.brand = BrandProfile(brand_name="Abolfazl_rwm", primary_hex="#FF0000",
                                   secondary_hex="#D8F3DC", gradient_enabled=False,
-                                  full_recolor=False, watermark_text="TZ Emojis")
+                                  full_recolor=False, watermark_text="Abolfazl")
         fp = json.load(open("data/projects/forge-v5-test/fingerprint.json"))
         self.hide = set(fp["hide_layer_names"])
         self.docs = [load_tgs(open(p, "rb").read()) for p in self.origs]
@@ -1511,7 +1511,7 @@ class TestV7AccuracyAndLogo(unittest.TestCase):
         return process_tgs_v7(data, self.brand, self.hide, idx - 1, self.sigs)
 
     def test_logo_trace_asset_shape(self):
-        payload = json.load(open("src/emoji_forge/ehsan_logo_shapes.json"))
+        payload = json.load(open("src/emoji_forge/abolfazl_logo_shapes.json"))
         self.assertEqual(payload["width"], 512.0)
         self.assertEqual(len(payload["subpaths"]), 12)
         self.assertEqual(payload["holes"], 2)  # A counter + "0" counter
@@ -1558,7 +1558,7 @@ class TestV7AccuracyAndLogo(unittest.TestCase):
         # Coin body groups survived; only the glyph group was replaced.
         self.assertIn("GroupFon", group_names)
         self.assertIn("Group5", group_names)
-        self.assertIn("EHSAN Logo", group_names)
+        self.assertIn("Abolfazl Logo", group_names)
         self.assertNotIn("Group 4", group_names)
         self.assertGreaterEqual(info["logo"]["width"], 350.0)
 
@@ -1570,7 +1570,7 @@ class TestV7AccuracyAndLogo(unittest.TestCase):
         group_names = [g.get("nm") for g in free["shapes"] if isinstance(g, dict)]
         self.assertIn("Group 4", group_names)   # theme square body
         self.assertIn("Group 2", group_names)   # white frame
-        self.assertIn("EHSAN Logo", group_names)
+        self.assertIn("Abolfazl Logo", group_names)
         self.assertNotIn("Group 5", group_names)  # triangle mark removed
 
     def test_file017_disc_restored_and_secondary_slot_filled(self):
@@ -1583,7 +1583,7 @@ class TestV7AccuracyAndLogo(unittest.TestCase):
         self.assertIn("Logo CIrcle 2", comp2)
         self.assertIn("Logo in", comp2)
         comp3 = _scope_layers(doc, "comp_3")
-        self.assertTrue(any(l.get("nm") == "EHSAN Logo" for l in comp3))
+        self.assertTrue(any(l.get("nm") == "Abolfazl Logo" for l in comp3))
         self.assertEqual(len(info["secondary"]), 1)
         # Main logo keeps the old (wider-than-canvas) banner width.
         self.assertGreaterEqual(info["logo"]["width"], 800.0)
@@ -1594,7 +1594,7 @@ class TestV7AccuracyAndLogo(unittest.TestCase):
         out, _w, info = self._process(16)
         doc = load_tgs(out)
         comp1 = _scope_layers(doc, "comp_1")
-        self.assertTrue(any(l.get("nm") == "EHSAN Logo" for l in comp1))
+        self.assertTrue(any(l.get("nm") == "Abolfazl Logo" for l in comp1))
         self.assertEqual(len(info["secondary"]), 1)
 
 
@@ -1653,7 +1653,7 @@ class TestV8ContainFit(unittest.TestCase):
         self.assertLessEqual(ach3["width"], 200.0 + 0.5)
         self.assertLessEqual(ach3["height"], 100.0 + 0.5)
         # The group geometry is the real logo, pre-scaled by k.
-        self.assertEqual(group["nm"], "EHSAN Logo")
+        self.assertEqual(group["nm"], "Abolfazl Logo")
         self.assertEqual(LOGO_W / LOGO_H, 512.0 / 222.74)
 
     def test_v8_transform_fits_and_preserves_nonlogo(self):
@@ -1912,20 +1912,20 @@ class TestBrandingV9(unittest.TestCase):
     def test_publish_title_rule(self):
         from emoji_forge.branding import publish_title
         self.assertEqual(publish_title("عنوان من", "p1"), "عنوان من")  # no suffix
-        self.assertTrue(publish_title("", "p1").startswith("TZ Emojis"))
-        self.assertTrue(publish_title(None, "p1").startswith("TZ Emojis"))
+        self.assertTrue(publish_title("", "p1").startswith("Abolfazl"))
+        self.assertTrue(publish_title(None, "p1").startswith("Abolfazl"))
         self.assertLessEqual(len(publish_title("x" * 100, "p1")), 64)
 
     def test_texts_carry_bot_brand(self):
         from emoji_forge.branding import help_text, welcome_text, zip_caption
-        self.assertIn("TZ Emojis", welcome_text())
+        self.assertIn("Abolfazl", welcome_text())
         self.assertNotIn("Ai Agent", welcome_text())
-        self.assertIn("ساخته‌شده توسط TZ Emojis", help_text())
-        self.assertIn("TZ Emojis", zip_caption(3))
-        # Owner rule (2026-10-29): no trace of EHSAN / E30TZ in bot-facing texts.
+        self.assertIn("ساخته‌شده توسط Abolfazl", help_text())
+        self.assertIn("Abolfazl", zip_caption(3))
+        # Owner rule (2026-10-29): no trace of Abolfazl / Abolfazl_rwm in bot-facing texts.
         for text in (welcome_text(), help_text(), zip_caption(3)):
-            self.assertNotIn("EHSAN", text)
-            self.assertNotIn("E30TZ", text)
+            self.assertNotIn("Abolfazl", text)
+            self.assertNotIn("Abolfazl_rwm", text)
             self.assertNotIn("متی", text)
 
     def test_apply_branding_calls_four_setters(self):

@@ -259,7 +259,7 @@ def main():
                 v6_layer = v6_layers.get(layer.get("ind"))
                 if v6_layer is None:
                     ldel = "yes"
-                elif str(v6_layer.get("nm", "")) in ("E30TZ Brand",):
+                elif str(v6_layer.get("nm", "")) in ("Abolfazl_rwm Brand",):
                     ldel = "replaced"
                 else:
                     ldel = "no"

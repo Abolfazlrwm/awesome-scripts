@@ -3,7 +3,7 @@
 Only one setting exists so far, deliberately:
 - credit_in_outputs (default False): when the OWNER turns it ON,
   processing jobs for users who have NOT set their own watermark get
-  the standard watermark mechanism with the text "TZ Emojis". When
+  the standard watermark mechanism with the text "Abolfazl". When
   OFF (default), user outputs carry ONLY the user's own branding —
   the bot never forces its watermark into user artwork.
 """

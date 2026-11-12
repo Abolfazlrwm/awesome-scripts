@@ -292,7 +292,7 @@ class TestSingleBotFlow(unittest.TestCase):
         self.api.create_new_sticker_set.assert_called_once()
         args, kwargs = self.api.create_new_sticker_set.call_args
         self.assertEqual(args[1], "tzs_777_by_tzemoji_ai")
-        self.assertEqual(args[2], "ایموجی‌های من | TZ Emojis")
+        self.assertEqual(args[2], "ایموجی‌های من | Abolfazl")
         self.assertEqual(kwargs.get("sticker_type"), "custom_emoji")
         texts = [t for _c, t, _m in self.sent]
         self.assertTrue(any("https://t.me/addemoji/tzs_777_by_tzemoji_ai" in t

@@ -1,7 +1,7 @@
 """Bot-level branding (v9): the BOT itself carries the owner's brand.
 
 Two different brands exist and must never be confused:
-- BOT brand ("TZ Emojis" / owner credit "TZ Emojis"): the bot's
+- BOT brand ("Abolfazl" / owner credit "Abolfazl"): the bot's
   own identity — welcome text, menus, captions, publish messages,
   and the Telegram-side profile set via /apply_branding.
 - USER brand: each user's own name/logo/colours, applied INSIDE
@@ -11,20 +11,20 @@ Two different brands exist and must never be confused:
 
 Publish title rule (documented): if the user set their own set title
 it is kept exactly, with NO suffix. Only a bot-generated default
-title gets the " • TZ Emojis" suffix.
+title gets the " • Abolfazl" suffix.
 """
 
-BOT_BRAND = "TZ Emojis"
-OWNER_BRAND = "TZ Emojis"
-OWNER_CREDIT_FA = "ساخته‌شده توسط TZ Emojis — @tzemoji_ai"
+BOT_BRAND = "Abolfazl"
+OWNER_BRAND = "Abolfazl"
+OWNER_CREDIT_FA = "ساخته‌شده توسط Abolfazl — @Abolfazl_rwm"
 
-BOT_NAME = "TZ Emojis | ایموجی‌ساز"
+BOT_NAME = "Abolfazl | ایموجی‌ساز"
 BOT_SHORT_DESCRIPTION = (
-    "ایموجی‌ساز TZ Emojis — لوگوی قبلی پک حذف و با نام و لوگوی شما "
+    "ایموجی‌ساز Abolfazl — لوگوی قبلی پک حذف و با نام و لوگوی شما "
     "بازسازی می‌شود. استفاده نیازمند تأیید مالک است."
 )
 BOT_DESCRIPTION = (
-    "🎨 TZ Emojis — ایموجی‌ساز و بازسازی پک ایموجی\n\n"
+    "🎨 Abolfazl — ایموجی‌ساز و بازسازی پک ایموجی\n\n"
     "یک ایموجی یا پک بفرستید؛ لوگوی قبلی پیدا و حذف می‌شود، کاراکتر و "
     "رنگ‌های اصلی حفظ می‌شود و نام/لوگوی شما با جای‌گذاری دقیق "
     "(contain-fit) در جای لوگوی قبلی می‌نشیند. هر سه فرمت TGS و WEBM "

@@ -1,4 +1,4 @@
-"""Prepare Ehsan's E30TZ logo for TGS use:
+"""Prepare Ehsan's Abolfazl_rwm logo for TGS use:
 1) remove the baked-in checkerboard background -> real alpha,
 2) trace the black letterforms and the cyan glow accents as two
    aligned Lottie shape sets (shared 512-wide frame),

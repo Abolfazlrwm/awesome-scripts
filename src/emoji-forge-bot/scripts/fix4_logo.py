@@ -1,5 +1,5 @@
-"""Swap every 'TZ Emojis' TEXT brand group in a file for Ehsan's
-E30TZ LOGO (vectorised in fix4_logo_prep.py), fitted into the
+"""Swap every 'Abolfazl' TEXT brand group in a file for Ehsan's
+Abolfazl_rwm LOGO (vectorised in fix4_logo_prep.py), fitted into the
 exact box the text occupied — same parent, same slot, same
 animation. Stages to final_fix4/.
 Usage: fix4_logo.py <idx> [<idx> ...]
@@ -52,7 +52,7 @@ def _plate_group(box):
          "o": {"a": 0, "k": 96}, "r": 1, "bm": 0, "nm": "Fill 1",
          "hd": False},
         copy.deepcopy(TR0)]
-    return {"ty": "gr", "it": items, "nm": "E30TZ Logo Plate",
+    return {"ty": "gr", "it": items, "nm": "Abolfazl_rwm Logo Plate",
             "bm": 0, "hd": False}
 
 
@@ -72,8 +72,8 @@ def _logo_items(box):
 
     drawn_h = fh * sc
     groups = []
-    for key, nm in (("black", "E30TZ Logo Black"),
-                    ("cyan", "E30TZ Logo Cyan")):
+    for key, nm in (("black", "Abolfazl_rwm Logo Black"),
+                    ("cyan", "Abolfazl_rwm Logo Cyan")):
         part = LOGO[key]
         items = []
         for sp in part["subpaths"]:
@@ -116,7 +116,7 @@ def _logo_items(box):
                       "o": {"a": 0, "k": 55}, "r": 1, "bm": 0,
                       "nm": "Fill 1", "hd": False})
         items.append(copy.deepcopy(TR0))
-        groups.append({"ty": "gr", "it": items, "nm": "E30TZ Logo Shadow",
+        groups.append({"ty": "gr", "it": items, "nm": "Abolfazl_rwm Logo Shadow",
                        "bm": 0, "hd": False})
     if PLATE:
         # Lottie draws earlier group items ON TOP: the plate must
@@ -167,7 +167,7 @@ def _swap_in_items(items):
         if not isinstance(it, dict):
             continue
         if it.get("ty") == "gr":
-            if it.get("nm") in ("E30TZ", "TZ Emojis", "TZ Emojis Brand"):
+            if it.get("nm") in ("Abolfazl_rwm", "Abolfazl", "Abolfazl Brand"):
                 box = _group_box(it.get("it") or [])
                 if box and box[2] - box[0] > 4 and box[3] - box[1] > 2:
                     it["it"] = _logo_items(box)

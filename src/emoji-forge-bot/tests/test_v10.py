@@ -65,7 +65,7 @@ class TestImporterGuard(unittest.TestCase):
         self.assertEqual(doc["layers"][0]["shapes"][0]["it"][-1]["ty"], "fl")
 
     def test_strips_paint_from_paint_mixing_group(self):
-        group = {"ty": "gr", "nm": "TZ Emojis Brand",
+        group = {"ty": "gr", "nm": "Abolfazl Brand",
                  "it": [subgroup("A"), subgroup("B"), subgroup("C"),
                         dict(FL), dict(ST), dict(TR)]}
         fixed, report = fix_importer_risks(doc_with_group(group))
@@ -93,7 +93,7 @@ class TestImporterGuard(unittest.TestCase):
         self.assertEqual(report["paint_stripped"], 0)
 
     def test_idempotent(self):
-        group = {"ty": "gr", "nm": "TZ Emojis Brand",
+        group = {"ty": "gr", "nm": "Abolfazl Brand",
                  "it": [subgroup("A"), subgroup("B"), dict(FL), dict(ST)]}
         once, _r1 = fix_importer_risks(doc_with_group(group))
         _twice, report2 = fix_importer_risks(once)

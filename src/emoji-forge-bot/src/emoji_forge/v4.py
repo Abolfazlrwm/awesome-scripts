@@ -1,7 +1,7 @@
 """v4 engine: selective theme recolour + exact on-screen logo replacement.
 
 Why v4 exists (measured on the real sVnTeam_Dvix pack, v3 finals):
-- 9/20 v3 finals (001,002,003,006,011,013,017,018,019) put E30TZ at
+- 9/20 v3 finals (001,002,003,006,011,013,017,018,019) put Abolfazl_rwm at
   bottom-centre (y=470) because no top-level logo layer was captured.
   That is not "in the logo's place" by any definition.
 - The other finals sized text from the logo layer's LOCAL shape width
@@ -30,7 +30,7 @@ v4 therefore does, in order, for each TGS:
   3. Selectively recolour blue theme fills/strokes/gradients to red,
      skipping subject layers and warm/yellow/natural colours, and
      handling keyframed flat fills (previously skipped entirely).
-  4. Add E30TZ as a TOP-LEVEL vector text layer (no asset-scope
+  4. Add Abolfazl_rwm as a TOP-LEVEL vector text layer (no asset-scope
      layer: the v3 attempt that used asset-scope text for banner
      files 17-19 failed with "wrong file type", while the otherwise
      identical attempt with top-level text succeeded; asset-scope is
@@ -661,7 +661,7 @@ def tgs_fix_dangling_parents(doc: dict) -> int:
 
 
 def add_top_level_text_from_box(doc: dict, text: str, font_path: str, median, traj):
-    """Add E30TZ at top level, sized to the logo's on-screen box.
+    """Add Abolfazl_rwm at top level, sized to the logo's on-screen box.
 
     median: (cx, cy, w, h, rot, opacity). Size is the smaller of the
     width-based and height-based sizes (so the text fits the box in
