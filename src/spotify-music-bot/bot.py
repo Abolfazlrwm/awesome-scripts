@@ -1,3 +1,4 @@
+# Telegram: @Abolfazl_rwm
 import os
 import re
 import sys
@@ -209,7 +210,7 @@ def create_bot(token: str) -> telebot.TeleBot:
                 f"👤 خواننده: <b>{res['artist']}</b>\n"
                 f"💽 کیفیت: <b>320kbps (Original Audio)</b>\n"
                 f"🔗 <a href=\"{track_info['url']}\">مشاهده در اسپاتیفای</a>\n\n"
-                f"🎧 @Spotify_Downloader"
+                f"🎧 @Abolfazl_rwm"
             )
 
             thumb_file = None
@@ -376,7 +377,7 @@ def create_bot(token: str) -> telebot.TeleBot:
                     f"👤 خواننده: <b>{res['artist']}</b>\n"
                     f"💽 {type_name}: <b>{album_title}</b>\n"
                     f"🔢 قطعه <b>{idx}</b> از <b>{total}</b>\n\n"
-                    f"🎧 @Spotify_Downloader"
+                    f"🎧 @Abolfazl_rwm"
                 )
 
                 thumb_file = None
@@ -534,7 +535,7 @@ def create_bot(token: str) -> telebot.TeleBot:
                 f"🎵 <b>{res['title']}</b>\n"
                 f"👤 <b>{res['artist']}</b>\n"
                 f"💽 کیفیت: <b>320kbps (Original Audio)</b>\n\n"
-                f"🎧 @Spotify_Downloader"
+                f"🎧 @Abolfazl_rwm"
             )
 
             thumb_file = None

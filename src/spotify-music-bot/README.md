@@ -1,5 +1,7 @@
 # 🎧 Spotify Music Bot — ربات دانلود موزیک اسپاتیفای
 
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
 A full **music downloader** for Telegram: paste a **Spotify link** (track, album or
 playlist) or just type a song name, and the bot finds the track, downloads it in
 **320 kbps** via `yt-dlp`, stamps the **original cover art + ID3 metadata** and sends
