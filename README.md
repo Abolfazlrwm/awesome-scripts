@@ -10,6 +10,8 @@
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
+[![Latest Release](https://img.shields.io/github/v/release/Abolfazlrwm/awesome-scripts?include_prereleases&logo=github)](https://github.com/Abolfazlrwm/awesome-scripts/releases/latest)
+[![Release](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/release.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/release.yml)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Abolfazlrwm/awesome-scripts?style=flat&logo=github)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
@@ -21,7 +23,7 @@
 
 ## ✨ About
 
-Every project here is a **complete, runnable application** — not a snippet. Open any folder under [`src/`](./src), follow its README, and you have a working bot, tool or site in minutes. The collection spans **8 languages** (Python, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
+Every project here is a **complete, runnable application** — not a snippet. Open any folder under [`src/`](./src), follow its README, and you have a working bot, tool or site in minutes. The collection spans **9 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
 
 > 🧭 Prefer browsing? Open the **[interactive catalog](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, dark mode and full Persian (RTL) mode. Stable versions are published under [Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases).
 
