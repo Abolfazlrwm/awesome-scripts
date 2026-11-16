@@ -419,7 +419,7 @@ def _img_from_response(r):
         if "karbaladev.ir/api/ai/image" in url:
             continue
         try:
-            rr = requests.get(url, timeout=40, headers=UA, verify=False)
+            rr = requests.get(url, timeout=40, headers=UA)
             return Image.open(io.BytesIO(rr.content)).convert("RGB")
         except Exception:
             continue
@@ -438,7 +438,7 @@ def fetch_bg(name, prompt, color, w, h):
     for url in IMG_API:
         try:
             r = requests.get(url, params={"prompt": prompt}, timeout=35, headers=UA,
-                             allow_redirects=True, verify=False)
+                             allow_redirects=True)
             img = _img_from_response(r)
             img.save(path, quality=92)
             return img
