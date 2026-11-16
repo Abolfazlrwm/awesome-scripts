@@ -77,6 +77,10 @@ NAME_OVERRIDES = {
     "wordle-fa-bot": "Wordle FA Bot",
     "flashcard-srs-bot": "Flashcard SRS Bot",
     "bulk-renamer-cli": "Bulk Renamer CLI",
+    "typing-speed-race": "Typing Speed Race",
+    "ascii-art-generator-web": "ASCII Art Studio",
+    "sudoku-game-web": "Sudoku Web",
+    "dupe-file-finder": "Dupe Finder",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 

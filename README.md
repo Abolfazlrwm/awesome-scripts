@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**81 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**89 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-81-blue)
+![Projects](https://img.shields.io/badge/projects-89-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -41,7 +41,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 60
+### 🤖 Telegram bots — 63
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -105,8 +105,11 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [flashcard-srs-bot](./src/flashcard-srs-bot) | Python | Spaced-repetition study bot — SM-2 scheduler, decks, grade buttons, progress |
 | [expense-splitter-bot](./src/expense-splitter-bot) | Python | Group cost sharing — live balances, equal/custom splits, fewest-transfers settle-up |
 | [dice-duel-bot](./src/dice-duel-bot) | Python | PvP wagered dice duels — animated 2d6 rolls, tie re-rolls, coins & leaderboard |
+| [prayer-times-bot](./src/prayer-times-bot) | Python | Offline prayer times for 30 Iranian cities — Geophysics method, Qibla bearing, /next countdown |
+| [auction-house-bot](./src/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
+| [fortune-teller-bot](./src/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
 
-### 🌐 Web tools — 16
+### 🌐 Web tools — 20
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -126,8 +129,12 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [jalali-date-tools](./src/jalali-date-tools) | HTML/CSS/JS | Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline) | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) |
 | [color-palette-studio](./src/color-palette-studio) | HTML/CSS/JS | Palette generator — harmony rules, tints/shades, WCAG contrast lab, CSS/JSON/Tailwind export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/) |
 | [drum-machine-web](./src/drum-machine-web) | HTML/CSS/JS | 16-step WebAudio drum machine — synthesized voices, BPM/swing, presets, save/load | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/) |
+| [typing-speed-race](./src/typing-speed-race) | HTML/CSS/JS | FA/EN typing test — per-char feedback, live WPM curve, localStorage history | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/typing-speed-race/) |
+| [sudoku-game-web](./src/sudoku-game-web) | HTML/CSS/JS | Sudoku with unique-solution generator — 4 difficulties, pencil notes, hints, solver | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/) |
+| [ascii-art-generator-web](./src/ascii-art-generator-web) | HTML/CSS/JS | ASCII art studio — hand-drawn bitmap fonts for banners + image-to-ASCII converter | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/) |
+| [canvas-paint-studio](./src/canvas-paint-studio) | HTML/CSS/JS | Browser paint app — brush & shapes with live preview, undo, quick swatches, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/) |
 
-### 🖥 Desktop tools — 5
+### 🖥 Desktop tools — 6
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -136,6 +143,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [system-monitor-gui](./src/system-monitor-gui) | Python | Live CPU/RAM/disk monitor with a PyQt6 GUI |
 | [clipboard-history-manager](./src/clipboard-history-manager) | Python | Searchable clipboard history — pins, dedup, JSON persistence (tkinter) |
 | [bulk-renamer-cli](./src/bulk-renamer-cli) | Python | Safe bulk file renamer — numbered templates, regex, dry-run default, undo log |
+| [dupe-file-finder](./src/dupe-file-finder) | Python | Duplicate-file CLI — 3-phase hashing, wasted-space report, CSV export, safe delete |
 
 > 🚧 More projects are on the way — hit **Star** / **Watch** to catch the new ones.
 
@@ -185,7 +193,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (60)
+#### 🤖 ربات‌های تلگرام (63)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -249,8 +257,11 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🎓 فلش‌کد فارسی](./src/flashcard-srs-bot) | Python | مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری |
 | [💰 خرج‌شمار گروهی](./src/expense-splitter-bot) | Python | تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله |
 | [🎲 نبرد تاس](./src/dice-duel-bot) | Python | دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها |
+| [🕌 اوقات شرعی](./src/prayer-times-bot) | Python | اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی |
+| [🔨 خانه‌ی مزایده](./src/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
+| [🔮 فال‌گر شوخ](./src/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
 
-#### 🌐 ابزارهای وب (16)
+#### 🌐 ابزارهای وب (20)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -270,8 +281,12 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🗓 تقویم جلالی](./src/jalali-date-tools) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) | HTML/CSS/JS | تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین |
 | [🎨 استودیو پالت رنگ](./src/color-palette-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/) | HTML/CSS/JS | ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind |
 | [🥁 سینت درام](./src/drum-machine-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/) | HTML/CSS/JS | درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو |
+| [⌨️ مسابقه‌ی تایپ](./src/typing-speed-race) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/typing-speed-race/) | HTML/CSS/JS | تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج |
+| [🔢 سودوکو](./src/sudoku-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/) | HTML/CSS/JS | سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده |
+| [🔤 هنر ASCII](./src/ascii-art-generator-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/) | HTML/CSS/JS | بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست |
+| [🖌 بوم نقاشی](./src/canvas-paint-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/) | HTML/CSS/JS | اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG |
 
-#### 🖥 ابزارهای دسکتاپ (5)
+#### 🖥 ابزارهای دسکتاپ (6)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -280,6 +295,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🖥 مانیتور سیستم](./src/system-monitor-gui) | Python | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6 |
 | [📁 تغییرنام گروهی](./src/bulk-renamer-cli) | Python | تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت |
 | [📋 تاریخچه کلیپ‌بورد](./src/clipboard-history-manager) | Python | تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON |
+| [🧬 یافتن فایل تکراری](./src/dupe-file-finder) | Python | یابنده‌ی فایل تکراری با هش سه‌مرحله‌ای، گزارش فضای هدررفته، خروجی CSV و حذف امن |
 
 > 🚧 در حال توسعه و افزودن سورس‌های جدید هستم — با **Star** و **Watch** از پروژه‌های تازه باخبر شوید.
 

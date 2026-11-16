@@ -236,3 +236,7 @@ Thumbs.db
 *.db
 *.session
 bot_session*
+
+# tool run artifacts (undo logs / deletion logs)
+rename-undo-*.json
+dupe-deleted-*.log

@@ -2,18 +2,18 @@
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-16T14:42:46+03:30",
-  "count": 81,
+  "generated_at": "2026-11-16T17:10:39+03:30",
+  "count": 89,
   "stats": {
     "categories": {
-      "telegram-bot": 60,
-      "web-tool": 16,
-      "desktop-tool": 5
+      "telegram-bot": 63,
+      "web-tool": 20,
+      "desktop-tool": 6
     },
     "languages": {
-      "Python": 43,
+      "Python": 47,
       "PHP": 12,
-      "HTML/CSS/JS": 14,
+      "HTML/CSS/JS": 18,
       "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
@@ -78,6 +78,28 @@
       "description_fa": "آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک"
     },
     {
+      "slug": "ascii-art-generator-web",
+      "path": "src/ascii-art-generator-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "ASCII Art Studio",
+      "description_en": "ASCII art studio — hand-drawn bitmap fonts for banners + image-to-ASCII converter",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/",
+      "name_fa": "هنر ASCII",
+      "description_fa": "بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست"
+    },
+    {
+      "slug": "auction-house-bot",
+      "path": "src/auction-house-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Auction House Bot",
+      "description_en": "Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements",
+      "demo": null,
+      "name_fa": "خانه‌ی مزایده",
+      "description_fa": "مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده"
+    },
+    {
       "slug": "backend-dev-portfolio",
       "path": "src/backend-dev-portfolio",
       "category": "web-tool",
@@ -109,6 +131,17 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/",
       "name_fa": "مزاحم‌یاب",
       "description_fa": "جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران"
+    },
+    {
+      "slug": "canvas-paint-studio",
+      "path": "src/canvas-paint-studio",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Canvas Paint Studio",
+      "description_en": "Browser paint app — brush & shapes with live preview, undo, quick swatches, PNG export",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/",
+      "name_fa": "بوم نقاشی",
+      "description_fa": "اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG"
     },
     {
       "slug": "channel-likes-bot",
@@ -265,6 +298,17 @@
       "description_fa": "درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو"
     },
     {
+      "slug": "dupe-file-finder",
+      "path": "src/dupe-file-finder",
+      "category": "desktop-tool",
+      "language": "Python",
+      "name_en": "Dupe Finder",
+      "description_en": "Duplicate-file CLI — 3-phase hashing, wasted-space report, CSV export, safe delete",
+      "demo": null,
+      "name_fa": "یافتن فایل تکراری",
+      "description_fa": "یابنده‌ی فایل تکراری با هش سه‌مرحله‌ای، گزارش فضای هدررفته، خروجی CSV و حذف امن"
+    },
+    {
       "slug": "emoji-forge-bot",
       "path": "src/emoji-forge-bot",
       "category": "telegram-bot",
@@ -307,6 +351,17 @@
       "demo": null,
       "name_fa": "فلش‌کد فارسی",
       "description_fa": "مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری"
+    },
+    {
+      "slug": "fortune-teller-bot",
+      "path": "src/fortune-teller-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Fortune Teller Bot",
+      "description_en": "Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only",
+      "demo": null,
+      "name_fa": "فال‌گر شوخ",
+      "description_fa": "فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی"
     },
     {
       "slug": "forward-info-bot",
@@ -562,6 +617,17 @@
       "description_fa": "مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار"
     },
     {
+      "slug": "prayer-times-bot",
+      "path": "src/prayer-times-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Prayer Times Bot",
+      "description_en": "Offline prayer times for 30 Iranian cities — Geophysics method, Qibla bearing, /next countdown",
+      "demo": null,
+      "name_fa": "اوقات شرعی",
+      "description_fa": "اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی"
+    },
+    {
       "slug": "premium-emoji-poster-cfworker",
       "path": "src/premium-emoji-poster-cfworker",
       "category": "telegram-bot",
@@ -694,6 +760,17 @@
       "description_fa": "فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی"
     },
     {
+      "slug": "sudoku-game-web",
+      "path": "src/sudoku-game-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Sudoku Web",
+      "description_en": "Sudoku with unique-solution generator — 4 difficulties, pencil notes, hints, solver",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/",
+      "name_fa": "سودوکو",
+      "description_fa": "سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده"
+    },
+    {
       "slug": "support-ticket-bot",
       "path": "src/support-ticket-bot",
       "category": "telegram-bot",
@@ -802,6 +879,17 @@
       "demo": null,
       "name_fa": "API مدیا توییتر",
       "description_fa": "لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو"
+    },
+    {
+      "slug": "typing-speed-race",
+      "path": "src/typing-speed-race",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Typing Speed Race",
+      "description_en": "FA/EN typing test — per-char feedback, live WPM curve, localStorage history",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/typing-speed-race/",
+      "name_fa": "مسابقه‌ی تایپ",
+      "description_fa": "تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج"
     },
     {
       "slug": "uptime-monitor-bot",
