@@ -13,11 +13,14 @@
 ## ✨ Features
 
 - ✏️ **6 tools** — brush, eraser (2.5× size), line, rectangle, circle (radius from drag), background fill
+- 🌈 **Rainbow brush** — hue cycles along the stroke with a soft glow
+- ✨ **Glow brush** — neon shadow-blur in the selected color
+- 🦋 **4-way symmetry mode** — every stroke is mirrored horizontally & vertically around the canvas center
 - 👻 **Live shape preview** — shape tools restore a snapshot each move so the preview never smudges the drawing
-- ↩️ **Undo stack** — up to 25 steps, also `Ctrl+Z`
-- 🎨 **Color picker + 10 quick swatches**; DPR-aware crisp rendering
-- 💾 **PNG export** via `canvas.toDataURL`
-- 📱 Pointer Events — works with mouse and touch; zero dependencies
+- ↩️↪️ **Undo & redo stacks** — up to 30 steps each, `Ctrl+Z` / `Ctrl+Y`
+- 🌓 white/black background switch; 🎨 color picker + 10 quick swatches; DPR-aware crisp rendering
+- ⌨️ **Keyboard shortcuts** — B/E/R/G/L/D/C/F tools, `S` symmetry, `[` `]` brush size
+- 💾 **PNG export** via `canvas.toDataURL`; Pointer Events for mouse & touch; zero dependencies
 
 ## 🚀 Demo / اجرا
 

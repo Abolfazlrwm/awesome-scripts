@@ -1,88 +1,148 @@
 <!DOCTYPE html>
 <!-- Telegram: @Abolfazl_rwm -->
-<html lang="en" dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Canvas Paint Studio — draw, shape, export</title>
-<meta name="description" content="A tiny browser paint app — brush, eraser, line, rectangle, circle, undo, PNG export. Single file, offline, no dependencies.">
+<title>Canvas Paint Studio — بوم نقاشی با براش‌های جادویی</title>
+<meta name="description" content="اپ نقاشی مرورگری — براش رنگین‌کمان و درخشش، حالت تقارن ۴گانه، undo/redo، شکل‌ها با پیش‌نمایش زنده و خروجی PNG. تک‌فایل آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0d1117; --panel:#161b22; --panel2:#1c2129; --border:#30363d;
-          --text:#e6edf3; --muted:#8b949e; --accent:#59c2ff; }
+  :root {
+    --bg:#0a0810; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(148,163,184,.3);
+    --text:#f3eaf7; --muted:#a08ba8;
+    --a1:#f472b6; --a2:#fb923c;
+    --ok:#34d399; --warn:#fbbf24; --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--text); font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; min-height:100vh; }
-  header { text-align:center; padding:16px 12px 4px; }
-  header h1 { font-size:20px; } header h1 span { color:var(--accent); }
-  .wrap { max-width:900px; margin:0 auto; padding:10px 14px 40px; }
-  .toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;
-             background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:10px 12px; }
-  .tool { background:var(--panel2); color:var(--text); border:1px solid var(--border); border-radius:8px;
-          padding:7px 12px; font:inherit; cursor:pointer; }
-  .tool:hover { border-color:#4d5d6f; }
-  .tool.active { background:#1f6feb; border-color:#388bfd; }
-  input[type=color] { width:40px; height:32px; border:1px solid var(--border); border-radius:8px; background:none; cursor:pointer; padding:2px; }
-  input[type=range] { accent-color:var(--accent); width:110px; }
-  label { color:var(--muted); font-size:11.5px; text-transform:uppercase; letter-spacing:.4px; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 90% -10%, rgba(251,146,60,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(244,114,182,.15), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.45;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:24px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(244,114,182,.5)); }
+  h1 { font:800 29px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13px; margin-top:4px; }
+  .wrap { max-width:940px; margin:0 auto; padding:12px 16px 42px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; padding:12px 14px; }
+  .group { display:flex; gap:6px; align-items:center; padding:5px 8px; border-radius:12px;
+           background:var(--glass2); border:1px solid var(--border); }
+  .tool { background:transparent; color:var(--text); border:1px solid transparent; border-radius:10px;
+          padding:7px 12px; font:600 13px var(--font-fa); cursor:pointer; transition:.15s; }
+  .tool:hover { border-color:var(--border2); }
+  .tool.active { background:linear-gradient(135deg, var(--a1), var(--a2)); color:#2b0a18;
+                 box-shadow:0 6px 18px -6px rgba(244,114,182,.6); }
+  .tool.special.active { box-shadow:0 6px 18px -6px rgba(251,146,60,.7); }
+  label { color:var(--muted); font-size:11px; }
+  input[type=color] { width:36px; height:30px; border:1px solid var(--border); border-radius:9px;
+                      background:none; cursor:pointer; padding:2px; }
+  input[type=range] { accent-color:var(--a1); width:100px; }
   .swatches { display:flex; gap:5px; }
-  .sw { width:22px; height:22px; border-radius:6px; border:1px solid var(--border); cursor:pointer; }
-  .stage { margin-top:12px; background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:10px; }
-  canvas { display:block; width:100%; border-radius:8px; cursor:crosshair; touch-action:none; background:#fff; }
-  .hint { color:var(--muted); font-size:12px; text-align:center; margin-top:8px; }
-  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:14px; }
-  footer a { color:var(--accent); text-decoration:none; }
+  .sw { width:21px; height:21px; border-radius:7px; border:1px solid var(--border2); cursor:pointer; transition:.15s; }
+  .sw:hover { transform:scale(1.15); }
+  .divider { width:1px; height:24px; background:var(--border2); }
+  .stage { margin-top:12px; padding:12px; }
+  canvas#board { display:block; width:100%; border-radius:12px; cursor:crosshair;
+                 touch-action:none; background:#fff; box-shadow:0 18px 50px -30px rgba(244,114,182,.5); }
+  .hint { color:var(--muted); font-size:12px; text-align:center; margin-top:9px; }
+  .hint b { color:var(--a1); font-family:var(--font-en); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:14px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
 </style>
 </head>
 <body>
 <header>
-  <h1>🖌 Canvas <span>Paint Studio</span></h1>
+  <div class="logo">🖌️</div>
+  <h1>استودیو نقاشی</h1>
+  <p>براش رنگین‌کمان و درخشش · تقارن ۴گانه · شکل‌ها با پیش‌نمایش زنده · خروجی PNG</p>
 </header>
 
 <div class="wrap">
-  <div class="toolbar">
-    <button class="tool active" data-tool="brush">✏️ قلم</button>
-    <button class="tool" data-tool="eraser">🧽 پاک‌کن</button>
-    <button class="tool" data-tool="line">📏 خط</button>
-    <button class="tool" data-tool="rect">▭ مستطیل</button>
-    <button class="tool" data-tool="circle">⭪ دایره</button>
-    <button class="tool" data-tool="fill">🪣 رنگ زمینه</button>
-    <label>رنگ</label>
-    <input type="color" id="color" value="#1f6feb">
-    <div class="swatches" id="swatches"></div>
-    <label>قطر</label>
-    <input type="range" id="size" min="1" max="60" value="6">
-    <span id="sizeOut" style="min-width:30px;color:var(--accent);font-weight:700">6</span>
-    <button class="tool" id="undo">↩️ برگشت</button>
-    <button class="tool" id="clear">🗑 پاک‌سازی</button>
-    <button class="tool" id="save">💾 خروجی PNG</button>
+  <div class="glass toolbar">
+    <div class="group">
+      <button class="tool active" data-tool="brush" title="قلم — B">✏️ قلم</button>
+      <button class="tool" data-tool="eraser" title="پاک‌کن — E">🧽 پاک‌کن</button>
+    </div>
+    <div class="group">
+      <button class="tool special" data-tool="rainbow" title="براش رنگین‌کمان — R">🌈 رنگین‌کمان</button>
+      <button class="tool special" data-tool="glow" title="براش درخشش — G">✨ درخشش</button>
+      <button class="tool" id="symBtn" title="تقارن ۴گانه — S">🦋 تقارن: خاموش</button>
+    </div>
+    <div class="group">
+      <button class="tool" data-tool="line" title="خط — L">📏 خط</button>
+      <button class="tool" data-tool="rect" title="مستطیل — D">▭ مستطیل</button>
+      <button class="tool" data-tool="circle" title="دایره — C">⭪ دایره</button>
+      <button class="tool" data-tool="fill" title="رنگ زمینه — F">🪣 زمینه</button>
+    </div>
+    <div class="group">
+      <label>رنگ</label>
+      <input type="color" id="color" value="#f472b6">
+      <div class="swatches" id="swatches"></div>
+    </div>
+    <div class="group">
+      <label>قطر</label>
+      <input type="range" id="size" min="1" max="60" value="6">
+      <b id="sizeOut" style="min-width:26px;color:var(--a1);font-family:var(--font-en)">6</b>
+    </div>
+    <div class="group">
+      <button class="tool" id="undo" title="برگشت — Ctrl+Z">↩️</button>
+      <button class="tool" id="redo" title="انجام دوباره — Ctrl+Y">↪️</button>
+      <button class="tool" id="bgBtn" title="زمینه سفید/مشکی">🌓</button>
+      <button class="tool" id="clear" title="پاک‌سازی">🗑</button>
+      <button class="tool" id="save" title="خروجی PNG">💾 PNG</button>
+    </div>
   </div>
 
-  <div class="stage">
-    <canvas id="canvas" width="1200" height="700"></canvas>
-    <div class="hint">برای کشیدن بکش و رها کن · Ctrl+Z = برگشت آخرین حرکت · ابزارهای خط/مستطیل/دایره با پیش‌نمایش زنده کار می‌کنند</div>
+  <div class="glass stage">
+    <canvas id="board" width="1200" height="700"></canvas>
+    <div class="hint">
+      شورتکات‌ها: <b>B</b> قلم · <b>E</b> پاک‌کن · <b>R</b> رنگین‌کمان · <b>G</b> درخشش ·
+      <b>S</b> تقارن · <b>L/D/C</b> خط/مستطیل/دایره · <b>F</b> زمینه · <b>[ ]</b> قطر · <b>Ctrl+Z/Y</b> برگشت/دوباره
+    </div>
   </div>
 
   <footer>
-    Built by <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
-    everything stays in your browser
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    همه‌چیز داخل مرورگر خودت می‌ماند
   </footer>
 </div>
 
 <script>
 "use strict";
-const cv = document.getElementById("canvas");
+const cv = document.getElementById("board");
 const ctx = cv.getContext("2d", { willReadFrequently: true });
-let tool = "brush", color = "#1f6feb", size = 6;
-let drawing = false, sx = 0, sy = 0, snapshot = null;
-const undoStack = [];
+const $ = id => document.getElementById(id);
+let tool = "brush", color = "#f472b6", size = 6, symmetry = false;
+let drawing = false, sx = 0, sy = 0, px = 0, py = 0, snapshot = null, rainbowHue = 0;
+const undoStack = [], redoStack = [];
 
 const dpr = Math.min(2, window.devicePixelRatio || 1);
+function paintBG(c) { ctx.fillStyle = c; ctx.fillRect(0, 0, cv.width, cv.height); }
 function fitCanvas() {
   const rect = cv.getBoundingClientRect();
-  const data = undoStack.length ? ctx.getImageData(0, 0, cv.width, cv.height) : null;
+  const keep = undoStack.length || redoStack.length ? ctx.getImageData(0, 0, cv.width, cv.height) : null;
   cv.width = Math.round(rect.width * dpr);
-  cv.height = Math.round(Math.round(rect.width * dpr) * 700 / 1200);
-  ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, cv.width, cv.height);
-  if (data) ctx.putImageData(data, 0, 0);
+  cv.height = Math.round(cv.width * 700 / 1200);
+  paintBG("#ffffff");
+  if (keep) ctx.putImageData(keep, 0, 0);
 }
 fitCanvas();
 window.addEventListener("resize", fitCanvas);
@@ -94,83 +154,149 @@ function pos(e) {
 }
 function pushUndo() {
   undoStack.push(ctx.getImageData(0, 0, cv.width, cv.height));
-  if (undoStack.length > 25) undoStack.shift();
+  if (undoStack.length > 30) undoStack.shift();
+  redoStack.length = 0;
 }
 function undo() {
-  const snap = undoStack.pop();
-  if (snap) ctx.putImageData(snap, 0, 0);
+  if (!undoStack.length) return;
+  redoStack.push(ctx.getImageData(0, 0, cv.width, cv.height));
+  ctx.putImageData(undoStack.pop(), 0, 0);
+}
+function redo() {
+  if (!redoStack.length) return;
+  undoStack.push(ctx.getImageData(0, 0, cv.width, cv.height));
+  ctx.putImageData(redoStack.pop(), 0, 0);
 }
 
-function setColorFromUI() {
-  ctx.strokeStyle = tool === "eraser" ? "#ffffff" : color;
-  ctx.fillStyle = tool === "eraser" ? "#ffffff" : color;
-  ctx.lineWidth = tool === "eraser" ? size * 2.5 : size;
-  ctx.lineCap = "round"; ctx.lineJoin = "round";
+/* draw one segment with all 4 mirrored copies when symmetry is on */
+function strokeSeg(x0, y0, x1, y1) {
+  const mirrors = symmetry
+    ? [[1, 1], [-1, 1], [1, -1], [-1, -1]]
+    : [[1, 1]];
+  const cx = cv.width / 2, cy = cv.height / 2;
+  for (const [mx, my] of mirrors) {
+    const ax = mx === 1 ? x0 : cv.width - x0;
+    const ay = my === 1 ? y0 : cv.height - y0;
+    const bx = mx === 1 ? x1 : cv.width - x1;
+    const by = my === 1 ? y1 : cv.height - y1;
+    if (tool === "rainbow") {
+      const dist = Math.hypot(bx - ax, by - ay);
+      rainbowHue = (rainbowHue + dist / 6) % 360;
+      ctx.strokeStyle = `hsl(${rainbowHue}, 95%, 60%)`;
+      ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = size * 0.5;
+    } else if (tool === "glow") {
+      ctx.strokeStyle = color;
+      ctx.shadowColor = color; ctx.shadowBlur = size * 1.4;
+    } else {
+      ctx.strokeStyle = tool === "eraser" ? "#ffffff" : color;
+      ctx.shadowBlur = 0;
+    }
+    ctx.lineWidth = tool === "eraser" ? size * 2.5 : size;
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+  }
+  ctx.shadowBlur = 0;
 }
 
 cv.addEventListener("pointerdown", e => {
   e.preventDefault(); cv.setPointerCapture(e.pointerId);
   const p = pos(e);
-  setColorFromUI();
-  if (tool === "fill") { ctx.fillStyle = color; ctx.fillRect(0, 0, cv.width, cv.height); return; }
+  if (tool === "fill") {
+    pushUndo();
+    ctx.fillStyle = color; ctx.fillRect(0, 0, cv.width, cv.height);
+    return;
+  }
   pushUndo();
-  sx = p.x; sy = p.y; drawing = true;
-  snapshot = ctx.getImageData(0, 0, cv.width, cv.height);
-  if (tool === "brush" || tool === "eraser") {
-    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + 0.01, sy + 0.01); ctx.stroke();
+  sx = p.x; sy = p.y; px = p.x; py = p.y;
+  drawing = true;
+  if (tool === "rainbow") rainbowHue = (rainbowHue + 24) % 360;  /* fresh hue per stroke */
+  if (tool === "line" || tool === "rect" || tool === "circle") {
+    snapshot = ctx.getImageData(0, 0, cv.width, cv.height);
+  } else {
+    strokeSeg(px, py, px + 0.01, py + 0.01);
   }
 });
 cv.addEventListener("pointermove", e => {
   if (!drawing) return;
   const p = pos(e);
-  if (tool === "brush" || tool === "eraser") {
-    ctx.lineTo(p.x, p.y); ctx.stroke();
+  if (tool === "line" || tool === "rect" || tool === "circle") {
+    ctx.putImageData(snapshot, 0, 0);
+    ctx.strokeStyle = color; ctx.lineWidth = size; ctx.lineCap = "round";
+    ctx.shadowBlur = 0; ctx.beginPath();
+    if (tool === "line") {
+      if (symmetry) {
+        const cx2 = cv.width / 2, cy2 = cv.height / 2;
+        ctx.moveTo(sx, sy); ctx.lineTo(p.x, p.y);
+        ctx.moveTo(cv.width - sx, sy); ctx.lineTo(cv.width - p.x, p.y);
+        ctx.moveTo(sx, cv.height - sy); ctx.lineTo(p.x, cv.height - p.y);
+        ctx.moveTo(cv.width - sx, cv.height - sy); ctx.lineTo(cv.width - p.x, cv.height - p.y);
+      } else { ctx.moveTo(sx, sy); ctx.lineTo(p.x, p.y); }
+      ctx.stroke();
+    } else if (tool === "rect") { ctx.strokeRect(sx, sy, p.x - sx, p.y - sy); }
+    else {
+      const r = Math.hypot(p.x - sx, p.y - sy);
+      ctx.arc(sx, sy, r, 0, Math.PI * 2); ctx.stroke();
+    }
+    px = p.x; py = p.y;
     return;
   }
-  /* live preview for shape tools: restore snapshot, draw the pending shape */
-  ctx.putImageData(snapshot, 0, 0);
-  ctx.beginPath();
-  if (tool === "line") { ctx.moveTo(sx, sy); ctx.lineTo(p.x, p.y); ctx.stroke(); }
-  else if (tool === "rect") { ctx.strokeRect(sx, sy, p.x - sx, p.y - sy); }
-  else if (tool === "circle") {
-    const r = Math.hypot(p.x - sx, p.y - sy);
-    ctx.arc(sx, sy, r, 0, Math.PI * 2); ctx.stroke();
-  }
+  strokeSeg(px, py, p.x, p.y);
+  px = p.x; py = p.y;
 });
 cv.addEventListener("pointerup", () => { drawing = false; snapshot = null; });
 
-/* tools & controls */
+/* ---------------- tools & controls ---------------- */
 document.querySelectorAll("[data-tool]").forEach(b => b.onclick = () => {
   document.querySelectorAll("[data-tool]").forEach(x => x.classList.remove("active"));
   b.classList.add("active"); tool = b.dataset.tool;
 });
-document.getElementById("color").addEventListener("input", e => { color = e.target.value; });
-document.getElementById("size").addEventListener("input", e => {
-  size = +e.target.value;
-  document.getElementById("sizeOut").textContent = size;
-});
-document.getElementById("undo").onclick = undo;
-document.getElementById("clear").onclick = () => {
-  pushUndo();
-  ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, cv.width, cv.height);
+function selectTool(name) {
+  const b = document.querySelector(`[data-tool="${name}"]`);
+  if (b) b.click();
+}
+$("symBtn").onclick = () => {
+  symmetry = !symmetry;
+  $("symBtn").textContent = symmetry ? "🦋 تقارن: روشن" : "🦋 تقارن: خاموش";
+  $("symBtn").classList.toggle("active", symmetry);
 };
-document.getElementById("save").onclick = () => {
+$("color").addEventListener("input", e => { color = e.target.value; });
+$("size").addEventListener("input", e => {
+  size = +e.target.value;
+  $("sizeOut").textContent = size;
+});
+$("undo").onclick = undo;
+$("redo").onclick = redo;
+$("bgBtn").onclick = () => {
+  pushUndo();
+  const white = cv.getContext("2d").getImageData(cv.width - 2, 2, 1, 1).data[0] > 128;
+  paintBG(white ? "#101014" : "#ffffff");
+};
+$("clear").onclick = () => { pushUndo(); paintBG("#ffffff"); };
+$("save").onclick = () => {
   const a = document.createElement("a");
   a.download = "paint-" + Date.now() + ".png";
   a.href = cv.toDataURL("image/png");
   a.click();
 };
 document.addEventListener("keydown", e => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); }
+  const k = e.key.toLowerCase();
+  if ((e.ctrlKey || e.metaKey) && k === "z" && !e.shiftKey) { e.preventDefault(); undo(); return; }
+  if ((e.ctrlKey || e.metaKey) && (k === "y" || (k === "z" && e.shiftKey))) { e.preventDefault(); redo(); return; }
+  if ((e.ctrlKey || e.metaKey)) return;
+  const map = { b: "brush", e: "eraser", r: "rainbow", g: "glow", l: "line", d: "rect", c: "circle", f: "fill" };
+  if (map[k]) selectTool(map[k]);
+  if (k === "s") $("symBtn").click();
+  if (k === "[") { size = Math.max(1, size - 2); $("size").value = size; $("sizeOut").textContent = size; }
+  if (k === "]") { size = Math.min(60, size + 2); $("size").value = size; $("sizeOut").textContent = size; }
 });
 
 /* quick color swatches */
-const PRESETS = ["#1f6feb","#3fb950","#f85149","#ff9f0a","#bf5af2","#0ff","#000000","#ffffff","#8b5cf6","#14b8a6"];
-const sw = document.getElementById("swatches");
+const PRESETS = ["#f472b6", "#fb923c", "#fbbf24", "#34d399", "#38bdf8", "#818cf8", "#020617", "#ffffff", "#7c3aed", "#ef4444"];
+const sw = $("swatches");
 PRESETS.forEach(c => {
   const d = document.createElement("div");
   d.className = "sw"; d.style.background = c; d.title = c;
-  d.onclick = () => { color = c; document.getElementById("color").value = c; };
+  d.onclick = () => { color = c; $("color").value = c; };
   sw.appendChild(d);
 });
 </script>
