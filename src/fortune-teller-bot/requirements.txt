@@ -1,0 +1,2 @@
+# Fortune Teller bot — runtime dependencies
+python-telegram-bot>=21.0
