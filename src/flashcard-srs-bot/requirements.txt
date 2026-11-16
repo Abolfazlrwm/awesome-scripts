@@ -1,0 +1,2 @@
+# Flashcard SRS bot — runtime dependencies
+python-telegram-bot>=21.0
