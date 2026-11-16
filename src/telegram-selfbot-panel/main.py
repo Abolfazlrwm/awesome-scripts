@@ -3164,6 +3164,8 @@ async def text_in(event):
         elif w == "calc":
             try:
                 safe = re.sub(r"[^0-9+\-*/().%\s]", "", txt).replace("^","**")
+                if len(safe) > 200 or re.search(r"\*\*\s*\d{4,}", safe):
+                    raise ValueError("expression too large / exponent too big")
                 r = eval(safe, {"__builtins__":{}, "sqrt":math.sqrt, "sin":math.sin,
                     "cos":math.cos, "tan":math.tan, "log":math.log,
                     "pi":math.pi, "e":math.e, "abs":abs, "round":round}, {})
@@ -3679,6 +3681,8 @@ async def command_handler(event):
         expr = txt[5:].strip()
         try:
             safe = re.sub(r"[^0-9+\-*/().%\s]", "", expr).replace("^", "**")
+            if len(safe) > 200 or re.search(r"\*\*\s*\d{4,}", safe):
+                raise ValueError("expression too large / exponent too big")
             r = eval(safe, {"__builtins__":{}, "sqrt":math.sqrt, "sin":math.sin,
                 "cos":math.cos, "tan":math.tan, "log":math.log,
                 "pi":math.pi, "e":math.e, "abs":abs, "round":round}, {})
