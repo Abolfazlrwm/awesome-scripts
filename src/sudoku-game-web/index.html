@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudoku — generator, solver & playable grid</title>
+<meta name="description" content="Play Sudoku offline — four difficulties, unique-solution generator, pencil notes, hints, timer. Single file, no dependencies.">
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel2:#1c2129; --border:#30363d;
+          --text:#e6edf3; --muted:#8b949e; --accent:#59c2ff; --fixed:#a5b4fc; --err:#f85149; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; min-height:100vh; }
+  header { text-align:center; padding:18px 12px 4px; }
+  header h1 { font-size:21px; } header h1 span { color:var(--accent); }
+  header p { color:var(--muted); font-size:12.5px; }
+  .wrap { max-width:520px; margin:0 auto; padding:10px 14px 40px; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:12px; }
+  .btn { background:var(--panel2); color:var(--text); border:1px solid var(--border); border-radius:8px;
+         padding:7px 13px; font:inherit; cursor:pointer; }
+  .btn:hover { border-color:#4d5d6f; }
+  .btn.primary { background:#1f6feb; border-color:#388bfd; }
+  .btn.active { border-color:var(--accent); color:var(--accent); }
+  .meta { display:flex; justify-content:space-between; background:var(--panel); border:1px solid var(--border);
+          border-radius:10px; padding:8px 14px; margin-bottom:10px; font-size:14px; }
+  .meta b { color:var(--accent); }
+  .board { display:grid; grid-template-columns:repeat(9,1fr); background:var(--panel);
+           border:2px solid #4d5d6f; border-radius:8px; overflow:hidden; aspect-ratio:1; }
+  .cell { position:relative; display:flex; align-items:center; justify-content:center;
+          border:0.5px solid var(--border); font-size:clamp(14px,5vw,22px); cursor:pointer; user-select:none; }
+  .cell.fixed { color:var(--fixed); cursor:default; }
+  .cell.bx { border-right-width:2.5px; border-right-color:#4d5d6f; }
+  .cell.by { border-bottom-width:2.5px; border-bottom-color:#4d5d6f; }
+  .cell.sel { background:#1f6feb44; box-shadow:inset 0 0 0 2px var(--accent); }
+  .cell.peer { background:#1f6feb22; }
+  .cell.same { color:var(--accent); font-weight:700; }
+  .cell.err { color:var(--err); }
+  .cell .notes { position:absolute; inset:0; display:grid; grid-template-columns:repeat(3,1fr);
+                 font-size:clamp(7px,2.2vw,10px); color:var(--muted); line-height:1.15; }
+  .pad { display:grid; grid-template-columns:repeat(9,1fr); gap:6px; margin-top:12px; }
+  .pad button { aspect-ratio:1; background:var(--panel2); color:var(--text); border:1px solid var(--border);
+                border-radius:8px; font-size:18px; cursor:pointer; }
+  .pad button:hover { border-color:var(--accent); }
+  .tools { display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
+  .msg { text-align:center; margin-top:12px; min-height:24px; font-size:14px; }
+  .msg.win { color:#3fb950; font-weight:700; }
+  .msg.err { color:var(--err); }
+  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:16px; }
+  footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔢 <span>Sudoku</span> Studio</h1>
+  <p>سازنده با جواب یکتا · یادداشت مدادی · راهنما · تایمر — کاملاً آفلاین</p>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <button class="btn diff" data-d="easy">آسان</button>
+    <button class="btn diff active" data-d="medium">متوسط</button>
+    <button class="btn diff" data-d="hard">سخت</button>
+    <button class="btn diff" data-d="expert">خفن</button>
+    <button class="btn primary" id="new">🎮 بازی جدید</button>
+  </div>
+
+  <div class="meta">
+    <span>⏱ <b id="time">00:00</b></span>
+    <span>🎯 خطاها: <b id="mistakes">0</b>/3</span>
+    <span>⬜ مانده: <b id="left">81</b></span>
+  </div>
+
+  <div class="board" id="board"></div>
+
+  <div class="pad" id="pad"></div>
+  <div class="tools">
+    <button class="btn" id="noteBtn">✏️ یادداشت: خاموش</button>
+    <button class="btn" id="hint">💡 راهنما</button>
+    <button class="btn" id="erase">🧽 پاک‌کن</button>
+    <button class="btn" id="solve">🧠 حل کن</button>
+  </div>
+  <div class="msg" id="msg"></div>
+
+  <footer>
+    Built by <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    generator &amp; solver are hand-written backtracking algorithms
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ================= solver & generator (backtracking, hand-written) ====== */
+function solveGrid(g) {
+  for (let i = 0; i < 81; i++) {
+    if (g[i] !== 0) continue;
+    for (let n = 1; n <= 9; n++) {
+      if (validAt(g, i, n)) { g[i] = n; if (solveGrid(g)) return true; g[i] = 0; }
+    }
+    return false;
+  }
+  return true;
+}
+function countSolutions(g, limit) {
+  let count = 0;
+  function rec() {
+    if (count >= limit) return;
+    for (let i = 0; i < 81; i++) {
+      if (g[i] !== 0) continue;
+      for (let n = 1; n <= 9; n++) {
+        if (validAt(g, i, n)) { g[i] = n; rec(); g[i] = 0; }
+      }
+      return;
+    }
+    count++;
+  }
+  rec();
+  return count;
+}
+function validAt(g, idx, n) {
+  const r = Math.floor(idx / 9), c = idx % 9, br = r - r % 3, bc = c - c % 3;
+  for (let k = 0; k < 9; k++) {
+    if (g[r*9+k] === n || g[k*9+c] === n) return false;
+    if (g[(br + Math.floor(k/3))*9 + bc + k%3] === n) return false;
+  }
+  return true;
+}
+const DIFF_HOLES = { easy: 38, medium: 46, hard: 52, expert: 56 };
+
+function generate(holes) {
+  /* seeded-free random full grid */
+  const g = new Array(81).fill(0);
+  const nums = [1,2,3,4,5,6,7,8,9];
+  function fill(i) {
+    if (i === 81) return true;
+    const shuffled = nums.slice().sort(() => Math.random() - 0.5);
+    for (const n of shuffled) {
+      if (validAt(g, i, n)) { g[i] = n; if (fill(i + 1)) return true; g[i] = 0; }
+    }
+    return false;
+  }
+  fill(0);
+  /* remove cells while keeping a UNIQUE solution */
+  const puzzle = g.slice();
+  const order = [...Array(81).keys()].sort(() => Math.random() - 0.5);
+  let removed = 0;
+  for (const idx of order) {
+    if (removed >= holes) break;
+    const backup = puzzle[idx];
+    if (backup === 0) continue;
+    puzzle[idx] = 0;
+    if (countSolutions(puzzle.slice(), 2) === 1) removed++;
+    else puzzle[idx] = backup;
+  }
+  return { puzzle, solution: g };
+}
+
+/* ================= game state ================= */
+let grid, solution, fixedMask, selIdx = -1, noteMode = false;
+let notes = new Array(81).fill().map(() => new Set());
+let mistakes = 0, startTime = 0, timerId = null;
+
+const $ = id => document.getElementById(id);
+const boardEl = $("board");
+
+function buildBoard() {
+  boardEl.innerHTML = "";
+  for (let i = 0; i < 81; i++) {
+    const c = document.createElement("div");
+    c.className = "cell";
+    if (i % 9 === 2 || i % 9 === 5) c.classList.add("bx");
+    if (Math.floor(i/9) % 3 === 2 && Math.floor(i/9) < 8) c.classList.add("by");
+    c.dataset.i = i;
+    c.onclick = () => selectCell(i);
+    boardEl.appendChild(c);
+  }
+}
+
+function newGame(diff) {
+  const holes = DIFF_HOLES[diff] || 46;
+  const gen = generate(holes);
+  grid = gen.puzzle.slice();
+  solution = gen.solution;
+  fixedMask = grid.map(v => v !== 0);
+  notes = new Array(81).fill().map(() => new Set());
+  selIdx = -1; mistakes = 0;
+  startTime = performance.now();
+  clearInterval(timerId);
+  timerId = setInterval(tick, 500);
+  $("mistakes").textContent = 0;
+  $("msg").textContent = ""; $("msg").className = "msg";
+  render();
+}
+
+function tick() {
+  const s = Math.floor((performance.now() - startTime) / 1000);
+  $("time").textContent = String(Math.floor(s/60)).padStart(2,"0") + ":" + String(s%60).padStart(2,"0");
+}
+
+function selectCell(i) {
+  if (fixedMask[i]) { selIdx = i; render(); return; }
+  selIdx = i; render();
+}
+
+function conflictsAt(idx, value) {
+  if (!value) return false;
+  const r = Math.floor(idx/9), c = idx%9, br = r - r%3, bc = c - c%3;
+  for (let k = 0; k < 9; k++) {
+    if (k !== c && grid[r*9+k] === value) return true;
+    if (k !== r && grid[k*9+c] === value) return true;
+    const bi = (br + Math.floor(k/3))*9 + bc + k%3;
+    if (bi !== idx && grid[bi] === value) return true;
+  }
+  return false;
+}
+
+function render() {
+  const cells = boardEl.children;
+  const selVal = selIdx >= 0 ? grid[selIdx] : 0;
+  const sr = selIdx >= 0 ? Math.floor(selIdx/9) : -1;
+  const sc = selIdx >= 0 ? selIdx%9 : -1;
+  const sbr = sr - sr%3, sbc = sc - sc%3;
+  for (let i = 0; i < 81; i++) {
+    const c = cells[i], v = grid[i];
+    c.classList.toggle("fixed", fixedMask[i]);
+    c.classList.toggle("sel", i === selIdx);
+    const peer = selIdx >= 0 && i !== selIdx &&
+      (Math.floor(i/9) === sr || i%9 === sc ||
+       (Math.floor(i/9) >= sbr && Math.floor(i/9) < sbr+3 && i%9 >= sbc && i%9 < sbc+3));
+    c.classList.toggle("peer", !!peer);
+    c.classList.toggle("same", !!peer && v !== 0 && v === selVal);
+    c.classList.toggle("err", conflictsAt(i, v));
+    if (v) { c.textContent = v; c.innerHTML = v; }
+    else if (notes[i].size) {
+      c.innerHTML = '<div class="notes">' +
+        [1,2,3,4,5,6,7,8,9].map(n => `<span>${notes[i].has(n) ? n : ""}</span>`).join("") + "</div>";
+    } else c.textContent = "";
+  }
+  $("left").textContent = 81 - grid.filter(v => v).length;
+}
+
+function input(n) {
+  if (selIdx < 0 || fixedMask[selIdx]) return;
+  const i = selIdx;
+  if (noteMode && !grid[i]) {
+    notes[i].has(n) ? notes[i].delete(n) : notes[i].add(n);
+    render(); return;
+  }
+  if (grid[i] === n) { grid[i] = 0; render(); return; }
+  grid[i] = n;
+  if (n !== solution[i]) {
+    mistakes++;
+    $("mistakes").textContent = mistakes;
+    if (mistakes >= 3) { endGame(false); return; }
+  } else notes[i].clear();
+  render();
+  if (grid.every((v, k) => v === solution[k])) endGame(true);
+}
+
+function endGame(won) {
+  clearInterval(timerId);
+  const msg = $("msg");
+  if (won) {
+    const s = Math.floor((performance.now() - startTime)/1000);
+    msg.textContent = `🏆 آفرین! حل شد در ${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;
+    msg.className = "msg win";
+  } else {
+    msg.textContent = "💔 سه خطا — بازی تمام شد. دوباره تلاش کن!";
+    msg.className = "msg err";
+  }
+  document.querySelectorAll("#board .cell").forEach(c => c.onclick = null);
+}
+
+/* ================= controls ================= */
+function buildPad() {
+  const pad = $("pad");
+  pad.innerHTML = "";
+  for (let n = 1; n <= 9; n++) {
+    const b = document.createElement("button");
+    b.textContent = n;
+    b.onclick = () => input(n);
+    pad.appendChild(b);
+  }
+}
+document.querySelectorAll(".diff").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".diff").forEach(x => x.classList.remove("active"));
+  b.classList.add("active"); newGame(b.dataset.d);
+});
+$("new").onclick = () => {
+  const active = document.querySelector(".diff.active");
+  newGame(active ? active.dataset.d : "medium");
+};
+$("noteBtn").onclick = () => {
+  noteMode = !noteMode;
+  $("noteBtn").textContent = noteMode ? "✏️ یادداشت: روشن" : "✏️ یادداشت: خاموش";
+  $("noteBtn").classList.toggle("active", noteMode);
+};
+$("erase").onclick = () => {
+  if (selIdx < 0 || fixedMask[selIdx]) return;
+  grid[selIdx] = 0; notes[selIdx].clear(); render();
+};
+$("hint").onclick = () => {
+  const empties = grid.map((v, i) => (v === 0 || v !== solution[i]) ? i : -1).filter(i => i >= 0);
+  if (!empties.length) return;
+  const pick = empties[Math.floor(Math.random() * empties.length)];
+  grid[pick] = solution[pick]; notes[pick].clear();
+  selIdx = pick; render();
+  if (grid.every((v, k) => v === solution[k])) endGame(true);
+};
+$("solve").onclick = () => {
+  grid = solution.slice();
+  render();
+  $("msg").textContent = "🧠 حل‌شده توسط الگوریتم — بازی جدید بزن!";
+  $("msg").className = "msg";
+};
+document.addEventListener("keydown", e => {
+  if (e.key >= "1" && e.key <= "9") input(+e.key);
+  if (["Backspace","Delete"].includes(e.key) && selIdx >= 0) { grid[selIdx] = 0; notes[selIdx].clear(); render(); }
+  const arrows = { ArrowUp: -9, ArrowDown: 9, ArrowLeft: -1, ArrowRight: 1 };
+  if (e.key in arrows && selIdx >= 0) {
+    e.preventDefault();
+    const n = selIdx + arrows[e.key];
+    if (n >= 0 && n < 81 && !(e.key === "ArrowLeft" && selIdx % 9 === 0) && !(e.key === "ArrowRight" && selIdx % 9 === 8)) {
+      selIdx = n; render();
+    }
+  }
+});
+
+buildBoard(); buildPad(); newGame("medium");
+</script>
+</body>
+</html>
