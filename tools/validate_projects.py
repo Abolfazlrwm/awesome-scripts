@@ -159,6 +159,62 @@ def main() -> None:
         print("✓ repo-level secret scan (tools, data, workflows, root)")
 
     total = len(folders)
+
+    # README <-> catalog consistency (catches drift between prose counters
+    # and data/catalog.json, which is generated from the README tables)
+    catalog_path = REPO_ROOT / "data" / "catalog.json"
+    readme_path = REPO_ROOT / "README.md"
+    if catalog_path.exists() and readme_path.exists():
+        import json
+
+        try:
+            catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+            readme = readme_path.read_text(encoding="utf-8-sig", errors="replace")
+        except (OSError, ValueError) as exc:
+            print(f"✗ README/catalog consistency — unreadable: {exc}")
+            failed += 1
+        else:
+            problems: list[str] = []
+            n_projects = len(catalog.get("projects", []))
+            m = re.search(r"\*\*(\d+) complete, ready-to-run projects", readme)
+            if not m:
+                problems.append("README headline count not found")
+            elif int(m.group(1)) != n_projects:
+                problems.append(f"README headline says {m.group(1)} projects, catalog has {n_projects}")
+
+            rows = len(re.findall(r"^\| \[", readme, re.M))
+            if rows != 2 * n_projects:  # EN + FA tables
+                problems.append(f"README table rows = {rows}, expected {2 * n_projects} (EN + FA)")
+
+            m = re.search(r"spans \*\*(\d+) languages\*\*", readme)
+            n_langs = len({p.get("language") for p in catalog.get("projects", [])})
+            if not m:
+                problems.append("README language count sentence not found")
+            elif int(m.group(1)) != n_langs:
+                problems.append(f"README says {m.group(1)} languages, catalog has {n_langs}")
+
+            counts: dict[str, int] = {}
+            current: str | None = None
+            for line in readme.splitlines():
+                if re.match(r"^#{1,3} ", line):
+                    h = re.match(r"^### (.+?) — (\d+)$", line)
+                    current = h.group(1) if h else None
+                elif current and line.startswith("| ["):
+                    counts[current] = counts.get(current, 0) + 1
+            catalog_by_cat: dict[str, int] = {}
+            for p in catalog.get("projects", []):
+                catalog_by_cat[p["category"]] = catalog_by_cat.get(p["category"], 0) + 1
+            if counts and sum(counts.values()) != n_projects:
+                problems.append(f"README category sections sum to {sum(counts.values())}, catalog has {n_projects}")
+
+            if problems:
+                failed += 1
+                print("✗ README/catalog consistency")
+                for problem in problems:
+                    print(f"    - {problem}")
+            elif not args.quiet:
+                print(f"✓ README/catalog consistency ({n_projects} projects, {n_langs} languages)")
+
     print()
     if failed:
         print(f"✗ {failed} problem area(s) — {total - failed}/{total} projects clean")
