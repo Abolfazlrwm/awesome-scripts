@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Studio — harmony, contrast & export</title>
+<meta name="description" content="Generate color palettes with harmony rules, tints & shades, WCAG contrast checks and CSS/JSON/Tailwind export — 100% offline.">
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --panel2: #1c2129; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #f78166; --ok: #3fb950; --bad: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, -apple-system, Segoe UI, sans-serif; min-height: 100vh; }
+  header { padding: 22px 16px 8px; text-align: center; }
+  header h1 { font-size: 22px; letter-spacing: .4px; }
+  header p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 12px 16px 40px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center;
+              background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+  .controls label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .6px; }
+  select, button, input[type=number] {
+    background: var(--panel2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 7px 12px; font: inherit; cursor: pointer;
+  }
+  button:hover, select:hover { border-color: #4d5d6f; }
+  button.primary { background: #238636; border-color: #2ea043; }
+  input[type=color] { width: 46px; height: 34px; border: 1px solid var(--border); border-radius: 8px; background: none; cursor: pointer; padding: 2px; }
+  input[type=hex] { width: 96px; background: var(--panel2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; font: inherit; text-transform: uppercase; }
+
+  .palette { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 16px; }
+  .swatch { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--panel); transition: transform .15s; }
+  .swatch:hover { transform: translateY(-3px); }
+  .chip { height: 110px; position: relative; cursor: pointer; }
+  .chip .lock { position: absolute; top: 6px; right: 6px; font-size: 15px; opacity: .85; }
+  .meta { padding: 8px 10px; }
+  .meta .hex { font-weight: 700; letter-spacing: .5px; cursor: pointer; }
+  .meta .sub { color: var(--muted); font-size: 11.5px; margin-top: 2px; cursor: pointer; }
+  .tags { padding: 0 10px 8px; display: flex; gap: 6px; }
+  .tag { font-size: 10.5px; background: var(--panel2); border: 1px solid var(--border); color: var(--muted); border-radius: 20px; padding: 1px 8px; }
+
+  section.card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-top: 16px; }
+  section.card h2 { font-size: 15px; margin-bottom: 10px; color: var(--accent); }
+  .scales { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .scale .bar { height: 26px; border-radius: 6px; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; font-size: 10.5px; }
+  .contrast-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+  .contrast-row:last-child { border-bottom: none; }
+  .preview { flex: 1 1 220px; min-height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+  .ratio { font-size: 13px; min-width: 90px; }
+  .badge { font-size: 10.5px; border-radius: 20px; padding: 2px 9px; border: 1px solid var(--border); }
+  .badge.pass { color: var(--ok); border-color: var(--ok); }
+  .badge.fail { color: var(--bad); border-color: var(--bad); }
+  textarea { width: 100%; min-height: 130px; background: var(--bg); color: var(--text); border: 1px solid var(--border);
+             border-radius: 8px; padding: 10px; font: 12.5px/1.5 ui-monospace, Consolas, monospace; resize: vertical; }
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: #238636; color: #fff;
+           border-radius: 8px; padding: 8px 18px; font-size: 13px; opacity: 0; transition: opacity .25s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 18px 0 26px; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🎨 Color Palette Studio</h1>
+  <p>harmony rules · tints &amp; shades · WCAG contrast · CSS/JSON/Tailwind export — offline, in one file</p>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <label>base</label>
+    <input type="color" id="base" value="#f78166">
+    <input type="text" id="baseHex" value="#F78166" spellcheck="false">
+    <label>harmony</label>
+    <select id="mode">
+      <option value="analogous">Analogous</option>
+      <option value="complementary" selected>Complementary</option>
+      <option value="split">Split-complementary</option>
+      <option value="triadic">Triadic</option>
+      <option value="tetradic">Tetradic</option>
+      <option value="mono">Monochromatic</option>
+    </select>
+    <button id="generate" class="primary">Generate</button>
+    <button id="shuffle">🎲 Random</button>
+    <span id="count-wrap" hidden><label>swatches</label>
+      <input type="number" id="count" min="3" max="8" value="5" style="width:64px"></span>
+  </div>
+
+  <div class="palette" id="palette"></div>
+
+  <section class="card">
+    <h2>Tints &amp; shades — click to copy</h2>
+    <div class="scales" id="scales"></div>
+  </section>
+
+  <section class="card">
+    <h2>Contrast lab (WCAG 2.1)</h2>
+    <div id="contrast"></div>
+  </section>
+
+  <section class="card">
+    <h2>Export</h2>
+    <div class="toolbar">
+      <button data-fmt="css">CSS variables</button>
+      <button data-fmt="json">JSON</button>
+      <button data-fmt="tailwind">Tailwind config</button>
+      <button data-fmt="scss">SCSS list</button>
+    </div>
+    <textarea id="out" spellcheck="false"></textarea>
+  </section>
+
+  <footer>
+    Built by <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    everything runs locally in your browser
+  </footer>
+</div>
+
+<div class="toast" id="toast">copied ✓</div>
+
+<script>
+"use strict";
+/* ---------------- color math (HSL <-> RGB, WCAG luminance) -------------- */
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+function hexToRgb(hex) {
+  const m = hex.replace("#", "");
+  const full = m.length === 3 ? m.split("").map(c => c + c).join("") : m;
+  const n = parseInt(full, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+const fmt = n => clamp(Math.round(n), 0, 255).toString(16).padStart(2, "0");
+const rgbToHex = ([r, g, b]) => "#" + fmt(r) + fmt(g) + fmt(b);
+
+function rgbToHsl([r, g, b]) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2;
+  let h = 0, s = 0;
+  if (max !== min) {
+    const d = max - min;
+    s = l > .5 ? d / (2 - max - min) : d / (max + min);
+    if (max === r) h = ((g - b) / d + (g < b ? 6 : 0));
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+  }
+  return [Math.round(h * 60), Math.round(s * 100), Math.round(l * 100)];
+}
+function hslToRgb([h, s, l]) {
+  h = ((h % 360) + 360) % 360 / 360; s /= 100; l /= 100;
+  if (s === 0) return [Math.round(l * 255), Math.round(l * 255), Math.round(l * 255)];
+  const q = l < .5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
+  const hue = t => { t = ((t % 1) + 1) % 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p; };
+  return [Math.round(hue(h + 1/3) * 255), Math.round(hue(h) * 255), Math.round(hue(h - 1/3) * 255)];
+}
+const hexToHsl = hex => rgbToHsl(hexToRgb(hex));
+const hslHex = (h, s, l) => rgbToHex(hslToRgb([h, s, l]));
+const rgbStr = ([r, g, b]) => `rgb(${r}, ${g}, ${b})`;
+const hslStr = hsl => `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`;
+
+/* WCAG 2.1 relative luminance + contrast ratio (official formulas) */
+function luminance(hex) {
+  const [r, g, b] = hexToRgb(hex).map(v => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+function contrast(a, b) {
+  const l1 = luminance(a), l2 = luminance(b);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+
+/* ------------------------------ harmony ------------------------------ */
+function harmonize(baseHex, mode, n) {
+  const [h, s, l] = hexToHsl(baseHex);
+  const out = [];
+  const spread = (angles) => angles.forEach(([dh, ds, dl]) =>
+    out.push(hslHex(h + dh, clamp(s + (ds || 0), 8, 96), clamp(l + (dl || 0), 8, 92))));
+  switch (mode) {
+    case "complementary":
+      spread([[0], [180]]); break;
+    case "split":
+      spread([[0], [150], [210]]); break;
+    case "triadic":
+      spread([[0], [120], [240]]); break;
+    case "tetradic":
+      spread([[0], [90], [180], [270]]); break;
+    case "analogous":
+      for (let i = 0; i < n; i++) out.push(hslHex(h + (i - (n - 1) / 2) * 24, s, clamp(l + (i - (n - 1) / 2) * 6, 12, 92)));
+      break;
+    case "mono":
+      for (let i = 0; i < n; i++) out.push(hslHex(h, s, 18 + i * (76 / Math.max(1, n - 1))));
+      break;
+  }
+  return out.slice(0, Math.max(n, 5));
+}
+
+/* ------------------------------ state --------------------------------- */
+const state = { colors: [], locked: [] };
+
+function readControls() {
+  return {
+    base: document.getElementById("base").value.toUpperCase(),
+    mode: document.getElementById("mode").value,
+    n: clamp(parseInt(document.getElementById("count").value || "5", 10), 3, 8),
+  };
+}
+function generate() {
+  const { base, mode, n } = readControls();
+  const next = harmonize(base, mode, n);
+  state.colors = state.locked.length === next.length
+    ? next.map((c, i) => state.locked[i] ? state.colors[i] : c)
+    : next;
+  state.locked = state.colors.map((_, i) => state.locked.length === next.length ? state.locked[i] : false);
+  render();
+}
+function shuffle() {
+  const base = "#" + fmt(Math.random() * 256) + fmt(Math.random() * 256) + fmt(Math.random() * 256);
+  document.getElementById("base").value = base;
+  document.getElementById("baseHex").value = base.toUpperCase();
+  generate();
+}
+
+/* ------------------------------ rendering ----------------------------- */
+const $palette = document.getElementById("palette");
+const $scales = document.getElementById("scales");
+const $contrast = document.getElementById("contrast");
+const $toast = document.getElementById("toast");
+
+function toast(msg) { $toast.textContent = msg; $toast.classList.add("show");
+  clearTimeout(toast.t); toast.t = setTimeout(() => $toast.classList.remove("show"), 1200); }
+
+function render() {
+  /* main swatches */
+  $palette.innerHTML = "";
+  state.colors.forEach((hex, i) => {
+    const hsl = hexToHsl(hex);
+    const white = contrast(hex, "#FFFFFF"), black = contrast(hex, "#000000");
+    const textOn = white >= black ? "white" : "black";
+    const div = document.createElement("div");
+    div.className = "swatch";
+    div.innerHTML = `
+      <div class="chip" style="background:${hex};color:${textOn}">
+        <span class="lock" title="lock">${state.locked[i] ? "🔒" : "🔓"}</span>
+      </div>
+      <div class="meta">
+        <div class="hex">${hex}</div>
+        <div class="sub">${rgbStr(hexToRgb(hex))}</div>
+        <div class="sub">${hslStr(hsl)}</div>
+      </div>
+      <div class="tags">
+        <span class="tag">${white >= 4.5 ? "AA+" : "AA-"} on white</span>
+        <span class="tag">${black >= 4.5 ? "AA+" : "AA-"} on black</span>
+      </div>`;
+    div.querySelector(".lock").onclick = e => { e.stopPropagation(); state.locked[i] = !state.locked[i]; render(); };
+    div.querySelector(".hex").onclick = () => copy(hex);
+    [...div.querySelectorAll(".sub")].forEach(el => el.onclick = () => copy(el.textContent));
+    $palette.appendChild(div);
+  });
+
+  /* tints & shades: 9 steps from +40% lightness down to -40% */
+  $scales.innerHTML = "";
+  state.colors.forEach(hex => {
+    const [h, s, l] = hexToHsl(hex);
+    const box = document.createElement("div");
+    box.className = "scale";
+    for (let dl = 40; dl >= -40; dl -= 10) {
+      const c = hslHex(h, s, clamp(l + dl, 4, 96));
+      const bar = document.createElement("div");
+      bar.className = "bar";
+      bar.style.background = c;
+      bar.style.color = contrast(c, "#000000") >= 3 ? "#0d1117" : "#e6edf3";
+      bar.textContent = c.toUpperCase();
+      bar.onclick = () => copy(c.toUpperCase());
+      box.appendChild(bar);
+    }
+    $scales.appendChild(box);
+  });
+
+  /* contrast lab: every palette color against white / black / darkest / lightest */
+  const sorted = [...state.colors].sort((a, b) => luminance(a) - luminance(b));
+  const darkest = sorted[0], lightest = sorted[sorted.length - 1];
+  const pairs = [];
+  state.colors.forEach(c => { pairs.push([c, "#FFFFFF"], [c, "#000000"], [c, darkest], [c, lightest]); });
+  const seen = new Set(); const uniq = pairs.filter(([a, b]) => {
+    const k = a + b; if (seen.has(k) || a === b) return false; seen.add(k); return true;
+  }).sort((x, y) => contrast(y[0], y[1]) - contrast(x[0], x[1]));
+
+  $contrast.innerHTML = "";
+  uniq.forEach(([fg, bg]) => {
+    const ratio = contrast(fg, bg);
+    const aaL = ratio >= 4.5, aa = ratio >= 3, isBgLight = luminance(bg) > luminance(fg);
+    const row = document.createElement("div");
+    row.className = "contrast-row";
+    row.innerHTML = `
+      <div class="preview" style="background:${bg};color:${fg}">${fg} on ${bg}</div>
+      <span class="ratio">${ratio.toFixed(2)} : 1</span>
+      <span class="badge ${ratio >= 7 ? "pass" : aaL ? "pass" : aa ? "pass" : "fail"}">
+        ${ratio >= 7 ? "AAA" : aaL ? "AA" : aa ? "AA large" : "fail"}</span>
+      <span class="badge ${isBgLight ? "pass" : "fail"}">${isBgLight ? "dark text" : "light text"}</span>`;
+    $contrast.appendChild(row);
+  });
+
+  document.getElementById("out").value = exportCss();
+}
+
+/* ------------------------------ exports ------------------------------- */
+function names() { return state.colors.map((c, i) => "color-" + (i + 1)); }
+function exportCss() {
+  return ":root {\n" + state.colors.map((c, i) => `  --color-${i + 1}: ${c};`).join("\n") + "\n}\n";
+}
+function exportJson() {
+  return JSON.stringify(state.colors.map((c, i) => {
+    const rgb = hexToRgb(c);
+    return { name: names()[i], hex: c, rgb: rgbStr(rgb), hsl: hslStr(hexToHsl(c)) };
+  }), null, 2);
+}
+function exportTailwind() {
+  return "tailwind.config = {\n  theme: {\n    extend: {\n      colors: {\n" +
+    state.colors.map((c, i) => `        brand-${(i + 1) * 100}: "${c}",`).join("\n") +
+    "\n      },\n    },\n  },\n};";
+}
+function exportScss() {
+  return "$palette: (\n" + state.colors.map((c, i) => `  "${names()[i]}": ${c},`).join("\n") + "\n);";
+}
+document.querySelectorAll("[data-fmt]").forEach(btn => btn.onclick = () => {
+  const map = { css: exportCss, json: exportJson, tailwind: exportTailwind, scss: exportScss };
+  document.getElementById("out").value = map[btn.dataset.fmt]();
+});
+
+/* ------------------------------ wiring -------------------------------- */
+function copy(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => toast("copied ✓ " + text))
+    .catch(() => toast(text));
+}
+document.getElementById("base").addEventListener("input", e => {
+  document.getElementById("baseHex").value = e.target.value.toUpperCase(); generate();
+});
+document.getElementById("baseHex").addEventListener("change", e => {
+  const v = e.target.value.trim();
+  if (/^#[0-9a-f]{6}$|^#[0-9a-f]{3}$/i.test(v)) {
+    const rgb = hexToRgb(v);
+    document.getElementById("base").value = rgbToHex(rgb);
+    generate();
+  }
+});
+document.getElementById("mode").addEventListener("change", () => {
+  const mono = document.getElementById("mode").value === "mono" || document.getElementById("mode").value === "analogous";
+  document.getElementById("count-wrap").hidden = !mono;
+  generate();
+});
+document.getElementById("count").addEventListener("change", generate);
+document.getElementById("generate").onclick = generate;
+document.getElementById("shuffle").onclick = shuffle;
+document.addEventListener("keydown", e => { if (e.code === "Space" && e.target === document.body) { e.preventDefault(); shuffle(); } });
+
+/* boot: random palette so first paint is fun */
+shuffle();
+</script>
+</body>
+</html>
