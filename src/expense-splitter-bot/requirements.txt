@@ -1,0 +1,2 @@
+# Expense Splitter bot — runtime dependencies
+python-telegram-bot>=21.0
