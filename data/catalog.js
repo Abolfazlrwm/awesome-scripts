@@ -4,18 +4,18 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-12T10:51:36+03:30",
-  "count": 74,
+  "generated_at": "2026-11-16T14:42:46+03:30",
+  "count": 81,
   "stats": {
     "categories": {
-      "telegram-bot": 56,
-      "web-tool": 14,
-      "desktop-tool": 4
+      "telegram-bot": 60,
+      "web-tool": 16,
+      "desktop-tool": 5
     },
     "languages": {
-      "Python": 38,
+      "Python": 43,
       "PHP": 12,
-      "HTML/CSS/JS": 12,
+      "HTML/CSS/JS": 14,
       "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
@@ -89,6 +89,17 @@ window.AWESOME_CATALOG = {
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/",
       "name_fa": "رزومه بک‌اند",
       "description_fa": "رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس"
+    },
+    {
+      "slug": "bulk-renamer-cli",
+      "path": "src/bulk-renamer-cli",
+      "category": "desktop-tool",
+      "language": "Python",
+      "name_en": "Bulk Renamer CLI",
+      "description_en": "Safe bulk file renamer — numbered templates, regex, dry-run default, undo log",
+      "demo": null,
+      "name_fa": "تغییرنام گروهی",
+      "description_fa": "تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت"
     },
     {
       "slug": "caller-lookup-app",
@@ -168,6 +179,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار"
     },
     {
+      "slug": "color-palette-studio",
+      "path": "src/color-palette-studio",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Color Palette Studio",
+      "description_en": "Palette generator — harmony rules, tints/shades, WCAG contrast lab, CSS/JSON/Tailwind export",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/",
+      "name_fa": "استودیو پالت رنگ",
+      "description_fa": "ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind"
+    },
+    {
       "slug": "connect4-minesweeper-bot",
       "path": "src/connect4-minesweeper-bot",
       "category": "telegram-bot",
@@ -188,6 +210,17 @@ window.AWESOME_CATALOG = {
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/",
       "name_fa": "اتاق فرمان",
       "description_fa": "داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز"
+    },
+    {
+      "slug": "dice-duel-bot",
+      "path": "src/dice-duel-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Dice Duel Bot",
+      "description_en": "PvP wagered dice duels — animated 2d6 rolls, tie re-rolls, coins & leaderboard",
+      "demo": null,
+      "name_fa": "نبرد تاس",
+      "description_fa": "دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها"
     },
     {
       "slug": "digiato-article-bot",
@@ -223,6 +256,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل"
     },
     {
+      "slug": "drum-machine-web",
+      "path": "src/drum-machine-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Drum Machine Web",
+      "description_en": "16-step WebAudio drum machine — synthesized voices, BPM/swing, presets, save/load",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/",
+      "name_fa": "سینت درام",
+      "description_fa": "درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو"
+    },
+    {
       "slug": "emoji-forge-bot",
       "path": "src/emoji-forge-bot",
       "category": "telegram-bot",
@@ -234,6 +278,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd"
     },
     {
+      "slug": "expense-splitter-bot",
+      "path": "src/expense-splitter-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Expense Splitter Bot",
+      "description_en": "Group cost sharing — live balances, equal/custom splits, fewest-transfers settle-up",
+      "demo": null,
+      "name_fa": "خرج‌شمار گروهی",
+      "description_fa": "تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله"
+    },
+    {
       "slug": "file-store-bot",
       "path": "src/file-store-bot",
       "category": "telegram-bot",
@@ -243,6 +298,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "ذخیره فایل و لینک‌ساز",
       "description_fa": "ذخیره‌ی فایل و ساخت لینک اختصاصی دانلود"
+    },
+    {
+      "slug": "flashcard-srs-bot",
+      "path": "src/flashcard-srs-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Flashcard SRS Bot",
+      "description_en": "Spaced-repetition study bot — SM-2 scheduler, decks, grade buttons, progress",
+      "demo": null,
+      "name_fa": "فلش‌کد فارسی",
+      "description_fa": "مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری"
     },
     {
       "slug": "forward-info-bot",
@@ -815,6 +881,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "گیوای وین‌لند",
       "description_fa": "گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین"
+    },
+    {
+      "slug": "wordle-fa-bot",
+      "path": "src/wordle-fa-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Wordle FA Bot",
+      "description_en": "Persian Wordle — 5-letter word of the day, 6 tries, emoji feedback, streaks & stats",
+      "demo": null,
+      "name_fa": "وردل فارسی",
+      "description_fa": "حدس کلمه‌ی ۵ حرفی روزانه در ۶ تلاش — بازخورد رنگی، برد متوالی و آمار کامل"
     },
     {
       "slug": "world-clock-planner",

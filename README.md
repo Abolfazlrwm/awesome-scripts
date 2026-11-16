@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**74 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**81 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-74-blue)
+![Projects](https://img.shields.io/badge/projects-81-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -41,7 +41,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 56
+### 🤖 Telegram bots — 60
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -101,8 +101,12 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [forward-info-bot](./src/forward-info-bot) | PHP | Reveal the original sender of forwarded messages |
 | [lottery-giveaway-bot](./src/lottery-giveaway-bot) | Python | Giveaways with mandatory join, referrals, admin panel |
 | [poll-vote-bot](./src/poll-vote-bot) | Python | Polls with live vote buttons, rendered result cards, CSV export — no framework |
+| [wordle-fa-bot](./src/wordle-fa-bot) | Python | Persian Wordle — 5-letter word of the day, 6 tries, emoji feedback, streaks & stats |
+| [flashcard-srs-bot](./src/flashcard-srs-bot) | Python | Spaced-repetition study bot — SM-2 scheduler, decks, grade buttons, progress |
+| [expense-splitter-bot](./src/expense-splitter-bot) | Python | Group cost sharing — live balances, equal/custom splits, fewest-transfers settle-up |
+| [dice-duel-bot](./src/dice-duel-bot) | Python | PvP wagered dice duels — animated 2d6 rolls, tie re-rolls, coins & leaderboard |
 
-### 🌐 Web tools — 14
+### 🌐 Web tools — 16
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -120,8 +124,10 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [mobile-app-intro-template](./src/mobile-app-intro-template) | HTML/CSS/JS | 12 responsive landing pages for mobile app promotion | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) |
 | [telegram-channel-landing-page](./src/telegram-channel-landing-page) | HTML/CSS/JS | Single-file landing page for Telegram channels & brands | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) |
 | [jalali-date-tools](./src/jalali-date-tools) | HTML/CSS/JS | Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline) | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) |
+| [color-palette-studio](./src/color-palette-studio) | HTML/CSS/JS | Palette generator — harmony rules, tints/shades, WCAG contrast lab, CSS/JSON/Tailwind export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/) |
+| [drum-machine-web](./src/drum-machine-web) | HTML/CSS/JS | 16-step WebAudio drum machine — synthesized voices, BPM/swing, presets, save/load | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/) |
 
-### 🖥 Desktop tools — 4
+### 🖥 Desktop tools — 5
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -129,6 +135,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [pyautogui-automation-demo](./src/pyautogui-automation-demo) | Python | Desktop automation CLI — auto-typing, screenshots, clicks (PyAutoGUI) |
 | [system-monitor-gui](./src/system-monitor-gui) | Python | Live CPU/RAM/disk monitor with a PyQt6 GUI |
 | [clipboard-history-manager](./src/clipboard-history-manager) | Python | Searchable clipboard history — pins, dedup, JSON persistence (tkinter) |
+| [bulk-renamer-cli](./src/bulk-renamer-cli) | Python | Safe bulk file renamer — numbered templates, regex, dry-run default, undo log |
 
 > 🚧 More projects are on the way — hit **Star** / **Watch** to catch the new ones.
 
@@ -178,7 +185,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (56)
+#### 🤖 ربات‌های تلگرام (60)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -238,8 +245,12 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🔍 شناسایی فرستنده‌ی فورواردی](./src/forward-info-bot) | PHP | نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده |
 | [🎰 قرعه‌کشی و گیوای](./src/lottery-giveaway-bot) | Python | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل |
 | [🗳 نظرسنجی و رأی‌گیری](./src/poll-vote-bot) | Python | نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک |
+| [🟩 وردل فارسی](./src/wordle-fa-bot) | Python | حدس کلمه‌ی ۵ حرفی روزانه در ۶ تلاش — بازخورد رنگی، برد متوالی و آمار کامل |
+| [🎓 فلش‌کد فارسی](./src/flashcard-srs-bot) | Python | مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری |
+| [💰 خرج‌شمار گروهی](./src/expense-splitter-bot) | Python | تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله |
+| [🎲 نبرد تاس](./src/dice-duel-bot) | Python | دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها |
 
-#### 🌐 ابزارهای وب (14)
+#### 🌐 ابزارهای وب (16)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -257,14 +268,17 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [📱 قالب معرفی اپلیکیشن](./src/mobile-app-intro-template) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) | HTML/CSS/JS | ۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل |
 | [📢 صفحه فرود کانال تلگرام](./src/telegram-channel-landing-page) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) | HTML/CSS/JS | لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی |
 | [🗓 تقویم جلالی](./src/jalali-date-tools) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) | HTML/CSS/JS | تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین |
+| [🎨 استودیو پالت رنگ](./src/color-palette-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/) | HTML/CSS/JS | ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind |
+| [🥁 سینت درام](./src/drum-machine-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/) | HTML/CSS/JS | درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو |
 
-#### 🖥 ابزارهای دسکتاپ (4)
+#### 🖥 ابزارهای دسکتاپ (5)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
 | [🗂 مرتب‌کننده پوشه Downloads](./src/downloads-organizer) | PowerShell | دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل |
 | [🖱 ابزار اتوماسیون دسکتاپ](./src/pyautogui-automation-demo) | Python | تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان |
 | [🖥 مانیتور سیستم](./src/system-monitor-gui) | Python | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6 |
+| [📁 تغییرنام گروهی](./src/bulk-renamer-cli) | Python | تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت |
 | [📋 تاریخچه کلیپ‌بورد](./src/clipboard-history-manager) | Python | تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON |
 
 > 🚧 در حال توسعه و افزودن سورس‌های جدید هستم — با **Star** و **Watch** از پروژه‌های تازه باخبر شوید.

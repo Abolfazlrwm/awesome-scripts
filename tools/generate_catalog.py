@@ -74,6 +74,9 @@ NAME_OVERRIDES = {
     "ton-nft-marketplace": "TON NFT Marketplace",
     "twitter-media-api": "Twitter Media API",
     "ai-self-coding-bot": "AI Self-Coding Bot",
+    "wordle-fa-bot": "Wordle FA Bot",
+    "flashcard-srs-bot": "Flashcard SRS Bot",
+    "bulk-renamer-cli": "Bulk Renamer CLI",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
