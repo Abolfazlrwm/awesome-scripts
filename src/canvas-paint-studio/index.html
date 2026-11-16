@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas Paint Studio — draw, shape, export</title>
+<meta name="description" content="A tiny browser paint app — brush, eraser, line, rectangle, circle, undo, PNG export. Single file, offline, no dependencies.">
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel2:#1c2129; --border:#30363d;
+          --text:#e6edf3; --muted:#8b949e; --accent:#59c2ff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; min-height:100vh; }
+  header { text-align:center; padding:16px 12px 4px; }
+  header h1 { font-size:20px; } header h1 span { color:var(--accent); }
+  .wrap { max-width:900px; margin:0 auto; padding:10px 14px 40px; }
+  .toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center;
+             background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:10px 12px; }
+  .tool { background:var(--panel2); color:var(--text); border:1px solid var(--border); border-radius:8px;
+          padding:7px 12px; font:inherit; cursor:pointer; }
+  .tool:hover { border-color:#4d5d6f; }
+  .tool.active { background:#1f6feb; border-color:#388bfd; }
+  input[type=color] { width:40px; height:32px; border:1px solid var(--border); border-radius:8px; background:none; cursor:pointer; padding:2px; }
+  input[type=range] { accent-color:var(--accent); width:110px; }
+  label { color:var(--muted); font-size:11.5px; text-transform:uppercase; letter-spacing:.4px; }
+  .swatches { display:flex; gap:5px; }
+  .sw { width:22px; height:22px; border-radius:6px; border:1px solid var(--border); cursor:pointer; }
+  .stage { margin-top:12px; background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:10px; }
+  canvas { display:block; width:100%; border-radius:8px; cursor:crosshair; touch-action:none; background:#fff; }
+  .hint { color:var(--muted); font-size:12px; text-align:center; margin-top:8px; }
+  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:14px; }
+  footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🖌 Canvas <span>Paint Studio</span></h1>
+</header>
+
+<div class="wrap">
+  <div class="toolbar">
+    <button class="tool active" data-tool="brush">✏️ قلم</button>
+    <button class="tool" data-tool="eraser">🧽 پاک‌کن</button>
+    <button class="tool" data-tool="line">📏 خط</button>
+    <button class="tool" data-tool="rect">▭ مستطیل</button>
+    <button class="tool" data-tool="circle">⭪ دایره</button>
+    <button class="tool" data-tool="fill">🪣 رنگ زمینه</button>
+    <label>رنگ</label>
+    <input type="color" id="color" value="#1f6feb">
+    <div class="swatches" id="swatches"></div>
+    <label>قطر</label>
+    <input type="range" id="size" min="1" max="60" value="6">
+    <span id="sizeOut" style="min-width:30px;color:var(--accent);font-weight:700">6</span>
+    <button class="tool" id="undo">↩️ برگشت</button>
+    <button class="tool" id="clear">🗑 پاک‌سازی</button>
+    <button class="tool" id="save">💾 خروجی PNG</button>
+  </div>
+
+  <div class="stage">
+    <canvas id="canvas" width="1200" height="700"></canvas>
+    <div class="hint">برای کشیدن بکش و رها کن · Ctrl+Z = برگشت آخرین حرکت · ابزارهای خط/مستطیل/دایره با پیش‌نمایش زنده کار می‌کنند</div>
+  </div>
+
+  <footer>
+    Built by <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    everything stays in your browser
+  </footer>
+</div>
+
+<script>
+"use strict";
+const cv = document.getElementById("canvas");
+const ctx = cv.getContext("2d", { willReadFrequently: true });
+let tool = "brush", color = "#1f6feb", size = 6;
+let drawing = false, sx = 0, sy = 0, snapshot = null;
+const undoStack = [];
+
+const dpr = Math.min(2, window.devicePixelRatio || 1);
+function fitCanvas() {
+  const rect = cv.getBoundingClientRect();
+  const data = undoStack.length ? ctx.getImageData(0, 0, cv.width, cv.height) : null;
+  cv.width = Math.round(rect.width * dpr);
+  cv.height = Math.round(Math.round(rect.width * dpr) * 700 / 1200);
+  ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, cv.width, cv.height);
+  if (data) ctx.putImageData(data, 0, 0);
+}
+fitCanvas();
+window.addEventListener("resize", fitCanvas);
+
+function pos(e) {
+  const r = cv.getBoundingClientRect();
+  return { x: (e.clientX - r.left) * cv.width / r.width,
+           y: (e.clientY - r.top) * cv.height / r.height };
+}
+function pushUndo() {
+  undoStack.push(ctx.getImageData(0, 0, cv.width, cv.height));
+  if (undoStack.length > 25) undoStack.shift();
+}
+function undo() {
+  const snap = undoStack.pop();
+  if (snap) ctx.putImageData(snap, 0, 0);
+}
+
+function setColorFromUI() {
+  ctx.strokeStyle = tool === "eraser" ? "#ffffff" : color;
+  ctx.fillStyle = tool === "eraser" ? "#ffffff" : color;
+  ctx.lineWidth = tool === "eraser" ? size * 2.5 : size;
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+}
+
+cv.addEventListener("pointerdown", e => {
+  e.preventDefault(); cv.setPointerCapture(e.pointerId);
+  const p = pos(e);
+  setColorFromUI();
+  if (tool === "fill") { ctx.fillStyle = color; ctx.fillRect(0, 0, cv.width, cv.height); return; }
+  pushUndo();
+  sx = p.x; sy = p.y; drawing = true;
+  snapshot = ctx.getImageData(0, 0, cv.width, cv.height);
+  if (tool === "brush" || tool === "eraser") {
+    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + 0.01, sy + 0.01); ctx.stroke();
+  }
+});
+cv.addEventListener("pointermove", e => {
+  if (!drawing) return;
+  const p = pos(e);
+  if (tool === "brush" || tool === "eraser") {
+    ctx.lineTo(p.x, p.y); ctx.stroke();
+    return;
+  }
+  /* live preview for shape tools: restore snapshot, draw the pending shape */
+  ctx.putImageData(snapshot, 0, 0);
+  ctx.beginPath();
+  if (tool === "line") { ctx.moveTo(sx, sy); ctx.lineTo(p.x, p.y); ctx.stroke(); }
+  else if (tool === "rect") { ctx.strokeRect(sx, sy, p.x - sx, p.y - sy); }
+  else if (tool === "circle") {
+    const r = Math.hypot(p.x - sx, p.y - sy);
+    ctx.arc(sx, sy, r, 0, Math.PI * 2); ctx.stroke();
+  }
+});
+cv.addEventListener("pointerup", () => { drawing = false; snapshot = null; });
+
+/* tools & controls */
+document.querySelectorAll("[data-tool]").forEach(b => b.onclick = () => {
+  document.querySelectorAll("[data-tool]").forEach(x => x.classList.remove("active"));
+  b.classList.add("active"); tool = b.dataset.tool;
+});
+document.getElementById("color").addEventListener("input", e => { color = e.target.value; });
+document.getElementById("size").addEventListener("input", e => {
+  size = +e.target.value;
+  document.getElementById("sizeOut").textContent = size;
+});
+document.getElementById("undo").onclick = undo;
+document.getElementById("clear").onclick = () => {
+  pushUndo();
+  ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, cv.width, cv.height);
+};
+document.getElementById("save").onclick = () => {
+  const a = document.createElement("a");
+  a.download = "paint-" + Date.now() + ".png";
+  a.href = cv.toDataURL("image/png");
+  a.click();
+};
+document.addEventListener("keydown", e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); }
+});
+
+/* quick color swatches */
+const PRESETS = ["#1f6feb","#3fb950","#f85149","#ff9f0a","#bf5af2","#0ff","#000000","#ffffff","#8b5cf6","#14b8a6"];
+const sw = document.getElementById("swatches");
+PRESETS.forEach(c => {
+  const d = document.createElement("div");
+  d.className = "sw"; d.style.background = c; d.title = c;
+  d.onclick = () => { color = c; document.getElementById("color").value = c; };
+  sw.appendChild(d);
+});
+</script>
+</body>
+</html>
