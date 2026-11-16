@@ -13,10 +13,12 @@
 ## ✨ Features
 
 - 🅱 **Hand-drawn bitmap fonts** — 5×5 block and 6×5 shadow glyph sets (A–Z, 0–9) designed pixel-by-pixel in this repo
-- 🖼 **Image → ASCII** — drag & drop, adjustable width (40–220 chars) and contrast, perceptual luminance weights (0.2126/0.7152/0.0722), alpha blending, 3 char ramps + inversion
-- ✦ **Stars style** — symbolic output mode
-- 📋 **Copy / download .txt** for both tabs
-- 🔒 Images never leave the browser (canvas, FileReader) — zero dependencies
+- 🖼 **Image → ASCII** — drag & drop, **Ctrl+V paste**, adjustable width (40–220 chars) and contrast, perceptual luminance weights (0.2126/0.7152/0.0722), alpha blending, 3 char ramps + inversion
+- 🧪 **Built-in samples** — planet / wave / vortex scenes drawn procedurally on canvas, so image→ASCII works with zero uploads
+- 🌈 **Color FX** — terminal glow, rainbow gradient (`background-clip: text`) or plain, for banner and image tabs
+- 🖼 **Banner PNG export** — the banner is re-rendered onto a canvas and saved as an image
+- ✦ **Stars style** — symbolic output mode; 📋 copy / download .txt everywhere
+- 🔒 Images never leave the browser (canvas, FileReader) — zero dependencies, JetBrains Mono output
 
 ## 🚀 Demo / اجرا
 
