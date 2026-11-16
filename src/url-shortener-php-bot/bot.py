@@ -41,11 +41,11 @@ db_lock = Lock()
 
 def shorten_url(url):
     try:
-        response = requests.get(f"http://tinyurl.com/api-create.php?url={url}")
+        response = requests.get(f"http://tinyurl.com/api-create.php?url={url}", timeout=30)
         if response.status_code == 200:
             return response.text
         return None
-    except:
+    except Exception:
         return None
 
 async def check_channel_membership(context: CallbackContext, user_id: int):
