@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCII Art Studio — text banners & image-to-ASCII</title>
+<meta name="description" content="Turn text into ASCII banners and images into ASCII art — style presets, inverted output, copy & download .txt. Single file, offline.">
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel2:#1c2129; --border:#30363d;
+          --text:#e6edf3; --muted:#8b949e; --accent:#59c2ff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; min-height:100vh; }
+  header { text-align:center; padding:18px 12px 4px; }
+  header h1 { font-size:21px; } header h1 span { color:var(--accent); }
+  header p { color:var(--muted); font-size:12.5px; }
+  .wrap { max-width:960px; margin:0 auto; padding:12px 16px 40px; }
+  .tabs { display:flex; gap:8px; justify-content:center; margin-bottom:14px; }
+  .btn { background:var(--panel2); color:var(--text); border:1px solid var(--border); border-radius:8px;
+         padding:8px 16px; font:inherit; cursor:pointer; }
+  .btn:hover { border-color:#4d5d6f; }
+  .btn.active { background:#1f6feb; border-color:#388bfd; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px; }
+  .row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px; }
+  label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+  input[type=text] { flex:1; min-width:220px; background:var(--panel2); color:var(--text);
+                     border:1px solid var(--border); border-radius:8px; padding:9px 12px; font:inherit; }
+  select, input[type=range], input[type=file] { background:var(--panel2); color:var(--text);
+       border:1px solid var(--border); border-radius:8px; padding:7px 10px; font:inherit; }
+  input[type=range] { accent-color:var(--accent); }
+  .btn.primary { background:#238636; border-color:#2ea043; }
+  pre { background:#010409; color:#7ee787; border:1px solid var(--border); border-radius:10px;
+        padding:16px; overflow:auto; font:12px/1.25 ui-monospace,Consolas,monospace;
+        white-space:pre; max-height:420px; }
+  .actions { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .drop { border:2px dashed var(--border); border-radius:10px; padding:22px; text-align:center;
+          color:var(--muted); cursor:pointer; margin-bottom:12px; }
+  .drop:hover { border-color:var(--accent); }
+  footer { text-align:center; color:var(--muted); font-size:12px; padding:18px 0 8px; }
+  footer a { color:var(--accent); text-decoration:none; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔤 ASCII <span>Art Studio</span></h1>
+  <p>متن → بنر ASCII · تصویر → هنر ASCII — بدون هیچ کتابخانه‌ای</p>
+</header>
+
+<div class="wrap">
+  <div class="tabs">
+    <button class="btn tab active" data-tab="banner">📝 بنر متنی</button>
+    <button class="btn tab" data-tab="image">🖼 تصویر به ASCII</button>
+  </div>
+
+  <div class="card" id="tab-banner">
+    <div class="row">
+      <label>متن</label>
+      <input type="text" id="txt" value="ABOLFazl" maxlength="12" spellcheck="false">
+      <label>سبک</label>
+      <select id="style">
+        <option value="block">Block (5×5)</option>
+        <option value="shadow">Shadow (6×5)</option>
+        <option value="star">Stars ✦</option>
+      </select>
+    </div>
+    <div class="row">
+      <label>کاراکتر</label>
+      <select id="char">
+        <option value="#">#</option><option value="█">█</option><option value="▓">▓</option>
+        <option value="*">*</option><option value="@">@</option><option value="$">$</option>
+        <option value="%">%</option><option value="=">=</option><option value="+">+</option>
+      </select>
+      <label>اندازه</label>
+      <input type="range" id="scale" min="1" max="3" value="1">
+      <button class="btn" id="invertBtn">🌗 معکوس</button>
+    </div>
+    <pre id="bannerOut"></pre>
+  </div>
+
+  <div class="card hidden" id="tab-image">
+    <div class="drop" id="drop">🖼 تصویر را اینجا رها کن یا کلیک کن (PNG / JPG — همه‌چیز محلی می‌ماند)</div>
+    <input type="file" id="file" accept="image/*" class="hidden">
+    <div class="row">
+      <label>عرض (کاراکتر)</label>
+      <input type="range" id="width" min="40" max="220" value="110">
+      <label>کنتراست</label>
+      <input type="range" id="contrast" min="0" max="200" value="100">
+      <label>کارتاکترها</label>
+      <select id="ramp">
+        <option value="std">منطقه‌ای: @#*+=-:. </option>
+        <option value="blocks">بلوکی: █▓▒░ </option>
+        <option value="binary">دویی: 01 </option>
+      </select>
+      <button class="btn" id="invImg">🌗 معکوس</button>
+    </div>
+    <pre id="imgOut">— هنوز تصویری بارگذاری نشده —</pre>
+    <div class="actions">
+      <button class="btn primary" id="copyImg">📋 کپی</button>
+      <button class="btn" id="dlImg">⬇️ دانلود .txt</button>
+    </div>
+  </div>
+
+  <div class="actions" id="bannerActions">
+    <button class="btn primary" id="copyBanner">📋 کپی</button>
+    <button class="btn" id="dlBanner">⬇️ دانلود .txt</button>
+  </div>
+
+  <footer>
+    Built by <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    bitmap fonts &amp; luminance mapping implemented from scratch
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ================================================================
+   Hand-drawn 5-row bitmap font for A-Z, 0-9 and space.
+   Each glyph is an array of 5 strings — my own pixel designs.
+================================================================ */
+const FONT = {
+  A:["▄█▄ ","█ █ ","███ ","█ █ ","█ █ "],
+  B:["██▄ ","█ █ ","██▀ ","█ █ ","██▄ "],
+  C:["▄██ ","█   ","█   ","█   ","▀██ "],
+  D:["██▄ ","█ █ ","█ █ ","█ █ ","██▀ "],
+  E:["███ ","█   ","██▀ ","█   ","███ "],
+  F:["███ ","█   ","██▀ ","█   ","█   "],
+  G:["▄██ ","█   ","█ ██","█  █","▀██ "],
+  H:["█ █ ","█ █ ","███ ","█ █ ","█ █ "],
+  I:["███ "," ▌  "," ▌  "," ▌  ","███ "],
+  J:["  ██","   █","   █","█  █","▀██ "],
+  K:["█ █ ","█ █ ","██  ","█ █ ","█ █ "],
+  L:["█   ","█   ","█   ","█   ","███ "],
+  M:["█   █","██ ██","█ █ █","█   █","█   █"],
+  N:["█   █","██  █","█ █ █","█  ██","█   █"],
+  O:["▄█▄ ","█  █","█  █","█  █","▀█▀ "],
+  P:["██▄ ","█ █ ","██▀ ","█   ","█   "],
+  Q:["▄█▄ ","█  █","█  █","█ ▄█","▀█▀█"],
+  R:["██▄ ","█ █ ","██▀ ","█ █ ","█  █"],
+  S:["▄██ ","█   ","▀█▄ ","   █","██▀ "],
+  T:["███ "," ▐  "," ▐  "," ▐  "," ▐  "],
+  U:["█ █ ","█ █ ","█ █ ","█ █ ","▀█▀ "],
+  V:["█ █ ","█ █ ","█ █ ","▐ █ "," ▌  "],
+  W:["█   █","█   █","█ █ █","██ ██","█   █"],
+  X:["█ █ ","█ █ "," █  ","█ █ ","█ █ "],
+  Y:["█ █ ","█ █ "," █  "," ▐  "," ▐  "],
+  Z:["███ ","  █ "," ▐  ","▐   ","███ "],
+  "0":["▄█▄ ","█ ▐ ","█▐ █","▐  █","▀█▀ "],
+  "1":[" ▐  ","▐▐  "," ▐  "," ▐  ","███ "],
+  "2":["▄██ ","   █"," ▄█ ","█   ","████"],
+  "3":["██▄ ","   █"," ▄█ ","   █","██▀ "],
+  "4":["█ █ ","█ █ ","███ ","  █ ","  █ "],
+  "5":["████","█   ","██▄ ","   █","██▀ "],
+  "6":["▄██ ","█   ","██▄ ","█  █","▀██ "],
+  "7":["████","   █","  ▐ "," ▐  "," ▐  "],
+  "8":["▄█▄ ","█ █ ","▀█▀ ","█ █ ","▀█▀ "],
+  "9":["▄█▄ ","█  █","▀██ ","   █","██▀ "],
+  " ":["  ","  ","  ","  ","  "],
+};
+const SHADOW = { /* 6-wide variant for a heavier look */
+  A:[" ███ ","█   █","█████","█   █","█   █"],
+  B:["████ ","█   █","████ ","█   █","████ "],
+  C:[" ████","█    ","█    ","█    "," ████"],
+  D:["████ ","█   █","█   █","█   █","████ "],
+  E:["█████","█    ","████ ","█    ","█████"],
+  F:["█████","█    ","████ ","█    ","█    "],
+  G:[" ████","█    ","█  ██","█   █"," ████"],
+  H:["█   █","█   █","█████","█   █","█   █"],
+  I:["█████","  █  ","  █  ","  █  ","█████"],
+  J:["  ███","   █ ","   █ ","█  █ "," ██  "],
+  K:["█   █","█  █ ","███  ","█  █ ","█   █"],
+  L:["█    ","█    ","█    ","█    ","█████"],
+  M:["█     █","██   ██","█ █ █ █","█  █  █","█     █"],
+  N:["█     █","██    █","█ █   █","█  █  █","█   ███"],
+  O:[" ███ ","█   █","█   █","█   █"," ███ "],
+  P:["████ ","█   █","████ ","█    ","█    "],
+  Q:[" ███ ","█   █","█ █ █","█  ██"," ████"],
+  R:["████ ","█   █","████ ","█  █ ","█   █"],
+  S:[" ████","█    "," ███ ","    █","████ "],
+  T:["█████","  █  ","  █  ","  █  ","  █  "],
+  U:["█   █","█   █","█   █","█   █"," ███ "],
+  V:["█   █","█   █","█   █"," █ █ ","  █  "],
+  W:["█     █","█     █","█  █  █","█ █ █ █"," █   █ "],
+  X:["█   █"," █ █ ","  █  "," █ █ ","█   █"],
+  Y:["█   █"," █ █ ","  █  ","  █  ","  █  "],
+  Z:["█████","   █ ","  █  "," █   ","█████"],
+  "0":[" ███ ","█   █","█  ██","█   █"," ███ "],
+  "1":["  █  "," ██  ","  █  ","  █  ","████ "],
+  "2":[" ███ ","    █","  ██ "," █   ","█████"],
+  "3":[" ███ ","    █","  ██ ","    █"," ███ "],
+  "4":["█   █","█   █","█████","    █","    █"],
+  "5":["█████","█    ","████ ","    █","████ "],
+  "6":[" ███ ","█    ","████ ","█   █"," ███ "],
+  "7":["█████","    █","   █ ","  █  ","  █  "],
+  "8":[" ███ ","█   █"," ███ ","█   █"," ███ "],
+  "9":[" ███ ","█   █"," ████","    █"," ███ "],
+  " ":["   ","   ","   ","   ","   "],
+};
+const STAR = { /* ✦-based minimal set, falls back to block shapes */
+};
+
+let invert = false, invertImg = false;
+
+function renderBanner() {
+  const text = document.getElementById("txt").value.toUpperCase().slice(0, 12);
+  const style = document.getElementById("style").value;
+  const ch = document.getElementById("char").value;
+  const scale = +document.getElementById("scale").value;
+  const font = style === "shadow" ? SHADOW : FONT;
+  const rows = [];
+  const cells = text.split("");
+  for (let r = 0; r < 5; r++) {
+    let line = "";
+    for (const c of cells) {
+      const glyph = font[c] || font[" "];
+      let seg = glyph[r];
+      if (style === "star") seg = seg.replace(/[█▀▄▌▐▓]/g, "✦").replace(/\S/g, "✦");
+      else if (style === "block" || style === "shadow") seg = invert
+        ? seg.replace(/[^\s]/g, ch).replace(/\s/g, "·")
+        : seg.replace(/[^\s]/g, ch);
+      line += seg + " ";
+    }
+    rows.push(scale > 1 ? Array(scale).fill(line).join("") : line);
+    if (scale > 1) rows.push(...Array(scale - 1).fill(line));
+  }
+  document.getElementById("bannerOut").textContent = rows.join("\n");
+}
+
+/* ================================================================ image → ASCII */
+const RAMPS = {
+  std: "@#%*+=-:. ",
+  blocks: "█▓▒░ ",
+  binary: "01 ",
+};
+let imgEl = null;
+
+function asciiFromImage() {
+  if (!imgEl) return;
+  const W = +document.getElementById("width").value;
+  const contrast = +document.getElementById("contrast").value / 100;
+  const rampRaw = document.getElementById("ramp").value;
+  const ramp = invertImg
+    ? RAMPS[rampRaw].split("").reverse().join("")
+    : RAMPS[rampRaw];
+  const H = Math.max(1, Math.round(imgEl.height / imgEl.width * W * 0.5)); // chars are taller than wide
+  const cnv = document.createElement("canvas");
+  cnv.width = W; cnv.height = H;
+  const ctx = cnv.getContext("2d");
+  ctx.drawImage(imgEl, 0, 0, W, H);
+  const data = ctx.getImageData(0, 0, W, H).data;
+  let out = "";
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      const a = data[i + 3] / 255;
+      /* luminance (perceptual weights), alpha-blended over black */
+      let lum = (0.2126*data[i] + 0.7152*data[i+1] + 0.0722*data[i+2]) * a;
+      lum = Math.min(255, Math.max(0, (lum - 128) * contrast + 128));
+      out += ramp[Math.min(ramp.length - 1, Math.floor(lum / 256 * ramp.length))];
+    }
+    out += "\n";
+  }
+  document.getElementById("imgOut").textContent = out;
+}
+
+function loadImageFile(file) {
+  const url = URL.createObjectURL(file);
+  imgEl = new Image();
+  imgEl.onload = () => { asciiFromImage(); };
+  imgEl.src = url;
+}
+
+/* ================================================================ wiring */
+document.querySelectorAll(".tab").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  b.classList.add("active");
+  document.getElementById("tab-banner").classList.toggle("hidden", b.dataset.tab !== "banner");
+  document.getElementById("tab-image").classList.toggle("hidden", b.dataset.tab !== "image");
+  document.getElementById("bannerActions").classList.toggle("hidden", b.dataset.tab !== "banner");
+});
+["txt","style","char","scale"].forEach(id =>
+  document.getElementById(id).addEventListener("input", renderBanner));
+document.getElementById("invertBtn").onclick = () => { invert = !invert; renderBanner(); };
+document.getElementById("invImg").onclick = () => { invertImg = !invertImg; asciiFromImage(); };
+["width","contrast","ramp"].forEach(id =>
+  document.getElementById(id).addEventListener("input", asciiFromImage));
+
+const drop = document.getElementById("drop"), file = document.getElementById("file");
+drop.onclick = () => file.click();
+file.onchange = () => file.files[0] && loadImageFile(file.files[0]);
+["dragover","dragleave","drop"].forEach(ev => drop.addEventListener(ev, e => {
+  e.preventDefault();
+  if (ev === "dragover") drop.style.borderColor = "#59c2ff";
+  else drop.style.borderColor = "";
+  if (ev === "drop" && e.dataTransfer.files[0]) loadImageFile(e.dataTransfer.files[0]);
+}));
+
+function copy(text) { navigator.clipboard.writeText(text).catch(() => {}); }
+function download(text, name) {
+  const blob = new Blob([text], { type: "text/plain" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name; a.click();
+}
+document.getElementById("copyBanner").onclick = () => copy(document.getElementById("bannerOut").textContent);
+document.getElementById("dlBanner").onclick = () =>
+  download(document.getElementById("bannerOut").textContent, "banner.txt");
+document.getElementById("copyImg").onclick = () => copy(document.getElementById("imgOut").textContent);
+document.getElementById("dlImg").onclick = () =>
+  download(document.getElementById("imgOut").textContent, "ascii-art.txt");
+
+renderBanner();
+</script>
+</body>
+</html>
