@@ -12,11 +12,14 @@
 
 ## ✨ Features
 
-- 🇮🇷🇬🇧 **FA/EN modes** — RTL-aware rendering for Persian, ی/ک normalization, direction switching
+- 🇮🇷🇬🇧 **FA/EN modes** — RTL-aware rendering, ی/ک normalization, Vazirmatn + Outfit typography
 - ⏱ **30s / 60s** runs — timer starts on your first keystroke
-- 🎨 **Per-character coloring** — done / error / cursor with blinking caret
-- 📈 **Live WPM chart** — hand-drawn canvas curve, no chart libraries
-- 🏆 **History** — last 8 runs persisted in localStorage
+- 🔊 **Keypress audio** — a soft click for hits, a low buzz for misses (toggleable)
+- 🎨 **Per-character coloring** — done / error / blinking caret, glassmorphism UI with dark & light themes
+- 📈 **Live WPM chart** — hand-drawn canvas curve with gradient area & glow, no chart libraries
+- 🔥 **Mistake heatmap** — the session's problem keys ranked as intensity-colored chips
+- 🏆 **PB celebration** — animated counters, personal best per language+duration, hand-written confetti burst
+- 📜 **History** — last 8 runs persisted in localStorage
 - ⌨️ `Tab` restarts instantly; zero dependencies, works from `file://`
 
 ## 🚀 Demo / اجرا
