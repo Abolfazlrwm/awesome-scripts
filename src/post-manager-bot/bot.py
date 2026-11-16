@@ -80,7 +80,7 @@ def send_message(chat_id, text, reply_markup=None, parse_mode="HTML"):
     }
     if reply_markup is not None:
         data["reply_markup"] = reply_markup
-    r = requests.post(f"{API_URL}/sendMessage", json=data)
+    r = requests.post(f"{API_URL}/sendMessage", json=data, timeout=30)
     return r.json()
 
 
