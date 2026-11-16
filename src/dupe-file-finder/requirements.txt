@@ -1,0 +1,3 @@
+# Dupe Finder — no third-party dependencies.
+# Pure standard library: hashlib, argparse, pathlib, csv. Python 3.9+
+# Run:  python dupe_finder.py <dir> --help
