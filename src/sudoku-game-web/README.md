@@ -14,11 +14,16 @@
 
 - 🧬 **Real generator** — random full grid + cell removal that keeps exactly ONE solution (`countSolutions ≤ 2` check)
 - 🎚 **4 difficulties** — آسان / متوسط / سخت / خفن (38 → 56 holes)
-- ✏️ **Pencil notes** — 3×3 mini-grid per cell, cleared automatically on correct entry
+- ✏️ **Pencil notes** — 3×3 mini-grid per cell, plus 🪄 **auto-notes** that fill every candidate at once
+- ↩️ **Undo** — full move history (up to 200), `Ctrl+Z`
+- 🔢 **Digit pad with counters** — remaining count under every digit, completed digits fade out
+- 📊 **Progress bar** — filled-cell percentage in a gradient bar
+- 🏆 **Per-difficulty records** — best time saved per level, confetti + shake animations on win/mistake
 - 💡 **Smart hint** — reveals a random missing cell from the stored solution
-- ⚠️ **3-mistakes limit** — conflict highlighting (row/box/peer/same-number shading)
+- ⚠️ **3-mistakes limit** — conflict highlighting (row/box/peer/same-number shading), pop animation on entry
 - 🧠 **Solver built in** — watch the backtracking solve the current board
-- ⌨️ full keyboard support: 1–9, arrows, Backspace
+- 🌗 dark & light glassmorphism themes, Vazirmatn + Outfit typography
+- ⌨️ full keyboard support: 1–9, arrows, Backspace, `Ctrl+Z`
 
 ## 🚀 Demo / اجرا
 

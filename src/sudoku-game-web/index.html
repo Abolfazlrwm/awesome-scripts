@@ -1,91 +1,142 @@
 <!DOCTYPE html>
 <!-- Telegram: @Abolfazl_rwm -->
-<html lang="en" dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudoku — generator, solver & playable grid</title>
-<meta name="description" content="Play Sudoku offline — four difficulties, unique-solution generator, pencil notes, hints, timer. Single file, no dependencies.">
+<title>Sudoku Web — سودوکو با سازنده‌ی جواب یکتا</title>
+<meta name="description" content="بازی سودوکو آفلاین — سازنده با جواب یکتا، ۴ سطح، یادداشت مدادی و خودکار، راهنما، undo، رکورد هر سطح و کانفتی برد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0d1117; --panel:#161b22; --panel2:#1c2129; --border:#30363d;
-          --text:#e6edf3; --muted:#8b949e; --accent:#59c2ff; --fixed:#a5b4fc; --err:#f85149; }
+  :root {
+    --bg:#080a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(148,163,184,.3);
+    --text:#eaeafb; --muted:#8f9bb8;
+    --a1:#a78bfa; --a2:#f472b6;
+    --fixed:#b9c0f5; --err:#f87171; --ok:#34d399; --warn:#fbbf24;
+    --cellline:rgba(148,163,184,.14); --cellbold:rgba(148,163,184,.4);
+    --r:18px; --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  body.light {
+    --bg:#eef1fb; --glass:rgba(30,27,75,.05); --glass2:rgba(30,27,75,.09);
+    --border:rgba(30,27,75,.13); --border2:rgba(30,27,75,.26);
+    --text:#171335; --muted:#5c5e85;
+    --fixed:#5b54c0; --cellline:rgba(30,27,75,.14); --cellbold:rgba(30,27,75,.42);
+  }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--text); font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; min-height:100vh; }
-  header { text-align:center; padding:18px 12px 4px; }
-  header h1 { font-size:21px; } header h1 span { color:var(--accent); }
-  header p { color:var(--muted); font-size:12.5px; }
-  .wrap { max-width:520px; margin:0 auto; padding:10px 14px 40px; }
-  .bar { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:12px; }
-  .btn { background:var(--panel2); color:var(--text); border:1px solid var(--border); border-radius:8px;
-         padding:7px 13px; font:inherit; cursor:pointer; }
-  .btn:hover { border-color:#4d5d6f; }
-  .btn.primary { background:#1f6feb; border-color:#388bfd; }
-  .btn.active { border-color:var(--accent); color:var(--accent); }
-  .meta { display:flex; justify-content:space-between; background:var(--panel); border:1px solid var(--border);
-          border-radius:10px; padding:8px 14px; margin-bottom:10px; font-size:14px; }
-  .meta b { color:var(--accent); }
-  .board { display:grid; grid-template-columns:repeat(9,1fr); background:var(--panel);
-           border:2px solid #4d5d6f; border-radius:8px; overflow:hidden; aspect-ratio:1; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 90% -10%, rgba(244,114,182,.13), transparent 60%),
+      radial-gradient(900px 520px at -5% 105%, rgba(167,139,250,.16), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:26px 14px 6px; position:relative; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(167,139,250,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:5px; }
+  .theme { position:absolute; top:20px; inset-inline-end:20px; }
+  .wrap { max-width:540px; margin:0 auto; padding:12px 16px 46px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .bar { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:12px; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:7px 14px; font:600 13px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                color:#150b2b; box-shadow:0 6px 20px -6px rgba(167,139,250,.55); }
+  .progress { height:5px; border-radius:99px; background:var(--glass2); overflow:hidden; margin-top:10px; }
+  .progress i { display:block; height:100%; width:0%;
+                background:linear-gradient(90deg, var(--a1), var(--a2)); transition:width .3s; }
+  .meta { display:flex; justify-content:space-between; align-items:center; padding:9px 16px; margin-top:10px; font-size:13.5px; }
+  .meta b { color:var(--a1); font-family:var(--font-en); font-weight:700; }
+  .board { display:grid; grid-template-columns:repeat(9,1fr); background:var(--glass);
+           border:2px solid var(--border2); border-radius:14px; overflow:hidden; aspect-ratio:1; margin-top:10px; }
   .cell { position:relative; display:flex; align-items:center; justify-content:center;
-          border:0.5px solid var(--border); font-size:clamp(14px,5vw,22px); cursor:pointer; user-select:none; }
+          border:0.5px solid var(--cellline); font:600 clamp(14px,5vw,22px) var(--font-en); cursor:pointer; user-select:none;
+          transition:background .12s, color .12s; }
   .cell.fixed { color:var(--fixed); cursor:default; }
-  .cell.bx { border-right-width:2.5px; border-right-color:#4d5d6f; }
-  .cell.by { border-bottom-width:2.5px; border-bottom-color:#4d5d6f; }
-  .cell.sel { background:#1f6feb44; box-shadow:inset 0 0 0 2px var(--accent); }
-  .cell.peer { background:#1f6feb22; }
-  .cell.same { color:var(--accent); font-weight:700; }
-  .cell.err { color:var(--err); }
+  .cell.bx { border-right-width:2.5px; border-right-color:var(--cellbold); }
+  .cell.by { border-bottom-width:2.5px; border-bottom-color:var(--cellbold); }
+  .cell.sel { background:rgba(167,139,250,.2); box-shadow:inset 0 0 0 2px var(--a1); }
+  .cell.peer { background:rgba(167,139,250,.09); }
+  .cell.same { color:var(--a2); font-weight:800; }
+  .cell.err { color:var(--err); animation:shake .3s; }
+  @keyframes shake { 25% { transform:translateX(2px);} 50% { transform:translateX(-2px);} 75% { transform:translateX(1px);} }
+  .cell.pop { animation:pop .22s; }
+  @keyframes pop { 40% { transform:scale(1.22); } 100% { transform:scale(1); } }
   .cell .notes { position:absolute; inset:0; display:grid; grid-template-columns:repeat(3,1fr);
-                 font-size:clamp(7px,2.2vw,10px); color:var(--muted); line-height:1.15; }
+                 font:400 clamp(7px,2.1vw,10px)/1.15 var(--font-en); color:var(--muted); }
   .pad { display:grid; grid-template-columns:repeat(9,1fr); gap:6px; margin-top:12px; }
-  .pad button { aspect-ratio:1; background:var(--panel2); color:var(--text); border:1px solid var(--border);
-                border-radius:8px; font-size:18px; cursor:pointer; }
-  .pad button:hover { border-color:var(--accent); }
-  .tools { display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
-  .msg { text-align:center; margin-top:12px; min-height:24px; font-size:14px; }
-  .msg.win { color:#3fb950; font-weight:700; }
+  .pad button { aspect-ratio:1; background:var(--glass2); color:var(--text); border:1px solid var(--border);
+                border-radius:10px; font:700 17px var(--font-en); cursor:pointer; transition:.15s; position:relative; }
+  .pad button:hover { border-color:var(--a1); transform:translateY(-2px); }
+  .pad button.done { opacity:.32; pointer-events:none; }
+  .pad button small { position:absolute; bottom:2px; left:0; right:0; font-size:8.5px; color:var(--muted); }
+  .tools { display:flex; gap:7px; justify-content:center; margin-top:11px; flex-wrap:wrap; }
+  .msg { text-align:center; margin-top:12px; min-height:26px; font-size:14px; }
+  .msg.win { color:var(--ok); font-weight:800; }
   .msg.err { color:var(--err); }
-  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:16px; }
-  footer a { color:var(--accent); text-decoration:none; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+  .hidden { display:none !important; }
+  #confetti { position:fixed; inset:0; pointer-events:none; z-index:50; }
 </style>
 </head>
 <body>
 <header>
-  <h1>🔢 <span>Sudoku</span> Studio</h1>
-  <p>سازنده با جواب یکتا · یادداشت مدادی · راهنما · تایمر — کاملاً آفلاین</p>
+  <div class="logo">🔢</div>
+  <h1>سودوکو</h1>
+  <p>سازنده با جواب یکتا · یادداشت خودکار · راهنما · رکورد هر سطح — کاملاً آفلاین</p>
+  <div class="theme"><button class="btn" id="themeBtn" title="تغییر تم">🌗 تم</button></div>
 </header>
 
 <div class="wrap">
-  <div class="bar">
+  <div class="glass bar">
     <button class="btn diff" data-d="easy">آسان</button>
     <button class="btn diff active" data-d="medium">متوسط</button>
     <button class="btn diff" data-d="hard">سخت</button>
     <button class="btn diff" data-d="expert">خفن</button>
-    <button class="btn primary" id="new">🎮 بازی جدید</button>
+    <button class="btn" id="new">🎮 بازی جدید</button>
   </div>
 
-  <div class="meta">
+  <div class="glass meta">
     <span>⏱ <b id="time">00:00</b></span>
     <span>🎯 خطاها: <b id="mistakes">0</b>/3</span>
-    <span>⬜ مانده: <b id="left">81</b></span>
+    <span>🏆 رکورد: <b id="best">—</b></span>
   </div>
+  <div class="progress"><i id="prog"></i></div>
 
   <div class="board" id="board"></div>
 
   <div class="pad" id="pad"></div>
   <div class="tools">
     <button class="btn" id="noteBtn">✏️ یادداشت: خاموش</button>
+    <button class="btn" id="autoNote">🪄 یادداشت خودکار</button>
     <button class="btn" id="hint">💡 راهنما</button>
     <button class="btn" id="erase">🧽 پاک‌کن</button>
+    <button class="btn" id="undo">↩️ برگشت</button>
     <button class="btn" id="solve">🧠 حل کن</button>
   </div>
   <div class="msg" id="msg"></div>
 
   <footer>
-    Built by <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
-    generator &amp; solver are hand-written backtracking algorithms
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    الگوریتم بازگشتی دست‌نویس با تضمین جواب یکتا
   </footer>
 </div>
+<canvas id="confetti"></canvas>
 
 <script>
 "use strict";
@@ -102,7 +153,7 @@ function solveGrid(g) {
 }
 function countSolutions(g, limit) {
   let count = 0;
-  function rec() {
+  (function rec() {
     if (count >= limit) return;
     for (let i = 0; i < 81; i++) {
       if (g[i] !== 0) continue;
@@ -112,34 +163,31 @@ function countSolutions(g, limit) {
       return;
     }
     count++;
-  }
-  rec();
+  })();
   return count;
 }
 function validAt(g, idx, n) {
   const r = Math.floor(idx / 9), c = idx % 9, br = r - r % 3, bc = c - c % 3;
   for (let k = 0; k < 9; k++) {
-    if (g[r*9+k] === n || g[k*9+c] === n) return false;
-    if (g[(br + Math.floor(k/3))*9 + bc + k%3] === n) return false;
+    if (g[r * 9 + k] === n || g[k * 9 + c] === n) return false;
+    if (g[(br + Math.floor(k / 3)) * 9 + bc + k % 3] === n) return false;
   }
   return true;
 }
 const DIFF_HOLES = { easy: 38, medium: 46, hard: 52, expert: 56 };
+const DIFF_FA = { easy: "آسان", medium: "متوسط", hard: "سخت", expert: "خفن" };
 
 function generate(holes) {
-  /* seeded-free random full grid */
   const g = new Array(81).fill(0);
-  const nums = [1,2,3,4,5,6,7,8,9];
-  function fill(i) {
+  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  (function fill(i) {
     if (i === 81) return true;
     const shuffled = nums.slice().sort(() => Math.random() - 0.5);
     for (const n of shuffled) {
       if (validAt(g, i, n)) { g[i] = n; if (fill(i + 1)) return true; g[i] = 0; }
     }
     return false;
-  }
-  fill(0);
-  /* remove cells while keeping a UNIQUE solution */
+  })(0);
   const puzzle = g.slice();
   const order = [...Array(81).keys()].sort(() => Math.random() - 0.5);
   let removed = 0;
@@ -157,10 +205,12 @@ function generate(holes) {
 /* ================= game state ================= */
 let grid, solution, fixedMask, selIdx = -1, noteMode = false;
 let notes = new Array(81).fill().map(() => new Set());
-let mistakes = 0, startTime = 0, timerId = null;
+let undoStack = [];
+let mistakes = 0, startTime = 0, timerId = null, currentDiff = "medium";
 
 const $ = id => document.getElementById(id);
 const boardEl = $("board");
+const faDigits = n => String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
 
 function buildBoard() {
   boardEl.innerHTML = "";
@@ -168,46 +218,47 @@ function buildBoard() {
     const c = document.createElement("div");
     c.className = "cell";
     if (i % 9 === 2 || i % 9 === 5) c.classList.add("bx");
-    if (Math.floor(i/9) % 3 === 2 && Math.floor(i/9) < 8) c.classList.add("by");
+    if (Math.floor(i / 9) % 3 === 2 && Math.floor(i / 9) < 8) c.classList.add("by");
     c.dataset.i = i;
-    c.onclick = () => selectCell(i);
+    c.onclick = () => { selIdx = i; render(); };
     boardEl.appendChild(c);
   }
 }
 
+function refreshBest() {
+  const pb = localStorage.getItem(`sudoku.pb.${currentDiff}`);
+  $("best").textContent = pb ? fmtTime(+pb) : "—";
+}
+function fmtTime(s) {
+  return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+}
+
 function newGame(diff) {
-  const holes = DIFF_HOLES[diff] || 46;
-  const gen = generate(holes);
+  currentDiff = diff;
+  const gen = generate(DIFF_HOLES[diff] || 46);
   grid = gen.puzzle.slice();
   solution = gen.solution;
   fixedMask = grid.map(v => v !== 0);
   notes = new Array(81).fill().map(() => new Set());
+  undoStack = [];
   selIdx = -1; mistakes = 0;
   startTime = performance.now();
   clearInterval(timerId);
   timerId = setInterval(tick, 500);
-  $("mistakes").textContent = 0;
+  $("mistakes").textContent = faDigits(0);
   $("msg").textContent = ""; $("msg").className = "msg";
-  render();
+  refreshBest(); render();
 }
 
-function tick() {
-  const s = Math.floor((performance.now() - startTime) / 1000);
-  $("time").textContent = String(Math.floor(s/60)).padStart(2,"0") + ":" + String(s%60).padStart(2,"0");
-}
-
-function selectCell(i) {
-  if (fixedMask[i]) { selIdx = i; render(); return; }
-  selIdx = i; render();
-}
+function tick() { $("time").textContent = fmtTime(Math.floor((performance.now() - startTime) / 1000)); }
 
 function conflictsAt(idx, value) {
   if (!value) return false;
-  const r = Math.floor(idx/9), c = idx%9, br = r - r%3, bc = c - c%3;
+  const r = Math.floor(idx / 9), c = idx % 9, br = r - r % 3, bc = c - c % 3;
   for (let k = 0; k < 9; k++) {
-    if (k !== c && grid[r*9+k] === value) return true;
-    if (k !== r && grid[k*9+c] === value) return true;
-    const bi = (br + Math.floor(k/3))*9 + bc + k%3;
+    if (k !== c && grid[r * 9 + k] === value) return true;
+    if (k !== r && grid[k * 9 + c] === value) return true;
+    const bi = (br + Math.floor(k / 3)) * 9 + bc + k % 3;
     if (bi !== idx && grid[bi] === value) return true;
   }
   return false;
@@ -216,27 +267,39 @@ function conflictsAt(idx, value) {
 function render() {
   const cells = boardEl.children;
   const selVal = selIdx >= 0 ? grid[selIdx] : 0;
-  const sr = selIdx >= 0 ? Math.floor(selIdx/9) : -1;
-  const sc = selIdx >= 0 ? selIdx%9 : -1;
-  const sbr = sr - sr%3, sbc = sc - sc%3;
+  const sr = selIdx >= 0 ? Math.floor(selIdx / 9) : -1;
+  const sc = selIdx >= 0 ? selIdx % 9 : -1;
+  const sbr = sr - sr % 3, sbc = sc - sc % 3;
   for (let i = 0; i < 81; i++) {
     const c = cells[i], v = grid[i];
     c.classList.toggle("fixed", fixedMask[i]);
     c.classList.toggle("sel", i === selIdx);
     const peer = selIdx >= 0 && i !== selIdx &&
-      (Math.floor(i/9) === sr || i%9 === sc ||
-       (Math.floor(i/9) >= sbr && Math.floor(i/9) < sbr+3 && i%9 >= sbc && i%9 < sbc+3));
+      (Math.floor(i / 9) === sr || i % 9 === sc ||
+       (Math.floor(i / 9) >= sbr && Math.floor(i / 9) < sbr + 3 && i % 9 >= sbc && i % 9 < sbc + 3));
     c.classList.toggle("peer", !!peer);
     c.classList.toggle("same", !!peer && v !== 0 && v === selVal);
     c.classList.toggle("err", conflictsAt(i, v));
-    if (v) { c.textContent = v; c.innerHTML = v; }
-    else if (notes[i].size) {
+    if (v) {
+      if (c.textContent !== String(v)) { c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop"); }
+      c.textContent = v;
+    } else if (notes[i].size) {
       c.innerHTML = '<div class="notes">' +
-        [1,2,3,4,5,6,7,8,9].map(n => `<span>${notes[i].has(n) ? n : ""}</span>`).join("") + "</div>";
+        [1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<span>${notes[i].has(n) ? n : ""}</span>`).join("") + "</div>";
     } else c.textContent = "";
   }
-  $("left").textContent = 81 - grid.filter(v => v).length;
+  const filled = grid.filter(v => v).length;
+  $("prog").style.width = (filled / 81 * 100) + "%";
+  /* digit pad: remaining counts */
+  document.querySelectorAll("#pad button").forEach(b => {
+    const n = +b.dataset.n;
+    const left = 9 - grid.filter(v => v === n).length;
+    b.querySelector("small").textContent = left > 0 ? faDigits(left) : "✓";
+    b.classList.toggle("done", left === 0);
+  });
 }
+
+function pushUndo(idx, prev) { undoStack.push({ idx, prev }); if (undoStack.length > 200) undoStack.shift(); }
 
 function input(n) {
   if (selIdx < 0 || fixedMask[selIdx]) return;
@@ -245,29 +308,76 @@ function input(n) {
     notes[i].has(n) ? notes[i].delete(n) : notes[i].add(n);
     render(); return;
   }
-  if (grid[i] === n) { grid[i] = 0; render(); return; }
+  if (grid[i] === n) { pushUndo(i, grid[i]); grid[i] = 0; render(); return; }
+  pushUndo(i, grid[i]);
   grid[i] = n;
+  notes[i].clear();
   if (n !== solution[i]) {
     mistakes++;
-    $("mistakes").textContent = mistakes;
-    if (mistakes >= 3) { endGame(false); return; }
-  } else notes[i].clear();
+    $("mistakes").textContent = faDigits(mistakes);
+    if (mistakes >= 3) { render(); endGame(false); return; }
+  }
   render();
   if (grid.every((v, k) => v === solution[k])) endGame(true);
+}
+
+function autoNotes() {
+  for (let i = 0; i < 81; i++) {
+    if (grid[i]) continue;
+    notes[i].clear();
+    for (let n = 1; n <= 9; n++)
+      if (validAt(grid, i, n) && !conflictsAt(i, n)) notes[i].add(n);
+  }
+  render();
+}
+
+/* ================= confetti ================= */
+const cf = $("confetti"), cfx = cf.getContext("2d");
+let cfParts = [], cfRunning = false;
+function confettiBurst() {
+  cf.width = innerWidth; cf.height = innerHeight;
+  const colors = ["#a78bfa", "#f472b6", "#34d399", "#fbbf24", "#38bdf8"];
+  for (let i = 0; i < 150; i++) {
+    cfParts.push({
+      x: cf.width / 2 + (Math.random() - 0.5) * 240, y: cf.height * 0.3,
+      vx: (Math.random() - 0.5) * 12, vy: -Math.random() * 12 - 4,
+      s: 4 + Math.random() * 6, c: colors[i % colors.length],
+      rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.25, life: 1,
+    });
+  }
+  if (!cfRunning) { cfRunning = true; requestAnimationFrame(cfStep); }
+}
+function cfStep() {
+  cfx.clearRect(0, 0, cf.width, cf.height);
+  cfParts = cfParts.filter(p => p.life > 0 && p.y < cf.height + 30);
+  for (const p of cfParts) {
+    p.vy += 0.28; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life -= 0.006;
+    cfx.save(); cfx.translate(p.x, p.y); cfx.rotate(p.rot);
+    cfx.globalAlpha = Math.max(0, p.life);
+    cfx.fillStyle = p.c; cfx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.6);
+    cfx.restore();
+  }
+  if (cfParts.length) requestAnimationFrame(cfStep);
+  else { cfRunning = false; cfx.clearRect(0, 0, cf.width, cf.height); }
 }
 
 function endGame(won) {
   clearInterval(timerId);
   const msg = $("msg");
   if (won) {
-    const s = Math.floor((performance.now() - startTime)/1000);
-    msg.textContent = `🏆 آفرین! حل شد در ${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;
+    const s = Math.floor((performance.now() - startTime) / 1000);
+    const key = `sudoku.pb.${currentDiff}`;
+    const pb = +(localStorage.getItem(key) || 0);
+    const isPB = !pb || s < pb;
+    if (isPB) localStorage.setItem(key, s);
+    refreshBest();
+    msg.innerHTML = `🏆 آفرین! حل شد در <b>${fmtTime(s)}</b>` + (isPB ? ' — <span style="color:var(--warn)">رکورد جدید!</span>' : "");
     msg.className = "msg win";
+    confettiBurst();
   } else {
     msg.textContent = "💔 سه خطا — بازی تمام شد. دوباره تلاش کن!";
     msg.className = "msg err";
   }
-  document.querySelectorAll("#board .cell").forEach(c => c.onclick = null);
 }
 
 /* ================= controls ================= */
@@ -276,32 +386,46 @@ function buildPad() {
   pad.innerHTML = "";
   for (let n = 1; n <= 9; n++) {
     const b = document.createElement("button");
-    b.textContent = n;
+    b.textContent = n; b.dataset.n = n;
+    b.appendChild(document.createElement("small"));
     b.onclick = () => input(n);
     pad.appendChild(b);
   }
 }
+function applyTheme() {
+  document.body.classList.toggle("light", localStorage.getItem("sudoku.theme") === "light");
+}
+$("themeBtn").onclick = () => {
+  const cur = localStorage.getItem("sudoku.theme") === "light" ? "dark" : "light";
+  localStorage.setItem("sudoku.theme", cur); applyTheme();
+};
 document.querySelectorAll(".diff").forEach(b => b.onclick = () => {
   document.querySelectorAll(".diff").forEach(x => x.classList.remove("active"));
   b.classList.add("active"); newGame(b.dataset.d);
 });
-$("new").onclick = () => {
-  const active = document.querySelector(".diff.active");
-  newGame(active ? active.dataset.d : "medium");
-};
+$("new").onclick = () => newGame(document.querySelector(".diff.active").dataset.d);
 $("noteBtn").onclick = () => {
   noteMode = !noteMode;
   $("noteBtn").textContent = noteMode ? "✏️ یادداشت: روشن" : "✏️ یادداشت: خاموش";
   $("noteBtn").classList.toggle("active", noteMode);
 };
+$("autoNote").onclick = autoNotes;
 $("erase").onclick = () => {
   if (selIdx < 0 || fixedMask[selIdx]) return;
+  pushUndo(selIdx, grid[selIdx]);
   grid[selIdx] = 0; notes[selIdx].clear(); render();
+};
+$("undo").onclick = () => {
+  const mv = undoStack.pop();
+  if (!mv) return;
+  grid[mv.idx] = mv.prev;
+  render();
 };
 $("hint").onclick = () => {
   const empties = grid.map((v, i) => (v === 0 || v !== solution[i]) ? i : -1).filter(i => i >= 0);
   if (!empties.length) return;
   const pick = empties[Math.floor(Math.random() * empties.length)];
+  pushUndo(pick, grid[pick]);
   grid[pick] = solution[pick]; notes[pick].clear();
   selIdx = pick; render();
   if (grid.every((v, k) => v === solution[k])) endGame(true);
@@ -314,7 +438,8 @@ $("solve").onclick = () => {
 };
 document.addEventListener("keydown", e => {
   if (e.key >= "1" && e.key <= "9") input(+e.key);
-  if (["Backspace","Delete"].includes(e.key) && selIdx >= 0) { grid[selIdx] = 0; notes[selIdx].clear(); render(); }
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z" && !e.shiftKey) { e.preventDefault(); $("undo").click(); }
+  if (["Backspace", "Delete"].includes(e.key) && selIdx >= 0) { pushUndo(selIdx, grid[selIdx]); grid[selIdx] = 0; notes[selIdx].clear(); render(); }
   const arrows = { ArrowUp: -9, ArrowDown: 9, ArrowLeft: -1, ArrowRight: 1 };
   if (e.key in arrows && selIdx >= 0) {
     e.preventDefault();
@@ -325,6 +450,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
+applyTheme();
 buildBoard(); buildPad(); newGame("medium");
 </script>
 </body>
