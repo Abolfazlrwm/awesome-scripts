@@ -8,12 +8,12 @@
 <link rel="canonical" href="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awesome Scripts">
-<meta property="og:title" content="Awesome Scripts — 92 ready-to-run bots & tools">
+<meta property="og:title" content="Awesome Scripts — 95 ready-to-run bots & tools">
 <meta property="og:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
 <meta property="og:url" content="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Awesome Scripts — 92 ready-to-run bots & tools">
+<meta name="twitter:title" content="Awesome Scripts — 95 ready-to-run bots & tools">
 <meta name="twitter:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities.">
 <meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <!-- Telegram: @Abolfazl_rwm -->
@@ -202,9 +202,55 @@
     .hero { padding-top:34px; }
     .header-actions { margin-inline-start:0; width:100%; justify-content:flex-end; }
   }
+
+  /* ---------- v3: aurora background ---------- */
+  .aurora { position:fixed; inset:-20%; z-index:0; pointer-events:none; filter:blur(90px); opacity:.5; }
+  .aurora i { position:absolute; display:block; border-radius:50%; will-change:transform; }
+  .aurora i:nth-child(1) { width:42vw; height:42vw; left:-6%; top:-12%;
+    background:radial-gradient(circle, rgba(56,189,248,.30), transparent 65%);
+    animation:drift1 26s ease-in-out infinite alternate; }
+  .aurora i:nth-child(2) { width:38vw; height:38vw; right:-8%; top:6%;
+    background:radial-gradient(circle, rgba(129,140,248,.28), transparent 65%);
+    animation:drift2 31s ease-in-out infinite alternate; }
+  .aurora i:nth-child(3) { width:46vw; height:46vw; left:22%; bottom:-18%;
+    background:radial-gradient(circle, rgba(244,114,182,.20), transparent 65%);
+    animation:drift3 29s ease-in-out infinite alternate; }
+  html[data-theme="light"] .aurora { opacity:.42; }
+  @keyframes drift1 { to { transform:translate(9vw, 7vh) scale(1.12); } }
+  @keyframes drift2 { to { transform:translate(-8vw, 10vh) scale(.94); } }
+  @keyframes drift3 { to { transform:translate(6vw, -9vh) scale(1.08); } }
+
+  /* ---------- v3: card spotlight ---------- */
+  .card { position:relative; overflow:hidden; }
+  .card::after {
+    content:""; position:absolute; inset:0; border-radius:16px; opacity:0; pointer-events:none;
+    background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%), rgba(56,189,248,.14), transparent 70%);
+    transition:opacity .25s ease;
+  }
+  .card:hover::after { opacity:1; }
+
+  /* ---------- v3: scroll progress ---------- */
+  .scroll-progress {
+    position:fixed; top:0; right:0; left:0; height:3px; z-index:60;
+    background:linear-gradient(90deg, var(--a1), var(--a2));
+    transform:scaleX(0); transform-origin:left; transition:transform .12s linear;
+  }
+  html[dir="rtl"] .scroll-progress { transform-origin:right; }
+
+  /* ---------- v3: lucky button ---------- */
+  .lucky {
+    background:linear-gradient(135deg, var(--a1), var(--a2)); color:#06121f;
+    border:none; border-radius:11px; padding:9px 17px; cursor:pointer;
+    font-family:inherit; font-weight:700; font-size:14px; margin-inline-end:8px;
+    box-shadow:0 6px 18px -6px rgba(56,189,248,.55); transition:.18s;
+  }
+  .lucky:hover { transform:translateY(-2px) rotate(-2deg); filter:brightness(1.08); }
+  .lucky:active { transform:scale(.94); }
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollBar"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <header class="site">
   <div class="header-inner">
@@ -222,7 +268,7 @@
 </header>
 
 <section class="hero">
-  <h1 id="heroTitle">92 ready-to-run projects. One repository.</h1>
+  <h1 id="heroTitle">95 ready-to-run projects. One repository.</h1>
   <p class="sub" id="heroSub">
     Complete Telegram bots, web tools and desktop utilities — every folder is a full app with a
     step-by-step README. Search it, filter it, ship it.
@@ -234,11 +280,12 @@
   <div class="search-wrap">
     <span class="magnifier">🔎</span>
     <input id="search" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Search 92 projects — name, feature or language…" aria-label="Search projects">
+           placeholder="Search 95 projects — name, feature or language…" aria-label="Search projects">
     <span class="kbd-hint">/</span>
   </div>
   <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
   <div class="lang-filter">
+    <button class="lucky" id="luckyBtn" type="button" title="Open a random project">🎲 پروژه‌ی شانسی</button>
     <select id="lang" aria-label="Filter by language"></select>
   </div>
 </section>
@@ -500,6 +547,67 @@
   buildHeaderStats();
   applyLang();
   $("footerMeta").textContent = fmt(t("updated"), { d: (data.generated_at || "").replace("T", " ").slice(0, 16) || "—" });
+})();
+</script>
+
+<script>
+/* ---------- v3 enhancements: count-up, spotlight, lucky, scroll bar ---------- */
+(function () {
+  "use strict";
+
+  /* count-up: animates the leading number of the hero title whenever it changes */
+  var hero = document.getElementById("heroTitle");
+  function animateNum() {
+    if (hero._busy) return;
+    var m = hero.textContent.match(/^(\d+)/);
+    if (!m) return;
+    var target = +m[1];
+    if (hero._done === target) return;
+    hero._busy = true;
+    hero._done = target;
+    var rest = hero.textContent.slice(m[0].length);
+    var start = null;
+    function tick(ts) {
+      if (!start) start = ts;
+      var p = Math.min(1, (ts - start) / 950);
+      var eased = 1 - Math.pow(1 - p, 3);
+      hero.textContent = Math.round(target * eased) + rest;
+      if (p < 1) requestAnimationFrame(tick);
+      else hero._busy = false;
+    }
+    requestAnimationFrame(tick);
+  }
+  new MutationObserver(animateNum).observe(hero, { characterData: true, childList: true, subtree: true });
+  animateNum();
+
+  /* card spotlight: track the pointer inside each card */
+  var grid = document.getElementById("grid");
+  grid.addEventListener("mousemove", function (e) {
+    var card = e.target && e.target.closest ? e.target.closest(".card") : null;
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    card.style.setProperty("--my", (e.clientY - r.top) + "px");
+  }, { passive: true });
+
+  /* lucky button: open a random project */
+  document.getElementById("luckyBtn").addEventListener("click", function () {
+    var data = window.AWESOME_CATALOG;
+    if (!data || !data.projects || !data.projects.length) return;
+    var p = data.projects[Math.floor(Math.random() * data.projects.length)];
+    var url = p.demo || "https://github.com/Abolfazlrwm/awesome-scripts/tree/main/" + p.path;
+    window.open(url, "_blank", "noopener");
+  });
+
+  /* scroll progress bar */
+  var bar = document.getElementById("scrollBar");
+  function onScroll() {
+    var h = document.documentElement;
+    var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    bar.style.transform = "scaleX(" + p + ")";
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 })();
 </script>
 </body>
