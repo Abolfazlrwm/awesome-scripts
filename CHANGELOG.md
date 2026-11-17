@@ -8,6 +8,13 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.14.0] — 2026-11-17 — 95 projects (63 bots · 26 web · 6 desktop)
+
+- **3 new showpiece web tools** (`92 → 95`): `snake-game-web` (neon snake with touch-swipe and keyboard controls, accelerating loop, persistent personal best), `fractal-explorer` (Mandelbrot & Julia deep-zoom explorer with smooth escape-time coloring, 5 palettes and PNG export) and `synthwave-keys` (two-octave WebAudio synthesizer with a live oscilloscope and an event recorder) — each with a screenshot preview and live demo.
+- **Landing page v3** — animated aurora background, count-up hero counter, pointer-tracking card spotlight, a 🎲 random-project button and a scroll progress bar.
+
+سه ابزار وب نمایشی جدید (مار نئونی، کاوشگر فرکتال و کیبورد سینتی‌سایزر) با پیش‌نمایش و دموی زنده اضافه شد و شمارنده‌ها از ۹۲ به ۹۵ رسید؛ لندینگ‌پیج با پس‌زمینه‌ی شفق متحرک، شمارنده‌ی عددی، نورافکن کارت‌ها و دکمه‌ی «پروژه‌ی شانسی» خفن‌تر شد.
+
 ## [v1.13.0] — 2026-11-17 — 92 projects (63 bots · 23 web · 6 desktop)
 
 - **3 new interactive web tools** (`89 → 92`): `password-forge` (crypto-API password/passphrase generator with entropy scoring and crack-time estimates), `pomodoro-focus` (Web Worker timer with SVG dial and daily stats) and `regex-playground` (live tester with match highlighting and capture-group table) — each with a screenshot preview and live demo.
