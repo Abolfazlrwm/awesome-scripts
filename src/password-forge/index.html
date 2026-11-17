@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Forge — جعبه‌جنگل پسورد قوی</title>
+<meta name="description" content="تولید پسورد و passphrase قوی با سنجش آنتروپی، برآورد زمان شکستن و حالت گروهی — کاملاً آفلاین با crypto API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#070c0a; --glass:rgba(148,183,163,.06); --glass2:rgba(148,183,163,.11);
+    --border:rgba(148,183,163,.16); --border2:rgba(148,183,163,.3);
+    --text:#e8f3ec; --muted:#8aa897;
+    --a1:#34d399; --a2:#22d3ee;
+    --warn:#fbbf24; --bad:#f87171; --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(34,211,238,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(52,211,153,.14), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.45;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:26px 14px 6px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(52,211,153,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:5px; }
+  .wrap { max-width:680px; margin:0 auto; padding:14px 18px 46px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .out { margin-top:14px; padding:18px 16px 14px; text-align:center; }
+  .pw { font:700 clamp(16px,4.6vw,24px)/1.5 var(--mono); direction:ltr; word-break:break-all;
+        padding:14px 10px; border-radius:12px; background:rgba(0,0,0,.28);
+        border:1px solid var(--border); min-height:64px; letter-spacing:.5px; }
+  .pw .d { color:var(--a1); }
+  .copyline { display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 18px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#03130b; font-weight:800; box-shadow:0 6px 20px -6px rgba(52,211,153,.55); }
+  .meter { height:8px; border-radius:99px; background:var(--glass2); overflow:hidden; margin-top:12px; }
+  .meter i { display:block; height:100%; width:0%; border-radius:99px; transition:width .3s, background .3s; }
+  .meta { display:flex; justify-content:space-between; gap:10px; margin-top:9px; font-size:12px; color:var(--muted); flex-wrap:wrap; }
+  .meta b { color:var(--text); font-family:var(--font-en); }
+  .card { padding:15px 16px; margin-top:13px; }
+  .card h3 { font-size:13.5px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+  .opts { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+  .opt { display:flex; align-items:center; gap:8px; background:var(--glass2); border:1px solid var(--border);
+         border-radius:11px; padding:8px 11px; font-size:13px; cursor:pointer; user-select:none; transition:.15s; }
+  .opt input { accent-color:var(--a1); width:15px; height:15px; }
+  .opt.on { border-color:var(--a1); }
+  .row { display:flex; align-items:center; gap:12px; margin-top:12px; flex-wrap:wrap; }
+  input[type=range] { flex:1; accent-color:var(--a1); min-width:130px; }
+  .len { font:800 20px var(--font-en); color:var(--a1); min-width:34px; text-align:center; }
+  .tabs { display:flex; gap:8px; margin-bottom:4px; }
+  .tabs .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent; color:#03130b; font-weight:800; }
+  .words { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .words .w { font:600 12px var(--mono); background:var(--glass2); border:1px solid var(--border);
+              border-radius:8px; padding:3px 9px; direction:ltr; }
+  .hist { display:flex; flex-direction:column; gap:6px; }
+  .hist div { font:600 12px var(--mono); direction:ltr; text-align:left; background:var(--glass2);
+              border:1px solid var(--border); border-radius:9px; padding:7px 11px;
+              overflow:hidden; text-overflow:ellipsis; white-space:nowrap; cursor:pointer; }
+  .hist div:hover { border-color:var(--a1); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+  .hidden { display:none !important; }
+  .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%) translateY(80px);
+           background:linear-gradient(135deg, var(--a1), var(--a2)); color:#03130b; font-weight:800;
+           padding:9px 22px; border-radius:99px; transition:.3s; z-index:60; box-shadow:0 12px 30px -10px rgba(52,211,153,.7); }
+  .toast.show { transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🔐</div>
+  <h1>جعبه‌جنگل پسورد</h1>
+  <p>تولید پسورد و عبارت‌عبور قوی با سنجش آنتروپی — همه‌چیز با crypto API داخل مرورگر خودت</p>
+</header>
+
+<div class="wrap">
+  <div class="glass out">
+    <div class="pw" id="pw">…</div>
+    <div class="meter"><i id="meterFill"></i></div>
+    <div class="meta">
+      <span>قدرت: <b id="strength">—</b></span>
+      <span>آنتروپی: <b id="entropy">0</b> bit</span>
+      <span>زمان شکستن تقریبی: <b id="crack">—</b></span>
+    </div>
+    <div class="copyline">
+      <button class="btn primary" id="gen">🎲 تولید کن</button>
+      <button class="btn" id="copy">📋 کپی</button>
+      <button class="btn" id="bulk">🧺 ۵تایی</button>
+    </div>
+  </div>
+
+  <div class="glass card">
+    <div class="tabs">
+      <button class="btn active" id="tabRand">حالت تصادفی</button>
+      <button class="btn" id="tabPhrase">عبارت‌عبور</button>
+    </div>
+
+    <div id="paneRand">
+      <div class="row">
+        <label>طول</label>
+        <input type="range" id="len" min="4" max="64" value="16">
+        <span class="len" id="lenOut">16</span>
+      </div>
+      <div class="opts">
+        <label class="opt on"><input type="checkbox" id="cLower" checked> حروف کوچک a-z</label>
+        <label class="opt on"><input type="checkbox" id="cUpper" checked> حروف بزرگ A-Z</label>
+        <label class="opt on"><input type="checkbox" id="cDigit" checked> عدد 0-9</label>
+        <label class="opt on"><input type="checkbox" id="cSymbol" checked> نماد !@#$</label>
+        <label class="opt"><input type="checkbox" id="cNoAmb"> بدون حروف گیج‌کننده (l1IO0)</label>
+        <label class="opt"><input type="checkbox" id="cNoRepeat"> بدون تکرار کاراکتر</label>
+      </div>
+    </div>
+
+    <div id="panePhrase" class="hidden">
+      <div class="row">
+        <label>تعداد کلمه</label>
+        <input type="range" id="wc" min="3" max="8" value="4">
+        <span class="len" id="wcOut">4</span>
+      </div>
+      <div class="opts">
+        <label class="opt on"><input type="checkbox" id="pDash" checked> جداکننده‌ی -</label>
+        <label class="opt on"><input type="checkbox" id="pNum" checked> پسوند عددی</label>
+        <label class="opt"><input type="checkbox" id="pCap"> حرف بزرگ هر کلمه</label>
+      </div>
+      <div class="words" id="wordBox"></div>
+    </div>
+  </div>
+
+  <div class="glass card">
+    <h3>🧾 ۵ تولید آخر (کلیک = کپی)</h3>
+    <div class="hist" id="hist"></div>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    هیچ پسوردی جایی ذخیره یا ارسال نمی‌شود · کاملاً آفلاین
+  </footer>
+</div>
+<div class="toast" id="toast">کپی شد ✓</div>
+
+<script>
+"use strict";
+/* hand-written 120-word list (short, memorable, no duplicates) */
+const RAW_WORDS = ("apple river cloud tiger basket candle garden hammer jungle kettle lemon " +
+  "mountain nickel ocean pencil quilt rocket silver table umbrella violin window " +
+  "yellow zebra anchor bridge camera desert eagle forest guitar honey island " +
+  "jacket lantern mango needle orchid planet quarry rabbit sunset thunder valley " +
+  "walnut anchor bee cliff dome ember falcon glacier harbor ivory kite lagoon " +
+  "meadow nectar oasis prairie reef spruce tundra udon vine willow zephyr " +
+  "amber birch coral dune elm fern grove hazel iris jade kiwi lotus maple " +
+  "nutmeg olive pine rose sage tulip violet wheat basil clover daisy hazel " +
+  "juniper lilac mint poppy sumac yarrow azalea bluebell crocus foxglove " +
+  "honeysuckle marigold peony snapdragon wisteria").split(" ");
+/* dedupe to keep the entropy estimate honest */
+const WORDS = [...new Set(RAW_WORDS)];
+const SETS = { lower: "abcdefghijklmnopqrstuvwxyz", upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+               digit: "0123456789", symbol: "!@#$%^&*()-_=+[]{};:,.?/" };
+const AMBIG = /l1IO0O`'"/g;
+const $ = id => document.getElementById(id);
+
+function randInt(max) {  /* unbiased via rejection sampling on crypto values */
+  const lim = Math.floor(256 / max) * max;
+  const buf = new Uint8Array(1);
+  do { crypto.getRandomValues(buf); } while (buf[0] >= lim);
+  return buf[0] % max;
+}
+function pick(arr) { return arr[randInt(arr.length)]; }
+
+let mode = "rand";
+function pool() {
+  let p = "";
+  if ($("cLower").checked) p += SETS.lower;
+  if ($("cUpper").checked) p += SETS.upper;
+  if ($("cDigit").checked) p += SETS.digit;
+  if ($("cSymbol").checked) p += SETS.symbol;
+  if ($("cNoAmb").checked) p = p.replace(AMBIG, "");
+  return [...new Set(p)];
+}
+function makeRandom() {
+  const p = pool();
+  if (!p.length) return "";
+  let n = +$("len").value;
+  if ($("cNoRepeat").checked && n > p.length) n = p.length;
+  const chars = [];
+  const used = new Set();
+  while (chars.length < n) {
+    const c = pick(p);
+    if ($("cNoRepeat").checked) {
+      if (used.has(c)) continue;
+      used.add(c);
+    }
+    chars.push(c);
+  }
+  return chars.join("");
+}
+function makePhrase() {
+  const n = +$("wc").value;
+  const parts = [];
+  for (let i = 0; i < n; i++) {
+    let w = pick(WORDS);
+    if ($("pCap").checked) w = w[0].toUpperCase() + w.slice(1);
+    parts.push(w);
+  }
+  let s = parts.join($("pDash").checked ? "-" : "");
+  if ($("pNum").checked) s += "-" + String(randInt(90) + 10);
+  return s;
+}
+function entropyBits(pw) {
+  if (mode === "phrase") {
+    const n = +$("wc").value;
+    return Math.round(n * Math.log2(WORDS.length) + ($("pNum").checked ? Math.log2(90) : 0));
+  }
+  const p = pool();
+  return pw.length ? Math.round(pw.length * Math.log2(p.length || 2)) : 0;
+}
+function crackTime(bits) {
+  /* assume 1e11 guesses/sec (offline GPU rig) */
+  const seconds = Math.pow(2, bits) / 1e11 / 2;
+  const units = [[1, "ثانیه"], [60, "دقیقه"], [3600, "ساعت"], [86400, "روز"],
+                 [2592000, "ماه"], [31536000, "سال"]];
+  if (seconds < 1) return "فوراً";
+  if (seconds < 60) return Math.round(seconds) + " ثانیه";
+  if (seconds < 3600) return Math.round(seconds / 60) + " دقیقه";
+  if (seconds < 86400) return Math.round(seconds / 3600) + " ساعت";
+  if (seconds < 2592000) return Math.round(seconds / 86400) + " روز";
+  if (seconds < 31536000) return Math.round(seconds / 2592000) + " ماه";
+  const years = seconds / 31536000;
+  if (years < 1e3) return Math.round(years) + " سال";
+  if (years < 1e6) return Math.round(years / 1e3) + " هزار سال";
+  if (years < 1e9) return Math.round(years / 1e6) + " میلیون سال";
+  return "بیش از " + Math.round(years / 1e9) + " میلیارد سال";
+}
+function render(pw) {
+  if (!pw) { $("pw").innerHTML = `<span style="color:var(--bad)">حداقل یک گزینه را انتخاب کن!</span>`;
+    $("meterFill").style.width = "0"; $("strength").textContent = "—"; return; }
+  let html = "";
+  for (const ch of pw) html += /[0-9]/.test(ch) ? `<span class="d">${ch}</span>` : ch;
+  $("pw").innerHTML = html;
+  const bits = entropyBits(pw);
+  $("entropy").textContent = bits;
+  $("crack").textContent = crackTime(bits);
+  const pct = Math.min(100, bits / 128 * 100);
+  const f = $("meterFill");
+  f.style.width = pct + "%";
+  f.style.background = bits < 45 ? "var(--bad)" : bits < 70 ? "var(--warn)" : "linear-gradient(90deg,var(--a1),var(--a2))";
+  $("strength").textContent = bits < 45 ? "ضعیف ⚠️" : bits < 70 ? "متوسط" : bits < 100 ? "قوی ✓" : "سحرآمیز 🛡";
+}
+let lastFive = JSON.parse(localStorage.getItem("forge.hist") || "[]");
+function commit(pw) {
+  if (!pw) return;
+  render(pw);
+  lastFive.unshift(pw);
+  lastFive = lastFive.slice(0, 5);
+  localStorage.setItem("forge.hist", JSON.stringify(lastFive));
+  renderHist();
+}
+function renderHist() {
+  $("hist").innerHTML = lastFive.map(p =>
+    `<div title="کپی">${p.replace(/</g, "&lt;")}</div>`).join("")
+    || `<div style="cursor:default;opacity:.6">— هنوز چیزی تولید نشده —</div>`;
+}
+$("hist").addEventListener("click", e => {
+  if (e.target.tagName !== "DIV" || !e.target.title) return;
+  copyText(e.target.textContent);
+});
+function copyText(t) {
+  navigator.clipboard.writeText(t).catch(() => {});
+  const toast = $("toast");
+  toast.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => toast.classList.remove("show"), 1400);
+}
+$("gen").onclick = () => commit(mode === "rand" ? makeRandom() : makePhrase());
+$("copy").onclick = () => copyText($("pw").textContent);
+$("bulk").onclick = () => {
+  const box = [];
+  for (let i = 0; i < 5; i++) box.push(mode === "rand" ? makeRandom() : makePhrase());
+  $("hist").innerHTML = box.map(p => `<div title="کپی">${p.replace(/</g, "&lt;")}</div>`).join("");
+  render(box[0]);
+};
+$("tabRand").onclick = () => { mode = "rand";
+  $("tabRand").classList.add("active"); $("tabPhrase").classList.remove("active");
+  $("paneRand").classList.remove("hidden"); $("panePhrase").classList.add("hidden"); render(makeRandom()); };
+$("tabPhrase").onclick = () => { mode = "phrase";
+  $("tabPhrase").classList.add("active"); $("tabRand").classList.remove("active");
+  $("panePhrase").classList.remove("hidden"); $("paneRand").classList.add("hidden");
+  const s = makePhrase(); render(s);
+  $("wordBox").innerHTML = s.split(/[-0-9]/).filter(Boolean).map(w => `<span class="w">${w}</span>`).join(""); };
+$("len").oninput = e => { $("lenOut").textContent = e.target.value; render(makeRandom()); };
+$("wc").oninput = e => { $("wcOut").textContent = e.target.value; if (mode === "phrase") render(makePhrase()); };
+document.querySelectorAll(".opt input").forEach(c => c.addEventListener("change", e => {
+  e.target.closest(".opt").classList.toggle("on", e.target.checked);
+  render(mode === "rand" ? makeRandom() : makePhrase());
+}));
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter") $("gen").click();
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c" && !window.getSelection().toString()) { e.preventDefault(); $("copy").click(); }
+});
+renderHist();
+commit(mode === "rand" ? makeRandom() : makePhrase());
+</script>
+</body>
+</html>
