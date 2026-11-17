@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**95 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**100 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-95-blue)
+![Projects](https://img.shields.io/badge/projects-100-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -109,7 +109,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [auction-house-bot](./src/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
 | [fortune-teller-bot](./src/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
 
-### 🌐 Web tools — 26
+### 🌐 Web tools — 31
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -139,6 +139,11 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [snake-game-web](./src/snake-game-web) | HTML/CSS/JS | Neon snake game — touch/keyboard controls, accelerating loop, glow rendering, personal best | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/snake-game-web/) |
 | [fractal-explorer](./src/fractal-explorer) | HTML/CSS/JS | Mandelbrot & Julia explorer — deep zoom to 10^55x, smooth coloring, 5 palettes, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/fractal-explorer/) |
 | [synthwave-keys](./src/synthwave-keys) | HTML/CSS/JS | Two-octave WebAudio synthesizer — 4 waveforms, live oscilloscope, recorder with playback | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/synthwave-keys/) |
+| [tetris-web](./src/tetris-web) | HTML/CSS/JS | Full Tetris — 7-bag randomizer, hold, ghost piece, line-flash animation, touch buttons | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/tetris-web/) |
+| [game-of-life-web](./src/game-of-life-web) | HTML/CSS/JS | Conway's Game of Life — famous pattern stamps, live painting, age colors and fading trails | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/game-of-life-web/) |
+| [pixel-art-studio](./src/pixel-art-studio) | HTML/CSS/JS | Pixel art editor — palette, flood fill, mirror symmetry, undo, crisp PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/pixel-art-studio/) |
+| [matrix-rain-web](./src/matrix-rain-web) | HTML/CSS/JS | Matrix rain — katakana/binary/Persian glyphs and a message mode that reveals your text | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/matrix-rain-web/) |
+| [noise-art-web](./src/noise-art-web) | HTML/CSS/JS | Generative art — Perlin-noise gradient fields and thousands of flow-field particles | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/noise-art-web/) |
 
 ### 🖥 Desktop tools — 6
 
@@ -267,7 +272,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🔨 خانه‌ی مزایده](./src/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
 | [🔮 فال‌گر شوخ](./src/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
 
-#### 🌐 ابزارهای وب (26)
+#### 🌐 ابزارهای وب (31)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -297,6 +302,11 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🐍 مار نئونی](./src/snake-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/snake-game-web/) | HTML/CSS/JS | بازی مار نئونی — کنترل لمسی/کیبورد، سرعت فزاینده و رکورد شخصی |
 | [🌀 کاوشگر فرکتال](./src/fractal-explorer) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/fractal-explorer/) | HTML/CSS/JS | کاوش ماندلبروت و ژولیا — زوم عمیق، رنگ‌آمیزی نرم و خروجی PNG |
 | [🎹 کیبورد سینتی‌سایزر](./src/synthwave-keys) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/synthwave-keys/) | HTML/CSS/JS | سینتی‌سایزر دو اکتاوی WebAudio — اسکوپ زنده، ضبط و پخش |
+| [🕹 تتریس](./src/tetris-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/tetris-web/) | HTML/CSS/JS | تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی |
+| [🦠 بازی زندگی](./src/game-of-life-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/game-of-life-web/) | HTML/CSS/JS | ماشین سلولی Conway — الگوهای معروف، نقاشی زنده و ردپای رنگی |
+| [🎨 استودیو پیکسل‌آرت](./src/pixel-art-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/pixel-art-studio/) | HTML/CSS/JS | ادیتور پیکسلی — پالت، سطل رنگ، قرینه و خروجی PNG شارپ |
+| [🌧 بارش ماتریکس](./src/matrix-rain-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/matrix-rain-web/) | HTML/CSS/JS | باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو» |
+| [🌌 هنر نویز](./src/noise-art-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/noise-art-web/) | HTML/CSS/JS | هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره |
 
 #### 🖥 ابزارهای دسکتاپ (6)
 

@@ -4,18 +4,18 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-17T22:22:46+03:30",
-  "count": 95,
+  "generated_at": "2026-11-17T22:42:04+03:30",
+  "count": 100,
   "stats": {
     "categories": {
       "telegram-bot": 63,
-      "web-tool": 26,
+      "web-tool": 31,
       "desktop-tool": 6
     },
     "languages": {
       "Python": 47,
       "PHP": 12,
-      "HTML/CSS/JS": 24,
+      "HTML/CSS/JS": 29,
       "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
@@ -399,6 +399,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل"
     },
     {
+      "slug": "game-of-life-web",
+      "path": "src/game-of-life-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Game Of Life Web",
+      "description_en": "Conway's Game of Life — famous pattern stamps, live painting, age colors and fading trails",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/game-of-life-web/",
+      "name_fa": "بازی زندگی",
+      "description_fa": "ماشین سلولی Conway — الگوهای معروف، نقاشی زنده و ردپای رنگی"
+    },
+    {
       "slug": "giftix-premium-shop-bot",
       "path": "src/giftix-premium-shop-bot",
       "category": "telegram-bot",
@@ -520,6 +531,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل"
     },
     {
+      "slug": "matrix-rain-web",
+      "path": "src/matrix-rain-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Matrix Rain Web",
+      "description_en": "Matrix rain — katakana/binary/Persian glyphs and a message mode that reveals your text",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/matrix-rain-web/",
+      "name_fa": "بارش ماتریکس",
+      "description_fa": "باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو»"
+    },
+    {
       "slug": "member-tag-manager-bot",
       "path": "src/member-tag-manager-bot",
       "category": "telegram-bot",
@@ -575,6 +597,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک"
     },
     {
+      "slug": "noise-art-web",
+      "path": "src/noise-art-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Noise Art Web",
+      "description_en": "Generative art — Perlin-noise gradient fields and thousands of flow-field particles",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/noise-art-web/",
+      "name_fa": "هنر نویز",
+      "description_fa": "هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره"
+    },
+    {
       "slug": "password-forge",
       "path": "src/password-forge",
       "category": "web-tool",
@@ -617,6 +650,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "مدیریت سکه و سفارش",
       "description_fa": "اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی"
+    },
+    {
+      "slug": "pixel-art-studio",
+      "path": "src/pixel-art-studio",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Pixel Art Studio",
+      "description_en": "Pixel art editor — palette, flood fill, mirror symmetry, undo, crisp PNG export",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/pixel-art-studio/",
+      "name_fa": "استودیو پیکسل‌آرت",
+      "description_fa": "ادیتور پیکسلی — پالت، سطل رنگ، قرینه و خروجی PNG شارپ"
     },
     {
       "slug": "poll-vote-bot",
@@ -892,6 +936,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "مدیریت اکانت و سشن",
       "description_fa": "جوین و ری‌اکشن خودکار با چند اکانت تلگرام (Telethon)"
+    },
+    {
+      "slug": "tetris-web",
+      "path": "src/tetris-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Tetris Web",
+      "description_en": "Full Tetris — 7-bag randomizer, hold, ghost piece, line-flash animation, touch buttons",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/tetris-web/",
+      "name_fa": "تتریس",
+      "description_fa": "تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی"
     },
     {
       "slug": "tic-tac-toe-game",
