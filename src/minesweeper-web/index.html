@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minesweeper — مین‌یاب</title>
+<meta name="description" content="مین‌یاب کلاسیک با سه سختی، کلیک اول امن، پرچم و فشار طولانی، تایمر و رکورد زمان — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(96,165,250,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#60a5fa; --a2:#22d3ee;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; user-select:none; -webkit-user-select:none; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(96,165,250,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(34,211,238,.12), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(96,165,250,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:860px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .hud { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:14px; }
+  .hud .glass { padding:10px 6px; text-align:center; }
+  .hud b { font:800 22px/1.2 var(--font-en); display:block;
+           background:linear-gradient(90deg, var(--a1), var(--a2));
+           -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hud span { color:var(--muted); font-size:11px; }
+  .bar { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:13px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#081024; font-weight:800; }
+  .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                color:#081024; font-weight:800; }
+  .board-outer { margin-top:14px; padding:14px; overflow-x:auto; }
+  #board { display:grid; gap:3px; margin:0 auto; width:max-content; }
+  .cell { border-radius:6px; background:var(--glass2); border:1px solid var(--border);
+          display:flex; align-items:center; justify-content:center;
+          font:800 14px/1 var(--font-en); cursor:pointer; transition:background .1s; }
+  .cell:hover { background:rgba(148,163,184,.2); }
+  .cell.open { background:rgba(8,12,24,.75); border-color:rgba(148,163,184,.08); cursor:default; }
+  .cell.boom { background:#dc2626; border-color:#dc2626; }
+  .cell.flag { background:rgba(250,204,21,.14); }
+  .c1{color:#60a5fa}.c2{color:#4ade80}.c3{color:#f87171}.c4{color:#c084fc}
+  .c5{color:#fb923c}.c6{color:#22d3ee}.c7{color:#e2e8f0}.c8{color:#94a3b8}
+  .overlay { position:fixed; inset:0; z-index:30; display:flex; flex-direction:column; gap:12px;
+             align-items:center; justify-content:center; background:rgba(8,10,22,.8);
+             backdrop-filter:blur(6px); opacity:0; pointer-events:none; transition:.25s; }
+  .overlay.show { opacity:1; pointer-events:auto; }
+  .overlay h2 { font:800 30px var(--font-fa);
+                background:linear-gradient(90deg, var(--a1), var(--a2));
+                -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .overlay p { color:var(--muted); }
+  .legend { margin-top:13px; padding:13px 16px; color:var(--muted); font-size:13px; }
+  .legend b { color:var(--text); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">💣</div>
+  <h1>مین‌یاب</h1>
+  <p>کلاسیک بی‌رقیب — کلیک اول همیشه امن است؛ با پرچم مین‌ها را نشانه‌گذاری کن</p>
+</header>
+
+<div class="wrap">
+  <div class="hud">
+    <div class="glass"><b id="minesLeft">10</b><span>مین باقی‌مانده</span></div>
+    <div class="glass"><b id="timer">0</b><span>ثانیه</span></div>
+    <div class="glass"><b id="bestTime">—</b><span>رکورد زمان</span></div>
+  </div>
+
+  <div class="bar">
+    <button class="btn" id="faceBtn" title="شروع دوباره">😊</button>
+    <button class="btn active" data-d="easy">آسان ۹×۹</button>
+    <button class="btn" data-d="mid">متوسط ۱۶×۱۶</button>
+    <button class="btn" data-d="hard">سخت ۳۰×۱۶</button>
+    <button class="btn" id="flagMode">🚩 حالت پرچم</button>
+  </div>
+
+  <div class="glass board-outer"><div id="board"></div></div>
+
+  <div class="glass legend">
+    <b>راهنما:</b> کلیک/تپ = باز کردن · راست‌کلیک یا <b>نگه‌داشتن انگشت</b> = پرچم ·
+    دکمه‌ی <b>حالت پرچم</b> برای موبایل. عدد = تعداد مین‌های همسایه.
+    کلیک اول هیچ‌وقت مین نیست. رکورد زمان هر سختی جدا ذخیره می‌شود.
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    DOM خالص بدون کتابخانه · کاملاً آفلاین
+  </footer>
+</div>
+
+<div class="overlay" id="ov">
+  <h2 id="ovTitle"></h2>
+  <p id="ovText"></p>
+  <button class="btn primary" id="ovBtn">🎮 دوباره</button>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const boardEl = $("board");
+const DIFFS = {
+  easy: { w: 9,  h: 9,  m: 10, cell: 40 },
+  mid:  { w: 16, h: 16, m: 40, cell: 32 },
+  hard: { w: 30, h: 16, m: 99, cell: 26 },
+};
+const NUM_COLORS = ["", "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"];
+let diff = "easy", W, H, M, cells, started, finished, flags, opened, timerId, seconds, flagMode = false;
+let suppressClick = false;
+
+function reset() {
+  ({ w: W, h: H, m: M } = DIFFS[diff]);
+  clearInterval(timerId);
+  started = false; finished = false; flags = 0; opened = 0; seconds = 0;
+  $("timer").textContent = "0";
+  $("minesLeft").textContent = M;
+  $("bestTime").textContent = localStorage.getItem("ms.best." + diff) || "—";
+  cells = Array.from({ length: W * H }, (_, i) => ({
+    i, x: i % W, y: (i / W) | 0, mine: false, open: false, flag: false, n: 0, el: null,
+  }));
+  boardEl.style.gridTemplateColumns = `repeat(${W}, ${DIFFS[diff].cell}px)`;
+  boardEl.innerHTML = "";
+  cells.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "cell";
+    el.style.width = el.style.height = DIFFS[diff].cell + "px";
+    bindEvents(c, el);
+    boardEl.appendChild(el);
+    c.el = el;
+  });
+  $("faceBtn").textContent = "😊";
+  $("ov").classList.remove("show");
+}
+function neighbors(c) {
+  const out = [];
+  for (let dy = -1; dy <= 1; dy++)
+    for (let dx = -1; dx <= 1; dx++) {
+      if (!dx && !dy) continue;
+      const x = c.x + dx, y = c.y + dy;
+      if (x >= 0 && y >= 0 && x < W && y < H) out.push(cells[y * W + x]);
+    }
+  return out;
+}
+function plantMines(safe) {
+  const forbidden = new Set([safe.i, ...neighbors(safe).map(n => n.i)]);
+  let placed = 0;
+  while (placed < M) {
+    const i = Math.floor(Math.random() * W * H);
+    if (forbidden.has(i) || cells[i].mine) continue;
+    cells[i].mine = true;
+    placed++;
+  }
+  cells.forEach(c => { if (!c.mine) c.n = neighbors(c).filter(n => n.mine).length; });
+}
+function startTimer() {
+  started = true;
+  timerId = setInterval(() => { seconds++; $("timer").textContent = seconds; }, 1000);
+}
+function reveal(c) {
+  if (finished || c.open || c.flag) return;
+  if (!started) { plantMines(c); startTimer(); }
+  if (c.mine) { lose(c); return; }
+  const stack = [c];
+  while (stack.length) {
+    const u = stack.pop();
+    if (u.open || u.flag || u.mine) continue;
+    u.open = true; opened++;
+    u.el.classList.add("open");
+    if (u.n) {
+      u.el.textContent = u.n;
+      u.el.classList.add(NUM_COLORS[u.n]);
+    } else neighbors(u).forEach(n => { if (!n.open) stack.push(n); });
+  }
+  checkWin();
+}
+function toggleFlag(c) {
+  if (finished || c.open) return;
+  c.flag = !c.flag;
+  flags += c.flag ? 1 : -1;
+  c.el.classList.toggle("flag", c.flag);
+  c.el.textContent = c.flag ? "🚩" : "";
+  $("minesLeft").textContent = M - flags;
+}
+function lose(hit) {
+  finished = true;
+  clearInterval(timerId);
+  $("faceBtn").textContent = "😵";
+  cells.forEach(c => {
+    if (c.mine && !c.flag) {
+      c.el.classList.add("open");
+      c.el.textContent = "💣";
+    }
+    if (c.flag && !c.mine) c.el.textContent = "❌";
+  });
+  hit.el.classList.add("boom");
+  hit.el.textContent = "💥";
+  showOv("💀 منفجر شدی!", `در ثانیه‌ی ${seconds} روی مین رفتیم — ${opened} خانه باز کردی. دوباره تلاش کن!`);
+}
+function checkWin() {
+  if (opened === W * H - M) {
+    finished = true;
+    clearInterval(timerId);
+    $("faceBtn").textContent = "😎";
+    cells.filter(c => c.mine).forEach(c => { c.el.textContent = "🚩"; c.el.classList.add("flag"); });
+    const key = "ms.best." + diff, prev = +(localStorage.getItem(key) || 0);
+    if (!prev || seconds < prev) {
+      localStorage.setItem(key, seconds);
+      $("bestTime").textContent = seconds;
+      showOv("🏆 برد!", `همه‌ی خانه‌های امن را در ${seconds} ثانیه باز کردی — رکورد جدید! 🎉`);
+    } else showOv("🏆 برد!", `همه‌ی خانه‌های امن را در ${seconds} ثانیه باز کردی (رکورد: ${prev}).`);
+  }
+}
+function showOv(title, text) {
+  $("ovTitle").textContent = title;
+  $("ovText").textContent = text;
+  $("ov").classList.add("show");
+}
+function bindEvents(c, el) {
+  let pressTimer = null, longPressed = false;
+  el.addEventListener("pointerdown", e => {
+    if (e.button === 2 || finished) return;
+    longPressed = false;
+    pressTimer = setTimeout(() => {
+      longPressed = true;
+      toggleFlag(c);
+      if (navigator.vibrate) navigator.vibrate(30);
+    }, 380);
+  });
+  el.addEventListener("pointerup", () => clearTimeout(pressTimer));
+  el.addEventListener("pointerleave", () => clearTimeout(pressTimer));
+  el.addEventListener("contextmenu", e => { e.preventDefault(); toggleFlag(c); });
+  el.addEventListener("click", () => {
+    if (longPressed || suppressClick) { suppressClick = false; return; }
+    if (flagMode) toggleFlag(c);
+    else reveal(c);
+  });
+}
+$("faceBtn").onclick = reset;
+$("ovBtn").onclick = reset;
+$("flagMode").onclick = () => { flagMode = !flagMode; $("flagMode").classList.toggle("active", flagMode); };
+document.querySelectorAll("[data-d]").forEach(b => b.onclick = () => {
+  diff = b.dataset.d;
+  document.querySelectorAll("[data-d]").forEach(x => x.classList.toggle("active", x === b));
+  reset();
+});
+document.addEventListener("contextmenu", e => { if (e.target.closest("#board")) e.preventDefault(); });
+reset();
+</script>
+</body>
+</html>
