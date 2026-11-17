@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.16.0] — 2026-11-18 — 🕹 Arcade pack (63 bots · 34 web · 6 desktop)
+
+- **3 new arcade classics** (`100 → 103`): `2048-web` (real sliding-tile animation with line-compression merges, undo and swipe), `minesweeper-web` (three difficulties, always-safe first click, long-press flags, per-difficulty best times) and `breakout-web` (angle-based paddle physics, three level layouts, 2-HP bricks, particle bursts) — each QA'd interactively and shipped with preview + live demo.
+- **Landing page v5** — every card now has a **cover thumbnail** (88 real previews, gradient+emoji fallback for the rest) and clicking a card opens a **glass detail modal** with cover, chips, bilingual description and demo/folder/README actions.
+- **Catalog v2** — `generate_catalog.py` now emits a `preview` field per project (file-aware, deterministic).
+- **Repo professionalization** — deep audit (100/103 READMEs signed, zero ad residue, zero JS syntax errors, all 29 live demo links HTTP 200), added `.github/FUNDING.yml` and a feature-request issue template, and refreshed the GitHub repo description + topics.
+
+سه کلاسیک آرکید جدید (۲۰۴۸، مین‌یاب و آجرشکن) با QA تعاملی اضافه شدند؛ همه‌ی کارت‌های لندینگ کاور تصویری گرفتند و با کلیک، مودال جزئیات شیشه‌ای باز می‌شود؛ کاتالوگ فیلد preview گرفت و فایل‌های حرفه‌ای مخزن (FUNDING، قالب ایده، توضیحات و topics) به‌روز شدند.
+
 ## [v1.15.0] — 2026-11-17 — 💯 100 projects (63 bots · 31 web · 6 desktop)
 
 - **The Century milestone** — the repo now ships exactly **100 complete, ready-to-run projects**.
