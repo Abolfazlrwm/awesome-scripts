@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noise Art — هنر نویز</title>
+<meta name="description" content="هنر مولد با نویز پرلین — میدان گرادینتی کیهانی و جریان هزاران ذره با پالت‌های زیبا و خروجی PNG — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(129,140,248,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#818cf8; --a2:#f472b6;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(129,140,248,.13), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(244,114,182,.12), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(129,140,248,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:960px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .stage { position:relative; margin-top:14px; overflow:hidden; border-radius:14px;
+           border:1px solid var(--border2); background:#05060f;
+           box-shadow:0 0 44px -10px rgba(129,140,248,.45); }
+  canvas { display:block; width:100%; height:auto; }
+  .controls { display:flex; gap:8px; justify-content:center; margin-top:13px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:11px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#12101f; font-weight:800; }
+  .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                color:#12101f; font-weight:800; }
+  .card { padding:14px 16px; margin-top:13px; }
+  .card h3 { font-size:13.5px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+  .row { display:flex; align-items:center; gap:12px; margin-top:8px; flex-wrap:wrap; }
+  .row label { font-size:13px; color:var(--muted); min-width:86px; }
+  .row input[type=range] { flex:1; accent-color:var(--a1); min-width:130px; }
+  .val { font:800 13px var(--font-en); color:var(--a1); min-width:44px; text-align:center; }
+  input[type=color] { width:38px; height:32px; border:1px solid var(--border); border-radius:9px;
+                      background:var(--glass2); cursor:pointer; padding:2px; }
+  .pals { display:flex; gap:7px; flex-wrap:wrap; }
+  .pal { width:54px; height:26px; border-radius:9px; cursor:pointer; border:2px solid transparent; transition:.15s; }
+  .pal.active { border-color:#fff; box-shadow:0 0 12px rgba(255,255,255,.35); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🌌</div>
+  <h1>هنر نویز</h1>
+  <p>با نویز پرلین نقاشی بساز — میدان گرادینتی کیهانی یا جریان هزاران ذره‌ی نورانی؛ هر بذر یک شاهکار!</p>
+</header>
+
+<div class="wrap">
+  <div class="stage"><canvas id="cv" width="900" height="500" aria-label="تابلو"></canvas></div>
+
+  <div class="controls">
+    <button class="btn active" id="mField">🌌 میدان گرادینتی</button>
+    <button class="btn" id="mFlow">✨ جریان ذرات</button>
+    <button class="btn primary" id="dice">🎲 بذر تازه</button>
+    <button class="btn" id="clear">🧹 پاک‌سازی</button>
+    <button class="btn" id="shot">💾 ذخیره PNG</button>
+  </div>
+
+  <div class="glass card">
+    <h3>🎛 پارامترهای نویز</h3>
+    <div class="row">
+      <label>مقیاس</label>
+      <input type="range" id="scale" min="1" max="14" value="5">
+      <span class="val" id="scaleV">5</span>
+      <label style="min-width:auto">لایه‌ها</label>
+      <input type="range" id="octaves" min="1" max="8" value="5">
+      <span class="val" id="octV">5</span>
+      <label style="min-width:auto">ذرات</label>
+      <input type="range" id="particles" min="200" max="4000" value="1800" step="100">
+      <span class="val" id="pV">1800</span>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <label>پالت</label>
+      <div class="pals" id="pals"></div>
+      <span style="color:var(--muted);font-size:12px;margin-inline-start:auto">رنگ پایه در جریان ذرات:</span>
+      <input type="color" id="ink" value="#a5b4fc" title="رنگ ذرات">
+    </div>
+  </div>
+
+  <div class="glass card">
+    <h3>🧠 چطور کار می‌کند؟</h3>
+    <div style="color:var(--muted);font-size:13.5px">
+      «نویز پرلین» الگوی موجی پیوسته‌ای می‌سازد که شبیه ابر و دود است؛ با ترکیب چند لایه‌ی آن (fBm)
+      بافت طبیعی به دست می‌آید. در میدان، مقدار نویز مستقیماً رنگ را می‌سازد؛ در جریان، هر ذره
+      <b style="color:var(--text)">زاویه‌ی حرکتش را از نویز می‌خواند</b> — نتیجه، خطوط سیال شبیه باد است.
+      بذر، همه‌ی شکل را عوض می‌کند؛ اسلایدرها آن را کج‌وکوله می‌کنند!
+    </div>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    Canvas خالص بدون کتابخانه · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const cv = $("cv"), ctx = cv.getContext("2d");
+const W = cv.width, H = cv.height;
+
+/* ---------- value noise + fBm ---------- */
+let seed = 1337;
+function hash(ix, iy) {
+  let h = Math.imul(ix, 374761393) + Math.imul(iy, 668265263) + Math.imul(seed, 1274126177);
+  h = Math.imul(h ^ (h >>> 13), 1103515245);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+}
+function smoother(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+function noise2(x, y) {
+  const ix = Math.floor(x), iy = Math.floor(y);
+  const fx = x - ix, fy = y - iy;
+  const a = hash(ix, iy), b = hash(ix + 1, iy), c = hash(ix, iy + 1), d = hash(ix + 1, iy + 1);
+  const u = smoother(fx), v = smoother(fy);
+  return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+}
+let scale = 5, octaves = 5;
+function fbm(x, y) {
+  let amp = 0.5, f = 1, sum = 0, norm = 0;
+  for (let o = 0; o < octaves; o++) {
+    sum += amp * noise2(x * f, y * f);
+    norm += amp;
+    amp *= 0.5; f *= 2;
+  }
+  return sum / norm;
+}
+
+/* ---------- palettes ---------- */
+const PALETTES = [
+  { name: "کیهانی", stops: [[0,10,8,30],[0.3,76,29,149],[0.55,129,140,248],[0.8,244,114,182],[1,255,241,182]] },
+  { name: "غروب",   stops: [[0,20,8,26],[0.3,146,45,60],[0.55,237,106,60],[0.8,252,180,90],[1,255,236,190]] },
+  { name: "اقیانوس",stops: [[0,4,10,28],[0.3,10,70,120],[0.55,20,140,180],[0.8,110,235,215],[1,235,253,255]] },
+  { name: "جنگل",   stops: [[0,6,16,14],[0.3,16,84,58],[0.55,52,150,90],[0.8,160,220,140],[1,240,254,222]] },
+  { name: "آبنبات", stops: [[0,24,10,38],[0.3,194,60,140],[0.55,244,114,182],[0.8,253,186,140],[1,255,246,214]] },
+];
+let paletteIdx = 0;
+function makeLUT(p) {
+  const lut = new Uint8Array(256 * 3);
+  for (let i = 0; i < 256; i++) {
+    const t = i / 255;
+    let a = p.stops[0], b = p.stops[p.stops.length - 1];
+    for (let s = 0; s < p.stops.length - 1; s++)
+      if (t >= p.stops[s][0] && t <= p.stops[s + 1][0]) { a = p.stops[s]; b = p.stops[s + 1]; break; }
+    const k = (t - a[0]) / ((b[0] - a[0]) || 1);
+    lut[i*3] = Math.round(a[1] + (b[1]-a[1])*k);
+    lut[i*3+1] = Math.round(a[2] + (b[2]-a[2])*k);
+    lut[i*3+2] = Math.round(a[3] + (b[3]-a[3])*k);
+  }
+  return lut;
+}
+let LUT = makeLUT(PALETTES[0]);
+
+/* ---------- mode 1: gradient field ---------- */
+function renderField() {
+  const img = ctx.createImageData(W, H), d = img.data;
+  const s = scale / 90;
+  for (let y = 0; y < H; y += 2)
+    for (let x = 0; x < W; x += 2) {
+      const v = fbm(x * s + seed * 0.017, y * s + seed * 0.031);
+      const idx = Math.min(255, Math.max(0, Math.round(v * 255)));
+      const r = LUT[idx*3], g = LUT[idx*3+1], b = LUT[idx*3+2];
+      for (let sy = 0; sy < 2 && y + sy < H; sy++)
+        for (let sx = 0; sx < 2 && x + sx < W; sx++) {
+          const o = ((y + sy) * W + (x + sx)) * 4;
+          d[o] = r; d[o+1] = g; d[o+2] = b; d[o+3] = 255;
+        }
+    }
+  ctx.putImageData(img, 0, 0);
+}
+
+/* ---------- mode 2: flow particles ---------- */
+let mode = "field", parts = [], nParts = 1800, ink = "#a5b4fc", flowing = false;
+function initParticles() {
+  parts = Array.from({ length: nParts }, () => ({
+    x: Math.random() * W, y: Math.random() * H,
+    life: 40 + Math.random() * 140,
+  }));
+}
+function flowFrame() {
+  if (!flowing) return;
+  const s = scale / 210;
+  ctx.save();
+  ctx.globalAlpha = 0.5;
+  ctx.strokeStyle = ink;
+  ctx.lineWidth = 1.1;
+  ctx.beginPath();
+  for (const p of parts) {
+    const a = fbm(p.x * s, p.y * s) * Math.PI * 4 + seed * 0.001;
+    const nx = p.x + Math.cos(a) * 1.7, ny = p.y + Math.sin(a) * 1.7;
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(nx, ny);
+    p.x = nx; p.y = ny; p.life--;
+    if (p.life <= 0 || p.x < 0 || p.x > W || p.y < 0 || p.y > H) {
+      p.x = Math.random() * W; p.y = Math.random() * H;
+      p.life = 40 + Math.random() * 140;
+    }
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+function startFlow() {
+  ctx.fillStyle = "#05060f";
+  ctx.fillRect(0, 0, W, H);
+  initParticles();
+  flowing = true;
+}
+(function loop() {
+  requestAnimationFrame(loop);
+  flowFrame();
+})();
+
+/* ---------- controls ---------- */
+$("mField").onclick = () => { mode = "field"; flowing = false;
+  $("mField").classList.add("active"); $("mFlow").classList.remove("active"); renderField(); };
+$("mFlow").onclick = () => { mode = "flow";
+  $("mFlow").classList.add("active"); $("mField").classList.remove("active"); startFlow(); };
+$("dice").onclick = () => { seed = Math.floor(Math.random() * 99999);
+  if (mode === "field") renderField(); else startFlow(); };
+$("clear").onclick = () => { if (mode === "flow") startFlow(); else renderField(); };
+$("shot").onclick = () => { const a = document.createElement("a");
+  a.download = "noise-art-" + seed + ".png"; a.href = cv.toDataURL("image/png"); a.click(); };
+$("scale").oninput = e => { scale = +e.target.value; $("scaleV").textContent = scale;
+  if (mode === "field") renderField(); else startFlow(); };
+$("octaves").oninput = e => { octaves = +e.target.value; $("octV").textContent = octaves;
+  if (mode === "field") renderField(); else startFlow(); };
+$("particles").oninput = e => { nParts = +e.target.value; $("pV").textContent = nParts;
+  if (mode === "flow") initParticles(); };
+$("ink").oninput = e => { ink = e.target.value; };
+
+const palsEl = $("pals");
+PALETTES.forEach((p, i) => {
+  const el = document.createElement("div");
+  el.className = "pal" + (i === 0 ? " active" : "");
+  el.title = p.name;
+  el.style.background = "linear-gradient(90deg," + p.stops.map(s => `rgb(${s[1]},${s[2]},${s[3]}) ${s[0]*100}%`).join(",") + ")";
+  el.onclick = () => { paletteIdx = i; LUT = makeLUT(p);
+    document.querySelectorAll(".pal").forEach((x, j) => x.classList.toggle("active", j === i));
+    if (mode === "field") renderField(); else startFlow(); };
+  palsEl.appendChild(el);
+});
+
+renderField();
+</script>
+</body>
+</html>
