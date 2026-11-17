@@ -4,18 +4,18 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-17T22:42:04+03:30",
-  "count": 100,
+  "generated_at": "2026-11-18T10:57:47+03:30",
+  "count": 103,
   "stats": {
     "categories": {
+      "web-tool": 34,
       "telegram-bot": 63,
-      "web-tool": 31,
       "desktop-tool": 6
     },
     "languages": {
+      "HTML/CSS/JS": 32,
       "Python": 47,
       "PHP": 12,
-      "HTML/CSS/JS": 29,
       "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
@@ -36,6 +36,18 @@ window.AWESOME_CATALOG = {
   },
   "projects": [
     {
+      "slug": "2048-web",
+      "path": "src/2048-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "2048",
+      "description_en": "Classic 2048 — animated sliding tiles, merge combos, undo and swipe controls",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/2048-web/",
+      "name_fa": "بازی ۲۰۴۸",
+      "description_fa": "کلاسیک ۲۰۴۸ — انیمیشن سُر خوردن کاشی‌ها، برگشت حرکت و سوایپ لمسی",
+      "preview": "src/2048-web/docs/preview.png"
+    },
+    {
       "slug": "advanced-shop-bot",
       "path": "src/advanced-shop-bot",
       "category": "telegram-bot",
@@ -44,7 +56,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Full shop bot — product catalog, cart, coupons, card-to-card payment",
       "demo": null,
       "name_fa": "ربات فروشگاهی پیشرفته",
-      "description_fa": "فروشگاه‌ساز کامل با تنوع محصول، سبد خرید، کوپن و پرداخت کارت‌به‌کارت"
+      "description_fa": "فروشگاه‌ساز کامل با تنوع محصول، سبد خرید، کوپن و پرداخت کارت‌به‌کارت",
+      "preview": "src/advanced-shop-bot/docs/preview.png"
     },
     {
       "slug": "ai-chat-assistant-bot",
@@ -55,7 +68,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Chat with GPT / DeepSeek / Grok + full admin panel",
       "demo": null,
       "name_fa": "چت هوش مصنوعی",
-      "description_fa": "چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل"
+      "description_fa": "چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل",
+      "preview": "src/ai-chat-assistant-bot/docs/preview.png"
     },
     {
       "slug": "ai-chat-webapp-php",
@@ -66,7 +80,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Single-file OpenRouter chat web app — conversation history, Markdown, light/dark theme, RTL UI",
       "demo": null,
       "name_fa": "چت هوش مصنوعی وب",
-      "description_fa": "چت‌اپ تک‌فایلی با OpenRouter — تاریخچه گفتگوها، Markdown، تم روشن/تیره و رابط فارسی"
+      "description_fa": "چت‌اپ تک‌فایلی با OpenRouter — تاریخچه گفتگوها، Markdown، تم روشن/تیره و رابط فارسی",
+      "preview": null
     },
     {
       "slug": "ai-self-coding-bot",
@@ -77,7 +92,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Self-coding experiment — OpenRouter Llama-3 writes & appends PHP into its own bot file (owner-only)",
       "demo": null,
       "name_fa": "ربات خودساز AI",
-      "description_fa": "آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک"
+      "description_fa": "آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک",
+      "preview": "src/ai-self-coding-bot/docs/preview.png"
     },
     {
       "slug": "ascii-art-generator-web",
@@ -88,7 +104,8 @@ window.AWESOME_CATALOG = {
       "description_en": "ASCII art studio — hand-drawn bitmap fonts for banners + image-to-ASCII converter",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/",
       "name_fa": "هنر ASCII",
-      "description_fa": "بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست"
+      "description_fa": "بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست",
+      "preview": "src/ascii-art-generator-web/docs/preview.png"
     },
     {
       "slug": "auction-house-bot",
@@ -99,7 +116,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements",
       "demo": null,
       "name_fa": "خانه‌ی مزایده",
-      "description_fa": "مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده"
+      "description_fa": "مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده",
+      "preview": "src/auction-house-bot/docs/preview.png"
     },
     {
       "slug": "backend-dev-portfolio",
@@ -110,7 +128,20 @@ window.AWESOME_CATALOG = {
       "description_en": "Single-file dark portfolio for backend & bot developers — zero dependencies",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/",
       "name_fa": "رزومه بک‌اند",
-      "description_fa": "رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس"
+      "description_fa": "رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس",
+      "preview": null
+    },
+    {
+      "slug": "breakout-web",
+      "path": "src/breakout-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Breakout Web",
+      "description_en": "Neon breakout — three level layouts, angle-based paddle physics, particle bursts",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/breakout-web/",
+      "name_fa": "آجرشکن",
+      "description_fa": "آجرشکن نئونی — سه مرحله، فیزیک زاویه‌ای پدل و انفجار ذرات",
+      "preview": "src/breakout-web/docs/preview.png"
     },
     {
       "slug": "bulk-renamer-cli",
@@ -121,7 +152,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Safe bulk file renamer — numbered templates, regex, dry-run default, undo log",
       "demo": null,
       "name_fa": "تغییرنام گروهی",
-      "description_fa": "تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت"
+      "description_fa": "تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت",
+      "preview": "src/bulk-renamer-cli/docs/preview.png"
     },
     {
       "slug": "caller-lookup-app",
@@ -132,7 +164,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Persian spam-caller lookup — search a number, see labels & community reports",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/",
       "name_fa": "مزاحم‌یاب",
-      "description_fa": "جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران"
+      "description_fa": "جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران",
+      "preview": null
     },
     {
       "slug": "canvas-paint-studio",
@@ -143,7 +176,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Browser paint app — brush & shapes with live preview, undo, quick swatches, PNG export",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/",
       "name_fa": "بوم نقاشی",
-      "description_fa": "اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG"
+      "description_fa": "اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG",
+      "preview": "src/canvas-paint-studio/docs/preview.png"
     },
     {
       "slug": "channel-likes-bot",
@@ -154,7 +188,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Reposts anything sent to the bot into your channel with a live one-per-user like button",
       "demo": null,
       "name_fa": "لایک پست کانال",
-      "description_fa": "هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک"
+      "description_fa": "هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک",
+      "preview": "src/channel-likes-bot/docs/preview.png"
     },
     {
       "slug": "channel-submission-bot",
@@ -165,7 +200,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Users submit posts, admin approves → auto-published to the channel",
       "demo": null,
       "name_fa": "ربات پست کانال",
-      "description_fa": "کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود"
+      "description_fa": "کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود",
+      "preview": "src/channel-submission-bot/docs/preview.png"
     },
     {
       "slug": "channel-translate-worker",
@@ -176,7 +212,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Cloudflare Worker stamps fa/en/ru translate buttons onto channel posts (Gemini + Google fallback)",
       "demo": null,
       "name_fa": "ترجمه‌گر پست کانال",
-      "description_fa": "دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker"
+      "description_fa": "دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker",
+      "preview": "src/channel-translate-worker/docs/preview.png"
     },
     {
       "slug": "city-builder-bot",
@@ -187,7 +224,8 @@ window.AWESOME_CATALOG = {
       "description_en": "City-building strategy game — tech tree, diplomacy & trade, happiness economy, random events",
       "demo": null,
       "name_fa": "ربات شهرساز",
-      "description_fa": "بازی استراتژیک شهرسازی — درخت فناوری، دیپلماسی و تجارت، اقتصاد شادی، رویدادهای تصادفی و پنل ادمین"
+      "description_fa": "بازی استراتژیک شهرسازی — درخت فناوری، دیپلماسی و تجارت، اقتصاد شادی، رویدادهای تصادفی و پنل ادمین",
+      "preview": "src/city-builder-bot/docs/preview.png"
     },
     {
       "slug": "clipboard-history-manager",
@@ -198,7 +236,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Searchable clipboard history — pins, dedup, JSON persistence (tkinter)",
       "demo": null,
       "name_fa": "تاریخچه کلیپ‌بورد",
-      "description_fa": "تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON"
+      "description_fa": "تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON",
+      "preview": "src/clipboard-history-manager/docs/preview.png"
     },
     {
       "slug": "code-share-bot",
@@ -209,7 +248,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Store, search & share code snippets with syntax highlighting",
       "demo": null,
       "name_fa": "اشتراک‌گذاری کد",
-      "description_fa": "ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار"
+      "description_fa": "ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار",
+      "preview": "src/code-share-bot/docs/preview.png"
     },
     {
       "slug": "color-palette-studio",
@@ -220,7 +260,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Palette generator — harmony rules, tints/shades, WCAG contrast lab, CSS/JSON/Tailwind export",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/",
       "name_fa": "استودیو پالت رنگ",
-      "description_fa": "ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind"
+      "description_fa": "ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind",
+      "preview": "src/color-palette-studio/docs/preview.png"
     },
     {
       "slug": "connect4-minesweeper-bot",
@@ -231,7 +272,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Connect-4 & Minesweeper group games with ranking and a leaderboard",
       "demo": null,
       "name_fa": "دوز و مین‌یاب",
-      "description_fa": "بازی گروهی دوز (Connect4) و مین‌یاب با رنکینگ و لیدربورد"
+      "description_fa": "بازی گروهی دوز (Connect4) و مین‌یاب با رنکینگ و لیدربورد",
+      "preview": "src/connect4-minesweeper-bot/docs/preview.png"
     },
     {
       "slug": "control-room-dashboard",
@@ -242,7 +284,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Live simulated dashboard — bot status, real-time logs, FX rates",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/",
       "name_fa": "اتاق فرمان",
-      "description_fa": "داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز"
+      "description_fa": "داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز",
+      "preview": null
     },
     {
       "slug": "dice-duel-bot",
@@ -253,7 +296,8 @@ window.AWESOME_CATALOG = {
       "description_en": "PvP wagered dice duels — animated 2d6 rolls, tie re-rolls, coins & leaderboard",
       "demo": null,
       "name_fa": "نبرد تاس",
-      "description_fa": "دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها"
+      "description_fa": "دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها",
+      "preview": "src/dice-duel-bot/docs/preview.png"
     },
     {
       "slug": "digiato-article-bot",
@@ -264,7 +308,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Search & extract Digiato articles with pagination",
       "demo": null,
       "name_fa": "جستجوگر مقالات دیجیاتو",
-      "description_fa": "جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی"
+      "description_fa": "جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی",
+      "preview": "src/digiato-article-bot/docs/preview.png"
     },
     {
       "slug": "digit-id-bot",
@@ -275,7 +320,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Get any Telegram user's numeric ID",
       "demo": null,
       "name_fa": "دریافت آیدی عددی",
-      "description_fa": "دریافت آیدی عددی کاربران در تلگرام"
+      "description_fa": "دریافت آیدی عددی کاربران در تلگرام",
+      "preview": "src/digit-id-bot/docs/preview.png"
     },
     {
       "slug": "downloads-organizer",
@@ -286,7 +332,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Auto-sort Downloads by file type — with reports and full logging",
       "demo": null,
       "name_fa": "مرتب‌کننده پوشه Downloads",
-      "description_fa": "دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل"
+      "description_fa": "دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل",
+      "preview": "src/downloads-organizer/docs/preview.png"
     },
     {
       "slug": "drum-machine-web",
@@ -297,7 +344,8 @@ window.AWESOME_CATALOG = {
       "description_en": "16-step WebAudio drum machine — synthesized voices, BPM/swing, presets, save/load",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/",
       "name_fa": "سینت درام",
-      "description_fa": "درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو"
+      "description_fa": "درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو",
+      "preview": "src/drum-machine-web/docs/preview.png"
     },
     {
       "slug": "dupe-file-finder",
@@ -308,7 +356,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Duplicate-file CLI — 3-phase hashing, wasted-space report, CSV export, safe delete",
       "demo": null,
       "name_fa": "یافتن فایل تکراری",
-      "description_fa": "یابنده‌ی فایل تکراری با هش سه‌مرحله‌ای، گزارش فضای هدررفته، خروجی CSV و حذف امن"
+      "description_fa": "یابنده‌ی فایل تکراری با هش سه‌مرحله‌ای، گزارش فضای هدررفته، خروجی CSV و حذف امن",
+      "preview": "src/dupe-file-finder/docs/preview.png"
     },
     {
       "slug": "emoji-forge-bot",
@@ -319,7 +368,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Custom emoji pack rebranding (TGS/WEBM) — pipeline, tests, systemd deploy",
       "demo": null,
       "name_fa": "اموجی فورج AI",
-      "description_fa": "ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd"
+      "description_fa": "ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd",
+      "preview": "src/emoji-forge-bot/docs/preview.png"
     },
     {
       "slug": "expense-splitter-bot",
@@ -330,7 +380,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Group cost sharing — live balances, equal/custom splits, fewest-transfers settle-up",
       "demo": null,
       "name_fa": "خرج‌شمار گروهی",
-      "description_fa": "تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله"
+      "description_fa": "تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله",
+      "preview": "src/expense-splitter-bot/docs/preview.png"
     },
     {
       "slug": "file-store-bot",
@@ -341,7 +392,8 @@ window.AWESOME_CATALOG = {
       "description_en": "File storage with dedicated download links",
       "demo": null,
       "name_fa": "ذخیره فایل و لینک‌ساز",
-      "description_fa": "ذخیره‌ی فایل و ساخت لینک اختصاصی دانلود"
+      "description_fa": "ذخیره‌ی فایل و ساخت لینک اختصاصی دانلود",
+      "preview": "src/file-store-bot/docs/preview.png"
     },
     {
       "slug": "flashcard-srs-bot",
@@ -352,7 +404,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Spaced-repetition study bot — SM-2 scheduler, decks, grade buttons, progress",
       "demo": null,
       "name_fa": "فلش‌کد فارسی",
-      "description_fa": "مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری"
+      "description_fa": "مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری",
+      "preview": "src/flashcard-srs-bot/docs/preview.png"
     },
     {
       "slug": "fortune-teller-bot",
@@ -363,7 +416,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only",
       "demo": null,
       "name_fa": "فال‌گر شوخ",
-      "description_fa": "فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی"
+      "description_fa": "فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی",
+      "preview": "src/fortune-teller-bot/docs/preview.png"
     },
     {
       "slug": "forward-info-bot",
@@ -374,7 +428,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Reveal the original sender of forwarded messages",
       "demo": null,
       "name_fa": "شناسایی فرستنده‌ی فورواردی",
-      "description_fa": "نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده"
+      "description_fa": "نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده",
+      "preview": "src/forward-info-bot/docs/preview.png"
     },
     {
       "slug": "fractal-explorer",
@@ -385,7 +440,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Mandelbrot & Julia explorer — deep zoom to 10^55x, smooth coloring, 5 palettes, PNG export",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/fractal-explorer/",
       "name_fa": "کاوشگر فرکتال",
-      "description_fa": "کاوش ماندلبروت و ژولیا — زوم عمیق، رنگ‌آمیزی نرم و خروجی PNG"
+      "description_fa": "کاوش ماندلبروت و ژولیا — زوم عمیق، رنگ‌آمیزی نرم و خروجی PNG",
+      "preview": "src/fractal-explorer/docs/preview.png"
     },
     {
       "slug": "freedomnet-vpn-bot",
@@ -396,7 +452,8 @@ window.AWESOME_CATALOG = {
       "description_en": "VPN config distribution — QR codes, server ping tests, admin panel",
       "demo": null,
       "name_fa": "آزادی‌نت (کانفیگ VPN)",
-      "description_fa": "توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل"
+      "description_fa": "توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل",
+      "preview": "src/freedomnet-vpn-bot/docs/preview.png"
     },
     {
       "slug": "game-of-life-web",
@@ -407,7 +464,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Conway's Game of Life — famous pattern stamps, live painting, age colors and fading trails",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/game-of-life-web/",
       "name_fa": "بازی زندگی",
-      "description_fa": "ماشین سلولی Conway — الگوهای معروف، نقاشی زنده و ردپای رنگی"
+      "description_fa": "ماشین سلولی Conway — الگوهای معروف، نقاشی زنده و ردپای رنگی",
+      "preview": "src/game-of-life-web/docs/preview.png"
     },
     {
       "slug": "giftix-premium-shop-bot",
@@ -418,7 +476,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Full GiftiX storefront — Stars/Premium/Gifts/TON with live Nobitex rates, profit engine, referral commission, tickets",
       "demo": null,
       "name_fa": "فروشگاه کامل GiftiX",
-      "description_fa": "فروش استارز/پریمیوم/گیفت/تون با نرخ زنده‌ی نوبیتکس، موتور سود، کمیسیون رفرال و تیکت پشتیبانی"
+      "description_fa": "فروش استارز/پریمیوم/گیفت/تون با نرخ زنده‌ی نوبیتکس، موتور سود، کمیسیون رفرال و تیکت پشتیبانی",
+      "preview": "src/giftix-premium-shop-bot/docs/preview.png"
     },
     {
       "slug": "giftix-stars-shop-bot",
@@ -429,7 +488,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Stars/Premium/Gift/TON storefront — wallet & gateways, referrals, order tracking, tickets",
       "demo": null,
       "name_fa": "فروشگاه استارز GiftiX",
-      "description_fa": "فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت"
+      "description_fa": "فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت",
+      "preview": "src/giftix-stars-shop-bot/docs/preview.png"
     },
     {
       "slug": "group-guardian-bot",
@@ -440,7 +500,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Anti-spam, entry captcha, word filtering, auto-warnings",
       "demo": null,
       "name_fa": "نگهبان گروه",
-      "description_fa": "ضدهرزنامه، کپچای ورود، فیلتر کلمه و اخطار خودکار"
+      "description_fa": "ضدهرزنامه، کپچای ورود، فیلتر کلمه و اخطار خودکار",
+      "preview": "src/group-guardian-bot/docs/preview.png"
     },
     {
       "slug": "happydog-economy-bot",
@@ -451,7 +512,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Group economy game — pets, fishing, factories, city hall, national leadership",
       "demo": null,
       "name_fa": "هاپ‌داگ (ربات اقتصادی گروهی)",
-      "description_fa": "بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی"
+      "description_fa": "بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی",
+      "preview": "src/happydog-economy-bot/docs/preview.png"
     },
     {
       "slug": "instagram-downloader-bot",
@@ -462,7 +524,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Instagram posts/reels/stories downloader with VIP membership",
       "demo": null,
       "name_fa": "دانلودر اینستاگرام",
-      "description_fa": "دانلود پست/ریلز/استوری اینستاگرام با سیستم عضویت VIP"
+      "description_fa": "دانلود پست/ریلز/استوری اینستاگرام با سیستم عضویت VIP",
+      "preview": "src/instagram-downloader-bot/docs/preview.png"
     },
     {
       "slug": "iran-market-rate-bot",
@@ -473,7 +536,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list",
       "demo": null,
       "name_fa": "نرخ لحظه‌ای بازار",
-      "description_fa": "نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار"
+      "description_fa": "نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار",
+      "preview": "src/iran-market-rate-bot/docs/preview.png"
     },
     {
       "slug": "jalali-date-tools",
@@ -484,7 +548,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline)",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/",
       "name_fa": "تقویم جلالی",
-      "description_fa": "تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین"
+      "description_fa": "تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین",
+      "preview": null
     },
     {
       "slug": "life-simulator-bot",
@@ -495,7 +560,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Full life-simulation game — jobs & skills, bank cards, real estate, companies, free market, crime & jail",
       "demo": null,
       "name_fa": "شبیه‌ساز زندگی",
-      "description_fa": "بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان"
+      "description_fa": "بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان",
+      "preview": "src/life-simulator-bot/docs/preview.png"
     },
     {
       "slug": "likes-challenges-php-bot",
@@ -506,7 +572,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Channel growth suite — auto-likes, like/speed challenges, coin economy with card & Zibal payments, web installer",
       "demo": null,
       "name_fa": "لایک و چالش کانال",
-      "description_fa": "لایک خودکار پست‌ها، چالش لایک و سرعتی، اقتصاد سکه با پرداخت کارت و زیبال، نصب‌کننده‌ی وب"
+      "description_fa": "لایک خودکار پست‌ها، چالش لایک و سرعتی، اقتصاد سکه با پرداخت کارت و زیبال، نصب‌کننده‌ی وب",
+      "preview": "src/likes-challenges-php-bot/docs/preview.png"
     },
     {
       "slug": "link-summarizer-bot",
@@ -517,7 +584,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Summarize links & text — offline by default, upgradeable with an LLM",
       "demo": null,
       "name_fa": "خلاصه‌ساز لینک و متن",
-      "description_fa": "خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی"
+      "description_fa": "خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی",
+      "preview": "src/link-summarizer-bot/docs/preview.png"
     },
     {
       "slug": "lottery-giveaway-bot",
@@ -528,7 +596,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Giveaways with mandatory join, referrals, admin panel",
       "demo": null,
       "name_fa": "قرعه‌کشی و گیوای",
-      "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل"
+      "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل",
+      "preview": "src/lottery-giveaway-bot/docs/preview.png"
     },
     {
       "slug": "matrix-rain-web",
@@ -539,7 +608,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Matrix rain — katakana/binary/Persian glyphs and a message mode that reveals your text",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/matrix-rain-web/",
       "name_fa": "بارش ماتریکس",
-      "description_fa": "باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو»"
+      "description_fa": "باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو»",
+      "preview": "src/matrix-rain-web/docs/preview.png"
     },
     {
       "slug": "member-tag-manager-bot",
@@ -550,7 +620,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Real member tags (setChatMemberTag), premium-emoji relay, personal invite links with join counters",
       "demo": null,
       "name_fa": "مدیریت تگ اعضا",
-      "description_fa": "تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود"
+      "description_fa": "تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود",
+      "preview": "src/member-tag-manager-bot/docs/preview.png"
     },
     {
       "slug": "meow-point-bot",
@@ -561,7 +632,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Cat-themed group economy — wars, bank, points",
       "demo": null,
       "name_fa": "ربات میو پوینت",
-      "description_fa": "بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک"
+      "description_fa": "بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک",
+      "preview": "src/meow-point-bot/docs/preview.png"
     },
     {
       "slug": "military-alliance-bot",
@@ -572,7 +644,20 @@ window.AWESOME_CATALOG = {
       "description_en": "Military strategy game — land/air/navy forces, trade & war declarations, billion-cost alliances",
       "demo": null,
       "name_fa": "ربات نبرد و اتحاد نظامی",
-      "description_fa": "استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی"
+      "description_fa": "استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی",
+      "preview": "src/military-alliance-bot/docs/preview.png"
+    },
+    {
+      "slug": "minesweeper-web",
+      "path": "src/minesweeper-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Minesweeper Web",
+      "description_en": "Minesweeper — three difficulties, safe first click, long-press flags, best times",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/minesweeper-web/",
+      "name_fa": "مین‌یاب",
+      "description_fa": "سه سختی، کلیک اول امن، پرچم با نگه‌داشتن انگشت و رکورد زمان",
+      "preview": "src/minesweeper-web/docs/preview.png"
     },
     {
       "slug": "mobile-app-intro-template",
@@ -583,7 +668,8 @@ window.AWESOME_CATALOG = {
       "description_en": "12 responsive landing pages for mobile app promotion",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/",
       "name_fa": "قالب معرفی اپلیکیشن",
-      "description_fa": "۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل"
+      "description_fa": "۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل",
+      "preview": null
     },
     {
       "slug": "multi-account-manager",
@@ -594,7 +680,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Multi-account control center — sync mode, operation workers, per-account DBs, owner panel",
       "demo": null,
       "name_fa": "مدیریت چند اکانت همزمان",
-      "description_fa": "مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک"
+      "description_fa": "مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک",
+      "preview": "src/multi-account-manager/docs/preview.png"
     },
     {
       "slug": "noise-art-web",
@@ -605,7 +692,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Generative art — Perlin-noise gradient fields and thousands of flow-field particles",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/noise-art-web/",
       "name_fa": "هنر نویز",
-      "description_fa": "هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره"
+      "description_fa": "هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره",
+      "preview": "src/noise-art-web/docs/preview.png"
     },
     {
       "slug": "password-forge",
@@ -616,7 +704,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Password & passphrase generator — entropy scoring, crack-time estimate, bulk mode, crypto API",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/password-forge/",
       "name_fa": "جعبه‌جنگل پسورد",
-      "description_fa": "تولید پسورد و عبارت‌عبور قوی — سنجش آنتروپی زنده، برآورد زمان شکستن و حالت گروهی با crypto API"
+      "description_fa": "تولید پسورد و عبارت‌عبور قوی — سنجش آنتروپی زنده، برآورد زمان شکستن و حالت گروهی با crypto API",
+      "preview": "src/password-forge/docs/preview.png"
     },
     {
       "slug": "perfect-ai-chat-bot",
@@ -627,7 +716,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Chat-to-channel bridge — member messages forward into your channel, sessions, owner panel",
       "demo": null,
       "name_fa": "چت عمومی کانال",
-      "description_fa": "پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک"
+      "description_fa": "پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک",
+      "preview": "src/perfect-ai-chat-bot/docs/preview.png"
     },
     {
       "slug": "php-bot-maker",
@@ -638,7 +728,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Bot-maker platform — users build bots, coin economy, marketplace with moderation",
       "demo": null,
       "name_fa": "ربات‌ساز PHP",
-      "description_fa": "پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش"
+      "description_fa": "پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش",
+      "preview": "src/php-bot-maker/docs/preview.png"
     },
     {
       "slug": "php-coin-manager-bot",
@@ -649,7 +740,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Coin economy & view-order shop — balances, top-ups, admin panel, Jalali dates, zero dependencies",
       "demo": null,
       "name_fa": "مدیریت سکه و سفارش",
-      "description_fa": "اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی"
+      "description_fa": "اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی",
+      "preview": "src/php-coin-manager-bot/docs/preview.png"
     },
     {
       "slug": "pixel-art-studio",
@@ -660,7 +752,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Pixel art editor — palette, flood fill, mirror symmetry, undo, crisp PNG export",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/pixel-art-studio/",
       "name_fa": "استودیو پیکسل‌آرت",
-      "description_fa": "ادیتور پیکسلی — پالت، سطل رنگ، قرینه و خروجی PNG شارپ"
+      "description_fa": "ادیتور پیکسلی — پالت، سطل رنگ، قرینه و خروجی PNG شارپ",
+      "preview": "src/pixel-art-studio/docs/preview.png"
     },
     {
       "slug": "poll-vote-bot",
@@ -671,7 +764,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Polls with live vote buttons, rendered result cards, CSV export — no framework",
       "demo": null,
       "name_fa": "نظرسنجی و رأی‌گیری",
-      "description_fa": "نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک"
+      "description_fa": "نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک",
+      "preview": null
     },
     {
       "slug": "pomodoro-focus",
@@ -682,7 +776,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Pomodoro timer — SVG dial, Web Worker tick, auto-cycling, WebAudio chime, daily stats",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/pomodoro-focus/",
       "name_fa": "تایمر تمرکز",
-      "description_fa": "تایمر پومودورو — حلقه‌ی پیشرفت SVG، تیک Web Worker، چرخه‌ی خودکار و آمار روزانه"
+      "description_fa": "تایمر پومودورو — حلقه‌ی پیشرفت SVG، تیک Web Worker، چرخه‌ی خودکار و آمار روزانه",
+      "preview": "src/pomodoro-focus/docs/preview.png"
     },
     {
       "slug": "post-manager-bot",
@@ -693,7 +788,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Channel post manager with colored inline buttons (Bot API 7.10+ styles) and live preview",
       "demo": null,
       "name_fa": "مدیریت پست رنگی",
-      "description_fa": "مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار"
+      "description_fa": "مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار",
+      "preview": "src/post-manager-bot/docs/preview.png"
     },
     {
       "slug": "prayer-times-bot",
@@ -704,7 +800,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Offline prayer times for 30 Iranian cities — Geophysics method, Qibla bearing, /next countdown",
       "demo": null,
       "name_fa": "اوقات شرعی",
-      "description_fa": "اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی"
+      "description_fa": "اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی",
+      "preview": "src/prayer-times-bot/docs/preview.png"
     },
     {
       "slug": "premium-emoji-poster-cfworker",
@@ -715,7 +812,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Channel posting with premium emojis — runs on Cloudflare Workers",
       "demo": null,
       "name_fa": "پستر ایموجی پرمیوم",
-      "description_fa": "ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker"
+      "description_fa": "ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker",
+      "preview": "src/premium-emoji-poster-cfworker/docs/preview.png"
     },
     {
       "slug": "price-ticker-bot",
@@ -726,7 +824,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Crypto prices, price alerts, auto channel updates",
       "demo": null,
       "name_fa": "نرخ لحظه‌ای رمزارز",
-      "description_fa": "قیمت رمزارز، هشدار قیمت، آپدیت خودکار کانال"
+      "description_fa": "قیمت رمزارز، هشدار قیمت، آپدیت خودکار کانال",
+      "preview": "src/price-ticker-bot/docs/preview.png"
     },
     {
       "slug": "pyautogui-automation-demo",
@@ -737,7 +836,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Desktop automation CLI — auto-typing, screenshots, clicks (PyAutoGUI)",
       "demo": null,
       "name_fa": "ابزار اتوماسیون دسکتاپ",
-      "description_fa": "تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان"
+      "description_fa": "تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان",
+      "preview": "src/pyautogui-automation-demo/docs/preview.png"
     },
     {
       "slug": "pyrogram-selfbot-manager",
@@ -748,7 +848,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Pyrogram account manager — phone login, live name clock (10 fonts), secretary & guards, session security",
       "demo": null,
       "name_fa": "مدیریت سلف‌بات Pyrogram",
-      "description_fa": "مدیریت اکانت با لاگین شماره‌ای، ساعت زنده روی اسم با ۱۰ فونت، منشی و گاردها، امنیت سشن"
+      "description_fa": "مدیریت اکانت با لاگین شماره‌ای، ساعت زنده روی اسم با ۱۰ فونت، منشی و گاردها، امنیت سشن",
+      "preview": "src/pyrogram-selfbot-manager/docs/preview.png"
     },
     {
       "slug": "qr-code-studio",
@@ -759,7 +860,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Custom QR codes — colors, gradients, logo, PNG/SVG export",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/",
       "name_fa": "QR Code Studio",
-      "description_fa": "ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG"
+      "description_fa": "ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG",
+      "preview": null
     },
     {
       "slug": "quiz-trivia-bot",
@@ -770,7 +872,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Group quiz competitions with a leaderboard",
       "demo": null,
       "name_fa": "کوییز و مسابقه",
-      "description_fa": "مسابقه‌ی گروهی با لیدربورد"
+      "description_fa": "مسابقه‌ی گروهی با لیدربورد",
+      "preview": "src/quiz-trivia-bot/docs/preview.png"
     },
     {
       "slug": "regex-playground",
@@ -781,7 +884,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Live regex tester — glowing match highlight, capture-group table, presets, cheat sheet",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/regex-playground/",
       "name_fa": "زمین بازی Regex",
-      "description_fa": "تست زنده‌ی Regex — هایلایت درخشان تطبیق‌ها، جدول گروه‌های capture و پترن‌های آماده"
+      "description_fa": "تست زنده‌ی Regex — هایلایت درخشان تطبیق‌ها، جدول گروه‌های capture و پترن‌های آماده",
+      "preview": "src/regex-playground/docs/preview.png"
     },
     {
       "slug": "reminder-task-bot",
@@ -792,7 +896,8 @@ window.AWESOME_CATALOG = {
       "description_en": "One-time/daily reminders — task list with buttons, snooze, SQLite",
       "demo": null,
       "name_fa": "یادآوری و تسک روزانه",
-      "description_fa": "یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite"
+      "description_fa": "یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite",
+      "preview": "src/reminder-task-bot/docs/preview.png"
     },
     {
       "slug": "rss-news-bot",
@@ -803,7 +908,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Auto-post new feed items to a channel",
       "demo": null,
       "name_fa": "اعلان RSS",
-      "description_fa": "پست خودکار مطالب جدید فید به کانال"
+      "description_fa": "پست خودکار مطالب جدید فید به کانال",
+      "preview": "src/rss-news-bot/docs/preview.png"
     },
     {
       "slug": "snake-game-web",
@@ -814,7 +920,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Neon snake game — touch/keyboard controls, accelerating loop, glow rendering, personal best",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/snake-game-web/",
       "name_fa": "مار نئونی",
-      "description_fa": "بازی مار نئونی — کنترل لمسی/کیبورد، سرعت فزاینده و رکورد شخصی"
+      "description_fa": "بازی مار نئونی — کنترل لمسی/کیبورد، سرعت فزاینده و رکورد شخصی",
+      "preview": "src/snake-game-web/docs/preview.png"
     },
     {
       "slug": "solar-explorer-3d",
@@ -825,7 +932,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Interactive 3D solar system (Three.js) — time control, planet info",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/",
       "name_fa": "کاوشگر سه‌بعدی منظومه شمسی",
-      "description_fa": "شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات"
+      "description_fa": "شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات",
+      "preview": null
     },
     {
       "slug": "spotify-music-bot",
@@ -836,7 +944,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Spotify link & YouTube Music search downloader — 320 kbps with original cover art + ID3 tags",
       "demo": null,
       "name_fa": "دانلودر موزیک اسپاتیفای",
-      "description_fa": "دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3"
+      "description_fa": "دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3",
+      "preview": "src/spotify-music-bot/docs/preview.png"
     },
     {
       "slug": "starzify-shop-bot",
@@ -847,7 +956,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Stars/Premium/Gifts/Crypto shop replica — wallet, referrals, admin panel",
       "demo": null,
       "name_fa": "فروشگاه استارز و گیفت",
-      "description_fa": "فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl"
+      "description_fa": "فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl",
+      "preview": "src/starzify-shop-bot/docs/preview.png"
     },
     {
       "slug": "subscription-shop-bot",
@@ -858,7 +968,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Automated subscription selling, lucky wheel, reseller system",
       "demo": null,
       "name_fa": "ربات فروش اشتراک/کانفیگ",
-      "description_fa": "فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی"
+      "description_fa": "فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی",
+      "preview": "src/subscription-shop-bot/docs/preview.png"
     },
     {
       "slug": "sudoku-game-web",
@@ -869,7 +980,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Sudoku with unique-solution generator — 4 difficulties, pencil notes, hints, solver",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/",
       "name_fa": "سودوکو",
-      "description_fa": "سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده"
+      "description_fa": "سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده",
+      "preview": "src/sudoku-game-web/docs/preview.png"
     },
     {
       "slug": "support-ticket-bot",
@@ -880,7 +992,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Relay user messages ↔ a private support group",
       "demo": null,
       "name_fa": "پشتیبانی/تیکتینگ",
-      "description_fa": "ریلی پیام کاربر ↔ گروه پشتیبانی"
+      "description_fa": "ریلی پیام کاربر ↔ گروه پشتیبانی",
+      "preview": "src/support-ticket-bot/docs/preview.png"
     },
     {
       "slug": "synthwave-keys",
@@ -891,7 +1004,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Two-octave WebAudio synthesizer — 4 waveforms, live oscilloscope, recorder with playback",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/synthwave-keys/",
       "name_fa": "کیبورد سینتی‌سایزر",
-      "description_fa": "سینتی‌سایزر دو اکتاوی WebAudio — اسکوپ زنده، ضبط و پخش"
+      "description_fa": "سینتی‌سایزر دو اکتاوی WebAudio — اسکوپ زنده، ضبط و پخش",
+      "preview": "src/synthwave-keys/docs/preview.png"
     },
     {
       "slug": "system-monitor-gui",
@@ -902,7 +1016,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Live CPU/RAM/disk monitor with a PyQt6 GUI",
       "demo": null,
       "name_fa": "مانیتور سیستم",
-      "description_fa": "نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6"
+      "description_fa": "نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6",
+      "preview": "src/system-monitor-gui/docs/preview.png"
     },
     {
       "slug": "telegram-channel-landing-page",
@@ -913,7 +1028,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Single-file landing page for Telegram channels & brands",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/",
       "name_fa": "صفحه فرود کانال تلگرام",
-      "description_fa": "لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی"
+      "description_fa": "لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی",
+      "preview": null
     },
     {
       "slug": "telegram-selfbot-panel",
@@ -924,7 +1040,8 @@ window.AWESOME_CATALOG = {
       "description_en": "42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler",
       "demo": null,
       "name_fa": "سلف‌بات پنل‌دار",
-      "description_fa": "سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی"
+      "description_fa": "سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی",
+      "preview": "src/telegram-selfbot-panel/docs/preview.png"
     },
     {
       "slug": "telethon-session-manager",
@@ -935,7 +1052,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Multi-account automation with Telethon (join, reactions)",
       "demo": null,
       "name_fa": "مدیریت اکانت و سشن",
-      "description_fa": "جوین و ری‌اکشن خودکار با چند اکانت تلگرام (Telethon)"
+      "description_fa": "جوین و ری‌اکشن خودکار با چند اکانت تلگرام (Telethon)",
+      "preview": "src/telethon-session-manager/docs/preview.png"
     },
     {
       "slug": "tetris-web",
@@ -946,7 +1064,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Full Tetris — 7-bag randomizer, hold, ghost piece, line-flash animation, touch buttons",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/tetris-web/",
       "name_fa": "تتریس",
-      "description_fa": "تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی"
+      "description_fa": "تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی",
+      "preview": "src/tetris-web/docs/preview.png"
     },
     {
       "slug": "tic-tac-toe-game",
@@ -957,7 +1076,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Classic tic-tac-toe against an AI",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/",
       "name_fa": "بازی دوز (OX)",
-      "description_fa": "بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی"
+      "description_fa": "بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی",
+      "preview": null
     },
     {
       "slug": "todo-miniapp-worker",
@@ -968,7 +1088,8 @@ window.AWESOME_CATALOG = {
       "description_en": "ToDoList Mini App as one Cloudflare Worker — API + bot webhook + cron reminders + embedded frontend on D1",
       "demo": null,
       "name_fa": "تودولیست مینی‌اپ",
-      "description_fa": "مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1"
+      "description_fa": "مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1",
+      "preview": "src/todo-miniapp-worker/docs/preview.png"
     },
     {
       "slug": "ton-nft-marketplace",
@@ -979,7 +1100,8 @@ window.AWESOME_CATALOG = {
       "description_en": "TON Connect NFT marketplace UI — gallery, buy modal, fa/en language toggle",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/",
       "name_fa": "مارکت‌پلیس NFT تون",
-      "description_fa": "اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی"
+      "description_fa": "اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی",
+      "preview": null
     },
     {
       "slug": "translator-bot",
@@ -990,7 +1112,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Auto-translate messages",
       "demo": null,
       "name_fa": "مترجم متن",
-      "description_fa": "ترجمه‌ی خودکار پیام‌ها"
+      "description_fa": "ترجمه‌ی خودکار پیام‌ها",
+      "preview": "src/translator-bot/docs/preview.png"
     },
     {
       "slug": "twitter-media-api",
@@ -1001,7 +1124,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Tweet URL → media JSON — guest-token auth, GraphQL TweetDetail, all photo/video variants",
       "demo": null,
       "name_fa": "API مدیا توییتر",
-      "description_fa": "لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو"
+      "description_fa": "لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو",
+      "preview": null
     },
     {
       "slug": "typing-speed-race",
@@ -1012,7 +1136,8 @@ window.AWESOME_CATALOG = {
       "description_en": "FA/EN typing test — per-char feedback, live WPM curve, localStorage history",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/typing-speed-race/",
       "name_fa": "مسابقه‌ی تایپ",
-      "description_fa": "تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج"
+      "description_fa": "تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج",
+      "preview": "src/typing-speed-race/docs/preview.png"
     },
     {
       "slug": "uptime-monitor-bot",
@@ -1023,7 +1148,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Website/server uptime checks + HTML status page",
       "demo": null,
       "name_fa": "مانیتور آپ‌تایم",
-      "description_fa": "چک سایت/سرور + پنل وضعیت HTML"
+      "description_fa": "چک سایت/سرور + پنل وضعیت HTML",
+      "preview": "src/uptime-monitor-bot/docs/preview.png"
     },
     {
       "slug": "url-shortener-bot",
@@ -1034,7 +1160,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Link shortening with click analytics",
       "demo": null,
       "name_fa": "کوتاه‌کننده لینک",
-      "description_fa": "کوتاه‌سازی لینک با آمار کلیک"
+      "description_fa": "کوتاه‌سازی لینک با آمار کلیک",
+      "preview": "src/url-shortener-bot/docs/preview.png"
     },
     {
       "slug": "url-shortener-php-bot",
@@ -1045,7 +1172,8 @@ window.AWESOME_CATALOG = {
       "description_en": "URL shortener in PHP & Python — TinyURL, flood control, block list, DB-editable texts, force join",
       "demo": null,
       "name_fa": "کوتاه‌کننده لینک PHP",
-      "description_fa": "دو نسخه PHP و پایتون — TinyURL، کنترل فلود، بلاک کاربر و متن‌های قابل ویرایش از پنل"
+      "description_fa": "دو نسخه PHP و پایتون — TinyURL، کنترل فلود، بلاک کاربر و متن‌های قابل ویرایش از پنل",
+      "preview": "src/url-shortener-php-bot/docs/preview.png"
     },
     {
       "slug": "v2ray-shop-bot",
@@ -1056,7 +1184,8 @@ window.AWESOME_CATALOG = {
       "description_en": "V2Ray/OpenVPN config shop — card-to-card payments, wallet, admin panel",
       "demo": null,
       "name_fa": "فروشگاه کانفیگ V2Ray",
-      "description_fa": "فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین"
+      "description_fa": "فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین",
+      "preview": "src/v2ray-shop-bot/docs/preview.png"
     },
     {
       "slug": "voicecall-userbot",
@@ -1067,7 +1196,8 @@ window.AWESOME_CATALOG = {
       "description_en": "VoiceChat userbot + admin panel — auto join, YouTube/music playback, playlists, live radio streams",
       "demo": null,
       "name_fa": "یوزربات ویس‌چت",
-      "description_fa": "یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده"
+      "description_fa": "یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده",
+      "preview": "src/voicecall-userbot/docs/preview.png"
     },
     {
       "slug": "wheel-of-actions",
@@ -1078,7 +1208,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Spin-the-wheel task prioritizer",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/",
       "name_fa": "Wheel of Actions",
-      "description_fa": "ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه"
+      "description_fa": "ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه",
+      "preview": null
     },
     {
       "slug": "winland-giveaway-bot",
@@ -1089,7 +1220,8 @@ window.AWESOME_CATALOG = {
       "description_en": "WinLand-style giveaways — multi-prize draws, referral points, mandatory channel join, admin panel",
       "demo": null,
       "name_fa": "گیوای وین‌لند",
-      "description_fa": "گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین"
+      "description_fa": "گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین",
+      "preview": "src/winland-giveaway-bot/docs/preview.png"
     },
     {
       "slug": "wordle-fa-bot",
@@ -1100,7 +1232,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Persian Wordle — 5-letter word of the day, 6 tries, emoji feedback, streaks & stats",
       "demo": null,
       "name_fa": "وردل فارسی",
-      "description_fa": "حدس کلمه‌ی ۵ حرفی روزانه در ۶ تلاش — بازخورد رنگی، برد متوالی و آمار کامل"
+      "description_fa": "حدس کلمه‌ی ۵ حرفی روزانه در ۶ تلاش — بازخورد رنگی، برد متوالی و آمار کامل",
+      "preview": "src/wordle-fa-bot/docs/preview.png"
     },
     {
       "slug": "world-clock-planner",
@@ -1111,7 +1244,8 @@ window.AWESOME_CATALOG = {
       "description_en": "International meeting planner — shared time bar, day/night per city",
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/",
       "name_fa": "World Clock Planner",
-      "description_fa": "برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر"
+      "description_fa": "برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر",
+      "preview": null
     },
     {
       "slug": "world-war-game-bot",
@@ -1122,7 +1256,8 @@ window.AWESOME_CATALOG = {
       "description_en": "Geopolitical war simulator — countries, NPC raids & nukes, oil/arms/stock markets, clans, VIP",
       "demo": null,
       "name_fa": "ربات جنگ جهانی",
-      "description_fa": "شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP"
+      "description_fa": "شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP",
+      "preview": "src/world-war-game-bot/docs/preview.png"
     },
     {
       "slug": "youtube-downloader-bot",
@@ -1133,7 +1268,8 @@ window.AWESOME_CATALOG = {
       "description_en": "YouTube video/audio downloader",
       "demo": null,
       "name_fa": "دانلودر یوتیوب",
-      "description_fa": "دانلود ویدیو/صدا از یوتیوب"
+      "description_fa": "دانلود ویدیو/صدا از یوتیوب",
+      "preview": "src/youtube-downloader-bot/docs/preview.png"
     }
   ]
 };

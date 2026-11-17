@@ -81,6 +81,7 @@ NAME_OVERRIDES = {
     "ascii-art-generator-web": "ASCII Art Studio",
     "sudoku-game-web": "Sudoku Web",
     "dupe-file-finder": "Dupe Finder",
+    "2048-web": "2048",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
@@ -209,6 +210,9 @@ def build_catalog() -> dict:
         )
 
     ordered = [projects[slug] for slug in table_slugs]
+    for project in ordered:
+        preview = SRC_DIR / project["slug"] / "docs" / "preview.png"
+        project["preview"] = f"src/{project['slug']}/docs/preview.png" if preview.exists() else None
     languages: dict[str, int] = {}
     categories: dict[str, int] = {}
     for project in ordered:
