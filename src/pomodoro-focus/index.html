@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Focus — تایمر تمرکز پومودورو</title>
+<meta name="description" content="تایمر پومودورو با حلقه‌ی پیشرفت، چرخه‌ی خودکار کار/استراحت، آمار روزانه و صدای زنگ — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0c0806; --glass:rgba(184,148,148,.06); --glass2:rgba(184,148,148,.11);
+    --border:rgba(184,148,148,.16); --border2:rgba(184,148,148,.3);
+    --text:#f7ece8; --muted:#b09088;
+    --a1:#fb7185; --a2:#fb923c;
+    --ok:#34d399; --warn:#fbbf24; --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 85% -10%, rgba(251,146,60,.13), transparent 60%),
+      radial-gradient(900px 520px at -10% 108%, rgba(251,113,133,.14), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.45;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:24px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(251,113,133,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:560px; margin:0 auto; padding:14px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .modes { display:flex; gap:8px; justify-content:center; padding:12px; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 18px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                color:#2b0a10; font-weight:800; box-shadow:0 6px 20px -6px rgba(251,113,133,.6); }
+  .dial { position:relative; width:min(300px,74vw); margin:16px auto 6px; aspect-ratio:1; }
+  svg { width:100%; height:100%; transform:rotate(-90deg); }
+  .track { fill:none; stroke:var(--glass2); stroke-width:11; }
+  .bar { fill:none; stroke:url(#grad); stroke-width:11; stroke-linecap:round;
+         transition:stroke-dashoffset .4s linear; }
+  .center { position:absolute; inset:0; display:flex; flex-direction:column;
+            align-items:center; justify-content:center; gap:2px; }
+  .time { font:800 clamp(44px,12vw,58px)/1 var(--font-en); letter-spacing:1px;
+          background:linear-gradient(180deg, var(--text), var(--a1));
+          -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .phase { color:var(--muted); font-size:14px; font-weight:700; }
+  .task { text-align:center; color:var(--muted); font-size:13px; margin-top:2px; min-height:22px; }
+  .controls { display:flex; gap:9px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+  .controls .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                           color:#2b0a10; font-weight:800; min-width:130px;
+                           box-shadow:0 8px 24px -8px rgba(251,113,133,.7); }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; }
+  .stat { padding:12px 6px; text-align:center; }
+  .stat b { font:800 26px/1.1 var(--font-en); display:block;
+            background:linear-gradient(90deg, var(--a1), var(--a2));
+            -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .stat span { color:var(--muted); font-size:11px; }
+  .card { padding:14px 16px; margin-top:13px; }
+  .card h3 { font-size:13.5px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+  .row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:7px 0;
+         border-bottom:1px dashed var(--border); }
+  .row:last-child { border-bottom:0; }
+  .row label { font-size:13.5px; }
+  .row input[type=number] { width:74px; background:var(--glass2); color:var(--text);
+      border:1px solid var(--border); border-radius:10px; padding:6px 9px;
+      font:700 14px var(--font-en); text-align:center; }
+  .row input[type=checkbox] { accent-color:var(--a1); width:16px; height:16px; }
+  .row input[type=text] { flex:1; background:var(--glass2); color:var(--text);
+      border:1px solid var(--border); border-radius:10px; padding:7px 12px; font:500 13.5px var(--font-fa); }
+  .log { display:flex; flex-wrap:wrap; gap:6px; }
+  .log span { font:600 11.5px var(--font-en); background:var(--glass2); border:1px solid var(--border);
+              border-radius:8px; padding:4px 9px; color:var(--muted); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🍅</div>
+  <h1>تایمر تمرکز</h1>
+  <p>روش پومودورو — ۲۵ دقیقه کار عمیق، ۵ دقیقه استراحت، تکرار</p>
+</header>
+
+<div class="wrap">
+  <div class="glass modes">
+    <button class="btn active" data-m="work">💼 کار</button>
+    <button class="btn" data-m="short">☕ استراحت کوتاه</button>
+    <button class="btn" data-m="long">🌴 استراحت بلند</button>
+  </div>
+
+  <div class="dial">
+    <svg viewBox="0 0 240 240">
+      <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fb7185"/><stop offset="1" stop-color="#fb923c"/>
+      </linearGradient></defs>
+      <circle class="track" cx="120" cy="120" r="104"/>
+      <circle class="bar" id="bar" cx="120" cy="120" r="104"/>
+    </svg>
+    <div class="center">
+      <div class="time" id="time">25:00</div>
+      <div class="phase" id="phase">آماده‌ی شروع 💼</div>
+    </div>
+  </div>
+  <div class="task" id="taskLine">— روی چه چیزی تمرکز داری؟ —</div>
+
+  <div class="controls">
+    <button class="btn primary" id="startBtn">▶ شروع</button>
+    <button class="btn" id="resetBtn">↺ ریست</button>
+    <button class="btn" id="skipBtn">⏭ رد شدن</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat glass"><b id="sDone">0</b><span>پومودوروی امروز</span></div>
+    <div class="stat glass"><b id="sMin">0</b><span>دقیقه‌ی تمرکز</span></div>
+    <div class="stat glass"><b id="sStreak">0</b><span>زنجیره‌ی فعلی 🔥</span></div>
+  </div>
+
+  <div class="glass card">
+    <h3>⚙️ تنظیمات</h3>
+    <div class="row"><label>کار (دقیقه)</label><input type="number" id="w" value="25" min="1" max="90"></div>
+    <div class="row"><label>استراحت کوتاه</label><input type="number" id="s" value="5" min="1" max="30"></div>
+    <div class="row"><label>استراحت بلند (هر ۴ پومودورو)</label><input type="number" id="l" value="15" min="1" max="60"></div>
+    <div class="row"><label>چرخه‌ی خودکار</label><input type="checkbox" id="auto" checked></div>
+    <div class="row"><label>صدای زنگ</label><input type="checkbox" id="sound" checked></div>
+    <div class="row"><input type="text" id="task" placeholder="مثلاً: تمام کردن فصل ۳ کتاب…" maxlength="60"></div>
+  </div>
+
+  <div class="glass card">
+    <h3>🗓 پومودوروهای امروز</h3>
+    <div class="log" id="log"></div>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    تایمر با Web Worker مصون از تب غیرفعال
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const C = 2 * Math.PI * 104;
+const DUR = { work: 25 * 60, short: 5 * 60, long: 15 * 60 };
+const PHASE_FA = { work: "💼 زمان کار عمیق", short: "☕ استراحت کوتاه", long: "🌴 استراحت بلند" };
+let mode = "work", total = DUR.work, left = total;
+let running = false, worker = null, cycle = 0;
+
+let stats = JSON.parse(localStorage.getItem("pom.stats") || "{}");
+const today = () => new Date().toISOString().slice(0, 10);
+if (stats.day !== today()) stats = { day: today(), done: 0, min: 0, log: [] };
+
+$("bar").style.strokeDasharray = C;
+$("bar").style.strokeDashoffset = 0;
+
+function fmt(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function save() { localStorage.setItem("pom.stats", JSON.stringify(stats)); }
+function renderStats() {
+  $("sDone").textContent = stats.done;
+  $("sMin").textContent = stats.min;
+  $("sStreak").textContent = cycle;
+  $("log").innerHTML = stats.log.map(t => `<span>${t}</span>`).join("")
+    || `<span style="opacity:.6">— امروز هنوز پومودوری کامل نشده —</span>`;
+}
+function render() {
+  $("time").textContent = fmt(left);
+  const p = 1 - left / total;
+  $("bar").style.strokeDashoffset = C * (1 - p);
+  $("phase").textContent = PHASE_FA[mode] + (running ? " — در حال اجرا" : running === false && left < total ? " — متوقف" : "");
+  document.title = running ? `(${fmt(left)}) ${PHASE_FA[mode]}` : "Pomodoro Focus — تایمر تمرکز پومودورو";
+}
+/* Web Worker: setInterval در تب‌های پس‌زمینه کند می‌شود؛ tick مستقل از UI می‌ماند */
+const workerSrc = `let id=null;onmessage=e=>{if(e.data==='start'){clearInterval(id);id=setInterval(()=>postMessage('tick'),250)}else{clearInterval(id)}}`;
+worker = new Worker(URL.createObjectURL(new Blob([workerSrc], { type: "text/javascript" })));
+worker.onmessage = () => { if (running) { left = Math.max(0, left - 0.25); render(); if (left <= 0) complete(); } };
+
+function chime(kind) {
+  if (!$("sound").checked) return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = kind === "work" ? [523, 659, 784] : [784, 659, 523];
+    notes.forEach((f, i) => {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = "sine"; o.frequency.value = f;
+      g.gain.setValueAtTime(0.14, ctx.currentTime + i * 0.18);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.18 + 0.34);
+      o.connect(g).connect(ctx.destination);
+      o.start(ctx.currentTime + i * 0.18); o.stop(ctx.currentTime + i * 0.18 + 0.36);
+    });
+  } catch (e) { /* audio unavailable */ }
+}
+function complete() {
+  stop();
+  if (mode === "work") {
+    stats.done++; stats.min += Math.round(total / 60);
+    stats.log.push(new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }));
+    cycle++; save(); renderStats();
+    chime("work");
+    const next = cycle % 4 === 0 ? "long" : "short";
+    if ($("auto").checked) { switchMode(next); start(); }
+    else switchMode(next);
+  } else {
+    chime("break");
+    if ($("auto").checked) { switchMode("work"); start(); }
+    else switchMode("work");
+  }
+}
+function start() {
+  if (running) { stop(); return; }
+  running = true; worker.postMessage("start");
+  $("startBtn").textContent = "⏸ توقف";
+  render();
+}
+function stop() { running = false; worker.postMessage("stop"); $("startBtn").textContent = "▶ شروع"; render(); }
+function switchMode(m) {
+  mode = m;
+  total = (+{ work: $("w"), short: $("s"), long: $("l") }[m].value) * 60;
+  left = total;
+  document.querySelectorAll("[data-m]").forEach(b => b.classList.toggle("active", b.dataset.m === m));
+  render();
+}
+document.querySelectorAll("[data-m]").forEach(b => b.onclick = () => { stop(); switchMode(b.dataset.m); });
+$("startBtn").onclick = start;
+$("resetBtn").onclick = () => { stop(); left = total; render(); };
+$("skipBtn").onclick = () => { left = 1; render(); };
+["w", "s", "l"].forEach(id => $(id).onchange = () => { if (!running) { total = DUR[mode]; switchMode(mode); } });
+$("task").oninput = e => {
+  const v = e.target.value.trim();
+  $("taskLine").textContent = v ? `🎯 ${v}` : "— روی چه چیزی تمرکز داری؟ —";
+};
+renderStats(); render();
+</script>
+</body>
+</html>
