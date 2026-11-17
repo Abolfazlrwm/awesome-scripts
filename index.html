@@ -8,12 +8,12 @@
 <link rel="canonical" href="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awesome Scripts">
-<meta property="og:title" content="Awesome Scripts — 100 ready-to-run bots & tools">
+<meta property="og:title" content="Awesome Scripts — 103 ready-to-run bots & tools">
 <meta property="og:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
 <meta property="og:url" content="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Awesome Scripts — 100 ready-to-run bots & tools">
+<meta name="twitter:title" content="Awesome Scripts — 103 ready-to-run bots & tools">
 <meta name="twitter:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities.">
 <meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <!-- Telegram: @Abolfazl_rwm -->
@@ -287,6 +287,43 @@
     box-shadow:0 8px 24px -8px rgba(0,0,0,.5); }
   .top-btn.show { opacity:1; pointer-events:auto; }
   .top-btn:hover { transform:translateY(-3px); border-color:var(--border2); }
+
+  /* ---------- v5: covers + detail modal ---------- */
+  .card { cursor:pointer; }
+  .card-inner { display:flex; flex-direction:column; gap:10px; }
+  .card-cover { height:118px; margin:-18px -18px 0; border-radius:15px 15px 0 0;
+    background-size:cover; background-position:center; position:relative;
+    border-bottom:1px solid var(--border); flex-shrink:0; }
+  .card-cover.none { background:linear-gradient(135deg, rgba(56,189,248,.16), rgba(129,140,248,.18));
+    display:flex; align-items:center; justify-content:center; }
+  .cover-emoji { font-size:44px; opacity:.92; }
+  .cover-chip { position:absolute; bottom:8px; inset-inline-start:8px; background:rgba(8,12,24,.72);
+    backdrop-filter:blur(6px); border:1px solid var(--border); border-radius:999px;
+    padding:2px 10px; font-size:11px; color:var(--text); }
+  html[data-theme="light"] .cover-chip { background:rgba(255,255,255,.82); }
+  .modal-mask { position:fixed; inset:0; z-index:75; background:rgba(4,8,20,.62);
+    backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); display:none;
+    align-items:center; justify-content:center; padding:18px; }
+  .modal-mask.open { display:flex; }
+  .modal { position:relative; width:min(620px, 94vw); max-height:88vh; overflow:auto;
+    background:rgba(12,16,32,.96); border:1px solid var(--border); border-radius:20px;
+    animation:palIn .2s ease; box-shadow:0 40px 90px -30px rgba(0,0,0,.8); }
+  html[data-theme="light"] .modal { background:rgba(255,255,255,.97); }
+  .modal-close { position:absolute; top:10px; inset-inline-end:10px; z-index:2; width:32px; height:32px;
+    border-radius:50%; border:1px solid var(--border); background:rgba(8,12,24,.6); color:var(--text);
+    cursor:pointer; font-size:14px; }
+  html[data-theme="light"] .modal-close { background:rgba(255,255,255,.82); }
+  .modal-cover { height:230px; background-size:cover; background-position:center;
+    display:flex; align-items:center; justify-content:center; font-size:72px; }
+  .modal-cover.none { background:linear-gradient(135deg, rgba(56,189,248,.2), rgba(129,140,248,.22)); }
+  .modal-body { padding:20px 22px 24px; }
+  .modal-body h3 { font:800 22px/1.3 var(--font-fa); margin-bottom:10px; }
+  .modal-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .modal-chips span { background:var(--glass2); border:1px solid var(--border); border-radius:999px;
+    padding:3px 12px; font-size:12px; color:var(--muted); }
+  .modal-desc { color:var(--text); font-size:14px; line-height:1.9; margin-bottom:10px; }
+  .modal-alt { color:var(--muted); font-size:12.5px; line-height:1.8; margin-bottom:4px; }
+  .modal-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
 </style>
 </head>
 <body>
@@ -309,7 +346,7 @@
 </header>
 
 <section class="hero">
-  <h1 id="heroTitle">100 ready-to-run projects. One repository.</h1>
+  <h1 id="heroTitle">103 ready-to-run projects. One repository.</h1>
   <p class="sub" id="heroSub">
     Complete Telegram bots, web tools and desktop utilities — every folder is a full app with a
     step-by-step README. Search it, filter it, ship it.
@@ -321,7 +358,7 @@
   <div class="search-wrap">
     <span class="magnifier">🔎</span>
     <input id="search" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Search 100 projects — name, feature or language…" aria-label="Search projects">
+           placeholder="Search 103 projects — name, feature or language…" aria-label="Search projects">
     <span class="kbd-hint">/</span>
   </div>
   <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
@@ -509,19 +546,25 @@
     var desc = fa ? (p.description_fa || p.description_en) : p.description_en;
     var label = t("categoryLabels")[p.category] || p.category;
     var icon = (data.category_icons && data.category_icons[p.category]) || "📦";
+    var cover = p.preview
+      ? '<div class="card-cover" style="background-image:url(\'' + data.site_url + p.preview + '\')"><span class="cover-chip">' + icon + " " + label + "</span></div>"
+      : '<div class="card-cover none"><span class="cover-emoji">' + icon + "</span></div>";
     var actions =
       '<a class="act" href="' + REPO + "/tree/main/" + p.path + '" target="_blank" rel="noopener">📂 ' + t("folder") + "</a>" +
       '<a class="act" href="' + REPO + "/blob/main/" + p.path + '/README.md" target="_blank" rel="noopener">📖 ' + t("readme") + "</a>" +
       (p.demo ? '<a class="act demo" href="' + p.demo + '" target="_blank" rel="noopener">▶ ' + t("demo") + "</a>" : "");
     return (
-      '<article class="card" style="animation-delay:' + Math.min(i * 25, 400) + 'ms">' +
-        '<div class="card-top">' +
-          '<span class="cat-tag">' + icon + " " + label + "</span>" +
-          '<span class="lang-badge">' + p.language + "</span>" +
+      '<article class="card" data-slug="' + p.slug + '" style="animation-delay:' + Math.min(i * 25, 400) + 'ms">' +
+        cover +
+        '<div class="card-inner">' +
+          '<div class="card-top">' +
+            '<span class="cat-tag">' + icon + " " + label + "</span>" +
+            '<span class="lang-badge">' + p.language + "</span>" +
+          "</div>" +
+          '<h3><a href="' + REPO + "/tree/main/" + p.path + '" target="_blank" rel="noopener">' + title + "</a></h3>" +
+          '<p class="desc">' + desc + "</p>" +
+          '<div class="card-actions">' + actions + "</div>" +
         "</div>" +
-        '<h3><a href="' + REPO + "/tree/main/" + p.path + '" target="_blank" rel="noopener">' + title + "</a></h3>" +
-        '<p class="desc">' + desc + "</p>" +
-        '<div class="card-actions">' + actions + "</div>" +
       "</article>"
     );
   }
@@ -810,6 +853,63 @@
   addEventListener("scroll", function () {
     topBtn.classList.toggle("show", scrollY > 600);
   }, { passive: true });
+})();
+</script>
+
+<script>
+/* ---------- v5: project detail modal ---------- */
+(function () {
+  "use strict";
+  var mask = document.createElement("div");
+  mask.className = "modal-mask";
+  mask.innerHTML = '<div class="modal" role="dialog" aria-label="Project details">' +
+    '<button class="modal-close" aria-label="بستن">✕</button>' +
+    '<div class="modal-cover" id="mCover"></div>' +
+    '<div class="modal-body" id="mBody"></div></div>';
+  document.body.appendChild(mask);
+  mask.querySelector(".modal-close").addEventListener("click", function () { mask.classList.remove("open"); });
+  mask.addEventListener("click", function (e) { if (e.target === mask) mask.classList.remove("open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") mask.classList.remove("open"); });
+
+  function openModal(slug) {
+    var data = window.AWESOME_CATALOG || {};
+    var p = (data.projects || []).find(function (x) { return x.slug === slug; });
+    if (!p) return;
+    var fa = document.documentElement.lang === "fa";
+    var title = fa ? (p.name_fa || p.name_en) : (p.name_en || p.name_fa);
+    var desc = fa ? (p.description_fa || p.description_en) : (p.description_en || p.description_fa);
+    var alt = fa ? p.description_en : p.description_fa;
+    var lab = (data.category_labels_en || {})[p.category] || p.category;
+    var icon = (data.category_icons || {})[p.category] || "📦";
+    var cov = document.getElementById("mCover");
+    if (p.preview) {
+      cov.className = "modal-cover";
+      cov.style.backgroundImage = "url('" + data.site_url + p.preview + "')";
+      cov.textContent = "";
+    } else {
+      cov.className = "modal-cover none";
+      cov.style.backgroundImage = "";
+      cov.textContent = icon;
+    }
+    var chips = "<span>" + icon + " " + lab + "</span><span>💻 " + p.language + "</span>" +
+      (p.demo ? "<span>🟢 " + (fa ? "دمو دارد" : "live demo") + "</span>" : "");
+    var btns =
+      (p.demo ? '<a class="btn primary" href="' + p.demo + '" target="_blank" rel="noopener">▶ ' + (fa ? "دموی زنده" : "Live demo") + "</a>" : "") +
+      '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/' + p.path + '" target="_blank" rel="noopener">📂 ' + (fa ? "پوشه" : "Folder") + "</a>" +
+      '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/blob/main/' + p.path + '/README.md" target="_blank" rel="noopener">📖 README</a>';
+    document.getElementById("mBody").innerHTML =
+      "<h3>" + title + "</h3>" +
+      "<div class='modal-chips'>" + chips + "</div>" +
+      "<p class='modal-desc'>" + desc + "</p>" +
+      (alt && alt !== desc ? "<p class='modal-alt'>— " + alt + "</p>" : "") +
+      "<div class='modal-actions'>" + btns + "</div>";
+    mask.classList.add("open");
+  }
+  document.getElementById("grid").addEventListener("click", function (e) {
+    if (e.target.closest("a") || e.target.closest("button")) return;
+    var cardEl = e.target.closest && e.target.closest(".card");
+    if (cardEl && cardEl.dataset.slug) openModal(cardEl.dataset.slug);
+  });
 })();
 </script>
 </body>
