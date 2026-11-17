@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Playground — زمین بازی عبارات باقاعده</title>
+<meta name="description" content="تست زنده‌ی Regex با هایلایت تطبیق‌ها، جدول گروه‌های capture، پرچم‌ها، پترن‌های آماده و برگه‌ی تقلب — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(148,163,184,.3);
+    --text:#eceafc; --muted:#9a95b8;
+    --a1:#818cf8; --a2:#38bdf8;
+    --bad:#f87171; --ok:#34d399; --warn:#fbbf24; --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(129,140,248,.14), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(56,189,248,.12), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.45;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:26px 14px 6px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(129,140,248,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:5px; }
+  .wrap { max-width:880px; margin:0 auto; padding:14px 18px 46px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .pattern-card { margin-top:14px; padding:16px; }
+  .patrow { display:flex; gap:8px; align-items:center; direction:ltr; }
+  .slash { font:700 20px var(--mono); color:var(--muted); }
+  input#pat { flex:1; background:rgba(0,0,0,.3); color:var(--a2); border:1px solid var(--border);
+              border-radius:12px; padding:11px 14px; font:700 15.5px var(--mono); outline:none; transition:.2s; }
+  input#pat:focus { border-color:var(--a1); box-shadow:0 0 0 3px rgba(129,140,248,.15); }
+  input#flags { width:70px; background:rgba(0,0,0,.3); color:var(--warn); border:1px solid var(--border);
+                border-radius:12px; padding:11px 10px; font:700 15px var(--mono); text-align:center; outline:none; }
+  .flagchips { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .chip { font:700 12.5px var(--mono); background:var(--glass2); color:var(--muted); border:1px solid var(--border);
+          border-radius:9px; padding:5px 12px; cursor:pointer; transition:.15s; user-select:none; }
+  .chip.on { color:#0d0a2a; background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent; }
+  .chip small { opacity:.75; font-family:var(--font-fa); font-weight:500; }
+  .status { margin-top:9px; font-size:13px; min-height:22px; }
+  .status.ok { color:var(--ok); }
+  .status.bad { color:var(--bad); font-family:var(--mono); direction:ltr; text-align:left; }
+  .presets { display:flex; gap:7px; flex-wrap:wrap; margin-top:10px; }
+  .presets .chip { direction:ltr; }
+  .text-card { margin-top:13px; padding:14px 16px; }
+  textarea { width:100%; min-height:130px; background:rgba(0,0,0,.3); color:var(--text);
+             border:1px solid var(--border); border-radius:12px; padding:12px 14px;
+             font:400 14px/1.8 var(--mono); direction:ltr; resize:vertical; outline:none; }
+  textarea:focus { border-color:var(--a1); }
+  .hl { margin-top:11px; padding:13px 14px; background:rgba(0,0,0,.3); border:1px solid var(--border);
+        border-radius:12px; font:400 14px/1.9 var(--mono); direction:ltr; white-space:pre-wrap;
+        word-break:break-word; max-height:260px; overflow:auto; }
+  .hl mark { background:linear-gradient(135deg, rgba(129,140,248,.45), rgba(56,189,248,.45));
+             color:#fff; border-radius:4px; padding:1px 3px; box-shadow:0 0 8px rgba(129,140,248,.35); }
+  .count { color:var(--muted); font-size:12.5px; margin-top:8px; }
+  .count b { color:var(--a2); font-family:var(--mono); }
+  .groups-card { margin-top:13px; padding:14px 16px; }
+  .groups-card h3 { font-size:13.5px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+  .tbl-wrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font:400 12.5px var(--mono); direction:ltr; }
+  th, td { padding:7px 10px; border-bottom:1px solid var(--border); text-align:left; white-space:nowrap; }
+  th { color:var(--a1); font-weight:700; }
+  td.grp { color:var(--warn); }
+  tr:last-child td { border-bottom:0; }
+  .empty { color:var(--muted); font-size:12.5px; }
+  .cheat { margin-top:13px; padding:14px 16px; }
+  .cheat h3 { font-size:13.5px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+  .cheat .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:6px; }
+  .cheat .it { display:flex; justify-content:space-between; gap:8px; background:var(--glass2);
+               border:1px solid var(--border); border-radius:9px; padding:6px 11px; font-size:12.5px; }
+  .cheat .it code { font-family:var(--mono); color:var(--a2); direction:ltr; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🧪</div>
+  <h1>زمین بازی Regex</h1>
+  <p>تست زنده با هایلایت، گروه‌های capture و پترن‌های آماده — بدون ارسال هیچ داده‌ای</p>
+</header>
+
+<div class="wrap">
+  <div class="glass pattern-card">
+    <div class="patrow">
+      <span class="slash">/</span>
+      <input id="pat" value="[\w.+-]+@[\w-]+\.[\w.]+" spellcheck="false" autocomplete="off">
+      <span class="slash">/</span>
+      <input id="flags" value="gi" spellcheck="false" autocomplete="off">
+    </div>
+    <div class="flagchips" id="flagChips">
+      <span class="chip on" data-f="g">g <small>همه</small></span>
+      <span class="chip on" data-f="i">i <small>بی‌توجه به حالت</small></span>
+      <span class="chip" data-f="m">m <small>چندخطی</small></span>
+      <span class="chip" data-f="s">s <small>نقطه = همه</small></span>
+      <span class="chip" data-f="u">u <small>یونیکد</small></span>
+      <span class="chip" data-f="y">y <small>چسبیده</small></span>
+    </div>
+    <div class="status ok" id="status">✓ آماده</div>
+    <div class="presets" id="presets">
+      <span class="chip" data-p="[\w.+-]+@[\w-]+\.[\w.]+" data-fl="gi">📧 ایمیل</span>
+      <span class="chip" data-p="https?://[\w./%#?=&:-]+" data-fl="gi">🔗 URL</span>
+      <span class="chip" data-p="((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)" data-fl="g">🌐 IPv4</span>
+      <span class="chip" data-p="09\d{9}" data-fl="g">📱 موبایل ایران</span>
+      <span class="chip" data-p="\d{4}/\d{2}/\d{2}" data-fl="g">📅 تاریخ عددی</span>
+      <span class="chip" data-p="[\u0600-\u06FF]+" data-fl="g">🔤 واژه‌های فارسی</span>
+      <span class="chip" data-p="(\d{1,2}):(\d{2})(?::(\d{2}))?" data-fl="g">⏰ ساعت با گروه</span>
+    </div>
+  </div>
+
+  <div class="glass text-card">
+    <textarea id="txt" spellcheck="false">سلام! این یک آزمایش است.
+ایمیل‌ها: abolfazl@example.com و TEST@Mail.ORG
+لینک: https://github.com/Abolfazlrwm — ساعت 14:30 و 08:05:12
+موبایل: 09121234567 · تاریخ: 1403/08/26</textarea>
+    <div class="hl" id="hl"></div>
+    <div class="count" id="count">—</div>
+  </div>
+
+  <div class="glass groups-card">
+    <h3>🎯 گروه‌های capture</h3>
+    <div class="tbl-wrap"><table id="gt"><thead></thead><tbody></tbody></table></div>
+    <div class="empty" id="gEmpty">در این پترن گروهی ثبت نشده است.</div>
+  </div>
+
+  <div class="glass cheat">
+    <h3>📋 برگه‌ی تقلب</h3>
+    <div class="grid">
+      <span class="it"><code>\d \w \s</code><span>رقم/کلمه/فاصله</span></span>
+      <span class="it"><code>\D \W \S</code><span>نقیض آن‌ها</span></span>
+      <span class="it"><code>. </code><span>هر کاراکتر جز خط جدید</span></span>
+      <span class="it"><code>^ $</code><span>شروع/پایان</span></span>
+      <span class="it"><code>* + ?</code><span>۰+، ۱+، ۰ یا ۱</span></span>
+      <span class="it"><code>{2,5}</code><span>۲ تا ۵ بار</span></span>
+      <span class="it"><code>[abc]</code><span>هر یک از a،b،c</span></span>
+      <span class="it"><code>(a|b)</code><span>گروه یا</span></span>
+      <span class="it"><code>(?:...)</code><span>گروه بدون capture</span></span>
+      <span class="it"><code>(?&lt;name&gt;...)</code><span>گروه نام‌دار</span></span>
+      <span class="it"><code>(?=...) (?!...)</code><span>نگاه به جلو</span></span>
+      <span class="it"><code>\u0600-\u06FF</code><span>محدوده فارسی/عربی</span></span>
+    </div>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    موتور Regex مرورگر خودت · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const pat = $("pat"), flagsEl = $("flags"), txt = $("txt");
+const VALID = /^[gimsuy]*$/;
+
+function getFlags() { return [...new Set(flagsEl.value)].join(""); }
+
+function findMatches(src, re) {
+  /* safe iteration: no infinite loop on zero-length matches */
+  const out = [];
+  if (!re.global) {
+    const m = re.exec(src);
+    if (m) out.push(m);
+    return out;
+  }
+  let guard = 0;
+  let m;
+  while ((m = re.exec(src)) && guard++ < 5000) {
+    out.push(m);
+    if (m[0] === "") { re.lastIndex++; if (re.lastIndex > src.length) break; }
+  }
+  return out;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function run() {
+  const src = txt.value;
+  const fl = getFlags();
+  $("status").className = "status";
+  if (!VALID.test(fl)) {
+    $("status").textContent = "پرچم نامعتبر! فقط g i m s u y مجاز است.";
+    $("status").classList.add("bad"); $("hl").textContent = src; $("count").textContent = "—";
+    return;
+  }
+  let re;
+  try {
+    re = new RegExp(pat.value, fl);
+  } catch (e) {
+    $("status").textContent = e.message;
+    $("status").classList.add("bad");
+    $("hl").textContent = src;
+    $("count").textContent = "—";
+    return;
+  }
+  if (!pat.value) {
+    $("status").textContent = "✓ پترن خالی — هر چیزی تطبیق می‌شود";
+    $("status").classList.add("ok");
+    $("hl").textContent = src; $("count").textContent = "0 تطبیق";
+    renderGroups([]);
+    return;
+  }
+  $("status").textContent = "✓ پترن معتبر است";
+  $("status").classList.add("ok");
+
+  const ms = findMatches(src, re);
+  /* build highlighted HTML */
+  let html = "", pos = 0;
+  for (const m of ms) {
+    html += escapeHtml(src.slice(pos, m.index));
+    html += `<mark>${escapeHtml(m[0] || "∅")}</mark>`;
+    pos = m.index + (m[0].length || 1);
+    if (!re.global) break;
+  }
+  html += escapeHtml(src.slice(pos));
+  $("hl").innerHTML = html;
+  $("count").innerHTML = ms.length
+    ? `<b>${ms.length}</b> تطبیق پیدا شد` + (re.global ? "" : " — پرچم g را روشن کن تا همه را ببینی")
+    : "هیچ تطبیقی پیدا نشد ✗";
+  renderGroups(ms);
+}
+
+function renderGroups(ms) {
+  const names = ms.length ? Object.keys(ms[0].groups || {}) : [];
+  const maxGrp = ms.length ? Math.max(0, ms[0].length - 1) : 0;
+  const thead = $("gt").querySelector("thead"), tbody = $("gt").querySelector("tbody");
+  if (!ms.length || (!maxGrp && !names.length)) {
+    thead.innerHTML = ""; tbody.innerHTML = "";
+    $("gEmpty").style.display = "block";
+    return;
+  }
+  $("gEmpty").style.display = "none";
+  let head = "<tr><th>#</th><th>match</th>";
+  for (let i = 1; i <= maxGrp; i++) head += `<th>$${i}</th>`;
+  for (const n of names) head += `<th>${escapeHtml(n)}</th>`;
+  head += "</tr>";
+  thead.innerHTML = head;
+  tbody.innerHTML = ms.slice(0, 40).map(m => {
+    let row = `<tr><td class="grp">${m.index}</td><td>${escapeHtml(m[0]) || "∅"}</td>`;
+    for (let i = 1; i <= maxGrp; i++) row += `<td>${m[i] === undefined ? "—" : escapeHtml(m[i])}</td>`;
+    for (const n of names) row += `<td>${m.groups[n] === undefined ? "—" : escapeHtml(m.groups[n])}</td>`;
+    return row + "</tr>";
+  }).join("");
+}
+
+/* wiring */
+pat.addEventListener("input", run);
+flagsEl.addEventListener("input", () => {
+  const chips = document.querySelectorAll("#flagChips .chip");
+  chips.forEach(c => c.classList.toggle("on", flagsEl.value.includes(c.dataset.f)));
+  run();
+});
+txt.addEventListener("input", run);
+document.querySelectorAll("#flagChips .chip").forEach(c => c.onclick = () => {
+  const f = c.dataset.f;
+  flagsEl.value = flagsEl.value.includes(f) ? flagsEl.value.replace(f, "") : flagsEl.value + f;
+  flagsEl.dispatchEvent(new Event("input"));
+});
+document.querySelectorAll("#presets .chip").forEach(c => c.onclick = () => {
+  pat.value = c.dataset.p;
+  flagsEl.value = c.dataset.fl;
+  flagsEl.dispatchEvent(new Event("input"));
+});
+document.addEventListener("keydown", e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "Enter") run();
+});
+run();
+</script>
+</body>
+</html>
