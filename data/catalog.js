@@ -4,18 +4,18 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-17T22:05:11+03:30",
-  "count": 92,
+  "generated_at": "2026-11-17T22:22:46+03:30",
+  "count": 95,
   "stats": {
     "categories": {
       "telegram-bot": 63,
-      "web-tool": 23,
+      "web-tool": 26,
       "desktop-tool": 6
     },
     "languages": {
       "Python": 47,
       "PHP": 12,
-      "HTML/CSS/JS": 21,
+      "HTML/CSS/JS": 24,
       "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
@@ -375,6 +375,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "شناسایی فرستنده‌ی فورواردی",
       "description_fa": "نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده"
+    },
+    {
+      "slug": "fractal-explorer",
+      "path": "src/fractal-explorer",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Fractal Explorer",
+      "description_en": "Mandelbrot & Julia explorer — deep zoom to 10^55x, smooth coloring, 5 palettes, PNG export",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/fractal-explorer/",
+      "name_fa": "کاوشگر فرکتال",
+      "description_fa": "کاوش ماندلبروت و ژولیا — زوم عمیق، رنگ‌آمیزی نرم و خروجی PNG"
     },
     {
       "slug": "freedomnet-vpn-bot",
@@ -751,6 +762,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "پست خودکار مطالب جدید فید به کانال"
     },
     {
+      "slug": "snake-game-web",
+      "path": "src/snake-game-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Snake Game Web",
+      "description_en": "Neon snake game — touch/keyboard controls, accelerating loop, glow rendering, personal best",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/snake-game-web/",
+      "name_fa": "مار نئونی",
+      "description_fa": "بازی مار نئونی — کنترل لمسی/کیبورد، سرعت فزاینده و رکورد شخصی"
+    },
+    {
       "slug": "solar-explorer-3d",
       "path": "src/solar-explorer-3d",
       "category": "web-tool",
@@ -815,6 +837,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "پشتیبانی/تیکتینگ",
       "description_fa": "ریلی پیام کاربر ↔ گروه پشتیبانی"
+    },
+    {
+      "slug": "synthwave-keys",
+      "path": "src/synthwave-keys",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Synthwave Keys",
+      "description_en": "Two-octave WebAudio synthesizer — 4 waveforms, live oscilloscope, recorder with playback",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/synthwave-keys/",
+      "name_fa": "کیبورد سینتی‌سایزر",
+      "description_fa": "سینتی‌سایزر دو اکتاوی WebAudio — اسکوپ زنده، ضبط و پخش"
     },
     {
       "slug": "system-monitor-gui",
