@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakout — آجرشکن</title>
+<meta name="description" content="آجرشکن نئونی با سه مرحله، انفجار ذرات، قدرت‌گیری توپ و جان‌ها — موس، لمس یا کیبورد — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(244,114,182,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#f472b6; --a2:#818cf8;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(244,114,182,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(129,140,248,.13), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(244,114,182,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:760px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .hud { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:10px; margin-top:14px; }
+  .hud .glass { padding:10px 6px; text-align:center; }
+  .hud b { font:800 22px/1.2 var(--font-en); display:block;
+           background:linear-gradient(90deg, var(--a1), var(--a2));
+           -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hud span { color:var(--muted); font-size:11px; }
+  .stage { position:relative; margin-top:14px; border-radius:14px; overflow:hidden;
+           border:1px solid var(--border2); background:#05060f;
+           box-shadow:0 0 44px -10px rgba(244,114,182,.45); }
+  canvas { display:block; width:100%; height:auto; touch-action:none; cursor:none; }
+  .overlay { position:absolute; inset:0; display:flex; flex-direction:column; gap:12px;
+             align-items:center; justify-content:center; text-align:center;
+             background:rgba(8,10,22,.82); backdrop-filter:blur(6px); transition:opacity .25s; }
+  .overlay.hidden { opacity:0; pointer-events:none; }
+  .overlay h2 { font:800 28px var(--font-fa);
+                background:linear-gradient(90deg, var(--a1), var(--a2));
+                -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .overlay p { color:var(--muted); font-size:13.5px; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 18px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#16081a; font-weight:800; }
+  .legend { margin-top:13px; padding:13px 16px; color:var(--muted); font-size:13px; }
+  .legend b { color:var(--text); }
+  kbd { font:700 11.5px var(--font-en); background:var(--glass2); border:1px solid var(--border);
+        border-radius:6px; padding:2px 7px; color:var(--text); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🧱</div>
+  <h1>آجرشکن</h1>
+  <p>با موس، لمس یا کلیدها paddle را ببر، توپ را پرت کن و آجرهای نئونی را بشکن</p>
+</header>
+
+<div class="wrap">
+  <div class="hud">
+    <div class="glass"><b id="score">0</b><span>امتیاز</span></div>
+    <div class="glass"><b id="lives">3</b><span>جان</span></div>
+    <div class="glass"><b id="level">1</b><span>مرحله</span></div>
+    <div class="glass"><b id="best">0</b><span>رکورد</span></div>
+  </div>
+
+  <div class="stage">
+    <canvas id="cv" width="720" height="520" aria-label="صفحه‌ی آجرشکن"></canvas>
+    <div class="overlay" id="ov">
+      <h2 id="ovTitle">آماده‌ای؟</h2>
+      <p id="ovText">موس/انگشت را ببر یا <kbd>←</kbd><kbd>→</kbd> بزن؛ پرتاب با کلیک یا <kbd>Space</kbd>. توقف با <kbd>P</kbd>.</p>
+      <button class="btn primary" id="ovBtn">🎮 شروع</button>
+    </div>
+  </div>
+
+  <div class="glass legend">
+    <b>امتیاز:</b> هر آجر ۵۰ + پاداش مرحله؛ آجرهای تیره‌تر دو ضربه می‌خواهند.
+    زاویه‌ی برگشت توپ بستگی به نقطه‌ی برخورد با paddle دارد — با لبه بزن تا تندتر پرت شود!
+    هر مرحله سرعت بیشتر و چیدمان جدید. رکورد در مرورگرت ذخیره می‌شود.
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    Canvas خالص بدون کتابخانه · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const cv = $("cv"), ctx = cv.getContext("2d");
+const W = cv.width, H = cv.height;
+const PADDLE_W = 110, PADDLE_H = 14, BALL_R = 7;
+
+const LEVELS = [
+  { rows: 6, cols: 10, hp2: 0, gap: 0 },     /* solid wall */
+  { rows: 7, cols: 10, hp2: 2, gap: 1 },     /* checker, top 2 rows tough */
+  { rows: 8, cols: 12, hp2: 3, gap: 2 },     /* wide pyramid-ish */
+];
+const ROW_COLORS = ["#f472b6", "#fb7185", "#fb923c", "#facc15", "#4ade80", "#22d3ee", "#60a5fa", "#c084fc"];
+
+let paddle, balls, bricks, particles = [];
+let score = 0, lives = 3, level = 1, best = +(localStorage.getItem("breakout.best") || 0);
+let state = "idle", paused = false, keys = {}, shake = 0;
+$("best").textContent = best;
+
+function buildLevel() {
+  bricks = [];
+  const L = LEVELS[Math.min(level - 1, LEVELS.length - 1)];
+  const bw = (W - 24 - (L.cols - 1) * 4) / L.cols, bh = 24;
+  for (let r = 0; r < L.rows; r++)
+    for (let c = 0; c < L.cols; c++) {
+      if (L.gap === 1 && (r + c) % 2) continue;
+      if (L.gap === 2 && r > 2 && (c < r - 2 || c >= L.cols - (r - 2))) continue;
+      bricks.push({
+        x: 12 + c * (bw + 4), y: 56 + r * (bh + 6), w: bw, h: bh,
+        hp: r < L.hp2 ? 2 : 1, col: ROW_COLORS[r % ROW_COLORS.length],
+      });
+    }
+}
+function resetBall() {
+  balls = [{ x: paddle.x, y: paddle.y - PADDLE_H / 2 - BALL_R - 2,
+             vx: 0, vy: 0, stuck: true }];
+}
+function resetPaddle() { paddle = { x: W / 2, y: H - 36 }; }
+function start() {
+  if (state === "idle" || state === "over") { score = 0; lives = 3; level = 1; }
+  resetPaddle(); buildLevel(); resetBall();
+  state = "play"; paused = false;
+  $("ov").classList.add("hidden");
+  updateHud();
+}
+function launch() {
+  const b = balls[0];
+  if (!b || !b.stuck) return;
+  b.stuck = false;
+  b.vx = (Math.random() - 0.5) * 3;
+  b.vy = -4.4 - level * 0.25;
+}
+function showOv(title, text, btn, action) {
+  $("ovTitle").textContent = title;
+  $("ovText").innerHTML = text;
+  const b = $("ovBtn");
+  b.textContent = btn;
+  b.onclick = action;
+  $("ov").classList.remove("hidden");
+}
+function updateHud() {
+  $("score").textContent = score; $("lives").textContent = lives; $("level").textContent = level;
+  if (score > best) { best = score; localStorage.setItem("breakout.best", best); $("best").textContent = best; }
+}
+function burst(x, y, color) {
+  for (let i = 0; i < 9; i++)
+    particles.push({ x, y, vx: (Math.random() - 0.5) * 6, vy: (Math.random() - 0.7) * 6,
+                     life: 22 + Math.random() * 14, col: color, s: 2 + Math.random() * 3 });
+}
+function loseBall() {
+  balls.shift();
+  if (!balls.length) {
+    lives--;
+    updateHud();
+    if (lives <= 0) {
+      state = "over";
+      showOv("💀 بازی تمام شد", `امتیاز <b style="color:var(--text)">${score}</b> تا مرحله‌ی ${level} — رکوردت ${best}.`, "🔁 دوباره", start);
+    } else { resetPaddle(); resetBall(); }
+  }
+}
+function step() {
+  /* paddle */
+  if (keys.ArrowLeft) paddle.x -= 9;
+  if (keys.ArrowRight) paddle.x += 9;
+  paddle.x = Math.max(PADDLE_W / 2, Math.min(W - PADDLE_W / 2, paddle.x));
+
+  for (const b of balls) {
+    if (b.stuck) { b.x = paddle.x; b.y = paddle.y - PADDLE_H / 2 - BALL_R - 2; continue; }
+    b.x += b.vx; b.y += b.vy;
+    if (b.x < BALL_R) { b.x = BALL_R; b.vx = Math.abs(b.vx); }
+    if (b.x > W - BALL_R) { b.x = W - BALL_R; b.vx = -Math.abs(b.vx); }
+    if (b.y < BALL_R) { b.y = BALL_R; b.vy = Math.abs(b.vy); }
+    /* paddle bounce — angle depends on hit offset */
+    if (b.vy > 0 && b.y > paddle.y - PADDLE_H / 2 - BALL_R && b.y < paddle.y + 10 &&
+        Math.abs(b.x - paddle.x) < PADDLE_W / 2 + BALL_R) {
+      const off = (b.x - paddle.x) / (PADDLE_W / 2);
+      const sp = Math.min(9.5, Math.hypot(b.vx, b.vy) * 1.02);
+      const ang = off * 1.05 - Math.PI / 2;
+      b.vx = Math.cos(ang) * sp;
+      b.vy = Math.sin(ang) * sp;
+    }
+    /* bricks */
+    for (const k of bricks) {
+      if (k.hp <= 0) continue;
+      if (b.x > k.x - BALL_R && b.x < k.x + k.w + BALL_R && b.y > k.y - BALL_R && b.y < k.y + k.h + BALL_R) {
+        const px = Math.min(b.x + BALL_R - k.x, k.x + k.w - (b.x - BALL_R));
+        const py = Math.min(b.y + BALL_R - k.y, k.y + k.h - (b.y - BALL_R));
+        if (px < py) b.vx = -b.vx; else b.vy = -b.vy;
+        k.hp--;
+        if (k.hp <= 0) { score += 50; burst(k.x + k.w / 2, k.y + k.h / 2, k.col); shake = 5; }
+        else score += 15;
+        updateHud();
+        break;
+      }
+    }
+    if (b.y > H + 20) { loseBall(); break; }
+  }
+  /* level clear */
+  if (state === "play" && bricks.every(k => k.hp <= 0)) {
+    score += 200 * level;
+    level++;
+    updateHud();
+    if (level > LEVELS.length) {
+      state = "over";
+      showOv("🏆 فتح همه‌ی مراحل!", `همه‌ی آجرها شکستند — امتیاز نهایی <b style="color:var(--text)">${score}</b>!`, "🔁 دوباره", start);
+    } else {
+      resetPaddle(); buildLevel(); resetBall();
+      showOv("✨ مرحله‌ی " + level, `پاداش ${200 * (level - 1)} + مرحله‌ی بعد تندتر است.`, "▶ ادامه", () => $("ov").classList.add("hidden"));
+    }
+  }
+  /* particles */
+  particles = particles.filter(p => {
+    p.x += p.vx; p.y += p.vy; p.vy += 0.25; p.life--;
+    return p.life > 0;
+  });
+  if (shake > 0) shake--;
+}
+function draw() {
+  ctx.fillStyle = "#05060f";
+  ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  if (shake) ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
+  for (const k of bricks) {
+    if (k.hp <= 0) continue;
+    ctx.fillStyle = k.hp === 2 ? "#334155" : k.col;
+    ctx.globalAlpha = k.hp === 2 ? 0.9 : 1;
+    ctx.fillRect(k.x, k.y, k.w, k.h);
+    ctx.globalAlpha = 0.3;
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(k.x, k.y, k.w, 4);
+    ctx.globalAlpha = 1;
+    if (k.hp === 2) { ctx.fillStyle = k.col; ctx.fillRect(k.x + 6, k.y + 6, k.w - 12, k.h - 12); }
+  }
+  for (const p of particles) {
+    ctx.globalAlpha = Math.max(0, p.life / 36);
+    ctx.fillStyle = p.col;
+    ctx.fillRect(p.x, p.y, p.s, p.s);
+  }
+  ctx.globalAlpha = 1;
+  /* paddle */
+  ctx.shadowColor = "rgba(244,114,182,.8)"; ctx.shadowBlur = 16;
+  ctx.fillStyle = "#f472b6";
+  ctx.fillRect(paddle.x - PADDLE_W / 2, paddle.y - PADDLE_H / 2, PADDLE_W, PADDLE_H);
+  ctx.shadowBlur = 0;
+  /* balls */
+  for (const b of balls) {
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, BALL_R, 0, Math.PI * 2);
+    ctx.fillStyle = "#e2e8f0";
+    ctx.shadowColor = "#f472b6"; ctx.shadowBlur = 14;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+  ctx.restore();
+}
+function loop() {
+  requestAnimationFrame(loop);
+  if (state === "play" && !paused) step();
+  draw();
+}
+/* input */
+cv.addEventListener("pointermove", e => {
+  const r = cv.getBoundingClientRect();
+  paddle.x = Math.max(PADDLE_W / 2, Math.min(W - PADDLE_W / 2, (e.clientX - r.left) / r.width * W));
+}, { passive: true });
+cv.addEventListener("pointerdown", launch);
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft" || e.key === "ArrowRight") { keys[e.key] = true; e.preventDefault(); if (document.activeElement) document.activeElement.blur(); }
+  if (e.key === " ") { e.preventDefault(); state === "play" ? launch() : start(); }
+  if (e.key.toLowerCase() === "p" && state === "play") paused = !paused;
+});
+document.addEventListener("keyup", e => { keys[e.key] = false; });
+$("ovBtn").onclick = start;
+resetPaddle(); buildLevel(); resetBall();
+loop();
+</script>
+</body>
+</html>
