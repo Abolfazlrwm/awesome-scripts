@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Snake — مار نئونی</title>
+<meta name="description" content="بازی مار نئونی با کنترل کیبورد و سوایپ لمسی، سرعت فزاینده، امتیاز درخشان و رکورد شخصی — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a14; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(163,230,53,.35);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#a3e635; --a2:#22d3ee;
+    --pink:#f472b6; --bad:#f87171; --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(163,230,53,.10), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(34,211,238,.12), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:24px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(163,230,53,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:560px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .hud { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; }
+  .hud .cell { padding:11px 6px; text-align:center; }
+  .hud b { font:800 24px/1.2 var(--font-en); display:block;
+           background:linear-gradient(90deg, var(--a1), var(--a2));
+           -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hud span { color:var(--muted); font-size:11px; }
+  .board { position:relative; margin-top:14px; overflow:hidden; border-radius:14px;
+           border:1px solid var(--border2); background:rgba(0,0,0,.4);
+           box-shadow:0 0 34px -8px rgba(163,230,53,.28), inset 0 0 60px rgba(0,0,0,.5); }
+  canvas { display:block; width:100%; height:auto; touch-action:none; }
+  .overlay { position:absolute; inset:0; display:flex; flex-direction:column; gap:10px;
+             align-items:center; justify-content:center; text-align:center;
+             background:rgba(8,10,20,.82); backdrop-filter:blur(6px); transition:opacity .25s; }
+  .overlay.hidden { opacity:0; pointer-events:none; }
+  .overlay h2 { font:800 26px var(--font-fa);
+                background:linear-gradient(90deg, var(--a1), var(--a2));
+                -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .overlay p { color:var(--muted); font-size:13.5px; max-width:300px; }
+  .overlay .big-score { font:800 42px/1 var(--font-en); color:var(--text); }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 18px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#101603; font-weight:800; box-shadow:0 6px 20px -6px rgba(163,230,53,.6); }
+  .opts { display:flex; gap:8px; justify-content:center; margin-top:13px; flex-wrap:wrap; }
+  .opts .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                      color:#101603; font-weight:800; }
+  .legend { margin-top:13px; padding:13px 16px; color:var(--muted); font-size:13px; }
+  .legend b { color:var(--text); }
+  kbd { font:700 11.5px var(--font-en); background:var(--glass2); border:1px solid var(--border);
+        border-radius:6px; padding:2px 7px; color:var(--text); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🐍</div>
+  <h1>مار نئونی</h1>
+  <p>کلاسیک با پوشش نئون — با کلید یا سوایپ انگشت، روی موبایل هم روان است</p>
+</header>
+
+<div class="wrap">
+  <div class="hud">
+    <div class="cell glass"><b id="score">0</b><span>امتیاز</span></div>
+    <div class="cell glass"><b id="best">0</b><span>رکورد شما</span></div>
+    <div class="cell glass"><b id="len">3</b><span>طول مار</span></div>
+  </div>
+
+  <div class="board">
+    <canvas id="cv" width="420" height="420" aria-label="صفحه بازی"></canvas>
+    <div class="overlay" id="ov">
+      <h2 id="ovTitle">آماده‌ای؟</h2>
+      <div class="big-score" id="ovScore" style="display:none">0</div>
+      <p id="ovText">با کلیدهای جهت‌دار یا WASD حرکت کن — روی موبایل انگشتت را بکش. <kbd>Space</kbd> توقف/ادامه.</p>
+      <button class="btn primary" id="ovBtn">🎮 شروع بازی</button>
+    </div>
+  </div>
+
+  <div class="opts" id="diffs">
+    <button class="btn" data-d="140">😌 آروم</button>
+    <button class="btn active" data-d="105">⚡ معمولی</button>
+    <button class="btn" data-d="75">🔥 دیوانه</button>
+    <button class="btn" id="pauseBtn" style="margin-inline-start:auto">⏸ توقف</button>
+  </div>
+
+  <div class="glass legend">
+    <b>هر سیب</b> +۱ امتیاز و کمی سریع‌تر شدن مار — برخورد به دیوار یا بدن خودت یعنی پایان.
+    امتیاز با <b>رنگ‌های نئون</b> روی بدن مار می‌درخشد؛ رکوردت در همین مرورگر ذخیره می‌شود.
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    Canvas خالص بدون کتابخانه · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const cv = $("cv"), ctx = cv.getContext("2d");
+const N = 21, CELL = cv.width / N;
+let speed = 105, tickMs = speed, timer = null, running = false, dead = true, started = false;
+let snake, dir, queue, food, score, best = +(localStorage.getItem("snake.best") || 0);
+let pulse = 0;
+$("best").textContent = best;
+
+function reset() {
+  snake = [{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+  dir = {x:1,y:0}; queue = []; score = 0; tickMs = speed;
+  placeFood();
+  draw();
+  $("score").textContent = 0; $("len").textContent = snake.length;
+}
+function placeFood() {
+  do { food = { x: Math.floor(Math.random()*N), y: Math.floor(Math.random()*N) }; }
+  while (snake.some(s => s.x === food.x && s.y === food.y));
+}
+function show(title, text, isOver) {
+  $("ovTitle").textContent = title;
+  $("ovText").innerHTML = text;
+  $("ovScore").style.display = isOver ? "block" : "none";
+  $("ovScore").textContent = score + " امتیاز";
+  $("ovBtn").textContent = isOver ? "🔁 دوباره" : "🎮 شروع بازی";
+  $("ov").classList.remove("hidden");
+}
+function start() {
+  if (!dead && running) { pause(); return; }
+  if (dead) { reset(); dead = false; }
+  running = true; started = true;
+  $("ov").classList.add("hidden");
+  $("pauseBtn").textContent = "⏸ توقف";
+  clearInterval(timer);
+  timer = setInterval(step, tickMs);
+}
+function pause() {
+  running = false; clearInterval(timer);
+  $("pauseBtn").textContent = "▶ ادامه";
+  show("مکث ⏸", "برای ادامه دکمه را بزن یا <kbd>Space</kbd>", false);
+}
+function gameOver() {
+  dead = true; running = false; clearInterval(timer);
+  if (score > best) { best = score; localStorage.setItem("snake.best", best); $("best").textContent = best; }
+  show("بازی تمام شد 💥", "رکورد جدید؟ " + (score >= best && score > 0 ? "بله! 🏆" : "این‌بار نشد — دوباره تلاش کن."), true);
+}
+function step() {
+  if (queue.length) dir = queue.shift();
+  const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+  if (head.x < 0 || head.y < 0 || head.x >= N || head.y >= N ||
+      snake.some(s => s.x === head.x && s.y === head.y)) { gameOver(); return; }
+  snake.unshift(head);
+  if (head.x === food.x && head.y === food.y) {
+    score++; $("score").textContent = score; $("len").textContent = snake.length;
+    tickMs = Math.max(45, tickMs - 1.5);
+    clearInterval(timer); timer = setInterval(step, tickMs);
+    placeFood();
+  } else snake.pop();
+  draw();
+}
+function draw() {
+  pulse += 0.08;
+  /* board */
+  ctx.fillStyle = "#05060d";
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.strokeStyle = "rgba(148,163,184,.07)";
+  for (let i = 1; i < N; i++) {
+    ctx.beginPath(); ctx.moveTo(i*CELL, 0); ctx.lineTo(i*CELL, cv.height); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, i*CELL); ctx.lineTo(cv.width, i*CELL); ctx.stroke();
+  }
+  /* food: pulsing neon apple */
+  const r = CELL*0.32 + Math.sin(pulse)*1.6;
+  ctx.save();
+  ctx.shadowColor = "#f472b6"; ctx.shadowBlur = 16;
+  const g = ctx.createRadialGradient((food.x+.5)*CELL, (food.y+.5)*CELL, 1, (food.x+.5)*CELL, (food.y+.5)*CELL, r*1.6);
+  g.addColorStop(0, "#fda4cf"); g.addColorStop(1, "#f472b6");
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc((food.x+.5)*CELL, (food.y+.5)*CELL, r, 0, 7); ctx.fill();
+  ctx.restore();
+  /* snake: neon gradient body, head brightest */
+  for (let i = snake.length - 1; i >= 0; i--) {
+    const s = snake[i], t = 1 - i / snake.length;
+    ctx.save();
+    ctx.shadowColor = i === 0 ? "#22d3ee" : "#a3e635";
+    ctx.shadowBlur = i === 0 ? 18 : 9;
+    ctx.fillStyle = i === 0 ? "#eaffb0"
+      : `rgba(${Math.round(163-(163-34)*t)}, ${Math.round(230-(230-211)*t)}, ${Math.round(53+(53-238)*t)}, ${0.55+0.45*t})`;
+    const pad = i === 0 ? 1.5 : 2.5;
+    roundRect(s.x*CELL+pad, s.y*CELL+pad, CELL-pad*2, CELL-pad*2, 5);
+    ctx.restore();
+  }
+  /* eyes */
+  const h = snake[0];
+  ctx.fillStyle = "#101603";
+  const ex = h.x*CELL + CELL/2 + dir.x*3.5, ey = h.y*CELL + CELL/2 + dir.y*3.5;
+  const px = dir.y !== 0 ? 3.5 : 0, py = dir.x !== 0 ? 3.5 : 0;
+  ctx.beginPath(); ctx.arc(ex - px, ey - py, 1.8, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.arc(ex + px, ey + py, 1.8, 0, 7); ctx.fill();
+}
+function roundRect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r); ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r); ctx.arcTo(x, y, x+w, y, r);
+  ctx.fill();
+}
+function turn(nx, ny) {
+  const last = queue.length ? queue[queue.length-1] : dir;
+  if (last.x === -nx && last.y === -ny) return;   /* no 180° */
+  if (last.x === nx && last.y === ny) return;     /* no dup */
+  if (queue.length < 3) queue.push({ x:nx, y:ny });
+}
+document.addEventListener("keydown", e => {
+  const k = e.key.toLowerCase();
+  if (["arrowup","arrowdown","arrowleft","arrowright"].includes(k) || e.key === " ") {
+    if (document.activeElement && document.activeElement.tagName === "BUTTON") document.activeElement.blur();
+  }
+  if (k === "arrowup"    || k === "w") { e.preventDefault(); turn(0,-1); }
+  if (k === "arrowdown"  || k === "s") { e.preventDefault(); turn(0, 1); }
+  if (k === "arrowleft"  || k === "a") { e.preventDefault(); turn(-1,0); }
+  if (k === "arrowright" || k === "d") { e.preventDefault(); turn(1, 0); }
+  if (e.key === " ") { e.preventDefault(); if (!dead) (running ? pause() : start()); else start(); }
+});
+/* touch swipe — RTL doesn't change geometry */
+let tx = 0, ty = 0;
+cv.addEventListener("touchstart", e => { const t = e.touches[0]; tx = t.clientX; ty = t.clientY; }, {passive:true});
+cv.addEventListener("touchend", e => {
+  const t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty;
+  if (Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
+  if (Math.abs(dx) > Math.abs(dy)) turn(dx > 0 ? 1 : -1, 0); else turn(0, dy > 0 ? 1 : -1);
+}, {passive:true});
+$("ovBtn").onclick = () => { if (dead) { reset(); dead = false; } start(); };
+$("pauseBtn").onclick = () => { if (dead) start(); else (running ? pause() : start()); };
+document.querySelectorAll("[data-d]").forEach(b => b.onclick = () => {
+  speed = +b.dataset.d; tickMs = Math.max(45, speed - (speed - tickMs));
+  document.querySelectorAll("[data-d]").forEach(x => x.classList.toggle("active", x === b));
+  if (running) { clearInterval(timer); timer = setInterval(step, tickMs); }
+});
+/* keep visuals alive even before first game */
+reset();
+setInterval(() => { if (!running) draw(); }, 90);
+</script>
+</body>
+</html>
