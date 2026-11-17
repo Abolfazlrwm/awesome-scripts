@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tetris Web — تتریس</title>
+<meta name="description" content="تتریس کامل با هولد، قطعه‌ی شبح، بگ ۷تایی، امتیاز و سطح — کنترل با کیبورد یا دکمه‌های لمسی — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(96,165,250,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#60a5fa; --a2:#c084fc;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(96,165,250,.13), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(192,132,252,.13), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(96,165,250,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:640px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .game { display:flex; gap:12px; margin-top:14px; align-items:stretch; }
+  .board-wrap { position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--border2);
+                background:rgba(3,6,18,.6); box-shadow:0 0 40px -10px rgba(96,165,250,.45); flex:1;
+                display:flex; justify-content:center; }
+  canvas#board { display:block; height:auto; }
+  .side { display:flex; flex-direction:column; gap:10px; width:118px; }
+  .side .glass { padding:10px; text-align:center; }
+  .side b { font:800 20px/1.2 var(--font-en); display:block;
+            background:linear-gradient(90deg, var(--a1), var(--a2));
+            -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .side span { color:var(--muted); font-size:10.5px; }
+  .side canvas { width:100%; background:rgba(3,6,18,.5); border-radius:10px; border:1px solid var(--border); }
+  .overlay { position:absolute; inset:0; display:flex; flex-direction:column; gap:10px; align-items:center;
+             justify-content:center; text-align:center; background:rgba(8,10,22,.84);
+             backdrop-filter:blur(6px); transition:opacity .25s; }
+  .overlay.hidden { opacity:0; pointer-events:none; }
+  .overlay h2 { font:800 26px var(--font-fa);
+                background:linear-gradient(90deg, var(--a1), var(--a2));
+                -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .overlay p { color:var(--muted); font-size:13px; max-width:320px; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 18px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#0a1024; font-weight:800; }
+  .touch { display:flex; gap:8px; justify-content:center; margin-top:13px; flex-wrap:wrap; }
+  .touch .btn { font-size:17px; padding:10px 0; width:64px; }
+  .legend { margin-top:13px; padding:13px 16px; color:var(--muted); font-size:13px; }
+  .legend b { color:var(--text); }
+  kbd { font:700 11.5px var(--font-en); background:var(--glass2); border:1px solid var(--border);
+        border-radius:6px; padding:2px 7px; color:var(--text); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🕹️</div>
+  <h1>تتریس</h1>
+  <p>کلاسیک کامل — هولد، قطعه‌ی شبح، بگ ۷تایی و خط‌های درخشان؛ با کیبورد یا دکمه‌های لمسی</p>
+</header>
+
+<div class="wrap">
+  <div class="game">
+    <div class="board-wrap">
+      <canvas id="board" width="300" height="600" aria-label="صفحه‌ی تتریس"></canvas>
+      <div class="overlay" id="ov">
+        <h2 id="ovTitle">آماده‌ای؟</h2>
+        <p id="ovText">با <kbd>←</kbd><kbd>→</kbd> حرکت، <kbd>↑</kbd> چرخش، <kbd>↓</kbd> سقوط نرم و <kbd>Space</kbd> سقوط فوری. <kbd>C</kbd> هولد و <kbd>P</kbd> توقف.</p>
+        <button class="btn primary" id="ovBtn">🎮 شروع</button>
+      </div>
+    </div>
+    <div class="side">
+      <div class="glass"><span>بعدی</span><canvas id="next" width="96" height="64"></canvas></div>
+      <div class="glass"><span>هولد</span><canvas id="hold" width="96" height="64"></canvas></div>
+      <div class="glass"><b id="score">0</b><span>امتیاز</span></div>
+      <div class="glass"><b id="lines">0</b><span>خط</span></div>
+      <div class="glass"><b id="level">1</b><span>سطح</span></div>
+      <div class="glass"><b id="best">0</b><span>رکورد</span></div>
+    </div>
+  </div>
+
+  <div class="touch">
+    <button class="btn" data-a="left">◀</button>
+    <button class="btn" data-a="rot">⟳</button>
+    <button class="btn" data-a="right">▶</button>
+    <button class="btn" data-a="soft">▼</button>
+    <button class="btn" data-a="drop">⏬</button>
+    <button class="btn" data-a="hold" style="width:auto;padding:10px 14px">H</button>
+    <button class="btn" data-a="pause" style="width:auto;padding:10px 14px">⏸</button>
+  </div>
+
+  <div class="glass legend">
+    <b>امتیازدهی:</b> ۱ خط ۱۰۰ · ۲ خط ۳۰۰ · ۳ خط ۵۰۰ · ۴ خط (تتریس!) ۸۰۰ — همه ×سطح.
+    هر ۱۰ خط یک سطح و سرعت بیشتر؛ <b>هولد</b> هر سقوط یک‌بار. رکورد در مرورگرت ذخیره می‌شود.
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    Canvas خالص بدون کتابخانه · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const cv = $("board"), ctx = cv.getContext("2d");
+const nextCv = $("next"), nctx = nextCv.getContext("2d");
+const holdCv = $("hold"), hctx = holdCv.getContext("2d");
+const COLS = 10, ROWS = 20, CELL = 30;
+
+const SHAPES = {
+  I: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+  O: [[1,1],[1,1]],
+  T: [[0,1,0],[1,1,1],[0,0,0]],
+  S: [[0,1,1],[1,1,0],[0,0,0]],
+  Z: [[1,1,0],[0,1,1],[0,0,0]],
+  J: [[1,0,0],[1,1,1],[0,0,0]],
+  L: [[0,0,1],[1,1,1],[0,0,0]],
+};
+const COLORS = { I:"#22d3ee", O:"#facc15", T:"#c084fc", S:"#4ade80", Z:"#f87171", J:"#60a5fa", L:"#fb923c" };
+const KEYS = Object.keys(SHAPES);
+
+let grid, cur, nextPiece, holdPiece, holdUsed, bag = [];
+let score = 0, lines = 0, level = 1, best = +(localStorage.getItem("tetris.best") || 0);
+let running = false, over = true, paused = false;
+let dropAcc = 0, lastT = 0, flashRows = [], flashT = 0;
+$("best").textContent = best;
+
+function refill() {
+  const b = KEYS.slice();
+  for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; }
+  bag.push(...b);
+}
+function spawn(name) {
+  const t = name || bag.shift();
+  if (bag.length < 2) refill();
+  const m = SHAPES[t].map(r => r.slice());
+  return { t, m, x: Math.floor((COLS - m[0].length) / 2), y: 0 };
+}
+function collide(p, dx = 0, dy = 0, mat = p.m) {
+  for (let r = 0; r < mat.length; r++)
+    for (let c = 0; c < mat[r].length; c++) {
+      if (!mat[r][c]) continue;
+      const x = p.x + c + dx, y = p.y + r + dy;
+      if (x < 0 || x >= COLS || y >= ROWS) return true;
+      if (y >= 0 && grid[y][x]) return true;
+    }
+  return false;
+}
+function rotate(m) {   /* transpose + reverse rows */
+  const n = m.length, out = Array.from({ length: n }, () => Array(n).fill(0));
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) out[c][n - 1 - r] = m[r][c];
+  return out;
+}
+function tryRotate() {
+  const m = rotate(cur.m);
+  for (const k of [0, -1, 1, -2, 2]) if (!collide(cur, k, 0, m)) { cur.m = m; cur.x += k; return true; }
+  return false;
+}
+function merge() {
+  cur.m.forEach((row, r) => row.forEach((v, c) => {
+    if (v && cur.y + r >= 0) grid[cur.y + r][cur.x + c] = cur.t;
+  }));
+  /* find full rows → flash then clear */
+  const full = [];
+  for (let r = 0; r < ROWS; r++) if (grid[r].every(v => v)) full.push(r);
+  if (full.length) {
+    flashRows = full; flashT = 130;
+    score += [0, 100, 300, 500, 800][full.length] * level;
+    lines += full.length;
+    const nl = Math.floor(lines / 10) + 1;
+    if (nl > level) level = nl;
+    updateHud();
+  } else spawnNext();
+}
+function clearFlashed() {
+  flashRows.sort((a, b) => a - b).forEach(r => { grid.splice(r, 1); grid.unshift(Array(COLS).fill(0)); });
+  flashRows = [];
+  spawnNext();
+}
+function spawnNext() {
+  cur = nextPiece || spawn();
+  nextPiece = spawn();
+  holdUsed = false;
+  drawNext();
+  if (collide(cur)) gameOver();
+}
+function hold() {
+  if (holdUsed || over) return;
+  const name = cur.t;
+  if (holdPiece) { cur = spawn(holdPiece); holdPiece = name; }
+  else { holdPiece = name; cur = nextPiece; nextPiece = spawn(); }
+  holdUsed = true;
+  drawHold(); drawNext();
+  if (collide(cur)) gameOver();
+}
+function dropHard() {
+  let d = 0;
+  while (!collide(cur, 0, 1)) { cur.y++; d++; }
+  score += d * 2; updateHud();
+  merge(); draw();
+}
+function tick() {
+  if (!collide(cur, 0, 1)) cur.y++;
+  else merge();
+  draw();
+}
+function gameOver() {
+  over = true; running = false;
+  if (score > best) { best = score; localStorage.setItem("tetris.best", best); $("best").textContent = best; }
+  $("ovTitle").textContent = "بازی تمام شد";
+  $("ovText").innerHTML = `امتیاز <b style="color:var(--text)">${score}</b> با ${lines} خط — رکوردت ${best} است.`;
+  $("ovBtn").textContent = "🔁 دوباره";
+  $("ov").classList.remove("hidden");
+}
+function updateHud() {
+  $("score").textContent = score; $("lines").textContent = lines; $("level").textContent = level;
+}
+function cell(x, y, color, alpha = 1, glow = 0) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  if (glow) { ctx.shadowColor = color; ctx.shadowBlur = glow; }
+  ctx.fillStyle = color;
+  ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 2, CELL - 2);
+  ctx.globalAlpha = alpha * 0.25;
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 2, 5);
+  ctx.restore();
+}
+function draw() {
+  ctx.fillStyle = "#05070f";
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.strokeStyle = "rgba(148,163,184,.08)";
+  for (let i = 1; i < COLS; i++) { ctx.beginPath(); ctx.moveTo(i*CELL, 0); ctx.lineTo(i*CELL, cv.height); ctx.stroke(); }
+  for (let i = 1; i < ROWS; i++) { ctx.beginPath(); ctx.moveTo(0, i*CELL); ctx.lineTo(cv.width, i*CELL); ctx.stroke(); }
+  grid.forEach((row, r) => row.forEach((v, c) => { if (v) cell(c, r, COLORS[v], flashRows.includes(r) ? 0.25 : 1); }));
+  if (flashRows.length) {
+    ctx.fillStyle = "rgba(255,255,255,.75)";
+    flashRows.forEach(r => ctx.fillRect(0, r * CELL, cv.width, CELL));
+  }
+  if (!over && cur) {
+    /* ghost */
+    let gy = 0;
+    while (!collide(cur, 0, gy + 1)) gy++;
+    cur.m.forEach((row, r) => row.forEach((v, c) => { if (v) cell(cur.x + c, cur.y + r + gy, COLORS[cur.t], 0.18); }));
+    cur.m.forEach((row, r) => row.forEach((v, c) => { if (v && cur.y + r >= 0) cell(cur.x + c, cur.y + r, COLORS[cur.t], 1, 12); }));
+  }
+}
+function drawMini(c2, piece) {
+  c2.fillStyle = "#05070f"; c2.fillRect(0, 0, 96, 64);
+  if (!piece) return;
+  const m = SHAPES[piece.t];
+  const size = 16, ox = (96 - m[0].length * size) / 2, oy = (64 - m.length * size) / 2;
+  m.forEach((row, r) => row.forEach((v, c) => {
+    if (v) { c2.fillStyle = COLORS[piece.t]; c2.fillRect(ox + c*size + 1, oy + r*size + 1, size - 2, size - 2); }
+  }));
+}
+function drawNext() { drawMini(nctx, nextPiece); }
+function drawHold() { drawMini(hctx, holdPiece ? { t: holdPiece } : null); }
+
+function reset() {
+  grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+  bag = []; refill();
+  score = 0; lines = 0; level = 1; holdPiece = null; holdUsed = false;
+  nextPiece = spawn(); spawnNext();
+  updateHud(); drawHold(); drawNext(); draw();
+}
+function start() {
+  if (over) { reset(); over = false; }
+  paused = false; running = true;
+  $("ov").classList.add("hidden");
+}
+function togglePause() {
+  if (over) { start(); return; }
+  paused = !paused;
+  if (paused) {
+    $("ovTitle").textContent = "مکث ⏸";
+    $("ovText").textContent = "برای ادامه دکمه را بزن یا P";
+    $("ovBtn").textContent = "▶ ادامه";
+    $("ov").classList.remove("hidden");
+  } else $("ov").classList.add("hidden");
+}
+function act(a) {
+  if (over || paused && a !== "pause") return;
+  switch (a) {
+    case "left":  if (!collide(cur, -1, 0)) cur.x--; break;
+    case "right": if (!collide(cur, 1, 0)) cur.x++; break;
+    case "rot":   tryRotate(); break;
+    case "soft":  if (!collide(cur, 0, 1)) { cur.y++; score++; updateHud(); } break;
+    case "drop":  dropHard(); return;
+    case "hold":  hold(); break;
+    case "pause": togglePause(); return;
+  }
+  draw();
+}
+document.addEventListener("keydown", e => {
+  const k = e.key.toLowerCase();
+  const map = { arrowleft:"left", arrowright:"right", arrowup:"rot", x:"rot", z:"rot", arrowdown:"soft", " ":"drop", c:"hold", p:"pause" };
+  if (map[k]) {
+    e.preventDefault();
+    if (document.activeElement && document.activeElement.tagName === "BUTTON") document.activeElement.blur();
+    if (k === "z" && !over && !paused) { tryRotate(); draw(); return; }   /* ccw */
+    act(map[k]);
+  }
+});
+document.querySelectorAll("[data-a]").forEach(b => b.addEventListener("click", () => act(b.dataset.a)));
+$("ovBtn").onclick = () => { over ? start() : togglePause(); };
+
+/* gravity loop */
+function loop(t) {
+  requestAnimationFrame(loop);
+  if (!running || paused || over) { lastT = t; return; }
+  if (flashT > 0) {
+    flashT -= t - lastT;
+    if (flashT <= 0) clearFlashed();
+    draw();
+    lastT = t;
+    return;
+  }
+  dropAcc += t - lastT;
+  lastT = t;
+  const interval = Math.max(60, 800 * Math.pow(0.85, level - 1));
+  while (dropAcc >= interval) { dropAcc -= interval; tick(); }
+}
+reset();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
