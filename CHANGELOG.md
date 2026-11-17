@@ -8,6 +8,14 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.15.0] — 2026-11-17 — 💯 100 projects (63 bots · 31 web · 6 desktop)
+
+- **The Century milestone** — the repo now ships exactly **100 complete, ready-to-run projects**.
+- **5 new showpiece web tools** (`95 → 100`): `tetris-web` (full Tetris with 7-bag, hold, ghost piece and touch controls), `game-of-life-web` (Conway simulation with famous pattern stamps, live painting and fading trails), `pixel-art-studio` (pixel editor with flood fill, mirror symmetry and crisp PNG export), `matrix-rain-web` (the digital rain with a message-reveal mode and Persian glyphs) and `noise-art-web` (Perlin-noise generative art with flow-field particles) — each with preview + live demo.
+- **Landing page v4** — `Ctrl+K` bilingual command palette with keyboard navigation, 3D pointer tilt on cards, rotating hero phrases, 🎲 confetti burst on the lucky button and a back-to-top button.
+
+صد پروژه‌ی کامل! پنج ابزار وب نمایشی جدید (تتریس، بازی زندگی، استودیو پیکسل‌آرت، بارش ماتریکس و هنر نویز) با پیش‌نمایش و دموی زنده اضافه شدند و لندینگ‌پیج با پالت فرمان `Ctrl+K` دو‌زبانه، تیلت سه‌بعدی کارت‌ها، عبارت‌های چرخان قهرمان و کانفتی دکمه‌ی شانسی خفن‌تر شد.
+
 ## [v1.14.0] — 2026-11-17 — 95 projects (63 bots · 26 web · 6 desktop)
 
 - **3 new showpiece web tools** (`92 → 95`): `snake-game-web` (neon snake with touch-swipe and keyboard controls, accelerating loop, persistent personal best), `fractal-explorer` (Mandelbrot & Julia deep-zoom explorer with smooth escape-time coloring, 5 palettes and PNG export) and `synthwave-keys` (two-octave WebAudio synthesizer with a live oscilloscope and an event recorder) — each with a screenshot preview and live demo.
