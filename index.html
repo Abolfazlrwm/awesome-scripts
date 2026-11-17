@@ -8,12 +8,12 @@
 <link rel="canonical" href="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awesome Scripts">
-<meta property="og:title" content="Awesome Scripts — 95 ready-to-run bots & tools">
+<meta property="og:title" content="Awesome Scripts — 100 ready-to-run bots & tools">
 <meta property="og:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
 <meta property="og:url" content="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Awesome Scripts — 95 ready-to-run bots & tools">
+<meta name="twitter:title" content="Awesome Scripts — 100 ready-to-run bots & tools">
 <meta name="twitter:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities.">
 <meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <!-- Telegram: @Abolfazl_rwm -->
@@ -246,6 +246,47 @@
   }
   .lucky:hover { transform:translateY(-2px) rotate(-2deg); filter:brightness(1.08); }
   .lucky:active { transform:scale(.94); }
+
+  /* ---------- v4: command palette ---------- */
+  .palette-mask { position:fixed; inset:0; z-index:70; background:rgba(4,8,20,.55);
+    backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+    display:none; align-items:flex-start; justify-content:center; padding-top:12vh; }
+  .palette-mask.open { display:flex; }
+  .palette { width:min(560px, 92vw); background:rgba(12,16,32,.92); border:1px solid var(--border);
+    border-radius:16px; overflow:hidden; box-shadow:0 30px 80px -20px rgba(0,0,0,.7);
+    animation:palIn .18s ease; }
+  html[data-theme="light"] .palette { background:rgba(255,255,255,.95); }
+  @keyframes palIn { from { transform:translateY(-14px) scale(.97); opacity:0; } }
+  .palette input { width:100%; background:transparent; border:none; outline:none; color:var(--text);
+    font:600 15px var(--font-fa); padding:15px 18px; border-bottom:1px solid var(--border); }
+  .pal-list { max-height:52vh; overflow:auto; }
+  .pal-item { display:flex; gap:10px; align-items:center; padding:10px 16px; cursor:pointer; }
+  .pal-item.sel { background:linear-gradient(90deg, rgba(56,189,248,.16), transparent); }
+  .pal-item b { font:700 14px var(--font-fa); }
+  .pal-item span { color:var(--muted); font-size:12px; overflow:hidden; white-space:nowrap;
+    text-overflow:ellipsis; flex:1; direction:rtl; text-align:right; }
+  .pal-hint { padding:8px 16px; border-top:1px solid var(--border); color:var(--muted); font-size:11.5px; }
+
+  /* ---------- v4: card tilt ---------- */
+  .card { transform-style:preserve-3d; transition:transform .14s ease, box-shadow .2s ease; }
+  .grid:hover .card { will-change:transform; }
+
+  /* ---------- v4: hero phrase rotator ---------- */
+  .rotator { margin-top:10px; font:700 14.5px var(--font-fa); color:var(--muted); min-height:26px; }
+  .rotator span { display:inline-block; animation:rotIn .5s ease; }
+  @keyframes rotIn { from { opacity:0; transform:translateY(8px); } }
+
+  /* ---------- v4: confetti canvas ---------- */
+  #confettiCv { position:fixed; inset:0; z-index:80; pointer-events:none; }
+
+  /* ---------- v4: back to top ---------- */
+  .top-btn { position:fixed; bottom:22px; inset-inline-start:22px; z-index:60; width:44px; height:44px;
+    border-radius:50%; border:1px solid var(--border); background:var(--glass2); color:var(--text);
+    font-size:19px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:.25s; backdrop-filter:blur(8px);
+    box-shadow:0 8px 24px -8px rgba(0,0,0,.5); }
+  .top-btn.show { opacity:1; pointer-events:auto; }
+  .top-btn:hover { transform:translateY(-3px); border-color:var(--border2); }
 </style>
 </head>
 <body>
@@ -268,7 +309,7 @@
 </header>
 
 <section class="hero">
-  <h1 id="heroTitle">95 ready-to-run projects. One repository.</h1>
+  <h1 id="heroTitle">100 ready-to-run projects. One repository.</h1>
   <p class="sub" id="heroSub">
     Complete Telegram bots, web tools and desktop utilities — every folder is a full app with a
     step-by-step README. Search it, filter it, ship it.
@@ -280,7 +321,7 @@
   <div class="search-wrap">
     <span class="magnifier">🔎</span>
     <input id="search" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Search 95 projects — name, feature or language…" aria-label="Search projects">
+           placeholder="Search 100 projects — name, feature or language…" aria-label="Search projects">
     <span class="kbd-hint">/</span>
   </div>
   <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
@@ -608,6 +649,167 @@
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+})();
+</script>
+
+<script>
+/* ---------- v4: palette, tilt, rotator, confetti, top-btn ---------- */
+(function () {
+  "use strict";
+
+  /* --- command palette --- */
+  var mask = document.createElement("div");
+  mask.className = "palette-mask";
+  mask.innerHTML = '<div class="palette" role="dialog" aria-label="Command palette">' +
+    '<input id="palInput" placeholder="جستجوی سریع پروژه‌ها…  (Enter برای باز کردن · Esc بستن)">' +
+    '<div class="pal-list" id="palList"></div>' +
+    '<div class="pal-hint">↑ ↓ حرکت · Enter باز کردن دمو · Ctrl+K باز/بستن</div></div>';
+  document.body.appendChild(mask);
+  var input = mask.querySelector("#palInput");
+  var list = mask.querySelector("#palList");
+  var sel = 0, items = [];
+
+  function renderList(q) {
+    var data = window.AWESOME_CATALOG || { projects: [] };
+    var fa = document.documentElement.lang === "fa";
+    q = q.trim().toLowerCase();
+    var pool = data.projects.filter(function (p) {
+      var hay = ((p.slug || "") + " " + (p.name_en || "") + " " + (p.description_en || "") +
+                 " " + (p.name_fa || "") + " " + (p.description_fa || "") + " " + (p.language || "")).toLowerCase();
+      return !q || hay.indexOf(q) >= 0;
+    });
+    items = pool.slice(0, 8);
+    sel = 0;
+    list.innerHTML = items.map(function (p, i) {
+      var nm = fa ? (p.name_fa || p.name_en) : (p.name_en || p.name_fa);
+      var ds = fa ? (p.description_fa || p.description_en) : (p.description_en || p.description_fa);
+      return '<div class="pal-item" data-i="' + i + '"><b>' + nm + '</b><span>' + (ds || "") + '</span></div>';
+    }).join("") || '<div class="pal-item"><span>چیزی پیدا نشد 🤷</span></div>';
+    mark();
+  }
+  function mark() {
+    list.querySelectorAll(".pal-item").forEach(function (el, i) {
+      el.classList.toggle("sel", i === sel);
+    });
+  }
+  function openPal() { mask.classList.add("open"); input.value = ""; renderList(""); setTimeout(function () { input.focus(); }, 30); }
+  function closePal() { mask.classList.remove("open"); }
+  function go() {
+    if (!items[sel]) return;
+    var p = items[sel];
+    window.open(p.demo || "https://github.com/Abolfazlrwm/awesome-scripts/tree/main/" + p.path, "_blank", "noopener");
+    closePal();
+  }
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      mask.classList.contains("open") ? closePal() : openPal();
+    } else if (mask.classList.contains("open")) {
+      if (e.key === "Escape") closePal();
+      if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(items.length - 1, sel + 1); mark(); }
+      if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(0, sel - 1); mark(); }
+      if (e.key === "Enter") go();
+    }
+  });
+  input.addEventListener("input", function () { renderList(input.value); });
+  list.addEventListener("click", function (e) {
+    var it = e.target.closest(".pal-item");
+    if (it && it.dataset.i) { sel = +it.dataset.i; go(); }
+  });
+  mask.addEventListener("click", function (e) { if (e.target === mask) closePal(); });
+
+  /* --- 3D tilt on cards --- */
+  var grid = document.getElementById("grid");
+  grid.addEventListener("mousemove", function (e) {
+    var card = e.target && e.target.closest ? e.target.closest(".card") : null;
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    var px = (e.clientX - r.left) / r.width - 0.5;
+    var py = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = "perspective(800px) rotateY(" + (px * 8).toFixed(2) + "deg) rotateX(" + (-py * 8).toFixed(2) + "deg) translateY(-2px)";
+  }, { passive: true });
+  grid.addEventListener("mouseleave", function () {
+    grid.querySelectorAll(".card").forEach(function (c) { c.style.transform = ""; });
+  });
+  document.addEventListener("mouseout", function (e) {
+    var card = e.target && e.target.closest ? e.target.closest(".card") : null;
+    if (card) card.style.transform = "";
+  }, true);
+
+  /* --- rotating hero phrases --- */
+  var heroSub = document.getElementById("heroSub");
+  var rot = document.createElement("div");
+  rot.className = "rotator";
+  heroSub.insertAdjacentElement("afterend", rot);
+  var FA = ["🎮 بازی‌های آرکید نئونی — تتریس، مار و سودوکو", "🌀 کاوش فرکتال تا عمق ۱۰⁵۵ برابر",
+            "🎹 سینتی‌سایزر واقعی در مرورگر", "🌌 هنر مولد با نویز پرلین", "🤖 ۶۳ ربات آماده‌ی تلگرام",
+            "⚡ بدون بیلد، بدون وابستگی — فقط HTML"];
+  var EN = ["🎮 Neon arcade games — Tetris, Snake, Sudoku", "🌀 Fractal diving down to 10^55x",
+            "🎹 A real synthesizer in your browser", "🌌 Generative art with Perlin noise",
+            "🤖 63 ready Telegram bots", "⚡ No build, no deps — pure HTML"];
+  var ri = 0;
+  function rotTick() {
+    var fa = document.documentElement.lang === "fa";
+    var arr = fa ? FA : EN;
+    rot.innerHTML = "<span>" + arr[ri % arr.length] + "</span>";
+    ri++;
+  }
+  rotTick();
+  setInterval(rotTick, 2800);
+
+  /* --- confetti on lucky --- */
+  var cCv = document.createElement("canvas");
+  cCv.id = "confettiCv";
+  document.body.appendChild(cCv);
+  var cCtx = cCv.getContext("2d");
+  function sizeConf() { cCv.width = innerWidth; cCv.height = innerHeight; }
+  sizeConf();
+  addEventListener("resize", sizeConf);
+  var confs = [];
+  function burst(x, y) {
+    var colors = ["#38bdf8", "#818cf8", "#f472b6", "#4ade80", "#facc15"];
+    for (var i = 0; i < 90; i++) {
+      confs.push({ x: x, y: y, vx: (Math.random() - 0.5) * 11, vy: -Math.random() * 10 - 4,
+        s: 3 + Math.random() * 5, c: colors[i % 5], r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3, life: 90 });
+    }
+    if (confs.length === i + 1 || confs.length) confLoop();
+  }
+  var confRunning = false;
+  function confLoop() {
+    if (confRunning) return;
+    confRunning = true;
+    (function tick() {
+      cCtx.clearRect(0, 0, cCv.width, cCv.height);
+      confs = confs.filter(function (p) {
+        p.vy += 0.34; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life--;
+        cCtx.save();
+        cCtx.translate(p.x, p.y);
+        cCtx.rotate(p.r);
+        cCtx.fillStyle = p.c;
+        cCtx.globalAlpha = Math.max(0, Math.min(1, p.life / 40));
+        cCtx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.62);
+        cCtx.restore();
+        return p.life > 0 && p.y < cCv.height + 30;
+      });
+      if (confs.length) requestAnimationFrame(tick);
+      else { confRunning = false; cCtx.clearRect(0, 0, cCv.width, cCv.height); }
+    })();
+  }
+  document.getElementById("luckyBtn").addEventListener("click", function (e) {
+    var r = e.currentTarget.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2);
+  });
+
+  /* --- back to top --- */
+  var topBtn = document.createElement("button");
+  topBtn.className = "top-btn";
+  topBtn.textContent = "↑";
+  topBtn.title = "بازگشت به بالا";
+  document.body.appendChild(topBtn);
+  topBtn.addEventListener("click", function () { scrollTo({ top: 0, behavior: "smooth" }); });
+  addEventListener("scroll", function () {
+    topBtn.classList.toggle("show", scrollY > 600);
+  }, { passive: true });
 })();
 </script>
 </body>
