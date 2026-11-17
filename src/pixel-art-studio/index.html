@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Art Studio — استودیو پیکسل‌آرت</title>
+<meta name="description" content="پیکسل‌آرت با پالت رنگ، سطل رنگ، قرینه‌سازی، برگشت و خروجی PNG شارپ — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(251,146,60,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#fb923c; --a2:#f472b6;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(251,146,60,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(244,114,182,.12), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(251,146,60,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:960px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .studio { display:flex; gap:14px; margin-top:14px; align-items:flex-start; flex-wrap:wrap; }
+  .board { position:relative; }
+  canvas#cv { display:block; border-radius:14px; border:1px solid var(--border2);
+              background:#0d0d1c; box-shadow:0 0 40px -10px rgba(251,146,60,.4);
+              touch-action:none; cursor:crosshair; max-width:100%; height:auto; }
+  .panel { flex:1; min-width:250px; display:flex; flex-direction:column; gap:12px; }
+  .card { padding:14px 16px; }
+  .card h3 { font-size:13px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+  .pals { display:grid; grid-template-columns:repeat(8, 1fr); gap:6px; }
+  .sw { aspect-ratio:1; border-radius:8px; cursor:pointer; border:2px solid transparent; transition:.12s; }
+  .sw.active { border-color:#fff; box-shadow:0 0 10px rgba(255,255,255,.4); transform:scale(1.1); }
+  .row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:11px;
+         padding:7px 13px; font:600 13px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                color:#1d0e04; font-weight:800; }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#1d0e04; font-weight:800; }
+  input[type=color] { width:40px; height:34px; border:1px solid var(--border); border-radius:9px;
+                      background:var(--glass2); cursor:pointer; padding:2px; }
+  input[type=range] { flex:1; accent-color:var(--a1); }
+  .prev-wrap { display:flex; align-items:center; gap:12px; }
+  canvas#prev { image-rendering:pixelated; border-radius:8px; border:1px solid var(--border); }
+  .zoom-v { font:800 13px var(--font-en); color:var(--a1); min-width:40px; text-align:center; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🎨</div>
+  <h1>استودیو پیکسل‌آرت</h1>
+  <p>بکش، قرینه کن، سطل بریز و PNG شارپ بگیر — روی موبایل هم با انگشت</p>
+</header>
+
+<div class="wrap">
+  <div class="studio">
+    <div class="board"><canvas id="cv" width="480" height="480" aria-label="بوم پیکسلی"></canvas></div>
+
+    <div class="panel">
+      <div class="glass card">
+        <h3>🎨 پالت رنگ</h3>
+        <div class="pals" id="pals"></div>
+        <div class="row" style="margin-top:10px">
+          <input type="color" id="custom" value="#fb923c" aria-label="رنگ دلخواه">
+          <button class="btn" id="eraser">🧽 پاک‌کن</button>
+          <button class="btn" id="bucket">🪣 سطل</button>
+        </div>
+      </div>
+
+      <div class="glass card">
+        <h3>⚙️ ابزارها</h3>
+        <div class="row">
+          <button class="btn" id="undo">↩ برگشت</button>
+          <button class="btn" id="clear">🗑 خالی</button>
+          <button class="btn active" id="sym">🪞 قرینه</button>
+          <button class="btn active" id="grid">▦ شبکه</button>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn active" data-n="16">16×16</button>
+          <button class="btn" data-n="8">8×8</button>
+          <button class="btn" data-n="24">24×24</button>
+          <button class="btn" data-n="32">32×32</button>
+        </div>
+      </div>
+
+      <div class="glass card">
+        <h3>💾 خروجی</h3>
+        <div class="row">
+          <button class="btn primary" id="png">🖼 دانلود PNG</button>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <label style="color:var(--muted);font-size:13px">بزرگ‌نمایی</label>
+          <input type="range" id="zoom" min="4" max="24" value="12">
+          <span class="zoom-v" id="zoomV">×12</span>
+        </div>
+        <div class="prev-wrap" style="margin-top:12px">
+          <canvas id="prev" width="96" height="96"></canvas>
+          <span style="color:var(--muted);font-size:12px">پیش‌نمایش ۱:۱<br>خروجی همیشه شارپ است (بدون محو شدن)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top:20px">
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    Canvas خالص بدون کتابخانه · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const cv = $("cv"), ctx = cv.getContext("2d");
+const prev = $("prev"), pctx = prev.getContext("2d");
+
+const PALETTE = ["#ffffff","#94a3b8","#1e293b","#0f0f1e","#f87171","#fb923c","#facc15","#4ade80",
+                 "#22d3ee","#60a5fa","#c084fc","#f472b6","#7f1d1d","#78350f","#14532d","#1e3a8a"];
+let N = 16, art = Array(N * N).fill(null);
+let color = "#fb923c", eraser = false, bucket = false, sym = true, showGrid = true;
+let undoStack = [], painting = false, hoverCell = null;
+
+function resetArt(n) {
+  N = n;
+  art = Array(N * N).fill(null);
+  undoStack = [];
+  draw(); drawPrev();
+}
+function pushUndo() {
+  undoStack.push(art.slice());
+  if (undoStack.length > 40) undoStack.shift();
+}
+function draw() {
+  const cs = cv.width / N;
+  ctx.fillStyle = "#0d0d1c";
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  for (let y = 0; y < N; y++)
+    for (let x = 0; x < N; x++) {
+      const c = art[y * N + x];
+      if (c) { ctx.fillStyle = c; ctx.fillRect(x * cs, y * cs, cs, cs); }
+    }
+  if (showGrid && N <= 32) {
+    ctx.strokeStyle = "rgba(148,163,184,.14)";
+    ctx.lineWidth = 1;
+    for (let i = 1; i < N; i++) {
+      ctx.beginPath(); ctx.moveTo(i*cs, 0); ctx.lineTo(i*cs, cv.height); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, i*cs); ctx.lineTo(cv.width, i*cs); ctx.stroke();
+    }
+  }
+  if (hoverCell) {
+    ctx.strokeStyle = "rgba(251,146,60,.9)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(hoverCell[0]*cs + 1, hoverCell[1]*cs + 1, cs - 2, cs - 2);
+  }
+}
+function drawPrev() {
+  pctx.imageSmoothingEnabled = false;
+  pctx.clearRect(0, 0, 96, 96);
+  const off = document.createElement("canvas");
+  off.width = N; off.height = N;
+  const o = off.getContext("2d");
+  for (let y = 0; y < N; y++)
+    for (let x = 0; x < N; x++) {
+      const c = art[y * N + x];
+      if (c) { o.fillStyle = c; o.fillRect(x, y, 1, 1); }
+    }
+  pctx.drawImage(off, 0, 0, 96, 96);
+}
+function cellFromEvent(e) {
+  const r = cv.getBoundingClientRect();
+  return [Math.floor((e.clientX - r.left) / r.width * N),
+          Math.floor((e.clientY - r.top) / r.height * N)];
+}
+function setCell(x, y) {
+  if (x < 0 || y < 0 || x >= N || y >= N) return;
+  art[y * N + x] = eraser ? null : color;
+  if (sym) art[y * N + (N - 1 - x)] = eraser ? null : color;
+}
+function flood(x, y) {
+  const target = art[y * N + x];
+  const fill = eraser ? null : color;
+  if (target === fill) return;
+  const q = [[x, y]];
+  while (q.length) {
+    const [cx, cy] = q.pop();
+    if (cx < 0 || cy < 0 || cx >= N || cy >= N) continue;
+    if (art[cy * N + cx] !== target) continue;
+    art[cy * N + cx] = fill;
+    q.push([cx+1, cy], [cx-1, cy], [cx, cy+1], [cx, cy-1]);
+  }
+}
+cv.addEventListener("pointerdown", e => {
+  e.preventDefault();
+  const [x, y] = cellFromEvent(e);
+  pushUndo();
+  if (bucket) flood(x, y);
+  else { painting = true; setCell(x, y); }
+  draw(); drawPrev();
+});
+cv.addEventListener("pointermove", e => {
+  const [x, y] = cellFromEvent(e);
+  hoverCell = [x, y];
+  if (painting && !bucket) { setCell(x, y); draw(); }
+  else draw();
+});
+window.addEventListener("pointerup", () => { painting = false; });
+cv.addEventListener("pointerleave", () => { hoverCell = null; draw(); });
+
+/* palette chips */
+const palsEl = $("pals");
+PALETTE.forEach((c, i) => {
+  const el = document.createElement("div");
+  el.className = "sw" + (i === 5 ? " active" : "");
+  el.style.background = c;
+  el.title = c;
+  el.onclick = () => { color = c; eraser = false; bucket = false;
+    document.querySelectorAll(".sw").forEach(x => x.classList.remove("active"));
+    el.classList.add("active");
+    $("eraser").classList.remove("active"); $("bucket").classList.remove("active"); };
+  palsEl.appendChild(el);
+});
+$("custom").oninput = e => { color = e.target.value; eraser = false; bucket = false;
+  document.querySelectorAll(".sw").forEach(x => x.classList.remove("active"));
+  $("eraser").classList.remove("active"); $("bucket").classList.remove("active"); };
+$("eraser").onclick = () => { eraser = !eraser; bucket = false;
+  $("eraser").classList.toggle("active", eraser); $("bucket").classList.remove("active"); };
+$("bucket").onclick = () => { bucket = !bucket; eraser = false;
+  $("bucket").classList.toggle("active", bucket); $("eraser").classList.remove("active"); };
+$("undo").onclick = () => { if (undoStack.length) { art = undoStack.pop(); draw(); drawPrev(); } };
+$("clear").onclick = () => { pushUndo(); art = Array(N * N).fill(null); draw(); drawPrev(); };
+$("sym").onclick = () => { sym = !sym; $("sym").classList.toggle("active", sym); };
+$("grid").onclick = () => { showGrid = !showGrid; $("grid").classList.toggle("active", showGrid); draw(); };
+document.querySelectorAll("[data-n]").forEach(b => b.onclick = () => {
+  document.querySelectorAll("[data-n]").forEach(x => x.classList.toggle("active", x === b));
+  resetArt(+b.dataset.n);
+});
+$("zoom").oninput = e => { $("zoomV").textContent = "×" + e.target.value; };
+$("png").onclick = () => {
+  const z = +$("zoom").value;
+  const off = document.createElement("canvas");
+  off.width = N * z; off.height = N * z;
+  const o = off.getContext("2d");
+  o.imageSmoothingEnabled = false;
+  for (let y = 0; y < N; y++)
+    for (let x = 0; x < N; x++) {
+      const c = art[y * N + x];
+      if (c) { o.fillStyle = c; o.fillRect(x * z, y * z, z, z); }
+    }
+  const a = document.createElement("a");
+  a.download = "pixel-art-" + N + "x" + N + ".png";
+  a.href = off.toDataURL("image/png");
+  a.click();
+};
+draw(); drawPrev();
+</script>
+</body>
+</html>
