@@ -4,18 +4,18 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-16T17:10:39+03:30",
-  "count": 89,
+  "generated_at": "2026-11-17T22:05:11+03:30",
+  "count": 92,
   "stats": {
     "categories": {
       "telegram-bot": 63,
-      "web-tool": 20,
+      "web-tool": 23,
       "desktop-tool": 6
     },
     "languages": {
       "Python": 47,
       "PHP": 12,
-      "HTML/CSS/JS": 18,
+      "HTML/CSS/JS": 21,
       "JavaScript": 3,
       "PowerShell": 1,
       "Node.js": 5,
@@ -564,6 +564,17 @@ window.AWESOME_CATALOG = {
       "description_fa": "مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک"
     },
     {
+      "slug": "password-forge",
+      "path": "src/password-forge",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Password Forge",
+      "description_en": "Password & passphrase generator — entropy scoring, crack-time estimate, bulk mode, crypto API",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/password-forge/",
+      "name_fa": "جعبه‌جنگل پسورد",
+      "description_fa": "تولید پسورد و عبارت‌عبور قوی — سنجش آنتروپی زنده، برآورد زمان شکستن و حالت گروهی با crypto API"
+    },
+    {
       "slug": "perfect-ai-chat-bot",
       "path": "src/perfect-ai-chat-bot",
       "category": "telegram-bot",
@@ -606,6 +617,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "نظرسنجی و رأی‌گیری",
       "description_fa": "نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک"
+    },
+    {
+      "slug": "pomodoro-focus",
+      "path": "src/pomodoro-focus",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Pomodoro Focus",
+      "description_en": "Pomodoro timer — SVG dial, Web Worker tick, auto-cycling, WebAudio chime, daily stats",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/pomodoro-focus/",
+      "name_fa": "تایمر تمرکز",
+      "description_fa": "تایمر پومودورو — حلقه‌ی پیشرفت SVG، تیک Web Worker، چرخه‌ی خودکار و آمار روزانه"
     },
     {
       "slug": "post-manager-bot",
@@ -694,6 +716,17 @@ window.AWESOME_CATALOG = {
       "demo": null,
       "name_fa": "کوییز و مسابقه",
       "description_fa": "مسابقه‌ی گروهی با لیدربورد"
+    },
+    {
+      "slug": "regex-playground",
+      "path": "src/regex-playground",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Regex Playground",
+      "description_en": "Live regex tester — glowing match highlight, capture-group table, presets, cheat sheet",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/regex-playground/",
+      "name_fa": "زمین بازی Regex",
+      "description_fa": "تست زنده‌ی Regex — هایلایت درخشان تطبیق‌ها، جدول گروه‌های capture و پترن‌های آماده"
     },
     {
       "slug": "reminder-task-bot",

@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**89 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**92 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-89-blue)
+![Projects](https://img.shields.io/badge/projects-92-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -109,7 +109,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [auction-house-bot](./src/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
 | [fortune-teller-bot](./src/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
 
-### 🌐 Web tools — 20
+### 🌐 Web tools — 23
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -133,6 +133,9 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [sudoku-game-web](./src/sudoku-game-web) | HTML/CSS/JS | Sudoku with unique-solution generator — 4 difficulties, pencil notes, hints, solver | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/) |
 | [ascii-art-generator-web](./src/ascii-art-generator-web) | HTML/CSS/JS | ASCII art studio — hand-drawn bitmap fonts for banners + image-to-ASCII converter | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/) |
 | [canvas-paint-studio](./src/canvas-paint-studio) | HTML/CSS/JS | Browser paint app — brush & shapes with live preview, undo, quick swatches, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/) |
+| [password-forge](./src/password-forge) | HTML/CSS/JS | Password & passphrase generator — entropy scoring, crack-time estimate, bulk mode, crypto API | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/password-forge/) |
+| [pomodoro-focus](./src/pomodoro-focus) | HTML/CSS/JS | Pomodoro timer — SVG dial, Web Worker tick, auto-cycling, WebAudio chime, daily stats | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/pomodoro-focus/) |
+| [regex-playground](./src/regex-playground) | HTML/CSS/JS | Live regex tester — glowing match highlight, capture-group table, presets, cheat sheet | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/regex-playground/) |
 
 ### 🖥 Desktop tools — 6
 
@@ -261,7 +264,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🔨 خانه‌ی مزایده](./src/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
 | [🔮 فال‌گر شوخ](./src/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
 
-#### 🌐 ابزارهای وب (20)
+#### 🌐 ابزارهای وب (23)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -285,6 +288,9 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🔢 سودوکو](./src/sudoku-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/) | HTML/CSS/JS | سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده |
 | [🔤 هنر ASCII](./src/ascii-art-generator-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/) | HTML/CSS/JS | بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست |
 | [🖌 بوم نقاشی](./src/canvas-paint-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/) | HTML/CSS/JS | اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG |
+| [🔐 جعبه‌جنگل پسورد](./src/password-forge) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/password-forge/) | HTML/CSS/JS | تولید پسورد و عبارت‌عبور قوی — سنجش آنتروپی زنده، برآورد زمان شکستن و حالت گروهی با crypto API |
+| [🍅 تایمر تمرکز](./src/pomodoro-focus) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/pomodoro-focus/) | HTML/CSS/JS | تایمر پومودورو — حلقه‌ی پیشرفت SVG، تیک Web Worker، چرخه‌ی خودکار و آمار روزانه |
+| [🧪 زمین بازی Regex](./src/regex-playground) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/regex-playground/) | HTML/CSS/JS | تست زنده‌ی Regex — هایلایت درخشان تطبیق‌ها، جدول گروه‌های capture و پترن‌های آماده |
 
 #### 🖥 ابزارهای دسکتاپ (6)
 
