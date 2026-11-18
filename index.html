@@ -353,6 +353,20 @@
   .si-name { max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .cat.active, #demoFilterBtn.active { background:linear-gradient(135deg, var(--a1), var(--a2));
     border-color:transparent; color:#081024; font-weight:800; }
+
+  /* ---------- v7: favorites + live preview embed ---------- */
+  .fav-star { background:none; border:none; cursor:pointer; font-size:16px; line-height:1;
+              color:var(--muted); padding:2px 4px; transition:transform .15s, color .15s; }
+  .fav-star:hover { transform:scale(1.3); }
+  .fav-star.on { color:#fbbf24; }
+  .modal-cover { position:relative; }
+  .modal-cover.live { height:380px; background:#0a0a16; }
+  .modal-cover.live iframe { width:100%; height:100%; border:0; background:#fff; }
+  .embed-btn { position:absolute; top:10px; inset-inline-end:10px; z-index:5;
+               background:rgba(10,10,22,.85); border:1px solid var(--border2); color:var(--text);
+               border-radius:999px; padding:6px 14px; font:600 12px var(--font-fa); cursor:pointer;
+               backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); transition:.15s; }
+  .embed-btn:hover { border-color:var(--a1); transform:translateY(-1px); }
 </style>
 </head>
 <body>
@@ -392,6 +406,7 @@
   </div>
   <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
     <button class="cat" id="demoFilterBtn" type="button" title="Show only projects with a live demo">▶ فقط دمودار</button>
+    <button class="cat" id="favFilterBtn" type="button" title="Show favorites only">⭐ علاقه‌مندی‌ها</button>
     <div id="collections" aria-label="Collections"></div>
   <div class="lang-filter">
     <button class="lucky" id="luckyBtn" type="button" title="Open a random project">🎲 پروژه‌ی شانسی</button>
@@ -464,6 +479,8 @@
     category: "all",
     language: "all",
     demoOnly: false,
+    favOnly: false,
+    favs: JSON.parse(localStorage.getItem("as_favs") || "[]"),
     lang: localStorage.getItem("as_lang") || "en",
     theme: localStorage.getItem("as_theme") ||
       (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
@@ -565,6 +582,7 @@
     if (state.category !== "all" && p.category !== state.category) return false;
     if (state.language !== "all" && p.language !== state.language) return false;
     if (state.demoOnly && !p.demo) return false;
+    if (state.favOnly && state.favs.indexOf(p.slug) === -1) return false;
     if (window.__asTag && window.__asTag.indexOf(p.slug) === -1) return false;
     if (!state.query) return true;
     var q = faFold(state.query);
@@ -594,6 +612,9 @@
           '<div class="card-top">' +
             '<span class="cat-tag">' + icon + " " + label + "</span>" +
             '<span class="lang-badge">' + p.language + "</span>" +
+            '<button class="fav-star' + (state.favs.indexOf(p.slug) >= 0 ? " on" : "") +
+              '" data-star="' + p.slug + '" title="⭐">' +
+              (state.favs.indexOf(p.slug) >= 0 ? "★" : "☆") + "</button>" +
           "</div>" +
           '<h3><a href="' + REPO + "/tree/main/" + p.path + '" target="_blank" rel="noopener">' + title + "</a></h3>" +
           '<p class="desc">' + desc + "</p>" +
@@ -614,6 +635,7 @@
     if (state.category !== "all") active.push(t("categoryLabels")[state.category]);
     if (state.language !== "all") active.push(state.language);
     if (state.demoOnly) active.push("▶ demo");
+    if (state.favOnly) active.push("⭐");
     if (state.query) active.push("“" + state.query + "”");
     $("filterHint").textContent = active.length
       ? fmt(t("filtered"), { v: active.join(fa ? " ، " : " · ") })
@@ -653,6 +675,25 @@
     state.demoOnly = !state.demoOnly;
     this.classList.toggle("active", state.demoOnly);
     render();
+  });
+  $("favFilterBtn").addEventListener("click", function () {
+    state.favOnly = !state.favOnly;
+    this.classList.toggle("active", state.favOnly);
+    render();
+  });
+  /* v7: star toggling on cards (delegated; the modal-open delegation skips buttons) */
+  grid.addEventListener("click", function (e) {
+    var st = e.target.closest && e.target.closest("[data-star]");
+    if (!st) return;
+    e.stopPropagation();
+    var slug = st.dataset.star;
+    var removed = false;
+    var i = state.favs.indexOf(slug);
+    if (i >= 0) { state.favs.splice(i, 1); removed = true; } else state.favs.push(slug);
+    localStorage.setItem("as_favs", JSON.stringify(state.favs));
+    st.classList.toggle("on", !removed);
+    st.textContent = removed ? "☆" : "★";
+    if (state.favOnly) render();
   });
   /* v6 hook: curated collection shelves */
   window.__asSetTag = function (tag) { window.__asTag = tag; render(); };
@@ -911,6 +952,8 @@
   document.body.appendChild(mask);
   function closeModal() {
     mask.classList.remove("open");
+    var mc = document.getElementById("mCover");
+    if (mc && mc.querySelector("iframe")) { mc.className = "modal-cover"; mc.innerHTML = ""; mc.style.backgroundImage = ""; }
     if (location.hash.indexOf("#p=") === 0) history.replaceState(null, "", location.pathname + location.search);
   }
   mask.querySelector(".modal-close").addEventListener("click", closeModal);
@@ -936,6 +979,29 @@
       cov.className = "modal-cover none";
       cov.style.backgroundImage = "";
       cov.textContent = icon;
+    }
+    if (p.demo) {
+      var eb = document.createElement("button");
+      eb.className = "embed-btn";
+      eb.textContent = fa ? "▶ پیش‌نمایش زنده" : "▶ Live preview";
+      eb.addEventListener("click", function () {
+        cov.className = "modal-cover live";
+        cov.style.backgroundImage = "";
+        cov.innerHTML = '<iframe src="' + p.demo + '" title="live preview" loading="lazy"></iframe>' +
+          '<button class="embed-btn back">✕ ' + (fa ? "بازگشت به تصویر" : "Back to image") + "</button>";
+        cov.querySelector(".back").addEventListener("click", function () {
+          if (p.preview) {
+            cov.className = "modal-cover";
+            cov.innerHTML = "";
+            cov.style.backgroundImage = "url('" + data.site_url + p.preview + "')";
+          } else {
+            cov.className = "modal-cover none";
+            cov.style.backgroundImage = "";
+            cov.innerHTML = icon;
+          }
+        });
+      });
+      cov.appendChild(eb);
     }
     var chips = "<span>" + icon + " " + lab + "</span><span>💻 " + p.language + "</span>" +
       (p.demo ? "<span>🟢 " + (fa ? "دمو دارد" : "live demo") + "</span>" : "");
