@@ -1,0 +1,22 @@
+{
+  "name": "Awesome Scripts — 103 bots & tools",
+  "short_name": "Awesome Scripts",
+  "description": "Telegram bots, web tools and arcade games — one repository",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0a16",
+  "theme_color": "#0a0a16",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
