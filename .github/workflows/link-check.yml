@@ -1,0 +1,22 @@
+name: Link Check
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly, Mondays 06:00 UTC
+  workflow_dispatch:
+  push:
+    paths:
+      - "README.md"
+      - "data/catalog.json"
+      - "tools/check_links.py"
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe every demo URL in the catalog
+        run: python tools/check_links.py
