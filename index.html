@@ -13,6 +13,11 @@
 <meta property="og:url" content="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0a16">
+<meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
+<meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
 <meta name="twitter:title" content="Awesome Scripts — 103 ready-to-run bots & tools">
 <meta name="twitter:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities.">
 <meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
@@ -324,6 +329,30 @@
   .modal-desc { color:var(--text); font-size:14px; line-height:1.9; margin-bottom:10px; }
   .modal-alt { color:var(--muted); font-size:12.5px; line-height:1.8; margin-bottom:4px; }
   .modal-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+
+  /* ---------- v6: collections + demo filter ---------- */
+  #collections { margin-top:18px; display:flex; flex-direction:column; gap:14px; }
+  .shelf-head { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .shelf-head h2 { font:800 18px var(--font-fa); color:var(--text); }
+  .shelf { background:var(--glass); border:1px solid var(--border); border-radius:16px; padding:12px 14px;
+           transition:border-color .2s; }
+  .shelf.on { border-color:var(--border2); box-shadow:0 0 24px -8px rgba(56,189,248,.35); }
+  .shelf-title { display:flex; align-items:center; gap:8px; font:700 14px var(--font-fa); color:var(--text);
+                 margin-bottom:10px; }
+  .shelf-count { color:var(--muted); font:600 12px var(--font-en); }
+  .shelf-view { margin-inline-start:auto; background:var(--glass2); border:1px solid var(--border);
+                border-radius:999px; padding:2px 12px; color:var(--muted); font:600 11.5px var(--font-fa);
+                cursor:pointer; transition:.15s; }
+  .shelf-view:hover { border-color:var(--border2); color:var(--text); }
+  .shelf-row { display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; scrollbar-width:thin; }
+  .shelf-item { flex:0 0 auto; display:flex; align-items:center; gap:8px; background:var(--glass2);
+                border:1px solid var(--border); border-radius:12px; padding:7px 12px; color:var(--text);
+                font:600 12.5px var(--font-fa); cursor:pointer; transition:.15s; }
+  .shelf-item:hover { border-color:var(--border2); transform:translateY(-2px); }
+  .si-icon { font-size:16px; }
+  .si-name { max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .cat.active, #demoFilterBtn.active { background:linear-gradient(135deg, var(--a1), var(--a2));
+    border-color:transparent; color:#081024; font-weight:800; }
 </style>
 </head>
 <body>
@@ -362,6 +391,8 @@
     <span class="kbd-hint">/</span>
   </div>
   <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
+    <button class="cat" id="demoFilterBtn" type="button" title="Show only projects with a live demo">▶ فقط دمودار</button>
+    <div id="collections" aria-label="Collections"></div>
   <div class="lang-filter">
     <button class="lucky" id="luckyBtn" type="button" title="Open a random project">🎲 پروژه‌ی شانسی</button>
     <select id="lang" aria-label="Filter by language"></select>
@@ -432,6 +463,7 @@
     query: "",
     category: "all",
     language: "all",
+    demoOnly: false,
     lang: localStorage.getItem("as_lang") || "en",
     theme: localStorage.getItem("as_theme") ||
       (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
@@ -532,6 +564,8 @@
   function matches(p) {
     if (state.category !== "all" && p.category !== state.category) return false;
     if (state.language !== "all" && p.language !== state.language) return false;
+    if (state.demoOnly && !p.demo) return false;
+    if (window.__asTag && window.__asTag.indexOf(p.slug) === -1) return false;
     if (!state.query) return true;
     var q = faFold(state.query);
     var hay = faFold(
@@ -579,6 +613,7 @@
     var active = [];
     if (state.category !== "all") active.push(t("categoryLabels")[state.category]);
     if (state.language !== "all") active.push(state.language);
+    if (state.demoOnly) active.push("▶ demo");
     if (state.query) active.push("“" + state.query + "”");
     $("filterHint").textContent = active.length
       ? fmt(t("filtered"), { v: active.join(fa ? " ، " : " · ") })
@@ -614,6 +649,13 @@
     state.lang = state.lang === "en" ? "fa" : "en";
     applyLang();
   });
+  $("demoFilterBtn").addEventListener("click", function () {
+    state.demoOnly = !state.demoOnly;
+    this.classList.toggle("active", state.demoOnly);
+    render();
+  });
+  /* v6 hook: curated collection shelves */
+  window.__asSetTag = function (tag) { window.__asTag = tag; render(); };
   document.addEventListener("keydown", function (e) {
     if (e.key === "/" && document.activeElement !== searchEl) {
       e.preventDefault();
@@ -867,9 +909,13 @@
     '<div class="modal-cover" id="mCover"></div>' +
     '<div class="modal-body" id="mBody"></div></div>';
   document.body.appendChild(mask);
-  mask.querySelector(".modal-close").addEventListener("click", function () { mask.classList.remove("open"); });
-  mask.addEventListener("click", function (e) { if (e.target === mask) mask.classList.remove("open"); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") mask.classList.remove("open"); });
+  function closeModal() {
+    mask.classList.remove("open");
+    if (location.hash.indexOf("#p=") === 0) history.replaceState(null, "", location.pathname + location.search);
+  }
+  mask.querySelector(".modal-close").addEventListener("click", closeModal);
+  mask.addEventListener("click", function (e) { if (e.target === mask) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
 
   function openModal(slug) {
     var data = window.AWESOME_CATALOG || {};
@@ -896,20 +942,100 @@
     var btns =
       (p.demo ? '<a class="btn primary" href="' + p.demo + '" target="_blank" rel="noopener">▶ ' + (fa ? "دموی زنده" : "Live demo") + "</a>" : "") +
       '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/' + p.path + '" target="_blank" rel="noopener">📂 ' + (fa ? "پوشه" : "Folder") + "</a>" +
-      '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/blob/main/' + p.path + '/README.md" target="_blank" rel="noopener">📖 README</a>';
+      '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/blob/main/' + p.path + '/README.md" target="_blank" rel="noopener">📖 README</a>' +
+      '<button class="btn" id="shareBtn">🔗 ' + (fa ? "اشتراک‌گذاری" : "Share") + "</button>";
     document.getElementById("mBody").innerHTML =
       "<h3>" + title + "</h3>" +
       "<div class='modal-chips'>" + chips + "</div>" +
       "<p class='modal-desc'>" + desc + "</p>" +
       (alt && alt !== desc ? "<p class='modal-alt'>— " + alt + "</p>" : "") +
       "<div class='modal-actions'>" + btns + "</div>";
+    var sb = document.getElementById("shareBtn");
+    if (sb) sb.addEventListener("click", function () {
+      var url = location.origin + location.pathname + "#p=" + slug;
+      var done = function () {
+        sb.textContent = fa ? "✓ کپی شد" : "✓ Copied";
+        setTimeout(function () { sb.textContent = (fa ? "🔗 اشتراک‌گذاری" : "🔗 Share"); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
+      else { location.hash = "#p=" + slug; done(); }
+    });
+    if (history.replaceState) history.replaceState(null, "", "#p=" + slug);
     mask.classList.add("open");
   }
+  window.__asOpen = openModal;
   document.getElementById("grid").addEventListener("click", function (e) {
     if (e.target.closest("a") || e.target.closest("button")) return;
     var cardEl = e.target.closest && e.target.closest(".card");
     if (cardEl && cardEl.dataset.slug) openModal(cardEl.dataset.slug);
   });
+})();
+
+</script>
+
+<script>
+/* ---------- v6: curated collection shelves + hash deep-link boot ---------- */
+(function () {
+  "use strict";
+  var SHELVES = [{"id": "games", "icon": "🎮", "fa": "بازی‌ها", "en": "Games", "slugs": ["2048-web", "breakout-web", "connect4-minesweeper-bot", "dice-duel-bot", "minesweeper-web", "quiz-trivia-bot", "snake-game-web", "sudoku-game-web", "tetris-web", "tic-tac-toe-game", "typing-speed-race", "wordle-fa-bot", "world-war-game-bot"]}, {"id": "ai", "icon": "🤖", "fa": "هوش مصنوعی", "en": "AI", "slugs": ["ai-chat-assistant-bot", "ai-chat-webapp-php", "ai-self-coding-bot", "link-summarizer-bot", "perfect-ai-chat-bot"]}, {"id": "shop", "icon": "🛒", "fa": "فروشگاه و بازار", "en": "Shop & Market", "slugs": ["advanced-shop-bot", "auction-house-bot", "file-store-bot", "giftix-premium-shop-bot", "giftix-stars-shop-bot", "iran-market-rate-bot", "php-coin-manager-bot", "starzify-shop-bot", "subscription-shop-bot", "ton-nft-marketplace", "v2ray-shop-bot"]}, {"id": "creative", "icon": "🎨", "fa": "خلاقانه", "en": "Creative", "slugs": ["ascii-art-generator-web", "color-palette-studio", "fractal-explorer", "noise-art-web", "qr-code-studio", "solar-explorer-3d", "synthwave-keys"]}, {"id": "utils", "icon": "🧰", "fa": "ابزار روزمره", "en": "Everyday utils", "slugs": ["bulk-renamer-cli", "dupe-file-finder", "instagram-downloader-bot", "json-formatter-web", "markdown-editor-web", "password-forge", "pomodoro-focus", "unit-converter-web", "youtube-downloader-bot"]}];
+  var box = document.getElementById("collections");
+  if (!box || !window.AWESOME_CATALOG) return;
+
+  var active = null;
+  function bySlug(slug) {
+    return (window.AWESOME_CATALOG.projects || []).find(function (p) { return p.slug === slug; });
+  }
+  function isFa() { return document.documentElement.lang === "fa"; }
+
+  function build() {
+    var fa = isFa();
+    var html = '<div class="shelf-head"><h2>🗂 ' + (fa ? "مجموعه‌های منتخب" : "Curated collections") + "</h2>" +
+      (active ? '<button class="btn" id="clearTag">✕ ' + (fa ? "نمایش همه" : "Show all") + "</button>" : "") + "</div>";
+    SHELVES.forEach(function (sh) {
+      var items = sh.slugs.map(bySlug).filter(Boolean);
+      if (!items.length) return;
+      html += '<div class="shelf' + (active === sh.id ? " on" : "") + '" data-shelf="' + sh.id + '">' +
+        '<div class="shelf-title">' + sh.icon + " " + (fa ? sh.fa : sh.en) +
+        ' <span class="shelf-count">' + items.length + "</span>" +
+        '<button class="shelf-view" data-shelf="' + sh.id + '">' + (fa ? "نمایش" : "view") + "</button></div>" +
+        '<div class="shelf-row">' +
+        items.map(function (p) {
+          var icon = (window.AWESOME_CATALOG.category_icons || {})[p.category] || "📦";
+          var name = fa ? (p.name_fa || p.name_en) : p.name_en;
+          var hasDemo = p.demo ? " ●" : "";
+          return '<button class="shelf-item" data-slug="' + p.slug + '" title="' + name + '">' +
+            '<span class="si-icon">' + icon + "</span><span class='si-name'>" + name + hasDemo + "</span></button>";
+        }).join("") + "</div></div>";
+    });
+    box.innerHTML = html;
+    Array.prototype.forEach.call(box.querySelectorAll(".shelf-item"), function (b) {
+      b.addEventListener("click", function () { if (window.__asOpen) window.__asOpen(b.dataset.slug); });
+    });
+    Array.prototype.forEach.call(box.querySelectorAll(".shelf-view"), function (b) {
+      b.addEventListener("click", function () {
+        var sh = SHELVES.find(function (s) { return s.id === b.dataset.shelf; });
+        active = active === sh.id ? null : sh.id;
+        window.__asSetTag(active ? sh.slugs : null);
+        document.getElementById("grid").scrollIntoView({ behavior: "smooth", block: "start" });
+        build();
+      });
+    });
+    var clear = document.getElementById("clearTag");
+    if (clear) clear.addEventListener("click", function () {
+      active = null;
+      window.__asSetTag(null);
+      build();
+    });
+  }
+  build();
+  new MutationObserver(build).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+
+  /* deep link: #p=slug opens the modal directly */
+  var m = location.hash.match(/^#p=([\w.-]+)$/);
+  if (m) {
+    var card = document.querySelector('.card[data-slug="' + m[1] + '"]');
+    if (card && window.__asOpen) window.__asOpen(m[1]);
+  }
 })();
 </script>
 </body>
