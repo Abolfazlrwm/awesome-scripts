@@ -8,6 +8,16 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.17.0] — 2026-11-18 — 🧰 Everyday tools + landing v6 (63 bots · 37 web · 6 desktop)
+
+- **3 new everyday tools** (`103 → 106`): `markdown-editor-web` (live split preview with a safe escape-first parser, toolbar, autosave and .md export), `json-formatter-web` (pretty/minify, line-and-column precise errors, collapsible tree viewer) and `unit-converter-web` (length, mass, temperature, data and speed with exact SI factors) — each function-tested in a real browser and shipped with preview + live demo.
+- **Landing v6** — curated **collection shelves** (🎮 Games / 🤖 AI / 🛒 Shop / 🎨 Creative / 🧰 Utils) with horizontal scrolling; every project card now opens via **shareable deep link** (`#p=slug`) with a one-click **Share** button in the modal; new **▶ demo-only** filter chip.
+- **PWA + branding** — `manifest.json` with standalone display, SVG favicon and a 512 px app icon; the site is now installable from the browser menu.
+- **SEO + social** — `sitemap.xml` and `robots.txt` generated from the catalog, plus a custom 1200×630 **OG banner** (`assets/og-banner.png`) wired into Twitter/OG meta for rich link cards.
+- **CI** — new weekly **Link Check** workflow (`tools/check_links.py`): probes all demo URLs concurrently and posts a health table to the job summary.
+
+سه ابزار کاربردی روزمره اضافه شدند؛ لندینگ قفسه‌ی مجموعه‌های منتخب، لینک اشتراک‌گذاری (#p=slug) و فیلتر «فقط دمودار» گرفت؛ سایت حالا نصب‌شدنی است (PWA)، برای موتورهای جستجو نقشه‌ی سایت و بنر شبکه‌های اجتماعی دارد و هر هفته CI همه‌ی لینک‌های دمو را بررس می‌کند.
+
 ## [v1.16.0] — 2026-11-18 — 🕹 Arcade pack (63 bots · 34 web · 6 desktop)
 
 - **3 new arcade classics** (`100 → 103`): `2048-web` (real sliding-tile animation with line-compression merges, undo and swipe), `minesweeper-web` (three difficulties, always-safe first click, long-press flags, per-difficulty best times) and `breakout-web` (angle-based paddle physics, three level layouts, 2-HP bricks, particle bursts) — each QA'd interactively and shipped with preview + live demo.
