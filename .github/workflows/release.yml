@@ -40,13 +40,13 @@ jobs:
             git log --no-merges --max-count=60 --pretty=format:"- %s (%h)" "$RANGE"
             echo
             echo
-            echo "**Full catalog:** open \`src/\` or browse the [interactive site](https://abolfazlrwm.github.io/awesome-scripts/)."
+            echo "**Full catalog:** open \`bots/\`, \`web/\` and \`desktop/\` or browse the [interactive site](https://abolfazlrwm.github.io/awesome-scripts/)."
           } > release_notes.md
           cat release_notes.md
 
       - name: Pack source archive
         run: |
-          zip -qr "awesome-scripts-${GITHUB_REF_NAME}.zip" src README.md LICENSE
+          zip -qr "awesome-scripts-${GITHUB_REF_NAME}.zip" bots web desktop README.md LICENSE
           ls -lh awesome-scripts-*.zip
 
       - name: Create GitHub Release

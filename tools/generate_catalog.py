@@ -29,7 +29,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 README_PATH = REPO_ROOT / "README.md"
 DATA_DIR = REPO_ROOT / "data"
-SRC_DIR = REPO_ROOT / "src"
+CATEGORY_DIRS = {
+    "telegram-bot": "bots",
+    "web-tool": "web",
+    "desktop-tool": "desktop",
+}
+PROJECT_DIRS = [REPO_ROOT / d for d in ("bots", "web", "desktop")]
 
 TEHRAN_TZ = timezone(timedelta(hours=3, minutes=30))
 REPO_URL = "https://github.com/Abolfazlrwm/awesome-scripts"
@@ -85,14 +90,14 @@ NAME_OVERRIDES = {
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
-# | [slug](./src/slug) | Lang | Desc | [demo](url)? |
+# | [slug](./bots/slug) | Lang | Desc | [demo](url)? |
 EN_ROW_RE = re.compile(
-    r"^\|\s*\[(?P<name>[^\]]+)\]\(\./src/(?P<slug>[A-Za-z0-9._-]+)\)\s*"
+    r"^\|\s*\[(?P<name>[^\]]+)\]\(\./(?:bots|web|desktop)/(?P<slug>[A-Za-z0-9._-]+)\)\s*"
     r"\|\s*(?P<lang>[^|]+?)\s*\|\s*(?P<desc>.*?)(?:\s*\|\s*\[demo\]\((?P<demo>[^)]+)\))?\s*\|\s*$"
 )
-# | [FA name](./src/slug)( · [دمو زنده](url))? | Lang | Desc |
+# | [FA name](./bots/slug)( · [دمو زنده](url))? | Lang | Desc |
 FA_ROW_RE = re.compile(
-    r"^\|\s*\[(?P<name>[^\]]+)\]\(\./src/(?P<slug>[A-Za-z0-9._-]+)\)"
+    r"^\|\s*\[(?P<name>[^\]]+)\]\(\./(?:bots|web|desktop)/(?P<slug>[A-Za-z0-9._-]+)\)"
     r"(?:\s*·\s*\[[^\]]*\]\((?P<demo>[^)]+)\))?\s*"
     r"\|\s*(?P<lang>[^|]+?)\s*\|\s*(?P<desc>.+?)\s*\|\s*$"
 )
@@ -165,7 +170,7 @@ def build_catalog() -> dict:
                 raise SystemExit(f"ERROR: duplicate project slug in EN table: {slug}")
             projects[slug] = {
                 "slug": slug,
-                "path": f"src/{slug}",
+                "path": f"{CATEGORY_DIRS[category]}/{slug}",
                 "category": category,
                 "language": row["lang"].strip(),
                 "name_en": prettify_slug(slug),
@@ -199,20 +204,20 @@ def build_catalog() -> dict:
         raise SystemExit(f"ERROR: projects missing from FA tables: {', '.join(missing_fa)}")
 
     # --- Cross-check against the filesystem ---
-    fs_slugs = sorted(p.name for p in SRC_DIR.iterdir() if p.is_dir())
+    fs_slugs = sorted(p.name for d in PROJECT_DIRS for p in d.iterdir() if p.is_dir())
     table_slugs = sorted(projects)
     if fs_slugs != table_slugs:
         only_fs = sorted(set(fs_slugs) - set(table_slugs))
         only_table = sorted(set(table_slugs) - set(fs_slugs))
         raise SystemExit(
-            "ERROR: src/ folders and README tables disagree.\n"
+            "ERROR: project folders and README tables disagree.\n"
             f"  only on disk: {only_fs}\n  only in tables: {only_table}"
         )
 
     ordered = [projects[slug] for slug in table_slugs]
     for project in ordered:
-        preview = SRC_DIR / project["slug"] / "docs" / "preview.png"
-        project["preview"] = f"src/{project['slug']}/docs/preview.png" if preview.exists() else None
+        preview = REPO_ROOT / project["path"] / "docs" / "preview.png"
+        project["preview"] = f"{project['path']}/docs/preview.png" if preview.exists() else None
     languages: dict[str, int] = {}
     categories: dict[str, int] = {}
     for project in ordered:

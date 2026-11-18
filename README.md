@@ -22,11 +22,35 @@
 
 <a id="english"></a>
 
+## 🌐 Live Gallery — گالری زنده
+
+**[▶ Browse all projects interactively](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, favorites and real in-modal previews. The site is built and deployed automatically by **GitHub Actions** (Pages) on every push.
+
+<p align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/"><img src="assets/site-preview.png" alt="interactive project gallery" width="85%"></a></p>
+
+**[▶ مشاهده‌ی زنده‌ی همه‌ی پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/)** — جست‌وجوی زنده، فیلتر دسته/زبان، علاقه‌مندی‌ها و پیش‌نمایش واقعی داخل مودال؛ انتشار خودکار با **GitHub Actions** در هر push.
+
 ## ✨ About
 
-Every project here is a **complete, runnable application** — not a snippet. Open any folder under [`src/`](./src), follow its README, and you have a working bot, tool or site in minutes. The collection spans **9 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
+Every project here is a **complete, runnable application** — not a snippet. Projects are grouped by type — [`bots/`](./bots) (63 Telegram bots), [`web/`](./web) (40 browser tools) and [`desktop/`](./desktop) (6 utilities) — open any folder, follow its README, and you have a working bot, tool or site in minutes. The collection spans **9 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
 
 > 🧭 Prefer browsing? Open the **[interactive catalog](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, dark mode and full Persian (RTL) mode. Stable versions are published under [Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases).
+
+## 🗂 Repository layout — ساختار مخزن
+
+```text
+awesome-scripts/
+├── bots/        # 63 Telegram bots (Python · PHP · Node.js)
+├── web/         # 40 browser tools — offline single-file HTML apps
+├── desktop/     # 6 desktop utilities
+├── index.html   # interactive live gallery (GitHub Pages)
+├── data/        # catalog.json / catalog.js — generated from README tables
+├── tools/       # catalog generator · validator · scaffolder · sitemap
+├── assets/      # OG banner · favicons · gallery screenshot
+└── .github/     # CI: lint · validate · link-check · CodeQL · release · Pages
+```
+
+ربات‌ها در `bots/`، ابزارهای وب در `web/` و ابزارهای دسکتاپ در `desktop/`؛ سایت تعاملی و مانیفست در ریشه، ابزارهای نگهداری در `tools/` و پایپ‌لاین‌های CI در `.github/`.
 
 > 📬 **Contact / custom projects:** Telegram [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
 
@@ -34,7 +58,7 @@ Every project here is a **complete, runnable application** — not a snippet. Op
 
 ```bash
 git clone https://github.com/Abolfazlrwm/awesome-scripts.git
-cd awesome-scripts/src/<project-folder>
+cd awesome-scripts/<bots|web|desktop>/<project-folder>
 # open that folder's README.md and follow the setup steps
 ```
 
@@ -46,125 +70,125 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 | Project | Lang | What it does |
 | --- | --- | --- |
-| [life-simulator-bot](./src/life-simulator-bot) | Python | Full life-simulation game — jobs & skills, bank cards, real estate, companies, free market, crime & jail |
-| [city-builder-bot](./src/city-builder-bot) | Python | City-building strategy game — tech tree, diplomacy & trade, happiness economy, random events |
-| [world-war-game-bot](./src/world-war-game-bot) | Python | Geopolitical war simulator — countries, NPC raids & nukes, oil/arms/stock markets, clans, VIP |
-| [military-alliance-bot](./src/military-alliance-bot) | Python | Military strategy game — land/air/navy forces, trade & war declarations, billion-cost alliances |
-| [giftix-stars-shop-bot](./src/giftix-stars-shop-bot) | Python | Stars/Premium/Gift/TON storefront — wallet & gateways, referrals, order tracking, tickets |
-| [giftix-premium-shop-bot](./src/giftix-premium-shop-bot) | Python | Full GiftiX storefront — Stars/Premium/Gifts/TON with live Nobitex rates, profit engine, referral commission, tickets |
-| [member-tag-manager-bot](./src/member-tag-manager-bot) | Python | Real member tags (setChatMemberTag), premium-emoji relay, personal invite links with join counters |
-| [channel-translate-worker](./src/channel-translate-worker) | JavaScript | Cloudflare Worker stamps fa/en/ru translate buttons onto channel posts (Gemini + Google fallback) |
-| [perfect-ai-chat-bot](./src/perfect-ai-chat-bot) | PHP | Chat-to-channel bridge — member messages forward into your channel, sessions, owner panel |
-| [ai-self-coding-bot](./src/ai-self-coding-bot) | PHP | Self-coding experiment — OpenRouter Llama-3 writes & appends PHP into its own bot file (owner-only) |
-| [php-coin-manager-bot](./src/php-coin-manager-bot) | PHP | Coin economy & view-order shop — balances, top-ups, admin panel, Jalali dates, zero dependencies |
-| [url-shortener-php-bot](./src/url-shortener-php-bot) | PHP | URL shortener in PHP & Python — TinyURL, flood control, block list, DB-editable texts, force join |
-| [todo-miniapp-worker](./src/todo-miniapp-worker) | JavaScript | ToDoList Mini App as one Cloudflare Worker — API + bot webhook + cron reminders + embedded frontend on D1 |
-| [spotify-music-bot](./src/spotify-music-bot) | Python | Spotify link & YouTube Music search downloader — 320 kbps with original cover art + ID3 tags |
-| [voicecall-userbot](./src/voicecall-userbot) | Python | VoiceChat userbot + admin panel — auto join, YouTube/music playback, playlists, live radio streams |
-| [winland-giveaway-bot](./src/winland-giveaway-bot) | Python | WinLand-style giveaways — multi-prize draws, referral points, mandatory channel join, admin panel |
-| [post-manager-bot](./src/post-manager-bot) | Python | Channel post manager with colored inline buttons (Bot API 7.10+ styles) and live preview |
-| [channel-likes-bot](./src/channel-likes-bot) | Python | Reposts anything sent to the bot into your channel with a live one-per-user like button |
-| [likes-challenges-php-bot](./src/likes-challenges-php-bot) | PHP | Channel growth suite — auto-likes, like/speed challenges, coin economy with card & Zibal payments, web installer |
-| [telegram-selfbot-panel](./src/telegram-selfbot-panel) | Python | 42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler |
-| [pyrogram-selfbot-manager](./src/pyrogram-selfbot-manager) | Python | Pyrogram account manager — phone login, live name clock (10 fonts), secretary & guards, session security |
-| [multi-account-manager](./src/multi-account-manager) | Python | Multi-account control center — sync mode, operation workers, per-account DBs, owner panel |
-| [iran-market-rate-bot](./src/iran-market-rate-bot) | Python | Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list |
-| [emoji-forge-bot](./src/emoji-forge-bot) | Python | Custom emoji pack rebranding (TGS/WEBM) — pipeline, tests, systemd deploy |
-| [starzify-shop-bot](./src/starzify-shop-bot) | Python | Stars/Premium/Gifts/Crypto shop replica — wallet, referrals, admin panel |
-| [v2ray-shop-bot](./src/v2ray-shop-bot) | Python | V2Ray/OpenVPN config shop — card-to-card payments, wallet, admin panel |
-| [php-bot-maker](./src/php-bot-maker) | PHP | Bot-maker platform — users build bots, coin economy, marketplace with moderation |
-| [channel-submission-bot](./src/channel-submission-bot) | PHP | Users submit posts, admin approves → auto-published to the channel |
-| [advanced-shop-bot](./src/advanced-shop-bot) | Python | Full shop bot — product catalog, cart, coupons, card-to-card payment |
-| [subscription-shop-bot](./src/subscription-shop-bot) | Python | Automated subscription selling, lucky wheel, reseller system |
-| [happydog-economy-bot](./src/happydog-economy-bot) | Python | Group economy game — pets, fishing, factories, city hall, national leadership |
-| [connect4-minesweeper-bot](./src/connect4-minesweeper-bot) | Python | Connect-4 & Minesweeper group games with ranking and a leaderboard |
-| [telethon-session-manager](./src/telethon-session-manager) | Python | Multi-account automation with Telethon (join, reactions) |
-| [ai-chat-assistant-bot](./src/ai-chat-assistant-bot) | PHP | Chat with GPT / DeepSeek / Grok + full admin panel |
-| [instagram-downloader-bot](./src/instagram-downloader-bot) | Python | Instagram posts/reels/stories downloader with VIP membership |
-| [premium-emoji-poster-cfworker](./src/premium-emoji-poster-cfworker) | JavaScript | Channel posting with premium emojis — runs on Cloudflare Workers |
-| [meow-point-bot](./src/meow-point-bot) | Python | Cat-themed group economy — wars, bank, points |
-| [group-guardian-bot](./src/group-guardian-bot) | Node.js | Anti-spam, entry captcha, word filtering, auto-warnings |
-| [file-store-bot](./src/file-store-bot) | Node.js | File storage with dedicated download links |
-| [price-ticker-bot](./src/price-ticker-bot) | Node.js | Crypto prices, price alerts, auto channel updates |
-| [url-shortener-bot](./src/url-shortener-bot) | Node.js | Link shortening with click analytics |
-| [youtube-downloader-bot](./src/youtube-downloader-bot) | PHP | YouTube video/audio downloader |
-| [uptime-monitor-bot](./src/uptime-monitor-bot) | C# | Website/server uptime checks + HTML status page |
-| [quiz-trivia-bot](./src/quiz-trivia-bot) | Java | Group quiz competitions with a leaderboard |
-| [rss-news-bot](./src/rss-news-bot) | C++ | Auto-post new feed items to a channel |
-| [translator-bot](./src/translator-bot) | Node.js | Auto-translate messages |
-| [support-ticket-bot](./src/support-ticket-bot) | Python | Relay user messages ↔ a private support group |
-| [digit-id-bot](./src/digit-id-bot) | Python | Get any Telegram user's numeric ID |
-| [reminder-task-bot](./src/reminder-task-bot) | Python | One-time/daily reminders — task list with buttons, snooze, SQLite |
-| [link-summarizer-bot](./src/link-summarizer-bot) | Python | Summarize links & text — offline by default, upgradeable with an LLM |
-| [code-share-bot](./src/code-share-bot) | Python | Store, search & share code snippets with syntax highlighting |
-| [digiato-article-bot](./src/digiato-article-bot) | Python | Search & extract Digiato articles with pagination |
-| [freedomnet-vpn-bot](./src/freedomnet-vpn-bot) | Python | VPN config distribution — QR codes, server ping tests, admin panel |
-| [forward-info-bot](./src/forward-info-bot) | PHP | Reveal the original sender of forwarded messages |
-| [lottery-giveaway-bot](./src/lottery-giveaway-bot) | Python | Giveaways with mandatory join, referrals, admin panel |
-| [poll-vote-bot](./src/poll-vote-bot) | Python | Polls with live vote buttons, rendered result cards, CSV export — no framework |
-| [wordle-fa-bot](./src/wordle-fa-bot) | Python | Persian Wordle — 5-letter word of the day, 6 tries, emoji feedback, streaks & stats |
-| [flashcard-srs-bot](./src/flashcard-srs-bot) | Python | Spaced-repetition study bot — SM-2 scheduler, decks, grade buttons, progress |
-| [expense-splitter-bot](./src/expense-splitter-bot) | Python | Group cost sharing — live balances, equal/custom splits, fewest-transfers settle-up |
-| [dice-duel-bot](./src/dice-duel-bot) | Python | PvP wagered dice duels — animated 2d6 rolls, tie re-rolls, coins & leaderboard |
-| [prayer-times-bot](./src/prayer-times-bot) | Python | Offline prayer times for 30 Iranian cities — Geophysics method, Qibla bearing, /next countdown |
-| [auction-house-bot](./src/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
-| [fortune-teller-bot](./src/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
+| [life-simulator-bot](./bots/life-simulator-bot) | Python | Full life-simulation game — jobs & skills, bank cards, real estate, companies, free market, crime & jail |
+| [city-builder-bot](./bots/city-builder-bot) | Python | City-building strategy game — tech tree, diplomacy & trade, happiness economy, random events |
+| [world-war-game-bot](./bots/world-war-game-bot) | Python | Geopolitical war simulator — countries, NPC raids & nukes, oil/arms/stock markets, clans, VIP |
+| [military-alliance-bot](./bots/military-alliance-bot) | Python | Military strategy game — land/air/navy forces, trade & war declarations, billion-cost alliances |
+| [giftix-stars-shop-bot](./bots/giftix-stars-shop-bot) | Python | Stars/Premium/Gift/TON storefront — wallet & gateways, referrals, order tracking, tickets |
+| [giftix-premium-shop-bot](./bots/giftix-premium-shop-bot) | Python | Full GiftiX storefront — Stars/Premium/Gifts/TON with live Nobitex rates, profit engine, referral commission, tickets |
+| [member-tag-manager-bot](./bots/member-tag-manager-bot) | Python | Real member tags (setChatMemberTag), premium-emoji relay, personal invite links with join counters |
+| [channel-translate-worker](./bots/channel-translate-worker) | JavaScript | Cloudflare Worker stamps fa/en/ru translate buttons onto channel posts (Gemini + Google fallback) |
+| [perfect-ai-chat-bot](./bots/perfect-ai-chat-bot) | PHP | Chat-to-channel bridge — member messages forward into your channel, sessions, owner panel |
+| [ai-self-coding-bot](./bots/ai-self-coding-bot) | PHP | Self-coding experiment — OpenRouter Llama-3 writes & appends PHP into its own bot file (owner-only) |
+| [php-coin-manager-bot](./bots/php-coin-manager-bot) | PHP | Coin economy & view-order shop — balances, top-ups, admin panel, Jalali dates, zero dependencies |
+| [url-shortener-php-bot](./bots/url-shortener-php-bot) | PHP | URL shortener in PHP & Python — TinyURL, flood control, block list, DB-editable texts, force join |
+| [todo-miniapp-worker](./bots/todo-miniapp-worker) | JavaScript | ToDoList Mini App as one Cloudflare Worker — API + bot webhook + cron reminders + embedded frontend on D1 |
+| [spotify-music-bot](./bots/spotify-music-bot) | Python | Spotify link & YouTube Music search downloader — 320 kbps with original cover art + ID3 tags |
+| [voicecall-userbot](./bots/voicecall-userbot) | Python | VoiceChat userbot + admin panel — auto join, YouTube/music playback, playlists, live radio streams |
+| [winland-giveaway-bot](./bots/winland-giveaway-bot) | Python | WinLand-style giveaways — multi-prize draws, referral points, mandatory channel join, admin panel |
+| [post-manager-bot](./bots/post-manager-bot) | Python | Channel post manager with colored inline buttons (Bot API 7.10+ styles) and live preview |
+| [channel-likes-bot](./bots/channel-likes-bot) | Python | Reposts anything sent to the bot into your channel with a live one-per-user like button |
+| [likes-challenges-php-bot](./bots/likes-challenges-php-bot) | PHP | Channel growth suite — auto-likes, like/speed challenges, coin economy with card & Zibal payments, web installer |
+| [telegram-selfbot-panel](./bots/telegram-selfbot-panel) | Python | 42+ feature selfbot — inline panel, live name clock, media saver, QR/logo, AI, scheduler |
+| [pyrogram-selfbot-manager](./bots/pyrogram-selfbot-manager) | Python | Pyrogram account manager — phone login, live name clock (10 fonts), secretary & guards, session security |
+| [multi-account-manager](./bots/multi-account-manager) | Python | Multi-account control center — sync mode, operation workers, per-account DBs, owner panel |
+| [iran-market-rate-bot](./bots/iran-market-rate-bot) | Python | Free-market rates as rendered cards — USD, gold coins, crypto, converter, full list |
+| [emoji-forge-bot](./bots/emoji-forge-bot) | Python | Custom emoji pack rebranding (TGS/WEBM) — pipeline, tests, systemd deploy |
+| [starzify-shop-bot](./bots/starzify-shop-bot) | Python | Stars/Premium/Gifts/Crypto shop replica — wallet, referrals, admin panel |
+| [v2ray-shop-bot](./bots/v2ray-shop-bot) | Python | V2Ray/OpenVPN config shop — card-to-card payments, wallet, admin panel |
+| [php-bot-maker](./bots/php-bot-maker) | PHP | Bot-maker platform — users build bots, coin economy, marketplace with moderation |
+| [channel-submission-bot](./bots/channel-submission-bot) | PHP | Users submit posts, admin approves → auto-published to the channel |
+| [advanced-shop-bot](./bots/advanced-shop-bot) | Python | Full shop bot — product catalog, cart, coupons, card-to-card payment |
+| [subscription-shop-bot](./bots/subscription-shop-bot) | Python | Automated subscription selling, lucky wheel, reseller system |
+| [happydog-economy-bot](./bots/happydog-economy-bot) | Python | Group economy game — pets, fishing, factories, city hall, national leadership |
+| [connect4-minesweeper-bot](./bots/connect4-minesweeper-bot) | Python | Connect-4 & Minesweeper group games with ranking and a leaderboard |
+| [telethon-session-manager](./bots/telethon-session-manager) | Python | Multi-account automation with Telethon (join, reactions) |
+| [ai-chat-assistant-bot](./bots/ai-chat-assistant-bot) | PHP | Chat with GPT / DeepSeek / Grok + full admin panel |
+| [instagram-downloader-bot](./bots/instagram-downloader-bot) | Python | Instagram posts/reels/stories downloader with VIP membership |
+| [premium-emoji-poster-cfworker](./bots/premium-emoji-poster-cfworker) | JavaScript | Channel posting with premium emojis — runs on Cloudflare Workers |
+| [meow-point-bot](./bots/meow-point-bot) | Python | Cat-themed group economy — wars, bank, points |
+| [group-guardian-bot](./bots/group-guardian-bot) | Node.js | Anti-spam, entry captcha, word filtering, auto-warnings |
+| [file-store-bot](./bots/file-store-bot) | Node.js | File storage with dedicated download links |
+| [price-ticker-bot](./bots/price-ticker-bot) | Node.js | Crypto prices, price alerts, auto channel updates |
+| [url-shortener-bot](./bots/url-shortener-bot) | Node.js | Link shortening with click analytics |
+| [youtube-downloader-bot](./bots/youtube-downloader-bot) | PHP | YouTube video/audio downloader |
+| [uptime-monitor-bot](./bots/uptime-monitor-bot) | C# | Website/server uptime checks + HTML status page |
+| [quiz-trivia-bot](./bots/quiz-trivia-bot) | Java | Group quiz competitions with a leaderboard |
+| [rss-news-bot](./bots/rss-news-bot) | C++ | Auto-post new feed items to a channel |
+| [translator-bot](./bots/translator-bot) | Node.js | Auto-translate messages |
+| [support-ticket-bot](./bots/support-ticket-bot) | Python | Relay user messages ↔ a private support group |
+| [digit-id-bot](./bots/digit-id-bot) | Python | Get any Telegram user's numeric ID |
+| [reminder-task-bot](./bots/reminder-task-bot) | Python | One-time/daily reminders — task list with buttons, snooze, SQLite |
+| [link-summarizer-bot](./bots/link-summarizer-bot) | Python | Summarize links & text — offline by default, upgradeable with an LLM |
+| [code-share-bot](./bots/code-share-bot) | Python | Store, search & share code snippets with syntax highlighting |
+| [digiato-article-bot](./bots/digiato-article-bot) | Python | Search & extract Digiato articles with pagination |
+| [freedomnet-vpn-bot](./bots/freedomnet-vpn-bot) | Python | VPN config distribution — QR codes, server ping tests, admin panel |
+| [forward-info-bot](./bots/forward-info-bot) | PHP | Reveal the original sender of forwarded messages |
+| [lottery-giveaway-bot](./bots/lottery-giveaway-bot) | Python | Giveaways with mandatory join, referrals, admin panel |
+| [poll-vote-bot](./bots/poll-vote-bot) | Python | Polls with live vote buttons, rendered result cards, CSV export — no framework |
+| [wordle-fa-bot](./bots/wordle-fa-bot) | Python | Persian Wordle — 5-letter word of the day, 6 tries, emoji feedback, streaks & stats |
+| [flashcard-srs-bot](./bots/flashcard-srs-bot) | Python | Spaced-repetition study bot — SM-2 scheduler, decks, grade buttons, progress |
+| [expense-splitter-bot](./bots/expense-splitter-bot) | Python | Group cost sharing — live balances, equal/custom splits, fewest-transfers settle-up |
+| [dice-duel-bot](./bots/dice-duel-bot) | Python | PvP wagered dice duels — animated 2d6 rolls, tie re-rolls, coins & leaderboard |
+| [prayer-times-bot](./bots/prayer-times-bot) | Python | Offline prayer times for 30 Iranian cities — Geophysics method, Qibla bearing, /next countdown |
+| [auction-house-bot](./bots/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
+| [fortune-teller-bot](./bots/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
 
 ### 🌐 Web tools — 40
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
-| [wheel-of-actions](./src/wheel-of-actions) | HTML/CSS/JS | Spin-the-wheel task prioritizer | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/) |
-| [twitter-media-api](./src/twitter-media-api) | PHP | Tweet URL → media JSON — guest-token auth, GraphQL TweetDetail, all photo/video variants |
-| [ai-chat-webapp-php](./src/ai-chat-webapp-php) | PHP | Single-file OpenRouter chat web app — conversation history, Markdown, light/dark theme, RTL UI |
-| [caller-lookup-app](./src/caller-lookup-app) | HTML/CSS/JS | Persian spam-caller lookup — search a number, see labels & community reports | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/) |
-| [backend-dev-portfolio](./src/backend-dev-portfolio) | HTML/CSS/JS | Single-file dark portfolio for backend & bot developers — zero dependencies | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/) |
-| [ton-nft-marketplace](./src/ton-nft-marketplace) | HTML/CSS/JS | TON Connect NFT marketplace UI — gallery, buy modal, fa/en language toggle | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/) |
-| [solar-explorer-3d](./src/solar-explorer-3d) | HTML/CSS/JS | Interactive 3D solar system (Three.js) — time control, planet info | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/) |
-| [control-room-dashboard](./src/control-room-dashboard) | HTML/CSS/JS | Live simulated dashboard — bot status, real-time logs, FX rates | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/) |
-| [qr-code-studio](./src/qr-code-studio) | HTML/CSS/JS | Custom QR codes — colors, gradients, logo, PNG/SVG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) |
-| [world-clock-planner](./src/world-clock-planner) | HTML/CSS/JS | International meeting planner — shared time bar, day/night per city | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/) |
-| [tic-tac-toe-game](./src/tic-tac-toe-game) | HTML/CSS/JS | Classic tic-tac-toe against an AI | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/) |
-| [mobile-app-intro-template](./src/mobile-app-intro-template) | HTML/CSS/JS | 12 responsive landing pages for mobile app promotion | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) |
-| [telegram-channel-landing-page](./src/telegram-channel-landing-page) | HTML/CSS/JS | Single-file landing page for Telegram channels & brands | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) |
-| [jalali-date-tools](./src/jalali-date-tools) | HTML/CSS/JS | Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline) | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) |
-| [color-palette-studio](./src/color-palette-studio) | HTML/CSS/JS | Palette generator — harmony rules, tints/shades, WCAG contrast lab, CSS/JSON/Tailwind export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/) |
-| [drum-machine-web](./src/drum-machine-web) | HTML/CSS/JS | 16-step WebAudio drum machine — synthesized voices, BPM/swing, presets, save/load | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/) |
-| [typing-speed-race](./src/typing-speed-race) | HTML/CSS/JS | FA/EN typing test — per-char feedback, live WPM curve, localStorage history | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/typing-speed-race/) |
-| [sudoku-game-web](./src/sudoku-game-web) | HTML/CSS/JS | Sudoku with unique-solution generator — 4 difficulties, pencil notes, hints, solver | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/) |
-| [ascii-art-generator-web](./src/ascii-art-generator-web) | HTML/CSS/JS | ASCII art studio — hand-drawn bitmap fonts for banners + image-to-ASCII converter | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/) |
-| [canvas-paint-studio](./src/canvas-paint-studio) | HTML/CSS/JS | Browser paint app — brush & shapes with live preview, undo, quick swatches, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/) |
-| [password-forge](./src/password-forge) | HTML/CSS/JS | Password & passphrase generator — entropy scoring, crack-time estimate, bulk mode, crypto API | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/password-forge/) |
-| [pomodoro-focus](./src/pomodoro-focus) | HTML/CSS/JS | Pomodoro timer — SVG dial, Web Worker tick, auto-cycling, WebAudio chime, daily stats | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/pomodoro-focus/) |
-| [regex-playground](./src/regex-playground) | HTML/CSS/JS | Live regex tester — glowing match highlight, capture-group table, presets, cheat sheet | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/regex-playground/) |
-| [snake-game-web](./src/snake-game-web) | HTML/CSS/JS | Neon snake game — touch/keyboard controls, accelerating loop, glow rendering, personal best | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/snake-game-web/) |
-| [fractal-explorer](./src/fractal-explorer) | HTML/CSS/JS | Mandelbrot & Julia explorer — deep zoom to 10^55x, smooth coloring, 5 palettes, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/fractal-explorer/) |
-| [synthwave-keys](./src/synthwave-keys) | HTML/CSS/JS | Two-octave WebAudio synthesizer — 4 waveforms, live oscilloscope, recorder with playback | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/synthwave-keys/) |
-| [tetris-web](./src/tetris-web) | HTML/CSS/JS | Full Tetris — 7-bag randomizer, hold, ghost piece, line-flash animation, touch buttons | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/tetris-web/) |
-| [game-of-life-web](./src/game-of-life-web) | HTML/CSS/JS | Conway's Game of Life — famous pattern stamps, live painting, age colors and fading trails | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/game-of-life-web/) |
-| [pixel-art-studio](./src/pixel-art-studio) | HTML/CSS/JS | Pixel art editor — palette, flood fill, mirror symmetry, undo, crisp PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/pixel-art-studio/) |
-| [matrix-rain-web](./src/matrix-rain-web) | HTML/CSS/JS | Matrix rain — katakana/binary/Persian glyphs and a message mode that reveals your text | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/matrix-rain-web/) |
-| [noise-art-web](./src/noise-art-web) | HTML/CSS/JS | Generative art — Perlin-noise gradient fields and thousands of flow-field particles | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/noise-art-web/) |
-| [2048-web](./src/2048-web) | HTML/CSS/JS | Classic 2048 — animated sliding tiles, merge combos, undo and swipe controls | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/2048-web/) |
-| [minesweeper-web](./src/minesweeper-web) | HTML/CSS/JS | Minesweeper — three difficulties, safe first click, long-press flags, best times | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/minesweeper-web/) |
-| [breakout-web](./src/breakout-web) | HTML/CSS/JS | Neon breakout — three level layouts, angle-based paddle physics, particle bursts | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/breakout-web/) |
-| [markdown-editor-web](./src/markdown-editor-web) | HTML/CSS/JS | Live markdown editor — safe parser, toolbar, autosave and .md export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/) |
-| [json-formatter-web](./src/json-formatter-web) | HTML/CSS/JS | JSON formatter — pretty/minify, line-precise errors and a collapsible tree viewer | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/) |
-| [unit-converter-web](./src/unit-converter-web) | HTML/CSS/JS | Unit converter — length, mass, temperature, data and speed with instant math | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/) |
-| [text-diff-web](./src/text-diff-web) | HTML/CSS/JS | Text differ — LCS line diff plus word-level highlighting and a similarity score | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/text-diff-web/) |
-| [image-compressor-web](./src/image-compressor-web) | HTML/CSS/JS | Image compressor — quality/resize controls, before-after compare, 100% local | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/image-compressor-web/) |
-| [cron-explainer-web](./src/cron-explainer-web) | HTML/CSS/JS | Cron explainer — plain-Persian description plus the next five fire times | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/cron-explainer-web/) |
+| [wheel-of-actions](./web/wheel-of-actions) | HTML/CSS/JS | Spin-the-wheel task prioritizer | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/wheel-of-actions/) |
+| [twitter-media-api](./web/twitter-media-api) | PHP | Tweet URL → media JSON — guest-token auth, GraphQL TweetDetail, all photo/video variants |
+| [ai-chat-webapp-php](./web/ai-chat-webapp-php) | PHP | Single-file OpenRouter chat web app — conversation history, Markdown, light/dark theme, RTL UI |
+| [caller-lookup-app](./web/caller-lookup-app) | HTML/CSS/JS | Persian spam-caller lookup — search a number, see labels & community reports | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/caller-lookup-app/) |
+| [backend-dev-portfolio](./web/backend-dev-portfolio) | HTML/CSS/JS | Single-file dark portfolio for backend & bot developers — zero dependencies | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/backend-dev-portfolio/) |
+| [ton-nft-marketplace](./web/ton-nft-marketplace) | HTML/CSS/JS | TON Connect NFT marketplace UI — gallery, buy modal, fa/en language toggle | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/ton-nft-marketplace/) |
+| [solar-explorer-3d](./web/solar-explorer-3d) | HTML/CSS/JS | Interactive 3D solar system (Three.js) — time control, planet info | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/solar-explorer-3d/) |
+| [control-room-dashboard](./web/control-room-dashboard) | HTML/CSS/JS | Live simulated dashboard — bot status, real-time logs, FX rates | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/control-room-dashboard/) |
+| [qr-code-studio](./web/qr-code-studio) | HTML/CSS/JS | Custom QR codes — colors, gradients, logo, PNG/SVG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/qr-code-studio/) |
+| [world-clock-planner](./web/world-clock-planner) | HTML/CSS/JS | International meeting planner — shared time bar, day/night per city | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/world-clock-planner/) |
+| [tic-tac-toe-game](./web/tic-tac-toe-game) | HTML/CSS/JS | Classic tic-tac-toe against an AI | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/tic-tac-toe-game/) |
+| [mobile-app-intro-template](./web/mobile-app-intro-template) | HTML/CSS/JS | 12 responsive landing pages for mobile app promotion | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/mobile-app-intro-template/) |
+| [telegram-channel-landing-page](./web/telegram-channel-landing-page) | HTML/CSS/JS | Single-file landing page for Telegram channels & brands | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/telegram-channel-landing-page/) |
+| [jalali-date-tools](./web/jalali-date-tools) | HTML/CSS/JS | Persian calendar toolkit — converter, age, date-diff, Tehran clock (offline) | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/jalali-date-tools/) |
+| [color-palette-studio](./web/color-palette-studio) | HTML/CSS/JS | Palette generator — harmony rules, tints/shades, WCAG contrast lab, CSS/JSON/Tailwind export | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/color-palette-studio/) |
+| [drum-machine-web](./web/drum-machine-web) | HTML/CSS/JS | 16-step WebAudio drum machine — synthesized voices, BPM/swing, presets, save/load | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/drum-machine-web/) |
+| [typing-speed-race](./web/typing-speed-race) | HTML/CSS/JS | FA/EN typing test — per-char feedback, live WPM curve, localStorage history | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/typing-speed-race/) |
+| [sudoku-game-web](./web/sudoku-game-web) | HTML/CSS/JS | Sudoku with unique-solution generator — 4 difficulties, pencil notes, hints, solver | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/sudoku-game-web/) |
+| [ascii-art-generator-web](./web/ascii-art-generator-web) | HTML/CSS/JS | ASCII art studio — hand-drawn bitmap fonts for banners + image-to-ASCII converter | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/ascii-art-generator-web/) |
+| [canvas-paint-studio](./web/canvas-paint-studio) | HTML/CSS/JS | Browser paint app — brush & shapes with live preview, undo, quick swatches, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/canvas-paint-studio/) |
+| [password-forge](./web/password-forge) | HTML/CSS/JS | Password & passphrase generator — entropy scoring, crack-time estimate, bulk mode, crypto API | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/password-forge/) |
+| [pomodoro-focus](./web/pomodoro-focus) | HTML/CSS/JS | Pomodoro timer — SVG dial, Web Worker tick, auto-cycling, WebAudio chime, daily stats | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/pomodoro-focus/) |
+| [regex-playground](./web/regex-playground) | HTML/CSS/JS | Live regex tester — glowing match highlight, capture-group table, presets, cheat sheet | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/regex-playground/) |
+| [snake-game-web](./web/snake-game-web) | HTML/CSS/JS | Neon snake game — touch/keyboard controls, accelerating loop, glow rendering, personal best | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/snake-game-web/) |
+| [fractal-explorer](./web/fractal-explorer) | HTML/CSS/JS | Mandelbrot & Julia explorer — deep zoom to 10^55x, smooth coloring, 5 palettes, PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/fractal-explorer/) |
+| [synthwave-keys](./web/synthwave-keys) | HTML/CSS/JS | Two-octave WebAudio synthesizer — 4 waveforms, live oscilloscope, recorder with playback | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/synthwave-keys/) |
+| [tetris-web](./web/tetris-web) | HTML/CSS/JS | Full Tetris — 7-bag randomizer, hold, ghost piece, line-flash animation, touch buttons | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/tetris-web/) |
+| [game-of-life-web](./web/game-of-life-web) | HTML/CSS/JS | Conway's Game of Life — famous pattern stamps, live painting, age colors and fading trails | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/game-of-life-web/) |
+| [pixel-art-studio](./web/pixel-art-studio) | HTML/CSS/JS | Pixel art editor — palette, flood fill, mirror symmetry, undo, crisp PNG export | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/pixel-art-studio/) |
+| [matrix-rain-web](./web/matrix-rain-web) | HTML/CSS/JS | Matrix rain — katakana/binary/Persian glyphs and a message mode that reveals your text | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/matrix-rain-web/) |
+| [noise-art-web](./web/noise-art-web) | HTML/CSS/JS | Generative art — Perlin-noise gradient fields and thousands of flow-field particles | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/noise-art-web/) |
+| [2048-web](./web/2048-web) | HTML/CSS/JS | Classic 2048 — animated sliding tiles, merge combos, undo and swipe controls | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/2048-web/) |
+| [minesweeper-web](./web/minesweeper-web) | HTML/CSS/JS | Minesweeper — three difficulties, safe first click, long-press flags, best times | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/minesweeper-web/) |
+| [breakout-web](./web/breakout-web) | HTML/CSS/JS | Neon breakout — three level layouts, angle-based paddle physics, particle bursts | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/breakout-web/) |
+| [markdown-editor-web](./web/markdown-editor-web) | HTML/CSS/JS | Live markdown editor — safe parser, toolbar, autosave and .md export | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/markdown-editor-web/) |
+| [json-formatter-web](./web/json-formatter-web) | HTML/CSS/JS | JSON formatter — pretty/minify, line-precise errors and a collapsible tree viewer | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/json-formatter-web/) |
+| [unit-converter-web](./web/unit-converter-web) | HTML/CSS/JS | Unit converter — length, mass, temperature, data and speed with instant math | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/unit-converter-web/) |
+| [text-diff-web](./web/text-diff-web) | HTML/CSS/JS | Text differ — LCS line diff plus word-level highlighting and a similarity score | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/text-diff-web/) |
+| [image-compressor-web](./web/image-compressor-web) | HTML/CSS/JS | Image compressor — quality/resize controls, before-after compare, 100% local | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/image-compressor-web/) |
+| [cron-explainer-web](./web/cron-explainer-web) | HTML/CSS/JS | Cron explainer — plain-Persian description plus the next five fire times | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/cron-explainer-web/) |
 
 ### 🖥 Desktop tools — 6
 
 | Project | Lang | What it does |
 | --- | --- | --- |
-| [downloads-organizer](./src/downloads-organizer) | PowerShell | Auto-sort Downloads by file type — with reports and full logging |
-| [pyautogui-automation-demo](./src/pyautogui-automation-demo) | Python | Desktop automation CLI — auto-typing, screenshots, clicks (PyAutoGUI) |
-| [system-monitor-gui](./src/system-monitor-gui) | Python | Live CPU/RAM/disk monitor with a PyQt6 GUI |
-| [clipboard-history-manager](./src/clipboard-history-manager) | Python | Searchable clipboard history — pins, dedup, JSON persistence (tkinter) |
-| [bulk-renamer-cli](./src/bulk-renamer-cli) | Python | Safe bulk file renamer — numbered templates, regex, dry-run default, undo log |
-| [dupe-file-finder](./src/dupe-file-finder) | Python | Duplicate-file CLI — 3-phase hashing, wasted-space report, CSV export, safe delete |
+| [downloads-organizer](./desktop/downloads-organizer) | PowerShell | Auto-sort Downloads by file type — with reports and full logging |
+| [pyautogui-automation-demo](./desktop/pyautogui-automation-demo) | Python | Desktop automation CLI — auto-typing, screenshots, clicks (PyAutoGUI) |
+| [system-monitor-gui](./desktop/system-monitor-gui) | Python | Live CPU/RAM/disk monitor with a PyQt6 GUI |
+| [clipboard-history-manager](./desktop/clipboard-history-manager) | Python | Searchable clipboard history — pins, dedup, JSON persistence (tkinter) |
+| [bulk-renamer-cli](./desktop/bulk-renamer-cli) | Python | Safe bulk file renamer — numbered templates, regex, dry-run default, undo log |
+| [dupe-file-finder](./desktop/dupe-file-finder) | Python | Duplicate-file CLI — 3-phase hashing, wasted-space report, CSV export, safe delete |
 
 > 🚧 More projects are on the way — hit **Star** / **Watch** to catch the new ones.
 
@@ -179,7 +203,7 @@ python tools/generate_catalog.py
 # CI mode — fails when README tables and catalog data drift apart
 python tools/generate_catalog.py --check
 
-# quality gate: every src/ folder must ship a README + runnable code, and no
+# quality gate: every project folder must ship a README + runnable code, and no
 # secrets (tokens, API keys, credential literals) may be committed anywhere
 python tools/validate_projects.py
 ```
@@ -218,125 +242,125 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
-| [🌆 شبیه‌ساز زندگی](./src/life-simulator-bot) | Python | بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان |
-| [🏙 ربات شهرساز](./src/city-builder-bot) | Python | بازی استراتژیک شهرسازی — درخت فناوری، دیپلماسی و تجارت، اقتصاد شادی، رویدادهای تصادفی و پنل ادمین |
-| [🌍 ربات جنگ جهانی](./src/world-war-game-bot) | Python | شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP |
-| [🎖 ربات نبرد و اتحاد نظامی](./src/military-alliance-bot) | Python | استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی |
-| [⭐ فروشگاه استارز GiftiX](./src/giftix-stars-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت |
-| [🛒 فروشگاه کامل GiftiX](./src/giftix-premium-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/تون با نرخ زنده‌ی نوبیتکس، موتور سود، کمیسیون رفرال و تیکت پشتیبانی |
-| [🏷 مدیریت تگ اعضا](./src/member-tag-manager-bot) | Python | تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود |
-| [🌐 ترجمه‌گر پست کانال](./src/channel-translate-worker) | JavaScript | دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker |
-| [💬 چت عمومی کانال](./src/perfect-ai-chat-bot) | PHP | پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک |
-| [🤖 ربات خودساز AI](./src/ai-self-coding-bot) | PHP | آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک |
-| [🪙 مدیریت سکه و سفارش](./src/php-coin-manager-bot) | PHP | اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی |
-| [🔗 کوتاه‌کننده لینک PHP](./src/url-shortener-php-bot) | PHP | دو نسخه PHP و پایتون — TinyURL، کنترل فلود، بلاک کاربر و متن‌های قابل ویرایش از پنل |
-| [✅ تودولیست مینی‌اپ](./src/todo-miniapp-worker) | JavaScript | مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1 |
-| [🎧 دانلودر موزیک اسپاتیفای](./src/spotify-music-bot) | Python | دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3 |
-| [🎙 یوزربات ویس‌چت](./src/voicecall-userbot) | Python | یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده |
-| [🎁 گیوای وین‌لند](./src/winland-giveaway-bot) | Python | گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین |
-| [🎨 مدیریت پست رنگی](./src/post-manager-bot) | Python | مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار |
-| [❤️ لایک پست کانال](./src/channel-likes-bot) | Python | هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک |
-| [❤️ لایک و چالش کانال](./src/likes-challenges-php-bot) | PHP | لایک خودکار پست‌ها، چالش لایک و سرعتی، اقتصاد سکه با پرداخت کارت و زیبال، نصب‌کننده‌ی وب |
-| [🎛 سلف‌بات پنل‌دار](./src/telegram-selfbot-panel) | Python | سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی |
-| [🤖 مدیریت سلف‌بات Pyrogram](./src/pyrogram-selfbot-manager) | Python | مدیریت اکانت با لاگین شماره‌ای، ساعت زنده روی اسم با ۱۰ فونت، منشی و گاردها، امنیت سشن |
-| [👥 مدیریت چند اکانت همزمان](./src/multi-account-manager) | Python | مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک |
-| [💸 نرخ لحظه‌ای بازار](./src/iran-market-rate-bot) | Python | نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار |
-| [🎨 اموجی فورج AI](./src/emoji-forge-bot) | Python | ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd |
-| [⭐ فروشگاه استارز و گیفت](./src/starzify-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl |
-| [🌐 فروشگاه کانفیگ V2Ray](./src/v2ray-shop-bot) | Python | فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین |
-| [🏭 ربات‌ساز PHP](./src/php-bot-maker) | PHP | پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش |
-| [📮 ربات پست کانال](./src/channel-submission-bot) | PHP | کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود |
-| [🛍 ربات فروشگاهی پیشرفته](./src/advanced-shop-bot) | Python | فروشگاه‌ساز کامل با تنوع محصول، سبد خرید، کوپن و پرداخت کارت‌به‌کارت |
-| [💳 ربات فروش اشتراک/کانفیگ](./src/subscription-shop-bot) | Python | فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی |
-| [🐕 هاپ‌داگ (ربات اقتصادی گروهی)](./src/happydog-economy-bot) | Python | بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی |
-| [🎮 دوز و مین‌یاب](./src/connect4-minesweeper-bot) | Python | بازی گروهی دوز (Connect4) و مین‌یاب با رنکینگ و لیدربورد |
-| [🔐 مدیریت اکانت و سشن](./src/telethon-session-manager) | Python | جوین و ری‌اکشن خودکار با چند اکانت تلگرام (Telethon) |
-| [🧠 چت هوش مصنوعی](./src/ai-chat-assistant-bot) | PHP | چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل |
-| [📥 دانلودر اینستاگرام](./src/instagram-downloader-bot) | Python | دانلود پست/ریلز/استوری اینستاگرام با سیستم عضویت VIP |
-| [🎨 پستر ایموجی پرمیوم](./src/premium-emoji-poster-cfworker) | JavaScript | ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker |
-| [🐱 ربات میو پوینت](./src/meow-point-bot) | Python | بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک |
-| [🛡️ نگهبان گروه](./src/group-guardian-bot) | Node.js | ضدهرزنامه، کپچای ورود، فیلتر کلمه و اخطار خودکار |
-| [📁 ذخیره فایل و لینک‌ساز](./src/file-store-bot) | Node.js | ذخیره‌ی فایل و ساخت لینک اختصاصی دانلود |
-| [💰 نرخ لحظه‌ای رمزارز](./src/price-ticker-bot) | Node.js | قیمت رمزارز، هشدار قیمت، آپدیت خودکار کانال |
-| [🔗 کوتاه‌کننده لینک](./src/url-shortener-bot) | Node.js | کوتاه‌سازی لینک با آمار کلیک |
-| [🎬 دانلودر یوتیوب](./src/youtube-downloader-bot) | PHP | دانلود ویدیو/صدا از یوتیوب |
-| [📡 مانیتور آپ‌تایم](./src/uptime-monitor-bot) | C# | چک سایت/سرور + پنل وضعیت HTML |
-| [🎯 کوییز و مسابقه](./src/quiz-trivia-bot) | Java | مسابقه‌ی گروهی با لیدربورد |
-| [📰 اعلان RSS](./src/rss-news-bot) | C++ | پست خودکار مطالب جدید فید به کانال |
-| [🌍 مترجم متن](./src/translator-bot) | Node.js | ترجمه‌ی خودکار پیام‌ها |
-| [🎫 پشتیبانی/تیکتینگ](./src/support-ticket-bot) | Python | ریلی پیام کاربر ↔ گروه پشتیبانی |
-| [🆔 دریافت آیدی عددی](./src/digit-id-bot) | Python | دریافت آیدی عددی کاربران در تلگرام |
-| [⏰ یادآوری و تسک روزانه](./src/reminder-task-bot) | Python | یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite |
-| [📄 خلاصه‌ساز لینک و متن](./src/link-summarizer-bot) | Python | خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی |
-| [🌟 اشتراک‌گذاری کد](./src/code-share-bot) | Python | ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار |
-| [📰 جستجوگر مقالات دیجیاتو](./src/digiato-article-bot) | Python | جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی |
-| [🌐 آزادی‌نت (کانفیگ VPN)](./src/freedomnet-vpn-bot) | Python | توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل |
-| [🔍 شناسایی فرستنده‌ی فورواردی](./src/forward-info-bot) | PHP | نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده |
-| [🎰 قرعه‌کشی و گیوای](./src/lottery-giveaway-bot) | Python | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل |
-| [🗳 نظرسنجی و رأی‌گیری](./src/poll-vote-bot) | Python | نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک |
-| [🟩 وردل فارسی](./src/wordle-fa-bot) | Python | حدس کلمه‌ی ۵ حرفی روزانه در ۶ تلاش — بازخورد رنگی، برد متوالی و آمار کامل |
-| [🎓 فلش‌کد فارسی](./src/flashcard-srs-bot) | Python | مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری |
-| [💰 خرج‌شمار گروهی](./src/expense-splitter-bot) | Python | تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله |
-| [🎲 نبرد تاس](./src/dice-duel-bot) | Python | دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها |
-| [🕌 اوقات شرعی](./src/prayer-times-bot) | Python | اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی |
-| [🔨 خانه‌ی مزایده](./src/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
-| [🔮 فال‌گر شوخ](./src/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
+| [🌆 شبیه‌ساز زندگی](./bots/life-simulator-bot) | Python | بازی کامل شبیه‌ساز زندگی — شغل و مهارت، بانک و کارت، املاک و ماشین، شرکت، بازار آزاد، جرم و زندان |
+| [🏙 ربات شهرساز](./bots/city-builder-bot) | Python | بازی استراتژیک شهرسازی — درخت فناوری، دیپلماسی و تجارت، اقتصاد شادی، رویدادهای تصادفی و پنل ادمین |
+| [🌍 ربات جنگ جهانی](./bots/world-war-game-bot) | Python | شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP |
+| [🎖 ربات نبرد و اتحاد نظامی](./bots/military-alliance-bot) | Python | استراتژی نظامی — نیروی زمینی/هوایی/دریایی، تجارت و اعلام جنگ، اتحادهای میلیاردی |
+| [⭐ فروشگاه استارز GiftiX](./bots/giftix-stars-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/TON — کیف پول و درگاه پرداخت، رفرال، پیگیری سفارش، تیکت و پنل مدیریت |
+| [🛒 فروشگاه کامل GiftiX](./bots/giftix-premium-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/تون با نرخ زنده‌ی نوبیتکس، موتور سود، کمیسیون رفرال و تیکت پشتیبانی |
+| [🏷 مدیریت تگ اعضا](./bots/member-tag-manager-bot) | Python | تگ واقعی اعضا (setChatMemberTag)، ریلی ایموجی پرمیوم، لینک دعوت اختصاصی با شمارش ورود |
+| [🌐 ترجمه‌گر پست کانال](./bots/channel-translate-worker) | JavaScript | دکمه‌های ترجمه fa/en/ru روی پست‌های کانال با Gemini و فالبک گوگل — همه روی Cloudflare Worker |
+| [💬 چت عمومی کانال](./bots/perfect-ai-chat-bot) | PHP | پیام اعضا مستقیم در کانال فوروارد می‌شود؛ سشن چت، جوین اجباری و پنل مالک |
+| [🤖 ربات خودساز AI](./bots/ai-self-coding-bot) | PHP | آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک |
+| [🪙 مدیریت سکه و سفارش](./bots/php-coin-manager-bot) | PHP | اقتصاد سکه و فروشگاه سفارش بازدید — شارژ موجودی، پنل ادمین، تاریخ شمسی، بدون وابستگی |
+| [🔗 کوتاه‌کننده لینک PHP](./bots/url-shortener-php-bot) | PHP | دو نسخه PHP و پایتون — TinyURL، کنترل فلود، بلاک کاربر و متن‌های قابل ویرایش از پنل |
+| [✅ تودولیست مینی‌اپ](./bots/todo-miniapp-worker) | JavaScript | مینی‌اپ تودولیست روی Cloudflare Worker — API + وب‌هوک ربات + یادآور کرونی + فرانت‌اند داخلی روی D1 |
+| [🎧 دانلودر موزیک اسپاتیفای](./bots/spotify-music-bot) | Python | دانلود از لینک اسپاتیفای و جستجوی یوتیوب‌موزیک — کیفیت ۳۲۰ با کاور اورجینال و تگ ID3 |
+| [🎙 یوزربات ویس‌چت](./bots/voicecall-userbot) | Python | یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده |
+| [🎁 گیوای وین‌لند](./bots/winland-giveaway-bot) | Python | گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین |
+| [🎨 مدیریت پست رنگی](./bots/post-manager-bot) | Python | مدیریت پست کانال با دکمه‌های رنگی (استایل‌های Bot API 7.10+) و پیش‌نمایش زنده قبل از انتشار |
+| [❤️ لایک پست کانال](./bots/channel-likes-bot) | Python | هر پیامی که به ربات بفرستی با دکمه‌ی لایک زنده در کانال منتشر می‌شود — هر کاربر فقط یک لایک |
+| [❤️ لایک و چالش کانال](./bots/likes-challenges-php-bot) | PHP | لایک خودکار پست‌ها، چالش لایک و سرعتی، اقتصاد سکه با پرداخت کارت و زیبال، نصب‌کننده‌ی وب |
+| [🎛 سلف‌بات پنل‌دار](./bots/telegram-selfbot-panel) | Python | سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی |
+| [🤖 مدیریت سلف‌بات Pyrogram](./bots/pyrogram-selfbot-manager) | Python | مدیریت اکانت با لاگین شماره‌ای، ساعت زنده روی اسم با ۱۰ فونت، منشی و گاردها، امنیت سشن |
+| [👥 مدیریت چند اکانت همزمان](./bots/multi-account-manager) | Python | مرکز کنترل چند اکانتی — حالت سینک، ورکرهای عملیات، دیتابیس هر اکانت، پنل مالک |
+| [💸 نرخ لحظه‌ای بازار](./bots/iran-market-rate-bot) | Python | نرخ دلار/طلا/سکه/کریپتو با کارت تصویری زیبا، تبدیل ارز و لیست کامل بازار |
+| [🎨 اموجی فورج AI](./bots/emoji-forge-bot) | Python | ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd |
+| [⭐ فروشگاه استارز و گیفت](./bots/starzify-shop-bot) | Python | فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl |
+| [🌐 فروشگاه کانفیگ V2Ray](./bots/v2ray-shop-bot) | Python | فروش کانفیگ V2Ray/OpenVPN با پرداخت کارت‌به‌کارت، کیف پول و پنل ادمین |
+| [🏭 ربات‌ساز PHP](./bots/php-bot-maker) | PHP | پلتفرم ربات‌ساز — کاربران ربات می‌سازند، اقتصاد سکه، بازارگاه خرید و فروش |
+| [📮 ربات پست کانال](./bots/channel-submission-bot) | PHP | کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود |
+| [🛍 ربات فروشگاهی پیشرفته](./bots/advanced-shop-bot) | Python | فروشگاه‌ساز کامل با تنوع محصول، سبد خرید، کوپن و پرداخت کارت‌به‌کارت |
+| [💳 ربات فروش اشتراک/کانفیگ](./bots/subscription-shop-bot) | Python | فروش خودکار اشتراک از مخزن، گردونه شانس، سیستم نمایندگی |
+| [🐕 هاپ‌داگ (ربات اقتصادی گروهی)](./bots/happydog-economy-bot) | Python | بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی |
+| [🎮 دوز و مین‌یاب](./bots/connect4-minesweeper-bot) | Python | بازی گروهی دوز (Connect4) و مین‌یاب با رنکینگ و لیدربورد |
+| [🔐 مدیریت اکانت و سشن](./bots/telethon-session-manager) | Python | جوین و ری‌اکشن خودکار با چند اکانت تلگرام (Telethon) |
+| [🧠 چت هوش مصنوعی](./bots/ai-chat-assistant-bot) | PHP | چت با GPT / DeepSeek / Grok به همراه پنل مدیریت کامل |
+| [📥 دانلودر اینستاگرام](./bots/instagram-downloader-bot) | Python | دانلود پست/ریلز/استوری اینستاگرام با سیستم عضویت VIP |
+| [🎨 پستر ایموجی پرمیوم](./bots/premium-emoji-poster-cfworker) | JavaScript | ارسال پست به کانال با ایموجی‌های پرمیوم، روی Cloudflare Worker |
+| [🐱 ربات میو پوینت](./bots/meow-point-bot) | Python | بازی و اقتصاد گروهی با محوریت گربه‌ها، جنگ و بانک |
+| [🛡️ نگهبان گروه](./bots/group-guardian-bot) | Node.js | ضدهرزنامه، کپچای ورود، فیلتر کلمه و اخطار خودکار |
+| [📁 ذخیره فایل و لینک‌ساز](./bots/file-store-bot) | Node.js | ذخیره‌ی فایل و ساخت لینک اختصاصی دانلود |
+| [💰 نرخ لحظه‌ای رمزارز](./bots/price-ticker-bot) | Node.js | قیمت رمزارز، هشدار قیمت، آپدیت خودکار کانال |
+| [🔗 کوتاه‌کننده لینک](./bots/url-shortener-bot) | Node.js | کوتاه‌سازی لینک با آمار کلیک |
+| [🎬 دانلودر یوتیوب](./bots/youtube-downloader-bot) | PHP | دانلود ویدیو/صدا از یوتیوب |
+| [📡 مانیتور آپ‌تایم](./bots/uptime-monitor-bot) | C# | چک سایت/سرور + پنل وضعیت HTML |
+| [🎯 کوییز و مسابقه](./bots/quiz-trivia-bot) | Java | مسابقه‌ی گروهی با لیدربورد |
+| [📰 اعلان RSS](./bots/rss-news-bot) | C++ | پست خودکار مطالب جدید فید به کانال |
+| [🌍 مترجم متن](./bots/translator-bot) | Node.js | ترجمه‌ی خودکار پیام‌ها |
+| [🎫 پشتیبانی/تیکتینگ](./bots/support-ticket-bot) | Python | ریلی پیام کاربر ↔ گروه پشتیبانی |
+| [🆔 دریافت آیدی عددی](./bots/digit-id-bot) | Python | دریافت آیدی عددی کاربران در تلگرام |
+| [⏰ یادآوری و تسک روزانه](./bots/reminder-task-bot) | Python | یادآوری یک‌باره/روزانه، لیست تسک با دکمه، Snooze، ذخیره‌سازی SQLite |
+| [📄 خلاصه‌ساز لینک و متن](./bots/link-summarizer-bot) | Python | خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی |
+| [🌟 اشتراک‌گذاری کد](./bots/code-share-bot) | Python | ذخیره، جستجو و اشتراک‌گذاری کدهای برنامه‌نویسی با رنگ‌بندی خودکار |
+| [📰 جستجوگر مقالات دیجیاتو](./bots/digiato-article-bot) | Python | جستجو و استخراج مقاله از دیجیاتو با صفحه‌بندی |
+| [🌐 آزادی‌نت (کانفیگ VPN)](./bots/freedomnet-vpn-bot) | Python | توزیع کانفیگ VPN با QR کد، تست پینگ سرورها و پنل مدیریت کامل |
+| [🔍 شناسایی فرستنده‌ی فورواردی](./bots/forward-info-bot) | PHP | نمایش آیدی و نام فرستنده‌ی اصلی پیام‌های فوروارد شده |
+| [🎰 قرعه‌کشی و گیوای](./bots/lottery-giveaway-bot) | Python | ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل |
+| [🗳 نظرسنجی و رأی‌گیری](./bots/poll-vote-bot) | Python | نظرسنجی با دکمه‌های رأی زنده، کارت تصویری نتایج و خروجی CSV — بدون فریم‌ورک |
+| [🟩 وردل فارسی](./bots/wordle-fa-bot) | Python | حدس کلمه‌ی ۵ حرفی روزانه در ۶ تلاش — بازخورد رنگی، برد متوالی و آمار کامل |
+| [🎓 فلش‌کد فارسی](./bots/flashcard-srs-bot) | Python | مطالعه با تکرار فاصله‌دار (SM-2) — کالجک‌ها، دکمه‌های نمره‌دهی و پیشرفت یادگیری |
+| [💰 خرج‌شمار گروهی](./bots/expense-splitter-bot) | Python | تقسیم هزینه‌های گروهی — مانده زنده، سهم مساوی/منتخب و تسویه با کمترین حواله |
+| [🎲 نبرد تاس](./bots/dice-duel-bot) | Python | دوئل تاس با شرط سکه — انیمیشن انداختن، مساوی دوباره، سکه روزانه و جدول برترین‌ها |
+| [🕌 اوقات شرعی](./bots/prayer-times-bot) | Python | اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی |
+| [🔨 خانه‌ی مزایده](./bots/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
+| [🔮 فال‌گر شوخ](./bots/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
 
 #### 🌐 ابزارهای وب (40)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
-| [🎡 Wheel of Actions](./src/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/wheel-of-actions/) | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه |
-| [🐦 API مدیا توییتر](./src/twitter-media-api) | PHP | لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو |
-| [💬 چت هوش مصنوعی وب](./src/ai-chat-webapp-php) | PHP | چت‌اپ تک‌فایلی با OpenRouter — تاریخچه گفتگوها، Markdown، تم روشن/تیره و رابط فارسی |
-| [📱 مزاحم‌یاب](./src/caller-lookup-app) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/caller-lookup-app/) | HTML/CSS/JS | جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران |
-| [🧑‍💻 رزومه بک‌اند](./src/backend-dev-portfolio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/backend-dev-portfolio/) | HTML/CSS/JS | رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس |
-| [💎 مارکت‌پلیس NFT تون](./src/ton-nft-marketplace) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/ton-nft-marketplace/) | HTML/CSS/JS | اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی |
-| [🪐 کاوشگر سه‌بعدی منظومه شمسی](./src/solar-explorer-3d) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/solar-explorer-3d/) | HTML/CSS/JS | شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات |
-| [🎛 اتاق فرمان](./src/control-room-dashboard) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/control-room-dashboard/) | HTML/CSS/JS | داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز |
-| [🔳 QR Code Studio](./src/qr-code-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/qr-code-studio/) | HTML/CSS/JS | ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG |
-| [🌍 World Clock Planner](./src/world-clock-planner) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/world-clock-planner/) | HTML/CSS/JS | برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر |
-| [❌⭕ بازی دوز (OX)](./src/tic-tac-toe-game) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/tic-tac-toe-game/) | HTML/CSS/JS | بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی |
-| [📱 قالب معرفی اپلیکیشن](./src/mobile-app-intro-template) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/mobile-app-intro-template/) | HTML/CSS/JS | ۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل |
-| [📢 صفحه فرود کانال تلگرام](./src/telegram-channel-landing-page) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/telegram-channel-landing-page/) | HTML/CSS/JS | لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی |
-| [🗓 تقویم جلالی](./src/jalali-date-tools) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/jalali-date-tools/) | HTML/CSS/JS | تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین |
-| [🎨 استودیو پالت رنگ](./src/color-palette-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/color-palette-studio/) | HTML/CSS/JS | ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind |
-| [🥁 سینت درام](./src/drum-machine-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/drum-machine-web/) | HTML/CSS/JS | درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو |
-| [⌨️ مسابقه‌ی تایپ](./src/typing-speed-race) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/typing-speed-race/) | HTML/CSS/JS | تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج |
-| [🔢 سودوکو](./src/sudoku-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/sudoku-game-web/) | HTML/CSS/JS | سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده |
-| [🔤 هنر ASCII](./src/ascii-art-generator-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/ascii-art-generator-web/) | HTML/CSS/JS | بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست |
-| [🖌 بوم نقاشی](./src/canvas-paint-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/canvas-paint-studio/) | HTML/CSS/JS | اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG |
-| [🔐 جعبه‌جنگل پسورد](./src/password-forge) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/password-forge/) | HTML/CSS/JS | تولید پسورد و عبارت‌عبور قوی — سنجش آنتروپی زنده، برآورد زمان شکستن و حالت گروهی با crypto API |
-| [🍅 تایمر تمرکز](./src/pomodoro-focus) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/pomodoro-focus/) | HTML/CSS/JS | تایمر پومودورو — حلقه‌ی پیشرفت SVG، تیک Web Worker، چرخه‌ی خودکار و آمار روزانه |
-| [🧪 زمین بازی Regex](./src/regex-playground) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/regex-playground/) | HTML/CSS/JS | تست زنده‌ی Regex — هایلایت درخشان تطبیق‌ها، جدول گروه‌های capture و پترن‌های آماده |
-| [🐍 مار نئونی](./src/snake-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/snake-game-web/) | HTML/CSS/JS | بازی مار نئونی — کنترل لمسی/کیبورد، سرعت فزاینده و رکورد شخصی |
-| [🌀 کاوشگر فرکتال](./src/fractal-explorer) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/fractal-explorer/) | HTML/CSS/JS | کاوش ماندلبروت و ژولیا — زوم عمیق، رنگ‌آمیزی نرم و خروجی PNG |
-| [🎹 کیبورد سینتی‌سایزر](./src/synthwave-keys) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/synthwave-keys/) | HTML/CSS/JS | سینتی‌سایزر دو اکتاوی WebAudio — اسکوپ زنده، ضبط و پخش |
-| [🕹 تتریس](./src/tetris-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/tetris-web/) | HTML/CSS/JS | تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی |
-| [🦠 بازی زندگی](./src/game-of-life-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/game-of-life-web/) | HTML/CSS/JS | ماشین سلولی Conway — الگوهای معروف، نقاشی زنده و ردپای رنگی |
-| [🎨 استودیو پیکسل‌آرت](./src/pixel-art-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/pixel-art-studio/) | HTML/CSS/JS | ادیتور پیکسلی — پالت، سطل رنگ، قرینه و خروجی PNG شارپ |
-| [🌧 بارش ماتریکس](./src/matrix-rain-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/matrix-rain-web/) | HTML/CSS/JS | باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو» |
-| [🌌 هنر نویز](./src/noise-art-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/noise-art-web/) | HTML/CSS/JS | هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره |
-| [🎮 بازی ۲۰۴۸](./src/2048-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/2048-web/) | HTML/CSS/JS | کلاسیک ۲۰۴۸ — انیمیشن سُر خوردن کاشی‌ها، برگشت حرکت و سوایپ لمسی |
-| [💣 مین‌یاب](./src/minesweeper-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/minesweeper-web/) | HTML/CSS/JS | سه سختی، کلیک اول امن، پرچم با نگه‌داشتن انگشت و رکورد زمان |
-| [🧱 آجرشکن](./src/breakout-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/breakout-web/) | HTML/CSS/JS | آجرشکن نئونی — سه مرحله، فیزیک زاویه‌ای پدل و انفجار ذرات |
-| [📝 ویرایشگر مارک‌داون](./src/markdown-editor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/) | HTML/CSS/JS | پیش‌نمایش زنده، نوار ابزار، ذخیره‌ی خودکار و دانلود فایل |
-| [🧾 فرمت‌کننده JSON](./src/json-formatter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/) | HTML/CSS/JS | فرمت، فشرده‌سازی، خطای دقیق سطر/ستون و نمای درختی جمع‌شونده |
-| [📐 مبدل واحدها](./src/unit-converter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/) | HTML/CSS/JS | طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای با ضرایب SI |
-| [🔍 مقایسه‌گر متن](./src/text-diff-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/text-diff-web/) | HTML/CSS/JS | دیف خط به خط با LCS، هایلایت کلمه‌ای و امتیاز شباهت |
-| [🖼️ فشرده‌ساز تصویر](./src/image-compressor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/image-compressor-web/) | HTML/CSS/JS | کیفیت/ابعاد، مقایسه‌ی قبل و بعد — پردازش کامل محلی |
-| [⏰ توضیح‌گر Cron](./src/cron-explainer-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/cron-explainer-web/) | HTML/CSS/JS | توضیح فارسی عبارت cron و ۵ اجرای بعدی |
+| [🎡 Wheel of Actions](./web/wheel-of-actions) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/wheel-of-actions/) | HTML/CSS/JS | ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه |
+| [🐦 API مدیا توییتر](./web/twitter-media-api) | PHP | لینک توییت → JSON مدیا — guest-token، GraphQL و همه‌ی نسخه‌های عکس/ویدیو |
+| [💬 چت هوش مصنوعی وب](./web/ai-chat-webapp-php) | PHP | چت‌اپ تک‌فایلی با OpenRouter — تاریخچه گفتگوها، Markdown، تم روشن/تیره و رابط فارسی |
+| [📱 مزاحم‌یاب](./web/caller-lookup-app) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/caller-lookup-app/) | HTML/CSS/JS | جستجوی شماره و نمایش برچسب‌های مزاحم و گزارش‌های کاربران |
+| [🧑‍💻 رزومه بک‌اند](./web/backend-dev-portfolio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/backend-dev-portfolio/) | HTML/CSS/JS | رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس |
+| [💎 مارکت‌پلیس NFT تون](./web/ton-nft-marketplace) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/ton-nft-marketplace/) | HTML/CSS/JS | اتصال TON Connect، گالری و خرید NFT با سوییچ فارسی/انگلیسی |
+| [🪐 کاوشگر سه‌بعدی منظومه شمسی](./web/solar-explorer-3d) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/solar-explorer-3d/) | HTML/CSS/JS | شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات |
+| [🎛 اتاق فرمان](./web/control-room-dashboard) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/control-room-dashboard/) | HTML/CSS/JS | داشبورد زنده‌ی شبیه‌سازی‌شده از وضعیت ربات‌ها، لاگ لحظه‌ای و نرخ ارز |
+| [🔳 QR Code Studio](./web/qr-code-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/qr-code-studio/) | HTML/CSS/JS | ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG |
+| [🌍 World Clock Planner](./web/world-clock-planner) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/world-clock-planner/) | HTML/CSS/JS | برنامه‌ریزی جلسات بین‌المللی با نوار زمان مشترک و نمایش روز/شب هر شهر |
+| [❌⭕ بازی دوز (OX)](./web/tic-tac-toe-game) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/tic-tac-toe-game/) | HTML/CSS/JS | بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی |
+| [📱 قالب معرفی اپلیکیشن](./web/mobile-app-intro-template) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/mobile-app-intro-template/) | HTML/CSS/JS | ۱۲ قالب لندینگ‌پیج ریسپانسیو برای معرفی و دانلود اپلیکیشن موبایل |
+| [📢 صفحه فرود کانال تلگرام](./web/telegram-channel-landing-page) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/telegram-channel-landing-page/) | HTML/CSS/JS | لندینگ‌پیج تک‌فایلی و مدرن برای معرفی کانال یا برند تلگرامی |
+| [🗓 تقویم جلالی](./web/jalali-date-tools) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/jalali-date-tools/) | HTML/CSS/JS | تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین |
+| [🎨 استودیو پالت رنگ](./web/color-palette-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/color-palette-studio/) | HTML/CSS/JS | ساخت پالت با قواعد هماهنگی، طیف تیره/روشن، آزمایشگاه کنتراست WCAG و خروجی CSS/JSON/Tailwind |
+| [🥁 سینت درام](./web/drum-machine-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/drum-machine-web/) | HTML/CSS/JS | درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو |
+| [⌨️ مسابقه‌ی تایپ](./web/typing-speed-race) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/typing-speed-race/) | HTML/CSS/JS | تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج |
+| [🔢 سودوکو](./web/sudoku-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/sudoku-game-web/) | HTML/CSS/JS | سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده |
+| [🔤 هنر ASCII](./web/ascii-art-generator-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/ascii-art-generator-web/) | HTML/CSS/JS | بنر ASCII با فونت‌های bitmap دست‌ساز + تبدیل تصویر به ASCII با کنترل عرض و کنتراست |
+| [🖌 بوم نقاشی](./web/canvas-paint-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/canvas-paint-studio/) | HTML/CSS/JS | اپ نقاشی مرورگری — قلم و شکل با پیش‌نمایش زنده، برگشت ۲۵ مرحله‌ای و خروجی PNG |
+| [🔐 جعبه‌جنگل پسورد](./web/password-forge) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/password-forge/) | HTML/CSS/JS | تولید پسورد و عبارت‌عبور قوی — سنجش آنتروپی زنده، برآورد زمان شکستن و حالت گروهی با crypto API |
+| [🍅 تایمر تمرکز](./web/pomodoro-focus) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/pomodoro-focus/) | HTML/CSS/JS | تایمر پومودورو — حلقه‌ی پیشرفت SVG، تیک Web Worker، چرخه‌ی خودکار و آمار روزانه |
+| [🧪 زمین بازی Regex](./web/regex-playground) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/regex-playground/) | HTML/CSS/JS | تست زنده‌ی Regex — هایلایت درخشان تطبیق‌ها، جدول گروه‌های capture و پترن‌های آماده |
+| [🐍 مار نئونی](./web/snake-game-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/snake-game-web/) | HTML/CSS/JS | بازی مار نئونی — کنترل لمسی/کیبورد، سرعت فزاینده و رکورد شخصی |
+| [🌀 کاوشگر فرکتال](./web/fractal-explorer) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/fractal-explorer/) | HTML/CSS/JS | کاوش ماندلبروت و ژولیا — زوم عمیق، رنگ‌آمیزی نرم و خروجی PNG |
+| [🎹 کیبورد سینتی‌سایزر](./web/synthwave-keys) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/synthwave-keys/) | HTML/CSS/JS | سینتی‌سایزر دو اکتاوی WebAudio — اسکوپ زنده، ضبط و پخش |
+| [🕹 تتریس](./web/tetris-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/tetris-web/) | HTML/CSS/JS | تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی |
+| [🦠 بازی زندگی](./web/game-of-life-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/game-of-life-web/) | HTML/CSS/JS | ماشین سلولی Conway — الگوهای معروف، نقاشی زنده و ردپای رنگی |
+| [🎨 استودیو پیکسل‌آرت](./web/pixel-art-studio) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/pixel-art-studio/) | HTML/CSS/JS | ادیتور پیکسلی — پالت، سطل رنگ، قرینه و خروجی PNG شارپ |
+| [🌧 بارش ماتریکس](./web/matrix-rain-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/matrix-rain-web/) | HTML/CSS/JS | باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو» |
+| [🌌 هنر نویز](./web/noise-art-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/noise-art-web/) | HTML/CSS/JS | هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره |
+| [🎮 بازی ۲۰۴۸](./web/2048-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/2048-web/) | HTML/CSS/JS | کلاسیک ۲۰۴۸ — انیمیشن سُر خوردن کاشی‌ها، برگشت حرکت و سوایپ لمسی |
+| [💣 مین‌یاب](./web/minesweeper-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/minesweeper-web/) | HTML/CSS/JS | سه سختی، کلیک اول امن، پرچم با نگه‌داشتن انگشت و رکورد زمان |
+| [🧱 آجرشکن](./web/breakout-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/breakout-web/) | HTML/CSS/JS | آجرشکن نئونی — سه مرحله، فیزیک زاویه‌ای پدل و انفجار ذرات |
+| [📝 ویرایشگر مارک‌داون](./web/markdown-editor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/markdown-editor-web/) | HTML/CSS/JS | پیش‌نمایش زنده، نوار ابزار، ذخیره‌ی خودکار و دانلود فایل |
+| [🧾 فرمت‌کننده JSON](./web/json-formatter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/json-formatter-web/) | HTML/CSS/JS | فرمت، فشرده‌سازی، خطای دقیق سطر/ستون و نمای درختی جمع‌شونده |
+| [📐 مبدل واحدها](./web/unit-converter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/unit-converter-web/) | HTML/CSS/JS | طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای با ضرایب SI |
+| [🔍 مقایسه‌گر متن](./web/text-diff-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/text-diff-web/) | HTML/CSS/JS | دیف خط به خط با LCS، هایلایت کلمه‌ای و امتیاز شباهت |
+| [🖼️ فشرده‌ساز تصویر](./web/image-compressor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/image-compressor-web/) | HTML/CSS/JS | کیفیت/ابعاد، مقایسه‌ی قبل و بعد — پردازش کامل محلی |
+| [⏰ توضیح‌گر Cron](./web/cron-explainer-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/cron-explainer-web/) | HTML/CSS/JS | توضیح فارسی عبارت cron و ۵ اجرای بعدی |
 
 #### 🖥 ابزارهای دسکتاپ (6)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
-| [🗂 مرتب‌کننده پوشه Downloads](./src/downloads-organizer) | PowerShell | دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل |
-| [🖱 ابزار اتوماسیون دسکتاپ](./src/pyautogui-automation-demo) | Python | تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان |
-| [🖥 مانیتور سیستم](./src/system-monitor-gui) | Python | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6 |
-| [📁 تغییرنام گروهی](./src/bulk-renamer-cli) | Python | تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت |
-| [📋 تاریخچه کلیپ‌بورد](./src/clipboard-history-manager) | Python | تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON |
-| [🧬 یافتن فایل تکراری](./src/dupe-file-finder) | Python | یابنده‌ی فایل تکراری با هش سه‌مرحله‌ای، گزارش فضای هدررفته، خروجی CSV و حذف امن |
+| [🗂 مرتب‌کننده پوشه Downloads](./desktop/downloads-organizer) | PowerShell | دسته‌بندی خودکار فایل‌های Downloads بر اساس نوع، با گزارش و لاگ کامل |
+| [🖱 ابزار اتوماسیون دسکتاپ](./desktop/pyautogui-automation-demo) | Python | تایپ خودکار، اسکرین‌شات و کلیک با PyAutoGUI از طریق آرگومان‌های خط‌فرمان |
+| [🖥 مانیتور سیستم](./desktop/system-monitor-gui) | Python | نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6 |
+| [📁 تغییرنام گروهی](./desktop/bulk-renamer-cli) | Python | تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت |
+| [📋 تاریخچه کلیپ‌بورد](./desktop/clipboard-history-manager) | Python | تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON |
+| [🧬 یافتن فایل تکراری](./desktop/dupe-file-finder) | Python | یابنده‌ی فایل تکراری با هش سه‌مرحله‌ای، گزارش فضای هدررفته، خروجی CSV و حذف امن |
 
 > 🚧 در حال توسعه و افزودن سورس‌های جدید هستم — با **Star** و **Watch** از پروژه‌های تازه باخبر شوید.
 
@@ -351,7 +375,7 @@ python tools/generate_catalog.py
 # حالت CI — اگر README و داده‌های کاتالوگ ناهماهنگ باشند خطا می‌دهد
 python tools/generate_catalog.py --check
 
-# دروازه کیفیت: هر پوشه در src/ باید README + کد قابل اجرا داشته باشد و
+# دروازه کیفیت: هر پوشه‌ی پروژه باید README + کد قابل اجرا داشته باشد و
 # هیچ توکن یا کلید مخفی‌ای در هیچ‌جای مخزن نباشد
 python tools/validate_projects.py
 ```

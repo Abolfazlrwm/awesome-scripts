@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Project validator for awesome-scripts.
 
-Quality gate for every project folder under src/:
+Quality gate for every project folder under bots/, web/ and desktop/:
 
   1. every folder must ship a real README (heading + setup content)
   2. every folder must contain runnable code or a web entry point
@@ -26,7 +26,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SRC_DIR = REPO_ROOT / "src"
+PROJECT_DIRS = [REPO_ROOT / d for d in ("bots", "web", "desktop")]
 
 CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1", ".html"}
 SCAN_EXTS = CODE_EXTS | {".json", ".yml", ".yaml", ".txt", ".md", ".css", ".xml", ".sh", ".env", ".example", ".cfg", ".ini"}
@@ -122,15 +122,16 @@ def check_project(folder: Path) -> list[str]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Validate src/ project folders and secrets hygiene")
+    parser = argparse.ArgumentParser(description="Validate project folders and secrets hygiene")
     parser.add_argument("--quiet", action="store_true", help="only print failures and the summary")
     args = parser.parse_args()
 
-    if not SRC_DIR.exists():
-        print("✗ src/ directory not found", file=sys.stderr)
+    missing = [d for d in PROJECT_DIRS if not d.exists()]
+    if missing:
+        print("✗ missing project dirs: " + ", ".join(d.name for d in missing), file=sys.stderr)
         raise SystemExit(1)
 
-    folders = sorted(p for p in SRC_DIR.iterdir() if p.is_dir())
+    folders = sorted(p for d in PROJECT_DIRS for p in d.iterdir() if p.is_dir())
     failed = 0
 
     for folder in folders:

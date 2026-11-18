@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Project scaffolder for awesome-scripts.
 
-Creates a ready-to-fill project folder under src/<slug>/ following the
+Creates a ready-to-fill project folder under bots|web|desktop/<slug>/ following the
 repository conventions (README structure, requirements file, attribution
 header, catalog-ready description), so contributing project #75+ stays
 consistent with the existing 74.
@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SRC_DIR = REPO_ROOT / "src"
+LANG_DIR = {"python": "bots", "php": "bots", "node": "bots", "web": "web"}
 CONTACT = "Telegram: @Abolfazl_rwm"
 TELEGRAM_LINK = "https://t.me/Abolfazl_rwm"
 
@@ -95,7 +95,7 @@ console.log("hello from the scaffold");
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
 
-def readme_template(slug: str, lang_label: str, demo_hint: str) -> str:
+def readme_template(slug: str, lang_label: str, demo_hint: str, dir: str) -> str:
     return f'''# <Project Title>
 
 <!-- {CONTACT} -->
@@ -114,7 +114,7 @@ def readme_template(slug: str, lang_label: str, demo_hint: str) -> str:
 ## 🚀 Setup — نصب و اجرا
 
 ```bash
-cd src/{slug}
+cd {dir}/{slug}
 # {demo_hint}
 ```
 
@@ -140,7 +140,7 @@ def main() -> int:
     if not SLUG_RE.match(args.slug) or "-" not in args.slug:
         print(f"error: slug must be kebab-case (letters/digits/hyphen), got: {args.slug!r}", file=sys.stderr)
         return 1
-    dest = SRC_DIR / args.slug
+    dest = REPO_ROOT / LANG_DIR[args.lang] / args.slug
     if dest.exists():
         print(f"error: {dest} already exists — refusing to overwrite", file=sys.stderr)
         return 1
@@ -150,7 +150,7 @@ def main() -> int:
 
     dest.mkdir(parents=True)
     (dest / "README.md").write_text(
-        readme_template(args.slug, lang["label"], f"python {lang['entry']}" if args.lang == "python" else f"open {lang['entry']}"),
+        readme_template(args.slug, lang["label"], f"python {lang['entry']}" if args.lang == "python" else f"open {lang['entry']}", LANG_DIR[args.lang]),
         encoding="utf-8",
     )
     (dest / lang["entry"]).write_text(lang["entry_stub"].format(contact=CONTACT), encoding="utf-8")
@@ -164,7 +164,7 @@ Next steps — قدم‌های بعدی:
   1. fill in README.md (EN + FA), the entry file, and drop a preview at docs/preview.png
   2. add a row to the matching table in the root README.md (EN + FA sections)
   3. run:  python tools/generate_catalog.py          # refresh data/catalog.{json,js}
-  4. run:  python tools/validate_projects.py         # must print 74+1/75 all green
+  4. run:  python tools/validate_projects.py         # must print all green
   5. commit:  feat(slug): add <short description>""")
     return 0
 
