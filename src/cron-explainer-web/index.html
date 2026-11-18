@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Explainer — توضیح‌گر Cron</title>
+<meta name="description" content="عبارت cron را به فارسی توضیح می‌دهد و ۵ اجرای بعدی را حساب می‌کند — با الگوهای آماده — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(244,114,182,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#f472b6; --a2:#fb7185;
+    --bad:#f87171;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(244,114,182,.11), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(251,113,133,.11), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(244,114,182,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:760px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .inrow { display:flex; gap:10px; margin-top:14px; }
+  input[type=text] {
+    flex:1; padding:13px 16px; border-radius:14px; background:rgba(8,12,24,.6);
+    border:1px solid var(--border); color:var(--text); font:600 16px var(--mono);
+    direction:ltr; text-align:left; outline:none; min-width:0;
+  }
+  input[type=text]:focus { border-color:var(--border2); }
+  input.err { border-color:var(--bad); }
+  .presets { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; justify-content:center; }
+  .chip { background:var(--glass2); color:var(--muted); border:1px solid var(--border); border-radius:999px;
+          padding:5px 14px; font:600 12px var(--mono); direction:ltr; cursor:pointer; transition:.15s; }
+  .chip:hover { border-color:var(--border2); color:var(--text); }
+  .desc { margin-top:14px; padding:18px 20px; font:700 17px/2 var(--font-fa); }
+  .desc .hl { background:linear-gradient(90deg, var(--a1), var(--a2));
+              -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .fields { margin-top:12px; padding:14px 18px; display:grid; grid-template-columns:repeat(5,1fr); gap:8px; text-align:center; }
+  @media (max-width:560px) { .fields { grid-template-columns:repeat(2,1fr); } .fields .f:last-child { grid-column:span 2; } }
+  .f { background:rgba(8,12,24,.5); border:1px solid var(--border); border-radius:12px; padding:8px 4px; }
+  .f b { display:block; font:600 15px var(--mono); direction:ltr; }
+  .f span { color:var(--muted); font-size:11px; }
+  .next { margin-top:12px; padding:14px 18px; }
+  .next h3 { font-size:14px; color:var(--muted); margin-bottom:8px; }
+  .run { display:flex; justify-content:space-between; gap:10px; padding:7px 12px; border-radius:10px;
+         background:rgba(8,12,24,.5); border:1px solid var(--border); margin-bottom:6px;
+         font:600 13.5px var(--font-en); direction:ltr; }
+  .run b { color:var(--a1); }
+  .status { margin-top:10px; text-align:center; font-size:13.5px; min-height:20px; color:var(--bad); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">⏰</div>
+  <h1>توضیح‌گر Cron</h1>
+  <p>عبارت cron را بنویسید — به فارسی توضیح می‌دهد و ۵ اجرای بعدی را حساب می‌کند</p>
+</header>
+
+<div class="wrap">
+  <div class="inrow">
+    <input type="text" id="expr" value="30 2 * * 1" spellcheck="false" placeholder="*/5 * * * *">
+    <input type="text" id="tzoff" value="+03:30" spellcheck="false" title="اختلاف ساعت با UTC" style="flex:0 0 110px">
+  </div>
+  <div class="presets" id="presets"></div>
+
+  <div class="glass desc" id="desc">—</div>
+  <div class="glass fields" id="fields"></div>
+  <div class="status" id="status"></div>
+  <div class="glass next" id="nextBox">
+    <h3>🕐 ۵ اجرای بعدی (به وقت تهران)</h3>
+    <div id="next"></div>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    cron استاندارد ۵-فیلدی · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+
+const FIELD_FA = ["دقیقه", "ساعت", "روز ماه", "ماه", "روز هفته"];
+const MONTHS_FA = ["", "ژانویه", "فوریه", "مارس", "آوریل", "مه", "ژوئن", "ژوئیه", "اوت", "سپتامبر", "اکتبر", "نوامبر", "دسامبر"];
+const DAYS_FA = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
+const MONTHS_EN = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const DAYS_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const PRESETS = [
+  ["*/5 * * * *", "هر ۵ دقیقه"],
+  ["0 * * * *", "هر ساعت، دقیقه‌ی صفر"],
+  ["30 2 * * 1", "دوشنبه‌ها ۰۲:۳۰"],
+  ["0 0 * * *", "هر روز نیمه‌شب"],
+  ["0 9 * * 1-5", "روزهای کاری ساعت ۹ صبح"],
+  ["0 0 1 * *", "اول هر ماه"],
+  ["0 0 * * 6,0", "آخر هفته‌ها نیمه‌شب"],
+  ["15 3 * * 0", "یکشنبه‌ها ۰۳:۱۵"],
+];
+
+/* parse one field into a Set of allowed integers */
+function parseField(spec, lo, hi, dowMode) {
+  const set = new Set();
+  if (!/^[\d*,\-/]+$/.test(spec)) throw new Error("کاراکتر غیرمجاز: " + spec);
+  for (const part of spec.split(",")) {
+    if (!part) throw new Error("فیلد خالی است");
+    let [rng, step] = part.split("/");
+    if (step !== undefined && !/^\d+$/.test(step)) throw new Error("گام نامعتبر: " + step);
+    const st = step ? parseInt(step, 10) : 1;
+    if (st < 1) throw new Error("گام باید ≥ ۱ باشد");
+    let a, b;
+    if (rng === "*") { a = lo; b = hi; }
+    else if (rng.includes("-")) {
+      const p = rng.split("-");
+      if (p.length !== 2 || !/^\d+$/.test(p[0]) || !/^\d+$/.test(p[1])) throw new Error("بازه‌ی نامعتبر: " + rng);
+      a = parseInt(p[0], 10); b = parseInt(p[1], 10);
+    } else {
+      if (!/^\d+$/.test(rng)) throw new Error("عدد نامعتبر: " + rng);
+      a = b = parseInt(rng, 10);
+    }
+    if (dowMode) {
+      // cron allows 0-7 for weekday (7 == Sunday); map 7 to 0 per value
+      if (a < lo || b > hi || a > b) throw new Error(`${rng} خارج از بازه‌ی ${lo}-${hi}`);
+      for (let v = a; v <= b; v += st) set.add(v === 7 ? 0 : v);
+      return set;
+    }
+    if (a < lo || b > hi || a > b) throw new Error(`${rng} خارج از بازه‌ی ${lo}-${hi}`);
+    for (let v = a; v <= b; v += st) set.add(v);
+  }
+  return set;
+}
+
+function parse(expr) {
+  const parts = expr.trim().split(/\s+/);
+  if (parts.length !== 5) throw new Error("دقیقاً ۵ فیلد لازم است — این عبارت " + parts.length + " فیلد دارد");
+  return [
+    parseField(parts[0], 0, 59),
+    parseField(parts[1], 0, 23),
+    parseField(parts[2], 1, 31),
+    parseField(parts[3], 1, 12),
+    parseField(parts[4], 0, 7, true),
+  ];
+}
+
+/* human description (FA) */
+function describe(f, fa) {
+  const [min, hr, dom, mon, dow] = f;
+  const isFull = (s, lo, hi) => s.size === hi - lo + 1;
+  let d = "";
+  const mFull = isFull(min, 0, 59), hFull = isFull(hr, 0, 23);
+  const mins = [...min].sort((a, b) => a - b);
+  const hours = [...hr].sort((a, b) => a - b);
+  const pad = v => String(v).padStart(2, "0");
+  if (mFull && hFull) d += "هر دقیقه";
+  else if (!mFull && mins.length > 1 && isArith(mins)) d += "هر " + (mins[1] - mins[0]) + " دقیقه";
+  else if (!mFull) d += "دقیقه‌ی " + mins.map(pad).join("، ");
+  if (!hFull) {
+    if (isArith(hours) && hours.length > 1) d += " — هر " + (hours[1] - hours[0]) + " ساعت (ساعت‌های " + hours.map(pad).join("، ") + ")";
+    else d += " — ساعت " + hours.map(pad).join("، ");
+  } else if (!mFull) d += " — هر ساعت";
+  // day
+  const domFull = isFull(dom, 1, 31), dowFull = isFull(dow, 0, 6);
+  if (!domFull && !dowFull) d += " — روزهای " + [...dom].join("، ") + " هر ماه یا " + [...dow].map(v => fa ? DAYS_FA[v] : DAYS_EN[v]).join("، ");
+  else if (!domFull) d += " — روز " + [...dom].join("، ") + " هر ماه";
+  else if (!dowFull) d += " — " + [...dow].sort().map(v => fa ? DAYS_FA[v] : DAYS_EN[v]).join("، ");
+  // month
+  if (!isFull(mon, 1, 12)) d += " — در " + [...mon].sort().map(v => fa ? MONTHS_FA[v] : MONTHS_EN[v]).join("، ");
+  return d || "هر دقیقه";
+}
+function isArith(sorted) {
+  const s = sorted[1] - sorted[0];
+  return s > 1 && sorted.every((v, i) => i === 0 || v - sorted[i - 1] === s);
+}
+
+/* next N fire times, minute scan with fast-skip */
+function nextRuns(f, n, tzOffsetMinutes) {
+  const out = [];
+  const now = Date.now() + tzOffsetMinutes * 60000;
+  const d = new Date(now);
+  d.setSeconds(0, 0);
+  d.setMinutes(d.getMinutes() + 1);
+  for (let guard = 0; guard < 600000 && out.length < n; guard++) {
+    if (!f[3].has(d.getMonth() + 1)) { d.setMonth(d.getMonth() + 1, 1); d.setHours(0, 0, 0, 0); continue; }
+    if (!f[2].has(d.getDate()) || !f[4].has(d.getDay())) { d.setDate(d.getDate() + 1); d.setHours(0, 0, 0, 0); continue; }
+    if (!f[1].has(d.getHours())) { d.setHours(d.getHours() + 1, 0, 0, 0); continue; }
+    if (!f[0].has(d.getMinutes())) { d.setMinutes(d.getMinutes() + 1, 0, 0); continue; }
+    out.push(new Date(d.getTime() - tzOffsetMinutes * 60000));
+    d.setMinutes(d.getMinutes() + 1);
+  }
+  return out;
+}
+
+function parseOffset(s) {
+  const m = /^([+-])(\d{1,2}):(\d{2})$/.test(s.trim()) ? s.trim().match(/^([+-])(\d{1,2}):(\d{2})$/) : null;
+  if (!m) return 210; // Tehran default +03:30
+  const v = (+m[2]) * 60 + +m[3];
+  return m[1] === "-" ? -v : v;
+}
+
+function run() {
+  const expr = $("expr").value;
+  const fa = document.documentElement.lang === "fa";
+  $("status").textContent = "";
+  $("expr").classList.remove("err");
+  try {
+    const f = parse(expr);
+    const off = parseOffset($("tzoff").value);
+    $("desc").innerHTML = '<span class="hl">' + describe(f, true) + "</span>";
+    $("fields").innerHTML = FIELD_FA.map((name, i) =>
+      `<div class="f"><b>${expr.trim().split(/\s+/)[i]}</b><span>${name}</span></div>`).join("");
+    const runs = nextRuns(f, 5, off);
+    $("next").innerHTML = runs.map(d => {
+      const local = new Date(d.getTime() + off * 60000);
+      const day = DAYS_FA[local.getUTCDay()], mon = MONTHS_FA[local.getUTCMonth() + 1];
+      const t = `${local.getUTCFullYear()}-${String(local.getUTCMonth() + 1).padStart(2, "0")}-${String(local.getUTCDate()).padStart(2, "0")} <b>${String(local.getUTCHours()).padStart(2, "0")}:${String(local.getUTCMinutes()).padStart(2, "0")}</b>`;
+      return `<div class="run">${t} <span>${day} ${mon}</span></div>`;
+    }).join("") || "⚠ در آینده‌ی نزدیک اجرا نمی‌شود (مثلاً روز ۳۱ فقط در بعضی ماه‌ها)";
+  } catch (e) {
+    $("expr").classList.add("err");
+    $("status").textContent = "✗ " + (e.message || e);
+    $("desc").textContent = "—";
+    $("fields").innerHTML = "";
+    $("next").innerHTML = "";
+  }
+}
+$("presets").innerHTML = PRESETS.map(([e, tip]) =>
+  `<button class="chip" data-e="${e}" title="${tip}">${e}</button>`).join("");
+document.querySelectorAll("[data-e]").forEach(b => b.addEventListener("click", () => {
+  $("expr").value = b.dataset.e;
+  run();
+}));
+$("expr").addEventListener("input", run);
+$("tzoff").addEventListener("change", run);
+run();
+</script>
+</body>
+</html>
