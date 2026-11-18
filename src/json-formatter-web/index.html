@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatter — فرمت‌کننده JSON</title>
+<meta name="description" content="فرمت، فشرده‌سازی، اعتبارسنجی و نمای درختی JSON با نمایش خطای دقیق — کاملاً آفلاین و امن.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(56,189,248,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#38bdf8; --a2:#818cf8;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(56,189,248,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(129,140,248,.12), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(56,189,248,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:1100px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .bar { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:14px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#061627; font-weight:800; }
+  .pane { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+  @media (max-width:760px) { .pane { grid-template-columns:1fr; } }
+  textarea {
+    width:100%; min-height:430px; padding:16px; border-radius:var(--r); resize:vertical;
+    background:rgba(8,12,24,.6); border:1px solid var(--border); color:var(--text);
+    font:14px/1.8 var(--mono); direction:ltr; text-align:left; outline:none;
+  }
+  textarea:focus { border-color:var(--border2); }
+  textarea.err { border-color:#f87171; }
+  .status { margin-top:10px; text-align:center; font-size:13.5px; min-height:22px; }
+  .status.ok { color:var(--a1); } .status.bad { color:#f87171; }
+  .tree { min-height:430px; padding:16px; direction:ltr; text-align:left;
+          font:13.5px/1.9 var(--mono); overflow:auto; max-height:560px; }
+  .tnode { margin-inline-start:18px; border-inline-start:1px dashed var(--border); padding-inline-start:10px; }
+  .trow { cursor:default; white-space:nowrap; }
+  .trow .key { color:var(--a2); }
+  .trow .num { color:#4ade80; } .trow .str { color:#fbbf24; }
+  .trow .bool { color:#f472b6; } .trow .null { color:#64748b; }
+  .tog { cursor:pointer; user-select:none; color:var(--muted); display:inline-block;
+         width:16px; font-family:var(--font-en); }
+  .kids.collapsed { display:none; }
+  .stats { display:flex; gap:14px; justify-content:center; margin-top:12px; color:var(--muted); font-size:12.5px; }
+  .stats b { color:var(--text); font-family:var(--font-en); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🧾</div>
+  <h1>فرمت‌کننده JSON</h1>
+  <p>فرمت، فشرده‌سازی، اعتبارسنجی با خطای دقیق و نمای درختی — همه‌چیز همین‌جا در مرورگر</p>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <button class="btn primary" data-fmt="2">✨ مرتب‌سازی (۲ فاصله)</button>
+    <button class="btn" data-fmt="4">مرتب‌سازی (۴ فاصله)</button>
+    <button class="btn" id="minBtn">🗜 فشرده</button>
+    <button class="btn" id="copyBtn">📋 کپی</button>
+    <button class="btn" id="sampleBtn">✨ نمونه</button>
+  </div>
+
+  <div class="pane">
+    <textarea id="src" spellcheck="false" placeholder='{"hello": "world"}'></textarea>
+    <div class="glass tree" id="tree"></div>
+  </div>
+
+  <div class="status" id="status"></div>
+  <div class="stats">
+    <span>کلید: <b id="kCount">0</b></span>
+    <span>عمق: <b id="depth">0</b></span>
+    <span>حجم: <b id="size">0 B</b></span>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    پردازش کامل محلی — هیچ داده‌ای جایی ارسال نمی‌شود · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const src = $("src"), tree = $("tree"), statusEl = $("status");
+
+let current = null;
+function tryParse() {
+  const text = src.value.trim();
+  if (!text) { statusEl.textContent = ""; statusEl.className = "status"; src.classList.remove("err"); tree.innerHTML = ""; current = null; stats(null); return null; }
+  try {
+    const parsed = JSON.parse(text);
+    src.classList.remove("err");
+    statusEl.textContent = "✓ JSON معتبر است";
+    statusEl.className = "status ok";
+    current = parsed;
+    tree.innerHTML = "";
+    tree.appendChild(node(parsed, "$"));
+    stats(parsed);
+    return parsed;
+  } catch (e) {
+    src.classList.add("err");
+    const msg = String(e.message || e);
+    const m = msg.match(/position (\d+)/);
+    let at = "";
+    if (m) {
+      const pos = +m[1];
+      const before = text.slice(0, pos);
+      const line = before.split("\n").length;
+      const col = pos - before.lastIndexOf("\n");
+      at = ` — خط ${line}، ستون ${col}`;
+    }
+    statusEl.textContent = "✗ " + msg + at;
+    statusEl.className = "status bad";
+    current = null;
+    tree.innerHTML = "";
+    stats(null);
+    return null;
+  }
+}
+function node(val, label) {
+  const wrap = document.createElement("div");
+  wrap.className = "tnode";
+  if (val !== null && typeof val === "object") {
+    const isArr = Array.isArray(val);
+    const keys = isArr ? val.map((_, i) => String(i)) : Object.keys(val);
+    const kids = document.createElement("div");
+    kids.className = "kids";
+    keys.forEach(k => kids.appendChild(node(val[k], isArr ? "[" + k + "]" : k)));
+    const row = document.createElement("div");
+    row.className = "trow";
+    const tog = document.createElement("span");
+    tog.className = "tog";
+    tog.textContent = "▾";
+    row.appendChild(tog);
+    if (label !== "$") row.insertAdjacentHTML("beforeend", '<span class="key">' + esc(label) + '</span>: ');
+    row.insertAdjacentHTML("beforeend", isArr ? "[ " + keys.length + " ]" : "{ " + keys.length + " }");
+    row.addEventListener("click", () => {
+      kids.classList.toggle("collapsed");
+      tog.textContent = kids.classList.contains("collapsed") ? "▸" : "▾";
+    });
+    tog.addEventListener("click", e => { e.stopPropagation(); row.click(); });
+    wrap.appendChild(row);
+    wrap.appendChild(kids);
+  } else {
+    const row = document.createElement("div");
+    row.className = "trow";
+    if (label !== "$") row.insertAdjacentHTML("beforeend", '<span class="key">' + esc(label) + "</span>: ");
+    const cls = val === null ? "null" : typeof val === "number" ? "num" : typeof val === "boolean" ? "bool" : "str";
+    const txt = typeof val === "string" ? '"' + val + '"' : String(val);
+    row.insertAdjacentHTML("beforeend", '<span class="' + cls + '">' + esc(txt) + "</span>");
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+function stats(obj) {
+  if (obj === null) { $("kCount").textContent = 0; $("depth").textContent = 0; $("size").textContent = fmtSize(src.value.length); return; }
+  let keys = 0, depth = 0;
+  (function walk(v, d) {
+    depth = Math.max(depth, d);
+    if (v && typeof v === "object") Object.keys(v).forEach(k => { keys++; walk(v[k], d + 1); });
+  })(obj, 1);
+  $("kCount").textContent = keys;
+  $("depth").textContent = depth;
+  $("size").textContent = fmtSize(src.value.length);
+}
+function fmtSize(n) { return n < 1024 ? n + " B" : (n / 1024).toFixed(1) + " KB"; }
+document.querySelectorAll("[data-fmt]").forEach(b => b.addEventListener("click", () => {
+  const p = tryParse();
+  if (p === null && src.value.trim()) return;
+  src.value = JSON.stringify(p, null, +b.dataset.fmt);
+  tryParse();
+}));
+$("minBtn").addEventListener("click", () => {
+  const p = tryParse();
+  if (p === null && src.value.trim()) return;
+  src.value = JSON.stringify(p);
+  tryParse();
+});
+$("copyBtn").addEventListener("click", async () => {
+  const ok = await navigator.clipboard.writeText(src.value).then(() => true).catch(() => false);
+  statusEl.textContent = ok ? "📋 کپی شد" : "کپی ناموفق بود";
+  statusEl.className = "status " + (ok ? "ok" : "bad");
+});
+$("sampleBtn").addEventListener("click", () => {
+  src.value = JSON.stringify({
+    project: "awesome-scripts",
+    author: { name: "Abolfazl", telegram: "@Abolfazl_rwm" },
+    stats: { bots: 63, webTools: 37, desktop: 6, stars: 81 },
+    tags: ["telegram", "web", "arcade", "ai"],
+    config: { theme: "dark", rtl: true, offline: true, retries: null },
+  }, null, 2);
+  tryParse();
+});
+src.addEventListener("input", tryParse);
+src.value = '{\n  "hello": "world",\n  "broken": \n}';
+tryParse();
+</script>
+</body>
+</html>
