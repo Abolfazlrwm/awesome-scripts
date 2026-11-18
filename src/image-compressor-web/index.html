@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Compressor — فشرده‌ساز تصویر</title>
+<meta name="description" content="فشرده‌سازی تصویر در مرورگر با کنترل کیفیت، تغییر ابعاد و مقایسه‌ی حجم قبل/بعد — هیچ فایلی آپلود نمی‌شود.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(167,139,250,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#a78bfa; --a2:#ec4899;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(167,139,250,.12), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(236,72,153,.1), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(167,139,250,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:900px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  #drop { margin-top:16px; padding:36px 18px; text-align:center; border:2px dashed var(--border);
+          border-radius:var(--r); cursor:pointer; transition:.2s; color:var(--muted); }
+  #drop:hover, #drop.drag { border-color:var(--border2); background:rgba(167,139,250,.06); color:var(--text); }
+  #drop .big { font-size:34px; margin-bottom:6px; }
+  .controls { display:none; margin-top:14px; padding:18px 20px; }
+  .controls.show { display:block; }
+  .row { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .row label { font-size:13px; color:var(--muted); display:flex; align-items:center; gap:8px; min-width:190px; }
+  input[type=range] { flex:1; accent-color:var(--a1); min-width:120px; }
+  input[type=number] { width:84px; padding:7px 10px; border-radius:10px; background:rgba(8,12,24,.6);
+                       border:1px solid var(--border); color:var(--text); font:600 14px var(--font-en); outline:none; }
+  select { padding:8px 12px; border-radius:10px; background:rgba(8,12,24,.6); border:1px solid var(--border);
+           color:var(--text); font:600 13.5px var(--font-fa); outline:none; }
+  .bar { display:flex; gap:8px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#1b0b33; font-weight:800; }
+  .compare { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+  @media (max-width:640px) { .compare { grid-template-columns:1fr; } }
+  .pane { padding:12px; text-align:center; }
+  .pane img { max-width:100%; max-height:280px; border-radius:12px; display:block; margin:0 auto 8px;
+              background:repeating-conic-gradient(#1a1a2e 0 25%, #15152a 0 50%) 0 / 16px 16px; }
+  .pane .cap { color:var(--muted); font-size:12.5px; }
+  .pane .cap b { color:var(--text); font-family:var(--font-en); }
+  .saved { text-align:center; margin-top:12px; font:800 15px var(--font-fa);
+           background:rgba(74,222,128,.08); border:1px solid rgba(74,222,128,.35); border-radius:12px;
+           padding:10px; display:none; }
+  .saved.show { display:block; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🖼️</div>
+  <h1>فشرده‌ساز تصویر</h1>
+  <p>همه‌چیز در مرورگر شما — هیچ فایلی جایی آپلود نمی‌شود</p>
+</header>
+
+<div class="wrap">
+  <div id="drop">
+    <div class="big">📥</div>
+    تصویر را اینجا رها کنید یا کلیک کنید
+    <div style="font-size:12px;margin-top:4px">PNG · JPG · WebP</div>
+    <input type="file" id="file" accept="image/*" hidden>
+  </div>
+
+  <div class="glass controls" id="ctl">
+    <div class="row">
+      <label>کیفیت <input type="range" id="q" min="10" max="100" value="80"><b id="qv" style="color:var(--text)">80%</b></label>
+      <label>حداکثر عرض <input type="number" id="mw" value="0" min="0" step="50"> px <span style="font-size:11px">(۰ = بدون تغییر)</span></label>
+      <label>فرمت خروجی
+        <select id="fmt">
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
+          <option value="image/png">PNG (بدون افت)</option>
+        </select>
+      </label>
+    </div>
+    <div class="bar">
+      <button class="btn primary" id="runBtn">⚡ فشرده‌سازی</button>
+      <button class="btn" id="dlBtn" style="display:none">⬇ دانلود</button>
+      <button class="btn" id="againBtn" style="display:none">🔄 تصویر دیگر</button>
+    </div>
+
+    <div class="compare">
+      <div class="glass pane">
+        <img id="orig" alt="original">
+        <div class="cap">اصلی — <b id="origSize">—</b> · <b id="origDim">—</b></div>
+      </div>
+      <div class="glass pane">
+        <img id="comp" alt="compressed">
+        <div class="cap">فشرده — <b id="compSize">—</b> · <b id="compDim">—</b></div>
+      </div>
+    </div>
+    <div class="saved" id="saved"></div>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    Canvas API · پردازش ۱۰۰٪ محلی · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const drop = $("drop"), file = $("file");
+let srcBlob = null, srcName = "image", outBlob = null;
+
+function fmtSize(n) { return n < 1024 ? n + " B" : n < 1048576 ? (n / 1024).toFixed(1) + " KB" : (n / 1048576).toFixed(2) + " MB"; }
+function loadImage(blob) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => res(img);
+    img.onerror = rej;
+    img.src = URL.createObjectURL(blob);
+  });
+}
+async function setSrc(blob) {
+  srcBlob = blob;
+  const img = await loadImage(blob);
+  $("orig").src = img.src;
+  $("origSize").textContent = fmtSize(blob.size);
+  $("origDim").textContent = img.naturalWidth + "×" + img.naturalHeight;
+  $("ctl").classList.add("show");
+  $("dlBtn").style.display = "none";
+  $("againBtn").style.display = "inline-block";
+  $("saved").classList.remove("show");
+  compress(img);
+}
+async function compress(maybeImg) {
+  const img = maybeImg || await loadImage(srcBlob);
+  const q = +$("q").value / 100;
+  $("qv").textContent = $("q").value + "%";
+  const mw = +$("mw").value;
+  const scale = mw > 0 && img.naturalWidth > mw ? mw / img.naturalWidth : 1;
+  const c = document.createElement("canvas");
+  c.width = Math.max(1, Math.round(img.naturalWidth * scale));
+  c.height = Math.max(1, Math.round(img.naturalHeight * scale));
+  c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+  const mime = $("fmt").value;
+  c.toBlob(bl => {
+    if (!bl) return;
+    outBlob = bl;
+    $("comp").src = URL.createObjectURL(bl);
+    $("compSize").textContent = fmtSize(bl.size);
+    $("compDim").textContent = c.width + "×" + c.height;
+    const d = (1 - bl.size / srcBlob.size) * 100;
+    const el = $("saved");
+    el.classList.add("show");
+    el.textContent = d >= 0
+      ? `✓ ${d.toFixed(1)}٪ سبک‌تر شد — ${fmtSize(srcBlob.size)} → ${fmtSize(bl.size)}`
+      : `⚠ با این تنظیمات ${(-d).toFixed(1)}٪ بزرگ‌تر شد (کیفیت را کم کنید)`;
+    $("dlBtn").style.display = "inline-block";
+  }, mime, mime === "image/png" ? undefined : q);
+}
+drop.addEventListener("click", () => file.click());
+drop.addEventListener("dragover", e => { e.preventDefault(); drop.classList.add("drag"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("drag"));
+drop.addEventListener("drop", e => {
+  e.preventDefault();
+  drop.classList.remove("drag");
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f && f.type.startsWith("image/")) { srcName = f.name.replace(/\.[^.]+$/, ""); setSrc(f); }
+});
+file.addEventListener("change", () => {
+  if (file.files[0]) { srcName = file.files[0].name.replace(/\.[^.]+$/, ""); setSrc(file.files[0]); }
+});
+$("q").addEventListener("input", () => { $("qv").textContent = $("q").value + "%"; });
+$("runBtn").addEventListener("click", () => compress());
+$("againBtn").addEventListener("click", () => file.click());
+$("dlBtn").addEventListener("click", () => {
+  if (!outBlob) return;
+  const ext = { "image/jpeg": "jpg", "image/webp": "webp", "image/png": "png" }[$("fmt").value];
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(outBlob);
+  a.download = srcName + "-compressed." + ext;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+</script>
+</body>
+</html>
