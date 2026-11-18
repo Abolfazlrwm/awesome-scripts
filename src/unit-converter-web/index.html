@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter — مبدل واحدها</title>
+<meta name="description" content="مبدل واحدها با پنج دسته طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای با اعداد فارسی — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(251,191,36,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#fbbf24; --a2:#f97316;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(251,191,36,.11), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(249,115,22,.11), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(251,191,36,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:640px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .cats { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px; }
+  .cat { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .cat:hover { border-color:var(--border2); }
+  .cat.active { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                color:#241400; font-weight:800; }
+  .card { margin-top:14px; padding:22px; }
+  .row { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:10px; align-items:end; }
+  @media (max-width:560px) { .row { grid-template-columns:1fr; } }
+  label { color:var(--muted); font-size:12px; display:block; margin-bottom:6px; }
+  input[type=number], select {
+    width:100%; padding:11px 13px; border-radius:12px; background:rgba(8,12,24,.6);
+    border:1px solid var(--border); color:var(--text); font:600 15px var(--font-en);
+    outline:none; transition:.15s;
+  }
+  select { font-family:var(--font-fa); font-weight:500; }
+  input:focus, select:focus { border-color:var(--border2); }
+  .swapRow { display:flex; justify-content:center; margin:14px 0; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .result { text-align:center; margin-top:8px; padding:18px 12px; border-radius:14px;
+            background:rgba(251,191,36,.07); border:1px solid var(--border2); }
+  .result b { font:800 34px/1.3 var(--font-en);
+              background:linear-gradient(90deg, var(--a1), var(--a2));
+              -webkit-background-clip:text; background-clip:text; color:transparent;
+              word-break:break-all; }
+  .result span { display:block; color:var(--muted); font-size:13px; margin-top:4px; }
+  .refs { margin-top:14px; padding:14px 18px; color:var(--muted); font-size:12.5px; line-height:2; }
+  .refs b { color:var(--text); font-family:var(--font-en); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">📐</div>
+  <h1>مبدل واحدها</h1>
+  <p>طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای و دقیق، بدون فرمول‌زدن</p>
+</header>
+
+<div class="wrap">
+  <div class="cats" id="cats"></div>
+
+  <div class="glass card">
+    <div class="row">
+      <div>
+        <label>مقدار</label>
+        <input type="number" id="amt" value="1" step="any" dir="ltr">
+      </div>
+      <div>
+        <label>از واحد</label>
+        <select id="from"></select>
+      </div>
+      <div>
+        <label>به واحد</label>
+        <select id="to"></select>
+      </div>
+    </div>
+    <div class="swapRow"><button class="btn" id="swapBtn">⇄ جابه‌جایی واحدها</button></div>
+    <div class="result">
+      <b id="res">—</b>
+      <span id="resHint"></span>
+    </div>
+  </div>
+
+  <div class="glass refs" id="refs"></div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    ضرایب استاندارد SI · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+
+/* factor = value in base unit */
+const CATS = {
+  length: {
+    fa: "طول", icon: "📏", base: "m",
+    units: {
+      "mm": { fa: "میلی‌متر", f: 0.001 }, "cm": { fa: "سانتی‌متر", f: 0.01 },
+      "m": { fa: "متر", f: 1 }, "km": { fa: "کیلومتر", f: 1000 },
+      "in": { fa: "اینچ", f: 0.0254 }, "ft": { fa: "فوت", f: 0.3048 },
+      "yd": { fa: "یارد", f: 0.9144 }, "mi": { fa: "مایل", f: 1609.344 },
+      "nmi": { fa: "مایل دریایی", f: 1852 },
+    },
+  },
+  mass: {
+    fa: "جرم", icon: "⚖️", base: "kg",
+    units: {
+      "mg": { fa: "میلی‌گرم", f: 1e-6 }, "g": { fa: "گرم", f: 0.001 },
+      "kg": { fa: "کیلوگرم", f: 1 }, "t": { fa: "تن", f: 1000 },
+      "oz": { fa: "اونس", f: 0.028349523125 }, "lb": { fa: "پوند", f: 0.45359237 },
+    },
+  },
+  temp: {
+    fa: "دما", icon: "🌡️", base: "C",
+    units: {
+      "C": { fa: "سلسیوس", f: 1 }, "F": { fa: " فارنهایت", f: 1 }, "K": { fa: "کلوین", f: 1 },
+    },
+  },
+  data: {
+    fa: "داده", icon: "💾", base: "B",
+    units: {
+      "B": { fa: "بایت", f: 1 }, "KB": { fa: "کیلوبایت", f: 1024 },
+      "MB": { fa: "مگابایت", f: 1048576 }, "GB": { fa: "گیگابایت", f: 1073741824 },
+      "TB": { fa: "ترابایت", f: 1099511627776 },
+      "bit": { fa: "بیت", f: 0.125 },
+    },
+  },
+  speed: {
+    fa: "سرعت", icon: "🚀", base: "m/s",
+    units: {
+      "m/s": { fa: "متر بر ثانیه", f: 1 }, "km/h": { fa: "کیلومتر بر ساعت", f: 1 / 3.6 },
+      "mph": { fa: "مایل بر ساعت", f: 0.44704 }, "kn": { fa: "گره دریایی", f: 0.514444 },
+      "mach": { fa: "ماخ (سطح دریا)", f: 340.29 },
+    },
+  },
+};
+const REFS = {
+  length: "۱ اینچ = <b>2.54</b> سانتی‌متر · ۱ مایل = <b>1.609344</b> کیلومتر · ۱ مایل دریایی = <b>1852</b> متر",
+  mass: "۱ پوند = <b>453.59237</b> گرم · ۱ اونس = <b>28.35</b> گرم · ۱ تن = <b>1000</b> کیلوگرم",
+  temp: "سلسیوس ↔ فارنهایت: <b>F = C×9/5 + 32</b> · کلوین: <b>K = C + 273.15</b>",
+  data: "واحدها دودویی‌اند: ۱ KB = <b>1024</b> بایت · ۱ بایت = <b>8</b> بیت",
+  speed: "۱ km/h = <b>0.2778</b> m/s · صوت در سطح دریا ≈ <b>340.29</b> m/s = ماخ ۱",
+};
+let cat = "length";
+
+function toBase(catName, u, v) {
+  if (catName === "temp") {
+    if (u === "C") return v;
+    if (u === "F") return (v - 32) * 5 / 9;
+    return v - 273.15;                     /* K */
+  }
+  return v * CATS[catName].units[u].f;
+}
+function fromBase(catName, u, v) {
+  if (catName === "temp") {
+    if (u === "C") return v;
+    if (u === "F") return v * 9 / 5 + 32;
+    return v + 273.15;
+  }
+  return v / CATS[catName].units[u].f;
+}
+function fmtNum(x) {
+  if (!isFinite(x)) return "—";
+  const abs = Math.abs(x);
+  if (abs !== 0 && (abs < 1e-6 || abs >= 1e12)) return x.toExponential(6);
+  return parseFloat(x.toPrecision(10)).toLocaleString("en-US", { maximumFractionDigits: 8 });
+}
+function convert() {
+  const v = parseFloat($("amt").value);
+  const uF = $("from").value, uT = $("to").value;
+  if (isNaN(v)) { $("res").textContent = "—"; $("resHint").textContent = "یک عدد وارد کن"; return; }
+  const base = toBase(cat, uF, v);
+  const out = fromBase(cat, uT, base);
+  $("res").textContent = fmtNum(out) + " " + uT;
+  const faU = s => (CATS[cat].units[s] || {}).fa || s;
+  $("resHint").textContent = `${fmtNum(v)} ${faU(uF)} = ${fmtNum(out)} ${faU(uT)}`;
+}
+function buildCats() {
+  $("cats").innerHTML = Object.keys(CATS).map(k =>
+    `<button class="cat ${k === cat ? "active" : ""}" data-c="${k}">${CATS[k].icon} ${CATS[k].fa}</button>`).join("");
+  document.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", () => {
+    cat = b.dataset.c;
+    buildCats();
+    buildUnits();
+  }));
+}
+function buildUnits() {
+  const keys = Object.keys(CATS[cat].units);
+  $("from").innerHTML = keys.map(k => `<option value="${k}">${CATS[cat].units[k].fa} (${k})</option>`).join("");
+  $("to").innerHTML = keys.map(k => `<option value="${k}">${CATS[cat].units[k].fa} (${k})</option>`).join("");
+  $("from").selectedIndex = 0;
+  $("to").selectedIndex = Math.min(2, keys.length - 1);
+  $("refs").innerHTML = "<b>" + CATS[cat].fa + ":</b> " + REFS[cat];
+  convert();
+}
+$("amt").addEventListener("input", convert);
+$("from").addEventListener("change", convert);
+$("to").addEventListener("change", convert);
+$("swapBtn").addEventListener("click", () => {
+  const a = $("from").selectedIndex;
+  $("from").selectedIndex = $("to").selectedIndex;
+  $("to").selectedIndex = a;
+  convert();
+});
+buildCats();
+buildUnits();
+</script>
+</body>
+</html>
