@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.19.0] — 2026-11-19 — 🗂 Repository reorganized + gallery front & center (63 bots · 40 web · 6 desktop)
+
+- **Structure** — the mixed `src/` bucket is gone: projects now live in **`bots/` (63)**, **`web/` (40)** and **`desktop/` (6)**. The whole toolchain followed: catalog generator, validator, scaffolder, release packaging, sitemap and every README row (218 folder links + 76 demo links rewritten).
+- **Sitemap rebuilt** — new `tools/generate_sitemap.py` emits all **110 URLs** (root + every project page) from the catalog, plus `.nojekyll` for faster Pages builds.
+- **Gallery visibility** — the interactive site now sits at the top of the README (hero + screenshot), is set as the **repository homepage link**, and the repo description points to it. Demo coverage: 38/40 web tools (the 2 without — a PHP web app and an API library — genuinely have no browser UI).
+- Filter chips (`▶ Live demo only`, `⭐ Favorites`) are now bilingual and follow the language toggle.
+
+`src/` قاطی حذف شد و پروژه‌ها به سه پوشه‌ی `bots/`، `web/` و `desktop/` رفتند؛ تمام ابزارها و لینک‌ها به‌روز شدند؛ سایت تعاملی حالا اول README، لینک homepage مخزن و همراه اسکرین‌شات است.
+
 ## [v1.18.0] — 2026-11-19 — 🔬 Pro tools + landing v7 favorites & live preview (63 bots · 40 web · 6 desktop)
 
 - **3 new pro-grade tools** (`106 → 109`): `text-diff-web` (LCS line diff with word-level highlights and a similarity score), `image-compressor-web` (quality/resize with before-after compare — 100% client-side, verified 1.97 MB → 185 KB) and `cron-explainer-web` (plain-Persian explanation + the next five fire times; its weekday parser bug was caught and fixed in QA — `*` no longer collapses to Sunday-only, verified against Python's datetime).
