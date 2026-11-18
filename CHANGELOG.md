@@ -8,6 +8,14 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.18.0] — 2026-11-19 — 🔬 Pro tools + landing v7 favorites & live preview (63 bots · 40 web · 6 desktop)
+
+- **3 new pro-grade tools** (`106 → 109`): `text-diff-web` (LCS line diff with word-level highlights and a similarity score), `image-compressor-web` (quality/resize with before-after compare — 100% client-side, verified 1.97 MB → 185 KB) and `cron-explainer-web` (plain-Persian explanation + the next five fire times; its weekday parser bug was caught and fixed in QA — `*` no longer collapses to Sunday-only, verified against Python's datetime).
+- **Landing v7** — ⭐ **favorites**: star any of the 106 cards, persisted in localStorage, with a `⭐ علاقه‌مندی‌ها` filter chip; and **▶ live preview inside the modal** — demo projects embed their real running page in an iframe (tetris actually plays inside the modal), with image-restore and teardown on close.
+- **Governance** — `SECURITY.md` policy (72 h response, private reporting) plus a weekly **CodeQL** security scan for JS & Python with a new badge.
+
+سه ابزار حرفه‌ای (مقایسه‌گر متن، فشرده‌ساز تصویر، توضیح‌گر cron) اضافه شدند؛ لندینگ حالا ستاره‌ی علاقه‌مندی با ذخیره‌سازی و پیش‌نمایش زنده‌ی واقعی داخل مودال دارد؛ سیاست امنیتی و اسکن هفتگی CodeQL هم فعال شد.
+
 ## [v1.17.0] — 2026-11-18 — 🧰 Everyday tools + landing v6 (63 bots · 37 web · 6 desktop)
 
 - **3 new everyday tools** (`103 → 106`): `markdown-editor-web` (live split preview with a safe escape-first parser, toolbar, autosave and .md export), `json-formatter-web` (pretty/minify, line-and-column precise errors, collapsible tree viewer) and `unit-converter-web` (length, mass, temperature, data and speed with exact SI factors) — each function-tested in a real browser and shipped with preview + live demo.
