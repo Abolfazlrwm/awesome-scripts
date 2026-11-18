@@ -4,16 +4,16 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-18T10:57:47+03:30",
-  "count": 103,
+  "generated_at": "2026-11-18T12:48:13+03:30",
+  "count": 106,
   "stats": {
     "categories": {
-      "web-tool": 34,
+      "web-tool": 37,
       "telegram-bot": 63,
       "desktop-tool": 6
     },
     "languages": {
-      "HTML/CSS/JS": 32,
+      "HTML/CSS/JS": 35,
       "Python": 47,
       "PHP": 12,
       "JavaScript": 3,
@@ -552,6 +552,18 @@ window.AWESOME_CATALOG = {
       "preview": null
     },
     {
+      "slug": "json-formatter-web",
+      "path": "src/json-formatter-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Json Formatter Web",
+      "description_en": "JSON formatter — pretty/minify, line-precise errors and a collapsible tree viewer",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/",
+      "name_fa": "فرمت‌کننده JSON",
+      "description_fa": "فرمت، فشرده‌سازی، خطای دقیق سطر/ستون و نمای درختی جمع‌شونده",
+      "preview": "src/json-formatter-web/docs/preview.png"
+    },
+    {
       "slug": "life-simulator-bot",
       "path": "src/life-simulator-bot",
       "category": "telegram-bot",
@@ -598,6 +610,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "قرعه‌کشی و گیوای",
       "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل",
       "preview": "src/lottery-giveaway-bot/docs/preview.png"
+    },
+    {
+      "slug": "markdown-editor-web",
+      "path": "src/markdown-editor-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Markdown Editor Web",
+      "description_en": "Live markdown editor — safe parser, toolbar, autosave and .md export",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/",
+      "name_fa": "ویرایشگر مارک‌داون",
+      "description_fa": "پیش‌نمایش زنده، نوار ابزار، ذخیره‌ی خودکار و دانلود فایل",
+      "preview": "src/markdown-editor-web/docs/preview.png"
     },
     {
       "slug": "matrix-rain-web",
@@ -1138,6 +1162,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "مسابقه‌ی تایپ",
       "description_fa": "تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج",
       "preview": "src/typing-speed-race/docs/preview.png"
+    },
+    {
+      "slug": "unit-converter-web",
+      "path": "src/unit-converter-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Unit Converter Web",
+      "description_en": "Unit converter — length, mass, temperature, data and speed with instant math",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/",
+      "name_fa": "مبدل واحدها",
+      "description_fa": "طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای با ضرایب SI",
+      "preview": "src/unit-converter-web/docs/preview.png"
     },
     {
       "slug": "uptime-monitor-bot",

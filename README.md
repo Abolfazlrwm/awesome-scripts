@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**103 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**106 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-103-blue)
+![Projects](https://img.shields.io/badge/projects-106-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -109,7 +109,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [auction-house-bot](./src/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
 | [fortune-teller-bot](./src/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
 
-### 🌐 Web tools — 34
+### 🌐 Web tools — 37
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -147,6 +147,9 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [2048-web](./src/2048-web) | HTML/CSS/JS | Classic 2048 — animated sliding tiles, merge combos, undo and swipe controls | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/2048-web/) |
 | [minesweeper-web](./src/minesweeper-web) | HTML/CSS/JS | Minesweeper — three difficulties, safe first click, long-press flags, best times | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/minesweeper-web/) |
 | [breakout-web](./src/breakout-web) | HTML/CSS/JS | Neon breakout — three level layouts, angle-based paddle physics, particle bursts | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/breakout-web/) |
+| [markdown-editor-web](./src/markdown-editor-web) | HTML/CSS/JS | Live markdown editor — safe parser, toolbar, autosave and .md export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/) |
+| [json-formatter-web](./src/json-formatter-web) | HTML/CSS/JS | JSON formatter — pretty/minify, line-precise errors and a collapsible tree viewer | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/) |
+| [unit-converter-web](./src/unit-converter-web) | HTML/CSS/JS | Unit converter — length, mass, temperature, data and speed with instant math | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/) |
 
 ### 🖥 Desktop tools — 6
 
@@ -275,7 +278,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🔨 خانه‌ی مزایده](./src/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
 | [🔮 فال‌گر شوخ](./src/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
 
-#### 🌐 ابزارهای وب (34)
+#### 🌐 ابزارهای وب (37)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -313,6 +316,9 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🎮 بازی ۲۰۴۸](./src/2048-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/2048-web/) | HTML/CSS/JS | کلاسیک ۲۰۴۸ — انیمیشن سُر خوردن کاشی‌ها، برگشت حرکت و سوایپ لمسی |
 | [💣 مین‌یاب](./src/minesweeper-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/minesweeper-web/) | HTML/CSS/JS | سه سختی، کلیک اول امن، پرچم با نگه‌داشتن انگشت و رکورد زمان |
 | [🧱 آجرشکن](./src/breakout-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/breakout-web/) | HTML/CSS/JS | آجرشکن نئونی — سه مرحله، فیزیک زاویه‌ای پدل و انفجار ذرات |
+| [📝 ویرایشگر مارک‌داون](./src/markdown-editor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/) | HTML/CSS/JS | پیش‌نمایش زنده، نوار ابزار، ذخیره‌ی خودکار و دانلود فایل |
+| [🧾 فرمت‌کننده JSON](./src/json-formatter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/) | HTML/CSS/JS | فرمت، فشرده‌سازی، خطای دقیق سطر/ستون و نمای درختی جمع‌شونده |
+| [📐 مبدل واحدها](./src/unit-converter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/) | HTML/CSS/JS | طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای با ضرایب SI |
 
 #### 🖥 ابزارهای دسکتاپ (6)
 
