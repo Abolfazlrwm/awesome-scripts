@@ -4,16 +4,16 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-18T12:48:13+03:30",
-  "count": 106,
+  "generated_at": "2026-11-18T15:28:10+03:30",
+  "count": 109,
   "stats": {
     "categories": {
-      "web-tool": 37,
+      "web-tool": 40,
       "telegram-bot": 63,
       "desktop-tool": 6
     },
     "languages": {
-      "HTML/CSS/JS": 35,
+      "HTML/CSS/JS": 38,
       "Python": 47,
       "PHP": 12,
       "JavaScript": 3,
@@ -288,6 +288,18 @@ window.AWESOME_CATALOG = {
       "preview": null
     },
     {
+      "slug": "cron-explainer-web",
+      "path": "src/cron-explainer-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Cron Explainer Web",
+      "description_en": "Cron explainer — plain-Persian description plus the next five fire times",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/cron-explainer-web/",
+      "name_fa": "توضیح‌گر Cron",
+      "description_fa": "توضیح فارسی عبارت cron و ۵ اجرای بعدی",
+      "preview": "src/cron-explainer-web/docs/preview.png"
+    },
+    {
       "slug": "dice-duel-bot",
       "path": "src/dice-duel-bot",
       "category": "telegram-bot",
@@ -514,6 +526,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "هاپ‌داگ (ربات اقتصادی گروهی)",
       "description_fa": "بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی",
       "preview": "src/happydog-economy-bot/docs/preview.png"
+    },
+    {
+      "slug": "image-compressor-web",
+      "path": "src/image-compressor-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Image Compressor Web",
+      "description_en": "Image compressor — quality/resize controls, before-after compare, 100% local",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/image-compressor-web/",
+      "name_fa": "فشرده‌ساز تصویر",
+      "description_fa": "کیفیت/ابعاد، مقایسه‌ی قبل و بعد — پردازش کامل محلی",
+      "preview": "src/image-compressor-web/docs/preview.png"
     },
     {
       "slug": "instagram-downloader-bot",
@@ -1090,6 +1114,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "تتریس",
       "description_fa": "تتریس کامل — بگ ۷تایی، هولد، قطعه‌ی شبح و دکمه‌های لمسی",
       "preview": "src/tetris-web/docs/preview.png"
+    },
+    {
+      "slug": "text-diff-web",
+      "path": "src/text-diff-web",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Text Diff Web",
+      "description_en": "Text differ — LCS line diff plus word-level highlighting and a similarity score",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/src/text-diff-web/",
+      "name_fa": "مقایسه‌گر متن",
+      "description_fa": "دیف خط به خط با LCS، هایلایت کلمه‌ای و امتیاز شباهت",
+      "preview": "src/text-diff-web/docs/preview.png"
     },
     {
       "slug": "tic-tac-toe-game",

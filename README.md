@@ -3,15 +3,16 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**106 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**109 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-106-blue)
+![Projects](https://img.shields.io/badge/projects-109-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
 [![Latest Release](https://img.shields.io/github/v/release/Abolfazlrwm/awesome-scripts?include_prereleases&logo=github)](https://github.com/Abolfazlrwm/awesome-scripts/releases/latest)
 [![Release](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/release.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/release.yml)
+[![CodeQL](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/codeql.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/codeql.yml)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Abolfazlrwm/awesome-scripts?style=flat&logo=github)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
@@ -109,7 +110,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [auction-house-bot](./src/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
 | [fortune-teller-bot](./src/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
 
-### 🌐 Web tools — 37
+### 🌐 Web tools — 40
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -150,6 +151,9 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [markdown-editor-web](./src/markdown-editor-web) | HTML/CSS/JS | Live markdown editor — safe parser, toolbar, autosave and .md export | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/) |
 | [json-formatter-web](./src/json-formatter-web) | HTML/CSS/JS | JSON formatter — pretty/minify, line-precise errors and a collapsible tree viewer | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/) |
 | [unit-converter-web](./src/unit-converter-web) | HTML/CSS/JS | Unit converter — length, mass, temperature, data and speed with instant math | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/) |
+| [text-diff-web](./src/text-diff-web) | HTML/CSS/JS | Text differ — LCS line diff plus word-level highlighting and a similarity score | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/text-diff-web/) |
+| [image-compressor-web](./src/image-compressor-web) | HTML/CSS/JS | Image compressor — quality/resize controls, before-after compare, 100% local | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/image-compressor-web/) |
+| [cron-explainer-web](./src/cron-explainer-web) | HTML/CSS/JS | Cron explainer — plain-Persian description plus the next five fire times | [demo](https://abolfazlrwm.github.io/awesome-scripts/src/cron-explainer-web/) |
 
 ### 🖥 Desktop tools — 6
 
@@ -278,7 +282,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🔨 خانه‌ی مزایده](./src/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
 | [🔮 فال‌گر شوخ](./src/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
 
-#### 🌐 ابزارهای وب (37)
+#### 🌐 ابزارهای وب (40)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -319,6 +323,9 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [📝 ویرایشگر مارک‌داون](./src/markdown-editor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/markdown-editor-web/) | HTML/CSS/JS | پیش‌نمایش زنده، نوار ابزار، ذخیره‌ی خودکار و دانلود فایل |
 | [🧾 فرمت‌کننده JSON](./src/json-formatter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/json-formatter-web/) | HTML/CSS/JS | فرمت، فشرده‌سازی، خطای دقیق سطر/ستون و نمای درختی جمع‌شونده |
 | [📐 مبدل واحدها](./src/unit-converter-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/unit-converter-web/) | HTML/CSS/JS | طول، جرم، دما، داده و سرعت — تبدیل لحظه‌ای با ضرایب SI |
+| [🔍 مقایسه‌گر متن](./src/text-diff-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/text-diff-web/) | HTML/CSS/JS | دیف خط به خط با LCS، هایلایت کلمه‌ای و امتیاز شباهت |
+| [🖼️ فشرده‌ساز تصویر](./src/image-compressor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/image-compressor-web/) | HTML/CSS/JS | کیفیت/ابعاد، مقایسه‌ی قبل و بعد — پردازش کامل محلی |
+| [⏰ توضیح‌گر Cron](./src/cron-explainer-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/src/cron-explainer-web/) | HTML/CSS/JS | توضیح فارسی عبارت cron و ۵ اجرای بعدی |
 
 #### 🖥 ابزارهای دسکتاپ (6)
 
