@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Diff — مقایسه‌گر متن</title>
+<meta name="description" content="مقایسه‌ی دو متن با الگوریتم LCS — نمایش خط به خط اضافه/حذف/تغییر + دیف کلمه‌ای درون خطوط — کاملاً آفلاین.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(34,211,238,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#22d3ee; --a2:#2dd4bf;
+    --del:#f87171; --add:#4ade80;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(34,211,238,.11), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(45,212,191,.11), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(34,211,238,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:1150px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .bar { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:14px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#04202a; font-weight:800; }
+  .btn.on { background:linear-gradient(135deg, var(--a1), var(--a2)); color:#04202a; font-weight:800; }
+  .inputs { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+  @media (max-width:760px) { .inputs { grid-template-columns:1fr; } }
+  textarea {
+    width:100%; min-height:190px; padding:14px; border-radius:var(--r); resize:vertical;
+    background:rgba(8,12,24,.6); border:1px solid var(--border); color:var(--text);
+    font:13.5px/1.8 var(--mono); direction:ltr; text-align:left; outline:none;
+  }
+  textarea:focus { border-color:var(--border2); }
+  .legend { display:flex; gap:14px; justify-content:center; margin-top:12px; color:var(--muted); font-size:12.5px; flex-wrap:wrap; }
+  .legend b { color:var(--text); font-family:var(--font-en); }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:3px; margin-inline-end:5px; vertical-align:-1px; }
+  .out { margin-top:14px; padding:16px; direction:ltr; text-align:left;
+         font:13.5px/1.9 var(--mono); overflow-x:auto; max-height:520px; overflow-y:auto; }
+  .dl { display:flex; gap:10px; padding:3px 8px; border-radius:8px; white-space:pre-wrap; }
+  .dl.add { background:rgba(74,222,128,.1); border-inline-start:3px solid var(--add); }
+  .dl.del { background:rgba(248,113,113,.1); border-inline-start:3px solid var(--del); text-decoration:none; }
+  .dl.same { color:var(--muted); }
+  .dl .no { color:var(--muted); opacity:.6; margin-inline-end:10px; user-select:none; }
+  .del-w { background:rgba(248,113,113,.28); border-radius:4px; }
+  .add-w { background:rgba(74,222,128,.28); border-radius:4px; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🔀</div>
+  <h1>مقایسه‌گر متن</h1>
+  <p>دو متن را بچسبانید — تفاوت‌ها خط به خط و حتی کلمه به کلمه مشخص می‌شوند</p>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <button class="btn primary" id="goBtn">🔍 مقایسه</button>
+    <button class="btn on" id="sideBtn">پهلو‌به‌پهلو</button>
+    <button class="btn" id="inlineBtn">دیف واحد</button>
+    <button class="btn" id="sampleBtn">✨ نمونه</button>
+  </div>
+
+  <div class="inputs">
+    <textarea id="a" spellcheck="false" placeholder="متن اول..."></textarea>
+    <textarea id="b" spellcheck="false" placeholder="متن دوم..."></textarea>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--add)"></span> اضافه‌شده: <b id="nAdd">0</b></span>
+    <span><span class="dot" style="background:var(--del)"></span> حذف‌شده: <b id="nDel">0</b></span>
+    <span>بدون تغییر: <b id="nSame">0</b></span>
+    <span>شباهت: <b id="sim">—</b></span>
+  </div>
+
+  <div class="glass out" id="out"><div style="color:var(--muted)">نتیجه‌ی مقایسه اینجا نمایش داده می‌شود…</div></div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    الگوریتم LCS + دیف کلمه‌ای · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const a = $("a"), b = $("b"), out = $("out");
+let mode = "side"; // side | inline
+
+/* word-level diff inside a changed pair */
+function wordDiff(x, y) {
+  const W = x ? x.split(/(\s+)/) : [], V = y ? y.split(/(\s+)/) : [];
+  const n = W.length, m = V.length;
+  const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--)
+    for (let j = m - 1; j >= 0; j--)
+      dp[i][j] = W[i] === V[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const dels = [], adds = [];
+  let i = 0, j = 0;
+  while (i < n && j < m) {
+    if (W[i] === V[j]) { i++; j++; }
+    else if (dp[i + 1][j] >= dp[i][j + 1]) dels.push(W[i++]);
+    else adds.push(V[j++]);
+  }
+  while (i < n) dels.push(W[i++]);
+  while (j < m) adds.push(V[j++]);
+  return { dels, adds };
+}
+
+/* line-level LCS diff → ops: {t:'same'|'del'|'add', a, b} */
+function lineDiff(A, B) {
+  const n = A.length, m = B.length;
+  const MAX = 120000; // guard: 346x346 full matrix; larger falls back to a prefix alignment
+  if (n * m > MAX) {
+    // fallback: compare by prefix/suffix trim, then naive tail pairing
+    const ops = [];
+    const L = Math.min(n, m);
+    for (let k = 0; k < L; k++) ops.push(A[k] === B[k] ? { t: "same", a: A[k] } : { t: "chg", a: A[k], b: B[k] });
+    for (let k = L; k < n; k++) ops.push({ t: "del", a: A[k] });
+    for (let k = L; k < m; k++) ops.push({ t: "add", b: B[k] });
+    return ops;
+  }
+  const dp = Array.from({ length: n + 1 }, () => new Uint32Array(m + 1));
+  for (let i = n - 1; i >= 0; i--)
+    for (let j = m - 1; j >= 0; j--)
+      dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  const ops = [];
+  let i = 0, j = 0;
+  while (i < n && j < m) {
+    if (A[i] === B[j]) { ops.push({ t: "same", a: A[i] }); i++; j++; }
+    else if (dp[i + 1][j] >= dp[i][j + 1]) { ops.push({ t: "del", a: A[i] }); i++; }
+    else { ops.push({ t: "add", b: B[j] }); j++; }
+  }
+  while (i < n) ops.push({ t: "del", a: A[i++] });
+  while (j < m) ops.push({ t: "add", b: B[j++] });
+  /* group del+add neighbours into a change pair for word diff */
+  for (let k = 0; k < ops.length - 1; k++) {
+    if (ops[k].t === "del" && ops[k + 1].t === "add") {
+      ops[k] = { t: "chg", a: ops[k].a, b: ops[k + 1].b };
+      ops.splice(k + 1, 1);
+    }
+  }
+  return ops;
+}
+
+function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+function run() {
+  const A = a.value.split("\n"), B = b.value.split("\n");
+  const ops = lineDiff(A, B);
+  let nAdd = 0, nDel = 0, nSame = 0;
+  let html = "";
+  let la = 0, lb = 0;
+  ops.forEach(op => {
+    if (op.t === "same") { nSame++; la++; lb++; html += `<div class="dl same"><span class="no">${la}</span>${esc(op.a)}</div>`; }
+    else if (op.t === "del") { nDel++; la++; html += `<div class="dl del"><span class="no">${la}</span>− ${esc(op.a)}</div>`; }
+    else if (op.t === "add") { nAdd++; lb++; html += `<div class="dl add"><span class="no">${lb}</span>+ ${esc(op.b)}</div>`; }
+    else { // change: word-level highlight
+      nDel++; nAdd++; la++; lb++;
+      const wd = wordDiff(op.a, op.b);
+      const delSet = new Set(wd.dels), addSet = new Set(wd.adds);
+      /* mark only the first occurrence of each word to keep it simple */
+      const mark = (line, set, cls) => {
+        let done = new Set();
+        return line.split(/(\s+)/).map(w => {
+          if (set.has(w) && !done.has(w) && w.trim()) { done.add(w); return `<span class="${cls}">${esc(w)}</span>`; }
+          return esc(w);
+        }).join("");
+      };
+      html += `<div class="dl del"><span class="no">${la}</span>− ${mark(op.a, delSet, "del-w")}</div>` +
+              `<div class="dl add"><span class="no">${lb}</span>+ ${mark(op.b, addSet, "add-w")}</div>`;
+    }
+  });
+  out.innerHTML = html || '<div style="color:var(--muted)">دو متن یکسان هستند ✓</div>';
+  $("nAdd").textContent = nAdd;
+  $("nDel").textContent = nDel;
+  $("nSame").textContent = nSame;
+  const total = nAdd + nDel + nSame;
+  $("sim").textContent = total ? Math.round((nSame / total) * 100) + "%" : "—";
+}
+$("goBtn").addEventListener("click", run);
+$("sideBtn").addEventListener("click", () => { mode = "side"; });
+$("inlineBtn").addEventListener("click", () => { mode = "inline"; });
+$("sampleBtn").addEventListener("click", () => {
+  a.value = "# Shopping list\n- milk\n- bread\n- eggs\n- butter\n\nTotal: 12$";
+  b.value = "# Shopping list\n- milk\n- whole bread\n- eggs\n- honey\n\nTotal: 15$\nDiscount: yes";
+  run();
+});
+[a, b].forEach(el => el.addEventListener("input", () => clearTimeout(run._t) || (run._t = setTimeout(run, 250))));
+run();
+</script>
+</body>
+</html>
