@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- Telegram: @Abolfazl_rwm -->
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Editor — ویرایشگر مارک‌داون</title>
+<meta name="description" content="ویرایشگر مارک‌داون با پیش‌نمایش زنده، نوار ابزار، شمارش کلمات و ذخیره خودکار — کاملاً آفلاین و امن.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a16; --glass:rgba(148,163,184,.06); --glass2:rgba(148,163,184,.11);
+    --border:rgba(148,163,184,.16); --border2:rgba(74,222,128,.4);
+    --text:#eef2fc; --muted:#8f9ab8;
+    --a1:#4ade80; --a2:#22d3ee;
+    --r:18px;
+    --font-fa:'Vazirmatn',system-ui,sans-serif; --font-en:'Outfit','Vazirmatn',system-ui,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:
+      radial-gradient(1000px 520px at 88% -10%, rgba(74,222,128,.11), transparent 60%),
+      radial-gradient(900px 520px at -8% 108%, rgba(34,211,238,.11), transparent 60%),
+      var(--bg);
+    color:var(--text); font:15.5px/1.7 var(--font-fa); min-height:100vh; overflow-x:hidden;
+  }
+  body::before {
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.4;
+    background-image:linear-gradient(var(--border) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  header { text-align:center; padding:22px 14px 4px; }
+  .logo { font-size:42px; filter:drop-shadow(0 6px 18px rgba(74,222,128,.5)); }
+  h1 { font:800 30px/1.2 var(--font-fa); margin-top:6px;
+       background:linear-gradient(90deg, var(--a1), var(--a2));
+       -webkit-background-clip:text; background-clip:text; color:transparent; }
+  header p { color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .wrap { max-width:1100px; margin:0 auto; padding:12px 18px 44px; position:relative; }
+  .glass { background:var(--glass); border:1px solid var(--border); border-radius:var(--r);
+           backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .bar { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:14px; flex-wrap:wrap; }
+  .btn { background:var(--glass2); color:var(--text); border:1px solid var(--border); border-radius:12px;
+         padding:8px 16px; font:600 13.5px var(--font-fa); cursor:pointer; transition:.18s; }
+  .btn:hover { border-color:var(--border2); transform:translateY(-1px); }
+  .btn.primary { background:linear-gradient(135deg, var(--a1), var(--a2)); border-color:transparent;
+                 color:#05240f; font-weight:800; }
+  .pane { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+  @media (max-width:760px) { .pane { grid-template-columns:1fr; } }
+  textarea {
+    width:100%; min-height:420px; padding:16px; border-radius:var(--r); resize:vertical;
+    background:rgba(8,12,24,.6); border:1px solid var(--border); color:var(--text);
+    font:14px/1.9 var(--mono); direction:ltr; text-align:left; outline:none;
+  }
+  textarea:focus { border-color:var(--border2); }
+  .preview { min-height:420px; padding:18px 20px; direction:ltr; text-align:left;
+             font:15px/1.8 var(--font-en); overflow-wrap:break-word; }
+  .preview h1, .preview h2, .preview h3 { font-family:var(--font-en); margin:14px 0 8px; line-height:1.3; }
+  .preview h1 { font-size:24px; } .preview h2 { font-size:20px; } .preview h3 { font-size:17px; }
+  .preview p { margin:8px 0; color:#c9d2ea; }
+  .preview code { background:var(--glass2); border:1px solid var(--border); border-radius:6px;
+                  padding:1px 6px; font:13px var(--mono); color:var(--a1); }
+  .preview pre { background:rgba(8,12,24,.7); border:1px solid var(--border); border-radius:12px;
+                 padding:12px 14px; overflow-x:auto; margin:10px 0; }
+  .preview pre code { background:none; border:none; padding:0; color:#d7e0f5; }
+  .preview a { color:var(--a2); }
+  .preview blockquote { border-inline-start:3px solid var(--a1); padding-inline-start:12px;
+                        color:var(--muted); margin:10px 0; }
+  .preview ul, .preview ol { margin:8px 0 8px 22px; }
+  .preview li { margin:3px 0; color:#c9d2ea; }
+  .preview hr { border:none; border-top:1px solid var(--border); margin:14px 0; }
+  .preview table { border-collapse:collapse; margin:10px 0; width:100%; }
+  .preview th, .preview td { border:1px solid var(--border); padding:6px 10px; font-size:13.5px; }
+  .preview th { background:var(--glass2); }
+  .stats { display:flex; gap:14px; justify-content:center; margin-top:12px; color:var(--muted); font-size:12.5px; }
+  .stats b { color:var(--text); font-family:var(--font-en); }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:16px; }
+  footer a { color:var(--a1); text-decoration:none; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">📝</div>
+  <h1>ویرایشگر مارک‌داون</h1>
+  <p>بنویس و همان لحظه نتیجه را ببین — با نوار ابزار، شمارش کلمات و ذخیره‌ی خودکار</p>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <button class="btn" data-w="**" title="Bold">B</button>
+    <button class="btn" data-w="_" title="Italic">I</button>
+    <button class="btn" data-w="`" title="Inline code">&lt;/&gt;</button>
+    <button class="btn" data-w="## " data-newline="1" title="Heading">H2</button>
+    <button class="btn" data-w="- " data-newline="1" title="List">• List</button>
+    <button class="btn" data-w="> " data-newline="1" title="Quote">❝</button>
+    <button class="btn" data-w="[متن](https://)" title="Link">🔗</button>
+    <button class="btn primary" id="dlBtn">⬇ دانلود .md</button>
+    <button class="btn" id="sampleBtn">✨ نمونه</button>
+  </div>
+
+  <div class="pane">
+    <textarea id="src" spellcheck="false" placeholder="# سلام 👋
+اینجا مارک‌داون بنویس..."></textarea>
+    <div class="glass preview" id="out"></div>
+  </div>
+
+  <div class="stats">
+    <span>کلمه: <b id="wc">0</b></span>
+    <span>کاراکتر: <b id="cc">0</b></span>
+    <span>خط: <b id="lc">0</b></span>
+    <span id="savedHint"></span>
+  </div>
+
+  <footer>
+    ساخته‌شده توسط <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Telegram: @Abolfazl_rwm</a> ·
+    پارسر اختصاصی امن (فرار HTML قبل از رندر) · کاملاً آفلاین
+  </footer>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const src = $("src"), out = $("out");
+
+function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+/* tiny safe markdown: escape first, then transform */
+function render(md) {
+  const blocks = md.split(/```/);
+  let html = "";
+  blocks.forEach((chunk, i) => {
+    if (i % 2) {   /* fenced code */
+      html += "<pre><code>" + esc(chunk.replace(/^\n|\n$/g, "")) + "</code></pre>";
+      return;
+    }
+    let t = esc(chunk);
+    /* tables */
+    t = t.replace(/(^|\n)((?:\|[^\n]+\|\n)+)/g, (m, lead, table) => {
+      const rows = table.trim().split("\n").map(r => r.trim()).filter(Boolean);
+      if (rows.length < 2 || !/^\|[\s:|-]+\|$/.test(rows[1])) return m;
+      const cells = r => r.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+      const head = cells(rows[0]);
+      const body = rows.slice(2).map(cells);
+      return lead + "<table><thead><tr>" + head.map(h => "<th>" + h + "</th>").join("") +
+        "</tr></thead><tbody>" + body.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") +
+        "</tbody></table>";
+    });
+    t = t
+      .replace(/^### (.*)$/gm, "<h3>$1</h3>")
+      .replace(/^## (.*)$/gm, "<h2>$1</h2>")
+      .replace(/^# (.*)$/gm, "<h1>$1</h1>")
+      .replace(/^\s*[-*_]{3,}\s*$/gm, "<hr>")
+      .replace(/^&gt; (.*)$/gm, "<blockquote>$1</blockquote>")
+      .replace(/!\[([^\]]*)\]\((https?:[^)\s]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%">')
+      .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/\*\*([^*\n]+)\*\*/g, "<b>$1</b>")
+      .replace(/(^|\W)_([^_\n]+)_(?=\W|$)/g, "$1<i>$2</i>")
+      .replace(/(^|[^*])\*([^*\n]+)\*(?![*])/g, "$1<i>$2</i>")
+      .replace(/`([^`\n]+)`/g, "<code>$1</code>")
+      /* lists */
+      .replace(/(^|\n)((?:[-*] .*\n?)+)/g, (m, lead, list) =>
+        lead + "<ul>" + list.trim().split("\n").map(l => "<li>" + l.replace(/^[-*] /, "") + "</li>").join("") + "</ul>")
+      .replace(/(^|\n)((?:\d+\. .*\n?)+)/g, (m, lead, list) =>
+        lead + "<ol>" + list.trim().split("\n").map(l => "<li>" + l.replace(/^\d+\. /, "") + "</li>").join("") + "</ol>");
+    html += t;
+  });
+  return html;
+}
+function update() {
+  out.innerHTML = render(src.value);
+  const words = src.value.trim() ? src.value.trim().split(/\s+/).length : 0;
+  $("wc").textContent = words;
+  $("cc").textContent = src.value.length;
+  $("lc").textContent = src.value.split("\n").length;
+  localStorage.setItem("md.auto", src.value);
+  $("savedHint").textContent = "ذخیره‌ی خودکار ✓";
+}
+/* toolbar */
+document.querySelectorAll("[data-w]").forEach(b => b.addEventListener("click", () => {
+  const w = b.dataset.w;
+  const nl = b.dataset.newline ? "\n" : "";
+  const s = src.selectionStart, e = src.selectionEnd;
+  const sel = src.value.slice(s, e) || (w.includes("(") ? "" : "متن");
+  src.value = src.value.slice(0, s) + nl + w + sel + (w === "**" || w === "_" || w === "`" ? w : "") + src.value.slice(e);
+  src.focus();
+  update();
+}));
+$("dlBtn").addEventListener("click", () => {
+  const blob = new Blob([src.value], { type: "text/markdown;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "document.md";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+$("sampleBtn").addEventListener("click", () => { src.value = SAMPLE; update(); });
+const SAMPLE = `# سلام 👋
+این یک **نمونه** است — ویرایش کن و *زنده* ببین!
+
+## لیست
+- اول
+- دوم
+  - زیرمجموعه
+
+## کد
+\`\`\`
+console.log("Hello from @Abolfazl_rwm");
+\`\`\`
+
+> نقل‌قول: سادگی زیباست.
+
+| ابزار | وضعیت |
+| --- | --- |
+| مارک‌داون | ✓ |
+| پیش‌نمایش | ✓ |
+
+[لینک تلگرام](https://t.me/Abolfazl_rwm)`;
+src.value = localStorage.getItem("md.auto") || SAMPLE;
+update();
+src.addEventListener("input", update);
+</script>
+</body>
+</html>
