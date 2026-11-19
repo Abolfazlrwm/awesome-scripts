@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.21.0] — 2026-11-20 — ⚖️ Project Matrix + walkthrough video (159,716 lines of code, measured)
+
+- **⚖️ Project Matrix (`compare.html`)** — a new stats-driven companion page to the gallery: every project with real file counts, lines of code (159,716 across the repo) and size; advanced filters (category, language, has-demo, has-preview, LOC range), sortable columns and **side-by-side comparison of up to 4 projects** with preview thumbnails. Bilingual (EN/FA) with dark/light themes.
+- **`tools/generate_stats.py`** — collects per-project file/LOC/size metrics into `data/stats.json` + `stats.js` (marked `linguist-generated`).
+- **🎬 Walkthrough video** — a scripted 40-second screencast of the gallery (search → live preview → matrix → compare) embedded in the README as a 4.5 MB GIF; the full-quality MP4 ships with the release assets.
+- Gallery header now links to the matrix; sitemap carries 41 URLs.
+
+صفحه‌ی «ماتریس پروژه‌ها» با آمار واقعی هر پروژه (فایل/خط کد/حجم)، فیلتر پیشرفته و مقایسه‌ی ۴تایی اضافه شد؛ ویدیوی چهل‌ثانیه‌ای معرفی سایت در README است و MP4 با کیفیت کامل در Assets ریلیز.
+
 ## [v1.20.0] — 2026-11-19 — 💼 Professional polish — product + code, one click apart
 
 - **Detail modal** — every project card now opens a modal with the live preview embed and five actions: **▶ Live demo**, **💻 Code**, **📖 README**, **📋 Copy git clone** (clipboard with feedback) and **🔗 Share** — an employer can run the product and read the source in the same minute.
