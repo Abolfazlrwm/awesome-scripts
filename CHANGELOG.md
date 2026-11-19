@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.22.0] — 2026-11-20 — 📲 PWA + shareable views — install it, share any filter, go offline
+
+- **Progressive Web App** — `sw.js` precaches the app shell (pages, catalog, stats, icons), serves stale-while-revalidate for same-origin GETs and network-first navigations: the gallery and the matrix now **work offline** and are **installable** on desktop and mobile. `manifest.json` refreshed (109 projects, 192px icon, app shortcuts: **Project Matrix** and **Random project**).
+- **Shareable URL state** — search, category, language, demo/favorite filters and UI language mirror into the URL (`?q=tetris&demo=1&fa=1`); any view can be bookmarked or shared and boots exactly as saved.
+- **🎲 Random project** — header button (plus `#random` deep link and PWA shortcut) opens a random **live-demo** project in the modal.
+- **🚀 Release chip + ⬇️ ZIP** — header links to the latest release and a stable one-click download (`releases/latest/download/awesome-scripts.zip`); the release workflow now publishes the alias ZIP alongside the versioned one.
+
+سایت حالا PWA است (نصب + کارکرد آفلاین)، هر فیلتری URL اشتراکی دارد، دکمه‌ی 🎲 پروژه‌ی تصادفی و ⬇️ دانلود ZIP ثابت اضافه شد؛ workflow ریلیز ZIP نام‌دار و alias را هم‌زمان منتشر می‌کند.
+
 ## [v1.21.0] — 2026-11-20 — ⚖️ Project Matrix + walkthrough video (159,716 lines of code, measured)
 
 - **⚖️ Project Matrix (`compare.html`)** — a new stats-driven companion page to the gallery: every project with real file counts, lines of code (159,716 across the repo) and size; advanced filters (category, language, has-demo, has-preview, LOC range), sortable columns and **side-by-side comparison of up to 4 projects** with preview thumbnails. Bilingual (EN/FA) with dark/light themes.
