@@ -30,6 +30,25 @@
 
 **[▶ مشاهده‌ی زنده‌ی همه‌ی پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/)** — جست‌وجوی زنده، فیلتر دسته/زبان، علاقه‌مندی‌ها و پیش‌نمایش واقعی داخل مودال؛ انتشار خودکار با **GitHub Actions** در هر push.
 
+## 🎬 Try it in one click — محصولات شاخص
+
+Six of the flagship web tools — every thumbnail is clickable: **▶ opens the live product**, **💻 opens the source code on GitHub**.
+
+<table>
+  <tr>
+    <td align="center" width="33%"><a href="https://abolfazlrwm.github.io/awesome-scripts/web/tetris-web/"><img src="web/tetris-web/docs/preview.png" alt="Tetris Web" width="100%"></a><br><b>Tetris Web</b><br><a href="https://abolfazlrwm.github.io/awesome-scripts/web/tetris-web/">▶ demo</a> · <a href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/web/tetris-web">💻 code</a></td>
+    <td align="center" width="33%"><a href="https://abolfazlrwm.github.io/awesome-scripts/web/2048-web/"><img src="web/2048-web/docs/preview.png" alt="2048" width="100%"></a><br><b>2048</b><br><a href="https://abolfazlrwm.github.io/awesome-scripts/web/2048-web/">▶ demo</a> · <a href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/web/2048-web">💻 code</a></td>
+    <td align="center" width="33%"><a href="https://abolfazlrwm.github.io/awesome-scripts/web/minesweeper-web/"><img src="web/minesweeper-web/docs/preview.png" alt="Minesweeper" width="100%"></a><br><b>Minesweeper Web</b><br><a href="https://abolfazlrwm.github.io/awesome-scripts/web/minesweeper-web/">▶ demo</a> · <a href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/web/minesweeper-web">💻 code</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/web/breakout-web/"><img src="web/breakout-web/docs/preview.png" alt="Breakout Web" width="100%"></a><br><b>Breakout Web</b><br><a href="https://abolfazlrwm.github.io/awesome-scripts/web/breakout-web/">▶ demo</a> · <a href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/web/breakout-web">💻 code</a></td>
+    <td align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/web/canvas-paint-studio/"><img src="web/canvas-paint-studio/docs/preview.png" alt="Canvas Paint Studio" width="100%"></a><br><b>Canvas Paint Studio</b><br><a href="https://abolfazlrwm.github.io/awesome-scripts/web/canvas-paint-studio/">▶ demo</a> · <a href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/web/canvas-paint-studio">💻 code</a></td>
+    <td align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/web/ascii-art-generator-web/"><img src="web/ascii-art-generator-web/docs/preview.png" alt="ASCII Art Generator" width="100%"></a><br><b>ASCII Art Generator</b><br><a href="https://abolfazlrwm.github.io/awesome-scripts/web/ascii-art-generator-web/">▶ demo</a> · <a href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/web/ascii-art-generator-web">💻 code</a></td>
+  </tr>
+</table>
+
+شش محصول شاخص از ۴۰ ابزار وب — هر عکس کلیک‌خور است: ▶ محصول زنده، 💻 سورس در گیت‌هاب. بقیه‌ی دموها در [گالری تعاملی](https://abolfazlrwm.github.io/awesome-scripts/) با فیلتر «▶ فقط دمودار».
+
 ## ✨ About
 
 Every project here is a **complete, runnable application** — not a snippet. Projects are grouped by type — [`bots/`](./bots) (63 Telegram bots), [`web/`](./web) (40 browser tools) and [`desktop/`](./desktop) (6 utilities) — open any folder, follow its README, and you have a working bot, tool or site in minutes. The collection spans **9 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
@@ -53,6 +72,19 @@ awesome-scripts/
 ربات‌ها در `bots/`، ابزارهای وب در `web/` و ابزارهای دسکتاپ در `desktop/`؛ سایت تعاملی و مانیفست در ریشه، ابزارهای نگهداری در `tools/` و پایپ‌لاین‌های CI در `.github/`.
 
 > 📬 **Contact / custom projects:** Telegram [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+## 🛡 Engineering practices — مهندسی واقعی، نه ادعا
+
+| Gate | What runs | When |
+| --- | --- | --- |
+| ✅ **Validate** | all project folders: real README, runnable entry point, zero committed secrets | every push |
+| 🔁 **Catalog check** | README tables ↔ generated catalog drift detection (`--check`) | every push |
+| 🔗 **Link Check** | every demo + repo link in README/catalog must return HTTP 200 | push + weekly |
+| 🧠 **CodeQL** | static security analysis for Python/JavaScript | push + weekly |
+| 📦 **Release** | auto-generated release notes + full source ZIP per version tag | every tag |
+| 🔄 **Dependabot** | GitHub Actions pinning & version updates | weekly |
+
+Every version is tagged (`v1.0.0` → today), released with generated notes, and the gallery site is redeployed to GitHub Pages automatically on each push — the live site is never behind the code.
 
 ## 🚀 Quick start
 
