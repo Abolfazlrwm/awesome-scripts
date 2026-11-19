@@ -1,0 +1,36 @@
+name: Greetings
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome first-time contributors
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            👋 Thanks for opening your first issue in **awesome-scripts**!
+
+            - Bug report? Add the project slug (e.g. `bots/dice-duel-bot`) and your OS/runtime version.
+            - Feature idea? Point to the project folder it belongs to.
+            - Live demo of every web tool: https://abolfazlrwm.github.io/awesome-scripts/
+
+            I'll take a look as soon as possible — مرسی! 🙏
+          pr-message: |
+            🎉 Thanks for your first pull request!
+
+            CI will run **Lint**, **Validate** (README quality + secrets hygiene for every project folder) and **Link Check** automatically.
+            - Keep one project per PR and follow `CONTRIBUTING.md`.
+            - The interactive gallery is regenerated from the README tables — after adding a row, run `python tools/generate_catalog.py`.
+
+            Welcome aboard — خوش اومدی! 🚀

@@ -1,0 +1,6 @@
+* text=auto
+*.png binary
+*.ico binary
+data/catalog.json linguist-generated
+data/catalog.js linguist-generated
+sitemap.xml linguist-generated
