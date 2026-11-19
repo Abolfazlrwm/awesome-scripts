@@ -20,6 +20,9 @@ def main() -> None:
     today = datetime.now(TEHRAN_TZ).date().isoformat()
     urls = [(PAGES_URL, "1.0")]
     for project in sorted(catalog["projects"], key=lambda p: p["path"]):
+        # only pages that actually serve: bots/desktop folders have no index.html
+        if not (REPO_ROOT / project["path"] / "index.html").exists():
+            continue
         urls.append((PAGES_URL + project["path"] + "/", "0.7"))
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -32,7 +35,7 @@ def main() -> None:
         )
     lines.append("</urlset>")
     (REPO_ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"sitemap.xml: {len(urls)} URLs (lastmod {today})")
+    print(f"sitemap.xml: {len(urls)} URLs — root + servable pages (lastmod {today})")
 
 
 if __name__ == "__main__":
