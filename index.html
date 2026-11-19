@@ -1009,8 +1009,9 @@
       (p.demo ? "<span>🟢 " + (fa ? "دمو دارد" : "live demo") + "</span>" : "");
     var btns =
       (p.demo ? '<a class="btn primary" href="' + p.demo + '" target="_blank" rel="noopener">▶ ' + (fa ? "دموی زنده" : "Live demo") + "</a>" : "") +
-      '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/' + p.path + '" target="_blank" rel="noopener">📂 ' + (fa ? "پوشه" : "Folder") + "</a>" +
+      '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/tree/main/' + p.path + '" target="_blank" rel="noopener">💻 ' + (fa ? "کد" : "Code") + "</a>" +
       '<a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts/blob/main/' + p.path + '/README.md" target="_blank" rel="noopener">📖 README</a>' +
+      '<button class="btn" id="cloneBtn">📋 ' + (fa ? "کپی git clone" : "Copy git clone") + "</button>" +
       '<button class="btn" id="shareBtn">🔗 ' + (fa ? "اشتراک‌گذاری" : "Share") + "</button>";
     document.getElementById("mBody").innerHTML =
       "<h3>" + title + "</h3>" +
@@ -1019,6 +1020,16 @@
       (alt && alt !== desc ? "<p class='modal-alt'>— " + alt + "</p>" : "") +
       "<div class='modal-actions'>" + btns + "</div>";
     var sb = document.getElementById("shareBtn");
+    var cb = document.getElementById("cloneBtn");
+    if (cb) cb.addEventListener("click", function () {
+      var cmd = "git clone https://github.com/Abolfazlrwm/awesome-scripts.git awesome-scripts";
+      var done = function () {
+        cb.textContent = fa ? "✓ کپی شد" : "✓ Copied";
+        setTimeout(function () { cb.textContent = (fa ? "📋 کپی git clone" : "📋 Copy git clone"); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(cmd).then(done, done);
+      else done();
+    });
     if (sb) sb.addEventListener("click", function () {
       var url = location.origin + location.pathname + "#p=" + slug;
       var done = function () {
