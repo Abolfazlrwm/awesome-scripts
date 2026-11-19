@@ -1,5 +1,5 @@
 {
-  "name": "Awesome Scripts — 103 bots & tools",
+  "name": "Awesome Scripts — 109 bots & tools",
   "short_name": "Awesome Scripts",
   "description": "Telegram bots, web tools and arcade games — one repository",
   "start_url": "./",
@@ -14,9 +14,33 @@
       "type": "image/svg+xml"
     },
     {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
       "src": "assets/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Project Matrix",
+      "short_name": "Matrix",
+      "url": "./compare.html",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Random project",
+      "short_name": "Random",
+      "url": "./#random"
     }
   ]
 }

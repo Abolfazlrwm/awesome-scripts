@@ -16,6 +16,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a0a16">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
 <meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
 <meta name="twitter:title" content="Awesome Scripts — 103 ready-to-run bots & tools">
@@ -381,7 +382,10 @@
     </a>
     <div class="header-stats" id="headerStats"></div>
     <div class="header-actions">
+      <button class="icon-btn" id="rndBtn" type="button" title="Open a random project · پروژه‌ی تصادفی">🎲</button>
       <a class="icon-btn" href="compare.html" id="cmpLink" title="Project Matrix">⚖️ <span data-i18n="cmp">Compare</span></a>
+      <a class="icon-btn" id="relChip" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest" target="_blank" rel="noopener" title="Latest release">🚀 v1.22</a>
+      <a class="icon-btn" id="zipBtn" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest/download/awesome-scripts.zip" target="_blank" rel="noopener" title="Download latest source ZIP">⬇️ ZIP</a>
       <a class="icon-btn" id="ghLink" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
       <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
@@ -487,6 +491,17 @@
       (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")
   };
 
+  /* v8: shareable URL params (?q&cat&lang&demo&fav&fa) hydrate the view */
+  (function () {
+    var sp = new URLSearchParams(location.search);
+    if (sp.has("q")) state.query = sp.get("q");
+    if (sp.has("cat")) state.category = sp.get("cat");
+    if (sp.has("lang")) state.language = sp.get("lang");
+    if (sp.get("demo") === "1") state.demoOnly = true;
+    if (sp.get("fav") === "1") state.favOnly = true;
+    if (sp.get("fa") === "1") state.lang = "fa";
+  })();
+
   var $ = function (id) { return document.getElementById(id); };
   var grid = $("grid"), searchEl = $("search"), langSel = $("lang");
 
@@ -494,6 +509,26 @@
     return str.replace(/\{(\w+)\}/g, function (_, k) { return vars[k]; });
   }
   function t(key) { return T[state.lang][key]; }
+
+  /* v8: mirror the active filters into the URL so any view is shareable */
+  var urlTimer = null;
+  function syncUrl(immediate) {
+    if (!history.replaceState) return;
+    var write = function () {
+      var sp = new URLSearchParams();
+      if (state.query) sp.set("q", state.query);
+      if (state.category !== "all") sp.set("cat", state.category);
+      if (state.language !== "all") sp.set("lang", state.language);
+      if (state.demoOnly) sp.set("demo", "1");
+      if (state.favOnly) sp.set("fav", "1");
+      if (state.lang === "fa") sp.set("fa", "1");
+      var qs = sp.toString();
+      history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+    };
+    clearTimeout(urlTimer);
+    if (immediate) { write(); return; }
+    urlTimer = setTimeout(write, 300);
+  }
 
   /* ---------- theme + language ---------- */
   function applyTheme() {
@@ -538,6 +573,7 @@
         state.category = btn.getAttribute("data-cat");
         buildChips();
         render();
+        syncUrl();
       });
     });
   }
@@ -661,11 +697,13 @@
     debounce = setTimeout(function () {
       state.query = searchEl.value.trim();
       render();
+      syncUrl();
     }, 120);
   });
   langSel.addEventListener("change", function () {
     state.language = langSel.value;
     render();
+    syncUrl();
   });
   $("themeBtn").addEventListener("click", function () {
     state.theme = state.theme === "dark" ? "light" : "dark";
@@ -674,16 +712,28 @@
   $("langBtn").addEventListener("click", function () {
     state.lang = state.lang === "en" ? "fa" : "en";
     applyLang();
+    syncUrl(true);
   });
   $("demoFilterBtn").addEventListener("click", function () {
     state.demoOnly = !state.demoOnly;
     this.classList.toggle("active", state.demoOnly);
     render();
+    syncUrl();
   });
   $("favFilterBtn").addEventListener("click", function () {
     state.favOnly = !state.favOnly;
     this.classList.toggle("active", state.favOnly);
     render();
+    syncUrl();
+  });
+  /* v8: 🎲 open a random project — prefer live-demo projects */
+  $("rndBtn").addEventListener("click", function () {
+    var ps = (window.AWESOME_CATALOG || {}).projects || [];
+    if (!ps.length) return;
+    var pool = ps.filter(function (p) { return p.demo; });
+    if (!pool.length) pool = ps;
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    if (window.__asOpen) window.__asOpen(pick.slug);
   });
   /* v7: star toggling on cards (delegated; the modal-open delegation skips buttons) */
   grid.addEventListener("click", function (e) {
@@ -709,11 +759,17 @@
       searchEl.value = "";
       state.query = "";
       render();
+      syncUrl();
       searchEl.blur();
     }
   });
 
   /* ---------- boot ---------- */
+  /* v8: reflect URL-loaded state in the controls */
+  searchEl.value = state.query;
+  try { langSel.value = state.language; } catch (e) {}
+  if (state.demoOnly) $("demoFilterBtn").classList.add("active");
+  if (state.favOnly) $("favFilterBtn").classList.add("active");
   applyTheme();
   buildHeaderStats();
   applyLang();
@@ -1111,6 +1167,14 @@
   build();
   new MutationObserver(build).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
 
+  /* v8: #random opens a random demo project (manifest shortcut) */
+  if (location.hash === "#random" && window.__asOpen) {
+    var psr = (window.AWESOME_CATALOG || {}).projects || [];
+    var pool = psr.filter(function (p) { return p.demo; });
+    if (!pool.length) pool = psr;
+    if (pool.length) window.__asOpen(pool[Math.floor(Math.random() * pool.length)].slug);
+  }
+
   /* deep link: #p=slug opens the modal directly */
   var m = location.hash.match(/^#p=([\w.-]+)$/);
   if (m) {
@@ -1118,6 +1182,16 @@
     if (card && window.__asOpen) window.__asOpen(m[1]);
   }
 })();
+</script>
+
+<script>
+/* v8: PWA — offline-capable service worker (stale-while-revalidate) */
+if ("serviceWorker" in navigator &&
+    (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
