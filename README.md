@@ -29,6 +29,12 @@
 <p align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/"><img src="assets/site-preview.png" alt="interactive project gallery" width="85%"></a></p>
 
 **[▶ مشاهده‌ی زنده‌ی همه‌ی پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/)** — جست‌وجوی زنده، فیلتر دسته/زبان، علاقه‌مندی‌ها و پیش‌نمایش واقعی داخل مودال؛ انتشار خودکار با **GitHub Actions** در هر push.
+<p align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/"><img src="assets/site-demo.gif" alt="walkthrough — search, live preview, project matrix" width="85%"></a></p>
+
+**⏱ 40-second walkthrough** — live search → in-modal product preview → the **⚖️ [Project Matrix](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: all 109 projects measured (files · lines of code · size) with advanced filters and side-by-side comparison of up to 4 projects.
+
+**⏱ ویدیوی چهل‌ثانیه‌ای** — جست‌وجوی زنده → پیش‌نمایش محصول داخل مودال → **⚖️ [ماتریس پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: همه‌ی ۱۰۹ پروژه با تعداد فایل، خط کد و حجم + فیلترهای پیشرفته و مقایسه‌ی کنارِ‌هم تا ۴ پروژه.
+
 
 ## 🎬 Try it in one click — محصولات شاخص
 
@@ -63,7 +69,8 @@ awesome-scripts/
 ├── web/         # 40 browser tools — offline single-file HTML apps
 ├── desktop/     # 6 desktop utilities
 ├── index.html   # interactive live gallery (GitHub Pages)
-├── data/        # catalog.json / catalog.js — generated from README tables
+├── compare.html # ⚖️ project matrix — per-project stats, filters, 4-way compare
+├── data/        # catalog.json/js · stats.json/js — generated, do not edit
 ├── tools/       # catalog generator · validator · scaffolder · sitemap
 ├── assets/      # OG banner · favicons · gallery screenshot
 └── .github/     # CI: lint · validate · link-check · CodeQL · release · Pages
