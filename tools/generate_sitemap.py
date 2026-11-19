@@ -18,7 +18,7 @@ TEHRAN_TZ = timezone(timedelta(hours=3, minutes=30))
 def main() -> None:
     catalog = json.loads((REPO_ROOT / "data" / "catalog.json").read_text(encoding="utf-8"))
     today = datetime.now(TEHRAN_TZ).date().isoformat()
-    urls = [(PAGES_URL, "1.0")]
+    urls = [(PAGES_URL, "1.0"), (PAGES_URL + "compare.html", "0.9")]
     for project in sorted(catalog["projects"], key=lambda p: p["path"]):
         # only pages that actually serve: bots/desktop folders have no index.html
         if not (REPO_ROOT / project["path"] / "index.html").exists():

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Matrix — Awesome Scripts</title>
+<meta name="description" content="Compare all 109 projects side by side — files, lines of code, size, live demos and source links.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<style>
+  :root {
+    --bg:#0b1020; --bg2:#111731; --card:#151c3a; --card2:#1a2246;
+    --text:#e8ecff; --muted:#9aa6d6; --line:#26305c;
+    --accent:#6c8cff; --accent2:#8f6cff; --ok:#34d399; --warn:#fbbf24;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  [data-theme="light"] {
+    --bg:#f4f6ff; --bg2:#eaefff; --card:#ffffff; --card2:#f2f5ff;
+    --text:#1c2340; --muted:#5f6a99; --line:#d9e0ff;
+    --shadow:0 10px 30px rgba(40,60,160,.12);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Tahoma,"Noto Sans SC",sans-serif;
+    line-height:1.55; min-height:100vh;
+  }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  button, select, input {
+    font:inherit; color:inherit;
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+  }
+  header.site {
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner {
+    max-width:1180px; margin:0 auto; padding:12px 20px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:17px; color:var(--text); }
+  .brand .logo { font-size:22px; }
+  .brand small { color:var(--muted); font-weight:600; }
+  .header-actions { margin-inline-start:auto; display:flex; gap:8px; align-items:center; }
+  .icon-btn {
+    padding:8px 14px; border-radius:999px; cursor:pointer; user-select:none;
+    background:var(--card); border:1px solid var(--line); color:var(--text);
+    font-size:13.5px; font-weight:600; white-space:nowrap;
+  }
+  .icon-btn:hover { border-color:var(--accent); text-decoration:none; }
+  main { max-width:1180px; margin:0 auto; padding:26px 20px 60px; }
+  .hero { margin-bottom:18px; }
+  .hero h1 { font-size:clamp(1.5rem, 4.5vw, 2.2rem); margin-bottom:6px; }
+  .hero p { color:var(--muted); font-size:15px; }
+  .totals { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .stat {
+    background:linear-gradient(135deg, var(--card), var(--card2));
+    border:1px solid var(--line); border-radius:14px;
+    padding:10px 16px; min-width:120px; box-shadow:var(--shadow);
+  }
+  .stat b { font-size:19px; display:block; }
+  .stat span { color:var(--muted); font-size:12px; }
+  .filters {
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:12px 14px; margin:20px 0 8px; box-shadow:var(--shadow);
+  }
+  .filters input[type="search"] { padding:8px 12px; min-width:180px; flex:1 1 200px; }
+  .filters select, .filters input[type="number"] { padding:7px 10px; font-size:13.5px; }
+  .filters label.chk {
+    display:flex; gap:6px; align-items:center; font-size:13px; cursor:pointer;
+    color:var(--muted); padding:6px 10px; border:1px solid var(--line); border-radius:999px;
+  }
+  .filters label.chk.on { color:var(--text); border-color:var(--accent); background:color-mix(in srgb, var(--accent) 14%, transparent); }
+  .filters label.chk input { accent-color:var(--accent); }
+  .loc-rg { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); }
+  .loc-rg input { width:84px; }
+  .meta-line { color:var(--muted); font-size:13px; margin:8px 2px 14px; }
+  .meta-line b { color:var(--text); }
+  .tbl-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); }
+  table { border-collapse:collapse; width:100%; min-width:860px; background:var(--card); font-size:14px; }
+  thead th {
+    position:sticky; top:0; z-index:2;
+    background:var(--card2); color:var(--muted); text-align:start;
+    padding:11px 12px; font-size:12.5px; letter-spacing:.4px; white-space:nowrap;
+    border-bottom:1px solid var(--line); cursor:pointer; user-select:none;
+  }
+  thead th:hover { color:var(--text); }
+  thead th .arr { color:var(--accent); margin-inline-start:3px; }
+  tbody td { padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tbody tr:hover { background:var(--card2); }
+  td.num { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; white-space:nowrap; }
+  td.p-name { font-weight:700; }
+  td.p-name small { display:block; color:var(--muted); font-weight:500; font-size:11.5px; }
+  .cat-tag { font-size:12px; white-space:nowrap; color:var(--muted); }
+  .lang-badge {
+    font-size:11.5px; border:1px solid var(--line); border-radius:999px; padding:2px 9px;
+    white-space:nowrap; color:var(--muted);
+  }
+  .act-mini { display:inline-block; margin-inline-end:6px; white-space:nowrap; font-size:12.5px; font-weight:700; }
+  .act-mini.demo { color:var(--ok); }
+  td.cm input { accent-color:var(--accent2); width:16px; height:16px; cursor:pointer; }
+  tr.is-sel { outline:2px solid var(--accent2); outline-offset:-2px; }
+  .empty { text-align:center; padding:70px 20px; color:var(--muted); }
+  .empty .big { font-size:42px; margin-bottom:10px; }
+  .cm-bar {
+    position:fixed; inset-inline:0; bottom:0; z-index:30;
+    display:none; justify-content:center; padding:12px;
+    background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+  }
+  .cm-bar.show { display:flex; }
+  .cm-bar .inner { display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  .btn {
+    padding:10px 18px; border-radius:999px; cursor:pointer; font-weight:700; font-size:14px;
+    background:var(--card2); border:1px solid var(--line); color:var(--text); white-space:nowrap;
+  }
+  .btn.primary {
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    border:none; color:#fff; box-shadow:var(--shadow);
+  }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
+  .cm-mask {
+    position:fixed; inset:0; z-index:40; display:none;
+    background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(8px);
+    overflow:auto; padding:30px 16px 60px;
+  }
+  .cm-mask.open { display:block; }
+  .cm-panel {
+    max-width:1180px; margin:0 auto; background:var(--card);
+    border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow);
+    padding:22px 22px 30px; position:relative;
+  }
+  .cm-panel h2 { font-size:20px; margin-bottom:16px; }
+  .cm-close {
+    position:absolute; top:14px; inset-inline-end:14px;
+    width:36px; height:36px; border-radius:999px; cursor:pointer; font-size:15px;
+  }
+  .cm-grid { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(230px, 1fr); gap:14px; overflow-x:auto; padding-bottom:8px; }
+  .cm-col {
+    background:var(--card2); border:1px solid var(--line); border-radius:14px;
+    padding:14px; font-size:13.5px; min-width:230px;
+  }
+  .cm-col h3 { font-size:15px; margin-bottom:10px; }
+  .cm-col .metric { display:flex; justify-content:space-between; gap:8px; padding:6px 0; border-bottom:1px dashed var(--line); }
+  .cm-col .metric span:first-child { color:var(--muted); }
+  .cm-col .metric span:last-child { text-align:end; font-weight:600; }
+  .cm-col .metric.links a { margin-inline-end:8px; }
+  .cm-col .desc { margin-top:10px; color:var(--muted); font-size:12.5px; }
+  footer.site {
+    border-top:1px solid var(--line); margin-top:40px;
+    padding:22px 20px 34px; text-align:center; color:var(--muted); font-size:13px;
+  }
+  footer.site .heart { color:#f472b6; }
+  .toast {
+    position:fixed; bottom:74px; left:50%; transform:translateX(-50%);
+    background:var(--card2); border:1px solid var(--accent); color:var(--text);
+    padding:9px 18px; border-radius:999px; font-size:13px; z-index:60;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .toast.show { opacity:1; }
+  @media (max-width:640px) {
+    .header-inner { padding:10px 14px; }
+    main { padding:18px 12px 60px; }
+    .stat { min-width:96px; padding:8px 12px; }
+    .filters input[type="search"] { min-width:140px; }
+    .cm-panel { padding:16px 14px 24px; }
+  }
+</style>
+</head>
+<body data-theme="dark">
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="./"><span class="logo">🤖</span><span>Awesome&nbsp;Scripts</span><small id="tSub"></small></a>
+    <div class="header-actions">
+      <a class="icon-btn" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <h1 id="tTitle">⚖️ Project Matrix</h1>
+    <p id="tDesc"></p>
+    <div class="totals" id="totals"></div>
+  </div>
+
+  <div class="filters" role="search">
+    <input type="search" id="q" aria-label="Search">
+    <select id="fCat" aria-label="Category"></select>
+    <select id="fLang" aria-label="Language"></select>
+    <label class="chk" id="chkDemo"><input type="checkbox" id="demoOnly"><span id="lblDemo"></span></label>
+    <label class="chk" id="chkPrev"><input type="checkbox" id="prevOnly"><span id="lblPrev"></span></label>
+    <span class="loc-rg"><span id="lblLoc"></span>
+      <input type="number" id="locMin" min="0" placeholder="0">
+      <span>–</span>
+      <input type="number" id="locMax" min="0" placeholder="∞">
+    </span>
+    <select id="fSort" aria-label="Sort"></select>
+    <button class="icon-btn" id="resetBtn" type="button">↺</button>
+  </div>
+
+  <div class="meta-line" id="meta"></div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-k="name" id="hName"></th>
+          <th id="hCat"></th>
+          <th id="hLang"></th>
+          <th data-k="files" id="hFiles"></th>
+          <th data-k="loc" id="hLoc"></th>
+          <th data-k="bytes" id="hSize"></th>
+          <th id="hDemo"></th>
+          <th id="hCode"></th>
+          <th id="hCm">⚖️</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<div class="cm-bar" id="cmBar">
+  <div class="inner">
+    <button class="btn primary" id="cmGo" type="button">⚖️ <span id="cmBtnLbl"></span></button>
+    <button class="btn" id="cmClear" type="button">✕ <span id="cmClearLbl"></span></button>
+  </div>
+</div>
+
+<div class="cm-mask" id="cmMask">
+  <div class="cm-panel" role="dialog" aria-label="Side-by-side comparison">
+    <button class="cm-close" id="cmClose" aria-label="Close">✕</button>
+    <h2 id="cmTitle"></h2>
+    <div class="cm-grid" id="cmGrid"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="site">
+  <div id="fGen"></div>
+  <div><span class="heart">♥</span> <span id="fMade"></span></div>
+</footer>
+
+<script src="data/catalog.js"></script>
+<script src="data/stats.js"></script>
+<script>
+(function () {
+  "use strict";
+  var data = window.AWESOME_CATALOG || { projects: [], site_url: "", category_icons: {}, category_labels_en: {}, stats: { languages: {} } };
+  var st = window.AWESOME_STATS || { totals: {}, projects: {} };
+  var REPO = "https://github.com/Abolfazlrwm/awesome-scripts";
+  var $ = function (id) { return document.getElementById(id); };
+  var projects = data.projects || [];
+  var bySlug = {};
+  projects.forEach(function (p) { bySlug[p.slug] = p; });
+
+  var T = {
+    en: {
+      sub: "· Matrix", title: "⚖️ Project Matrix", desc: "All 109 projects, measured — filter, sort, and compare up to 4 side by side.",
+      search: "Search 109 projects…", all: "All categories", lang: "All languages",
+      demo: "▶ has demo", prev: "🖼 has preview", loc: "LOC", sort: [
+        ["loc", "LOC ↓"], ["files", "Files ↓"], ["bytes", "Size ↓"], ["name", "Name A→Z"]
+      ],
+      showing: "Showing", of: "of", project: "Project", cat: "Category", langH: "Lang",
+      files: "Files", locH: "LOC", size: "Size", demoH: "Demo", codeH: "Code",
+      run: "▶ demo", none: "No project matches these filters", noneHint: "Try clearing the search or widening the LOC range.",
+      compare: "Compare selected", clear: "Clear", maxSel: "You can compare up to 4 projects",
+      cmTitle: "⚖️ Side-by-side comparison", mCat: "Category", mLang: "Language", mFiles: "Files",
+      mLoc: "Lines of code", mSize: "Size", mDemo: "Live demo", mCode: "Source code",
+      yes: "▶ Run demo", no: "—", viewCode: "💻 View code",
+      bots: "Telegram bots", web: "Web tools", desktop: "Desktop tools",
+      proj: "projects", gen: "Stats generated", made: "Made with ♥ — open the", gallery: "interactive gallery", themeLight: "☀️", themeDark: "🌙", faBtn: "فا"
+    },
+    fa: {
+      sub: "· ماتریس", title: "⚖️ ماتریس پروژه‌ها", desc: "هر ۱۰۹ پروژه با اعداد واقعی — فیلتر، مرتب‌سازی و مقایسه‌ی ۴تایی کنار هم.",
+      search: "جست‌وجو در ۱۰۹ پروژه…", all: "همه‌ی دسته‌ها", lang: "همه‌ی زبان‌ها",
+      demo: "▶ دمودار", prev: "🖼 عکس‌دار", loc: "LOC", sort: [
+        ["loc", "خط کد ↓"], ["files", "فایل ↓"], ["bytes", "حجم ↓"], ["name", "نام الف→ی"]
+      ],
+      showing: "نمایش", of: "از", project: "پروژه", cat: "دسته", langH: "زبان",
+      files: "فایل", locH: "LOC", size: "حجم", demoH: "دمو", codeH: "کد",
+      run: "▶ دمو", none: "هیچ پروژه‌ای با این فیلترها پیدا نشد", noneHint: "جست‌وجو را پاک کن یا بازه‌ی LOC را بازتر کن.",
+      compare: "مقایسه‌ی انتخاب‌شده‌ها", clear: "پاک‌کردن", maxSel: "حداکثر ۴ پروژه قابل مقایسه است",
+      cmTitle: "⚖️ مقایسه‌ی کنار هم", mCat: "دسته", mLang: "زبان", mFiles: "فایل",
+      mLoc: "خط کد", mSize: "حجم", mDemo: "دموی زنده", mCode: "سورس",
+      yes: "▶ اجرای دمو", no: "—", viewCode: "💻 مشاهده‌ی کد",
+      bots: "ربات‌های تلگرام", web: "ابزارهای وب", desktop: "ابزارهای دسکتاپ",
+      proj: "پروژه", gen: "آمار تولیدشده", made: "ساخته‌شده با ♥ — برو به", gallery: "گالری تعاملی", themeLight: "☀️", themeDark: "🌙", faBtn: "EN"
+    }
+  };
+  var CAT_KEY = { "telegram-bot": "bots", "web-tool": "web", "desktop-tool": "desktop" };
+
+  var state = {
+    lang: localStorage.getItem("cm_lang") || "en",
+    theme: localStorage.getItem("cm_theme") || "dark",
+    q: "", category: "all", language: "all",
+    demoOnly: false, previewOnly: false, locMin: null, locMax: null,
+    sort: "loc", dir: -1, sel: []
+  };
+
+  function t(k) { return T[state.lang][k]; }
+  function fa(p) { return state.lang === "fa"; }
+  function nameOf(p) { return fa(p) ? (p.name_fa || p.name_en) : p.name_en; }
+  function fmtBytes(b) {
+    if (b >= 1048576) return (b / 1048576).toFixed(1) + " MB";
+    if (b >= 1024) return (b / 1024).toFixed(1) + " KB";
+    return b + " B";
+  }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function fold(s) {
+    return String(s || "").toLowerCase().replace(/[\u200B-\u200F\u202A-\u202E\uFEFF]/g, "");
+  }
+  function num(n) { return (n || 0).toLocaleString("en-US"); }
+
+  function statOf(slug) { return st.projects[slug] || { files: 0, loc: 0, bytes: 0 }; }
+
+  function filtered() {
+    var q = fold(state.q);
+    var out = projects.filter(function (p) {
+      if (state.category !== "all" && p.category !== state.category) return false;
+      if (state.language !== "all" && p.language !== state.language) return false;
+      if (state.demoOnly && !p.demo) return false;
+      if (state.previewOnly && !p.preview) return false;
+      var s = statOf(p.slug);
+      if (state.locMin != null && s.loc < state.locMin) return false;
+      if (state.locMax != null && s.loc > state.locMax) return false;
+      if (!q) return true;
+      var hay = fold([p.slug, p.name_en, p.name_fa, p.description_en, p.description_fa, p.language, p.category].join(" "));
+      return q.split(/\s+/).every(function (part) { return !part || hay.indexOf(part) !== -1; });
+    });
+    var k = state.sort, d = state.dir;
+    out.sort(function (a, b) {
+      if (k === "name") return d * String(nameOf(a)).localeCompare(String(nameOf(b)));
+      var sa = statOf(a.slug), sb = statOf(b.slug);
+      return d * ((sa[k] || 0) - (sb[k] || 0));
+    });
+    return out;
+  }
+
+  function applyTheme() {
+    document.body.dataset.theme = state.theme;
+    $("themeBtn").textContent = state.theme === "dark" ? t("themeLight") : t("themeDark");
+    localStorage.setItem("cm_theme", state.theme);
+  }
+
+  function applyLang() {
+    document.documentElement.lang = fa() ? "fa" : "en";
+    document.documentElement.dir = fa() ? "rtl" : "ltr";
+    $("langBtn").textContent = t("faBtn");
+    $("tSub").textContent = t("sub");
+    $("tTitle").textContent = t("title");
+    $("tDesc").textContent = t("desc");
+    $("q").placeholder = t("search");
+    $("lblDemo").textContent = t("demo");
+    $("lblPrev").textContent = t("prev");
+    $("lblLoc").textContent = t("loc");
+    $("hName").textContent = t("project");
+    $("hCat").textContent = t("cat");
+    $("hLang").textContent = t("langH");
+    $("hFiles").textContent = t("files");
+    $("hLoc").textContent = t("locH");
+    $("hSize").textContent = t("size");
+    $("hDemo").textContent = t("demoH");
+    $("hCode").textContent = t("codeH");
+    $("cmBtnLbl").textContent = t("compare");
+    $("cmClearLbl").textContent = t("clear");
+    $("cmTitle").textContent = t("cmTitle");
+    $("fMade").innerHTML = t("made") + ' <a href="./">' + t("gallery") + "</a>";
+    buildSelects();
+    renderTotals();
+    render();
+    localStorage.setItem("cm_lang", state.lang);
+  }
+
+  function buildSelects() {
+    var cat = $("fCat");
+    cat.innerHTML = "";
+    var o = document.createElement("option");
+    o.value = "all"; o.textContent = t("all"); cat.appendChild(o);
+    Object.keys(CAT_KEY).forEach(function (c) {
+      var opt = document.createElement("option");
+      opt.value = c; opt.textContent = (data.category_icons[c] || "") + " " + t(CAT_KEY[c]);
+      cat.appendChild(opt);
+    });
+    cat.value = state.category;
+    var lang = $("fLang");
+    lang.innerHTML = "";
+    var o2 = document.createElement("option");
+    o2.value = "all"; o2.textContent = t("lang"); lang.appendChild(o2);
+    Object.keys(data.stats.languages || {}).sort().forEach(function (l) {
+      var opt = document.createElement("option");
+      opt.value = l; opt.textContent = l;
+      lang.appendChild(opt);
+    });
+    lang.value = state.language;
+    var sort = $("fSort");
+    sort.innerHTML = "";
+    t("sort").forEach(function (pair) {
+      var opt = document.createElement("option");
+      opt.value = pair[0]; opt.textContent = pair[1];
+      sort.appendChild(opt);
+    });
+    sort.value = state.sort;
+  }
+
+  function renderTotals() {
+    var tt = st.totals || { files: 0, loc: 0, bytes: 0 };
+    $("totals").innerHTML =
+      '<div class="stat"><b>' + projects.length + "</b><span>" + t("proj") + "</span></div>" +
+      '<div class="stat"><b>' + num(tt.files) + "</b><span>" + t("files") + "</span></div>" +
+      '<div class="stat"><b>' + num(tt.loc) + "</b><span>" + t("locH") + "</span></div>" +
+      '<div class="stat"><b>' + fmtBytes(tt.bytes) + "</b><span>" + t("size") + "</span></div>";
+    var gen = (st.generated_at || "").slice(0, 10);
+    $("fGen").textContent = t("gen") + (gen ? " · " + gen : "") + " · awesome-scripts v1.21";
+  }
+
+  function render() {
+    var rows = filtered();
+    $("meta").innerHTML = "<b>" + rows.length + "</b> " + t("of") + " " + projects.length + " " + t("proj");
+    if (!rows.length) {
+      $("tbody").innerHTML = '<tr><td colspan="9"><div class="empty"><div class="big">🔍</div><div>' +
+        esc(t("none")) + '</div><div style="font-size:13px;margin-top:6px">' + esc(t("noneHint")) + "</div></div></td></tr>";
+    } else {
+      $("tbody").innerHTML = rows.map(function (p) {
+        var s = statOf(p.slug);
+        var icon = (data.category_icons[p.category]) || "📦";
+        var label = (data.category_labels_en[p.category]) || p.category;
+        var demo = p.demo ? '<a class="act-mini demo" href="' + esc(p.demo) + '" target="_blank" rel="noopener">' + t("run") + "</a>" : '<span style="color:var(--muted)">—</span>';
+        var code = '<a class="act-mini" href="' + REPO + "/tree/main/" + esc(p.path) + '" target="_blank" rel="noopener">💻</a>';
+        var sel = state.sel.indexOf(p.slug) >= 0;
+        return '<tr class="' + (sel ? "is-sel" : "") + '"><td class="p-name">' + esc(nameOf(p)) +
+          "<small>" + esc(p.slug) + "</small></td>" +
+          '<td class="cat-tag">' + icon + " " + esc(label) + "</td>" +
+          '<td><span class="lang-badge">' + esc(p.language) + "</span></td>" +
+          '<td class="num">' + num(s.files) + "</td>" +
+          '<td class="num"><b>' + num(s.loc) + "</b></td>" +
+          '<td class="num">' + fmtBytes(s.bytes) + "</td>" +
+          "<td>" + demo + "</td><td>" + code + "</td>" +
+          '<td class="cm"><input type="checkbox" data-cm="' + esc(p.slug) + '" aria-label="compare ' + esc(p.slug) + '"' + (sel ? " checked" : "") + "></td></tr>";
+      }).join("");
+    }
+    $("cmBar").classList.toggle("show", state.sel.length >= 2);
+  }
+
+  function toast(msg) {
+    var el = $("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(el.__tm);
+    el.__tm = setTimeout(function () { el.classList.remove("show"); }, 1700);
+  }
+
+  function openCm() {
+    var picks = state.sel.map(function (slug) { return bySlug[slug]; }).filter(Boolean);
+    $("cmGrid").innerHTML = picks.map(function (p) {
+      var s = statOf(p.slug);
+      var icon = (data.category_icons[p.category]) || "📦";
+      var label = (data.category_labels_en[p.category]) || p.category;
+      var img = p.preview
+        ? '<img src="' + data.site_url + esc(p.preview) + '" alt="" loading="lazy" style="width:100%;height:110px;object-fit:cover;border-radius:10px;margin-bottom:10px">'
+        : '<div style="height:110px;display:flex;align-items:center;justify-content:center;font-size:40px;border-radius:10px;background:var(--card);margin-bottom:10px">' + icon + "</div>";
+      var metric = function (a, b) { return '<div class="metric"><span>' + a + "</span><span>" + b + "</span></div>"; };
+      return '<div class="cm-col">' + img + "<h3>" + esc(nameOf(p)) + "</h3>" +
+        metric(t("mCat"), esc(label)) +
+        metric(t("mLang"), esc(p.language)) +
+        metric(t("mFiles"), num(s.files)) +
+        metric(t("mLoc"), "<b>" + num(s.loc) + "</b>") +
+        metric(t("mSize"), fmtBytes(s.bytes)) +
+        '<div class="metric links"><span>' + t("mDemo") + "</span><span>" +
+        (p.demo ? '<a href="' + esc(p.demo) + '" target="_blank" rel="noopener">' + t("yes") + "</a>" : t("no")) +
+        "</span></div>" +
+        '<div class="metric links"><span>' + t("mCode") + '</span><span><a href="' + REPO + "/tree/main/" + esc(p.path) + '" target="_blank" rel="noopener">' + t("viewCode") + "</a></span></div>" +
+        '<div class="desc">' + esc(fa(p) ? (p.description_fa || p.description_en) : p.description_en) + "</div></div>";
+    }).join("");
+    $("cmMask").classList.add("open");
+  }
+
+  function closeCm() { $("cmMask").classList.remove("open"); }
+
+  $("q").addEventListener("input", function () { state.q = this.value; render(); });
+  $("fCat").addEventListener("change", function () { state.category = this.value; render(); });
+  $("fLang").addEventListener("change", function () { state.language = this.value; render(); });
+  $("demoOnly").addEventListener("change", function () {
+    state.demoOnly = this.checked; $("chkDemo").classList.toggle("on", this.checked); render();
+  });
+  $("prevOnly").addEventListener("change", function () {
+    state.previewOnly = this.checked; $("chkPrev").classList.toggle("on", this.checked); render();
+  });
+  $("locMin").addEventListener("input", function () { state.locMin = this.value === "" ? null : +this.value; render(); });
+  $("locMax").addEventListener("input", function () { state.locMax = this.value === "" ? null : +this.value; render(); });
+  $("fSort").addEventListener("change", function () { state.sort = this.value; state.dir = this.value === "name" ? 1 : -1; render(); });
+  $("resetBtn").addEventListener("click", function () {
+    state.q = ""; state.category = "all"; state.language = "all";
+    state.demoOnly = false; state.previewOnly = false;
+    state.locMin = null; state.locMax = null; state.sort = "loc"; state.dir = -1;
+    $("q").value = ""; $("locMin").value = ""; $("locMax").value = "";
+    $("demoOnly").checked = false; $("prevOnly").checked = false;
+    $("chkDemo").classList.remove("on"); $("chkPrev").classList.remove("on");
+    buildSelects(); render();
+  });
+  document.querySelectorAll("thead th[data-k]").forEach(function (th) {
+    th.addEventListener("click", function () {
+      var k = th.dataset.k;
+      if (state.sort === k) state.dir = -state.dir;
+      else { state.sort = k; state.dir = k === "name" ? 1 : -1; }
+      document.querySelectorAll("thead th .arr").forEach(function (a) { a.remove(); });
+      var arr = document.createElement("span");
+      arr.className = "arr";
+      arr.textContent = state.dir === 1 ? "↑" : "↓";
+      th.appendChild(arr);
+      $("fSort").value = k;
+      render();
+    });
+  });
+  $("tbody").addEventListener("change", function (e) {
+    var slug = e.target.getAttribute && e.target.getAttribute("data-cm");
+    if (!slug) return;
+    var i = state.sel.indexOf(slug);
+    if (e.target.checked && i === -1) {
+      if (state.sel.length >= 4) { e.target.checked = false; toast(t("maxSel")); return; }
+      state.sel.push(slug);
+    } else if (!e.target.checked && i >= 0) {
+      state.sel.splice(i, 1);
+    }
+    render();
+  });
+  $("cmGo").addEventListener("click", function () { if (state.sel.length >= 2) openCm(); });
+  $("cmClear").addEventListener("click", function () { state.sel = []; render(); });
+  $("cmClose").addEventListener("click", closeCm);
+  $("cmMask").addEventListener("click", function (e) { if (e.target === $("cmMask")) closeCm(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeCm(); });
+  $("themeBtn").addEventListener("click", function () {
+    state.theme = state.theme === "dark" ? "light" : "dark"; applyTheme();
+  });
+  $("langBtn").addEventListener("click", function () {
+    state.lang = fa() ? "en" : "fa"; applyLang();
+  });
+
+  applyTheme();
+  applyLang();
+})();
+</script>
+</body>
+</html>
