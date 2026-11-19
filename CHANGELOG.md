@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.20.0] — 2026-11-19 — 💼 Professional polish — product + code, one click apart
+
+- **Detail modal** — every project card now opens a modal with the live preview embed and five actions: **▶ Live demo**, **💻 Code**, **📖 README**, **📋 Copy git clone** (clipboard with feedback) and **🔗 Share** — an employer can run the product and read the source in the same minute.
+- **Featured products grid** — six flagship web tools with real clickable screenshots at the top of the README: thumbnail ▶ runs the live product, 💻 opens the code.
+- **Engineering practices table** — what each CI gate actually enforces (validate 109/109, catalog drift, link 200s, CodeQL, releases, Dependabot), in plain language.
+- **Repo hygiene** — `.gitattributes` marks generated files (`catalog.json/js`, sitemap) as `linguist-generated` and normalizes line endings; first-interaction **Greetings** workflow welcomes new issues/PRs.
+
+مودال هر پروژه حالا پروداکت زنده + کد + کپی git clone را یک‌جا می‌دهد؛ README شش محصول شاخص با اسکرین‌شات واقعی و جدول gateهای مهندسی دارد؛ `.gitattributes` و اکشن خوش‌آمدگویی اضافه شد.
+
 ## [v1.19.0] — 2026-11-19 — 🗂 Repository reorganized + gallery front & center (63 bots · 40 web · 6 desktop)
 
 - **Structure** — the mixed `src/` bucket is gone: projects now live in **`bots/` (63)**, **`web/` (40)** and **`desktop/` (6)**. The whole toolchain followed: catalog generator, validator, scaffolder, release packaging, sitemap and every README row (218 folder links + 76 demo links rewritten).
