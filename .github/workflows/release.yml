@@ -47,11 +47,14 @@ jobs:
       - name: Pack source archive
         run: |
           zip -qr "awesome-scripts-${GITHUB_REF_NAME}.zip" bots web desktop README.md LICENSE
-          ls -lh awesome-scripts-*.zip
+          cp "awesome-scripts-${GITHUB_REF_NAME}.zip" awesome-scripts.zip
+          ls -lh awesome-scripts*.zip
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           body_path: release_notes.md
           generate_release_notes: true
-          files: awesome-scripts-*.zip
+          files: |
+            awesome-scripts-${{ github.ref_name }}.zip
+            awesome-scripts.zip
