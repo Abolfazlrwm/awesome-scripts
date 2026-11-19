@@ -381,6 +381,7 @@
     </a>
     <div class="header-stats" id="headerStats"></div>
     <div class="header-actions">
+      <a class="icon-btn" href="compare.html" id="cmpLink" title="Project Matrix">⚖️ <span data-i18n="cmp">Compare</span></a>
       <a class="icon-btn" id="ghLink" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
       <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
@@ -509,6 +510,7 @@
     $("heroSub").textContent = t("heroSub");
     searchEl.placeholder = t("searchPlaceholder");
     $("ghLink").textContent = fa ? "⭐ گیت‌هاب" : "⭐ GitHub";
+    $("cmpLink").innerHTML = fa ? "⚖️ مقایسه" : "⚖️ Compare";
     $("demoFilterBtn").textContent = fa ? "▶ فقط دمودار" : "▶ Live demo only";
     $("favFilterBtn").textContent = fa ? "⭐ علاقه‌مندی‌ها" : "⭐ Favorites";
     document.title = fa
