@@ -40,6 +40,10 @@
 
 **⏱ ویدیوی چهل‌ثانیه‌ای** — جست‌وجوی زنده → پیش‌نمایش محصول داخل مودال → **⚖️ [ماتریس پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: همه‌ی ۱۰۹ پروژه با تعداد فایل، خط کد و حجم + فیلترهای پیشرفته و مقایسه‌ی کنارِ‌هم تا ۴ پروژه.
 
+**📲 PWA & shareable views** — the gallery installs as an app (service worker, offline shell) and every search/filter combo is a shareable URL — try `?q=tetris&demo=1` or `?fa=1`. The header has a 🎲 random-project button, a 🚀 latest-release chip and ⬇️ one-click ZIP download.
+
+**📲 PWA و لینک‌های اشتراکی** — سایت به‌صورت اپ نصب می‌شود (Service Worker، کارکرد آفلاین) و هر ترکیب جست‌وجو/فیلتر یک URL قابل اشتراک است؛ مثلاً `?q=tetris&demo=1`. هدر سایت دکمه‌ی 🎲 پروژه‌ی تصادفی، چیپ 🚀 آخرین ریلیز و ⬇️ دانلود مستقیم ZIP دارد.
+
 
 ## 🎬 Try it in one click — محصولات شاخص
 
