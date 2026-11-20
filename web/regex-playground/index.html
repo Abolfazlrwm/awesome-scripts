@@ -260,7 +260,7 @@ function renderGroups(ms) {
   head += "</tr>";
   thead.innerHTML = head;
   tbody.innerHTML = ms.slice(0, 40).map(m => {
-    let row = `<tr><td class="grp">${m.index}</td><td>${escapeHtml(m[0]) || "∅"}</td>`;
+    let row = `<tr><td class="grp">${escapeHtml(m.index)}</td><td>${escapeHtml(m[0]) || "∅"}</td>`;
     for (let i = 1; i <= maxGrp; i++) row += `<td>${m[i] === undefined ? "—" : escapeHtml(m[i])}</td>`;
     for (const n of names) row += `<td>${m.groups[n] === undefined ? "—" : escapeHtml(m.groups[n])}</td>`;
     return row + "</tr>";

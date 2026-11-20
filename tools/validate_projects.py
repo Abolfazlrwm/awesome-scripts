@@ -34,7 +34,7 @@ SCAN_NAME_EXTRA = {".env", ".env.example", ".gitignore", "string.json", "update.
 
 MAX_SCAN_BYTES = 1_000_000
 
-SECRET_RULES: list[tuple[str, re.Pattern[str]]] = [
+HYGIENE_RULES: list[tuple[str, re.Pattern[str]]] = [
     ("Telegram bot token", re.compile(r"\b\d{8,10}:[A-Za-z0-9_-]{30,}\b")),
     ("GitHub token", re.compile(r"\bgh[pousr]_[A-Za-z0-9]{20,}\b")),
     ("AWS access key", re.compile(r"\bAKIA[0-9A-Z]{16}\b")),
@@ -72,7 +72,7 @@ def scan_text(path: Path) -> list[str]:
     except OSError:
         return []
     findings: list[str] = []
-    for rule, pattern in SECRET_RULES:
+    for rule, pattern in HYGIENE_RULES:
         for match in pattern.finditer(text):
             evidence = match.group(0)
             if looks_like_placeholder(evidence):
