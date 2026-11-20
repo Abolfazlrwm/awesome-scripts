@@ -4593,10 +4593,12 @@ function renderEntries(){
     row.dataset.idx = i;
     row.innerHTML = `
       <span class="swatch" style="background:${palette[i % palette.length]}"></span>
-      <input type="text" value="${item.name}" data-idx="${i}" data-field="name" />
+      <input type="text" data-idx="${i}" data-field="name" />
       <input type="number" min="0" value="${item.points}" data-idx="${i}" data-field="points" title="${t().ptsTitle}" />
       <button data-idx="${i}" class="removeBtn" title="${t().removeTitle}">×</button>
     `;
+    // user-controlled name is assigned via the value property, never via HTML interpolation
+    row.querySelector('input[data-field="name"]').value = item.name;
     entriesEl.appendChild(row);
   });
 
@@ -4644,7 +4646,7 @@ function openPopover(idx){
   popoverContainer.innerHTML = `
     <div class="popover-backdrop" id="popBackdrop">
       <div class="popover" onclick="event.stopPropagation()">
-        <h3>${item.name}</h3>
+        <h3 id="popTitle"></h3>
         <div class="pop-field">
           <label>${L.timesSelected}</label>
           <div class="pop-count-display">
@@ -4673,6 +4675,8 @@ function openPopover(idx){
   `;
 
   const backdrop = document.getElementById('popBackdrop');
+  // user-controlled name is rendered via textContent, never via HTML interpolation
+  document.getElementById('popTitle').textContent = item.name;
   const limitInput = document.getElementById('popLimitInput');
   const countNum = document.getElementById('popCountNum');
   const facePicker = document.getElementById('facePicker');

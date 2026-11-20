@@ -1340,7 +1340,12 @@
 
         const toast = document.createElement('div');
         toast.className = 'toast';
-        toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+        // message text (wallet addresses, prices, errors) is appended as a
+        // text node so it is never interpreted as HTML
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-info-circle';
+        toast.appendChild(icon);
+        toast.appendChild(document.createTextNode(' ' + message));
         document.body.appendChild(toast);
 
         setTimeout(() => {

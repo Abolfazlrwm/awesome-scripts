@@ -1,4 +1,5 @@
 # Telegram: @Abolfazl_rwm
+import re
 import telebot
 import requests
 import sqlite3
@@ -7,12 +8,31 @@ import time
 import os
 import json
 from datetime import datetime, timedelta
+from urllib.parse import urlparse
 from telebot import types
 import logging
 
 # ==================== تنظیمات لاگینگ ====================
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# Substring checks like "'instagram.com' in text" would also match lookalike
+# URLs such as https://evil.com/instagram.com, so URLs are extracted and the
+# hostname is validated against an allowlist with urlparse instead.
+_URL_RE = re.compile(r"https?://[^\s<>\"']+", re.I)
+_INSTAGRAM_HOSTS = ("instagram.com",)
+
+
+def _find_instagram_url(text):
+    """Return the first URL whose host is a real instagram.com domain, else None."""
+    for raw in _URL_RE.findall(text or ""):
+        try:
+            host = (urlparse(raw).hostname or "").lower()
+        except ValueError:
+            continue
+        if any(host == h or host.endswith("." + h) for h in _INSTAGRAM_HOSTS):
+            return raw
+    return None
 
 print("=" * 60)
 print("🤖 ربات دانلودر اینستاگرام - نسخه VIP v4.0")
@@ -1229,8 +1249,8 @@ def handle_messages(message):
             )
         
         # پردازش لینک اینستاگرام
-        elif 'instagram.com' in text:
-            if not ('https://www.instagram.com/' in text or 'http://www.instagram.com/' in text):
+        elif re.search(r"(?<![\w.])instagram\.com(?![\w])", text, re.I):
+            if _find_instagram_url(text) is None:
                 bot.reply_to(
                     message,
                     "⚠️ <b>لینک نامعتبر!</b>\n\n"

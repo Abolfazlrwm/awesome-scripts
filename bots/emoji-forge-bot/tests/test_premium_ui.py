@@ -166,9 +166,10 @@ class TestKeyboardsCarryTheLook(unittest.TestCase):
 # Any pictograph/symbol char that would count as "an emoji in the
 # label" next to a premium icon (the double-visual from the owner's
 # screenshot). Persian letters/digits are outside these ranges.
+# Note: \u2300-\u23FF and \u2600-\u27BF are subsets of \u2190-\u2BFF
+# and therefore folded into it to keep the character class minimal.
 _EMOJI_CHAR_RE = re.compile(
-    "[\U0001F000-\U0001FAFF\u2190-\u2BFF\u2300-\u23FF"
-    "\u2600-\u27BF\u3030\u303D\u3297\u3299\uFE0F]"
+    "[\U0001F000-\U0001FAFF\u2190-\u2BFF\u3030\u303D\u3297\u3299\uFE0F]"
 )
 
 

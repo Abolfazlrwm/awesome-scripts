@@ -324,8 +324,8 @@
 
       row.innerHTML = `
         <div class="city-meta">
-          <div class="name">${city.label}</div>
-          <div class="tz">${city.tz}</div>
+          <div class="name" data-role="name"></div>
+          <div class="tz" data-role="tz"></div>
           <div class="local-time" data-role="time"></div>
           <div class="local-date" data-role="date"></div>
           <button class="remove-btn" data-role="remove">✕ حذف</button>
@@ -338,6 +338,9 @@
           </div>
         </div>
       `;
+      // timezone-derived strings are set via textContent, never via HTML interpolation
+      row.querySelector('[data-role="name"]').textContent = city.label;
+      row.querySelector('[data-role="tz"]').textContent = city.tz;
 
       // work-hours band: 09:00–18:00 local
       const workband = row.querySelector('[data-role="workband"]');

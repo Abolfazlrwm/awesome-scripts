@@ -77,8 +77,9 @@ def scan_text(path: Path) -> list[str]:
             evidence = match.group(0)
             if looks_like_placeholder(evidence):
                 continue
-            # keep evidence short so logs stay clean
-            findings.append(f"{rule}: {evidence[:18]}…")
+            # Never echo the matched secret (or any fragment of it) into the
+            # log; the rule name plus file path is enough to locate it.
+            findings.append(f"{rule} (evidence redacted, {len(evidence)} chars)")
     return findings
 
 

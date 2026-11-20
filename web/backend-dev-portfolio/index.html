@@ -459,10 +459,20 @@
             const chatHistory = document.getElementById('chatHistory');
             const sendBtn = document.getElementById('sendBtn');
 
+            // user input is rendered with textContent; bot replies that need
+            // markup go through addBotMsg (static, code-defined HTML only)
             function addMsg(text, sender) {
                 const div = document.createElement('div');
                 div.className = `msg msg-${sender}`;
-                div.innerHTML = text;
+                div.textContent = text;
+                chatHistory.appendChild(div);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+
+            function addBotMsg(html) {
+                const div = document.createElement('div');
+                div.className = 'msg msg-bot';
+                div.innerHTML = html; // static markup from this file, no user input
                 chatHistory.appendChild(div);
                 chatHistory.scrollTop = chatHistory.scrollHeight;
             }
@@ -477,7 +487,7 @@
                     } else if (text === '/ping') {
                         addMsg('Pong! System is running flawlessly.', 'bot');
                     } else {
-                        addMsg('Command not recognized. Try <b>/start</b>, <b>/skills</b>, or <b>/ping</b>.', 'bot');
+                        addBotMsg('Command not recognized. Try <b>/start</b>, <b>/skills</b>, or <b>/ping</b>.');
                     }
                     if (navigator.vibrate) navigator.vibrate([10, 30, 10]);
                 }, 600);

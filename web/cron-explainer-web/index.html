@@ -216,6 +216,12 @@ function nextRuns(f, n, tzOffsetMinutes) {
   return out;
 }
 
+// escape all HTML metacharacters; used whenever user-typed text is interpolated
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+}
+
 function parseOffset(s) {
   const m = /^([+-])(\d{1,2}):(\d{2})$/.test(s.trim()) ? s.trim().match(/^([+-])(\d{1,2}):(\d{2})$/) : null;
   if (!m) return 210; // Tehran default +03:30
@@ -232,8 +238,9 @@ function run() {
     const f = parse(expr);
     const off = parseOffset($("tzoff").value);
     $("desc").innerHTML = '<span class="hl">' + describe(f, true) + "</span>";
+    // user-typed expression parts are escaped before HTML interpolation
     $("fields").innerHTML = FIELD_FA.map((name, i) =>
-      `<div class="f"><b>${expr.trim().split(/\s+/)[i]}</b><span>${name}</span></div>`).join("");
+      `<div class="f"><b>${escapeHtml(expr.trim().split(/\s+/)[i] || "")}</b><span>${name}</span></div>`).join("");
     const runs = nextRuns(f, 5, off);
     $("next").innerHTML = runs.map(d => {
       const local = new Date(d.getTime() + off * 60000);

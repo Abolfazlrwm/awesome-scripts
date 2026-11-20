@@ -14,6 +14,7 @@ from telebot import types
 import spotify_parser
 import search_engine
 import downloader
+from urllib.parse import urlparse
 
 # Configure logging
 logging.basicConfig(
@@ -25,6 +26,25 @@ logger = logging.getLogger('SpotifyDownloaderBot')
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(BASE_DIR, 'config.json')
 DB_FILE = os.path.join(BASE_DIR, 'bot_data.db')
+
+# Extract complete URLs from free text (routing only; real parsing happens in
+# spotify_parser). Substring checks like "'spotify.com' in text" would match
+# lookalike paths such as https://evil.com/spotify.com, so the host is
+# validated with urlparse against an allowlist instead.
+_URL_RE = re.compile(r"https?://[^\s<>\"']+", re.I)
+_SPOTIFY_HOSTS = ("spotify.com", "spotify.link")
+
+
+def _find_spotify_url(text: str) -> Optional[str]:
+    """Return the first URL whose host is a real Spotify domain, else None."""
+    for raw in _URL_RE.findall(text or ""):
+        try:
+            host = (urlparse(raw).hostname or "").lower()
+        except ValueError:
+            continue
+        if any(host == h or host.endswith("." + h) for h in _SPOTIFY_HOSTS):
+            return raw
+    return None
 
 def load_config() -> Dict[str, Any]:
     if os.path.exists(CONFIG_FILE):
@@ -159,8 +179,8 @@ def create_bot(token: str) -> telebot.TeleBot:
 
         record_user(message.from_user.id, message.from_user.username, message.from_user.first_name)
 
-        # Check if text contains Spotify URL
-        if 'spotify.com' in text or 'spotify.link' in text:
+        # Check if text contains a real Spotify URL (host-allowlisted)
+        if _find_spotify_url(text):
             parsed = spotify_parser.parse_spotify_url(text)
             if not parsed:
                 bot.reply_to(message, "❌ لینک اسپاتیفای نامعتبر است. لطفاً لینک معتبر ترک، آلبوم یا پلی‌لیست ارسال کنید.")
