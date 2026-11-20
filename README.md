@@ -20,6 +20,11 @@
 
 </div>
 
+> [!NOTE]
+> **Scope: community utility collection.** 109 small, practical scripts, bots
+> and tools — breadth, not depth. This is not where I demonstrate engineering
+> depth; the flagship projects are pinned on [my profile](https://github.com/Abolfazlrwm).
+
 <a id="english"></a>
 
 ## 🌐 Live Gallery — گالری زنده
