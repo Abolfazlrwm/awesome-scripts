@@ -3,27 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Awesome Scripts — ready-to-run projects catalog</title>
-<meta name="description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
+<title>Awesome Scripts — 109 ready-to-run bots &amp; tools</title>
+<meta name="description" content="Interactive catalog of 109 ready-to-run Telegram bots, web tools and desktop utilities — live code search, project matrix, offline PWA. EN / فارسی.">
 <link rel="canonical" href="https://abolfazlrwm.github.io/awesome-scripts/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Awesome Scripts">
-<meta property="og:title" content="Awesome Scripts — 103 ready-to-run bots & tools">
-<meta property="og:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities. EN / فارسی, dark mode, live search.">
+<meta property="og:title" content="Awesome Scripts — 109 ready-to-run bots & tools">
+<meta property="og:description" content="109 production-ready Telegram bots, web tools and desktop utilities — live code search, project matrix and an offline-first PWA. EN / فارسی, dark mode, live search.">
 <meta property="og:url" content="https://abolfazlrwm.github.io/awesome-scripts/">
-<meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
+<meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a0a16">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
 <meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
-<meta name="twitter:title" content="Awesome Scripts — 103 ready-to-run bots & tools">
-<meta name="twitter:description" content="Interactive catalog of complete, ready-to-run Telegram bots, web tools and desktop utilities.">
-<meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/banner.png">
+<meta name="twitter:title" content="Awesome Scripts — 109 ready-to-run bots & tools">
+<meta name="twitter:description" content="109 production-ready Telegram bots, web tools and desktop utilities — live code search, project matrix and an offline-first PWA.">
 <!-- Telegram: @Abolfazl_rwm -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -385,7 +382,7 @@
       <button class="icon-btn" id="rndBtn" type="button" title="Open a random project · پروژه‌ی تصادفی">🎲</button>
       <a class="icon-btn" href="compare.html" id="cmpLink" title="Project Matrix">⚖️ <span data-i18n="cmp">Compare</span></a>
       <a class="icon-btn" href="search.html" id="codeSearchLink" title="Search inside the code">🔍 <span data-i18n="csearch">Code</span></a>
-      <a class="icon-btn" id="relChip" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest" target="_blank" rel="noopener" title="Latest release">🚀 v1.22</a>
+      <a class="icon-btn" id="relChip" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest" target="_blank" rel="noopener" title="Latest release">🚀 v1.23</a>
       <a class="icon-btn" id="zipBtn" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest/download/awesome-scripts.zip" target="_blank" rel="noopener" title="Download latest source ZIP">⬇️ ZIP</a>
       <a class="icon-btn" id="ghLink" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
       <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
@@ -395,7 +392,7 @@
 </header>
 
 <section class="hero">
-  <h1 id="heroTitle">103 ready-to-run projects. One repository.</h1>
+  <h1 id="heroTitle">109 ready-to-run projects. One repository.</h1>
   <p class="sub" id="heroSub">
     Complete Telegram bots, web tools and desktop utilities — every folder is a full app with a
     step-by-step README. Search it, filter it, ship it.
@@ -407,7 +404,7 @@
   <div class="search-wrap">
     <span class="magnifier">🔎</span>
     <input id="search" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Search 103 projects — name, feature or language…" aria-label="Search projects">
+           placeholder="Search 109 projects — name, feature or language…" aria-label="Search projects">
     <span class="kbd-hint">/</span>
   </div>
   <div class="chips" id="catChips" role="tablist" aria-label="Filter by category"></div>
@@ -1183,6 +1180,22 @@
     var card = document.querySelector('.card[data-slug="' + m[1] + '"]');
     if (card && window.__asOpen) window.__asOpen(m[1]);
   }
+})();
+</script>
+
+<script>
+/* v9: keep the release chip fresh from the GitHub API (static text is the fallback) */
+(function () {
+  try {
+    fetch("https://api.github.com/repos/Abolfazlrwm/awesome-scripts/releases/latest")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.tag_name) {
+          var chip = document.getElementById("relChip");
+          if (chip) { chip.textContent = "🚀 " + d.tag_name; chip.title = "Latest release: " + d.tag_name; }
+        }
+      }).catch(function () {});
+  } catch (e) {}
 })();
 </script>
 
