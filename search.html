@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code Search — Awesome Scripts</title>
+<meta name="description" content="Grep-style search across every source file of all 109 projects — identifiers, strings and comments, with exact file and line links.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b1020">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+  :root {
+    --bg:#0b1020; --bg2:#111731; --card:#151c3a; --card2:#1a2246;
+    --text:#e8ecff; --muted:#9aa6d6; --line:#26305c;
+    --accent:#6c8cff; --accent2:#8f6cff; --ok:#34d399; --warn:#fbbf24;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  [data-theme="light"] {
+    --bg:#f4f6ff; --bg2:#eaefff; --card:#ffffff; --card2:#f2f5ff;
+    --text:#1c2340; --muted:#5f6a99; --line:#d9e0ff;
+    --shadow:0 10px 30px rgba(40,60,160,.12);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Tahoma,"Noto Sans SC",sans-serif;
+    line-height:1.55; min-height:100vh;
+  }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  button, select, input { font:inherit; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:10px; }
+  header.site {
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .header-inner { max-width:1080px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:17px; color:var(--text); }
+  .brand .logo { font-size:22px; }
+  .brand small { color:var(--muted); font-weight:600; }
+  .header-actions { margin-inline-start:auto; display:flex; gap:8px; align-items:center; }
+  .icon-btn {
+    padding:8px 14px; border-radius:999px; cursor:pointer; user-select:none;
+    background:var(--card); border:1px solid var(--line); color:var(--text);
+    font-size:13.5px; font-weight:600; white-space:nowrap;
+  }
+  .icon-btn:hover { border-color:var(--accent); text-decoration:none; }
+  main { max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
+  .hero h1 { font-size:clamp(1.5rem, 4.5vw, 2.2rem); margin-bottom:6px; }
+  .hero p { color:var(--muted); font-size:15px; }
+  .stats { margin-top:12px; font-size:13.5px; color:var(--muted); }
+  .stats b { color:var(--text); }
+  .controls {
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:12px 14px; margin:20px 0 8px; box-shadow:var(--shadow);
+  }
+  .controls input[type="search"] { padding:10px 14px; flex:1 1 260px; font-size:15px; }
+  .controls label.chk {
+    display:flex; gap:6px; align-items:center; font-size:13px; cursor:pointer;
+    color:var(--muted); padding:6px 10px; border:1px solid var(--line); border-radius:999px;
+  }
+  .controls label.chk.on { color:var(--text); border-color:var(--accent); background:color-mix(in srgb, var(--accent) 14%, transparent); }
+  .controls label.chk input { accent-color:var(--accent); }
+  .controls select { padding:8px 10px; font-size:13.5px; max-width:230px; }
+  .meta-line { color:var(--muted); font-size:13px; margin:8px 2px 14px; }
+  .meta-line b { color:var(--text); }
+  .loading { text-align:center; padding:70px 20px; color:var(--muted); }
+  .loading .big { font-size:40px; margin-bottom:12px; animation:pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity:.45; } }
+  .file-card {
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    margin-bottom:12px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .file-head {
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:10px 14px; background:var(--card2); border-bottom:1px solid var(--line); font-size:13.5px;
+  }
+  .file-head .proj { font-weight:800; }
+  .file-head .path { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; color:var(--muted); font-size:12.5px; }
+  .file-head .hits {
+    margin-inline-start:auto; background:color-mix(in srgb, var(--accent) 20%, transparent);
+    border-radius:999px; padding:2px 10px; font-size:12px; font-weight:700; white-space:nowrap;
+  }
+  .lines { padding:6px 0; }
+  .lines code {
+    display:block; padding:5px 14px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12.5px; white-space:pre-wrap; word-break:break-word; color:var(--text);
+  }
+  .lines code:nth-child(even) { background:var(--bg2); }
+  .lines .ln { color:var(--muted); display:inline-block; min-width:46px; margin-inline-end:10px; text-align:end; user-select:none; }
+  mark { background:color-mix(in srgb, var(--warn) 38%, transparent); color:var(--text); border-radius:3px; padding:0 2px; }
+  .more-btn { margin:4px 14px 10px; font-size:12.5px; cursor:pointer; padding:4px 12px; }
+  .empty { text-align:center; padding:60px 20px; color:var(--muted); }
+  .empty .big { font-size:42px; margin-bottom:10px; }
+  footer.site { border-top:1px solid var(--line); margin-top:40px; padding:22px 20px 34px; text-align:center; color:var(--muted); font-size:13px; }
+  footer.site .heart { color:#f472b6; }
+  footer.site a { color:var(--accent); }
+  @media (max-width:640px) {
+    .header-inner, main { padding-inline:12px; }
+    .controls input[type="search"] { min-width:150px; }
+    .controls select { max-width:100%; flex:1 1 150px; }
+  }
+</style>
+</head>
+<body data-theme="dark">
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="./"><span class="logo">🤖</span><span>Awesome&nbsp;Scripts</span><small id="tSub"></small></a>
+    <div class="header-actions">
+      <a class="icon-btn" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <h1 id="tTitle">🔍 Code Search</h1>
+    <p id="tDesc"></p>
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <div class="controls" role="search">
+    <input type="search" id="q" autocomplete="off" spellcheck="false" aria-label="Search code">
+    <label class="chk" id="chkExact"><input type="checkbox" id="exact"><span id="lblExact"></span></label>
+    <select id="fProj" aria-label="Project"></select>
+    <button class="icon-btn" id="resetBtn" type="button">↺</button>
+  </div>
+
+  <div class="meta-line" id="meta"></div>
+  <div id="results"></div>
+</main>
+
+<footer class="site">
+  <div id="fGen"></div>
+  <div><span class="heart">♥</span> <span id="fMade"></span></div>
+  <div>Telegram: <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">@Abolfazl_rwm</a></div>
+</footer>
+
+<script src="data/catalog.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var REPO_RAW = "https://github.com/Abolfazlrwm/awesome-scripts/blob/main/";
+  var data = window.AWESOME_CATALOG || { projects: [] };
+  var bySlug = {};
+  data.projects.forEach(function (p) { bySlug[p.slug] = p; });
+
+  var T = {
+    en: {
+      sub: "· Code", title: "🔍 Code Search",
+      desc: "Grep-style search across the source of every project — identifiers, strings, comments — with exact file and line links.",
+      loading: "Loading the code index (~2.6 MB once, then cached offline)…",
+      err: "Could not load the index (needs a modern browser with DecompressionStream).",
+      stats: "files", linesL: "lines", tokensL: "indexed tokens", cached: "loaded once, cached offline",
+      search: "Search code… e.g. aiogram · Router · کانال", exact: "exact word", allProj: "All projects",
+      hits: "hits", showAll: "show all", showing: "Showing", of: "of", filesL: "files", linesHit: "matching lines",
+      none: "Nothing matches this search", noneHint: "Try a shorter or different keyword — matching is prefix-based on identifiers, strings and comments.",
+      typeHint: "Type a keyword to search inside the code.", fail: "index error",
+      made: "Built with ♥ by", gen: "awesome-scripts v1.23", themeLight: "☀️", themeDark: "🌙", faBtn: "فا"
+    },
+    fa: {
+      sub: "· کد", title: "🔍 جست‌وجوی کد",
+      desc: "جست‌وجوی grep-مانند در سورس همه‌ی پروژه‌ها — شناسه‌ها، رشته‌ها و کامنت‌ها — با لینک دقیق به فایل و خط.",
+      loading: "دریافت ایندکس کد (~۲.۶ مگابایت فقط بار اول، بعد آفلاین در کش می‌ماند)…",
+      err: "بارگذاری ایندکس ممکن نشد (مرورگر مدرن با DecompressionStream لازم است).",
+      stats: "فایل", linesL: "خط", tokensL: "توکن ایندکس‌شده", cached: "یک‌بار دریافت، بعداً آفلاین",
+      search: "جست‌وجو در کدها… مثل aiogram · Router · کانال", exact: "کلمه‌ی دقیق", allProj: "همه‌ی پروژه‌ها",
+      hits: "خط", showAll: "نمایش همه", showing: "نمایش", of: "از", filesL: "فایل", linesHit: "خط منطبق",
+      none: "چیزی با این جست‌وجو پیدا نشد", noneHint: "کلیدواژه‌ی کوتاه‌تری امتحان کن — جست‌وجو پیشوندی روی شناسه‌ها، رشته‌ها و کامنت‌هاست.",
+      typeHint: "برای جست‌وجو در کدها یک کلیدواژه بنویس.", fail: "خطای ایندکس",
+      made: "ساخته‌شده با ♥ توسط", gen: "awesome-scripts v1.23", themeLight: "☀️", themeDark: "🌙", faBtn: "EN"
+    }
+  };
+  var CAT_ICON = { "telegram-bot": "🤖", "web-tool": "🌐", "desktop-tool": "🖥" };
+
+  var state = {
+    lang: localStorage.getItem("cs_lang") || "en",
+    theme: localStorage.getItem("cs_theme") || "dark",
+    q: "", exact: false, proj: "all", expanded: {}
+  };
+  var IDX = null, TEXTS = null;
+  var TOKEN_RE = /[A-Za-z_][A-Za-z0-9_]{2,}|[\u0600-\u06FF]{2,}/g;
+  var debounceT = null;
+
+  function t(k) { return T[state.lang][k]; }
+  function fa() { return state.lang === "fa"; }
+  function nameOf(p) { return fa() ? (p.name_fa || p.name_en) : p.name_en; }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function num(n) { return (n || 0).toLocaleString("en-US"); }
+  function tokenize(s) {
+    var out = [], seen = {};
+    (String(s || "").match(TOKEN_RE) || []).forEach(function (w) {
+      w = w.toLowerCase();
+      if (!seen[w]) { seen[w] = 1; out.push(w); }
+    });
+    return out;
+  }
+  function fmt(s) {
+    var q = state.q.trim();
+    var words = q.split(/\s+/).filter(function (w) { return w.length >= 2; })
+      .map(function (w) { return w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); });
+    if (!words.length) return esc(s);
+    return esc(s).replace(new RegExp("(" + words.join("|") + ")", "gi"), "<mark>$1</mark>");
+  }
+
+  function applyTheme() {
+    document.body.dataset.theme = state.theme;
+    $("themeBtn").textContent = state.theme === "dark" ? t("themeLight") : t("themeDark");
+    localStorage.setItem("cs_theme", state.theme);
+  }
+  function applyLang() {
+    document.documentElement.lang = fa() ? "fa" : "en";
+    document.documentElement.dir = fa() ? "rtl" : "ltr";
+    $("langBtn").textContent = t("faBtn");
+    $("tSub").textContent = t("sub");
+    $("tTitle").textContent = t("title");
+    $("tDesc").textContent = t("desc");
+    $("q").placeholder = t("search");
+    $("lblExact").textContent = t("exact");
+    $("fProj").children[0] && ($("fProj").children[0].textContent = t("allProj"));
+    $("fMade").innerHTML = t("made") + ' <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Abolfazl — @Abolfazl_rwm</a>';
+    localStorage.setItem("cs_lang", state.lang);
+    if (IDX) renderStats();
+    renderResults();
+  }
+
+  function renderStats() {
+    var m = IDX.meta;
+    $("stats").innerHTML = "<b>" + num(m.files) + "</b> " + t("stats") + " · <b>" + num(m.lines) +
+      "</b> " + t("linesL") + " · <b>" + num(m.tokens) + "</b> " + t("tokensL") + " · " + t("cached");
+    $("fGen").textContent = t("gen") + " · " + num(m.files) + " " + t("stats") + " indexed";
+  }
+
+  function buildProjSelect() {
+    var sel = $("fProj"), cur = state.proj;
+    sel.innerHTML = "";
+    var all = document.createElement("option");
+    all.value = "all"; all.textContent = t("allProj"); sel.appendChild(all);
+    IDX.projects.forEach(function (slug) {
+      var p = bySlug[slug];
+      var o = document.createElement("option");
+      o.value = slug;
+      o.textContent = (p ? (CAT_ICON[p.category] || "") + " " + nameOf(p) : slug);
+      sel.appendChild(o);
+    });
+    sel.value = cur;
+  }
+
+  async function gunzip(buf) {
+    var stream = new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"));
+    return await new Response(stream).text();
+  }
+
+  async function loadAll() {
+    $("results").innerHTML = '<div class="loading"><div class="big">📦</div><div>' + esc(t("loading")) + "</div></div>";
+    try {
+      var bufs = await Promise.all([
+        fetch("data/code-index.json.gz").then(function (r) { return r.arrayBuffer(); }),
+        fetch("data/code-texts.json.gz").then(function (r) { return r.arrayBuffer(); })
+      ]);
+      IDX = JSON.parse(await gunzip(bufs[0]));
+      TEXTS = JSON.parse(await gunzip(bufs[1]));
+    } catch (e) {
+      $("results").innerHTML = '<div class="empty"><div class="big">⚠️</div><div>' + esc(t("err")) + "</div></div>";
+      return;
+    }
+    renderStats();
+    buildProjSelect();
+    $("q").focus();
+    if (state.q) doSearch();
+    else renderResults();
+  }
+
+  function doSearch() {
+    if (!IDX) return;
+    var qt = tokenize(state.q);
+    if (!qt.length) { renderResults(null); return; }
+    var fileSets = [], tokenCount = 0;
+    for (var i = 0; i < qt.length; i++) {
+      var flats = [];
+      if (state.exact) {
+        if (IDX.tokens[qt[i]]) flats.push(IDX.tokens[qt[i]]);
+      } else {
+        Object.keys(IDX.tokens).forEach(function (k) {
+          if (k.indexOf(qt[i]) === 0) flats.push(IDX.tokens[k]);
+        });
+      }
+      flats.sort(function (a, b) { return a.length - b.length; });
+      flats = flats.slice(0, 30);
+      tokenCount += flats.length;
+      var fset = {};
+      flats.forEach(function (flat) {
+        for (var j = 0; j < flat.length; j += 2) fset[flat[j]] = 1;
+      });
+      fileSets.push(fset);
+      if (!Object.keys(fset).length) { fileSets.push({}); break; }
+    }
+    var files = {};
+    for (var f = 0; f < IDX.files.length; f++) {
+      var ok = fileSets.every(function (fs) { return fs[f]; });
+      if (ok) files[f] = {};
+    }
+    var totalLines = 0;
+    if (Object.keys(files).length) {
+      Object.keys(IDX.tokens).forEach(function (k) {
+        for (var i2 = 0; i2 < qt.length; i2++) {
+          var match = state.exact ? k === qt[i2] : k.indexOf(qt[i2]) === 0;
+          if (!match) continue;
+          var flat = IDX.tokens[k];
+          for (var j = 0; j < flat.length; j += 2) {
+            if (files[flat[j]]) { files[flat[j]][flat[j + 1]] = 1; totalLines++; }
+          }
+        }
+      });
+      if (state.proj !== "all") {
+        Object.keys(files).forEach(function (fi) {
+          if (IDX.files[fi][0] !== IDX.projects.indexOf(state.proj)) { totalLines -= Object.keys(files[fi]).length; delete files[fi]; }
+        });
+      }
+    }
+    renderResults({ files: files, totalLines: totalLines, tokenCount: tokenCount, tokens: qt });
+  }
+
+  function renderResults(res) {
+    var box = $("results");
+    if (!IDX) return;
+    if (res === null) {
+      $("meta").innerHTML = "";
+      box.innerHTML = '<div class="empty"><div class="big">💡</div><div>' + esc(t("typeHint")) + "</div></div>";
+      return;
+    }
+    var fis = Object.keys(res.files).map(Number).sort(function (a, b) {
+      return Object.keys(res.files[b]).length - Object.keys(res.files[a]).length;
+    });
+    var shown = fis.slice(0, 40);
+    $("meta").innerHTML = fis.length
+      ? "<b>" + fis.length + "</b> " + t("filesL") + " · <b>" + num(res.totalLines) + "</b> " + t("linesHit") +
+        " · " + num(res.tokenCount) + " " + t("tokensL") +
+        (fis.length > 40 ? " · " + t("showing") + " 40 " + t("of") + " " + fis.length : "")
+      : "";
+    if (!fis.length) {
+      box.innerHTML = '<div class="empty"><div class="big">🔍</div><div>' + esc(t("none")) +
+        '</div><div style="font-size:13px;margin-top:6px">' + esc(t("noneHint")) + "</div></div>";
+      return;
+    }
+    box.innerHTML = shown.map(function (fi) {
+      var lines = Object.keys(res.files[fi]).map(Number).sort(function (a, b) { return a - b; });
+      var meta = IDX.files[fi], slug = IDX.projects[meta[0]], rel = meta[1];
+      var p = bySlug[slug];
+      var gh = REPO_RAW + (p ? p.path : slug) + "/" + rel + "#L" + lines[0];
+      var head = '<div class="file-head"><span class="proj">' + (p ? (CAT_ICON[p.category] || "") + " " + esc(nameOf(p)) : esc(slug)) +
+        '</span><span class="path">' + esc(rel) + '</span><a href="' + gh + '" target="_blank" rel="noopener">#</a>' +
+        '<span class="hits">' + lines.length + " " + t("hits") + "</span></div>";
+      var max = state.expanded[fi] ? lines.length : Math.min(8, lines.length);
+      var body = lines.slice(0, max).map(function (ln) {
+        var line = (TEXTS[fi].split("\n")[ln - 1] || "");
+        return "<code><span class=\"ln\">" + ln + "</span>" + fmt(line.length > 300 ? line.slice(0, 300) + "…" : line) + "</code>";
+      }).join("");
+      var more = lines.length > max
+        ? '<button class="btn more-btn" data-more="' + fi + '">' + t("showAll") + " (" + lines.length + ")</button>"
+        : "";
+      return '<div class="file-card">' + head + '<div class="lines">' + body + "</div>" + more + "</div>";
+    }).join("");
+  }
+
+  $("q").addEventListener("input", function () {
+    clearTimeout(debounceT);
+    var self = this;
+    debounceT = setTimeout(function () {
+      state.q = self.value;
+      state.expanded = {};
+      syncUrl();
+      doSearch();
+    }, 250);
+  });
+  $("q").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { clearTimeout(debounceT); state.q = this.value; doSearch(); }
+  });
+  $("exact").addEventListener("change", function () {
+    state.exact = this.checked; $("chkExact").classList.toggle("on", this.checked); doSearch();
+  });
+  $("fProj").addEventListener("change", function () { state.proj = this.value; doSearch(); });
+  $("resetBtn").addEventListener("click", function () {
+    state.q = ""; state.expanded = {}; $("q").value = "";
+    syncUrl(); doSearch();
+  });
+  $("results").addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest("[data-more]");
+    if (!btn) return;
+    state.expanded[btn.dataset.more] = true;
+    doSearch();
+  });
+  $("themeBtn").addEventListener("click", function () {
+    state.theme = state.theme === "dark" ? "light" : "dark"; applyTheme();
+  });
+  $("langBtn").addEventListener("click", function () {
+    state.lang = fa() ? "en" : "fa"; applyLang();
+  });
+
+  function syncUrl() {
+    if (!history.replaceState) return;
+    var sp = new URLSearchParams();
+    if (state.q) sp.set("q", state.q);
+    if (state.exact) sp.set("exact", "1");
+    if (state.proj !== "all") sp.set("proj", state.proj);
+    var qs = sp.toString();
+    history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
+  }
+
+  (function boot() {
+    var sp = new URLSearchParams(location.search);
+    if (sp.has("q")) state.q = sp.get("q");
+    if (sp.get("exact") === "1") { state.exact = true; $("exact").checked = true; $("chkExact").classList.add("on"); }
+    if (sp.has("proj")) state.proj = sp.get("proj");
+    $("q").value = state.q;
+    applyTheme();
+    applyLang();
+    loadAll();
+  })();
+})();
+</script>
+
+<script>
+if ("serviceWorker" in navigator &&
+    (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
