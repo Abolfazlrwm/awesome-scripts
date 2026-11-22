@@ -87,6 +87,12 @@ NAME_OVERRIDES = {
     "sudoku-game-web": "Sudoku Web",
     "dupe-file-finder": "Dupe Finder",
     "2048-web": "2048",
+    "self-cli-php-bot": "Self-CLI PHP Bot",
+    "tabchi-forwarder-bot": "Tabchi Forwarder Bot",
+    "esrrar-chat-bot": "Esrrar Anonymous Chat Bot",
+    "php-uploader-bot": "PHP Uploader Bot",
+    "channel-tools-bot": "Channel Tools PHP Bot",
+    "js-practice-playground": "JS Practice Playground",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
