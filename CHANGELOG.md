@@ -8,6 +8,14 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.24.0] — 2026-11-23 — 🧼 Polish pass — rich embeds, smart 404, fresh release chip
+
+- **Rich link embeds** — the project matrix and code search now ship full Open Graph / Twitter card meta (1200×630 `og-banner.png`), so links shared in Telegram, Discord or X expand into proper preview cards. The landing head was de-duplicated: one `og:image`, one `twitter:image`, one favicon, and the stale "103" counts in the title, descriptions, hero and search placeholder are now 109.
+- **Smart 404** — a custom `404.html` in the family design: project-style URLs (`/bots/anything/`) redirect straight to that project's gallery modal via `#p=slug`; everything else gets a bilingual 404 card with quick links and an auto-redirect home. `noindex` for crawlers.
+- **Self-updating release chip** — the 🚀 header chip now fetches the latest tag from the GitHub API at boot and re-labels itself, so it can never go stale after a release again (static text stays as the offline fallback).
+
+پولیش نهایی: پیش‌نمایش غنی لینک‌ها در تلگرام/دیسکورد برای ماتریس و جست‌وجو، صفحه‌ی 404 هوشمند هم‌خانواده با ریدایرکت مستقیم به پروژه، و چیپ 🚀 که خودش از API گیت‌هاب نسخه‌ی جدید را می‌گیرد؛ هد لندینگ هم از تکرارها و متن‌های کهنه‌ی «103» پاک شد.
+
 ## [v1.23.0] — 2026-11-20 — 🔍 Code Search — grep every line of all 109 projects
 
 - **Global code search (`search.html`)** — a prebuilt, gzip-compressed index of **474 source files / 158,427 lines / 29,981 tokens** (~2.6 MB total, decompressed in-browser via DecompressionStream and cached offline by the service worker). Prefix or exact-word matching over identifiers, strings and comments — Persian and English alike — with project filtering, per-file hit grouping and direct GitHub links to the exact line.
