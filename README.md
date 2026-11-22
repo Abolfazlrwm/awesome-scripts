@@ -48,6 +48,10 @@
 
 **🔍 جست‌وجوی کد** — جست‌وجوی grep-مانند در **همه‌ی ۴۷۴ فایل سورس** (~۱۵۸ هزار خط) تمام پروژه‌ها: هر شناسه، رشته یا کامنت — مثلاً [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — با لینک مستقیم به فایل و خط دقیق در گیت‌هاب؛ ایندکس از قبل ساخته و فشرده شده (~۲.۶ مگابایت، با Service Worker آفلاین هم می‌ماند).
 
+**📊 Stats & Growth** — [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) measures the whole history straight from git: one data point per release tag (38 projects / 53k lines at v1.0.0 → 109 / 185k today), language share, top-15 biggest projects and the monthly commit pulse. Zero chart libraries — hand-rolled SVG, bilingual, offline.
+
+**📊 آمار و رشد** — صفحه‌ی [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) کل تاریخچه را مستقیم از گیت اندازه می‌گیرد: یک نقطه به‌ازای هر ریلیز (۳۸ پروژه/۵۳ هزار خط در v1.0.0 → ۱۰۹/۱۸۵ هزار خط امروز)، سهم زبان‌ها، ۱۵ پروژه‌ی بزرگ‌تر و ضربان ماهانه‌ی کامیت‌ها؛ بدون هیچ کتابخانه‌ی نمودار — SVG دست‌ساز، دوزبانه و آفلاین.
+
 
 ## 🎬 Try it in one click — محصولات شاخص
 
@@ -84,6 +88,7 @@ awesome-scripts/
 ├── index.html   # interactive live gallery (GitHub Pages)
 ├── compare.html # ⚖️ project matrix — per-project stats, filters, 4-way compare
 ├── search.html  # 🔍 grep-style code search across every source file
+├── stats.html   # 📊 growth charts — releases, languages, commit pulse
 ├── data/        # catalog.json/js · stats.json/js · code-index/texts .json.gz — generated, do not edit
 ├── tools/       # catalog generator · validator · scaffolder · sitemap
 ├── assets/      # OG banner · favicons · gallery screenshot
@@ -262,6 +267,9 @@ python tools/validate_projects.py
 
 # rebuild the global code-search index consumed by search.html
 python tools/generate_code_index.py
+
+# rebuild the release-history dataset for stats.html
+python tools/generate_stats_history.py
 ```
 
 Both checks run automatically on every push and PR via the **Validate** workflow, and tagged
@@ -437,6 +445,9 @@ python tools/validate_projects.py
 
 # ایندکس جست‌وجوی کد را برای search.html از نو بساز
 python tools/generate_code_index.py
+
+# مجموعه‌داده‌ی تاریخچه‌ی ریلیزها را برای stats.html از نو بساز
+python tools/generate_stats_history.py
 ```
 
 هر دو چک به‌صورت خودکار روی هر پش و PR با ورک‌فلو **Validate** اجرا می‌شوند و تگ‌های نسخه (`v*`) با ورک‌فلو **Release** به [ریلیز گیت‌هاب](https://github.com/Abolfazlrwm/awesome-scripts/releases) با یادداشت و فایل ZIP تبدیل می‌شوند.
