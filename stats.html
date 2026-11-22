@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📊 Stats &amp; Growth — Awesome Scripts</title>
+<meta name="description" content="How the collection grew: projects and lines of code across every release, language share, biggest projects and commit pulse — measured straight from git history.">
+<link rel="canonical" href="https://abolfazlrwm.github.io/awesome-scripts/stats.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Awesome Scripts">
+<meta property="og:title" content="📊 Stats &amp; Growth — Awesome Scripts">
+<meta property="og:description" content="Projects and lines of code across every release, language share, biggest projects and the commit pulse — measured straight from git history.">
+<meta property="og:url" content="https://abolfazlrwm.github.io/awesome-scripts/stats.html">
+<meta property="og:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="📊 Stats &amp; Growth — Awesome Scripts">
+<meta name="twitter:description" content="Projects and lines of code across every release, language share, biggest projects and the commit pulse — measured straight from git history.">
+<meta name="twitter:image" content="https://abolfazlrwm.github.io/awesome-scripts/assets/og-banner.png">
+<!-- Telegram: @Abolfazl_rwm -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b1020">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+  :root {
+    --bg:#0b1020; --bg2:#111731; --card:#151c3a; --card2:#1a2246;
+    --text:#e8ecff; --muted:#9aa6d6; --line:#26305c;
+    --accent:#6c8cff; --accent2:#8f6cff; --ok:#34d399; --warn:#fbbf24;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  [data-theme="light"] {
+    --bg:#f4f6ff; --bg2:#eaefff; --card:#ffffff; --card2:#f2f5ff;
+    --text:#1c2340; --muted:#5f6a99; --line:#d9e0ff;
+    --shadow:0 10px 30px rgba(40,60,160,.12);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--text);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Tahoma,"Noto Sans SC",sans-serif;
+    line-height:1.55; min-height:100vh;
+  }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  button, select { font:inherit; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:10px; }
+  header.site {
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .header-inner { max-width:1080px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:17px; color:var(--text); }
+  .brand .logo { font-size:22px; }
+  .brand small { color:var(--muted); font-weight:600; }
+  .header-actions { margin-inline-start:auto; display:flex; gap:8px; align-items:center; }
+  .icon-btn {
+    padding:8px 14px; border-radius:999px; cursor:pointer; user-select:none;
+    background:var(--card); border:1px solid var(--line); color:var(--text);
+    font-size:13.5px; font-weight:600; white-space:nowrap;
+  }
+  .icon-btn:hover { border-color:var(--accent); text-decoration:none; }
+  main { max-width:1080px; margin:0 auto; padding:26px 20px 60px; }
+  .hero h1 { font-size:clamp(1.5rem, 4.5vw, 2.2rem); margin-bottom:6px; }
+  .hero p { color:var(--muted); font-size:15px; }
+  .kpis { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin:22px 0 8px; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); }
+  .kpi b { display:block; font-size:clamp(1.3rem, 3vw, 1.7rem); background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .kpi span { color:var(--muted); font-size:12.5px; font-weight:600; }
+  .card {
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:18px; margin-top:16px; box-shadow:var(--shadow);
+  }
+  .card h2 { font-size:16.5px; margin-bottom:2px; }
+  .card .sub { color:var(--muted); font-size:12.5px; margin-bottom:14px; }
+  .tabs { display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+  .tabs button { padding:6px 14px; border-radius:999px; font-size:13px; font-weight:600; cursor:pointer; color:var(--muted); }
+  .tabs button.on { color:var(--text); border-color:var(--accent); background:color-mix(in srgb, var(--accent) 16%, transparent); }
+  .chart-box { width:100%; }
+  .chart-box svg { width:100%; height:auto; display:block; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .donut-wrap { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+  .legend { flex:1; min-width:180px; }
+  .legend .row { display:flex; align-items:center; gap:8px; font-size:13px; padding:3px 0; }
+  .legend .dot { width:11px; height:11px; border-radius:50%; flex:none; }
+  .legend .nm { flex:1; }
+  .legend .val { color:var(--muted); font-variant-numeric:tabular-nums; }
+  .bar-row { display:flex; align-items:center; gap:10px; padding:3px 0; font-size:12.5px; }
+  .bar-row .nm { width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .bar-row .track { flex:1; height:14px; border-radius:7px; background:var(--bg2); overflow:hidden; }
+  .bar-row .fill { height:100%; border-radius:7px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+  .bar-row .val { width:56px; text-align:end; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .pulse { display:flex; align-items:flex-end; gap:4px; height:110px; padding-top:8px; }
+  .pulse .col { flex:1; display:flex; flex-direction:column; justify-content:flex-end; height:100%; }
+  .pulse .bar { background:linear-gradient(180deg,var(--accent),var(--accent2)); border-radius:4px 4px 0 0; min-height:2px; }
+  .pulse .lbl { text-align:center; font-size:9.5px; color:var(--muted); margin-top:4px; white-space:nowrap; }
+  footer.site { border-top:1px solid var(--line); margin-top:40px; padding:22px 20px 34px; text-align:center; color:var(--muted); font-size:13px; }
+  footer.site .heart { color:#f472b6; }
+  @media (max-width:820px) { .grid2 { grid-template-columns:1fr; } }
+  @media (max-width:640px) {
+    .header-inner, main { padding-inline:12px; }
+    .kpis { grid-template-columns:repeat(2, 1fr); }
+    .bar-row .nm { width:105px; }
+  }
+</style>
+</head>
+<body data-theme="dark">
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="./"><span class="logo">🤖</span><span>Awesome&nbsp;Scripts</span><small id="tSub"></small></a>
+    <div class="header-actions">
+      <a class="icon-btn" href="search.html" title="Code search">🔍 Code</a>
+      <a class="icon-btn" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
+      <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <h1 id="tTitle">📊 Stats &amp; Growth</h1>
+    <p id="tDesc"></p>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="card">
+    <h2 id="hGrowth"></h2>
+    <div class="sub" id="sGrowth"></div>
+    <div class="tabs" id="tabs"></div>
+    <div class="chart-box" id="growthBox"></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2 id="hLangs"></h2>
+      <div class="sub" id="sLangs"></div>
+      <div class="donut-wrap" id="donutWrap"></div>
+    </div>
+    <div class="card">
+      <h2 id="hTop"></h2>
+      <div class="sub" id="sTop"></div>
+      <div id="topBox"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 id="hPulse"></h2>
+    <div class="sub" id="sPulse"></div>
+    <div class="pulse" id="pulseBox"></div>
+  </div>
+</main>
+
+<footer class="site">
+  <div id="fGen"></div>
+  <div><span class="heart">♥</span> <span id="fMade"></span></div>
+  <div>Telegram: <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">@Abolfazl_rwm</a></div>
+</footer>
+
+<script src="data/catalog.js"></script>
+<script src="data/stats.js"></script>
+<script src="data/stats-history.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var H = window.AWESOME_STATS_HISTORY || { releases: [], langs: {}, months: [] };
+  var S = window.AWESOME_STATS || { totals: {}, projects: {} };
+  var C = window.AWESOME_CATALOG || { projects: [], count: 109 };
+  var bySlug = {};
+  C.projects.forEach(function (p) { bySlug[p.slug] = p; });
+  var PAL = ["#6c8cff", "#8f6cff", "#34d399", "#fbbf24", "#f472b6",
+             "#22d3ee", "#a3e635", "#fb923c", "#f87171", "#94a3b8"];
+
+  var T = {
+    en: {
+      sub: "· Stats", title: "📊 Stats & Growth",
+      desc: "Every number below is measured straight from git history — one snapshot per release tag, plus a live snapshot of main. No hand-written numbers.",
+      kProjects: "Projects", kFiles: "Source files", kLines: "Lines of code", kCommits: "Commits",
+      growth: "Growth across releases", growthSub: "One point per release tag — from v1.0.0 to the current main.",
+      mProjects: "Projects", mLoc: "Lines of code",
+      langs: "Language share", langsSub: "Raw lines by language, across all source files.",
+      top: "Top 15 biggest projects", topSub: "Ranked by lines of code — click a project to open it in the gallery.",
+      pulse: "Commit pulse", pulseSub: "Commits per month over the last 18 months.",
+      lines: "lines", projectsW: "projects", commitsW: "commits",
+      made: "Built with ♥ by", gen: "history snapshot", themeLight: "☀️", themeDark: "🌙", faBtn: "فا"
+    },
+    fa: {
+      sub: "· آمار", title: "📊 آمار و روند رشد",
+      desc: "هر عدد این صفحه مستقیم از تاریخچه‌ی گیت اندازه گرفته شده — یک نقطه به‌ازای هر تگ ریلیز، به‌علاوه‌ی اسنپ‌شات زنده‌ی main. هیچ عدد دستی‌ای در کار نیست.",
+      kProjects: "پروژه", kFiles: "فایل سورس", kLines: "خط کد", kCommits: "کامیت",
+      growth: "رشد در گذر ریلیزها", growthSub: "یک نقطه به‌ازای هر تگ ریلیز — از v1.0.0 تا main فعلی.",
+      mProjects: "پروژه‌ها", mLoc: "خطوط کد",
+      langs: "سهم زبان‌ها", langsSub: "خطوط خام به تفکیک زبان، روی کل فایل‌های سورس.",
+      top: "۱۵ پروژه‌ی بزرگ‌تر", topSub: "به‌ترتیب خطوط کد — روی هر پروژه کلیک کن تا در گالری باز شود.",
+      pulse: "ضربان کامیت‌ها", pulseSub: "تعداد کامیت هر ماه در ۱۸ ماه گذشته.",
+      lines: "خط", projectsW: "پروژه", commitsW: "کامیت",
+      made: "ساخته‌شده با ♥ توسط", gen: "اسنپ‌شات تاریخچه", themeLight: "☀️", themeDark: "🌙", faBtn: "EN"
+    }
+  };
+  var CAT_ICON = { "telegram-bot": "🤖", "web-tool": "🌐", "desktop-tool": "🖥" };
+  var state = {
+    lang: localStorage.getItem("st_lang") || "en",
+    theme: localStorage.getItem("st_theme") || "dark",
+    metric: "projects"
+  };
+
+  function t(k) { return T[state.lang][k]; }
+  function fa() { return state.lang === "fa"; }
+  function nameOf(p) { return fa() ? (p.name_fa || p.name_en) : p.name_en; }
+  function num(n) { return (n || 0).toLocaleString("en-US"); }
+  function fmtK(v) { return v >= 10000 ? (v / 1000).toFixed(1).replace(/\.0$/, "") + "k" : String(Math.round(v)); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+  function drawKpis() {
+    var commits = H.months.reduce(function (a, m) { return a + m.count; }, 0);
+    var cards = [
+      [num(C.count || (H.releases.length ? H.releases[H.releases.length - 1].projects : 0)), t("kProjects")],
+      [num(S.totals.files || 0), t("kFiles")],
+      [num(S.totals.loc || 0), t("kLines")],
+      [num(commits), t("kCommits")]
+    ];
+    $("kpis").innerHTML = cards.map(function (c) {
+      return '<div class="kpi"><b>' + c[0] + "</b><span>" + esc(c[1]) + "</span></div>";
+    }).join("");
+  }
+
+  function drawGrowth() {
+    var rels = H.releases;
+    if (!rels.length) { $("growthBox").innerHTML = ""; return; }
+    var W = 760, Hh = 280, L = 58, R = 18, T = 18, B = 36;
+    var n = rels.length;
+    var key = state.metric === "projects" ? "projects" : "loc";
+    var vals = rels.map(function (r) { return r[key]; });
+    var ymax = Math.max.apply(null, vals) * 1.06 || 1;
+    function X(i) { return L + i * (W - L - R) / (n - 1); }
+    function Y(v) { return T + (1 - v / ymax) * (Hh - T - B); }
+    var pts = vals.map(function (v, i) { return [X(i), Y(v)]; });
+    var line = pts.map(function (p, i) {
+      return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1);
+    }).join(" ");
+    var area = line + " L" + X(n - 1).toFixed(1) + " " + (Hh - B) +
+               " L" + X(0).toFixed(1) + " " + (Hh - B) + " Z";
+    var svg = '<svg viewBox="0 0 ' + W + " " + Hh + '" role="img" aria-label="growth chart">';
+    svg += "<defs><linearGradient id='g1' x1='0' y1='0' x2='0' y2='1'>" +
+           "<stop offset='0' stop-color='#6c8cff' stop-opacity='.32'/>" +
+           "<stop offset='1' stop-color='#6c8cff' stop-opacity='.02'/></linearGradient></defs>";
+    for (var g = 0; g <= 4; g++) {
+      var gv = ymax * g / 4, gy = Y(gv);
+      svg += "<line x1='" + L + "' y1='" + gy.toFixed(1) + "' x2='" + (W - R) + "' y2='" + gy.toFixed(1) +
+             "' stroke='var(--line)' stroke-width='1'/>";
+      svg += "<text x='" + (L - 8) + "' y='" + (gy + 3.5).toFixed(1) + "' fill='var(--muted)' font-size='10' text-anchor='end'>" + fmtK(gv) + "</text>";
+    }
+    svg += "<path d='" + area + "' fill='url(#g1)'/>";
+    svg += "<path d='" + line + "' fill='none' stroke='#6c8cff' stroke-width='2.5' stroke-linejoin='round'/>";
+    pts.forEach(function (p, i) {
+      var r = i === n - 1 ? 4.5 : 3;
+      var tip = rels[i].tag + " · " + num(vals[i]) + " " + (key === "projects" ? t("projectsW") : t("lines"));
+      svg += "<circle cx='" + p[0].toFixed(1) + "' cy='" + p[1].toFixed(1) + "' r='" + r +
+             "' fill='" + (i === n - 1 ? "#8f6cff" : "#6c8cff") + "'><title>" + esc(tip) + "</title></circle>";
+    });
+    rels.forEach(function (r, i) {
+      if (i % 4 !== 0 && i !== n - 1) return;
+      var lbl = r.tag === "main" ? "main" : r.tag.replace(/^v/, "");
+      svg += "<text x='" + X(i).toFixed(1) + "' y='" + (Hh - 12) + "' fill='var(--muted)' font-size='10' text-anchor='middle'>" + lbl + "</text>";
+    });
+    svg += "</svg>";
+    $("growthBox").innerHTML = svg;
+  }
+
+  function drawTabs() {
+    var tabs = [["projects", t("mProjects")], ["loc", t("mLoc")]];
+    $("tabs").innerHTML = tabs.map(function (tb) {
+      return '<button type="button" data-m="' + tb[0] + '" class="' +
+             (state.metric === tb[0] ? "on" : "") + '">' + esc(tb[1]) + "</button>";
+    }).join("");
+  }
+
+  function drawDonut() {
+    var langs = H.langs, total = 0;
+    Object.keys(langs).forEach(function (k) { total += langs[k]; });
+    var RR = 70, CIRC = 2 * Math.PI * RR, off = 0, i = 0;
+    var svg = "<svg viewBox='0 0 190 190' role='img' aria-label='language share'><g transform='rotate(-90 95 95)'>";
+    Object.keys(langs).forEach(function (k) {
+      var seg = total ? langs[k] / total * CIRC : 0;
+      svg += "<circle cx='95' cy='95' r='" + RR + "' fill='none' stroke='" + PAL[i % PAL.length] +
+             "' stroke-width='28' stroke-dasharray='" + seg.toFixed(2) + " " + (CIRC - seg).toFixed(2) +
+             "' stroke-dashoffset='" + (-off).toFixed(2) + "'><title>" + esc(k) + " · " + num(langs[k]) + "</title></circle>";
+      off += seg; i++;
+    });
+    svg += "</g><text x='95' y='91' text-anchor='middle' fill='var(--text)' font-size='17' font-weight='700'>" + fmtK(total) + "</text>" +
+           "<text x='95' y='109' text-anchor='middle' fill='var(--muted)' font-size='10'>LOC</text></svg>";
+    var legend = Object.keys(langs).map(function (k, j) {
+      var pct = total ? Math.round(langs[k] / total * 100) : 0;
+      return '<div class="row"><span class="dot" style="background:' + PAL[j % PAL.length] + '"></span>' +
+             '<span class="nm">' + esc(k) + '</span><span class="val">' + num(langs[k]) + " · " + pct + "%</span></div>";
+    }).join("");
+    $("donutWrap").innerHTML = svg + '<div class="legend">' + legend + "</div>";
+  }
+
+  function drawTop() {
+    var arr = Object.keys(S.projects || {}).map(function (slug) {
+      return { slug: slug, loc: S.projects[slug].loc || 0 };
+    }).sort(function (a, b) { return b.loc - a.loc; }).slice(0, 15);
+    if (!arr.length) { $("topBox").innerHTML = ""; return; }
+    var max = arr[0].loc || 1;
+    $("topBox").innerHTML = arr.map(function (p) {
+      var pr = bySlug[p.slug];
+      var nm = pr ? (CAT_ICON[pr.category] || "") + " " + esc(nameOf(pr)) : esc(p.slug);
+      return '<div class="bar-row"><span class="nm">' + nm + '</span>' +
+             '<span class="track"><span class="fill" style="width:' + Math.max(2, Math.round(p.loc / max * 100)) + '%"></span></span>' +
+             '<span class="val">' + num(p.loc) + "</span></div>";
+    }).join("");
+  }
+
+  function drawPulse() {
+    if (!H.months.length) { $("pulseBox").innerHTML = ""; return; }
+    var max = Math.max.apply(null, H.months.map(function (m) { return m.count; })) || 1;
+    $("pulseBox").innerHTML = H.months.map(function (m, i) {
+      return '<div class="col"><div class="bar" style="height:' +
+             Math.max(2, Math.round(m.count / max * 86)) + 'px" title="' + m.ym + " · " + num(m.count) + " " + t("commitsW") +
+             '"></div><div class="lbl">' + (i % 3 === 0 ? m.ym.slice(2) : "") + "</div></div>";
+    }).join("");
+  }
+
+  function applyTheme() {
+    document.body.dataset.theme = state.theme;
+    $("themeBtn").textContent = state.theme === "dark" ? t("themeLight") : t("themeDark");
+    localStorage.setItem("st_theme", state.theme);
+  }
+  function applyLang() {
+    document.documentElement.lang = fa() ? "fa" : "en";
+    document.documentElement.dir = fa() ? "rtl" : "ltr";
+    $("langBtn").textContent = t("faBtn");
+    $("tSub").textContent = t("sub");
+    $("tTitle").textContent = t("title");
+    $("tDesc").textContent = t("desc");
+    $("hGrowth").textContent = t("growth");
+    $("sGrowth").textContent = t("growthSub");
+    $("hLangs").textContent = t("langs");
+    $("sLangs").textContent = t("langsSub");
+    $("hTop").textContent = t("top");
+    $("sTop").textContent = t("topSub");
+    $("hPulse").textContent = t("pulse");
+    $("sPulse").textContent = t("pulseSub");
+    $("fMade").innerHTML = t("made") + ' <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Abolfazl — @Abolfazl_rwm</a>';
+    $("fGen").textContent = t("gen") + ": " + (H.generated || "").slice(0, 10) +
+      " · " + H.releases.length + " points";
+    localStorage.setItem("st_lang", state.lang);
+    drawKpis(); drawTabs(); drawGrowth(); drawDonut(); drawTop(); drawPulse();
+  }
+
+  $("tabs").addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-m]");
+    if (!b) return;
+    state.metric = b.dataset.m;
+    drawTabs(); drawGrowth();
+  });
+  $("themeBtn").addEventListener("click", function () {
+    state.theme = state.theme === "dark" ? "light" : "dark"; applyTheme();
+  });
+  $("langBtn").addEventListener("click", function () {
+    state.lang = fa() ? "en" : "fa"; applyLang();
+  });
+
+  applyTheme();
+  applyLang();
+})();
+</script>
+
+<script>
+if ("serviceWorker" in navigator &&
+    (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
