@@ -8,6 +8,16 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.26.0] — 2026-11-23 — 📦 8 new projects from the upload batch — 109 → 117
+
+- **Seven new Telegram bots (PHP)** from the uploaded sources, each with a bilingual setup README: `proxy-scraper-bot` (10 fresh MTProto proxies per /start), `anonymous-message-bot` (personal /link, sender identity never shown), `self-cli-php-bot` (MadelineProto self-bot panel — userbot risk documented), `tabchi-forwarder-bot` (auto-forwarder between your own channels), `esrrar-chat-bot` (anonymous two-way chat + Telethon/Flask session runner), `php-uploader-bot` (URL → Telegram with MySQL, tutorial docx included) and `channel-tools-bot` (membership gate, member log, pin/edit/delete controls).
+- **One new web tool** — `js-practice-playground`: the uploaded beginner `Game.js` exercises (star pyramid/triangle, number guess) packaged as a runnable, dependency-free page with a live GitHub Pages demo; the original file ships untouched.
+- **2 uploads were refused on purpose**: `script2-php.php` is an explicit SMS bomber (OTP harassment) and `Sender.py` is a Rubika bulk-forwarder to random chats across multiple sessions — both are spam/abuse tools and do not belong in this collection.
+- **Secrets hygiene** — a live OpenWeatherMap key in the self-bot source and a truncated bot-token prefix in the esrrar source were replaced with documented placeholders before commit (the leaked Rubika token lives only in the upload folder — revoke it).
+- Counters updated everywhere: README headline/badge/tables, hero, search placeholder, OG/Twitter descriptions, catalog fallback — 70 bots · 41 web tools · 117 total.
+
+هشت پروژه‌ی جدید از فایل‌های آپلودی اضافه شد (۷ بات PHP + ۱ ابزار وب با دموی زنده)؛ دو فایل به‌دلیل اسپم/آزار (SMS Bomber و ارسال‌کننده‌ی انبوه روبیکا) عمداً رد شدند؛ کلید و پیش‌توکن نشت‌شده قبل از کامیت با جای‌نگهدار پاک شدند؛ همه‌ی شمارنده‌ها به ۱۱۷ به‌روزرسانی شدند.
+
 ## [v1.25.0] — 2026-11-23 — 📊 Stats & Growth — the whole history, measured from git
 
 - **New page: `stats.html`** — one data point per release tag (26 points, v1.0.0 → main), streamed out of `git archive` by the new `tools/generate_stats_history.py`: **38 projects / 53,296 lines at v1.0.0 → 109 / 185,535 today**. Growth chart with Projects / Lines-of-code tabs, a language-share donut (Python 94k · PHP 51k · HTML 30k · JS 7.6k), the top-15 biggest projects and an 18-month commit pulse (33 → 5 → 1 → **251** — the November sprint is visible).
