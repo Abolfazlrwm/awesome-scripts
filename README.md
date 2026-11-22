@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**109 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**117 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-109-blue)
+![Projects](https://img.shields.io/badge/projects-117-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -21,7 +21,7 @@
 </div>
 
 > [!NOTE]
-> **Scope: community utility collection.** 109 small, practical scripts, bots
+> **Scope: community utility collection.** 117 small, practical scripts, bots
 > and tools — breadth, not depth. This is not where I demonstrate engineering
 > depth; the flagship projects are pinned on [my profile](https://github.com/Abolfazlrwm).
 
@@ -36,7 +36,7 @@
 **[▶ مشاهده‌ی زنده‌ی همه‌ی پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/)** — جست‌وجوی زنده، فیلتر دسته/زبان، علاقه‌مندی‌ها و پیش‌نمایش واقعی داخل مودال؛ انتشار خودکار با **GitHub Actions** در هر push.
 <p align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/"><img src="assets/site-demo.gif" alt="walkthrough — search, live preview, project matrix" width="85%"></a></p>
 
-**⏱ 40-second walkthrough** — live search → in-modal product preview → the **⚖️ [Project Matrix](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: all 109 projects measured (files · lines of code · size) with advanced filters and side-by-side comparison of up to 4 projects.
+**⏱ 40-second walkthrough** — live search → in-modal product preview → the **⚖️ [Project Matrix](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: all 117 projects measured (files · lines of code · size) with advanced filters and side-by-side comparison of up to 4 projects.
 
 **⏱ ویدیوی چهل‌ثانیه‌ای** — جست‌وجوی زنده → پیش‌نمایش محصول داخل مودال → **⚖️ [ماتریس پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: همه‌ی ۱۰۹ پروژه با تعداد فایل، خط کد و حجم + فیلترهای پیشرفته و مقایسه‌ی کنارِ‌هم تا ۴ پروژه.
 
@@ -44,13 +44,13 @@
 
 **📲 PWA و لینک‌های اشتراکی** — سایت به‌صورت اپ نصب می‌شود (Service Worker، کارکرد آفلاین) و هر ترکیب جست‌وجو/فیلتر یک URL قابل اشتراک است؛ مثلاً `?q=tetris&demo=1`. هدر سایت دکمه‌ی 🎲 پروژه‌ی تصادفی، چیپ 🚀 آخرین ریلیز و ⬇️ دانلود مستقیم ZIP دارد.
 
-**🔍 Code Search** — grep-style search across **all 474 source files** (~158,000 lines) of every project: find any identifier, string or comment — e.g. [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — with direct links to the exact file and line on GitHub. The index is prebuilt and gzip-compressed (~2.6 MB, cached offline by the service worker).
+**🔍 Code Search** — grep-style search across **all 501 source files** (~181,000 lines) of every project: find any identifier, string or comment — e.g. [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — with direct links to the exact file and line on GitHub. The index is prebuilt and gzip-compressed (~2.8 MB, cached offline by the service worker).
 
-**🔍 جست‌وجوی کد** — جست‌وجوی grep-مانند در **همه‌ی ۴۷۴ فایل سورس** (~۱۵۸ هزار خط) تمام پروژه‌ها: هر شناسه، رشته یا کامنت — مثلاً [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — با لینک مستقیم به فایل و خط دقیق در گیت‌هاب؛ ایندکس از قبل ساخته و فشرده شده (~۲.۶ مگابایت، با Service Worker آفلاین هم می‌ماند).
+**🔍 جست‌وجوی کد** — جست‌وجوی grep-مانند در **همه‌ی ۵۰۱ فایل سورس** (~۱۸۱ هزار خط) تمام پروژه‌ها: هر شناسه، رشته یا کامنت — مثلاً [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — با لینک مستقیم به فایل و خط دقیق در گیت‌هاب؛ ایندکس از قبل ساخته و فشرده شده (~۲.۸ مگابایت، با Service Worker آفلاین هم می‌ماند).
 
-**📊 Stats & Growth** — [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) measures the whole history straight from git: one data point per release tag (38 projects / 53k lines at v1.0.0 → 109 / 185k today), language share, top-15 biggest projects and the monthly commit pulse. Zero chart libraries — hand-rolled SVG, bilingual, offline.
+**📊 Stats & Growth** — [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) measures the whole history straight from git: one data point per release tag (38 projects / 53k lines at v1.0.0 → 117 / 207k today), language share, top-15 biggest projects and the monthly commit pulse. Zero chart libraries — hand-rolled SVG, bilingual, offline.
 
-**📊 آمار و رشد** — صفحه‌ی [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) کل تاریخچه را مستقیم از گیت اندازه می‌گیرد: یک نقطه به‌ازای هر ریلیز (۳۸ پروژه/۵۳ هزار خط در v1.0.0 → ۱۰۹/۱۸۵ هزار خط امروز)، سهم زبان‌ها، ۱۵ پروژه‌ی بزرگ‌تر و ضربان ماهانه‌ی کامیت‌ها؛ بدون هیچ کتابخانه‌ی نمودار — SVG دست‌ساز، دوزبانه و آفلاین.
+**📊 آمار و رشد** — صفحه‌ی [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) کل تاریخچه را مستقیم از گیت اندازه می‌گیرد: یک نقطه به‌ازای هر ریلیز (۳۸ پروژه/۵۳ هزار خط در v1.0.0 → ۱۱۷/۲۰۷ هزار خط امروز)، سهم زبان‌ها، ۱۵ پروژه‌ی بزرگ‌تر و ضربان ماهانه‌ی کامیت‌ها؛ بدون هیچ کتابخانه‌ی نمودار — SVG دست‌ساز، دوزبانه و آفلاین.
 
 
 ## 🎬 Try it in one click — محصولات شاخص
@@ -74,7 +74,7 @@ Six of the flagship web tools — every thumbnail is clickable: **▶ opens the 
 
 ## ✨ About
 
-Every project here is a **complete, runnable application** — not a snippet. Projects are grouped by type — [`bots/`](./bots) (63 Telegram bots), [`web/`](./web) (40 browser tools) and [`desktop/`](./desktop) (6 utilities) — open any folder, follow its README, and you have a working bot, tool or site in minutes. The collection spans **9 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
+Every project here is a **complete, runnable application** — not a snippet. Projects are grouped by type — [`bots/`](./bots) (70 Telegram bots), [`web/`](./web) (41 browser tools) and [`desktop/`](./desktop) (6 utilities) — open any folder, follow its README, and you have a working bot, tool or site in minutes. The collection spans **9 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
 
 > 🧭 Prefer browsing? Open the **[interactive catalog](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, dark mode and full Persian (RTL) mode. Stable versions are published under [Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases).
 
@@ -124,7 +124,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 63
+### 🤖 Telegram bots — 70
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -191,8 +191,15 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [prayer-times-bot](./bots/prayer-times-bot) | Python | Offline prayer times for 30 Iranian cities — Geophysics method, Qibla bearing, /next countdown |
 | [auction-house-bot](./bots/auction-house-bot) | Python | Live group auctions — one-tap bids, live post editing, anti-snipe timer, winner announcements |
 | [fortune-teller-bot](./bots/fortune-teller-bot) | Python | Daily fortune card, zodiac vibes, pair compatibility & 3-dice reading — original texts, entertainment only |
+| [proxy-scraper-bot](./bots/proxy-scraper-bot) | PHP | /start → 10 fresh MTProto proxies from a proxy API as tappable URL buttons — webhook bot, Telegram-IP allow-list |
+| [anonymous-message-bot](./bots/anonymous-message-bot) | PHP | Anonymous messaging — personal /link per user, messages forwarded without sender identity, admin panel & mandatory channel join |
+| [self-cli-php-bot](./bots/self-cli-php-bot) | PHP | MadelineProto v8 self-bot panel for your own account — name/bio tools, timers, forwards, weather; a userbot, run at your own risk |
+| [tabchi-forwarder-bot](./bots/tabchi-forwarder-bot) | PHP | MadelineProto auto-forwarder — pipes new posts from your source channels to destinations, multi-tabche, media cache dirs |
+| [esrrar-chat-bot](./bots/esrrar-chat-bot) | PHP | Anonymous two-way chat with the other party or the seller — admin broadcast, member gate, Jalali dates; ships a Telethon/Flask session runner |
+| [php-uploader-bot](./bots/php-uploader-bot) | PHP | URL → Telegram uploader bot — MySQL storage, admin panel, per-message delete, Jalali dates, Telegram-IP allow-list |
+| [channel-tools-bot](./bots/channel-tools-bot) | PHP | Channel-side utility bot — membership gate, member log, pin/edit/delete controls, on/off switch, transparent g-id link buttons |
 
-### 🌐 Web tools — 40
+### 🌐 Web tools — 41
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -237,6 +244,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [image-compressor-web](./web/image-compressor-web) | HTML/CSS/JS | Image compressor — quality/resize controls, before-after compare, 100% local | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/image-compressor-web/) |
 | [cron-explainer-web](./web/cron-explainer-web) | HTML/CSS/JS | Cron explainer — plain-Persian description plus the next five fire times | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/cron-explainer-web/) |
 
+| [js-practice-playground](./web/js-practice-playground) | JavaScript | Beginner JS exercises as a runnable playground — star pyramid/triangle builder and a number-guessing game | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/js-practice-playground/) |
 ### 🖥 Desktop tools — 6
 
 | Project | Lang | What it does |
@@ -302,7 +310,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (63)
+#### 🤖 ربات‌های تلگرام (70)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -369,8 +377,15 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🕌 اوقات شرعی](./bots/prayer-times-bot) | Python | اوقات شرعی آفلاین برای ۳۰ شهر ایران — روش ژئوفیزیک، زاویه قبله و شمارش معکوس تا اذان بعدی |
 | [🔨 خانه‌ی مزایده](./bots/auction-house-bot) | Python | مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده |
 | [🔮 فال‌گر شوخ](./bots/fortune-teller-bot) | Python | فال روزانه، طالع برج‌ها، سوزنی دو نفر و فال سه‌تاسی — متن‌های اورجینال، فقط سرگرمی |
+| [🛰 ربات اسکراپر پروکسی](./bots/proxy-scraper-bot) | PHP | با /start ده پروکسی MTProto تازه از API می‌گیرد و به‌صورت دکمه‌ی لینک نشان می‌دهد — وب‌هوک با محدودسازی IP تلگرام |
+| [🕵️ پیام ناشناس](./bots/anonymous-message-bot) | PHP | برای هر کاربر لینک اختصاصی می‌سازد؛ بقیه ناشناس پیام می‌دهند و پیام‌ها بدون هویت فرستنده می‌رسند — پنل مدیر و عضویت اجباری |
+| [🪪 پنل سلف CLI](./bots/self-cli-php-bot) | PHP | پنل سلف MadelineProto برای اکانت خودت — ابزارهای نام/بیو، تایمر، فوروارد و آب‌وهوا؛ یوزربات، با مسئولیت خودت |
+| [🔁 تبچی فروارد](./bots/tabchi-forwarder-bot) | PHP | فوروارد خودکار پست‌های کانال‌های مبدأ به مقصدها با MadelineProto — پشتیبانی چند تبچه و پوشه‌های کش مدیا |
+| [💬 چت ناشناس اسرار](./bots/esrrar-chat-bot) | PHP | چت دوطرفه‌ی ناشناس با کاربر مقابل یا فروشنده — پیام همگانی، دروازه‌ی عضویت، تاریخ شمسی؛ همراه رانر Telethon/Flask |
+| [📤 آپلودر PHP](./bots/php-uploader-bot) | PHP | لینک بده، فایل را در تلگرام بگیر — MySQL، پنل ادمین، حذف پیام از کانال، تاریخ شمسی و اجازه‌ی IP تلگرام |
+| [🛠 ابزار کانال PHP](./bots/channel-tools-bot) | PHP | دروازه‌ی عضویت، دفتر اعضا، کنترل پین/ادیت/حذف پیام، کلید روشن/خاموش و دکمه‌های لینک شفاف — تک‌فایل و بدون دیتابیس |
 
-#### 🌐 ابزارهای وب (40)
+#### 🌐 ابزارهای وب (41)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -415,6 +430,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [🖼️ فشرده‌ساز تصویر](./web/image-compressor-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/image-compressor-web/) | HTML/CSS/JS | کیفیت/ابعاد، مقایسه‌ی قبل و بعد — پردازش کامل محلی |
 | [⏰ توضیح‌گر Cron](./web/cron-explainer-web) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/cron-explainer-web/) | HTML/CSS/JS | توضیح فارسی عبارت cron و ۵ اجرای بعدی |
 
+| [🧪 زمین تمرین JS](./web/js-practice-playground) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/js-practice-playground/) | JavaScript | تمرین‌های مبتدی جاوااسکریپت به‌صورت زمین بازی قابل اجرا — سازنده‌ی مثلث/هرم ستاره‌ای و بازی حدس عدد |
 #### 🖥 ابزارهای دسکتاپ (6)
 
 | پروژه | زبان | توضیح کوتاه |
