@@ -1,595 +1,700 @@
 {
-  "generated_at": "2026-11-23T11:00:55+03:30",
+  "generated_at": "2026-11-23T11:52:09+03:30",
   "totals": {
-    "files": 874,
-    "loc": 179863,
-    "bytes": 29314821
+    "files": 1013,
+    "loc": 210799,
+    "bytes": 32344439
   },
   "projects": {
     "2048-web": {
       "files": 3,
       "loc": 282,
-      "bytes": 138358
+      "bytes": 138625
     },
     "advanced-shop-bot": {
       "files": 5,
       "loc": 1385,
-      "bytes": 294082
+      "bytes": 294327
     },
     "ai-chat-assistant-bot": {
       "files": 3,
       "loc": 1050,
-      "bytes": 140562
+      "bytes": 140829
     },
     "ai-chat-webapp-php": {
       "files": 3,
       "loc": 645,
-      "bytes": 73989
+      "bytes": 74256
     },
     "ai-self-coding-bot": {
       "files": 5,
       "loc": 114,
-      "bytes": 74293
+      "bytes": 74560
     },
     "anonymous-message-bot": {
       "files": 2,
       "loc": 1476,
-      "bytes": 50401
+      "bytes": 50668
+    },
+    "anonymous-platform": {
+      "files": 33,
+      "loc": 5509,
+      "bytes": 725495
     },
     "ascii-art-generator-web": {
       "files": 3,
       "loc": 433,
-      "bytes": 56525
+      "bytes": 56792
     },
     "auction-house-bot": {
       "files": 5,
       "loc": 289,
-      "bytes": 68582
+      "bytes": 68852
+    },
+    "audio-tools-bot": {
+      "files": 3,
+      "loc": 529,
+      "bytes": 23814
     },
     "backend-dev-portfolio": {
       "files": 3,
       "loc": 467,
-      "bytes": 78992
+      "bytes": 79259
     },
     "breakout-web": {
       "files": 3,
       "loc": 284,
-      "bytes": 149980
+      "bytes": 150247
     },
     "bulk-renamer-cli": {
       "files": 5,
       "loc": 140,
-      "bytes": 51640
+      "bytes": 51913
+    },
+    "c-practice-projects": {
+      "files": 5,
+      "loc": 0,
+      "bytes": 9019
     },
     "caller-lookup-app": {
       "files": 7,
       "loc": 749,
-      "bytes": 78214
+      "bytes": 78719
     },
     "canvas-paint-studio": {
       "files": 3,
       "loc": 283,
-      "bytes": 49427
+      "bytes": 49694
     },
     "channel-likes-bot": {
       "files": 5,
       "loc": 106,
-      "bytes": 46013
+      "bytes": 46259
     },
     "channel-submission-bot": {
       "files": 4,
       "loc": 953,
-      "bytes": 129431
+      "bytes": 129698
     },
     "channel-tools-bot": {
       "files": 2,
       "loc": 1063,
-      "bytes": 32309
+      "bytes": 32652
     },
     "channel-translate-worker": {
       "files": 4,
       "loc": 671,
-      "bytes": 107599
+      "bytes": 107866
     },
     "city-builder-bot": {
       "files": 6,
       "loc": 3110,
-      "bytes": 443104
+      "bytes": 443350
     },
     "clipboard-history-manager": {
       "files": 5,
       "loc": 228,
-      "bytes": 42799
+      "bytes": 43048
     },
     "code-share-bot": {
       "files": 9,
       "loc": 3931,
-      "bytes": 505164
+      "bytes": 505368
+    },
+    "coin-bet-game-bot": {
+      "files": 8,
+      "loc": 2132,
+      "bytes": 96077
     },
     "color-palette-studio": {
       "files": 3,
       "loc": 325,
-      "bytes": 51282
+      "bytes": 51549
     },
     "connect4-minesweeper-bot": {
       "files": 5,
       "loc": 1861,
-      "bytes": 298197
+      "bytes": 298443
     },
     "control-room-dashboard": {
       "files": 3,
       "loc": 290,
-      "bytes": 70255
+      "bytes": 70522
     },
     "cron-explainer-web": {
       "files": 3,
       "loc": 239,
-      "bytes": 184487
+      "bytes": 184754
     },
     "dice-duel-bot": {
       "files": 5,
       "loc": 211,
-      "bytes": 58488
+      "bytes": 58758
     },
     "digiato-article-bot": {
       "files": 9,
       "loc": 418,
-      "bytes": 111668
+      "bytes": 111872
     },
     "digit-id-bot": {
       "files": 21,
       "loc": 453,
-      "bytes": 106926
+      "bytes": 107024
+    },
+    "dio-selfbot": {
+      "files": 2,
+      "loc": 700,
+      "bytes": 38378
     },
     "downloads-organizer": {
       "files": 3,
       "loc": 131,
-      "bytes": 111077
+      "bytes": 111344
     },
     "drum-machine-web": {
       "files": 3,
       "loc": 314,
-      "bytes": 46050
+      "bytes": 46317
+    },
+    "duel-game-bot": {
+      "files": 6,
+      "loc": 1223,
+      "bytes": 79164
     },
     "dupe-file-finder": {
       "files": 5,
       "loc": 150,
-      "bytes": 48101
+      "bytes": 48374
     },
     "emoji-forge-bot": {
       "files": 257,
       "loc": 20378,
-      "bytes": 6394057
+      "bytes": 6392124
     },
     "esrrar-chat-bot": {
-      "files": 5,
+      "files": 6,
       "loc": 5756,
-      "bytes": 186651
+      "bytes": 200762
     },
     "expense-splitter-bot": {
       "files": 5,
       "loc": 304,
-      "bytes": 73446
+      "bytes": 73716
     },
     "file-store-bot": {
       "files": 4,
       "loc": 177,
-      "bytes": 102884
+      "bytes": 103151
     },
     "flashcard-srs-bot": {
       "files": 5,
       "loc": 302,
-      "bytes": 70692
+      "bytes": 70962
     },
     "fortune-teller-bot": {
       "files": 5,
       "loc": 206,
-      "bytes": 61439
+      "bytes": 61709
     },
     "forward-info-bot": {
       "files": 4,
       "loc": 60,
-      "bytes": 68782
+      "bytes": 69049
     },
     "fractal-explorer": {
       "files": 3,
       "loc": 323,
-      "bytes": 155355
+      "bytes": 155622
     },
     "freedomnet-vpn-bot": {
       "files": 5,
       "loc": 544,
-      "bytes": 156104
+      "bytes": 156350
     },
     "game-of-life-web": {
       "files": 3,
       "loc": 249,
-      "bytes": 206651
+      "bytes": 206918
     },
     "giftix-premium-shop-bot": {
       "files": 6,
       "loc": 2836,
-      "bytes": 381898
+      "bytes": 382144
     },
     "giftix-stars-shop-bot": {
       "files": 6,
       "loc": 971,
-      "bytes": 168994
+      "bytes": 169240
+    },
+    "group-broadcast-bot": {
+      "files": 3,
+      "loc": 394,
+      "bytes": 19672
     },
     "group-guardian-bot": {
       "files": 4,
       "loc": 342,
-      "bytes": 114355
+      "bytes": 114622
     },
     "happydog-economy-bot": {
       "files": 5,
       "loc": 8434,
-      "bytes": 1085141
+      "bytes": 1085387
+    },
+    "hxd-post-copier": {
+      "files": 3,
+      "loc": 258,
+      "bytes": 18500
     },
     "image-compressor-web": {
       "files": 3,
       "loc": 193,
-      "bytes": 179521
+      "bytes": 179788
     },
     "instagram-downloader-bot": {
       "files": 5,
       "loc": 1889,
-      "bytes": 282052
+      "bytes": 283472
     },
     "iran-market-rate-bot": {
       "files": 10,
       "loc": 640,
-      "bytes": 1061259
+      "bytes": 1061473
+    },
+    "jackmor-selfbot": {
+      "files": 11,
+      "loc": 9071,
+      "bytes": 498953
     },
     "jalali-date-tools": {
       "files": 3,
       "loc": 590,
-      "bytes": 71147
+      "bytes": 71414
     },
     "js-practice-playground": {
       "files": 3,
       "loc": 121,
-      "bytes": 9425
+      "bytes": 9692
     },
     "json-formatter-web": {
       "files": 3,
       "loc": 217,
-      "bytes": 196045
+      "bytes": 196312
+    },
+    "kaj-anonymous-bot": {
+      "files": 11,
+      "loc": 2593,
+      "bytes": 126549
+    },
+    "krals-selfbot": {
+      "files": 6,
+      "loc": 212,
+      "bytes": 14852
     },
     "life-simulator-bot": {
       "files": 5,
       "loc": 1609,
-      "bytes": 257106
+      "bytes": 257352
     },
     "likes-challenges-php-bot": {
       "files": 22,
       "loc": 4903,
-      "bytes": 363754
+      "bytes": 364021
     },
     "link-summarizer-bot": {
       "files": 5,
       "loc": 149,
-      "bytes": 122165
+      "bytes": 122411
+    },
+    "login-form-template": {
+      "files": 19,
+      "loc": 241,
+      "bytes": 856623
     },
     "lottery-giveaway-bot": {
       "files": 7,
       "loc": 2919,
-      "bytes": 438896
+      "bytes": 439142
     },
     "markdown-editor-web": {
       "files": 3,
       "loc": 200,
-      "bytes": 148639
+      "bytes": 148906
     },
     "matrix-rain-web": {
       "files": 3,
       "loc": 259,
-      "bytes": 318627
+      "bytes": 318894
     },
     "member-tag-manager-bot": {
       "files": 6,
       "loc": 675,
-      "bytes": 149750
+      "bytes": 149996
     },
     "meow-point-bot": {
       "files": 5,
       "loc": 642,
-      "bytes": 181390
+      "bytes": 181636
     },
     "military-alliance-bot": {
       "files": 6,
       "loc": 4713,
-      "bytes": 598412
+      "bytes": 598658
     },
     "minesweeper-web": {
       "files": 3,
       "loc": 261,
-      "bytes": 120430
+      "bytes": 120697
     },
     "mobile-app-intro-template": {
       "files": 15,
       "loc": 7580,
-      "bytes": 497785
+      "bytes": 498052
     },
     "multi-account-manager": {
       "files": 8,
       "loc": 2303,
-      "bytes": 429873
+      "bytes": 430119
     },
     "noise-art-web": {
       "files": 3,
       "loc": 250,
-      "bytes": 743704
+      "bytes": 743971
     },
     "password-forge": {
       "files": 3,
       "loc": 303,
-      "bytes": 174344
+      "bytes": 174611
     },
     "perfect-ai-chat-bot": {
       "files": 8,
       "loc": 816,
-      "bytes": 96341
+      "bytes": 96608
     },
     "php-bot-maker": {
       "files": 22,
       "loc": 31178,
-      "bytes": 1824057
+      "bytes": 1824324
     },
     "php-coin-manager-bot": {
       "files": 7,
       "loc": 4810,
-      "bytes": 279956
+      "bytes": 280223
     },
     "php-uploader-bot": {
       "files": 8,
       "loc": 3438,
-      "bytes": 145126
+      "bytes": 145478
     },
     "pixel-art-studio": {
       "files": 3,
       "loc": 264,
-      "bytes": 180684
+      "bytes": 180951
     },
     "poll-vote-bot": {
       "files": 7,
       "loc": 491,
-      "bytes": 224139
+      "bytes": 224385
     },
     "pomodoro-focus": {
       "files": 3,
       "loc": 227,
-      "bytes": 127289
+      "bytes": 127556
     },
     "post-manager-bot": {
       "files": 5,
       "loc": 230,
-      "bytes": 68642
+      "bytes": 68902
     },
     "prayer-times-bot": {
       "files": 5,
       "loc": 208,
-      "bytes": 64847
+      "bytes": 65117
     },
     "premium-emoji-poster-cfworker": {
       "files": 3,
       "loc": 1077,
-      "bytes": 145808
+      "bytes": 146075
     },
     "price-ticker-bot": {
       "files": 4,
       "loc": 203,
-      "bytes": 97151
+      "bytes": 97418
     },
     "proxy-scraper-bot": {
       "files": 2,
       "loc": 90,
-      "bytes": 6805
+      "bytes": 7072
     },
     "pyautogui-automation-demo": {
       "files": 5,
       "loc": 102,
-      "bytes": 114031
+      "bytes": 114280
+    },
+    "pyrogram-self-plus": {
+      "files": 5,
+      "loc": 2436,
+      "bytes": 143411
     },
     "pyrogram-selfbot-manager": {
       "files": 6,
       "loc": 916,
-      "bytes": 198720
+      "bytes": 198966
     },
     "qr-code-studio": {
       "files": 4,
       "loc": 415,
-      "bytes": 123039
+      "bytes": 123306
     },
     "quiz-trivia-bot": {
       "files": 5,
       "loc": 486,
-      "bytes": 105027
+      "bytes": 105294
     },
     "regex-playground": {
       "files": 3,
       "loc": 267,
-      "bytes": 153974
+      "bytes": 154241
     },
     "reminder-task-bot": {
       "files": 5,
       "loc": 266,
-      "bytes": 134071
+      "bytes": 134317
     },
     "rss-news-bot": {
       "files": 4,
       "loc": 204,
-      "bytes": 96237
+      "bytes": 96504
     },
     "self-cli-php-bot": {
       "files": 3,
       "loc": 6493,
-      "bytes": 303055
+      "bytes": 303322
+    },
+    "self-reload-bot": {
+      "files": 5,
+      "loc": 1337,
+      "bytes": 89116
     },
     "snake-game-web": {
       "files": 3,
       "loc": 246,
-      "bytes": 104911
+      "bytes": 105178
     },
     "solar-explorer-3d": {
       "files": 3,
       "loc": 744,
-      "bytes": 122752
+      "bytes": 123019
     },
     "spotify-music-bot": {
       "files": 13,
       "loc": 894,
-      "bytes": 154350
+      "bytes": 155644
+    },
+    "staking-deposit-bot": {
+      "files": 2,
+      "loc": 696,
+      "bytes": 33030
     },
     "starzify-shop-bot": {
       "files": 7,
       "loc": 2134,
-      "bytes": 391626
+      "bytes": 391872
+    },
+    "story-downloader-bot": {
+      "files": 3,
+      "loc": 98,
+      "bytes": 7287
     },
     "subscription-shop-bot": {
       "files": 5,
       "loc": 1086,
-      "bytes": 251344
+      "bytes": 251590
     },
     "sudoku-game-web": {
       "files": 3,
       "loc": 416,
-      "bytes": 50834
+      "bytes": 51101
+    },
+    "supertabchi-copy-bot": {
+      "files": 3,
+      "loc": 284,
+      "bytes": 18398
     },
     "support-ticket-bot": {
       "files": 5,
       "loc": 170,
-      "bytes": 110511
+      "bytes": 110757
     },
     "synthwave-keys": {
       "files": 3,
       "loc": 323,
-      "bytes": 125132
+      "bytes": 125399
     },
     "system-monitor-gui": {
       "files": 5,
       "loc": 85,
-      "bytes": 105694
+      "bytes": 105943
     },
     "tabchi-forwarder-bot": {
       "files": 6,
       "loc": 1665,
-      "bytes": 89182
+      "bytes": 89449
     },
     "telegram-channel-landing-page": {
       "files": 3,
       "loc": 879,
-      "bytes": 97720
+      "bytes": 97987
     },
     "telegram-selfbot-panel": {
       "files": 9,
       "loc": 3463,
-      "bytes": 604581
+      "bytes": 605191
     },
     "telethon-session-manager": {
       "files": 5,
       "loc": 422,
-      "bytes": 141077
+      "bytes": 141323
+    },
+    "telethon-tabchi-cli": {
+      "files": 2,
+      "loc": 756,
+      "bytes": 51132
+    },
+    "temp-mail-api": {
+      "files": 2,
+      "loc": 71,
+      "bytes": 4625
     },
     "tetris-web": {
       "files": 3,
       "loc": 333,
-      "bytes": 140518
+      "bytes": 140785
     },
     "text-diff-web": {
       "files": 3,
       "loc": 197,
-      "bytes": 154661
+      "bytes": 154928
     },
     "tic-tac-toe-game": {
       "files": 12,
       "loc": 576,
-      "bytes": 200542
+      "bytes": 200809
+    },
+    "timed-lock-bot": {
+      "files": 2,
+      "loc": 1895,
+      "bytes": 69634
     },
     "todo-miniapp-worker": {
       "files": 5,
       "loc": 3661,
-      "bytes": 312097
+      "bytes": 312364
     },
     "ton-nft-marketplace": {
       "files": 3,
       "loc": 1455,
-      "bytes": 126291
+      "bytes": 126558
     },
     "translator-bot": {
       "files": 4,
       "loc": 59,
-      "bytes": 78923
+      "bytes": 79190
     },
     "twitter-media-api": {
       "files": 6,
       "loc": 243,
-      "bytes": 57852
+      "bytes": 58119
     },
     "typing-speed-race": {
       "files": 3,
       "loc": 409,
-      "bytes": 64754
+      "bytes": 65021
     },
     "unit-converter-web": {
       "files": 3,
       "loc": 223,
-      "bytes": 148740
+      "bytes": 149007
     },
     "uptime-monitor-bot": {
       "files": 4,
       "loc": 206,
-      "bytes": 96753
+      "bytes": 97020
     },
     "url-shortener-bot": {
       "files": 4,
       "loc": 101,
-      "bytes": 86616
+      "bytes": 86883
     },
     "url-shortener-php-bot": {
       "files": 6,
       "loc": 673,
-      "bytes": 116118
+      "bytes": 116429
     },
     "v2ray-shop-bot": {
       "files": 7,
       "loc": 1923,
-      "bytes": 328502
+      "bytes": 328748
     },
     "voicecall-userbot": {
       "files": 21,
       "loc": 1436,
-      "bytes": 254828
+      "bytes": 254969
+    },
+    "vpn-service-landing": {
+      "files": 4,
+      "loc": 501,
+      "bytes": 61068
     },
     "wheel-of-actions": {
       "files": 3,
       "loc": 5764,
-      "bytes": 279747
+      "bytes": 280014
     },
     "winland-giveaway-bot": {
       "files": 5,
       "loc": 1019,
-      "bytes": 161995
+      "bytes": 162241
     },
     "wordle-fa-bot": {
       "files": 5,
       "loc": 276,
-      "bytes": 66589
+      "bytes": 66859
     },
     "world-clock-planner": {
       "files": 3,
       "loc": 326,
-      "bytes": 54700
+      "bytes": 54967
     },
     "world-war-game-bot": {
       "files": 6,
       "loc": 2766,
-      "bytes": 395411
+      "bytes": 395657
     },
     "youtube-downloader-bot": {
       "files": 3,
       "loc": 160,
-      "bytes": 81703
+      "bytes": 81970
     }
   }
 }

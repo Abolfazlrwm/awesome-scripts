@@ -2,21 +2,23 @@
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-23T11:00:55+03:30",
-  "count": 117,
+  "generated_at": "2026-11-23T11:52:09+03:30",
+  "count": 138,
   "stats": {
     "categories": {
-      "web-tool": 41,
-      "telegram-bot": 70,
-      "desktop-tool": 6
+      "web-tool": 44,
+      "telegram-bot": 87,
+      "desktop-tool": 7
     },
     "languages": {
       "HTML/CSS/JS": 38,
-      "Python": 47,
-      "PHP": 19,
+      "Python": 57,
+      "PHP": 27,
+      "C": 1,
       "JavaScript": 4,
       "PowerShell": 1,
       "Node.js": 5,
+      "HTML/CSS": 2,
       "Java": 1,
       "C++": 1,
       "C#": 1
@@ -106,6 +108,18 @@
       "preview": null
     },
     {
+      "slug": "anonymous-platform",
+      "path": "bots/anonymous-platform",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Anonymous Chat Platform",
+      "description_en": "Full anonymous-chat platform — web user panel, Zarinpal payments, HTTPS web installer",
+      "demo": null,
+      "name_fa": "پلتفرم ناشناس",
+      "description_fa": "پلتفرم کامل چت ناشناس — پنل کاربری وب، پرداخت زرین‌پال و نصاب تحت وب",
+      "preview": null
+    },
+    {
       "slug": "ascii-art-generator-web",
       "path": "web/ascii-art-generator-web",
       "category": "web-tool",
@@ -128,6 +142,18 @@
       "name_fa": "خانه‌ی مزایده",
       "description_fa": "مزایده‌ی زنده‌ی گروهی — پیشنهاد تک‌ضربه‌ای، پست زنده، ضد اسنایپ و اعلام خودکار برنده",
       "preview": "bots/auction-house-bot/docs/preview.png"
+    },
+    {
+      "slug": "audio-tools-bot",
+      "path": "bots/audio-tools-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Audio Tools Bot",
+      "description_en": "Audio metadata & mp3 tools — getID3 extraction plus the bundled PHPMP3 class, stats and user checks",
+      "demo": null,
+      "name_fa": "ابزار صدا",
+      "description_fa": "متادیتای صوت با getID3 و پردازش mp3 با PHPMP3 — آمار و چک کاربر",
+      "preview": null
     },
     {
       "slug": "backend-dev-portfolio",
@@ -164,6 +190,18 @@
       "name_fa": "تغییرنام گروهی",
       "description_fa": "تغییرنام امن گروهی فایل‌ها — قالب شماره‌دار، regex، پیش‌نمایش پیش‌فرض و لاگ بازگشت",
       "preview": "desktop/bulk-renamer-cli/docs/preview.png"
+    },
+    {
+      "slug": "c-practice-projects",
+      "path": "desktop/c-practice-projects",
+      "category": "desktop-tool",
+      "language": "C",
+      "name_en": "C Practice Projects",
+      "description_en": "Two C learning exercises — substring check with strstr, 50-digit big-number arithmetic; Code::Blocks projects",
+      "demo": null,
+      "name_fa": "تمرین‌های C",
+      "description_fa": "دو تمرین کلاسیک C — تشخیص زیررشته با strstr و محاسبات اعداد ۵۰ رقمی",
+      "preview": null
     },
     {
       "slug": "caller-lookup-app",
@@ -274,6 +312,18 @@
       "preview": "bots/code-share-bot/docs/preview.png"
     },
     {
+      "slug": "coin-bet-game-bot",
+      "path": "bots/coin-bet-game-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Coin Bet Game Bot",
+      "description_en": "Coin-flip betting game — balances, deposit/withdraw requests, transfers, admin panel (in-game currency only)",
+      "demo": null,
+      "name_fa": "شرط سکه",
+      "description_fa": "بازی شرط سکه‌ای با MySQL — موجودی، برداشت، انتقال و پنل ادمین (فقط ارز درون‌بازی)",
+      "preview": null
+    },
+    {
       "slug": "color-palette-studio",
       "path": "web/color-palette-studio",
       "category": "web-tool",
@@ -358,6 +408,18 @@
       "preview": "bots/digit-id-bot/docs/preview.png"
     },
     {
+      "slug": "dio-selfbot",
+      "path": "bots/dio-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "DIO Selfbot",
+      "description_en": "Pyrogram selfbot — time-aware bio/name (Tehran clock), mute/game toggles, saved-replies list",
+      "demo": null,
+      "name_fa": "سلف DIO",
+      "description_fa": "سلف‌بات پروفایل‌محور — بیو و نام زمان‌دار با ساعت تهران و حالت‌های mute/game",
+      "preview": null
+    },
+    {
       "slug": "downloads-organizer",
       "path": "desktop/downloads-organizer",
       "category": "desktop-tool",
@@ -380,6 +442,18 @@
       "name_fa": "سینت درام",
       "description_fa": "درام‌ماشین ۱۶ استپه با WebAudio — صداهای سنتز‌شده، BPM/سوینگ، پریست و ذخیره الگو",
       "preview": "web/drum-machine-web/docs/preview.png"
+    },
+    {
+      "slug": "duel-game-bot",
+      "path": "bots/duel-game-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Robot Duel Game Bot",
+      "description_en": "Group duel game — challenge members, flavored results, SQLite stats, StringSession helper",
+      "demo": null,
+      "name_fa": "دوئل گروهی",
+      "description_fa": "بازی دوئل بین اعضای گروه — نتایج متنوع، آمار SQLite و اسکریپت StringSession",
+      "preview": null
     },
     {
       "slug": "dupe-file-finder",
@@ -538,6 +612,18 @@
       "preview": "bots/giftix-stars-shop-bot/docs/preview.png"
     },
     {
+      "slug": "group-broadcast-bot",
+      "path": "bots/group-broadcast-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Group Broadcast Bot",
+      "description_en": "Broadcast the admin's message to every group the bot itself is a member of — check utilities, no database",
+      "demo": null,
+      "name_fa": "همگانی به گروه‌ها",
+      "description_fa": "پیام ادمین را به همه‌ی گروه‌هایی که ربات عضو است می‌فرستد — سبک و بدون دیتابیس",
+      "preview": null
+    },
+    {
       "slug": "group-guardian-bot",
       "path": "bots/group-guardian-bot",
       "category": "telegram-bot",
@@ -560,6 +646,18 @@
       "name_fa": "هاپ‌داگ (ربات اقتصادی گروهی)",
       "description_fa": "بازی اقتصادی کامل با سگ، ماهیگیری، کارخانه، شهرداری و رهبری ملی",
       "preview": "bots/happydog-economy-bot/docs/preview.png"
+    },
+    {
+      "slug": "hxd-post-copier",
+      "path": "bots/hxd-post-copier",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "HxD Post Copier",
+      "description_en": "Lighter sibling post-copier — interactive first-run owner prompt, scheduled copies",
+      "demo": null,
+      "name_fa": "کپی‌کن HxD",
+      "description_fa": "نسخه‌ی جمع‌وجورتر کپی‌کن پست — ست‌آپ تعاملی در اولین اجرا",
+      "preview": null
     },
     {
       "slug": "image-compressor-web",
@@ -598,6 +696,18 @@
       "preview": "bots/iran-market-rate-bot/docs/preview.png"
     },
     {
+      "slug": "jackmor-selfbot",
+      "path": "bots/jackmor-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Jackmor Selfbot",
+      "description_en": "Teletips-based mega selfbot — anti-delete logging, autopic, media/logo tools (assets not committed)",
+      "demo": null,
+      "name_fa": "سلف جک‌مور",
+      "description_fa": "مگا-سلف بر پایه‌ی Teletips — ضدحذف، اتو-پیک، ابزار مدیا و ساخت لوگو",
+      "preview": null
+    },
+    {
       "slug": "jalali-date-tools",
       "path": "web/jalali-date-tools",
       "category": "web-tool",
@@ -634,6 +744,30 @@
       "preview": "web/json-formatter-web/docs/preview.png"
     },
     {
+      "slug": "kaj-anonymous-bot",
+      "path": "bots/kaj-anonymous-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Kaj Anonymous Bot",
+      "description_en": "Anonymous chat with per-character pricing — first 7 chars free, Zarinpal gateway, Jalali dates",
+      "demo": null,
+      "name_fa": "چت ناشناس کاج",
+      "description_fa": "چت ناشناس با قیمت per-حرف (۷ حرف مجانی) — درگاه زرین‌پال و تاریخ شمسی",
+      "preview": null
+    },
+    {
+      "slug": "krals-selfbot",
+      "path": "bots/krals-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Krals Selfbot",
+      "description_en": "Pyrogram selfbot panel — second client, Tehran timezone, raw functions, admin/owner model",
+      "demo": null,
+      "name_fa": "سلف کرالز",
+      "description_fa": "پنل سلف Pyrogram با کلاینت دوم، تایم‌زون تهران و raw functions",
+      "preview": null
+    },
+    {
       "slug": "life-simulator-bot",
       "path": "bots/life-simulator-bot",
       "category": "telegram-bot",
@@ -668,6 +802,18 @@
       "name_fa": "خلاصه‌ساز لینک و متن",
       "description_fa": "خلاصه‌سازی لینک/متن — آفلاین به‌صورت پیش‌فرض، ارتقاپذیر با مدل زبانی",
       "preview": "bots/link-summarizer-bot/docs/preview.png"
+    },
+    {
+      "slug": "login-form-template",
+      "path": "web/login-form-template",
+      "category": "web-tool",
+      "language": "HTML/CSS",
+      "name_en": "Login Form Template",
+      "description_en": "Persian RTL login form template — full Vazirmatn font family, modular SCSS sources",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/login-form-template/",
+      "name_fa": "فرم ورود فارسی",
+      "description_fa": "قالب فرم ورود RTL با فونت وزیرمتن و SCSS ماژولار",
+      "preview": null
     },
     {
       "slug": "lottery-giveaway-bot",
@@ -958,6 +1104,18 @@
       "preview": "desktop/pyautogui-automation-demo/docs/preview.png"
     },
     {
+      "slug": "pyrogram-self-plus",
+      "path": "bots/pyrogram-self-plus",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Pyrogram Self Plus",
+      "description_en": "Feature-rich selfbot — RexTester code execution, Wikipedia, YouTube tools, first-comment automation",
+      "demo": null,
+      "name_fa": "سلف پلاس",
+      "description_fa": "سلف پرامکانات — اجرای کد با RexTester، ویکی‌پدیا، ابزار یوتیوب و کامنت خودکار",
+      "preview": null
+    },
+    {
       "slug": "pyrogram-selfbot-manager",
       "path": "bots/pyrogram-selfbot-manager",
       "category": "telegram-bot",
@@ -1042,6 +1200,18 @@
       "preview": null
     },
     {
+      "slug": "self-reload-bot",
+      "path": "bots/self-reload-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Self Reload Bot",
+      "description_en": "Selfbot with hot module reload — pytube downloads, Enemy-list manager, profile tools",
+      "demo": null,
+      "name_fa": "سلف ری‌لود",
+      "description_fa": "سلف با ری‌لود زنده‌ی ماژول‌ها — دانلود یوتیوب، لیست Enemy و ابزار پروفایل",
+      "preview": null
+    },
+    {
       "slug": "snake-game-web",
       "path": "web/snake-game-web",
       "category": "web-tool",
@@ -1078,6 +1248,18 @@
       "preview": "bots/spotify-music-bot/docs/preview.png"
     },
     {
+      "slug": "staking-deposit-bot",
+      "path": "bots/staking-deposit-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Staking Deposit Bot",
+      "description_en": "Staking deposit flow — weekly-challenge countdown, wallet-address deposits, per-user step states",
+      "demo": null,
+      "name_fa": "واریز استیکینگ",
+      "description_fa": "جریان واریز و شمارش معکوس چالش هفتگی — آدرس کیف‌پول و وضعیت گام‌به‌گام کاربر",
+      "preview": null
+    },
+    {
       "slug": "starzify-shop-bot",
       "path": "bots/starzify-shop-bot",
       "category": "telegram-bot",
@@ -1088,6 +1270,18 @@
       "name_fa": "فروشگاه استارز و گیفت",
       "description_fa": "فروش استارز/پریمیوم/گیفت/کریپتو با کیف پول و رفرال — برند Abolfazl",
       "preview": "bots/starzify-shop-bot/docs/preview.png"
+    },
+    {
+      "slug": "story-downloader-bot",
+      "path": "bots/story-downloader-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Story Downloader Bot",
+      "description_en": "Downloads Telegram stories by link or username — sudo admin, mandatory-channel config",
+      "demo": null,
+      "name_fa": "دانلودر استوری",
+      "description_fa": "دانلود استوری تلگرام با لینک یا یوزرنیم — سودو و کانال‌های اجباری",
+      "preview": null
     },
     {
       "slug": "subscription-shop-bot",
@@ -1112,6 +1306,18 @@
       "name_fa": "سودوکو",
       "description_fa": "سودوکو با سازنده‌ی جواب یکتا — ۴ سطح سختی، یادداشت مدادی، راهنما و حل‌کننده",
       "preview": "web/sudoku-game-web/docs/preview.png"
+    },
+    {
+      "slug": "supertabchi-copy-bot",
+      "path": "bots/supertabchi-copy-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "SuperTabchi Copy Bot",
+      "description_en": "APScheduler post-copier — copy_message without the forward header, separate group/channel timers",
+      "demo": null,
+      "name_fa": "سوپرتبچی",
+      "description_fa": "کپی پست‌های مبدأ به مقصدها با APScheduler و تایمرهای جداگانه‌ی گروه/کانال",
+      "preview": null
     },
     {
       "slug": "support-ticket-bot",
@@ -1198,6 +1404,30 @@
       "preview": "bots/telethon-session-manager/docs/preview.png"
     },
     {
+      "slug": "telethon-tabchi-cli",
+      "path": "bots/telethon-tabchi-cli",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Telethon Tabchi Cli",
+      "description_en": "Telethon tabchi CLI — auto-forwards posts between your channels, spambot check, FloodWait handling",
+      "demo": null,
+      "name_fa": "تبچی CLI تلثون",
+      "description_fa": "فوروارد خودکار پست بین کانال‌های خودت با Telethon — چک اسپم‌بات و مدیریت FloodWait",
+      "preview": null
+    },
+    {
+      "slug": "temp-mail-api",
+      "path": "web/temp-mail-api",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "Temp Mail Api",
+      "description_en": "Single-file wrapper for the temp-mail.io v2 API — disposable inboxes and message reading, clean JSON output",
+      "demo": null,
+      "name_fa": "میل موقت",
+      "description_fa": "wrapper تک‌فایلی روی API میل موقت temp-mail.io — صندوق یک‌بارمصرف با خروجی JSON",
+      "preview": null
+    },
+    {
       "slug": "tetris-web",
       "path": "web/tetris-web",
       "category": "web-tool",
@@ -1231,6 +1461,18 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/tic-tac-toe-game/",
       "name_fa": "بازی دوز (OX)",
       "description_fa": "بازی دوز کلاسیک تک‌نفره در برابر هوش مصنوعی",
+      "preview": null
+    },
+    {
+      "slug": "timed-lock-bot",
+      "path": "bots/timed-lock-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Timed Lock Bot",
+      "description_en": "Time-based auto-lock for groups/channels — lock windows per channel, inline channel manager, Telegram-IP allow-list",
+      "demo": null,
+      "name_fa": "قفل زمان‌دار",
+      "description_fa": "قفل و بازکردن خودکار گروه/کانال در بازه‌ی زمانی مشخص — مدیریت کانال‌ها با اینلاین‌کیبورد",
       "preview": null
     },
     {
@@ -1364,6 +1606,18 @@
       "name_fa": "یوزربات ویس‌چت",
       "description_fa": "یوزربات ویس‌چت + پنل ادمین — ورود خودکار، پخش موزیک/یوتیوب، پلی‌لیست هر گروه و رادیو زنده",
       "preview": "bots/voicecall-userbot/docs/preview.png"
+    },
+    {
+      "slug": "vpn-service-landing",
+      "path": "web/vpn-service-landing",
+      "category": "web-tool",
+      "language": "HTML/CSS",
+      "name_en": "VPN Service Landing",
+      "description_en": "Persian VPN-service landing — remaining-service-days display, custom styling",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/vpn-service-landing/",
+      "name_fa": "لندینگ VPN",
+      "description_fa": "لندینگ فارسی سرویس VPN — نمایش باقی‌مانده‌ی سرویس با استایل اختصاصی",
+      "preview": null
     },
     {
       "slug": "wheel-of-actions",
