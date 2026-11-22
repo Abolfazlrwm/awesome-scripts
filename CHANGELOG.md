@@ -8,6 +8,17 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.27.0] — 2026-11-23 — 📦 21 new projects from the second upload batch — 117 → 138
+
+- **17 new Telegram bots**: Telethon tabchi CLI, time-based auto-lock, group broadcast, DIO/krals/reload/plus/Jackmor selfbot panels (all documented as userbots, run at your own risk), story downloader, two scheduled post-copiers, staking-deposit tracker, group duel game, getID3 audio tools, an anonymous-chat platform with a web installer, the per-character-priced Kaj anonymous chat (original author: AbolfazlKaj) and a coin-bet game (in-game currency only).
+- **3 new web tools** — temp-mail.io API wrapper, a Persian VPN-service landing and a Persian RTL login-form template with full Vazirmatn sources (the latter two ship live GitHub Pages demos).
+- **1 new desktop project** — two classic C exercises (substring check, 50-digit big-number math); "C" joins the language list (now 10) and the validator now recognizes `.c` files as runnable code.
+- **Mandatory attribution is now repo policy** — a 🔒 "ذکر منبع" section was added to all 138 project READMEs, the root README states the policy in both languages, and every source file of this batch carries a header comment with the @Abolfazl_rwm credit; redistribution without attribution is not permitted.
+- **10 leaked secrets sanitized before commit** — 4 Telegram bot tokens, 5 API credentials (api_id/api_hash pairs, a Zarinpal merchant key, a truncated token prefix) and one embedded api_hash — placeholders now document where to put your own. Revoke the originals.
+- **5 zips in the batch are password-protected** (FilmHub, Notcoin, Tabchi[source kade] and two Sourcekade archives) and were not processed — send the passwords and they will be classified the same way.
+
+بیست‌ویک پروژه‌ی جدید اضافه شد (۱۷ بات، ۳ ابزار وب، ۱ پروژه‌ی C)؛ سیاست «ذکر منبع اجباری» به همه‌ی READMEها و سورس‌های این دسته اعمال شد؛ ده سکرت نشت‌شده قبل از کامیت پاک شدند (اصلی‌ها را revoke کنید) و پنج زیپِ قفل‌شده بدون پسورد پردازش نشدند.
+
 ## [v1.26.0] — 2026-11-23 — 📦 8 new projects from the upload batch — 109 → 117
 
 - **Seven new Telegram bots (PHP)** from the uploaded sources, each with a bilingual setup README: `proxy-scraper-bot` (10 fresh MTProto proxies per /start), `anonymous-message-bot` (personal /link, sender identity never shown), `self-cli-php-bot` (MadelineProto self-bot panel — userbot risk documented), `tabchi-forwarder-bot` (auto-forwarder between your own channels), `esrrar-chat-bot` (anonymous two-way chat + Telethon/Flask session runner), `php-uploader-bot` (URL → Telegram with MySQL, tutorial docx included) and `channel-tools-bot` (membership gate, member log, pin/edit/delete controls).
