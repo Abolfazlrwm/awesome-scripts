@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Awesome Scripts</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/awesome-scripts/assets/favicon.svg">
+<style>
+  :root { --bg:#0b1020; --card:#151c3a; --text:#e8ecff; --muted:#9aa6d6; --line:#26305c; --accent:#6c8cff; --accent2:#8f6cff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--text); min-height:100vh;
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Tahoma,"Noto Sans",sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .box { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:clamp(24px,6vw,48px); max-width:520px; width:100%; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+  .code { font-size:clamp(4rem,14vw,6rem); font-weight:800; line-height:1; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  h1 { font-size:clamp(1rem,3vw,1.25rem); margin:14px 0 6px; }
+  p { color:var(--muted); font-size:14px; }
+  .actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:22px 0 14px; }
+  .btn { padding:9px 16px; border-radius:999px; background:var(--card); border:1px solid var(--line); color:var(--text); text-decoration:none; font-size:13.5px; font-weight:600; }
+  .btn:hover { border-color:var(--accent); }
+  .sig { font-size:12.5px; margin-top:6px; }
+</style>
+</head>
+<body>
+<main class="box">
+  <div class="code">404</div>
+  <h1>This page went off-script · این صفحه پیدا نشد</h1>
+  <p id="hint">If you followed a project link, we're taking you there…</p>
+  <div class="actions">
+    <a class="btn" href="/awesome-scripts/">🤖 Gallery</a>
+    <a class="btn" href="/awesome-scripts/compare.html">⚖️ Matrix</a>
+    <a class="btn" href="/awesome-scripts/search.html">🔍 Code Search</a>
+    <a class="btn" href="https://github.com/Abolfazlrwm/awesome-scripts">⭐ GitHub</a>
+  </div>
+  <p class="sig">Awesome Scripts · Telegram: <a style="color:var(--accent)" href="https://t.me/Abolfazl_rwm">@Abolfazl_rwm</a></p>
+</main>
+<script>
+(function () {
+  "use strict";
+  var BASE = "/awesome-scripts/";
+  var reserved = { bots: 1, web: 1, desktop: 1, assets: 1, data: 1, tools: 1 };
+  var segs = location.pathname.split("/").filter(Boolean);
+  var last = segs[segs.length - 1] || "";
+  var slugLike = last && !reserved[last] && /^[a-z0-9][a-z0-9-]{2,}$/.test(last) && !/\.[a-z0-9]+$/i.test(last);
+  if (slugLike) {
+    /* project-style URL → open its modal in the gallery (unknown slugs simply boot the gallery) */
+    location.replace(BASE + "#p=" + last);
+    return;
+  }
+  setTimeout(function () { location.replace(BASE); }, 10000);
+  var hint = document.getElementById("hint");
+  if (hint && last) hint.textContent = 'Nothing lives at "' + last + '" — the gallery below has all 109 projects.';
+})();
+</script>
+</body>
+</html>
