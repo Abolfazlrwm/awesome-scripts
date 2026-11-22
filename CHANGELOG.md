@@ -8,6 +8,14 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.25.0] — 2026-11-23 — 📊 Stats & Growth — the whole history, measured from git
+
+- **New page: `stats.html`** — one data point per release tag (26 points, v1.0.0 → main), streamed out of `git archive` by the new `tools/generate_stats_history.py`: **38 projects / 53,296 lines at v1.0.0 → 109 / 185,535 today**. Growth chart with Projects / Lines-of-code tabs, a language-share donut (Python 94k · PHP 51k · HTML 30k · JS 7.6k), the top-15 biggest projects and an 18-month commit pulse (33 → 5 → 1 → **251** — the November sprint is visible).
+- **Zero chart libraries** — every chart is hand-rolled SVG/CSS in the family design: bilingual (EN/فا), dark/light, offline via the service worker; sitemap grows to 43 URLs.
+- **Fix** — the matrix header's 🔍 Code link pointed at GitHub since v1.24.0 (a patch-anchor mistake); now it opens `search.html`, and all three headers gained the 📊 Stats link.
+
+صفحه‌ی آمار اضافه شد: یک نقطه به‌ازای هر ریلیز از تاریخچه‌ی گیت (۳۸ پروژه/۵۳ هزار خط در ابتدا → ۱۰۹/۱۸۵ هزار خط امروز)، دونات زبان‌ها، ۱۵ پروژه‌ی بزرگ‌تر و ضربان کامیت‌ها — بدون هیچ کتابخانه‌ی نمودار؛ لینک 🔍 هدر ماتریس که از v1.24 به‌اشتباه به گیت‌هاب می‌رفت هم اصلاح شد.
+
 ## [v1.24.0] — 2026-11-23 — 🧼 Polish pass — rich embeds, smart 404, fresh release chip
 
 - **Rich link embeds** — the project matrix and code search now ship full Open Graph / Twitter card meta (1200×630 `og-banner.png`), so links shared in Telegram, Discord or X expand into proper preview cards. The landing head was de-duplicated: one `og:image`, one `twitter:image`, one favicon, and the stale "103" counts in the title, descriptions, hero and search placeholder are now 109.
