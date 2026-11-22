@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.23.0] — 2026-11-20 — 🔍 Code Search — grep every line of all 109 projects
+
+- **Global code search (`search.html`)** — a prebuilt, gzip-compressed index of **474 source files / 158,427 lines / 29,981 tokens** (~2.6 MB total, decompressed in-browser via DecompressionStream and cached offline by the service worker). Prefix or exact-word matching over identifiers, strings and comments — Persian and English alike — with project filtering, per-file hit grouping and direct GitHub links to the exact line.
+- **`tools/generate_code_index.py`** — rebuilds the index (stopword capping, 300-posting cap per token); output lands in `data/code-index.json.gz` + `data/code-texts.json.gz`.
+- Gallery and matrix headers now link to the code search; sitemap grows to 42 URLs; the matrix footer now carries the project signature (Telegram: @Abolfazl_rwm).
+- Audit note: a repo-wide scan found **zero** third-party ad/promo content and **zero** other-author signatures to remove — the only t.me links are functional BotFather/userinfobot setup docs and the project signature itself.
+
+جست‌وجوی سراسری کدها اضافه شد: ایندکس فشرده‌ی ۴۷۴ فایل و ~۱۵۸ هزار خط، جست‌وجوی پیشوندی/دقیق روی شناسه‌ها و کامنت‌ها (فارسی و انگلیسی)، فیلتر پروژه و لینک مستقیم به خط دقیق؛ اسکن کامل مخزن نشان داد هیچ تبلیغ یا امضای شخص ثالثی برای حذف وجود ندارد.
+
 ## [v1.22.0] — 2026-11-20 — 📲 PWA + shareable views — install it, share any filter, go offline
 
 - **Progressive Web App** — `sw.js` precaches the app shell (pages, catalog, stats, icons), serves stale-while-revalidate for same-origin GETs and network-first navigations: the gallery and the matrix now **work offline** and are **installable** on desktop and mobile. `manifest.json` refreshed (109 projects, 192px icon, app shortcuts: **Project Matrix** and **Random project**).
