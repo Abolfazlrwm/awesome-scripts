@@ -4,19 +4,19 @@ window.AWESOME_CATALOG = {
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-18T16:11:07+03:30",
-  "count": 109,
+  "generated_at": "2026-11-23T11:00:55+03:30",
+  "count": 117,
   "stats": {
     "categories": {
-      "web-tool": 40,
-      "telegram-bot": 63,
+      "web-tool": 41,
+      "telegram-bot": 70,
       "desktop-tool": 6
     },
     "languages": {
       "HTML/CSS/JS": 38,
       "Python": 47,
-      "PHP": 12,
-      "JavaScript": 3,
+      "PHP": 19,
+      "JavaScript": 4,
       "PowerShell": 1,
       "Node.js": 5,
       "Java": 1,
@@ -94,6 +94,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "ربات خودساز AI",
       "description_fa": "آزمایش خودنویسی: OpenRouter کد PHP تولید و به فایل ربات اضافه می‌کند — فقط مالک",
       "preview": "bots/ai-self-coding-bot/docs/preview.png"
+    },
+    {
+      "slug": "anonymous-message-bot",
+      "path": "bots/anonymous-message-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Anonymous Message Bot",
+      "description_en": "Anonymous messaging — personal /link per user, messages forwarded without sender identity, admin panel & mandatory channel join",
+      "demo": null,
+      "name_fa": "پیام ناشناس",
+      "description_fa": "برای هر کاربر لینک اختصاصی می‌سازد؛ بقیه ناشناس پیام می‌دهند و پیام‌ها بدون هویت فرستنده می‌رسند — پنل مدیر و عضویت اجباری",
+      "preview": null
     },
     {
       "slug": "ascii-art-generator-web",
@@ -202,6 +214,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "ربات پست کانال",
       "description_fa": "کاربر پست می‌فرستد، ادمین تأیید می‌کند و در کانال منتشر می‌شود",
       "preview": "bots/channel-submission-bot/docs/preview.png"
+    },
+    {
+      "slug": "channel-tools-bot",
+      "path": "bots/channel-tools-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Channel Tools PHP Bot",
+      "description_en": "Channel-side utility bot — membership gate, member log, pin/edit/delete controls, on/off switch, transparent g-id link buttons",
+      "demo": null,
+      "name_fa": "ابزار کانال PHP",
+      "description_fa": "دروازه‌ی عضویت، دفتر اعضا، کنترل پین/ادیت/حذف پیام، کلید روشن/خاموش و دکمه‌های لینک شفاف — تک‌فایل و بدون دیتابیس",
+      "preview": null
     },
     {
       "slug": "channel-translate-worker",
@@ -382,6 +406,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "اموجی فورج AI",
       "description_fa": "ری‌برند پک‌های ایموجی سفارشی (TGS/WEBM) با خروجی ZIP، تست و دیپلوی systemd",
       "preview": "bots/emoji-forge-bot/docs/preview.png"
+    },
+    {
+      "slug": "esrrar-chat-bot",
+      "path": "bots/esrrar-chat-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Esrrar Anonymous Chat Bot",
+      "description_en": "Anonymous two-way chat with the other party or the seller — admin broadcast, member gate, Jalali dates; ships a Telethon/Flask session runner",
+      "demo": null,
+      "name_fa": "چت ناشناس اسرار",
+      "description_fa": "چت دوطرفه‌ی ناشناس با کاربر مقابل یا فروشنده — پیام همگانی، دروازه‌ی عضویت، تاریخ شمسی؛ همراه رانر Telethon/Flask",
+      "preview": null
     },
     {
       "slug": "expense-splitter-bot",
@@ -573,6 +609,18 @@ window.AWESOME_CATALOG = {
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/jalali-date-tools/",
       "name_fa": "تقویم جلالی",
       "description_fa": "تبدیل شمسی/میلادی، محاسبه سن، فاصله دو تاریخ و ساعت تهران — کاملاً آفلاین",
+      "preview": null
+    },
+    {
+      "slug": "js-practice-playground",
+      "path": "web/js-practice-playground",
+      "category": "web-tool",
+      "language": "JavaScript",
+      "name_en": "JS Practice Playground",
+      "description_en": "Beginner JS exercises as a runnable playground — star pyramid/triangle builder and a number-guessing game",
+      "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/js-practice-playground/",
+      "name_fa": "زمین تمرین JS",
+      "description_fa": "تمرین‌های مبتدی جاوااسکریپت به‌صورت زمین بازی قابل اجرا — سازنده‌ی مثلث/هرم ستاره‌ای و بازی حدس عدد",
       "preview": null
     },
     {
@@ -792,6 +840,18 @@ window.AWESOME_CATALOG = {
       "preview": "bots/php-coin-manager-bot/docs/preview.png"
     },
     {
+      "slug": "php-uploader-bot",
+      "path": "bots/php-uploader-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "PHP Uploader Bot",
+      "description_en": "URL → Telegram uploader bot — MySQL storage, admin panel, per-message delete, Jalali dates, Telegram-IP allow-list",
+      "demo": null,
+      "name_fa": "آپلودر PHP",
+      "description_fa": "لینک بده، فایل را در تلگرام بگیر — MySQL، پنل ادمین، حذف پیام از کانال، تاریخ شمسی و اجازه‌ی IP تلگرام",
+      "preview": null
+    },
+    {
       "slug": "pixel-art-studio",
       "path": "web/pixel-art-studio",
       "category": "web-tool",
@@ -876,6 +936,18 @@ window.AWESOME_CATALOG = {
       "preview": "bots/price-ticker-bot/docs/preview.png"
     },
     {
+      "slug": "proxy-scraper-bot",
+      "path": "bots/proxy-scraper-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Proxy Scraper Bot",
+      "description_en": "/start → 10 fresh MTProto proxies from a proxy API as tappable URL buttons — webhook bot, Telegram-IP allow-list",
+      "demo": null,
+      "name_fa": "ربات اسکراپر پروکسی",
+      "description_fa": "با /start ده پروکسی MTProto تازه از API می‌گیرد و به‌صورت دکمه‌ی لینک نشان می‌دهد — وب‌هوک با محدودسازی IP تلگرام",
+      "preview": null
+    },
+    {
       "slug": "pyautogui-automation-demo",
       "path": "desktop/pyautogui-automation-demo",
       "category": "desktop-tool",
@@ -958,6 +1030,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "اعلان RSS",
       "description_fa": "پست خودکار مطالب جدید فید به کانال",
       "preview": "bots/rss-news-bot/docs/preview.png"
+    },
+    {
+      "slug": "self-cli-php-bot",
+      "path": "bots/self-cli-php-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Self-CLI PHP Bot",
+      "description_en": "MadelineProto v8 self-bot panel for your own account — name/bio tools, timers, forwards, weather; a userbot, run at your own risk",
+      "demo": null,
+      "name_fa": "پنل سلف CLI",
+      "description_fa": "پنل سلف MadelineProto برای اکانت خودت — ابزارهای نام/بیو، تایمر، فوروارد و آب‌وهوا؛ یوزربات، با مسئولیت خودت",
+      "preview": null
     },
     {
       "slug": "snake-game-web",
@@ -1066,6 +1150,18 @@ window.AWESOME_CATALOG = {
       "name_fa": "مانیتور سیستم",
       "description_fa": "نمایش زنده مصرف CPU/RAM/Disk و اطلاعات سیستم با رابط گرافیکی PyQt6",
       "preview": "desktop/system-monitor-gui/docs/preview.png"
+    },
+    {
+      "slug": "tabchi-forwarder-bot",
+      "path": "bots/tabchi-forwarder-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Tabchi Forwarder Bot",
+      "description_en": "MadelineProto auto-forwarder — pipes new posts from your source channels to destinations, multi-tabche, media cache dirs",
+      "demo": null,
+      "name_fa": "تبچی فروارد",
+      "description_fa": "فوروارد خودکار پست‌های کانال‌های مبدأ به مقصدها با MadelineProto — پشتیبانی چند تبچه و پوشه‌های کش مدیا",
+      "preview": null
     },
     {
       "slug": "telegram-channel-landing-page",
