@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🧪 JS Practice Playground — Awesome Scripts</title>
+<style>
+  :root { --bg:#0b1020; --card:#151c3a; --text:#e8ecff; --muted:#9aa6d6; --line:#26305c; --accent:#6c8cff; --accent2:#8f6cff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:ui-sans-serif,-apple-system,"Segoe UI",Tahoma,sans-serif; line-height:1.55; padding:clamp(14px,4vw,36px); }
+  main { max-width:880px; margin:0 auto; }
+  h1 { font-size:clamp(1.3rem,4vw,1.9rem); margin-bottom:4px; }
+  .sub { color:var(--muted); font-size:14px; margin-bottom:20px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; }
+  .card h2 { font-size:15.5px; margin-bottom:8px; }
+  .card p { color:var(--muted); font-size:12.5px; margin-bottom:10px; }
+  label { font-size:12px; color:var(--muted); display:block; margin-bottom:4px; }
+  input { width:100%; padding:8px 10px; border-radius:9px; border:1px solid var(--line); background:var(--bg); color:var(--text); font:inherit; margin-bottom:8px; }
+  button { padding:8px 14px; border-radius:9px; border:1px solid var(--line); background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; cursor:pointer; font-size:13px; }
+  pre { background:var(--bg); border:1px solid var(--line); border-radius:9px; padding:10px; font-size:12.5px; min-height:74px; white-space:pre-wrap; margin-top:8px; color:#cfe0ff; }
+  footer { text-align:center; color:var(--muted); font-size:12.5px; margin-top:22px; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>🧪 JS Practice Playground</h1>
+  <div class="sub">Beginner JavaScript exercises from <code>Game.js</code>, made runnable in your browser — the original source file ships unchanged in this folder.</div>
+  <div class="grid">
+    <div class="card">
+      <h2>▲ Star Triangle</h2>
+      <p>One growing row of stars per line — <code>"* ".repeat(i)</code>.</p>
+      <label for="tri">Rows</label>
+      <input id="tri" type="number" min="1" max="30" value="5">
+      <button id="triBtn" type="button">Build</button>
+      <pre id="triOut"></pre>
+    </div>
+    <div class="card">
+      <h2>⭐ Star Pyramid</h2>
+      <p>Centered rows — spaces then stars, exactly like the exercise.</p>
+      <label for="pyr">Rows</label>
+      <input id="pyr" type="number" min="1" max="30" value="6">
+      <button id="pyrBtn" type="button">Build</button>
+      <pre id="pyrOut"></pre>
+    </div>
+    <div class="card">
+      <h2>🎲 Number Guess</h2>
+      <p>Guess the secret number between 0 and 9 — the computer tells you higher/lower.</p>
+      <label for="gs">Your guess</label>
+      <input id="gs" type="number" min="0" max="9">
+      <button id="gsBtn" type="button">Guess</button>
+      <button id="gsNew" type="button">New game</button>
+      <pre id="gsOut"></pre>
+    </div>
+  </div>
+  <footer>Original exercises: <a href="Game.js">Game.js</a> · @ixAmirCom · Telegram: <a href="https://t.me/Abolfazl_rwm">@Abolfazl_rwm</a></footer>
+</main>
+<script>
+(function () {
+  "use strict";
+  function $(id) { return document.getElementById(id); }
+  function rows(v, d) { return Math.min(30, Math.max(1, parseInt(v, 10) || d)); }
+  $("triBtn").addEventListener("click", function () {
+    var n = rows($("tri").value, 5), out = "";
+    for (var i = 1; i <= n; i++) out += "* ".repeat(i) + "\n";
+    $("triOut").textContent = out;
+  });
+  $("pyrBtn").addEventListener("click", function () {
+    var n = rows($("pyr").value, 6), out = "";
+    for (var i = 1; i <= n; i++) out += " ".repeat(n - i) + "* ".repeat(i) + "\n";
+    $("pyrOut").textContent = out;
+  });
+  var magic = Math.floor(Math.random() * 10), tries = 0;
+  function newGame() { magic = Math.floor(Math.random() * 10); tries = 0; $("gsOut").textContent = "New game — make your first guess!"; }
+  $("gsNew").addEventListener("click", newGame);
+  $("gsBtn").addEventListener("click", function () {
+    var g = parseInt($("gs").value, 10);
+    if (isNaN(g)) { $("gsOut").textContent = "Enter a number first."; return; }
+    tries++;
+    if (magic === g) $("gsOut").textContent = "YOU WON by " + tries + " tries! 🎉";
+    else if (magic < g) $("gsOut").textContent = "The number is less than " + g + " (try " + tries + ")";
+    else $("gsOut").textContent = "The number is greater than " + g + " (try " + tries + ")";
+  });
+  newGame();
+})();
+</script>
+</body>
+</html>
