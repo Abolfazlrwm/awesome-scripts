@@ -384,6 +384,7 @@
     <div class="header-actions">
       <button class="icon-btn" id="rndBtn" type="button" title="Open a random project · پروژه‌ی تصادفی">🎲</button>
       <a class="icon-btn" href="compare.html" id="cmpLink" title="Project Matrix">⚖️ <span data-i18n="cmp">Compare</span></a>
+      <a class="icon-btn" href="search.html" id="codeSearchLink" title="Search inside the code">🔍 <span data-i18n="csearch">Code</span></a>
       <a class="icon-btn" id="relChip" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest" target="_blank" rel="noopener" title="Latest release">🚀 v1.22</a>
       <a class="icon-btn" id="zipBtn" href="https://github.com/Abolfazlrwm/awesome-scripts/releases/latest/download/awesome-scripts.zip" target="_blank" rel="noopener" title="Download latest source ZIP">⬇️ ZIP</a>
       <a class="icon-btn" id="ghLink" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
@@ -546,6 +547,7 @@
     searchEl.placeholder = t("searchPlaceholder");
     $("ghLink").textContent = fa ? "⭐ گیت‌هاب" : "⭐ GitHub";
     $("cmpLink").innerHTML = fa ? "⚖️ مقایسه" : "⚖️ Compare";
+    $("codeSearchLink").innerHTML = fa ? "🔍 کد" : "🔍 Code";
     $("demoFilterBtn").textContent = fa ? "▶ فقط دمودار" : "▶ Live demo only";
     $("favFilterBtn").textContent = fa ? "⭐ علاقه‌مندی‌ها" : "⭐ Favorites";
     document.title = fa
