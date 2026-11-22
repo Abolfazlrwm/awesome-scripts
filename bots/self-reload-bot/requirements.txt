@@ -1,0 +1,5 @@
+pyrogram>=2.0
+apscheduler>=3.10
+pytube>=15.0
+requests>=2.31
+pytz>=2023.3

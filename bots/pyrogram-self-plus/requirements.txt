@@ -1,0 +1,6 @@
+pyrogram>=2.0
+pyromod>=2.0
+apscheduler>=3.10
+wikipedia>=1.4
+requests>=2.31
+pytz>=2023.3
