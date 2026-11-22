@@ -93,6 +93,11 @@ NAME_OVERRIDES = {
     "php-uploader-bot": "PHP Uploader Bot",
     "channel-tools-bot": "Channel Tools PHP Bot",
     "js-practice-playground": "JS Practice Playground",
+    "dio-selfbot": "DIO Selfbot",
+    "hxd-post-copier": "HxD Post Copier",
+    "supertabchi-copy-bot": "SuperTabchi Copy Bot",
+    "duel-game-bot": "Robot Duel Game Bot",
+    "anonymous-platform": "Anonymous Chat Platform",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 
