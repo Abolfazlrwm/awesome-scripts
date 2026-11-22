@@ -121,6 +121,7 @@
   <div class="header-inner">
     <a class="brand" href="./"><span class="logo">🤖</span><span>Awesome&nbsp;Scripts</span><small id="tSub"></small></a>
     <div class="header-actions">
+      <a class="icon-btn" href="stats.html" id="statsLink">📊 <span id="statsLink">Stats</span></a>
       <a class="icon-btn" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
       <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
@@ -173,7 +174,7 @@
       hits: "hits", showAll: "show all", showing: "Showing", of: "of", filesL: "files", linesHit: "matching lines",
       none: "Nothing matches this search", noneHint: "Try a shorter or different keyword — matching is prefix-based on identifiers, strings and comments.",
       typeHint: "Type a keyword to search inside the code.", fail: "index error",
-      made: "Built with ♥ by", gen: "awesome-scripts v1.23", themeLight: "☀️", themeDark: "🌙", faBtn: "فا"
+      made: "Built with ♥ by", gen: "awesome-scripts v1.23", themeLight: "☀️", themeDark: "🌙", faBtn: "فا", statsLbl: "📊 Stats"
     },
     fa: {
       sub: "· کد", title: "🔍 جست‌وجوی کد",
@@ -185,7 +186,7 @@
       hits: "خط", showAll: "نمایش همه", showing: "نمایش", of: "از", filesL: "فایل", linesHit: "خط منطبق",
       none: "چیزی با این جست‌وجو پیدا نشد", noneHint: "کلیدواژه‌ی کوتاه‌تری امتحان کن — جست‌وجو پیشوندی روی شناسه‌ها، رشته‌ها و کامنت‌هاست.",
       typeHint: "برای جست‌وجو در کدها یک کلیدواژه بنویس.", fail: "خطای ایندکس",
-      made: "ساخته‌شده با ♥ توسط", gen: "awesome-scripts v1.23", themeLight: "☀️", themeDark: "🌙", faBtn: "EN"
+      made: "ساخته‌شده با ♥ توسط", gen: "awesome-scripts v1.23", themeLight: "☀️", themeDark: "🌙", faBtn: "EN", statsLbl: "📊 آمار"
     }
   };
   var CAT_ICON = { "telegram-bot": "🤖", "web-tool": "🌐", "desktop-tool": "🖥" };
@@ -236,6 +237,7 @@
     $("lblExact").textContent = t("exact");
     $("fProj").children[0] && ($("fProj").children[0].textContent = t("allProj"));
     $("fMade").innerHTML = t("made") + ' <a href="https://t.me/Abolfazl_rwm" target="_blank" rel="noopener">Abolfazl — @Abolfazl_rwm</a>';
+    $("statsLink").innerHTML = t("statsLbl");
     localStorage.setItem("cs_lang", state.lang);
     if (IDX) renderStats();
     renderResults();

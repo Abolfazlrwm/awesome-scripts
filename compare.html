@@ -191,7 +191,8 @@
   <div class="header-inner">
     <a class="brand" href="./"><span class="logo">🤖</span><span>Awesome&nbsp;Scripts</span><small id="tSub"></small></a>
     <div class="header-actions">
-      <a class="icon-btn" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">🔍 <span id="codeSearchLink">Code</span></a>
+      <a class="icon-btn" href="search.html" id="codeSearchLink">🔍 <span id="codeSearchLink">Code</span></a>
+      <a class="icon-btn" href="stats.html" id="statsLink">📊 <span id="statsLink">Stats</span></a>
       <a class="icon-btn" href="https://github.com/Abolfazlrwm/awesome-scripts" target="_blank" rel="noopener">⭐ GitHub</a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☀️</button>
       <button class="icon-btn" id="langBtn" type="button" aria-label="Toggle language">فا</button>
@@ -294,7 +295,7 @@
       mLoc: "Lines of code", mSize: "Size", mDemo: "Live demo", mCode: "Source code",
       yes: "▶ Run demo", no: "—", viewCode: "💻 View code",
       bots: "Telegram bots", web: "Web tools", desktop: "Desktop tools",
-      proj: "projects", gen: "Stats generated", made: "Made with ♥ — open the", gallery: "interactive gallery", themeLight: "☀️", themeDark: "🌙", faBtn: "فا", code: "🔍 Code"
+      proj: "projects", gen: "Stats generated", made: "Made with ♥ — open the", gallery: "interactive gallery", themeLight: "☀️", themeDark: "🌙", faBtn: "فا", code: "🔍 Code", stats: "📊 Stats"
     },
     fa: {
       sub: "· ماتریس", title: "⚖️ ماتریس پروژه‌ها", desc: "هر ۱۰۹ پروژه با اعداد واقعی — فیلتر، مرتب‌سازی و مقایسه‌ی ۴تایی کنار هم.",
@@ -310,7 +311,7 @@
       mLoc: "خط کد", mSize: "حجم", mDemo: "دموی زنده", mCode: "سورس",
       yes: "▶ اجرای دمو", no: "—", viewCode: "💻 مشاهده‌ی کد",
       bots: "ربات‌های تلگرام", web: "ابزارهای وب", desktop: "ابزارهای دسکتاپ",
-      proj: "پروژه", gen: "آمار تولیدشده", made: "ساخته‌شده با ♥ — برو به", gallery: "گالری تعاملی", themeLight: "☀️", themeDark: "🌙", faBtn: "EN", code: "🔍 کد"
+      proj: "پروژه", gen: "آمار تولیدشده", made: "ساخته‌شده با ♥ — برو به", gallery: "گالری تعاملی", themeLight: "☀️", themeDark: "🌙", faBtn: "EN", code: "🔍 کد", stats: "📊 آمار"
     }
   };
   var CAT_KEY = { "telegram-bot": "bots", "web-tool": "web", "desktop-tool": "desktop" };
@@ -392,6 +393,7 @@
     $("cmTitle").textContent = t("cmTitle");
     $("fMade").innerHTML = t("made") + ' <a href="./">' + t("gallery") + "</a>";
     $("codeSearchLink").innerHTML = t("code");
+    $("statsLink").innerHTML = t("stats");
     buildSelects();
     renderTotals();
     render();
