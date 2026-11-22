@@ -44,6 +44,10 @@
 
 **📲 PWA و لینک‌های اشتراکی** — سایت به‌صورت اپ نصب می‌شود (Service Worker، کارکرد آفلاین) و هر ترکیب جست‌وجو/فیلتر یک URL قابل اشتراک است؛ مثلاً `?q=tetris&demo=1`. هدر سایت دکمه‌ی 🎲 پروژه‌ی تصادفی، چیپ 🚀 آخرین ریلیز و ⬇️ دانلود مستقیم ZIP دارد.
 
+**🔍 Code Search** — grep-style search across **all 474 source files** (~158,000 lines) of every project: find any identifier, string or comment — e.g. [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — with direct links to the exact file and line on GitHub. The index is prebuilt and gzip-compressed (~2.6 MB, cached offline by the service worker).
+
+**🔍 جست‌وجوی کد** — جست‌وجوی grep-مانند در **همه‌ی ۴۷۴ فایل سورس** (~۱۵۸ هزار خط) تمام پروژه‌ها: هر شناسه، رشته یا کامنت — مثلاً [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — با لینک مستقیم به فایل و خط دقیق در گیت‌هاب؛ ایندکس از قبل ساخته و فشرده شده (~۲.۶ مگابایت، با Service Worker آفلاین هم می‌ماند).
+
 
 ## 🎬 Try it in one click — محصولات شاخص
 
@@ -79,7 +83,8 @@ awesome-scripts/
 ├── desktop/     # 6 desktop utilities
 ├── index.html   # interactive live gallery (GitHub Pages)
 ├── compare.html # ⚖️ project matrix — per-project stats, filters, 4-way compare
-├── data/        # catalog.json/js · stats.json/js — generated, do not edit
+├── search.html  # 🔍 grep-style code search across every source file
+├── data/        # catalog.json/js · stats.json/js · code-index/texts .json.gz — generated, do not edit
 ├── tools/       # catalog generator · validator · scaffolder · sitemap
 ├── assets/      # OG banner · favicons · gallery screenshot
 └── .github/     # CI: lint · validate · link-check · CodeQL · release · Pages
@@ -254,6 +259,9 @@ python tools/generate_catalog.py --check
 # quality gate: every project folder must ship a README + runnable code, and no
 # secrets (tokens, API keys, credential literals) may be committed anywhere
 python tools/validate_projects.py
+
+# rebuild the global code-search index consumed by search.html
+python tools/generate_code_index.py
 ```
 
 Both checks run automatically on every push and PR via the **Validate** workflow, and tagged
@@ -426,6 +434,9 @@ python tools/generate_catalog.py --check
 # دروازه کیفیت: هر پوشه‌ی پروژه باید README + کد قابل اجرا داشته باشد و
 # هیچ توکن یا کلید مخفی‌ای در هیچ‌جای مخزن نباشد
 python tools/validate_projects.py
+
+# ایندکس جست‌وجوی کد را برای search.html از نو بساز
+python tools/generate_code_index.py
 ```
 
 هر دو چک به‌صورت خودکار روی هر پش و PR با ورک‌فلو **Validate** اجرا می‌شوند و تگ‌های نسخه (`v*`) با ورک‌فلو **Release** به [ریلیز گیت‌هاب](https://github.com/Abolfazlrwm/awesome-scripts/releases) با یادداشت و فایل ZIP تبدیل می‌شوند.
