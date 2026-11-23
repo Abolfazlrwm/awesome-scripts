@@ -28,7 +28,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECT_DIRS = [REPO_ROOT / d for d in ("bots", "web", "desktop")]
 
-CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".c", ".h", ".ps1", ".html"}
+CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".c", ".h", ".ps1", ".html", ".lua"}
 SCAN_EXTS = CODE_EXTS | {".json", ".yml", ".yaml", ".txt", ".md", ".css", ".xml", ".sh", ".env", ".example", ".cfg", ".ini"}
 SCAN_NAME_EXTRA = {".env", ".env.example", ".gitignore", "string.json", "update.json"}
 

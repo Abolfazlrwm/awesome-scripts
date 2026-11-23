@@ -3,10 +3,10 @@
 # 🤖 Awesome Scripts
 
 <p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
-**138 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
+**192 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
-![Projects](https://img.shields.io/badge/projects-138-blue)
+![Projects](https://img.shields.io/badge/projects-192-blue)
 ![License](https://img.shields.io/github/license/Abolfazlrwm/awesome-scripts)
 [![Lint](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/lint.yml)
 [![Validate](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml/badge.svg)](https://github.com/Abolfazlrwm/awesome-scripts/actions/workflows/validate.yml)
@@ -21,7 +21,7 @@
 </div>
 
 > [!NOTE]
-> **Scope: community utility collection.** 138 small, practical scripts, bots
+> **Scope: community utility collection.** 192 small, practical scripts, bots
 > and tools — breadth, not depth. This is not where I demonstrate engineering
 > depth; the flagship projects are pinned on [my profile](https://github.com/Abolfazlrwm).
 
@@ -36,21 +36,21 @@
 **[▶ مشاهده‌ی زنده‌ی همه‌ی پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/)** — جست‌وجوی زنده، فیلتر دسته/زبان، علاقه‌مندی‌ها و پیش‌نمایش واقعی داخل مودال؛ انتشار خودکار با **GitHub Actions** در هر push.
 <p align="center"><a href="https://abolfazlrwm.github.io/awesome-scripts/"><img src="assets/site-demo.gif" alt="walkthrough — search, live preview, project matrix" width="85%"></a></p>
 
-**⏱ 40-second walkthrough** — live search → in-modal product preview → the **⚖️ [Project Matrix](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: all 138 projects measured (files · lines of code · size) with advanced filters and side-by-side comparison of up to 4 projects.
+**⏱ 40-second walkthrough** — live search → in-modal product preview → the **⚖️ [Project Matrix](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: all 192 projects measured (files · lines of code · size) with advanced filters and side-by-side comparison of up to 4 projects.
 
-**⏱ ویدیوی چهل‌ثانیه‌ای** — جست‌وجوی زنده → پیش‌نمایش محصول داخل مودال → **⚖️ [ماتریس پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: همه‌ی ۱۰۹ پروژه با تعداد فایل، خط کد و حجم + فیلترهای پیشرفته و مقایسه‌ی کنارِ‌هم تا ۴ پروژه.
+**⏱ ویدیوی چهل‌ثانیه‌ای** — جست‌وجوی زنده → پیش‌نمایش محصول داخل مودال → **⚖️ [ماتریس پروژه‌ها](https://abolfazlrwm.github.io/awesome-scripts/compare.html)**: همه‌ی ۱۹۲ پروژه با تعداد فایل، خط کد و حجم + فیلترهای پیشرفته و مقایسه‌ی کنارِ‌هم تا ۴ پروژه.
 
 **📲 PWA & shareable views** — the gallery installs as an app (service worker, offline shell) and every search/filter combo is a shareable URL — try `?q=tetris&demo=1` or `?fa=1`. The header has a 🎲 random-project button, a 🚀 latest-release chip and ⬇️ one-click ZIP download.
 
 **📲 PWA و لینک‌های اشتراکی** — سایت به‌صورت اپ نصب می‌شود (Service Worker، کارکرد آفلاین) و هر ترکیب جست‌وجو/فیلتر یک URL قابل اشتراک است؛ مثلاً `?q=tetris&demo=1`. هدر سایت دکمه‌ی 🎲 پروژه‌ی تصادفی، چیپ 🚀 آخرین ریلیز و ⬇️ دانلود مستقیم ZIP دارد.
 
-**🔍 Code Search** — grep-style search across **all 604 source files** (~218,000 lines) of every project: find any identifier, string or comment — e.g. [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — with direct links to the exact file and line on GitHub. The index is prebuilt and gzip-compressed (~3.3 MB, cached offline by the service worker).
+**🔍 Code Search** — grep-style search across **all 1,260 source files** (~419,000 lines) of every project: find any identifier, string or comment — e.g. [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — with direct links to the exact file and line on GitHub. The index is prebuilt and gzip-compressed (~5.3 MB, cached offline by the service worker).
 
-**🔍 جست‌وجوی کد** — جست‌وجوی grep-مانند در **همه‌ی ۶۰۴ فایل سورس** (~۲۱۸ هزار خط) تمام پروژه‌ها: هر شناسه، رشته یا کامنت — مثلاً [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — با لینک مستقیم به فایل و خط دقیق در گیت‌هاب؛ ایندکس از قبل ساخته و فشرده شده (~۳.۳ مگابایت، با Service Worker آفلاین هم می‌ماند).
+**🔍 جست‌وجوی کد** — جست‌وجوی grep-مانند در **همه‌ی ۱٬۲۶۰ فایل سورس** (~۴۱۹ هزار خط) تمام پروژه‌ها: هر شناسه، رشته یا کامنت — مثلاً [`aiogram`](https://abolfazlrwm.github.io/awesome-scripts/search.html?q=aiogram) — با لینک مستقیم به فایل و خط دقیق در گیت‌هاب؛ ایندکس از قبل ساخته و فشرده شده (~۵.۳ مگابایت، با Service Worker آفلاین هم می‌ماند).
 
-**📊 Stats & Growth** — [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) measures the whole history straight from git: one data point per release tag (38 projects / 53k lines at v1.0.0 → 138 / 243k today), language share, top-15 biggest projects and the monthly commit pulse. Zero chart libraries — hand-rolled SVG, bilingual, offline.
+**📊 Stats & Growth** — [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) measures the whole history straight from git: one data point per release tag (38 projects / 53k lines at v1.0.0 → 192 / 425k today), language share, top-15 biggest projects and the monthly commit pulse. Zero chart libraries — hand-rolled SVG, bilingual, offline.
 
-**📊 آمار و رشد** — صفحه‌ی [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) کل تاریخچه را مستقیم از گیت اندازه می‌گیرد: یک نقطه به‌ازای هر ریلیز (۳۸ پروژه/۵۳ هزار خط در v1.0.0 → ۱۳۸/۲۴۳ هزار خط امروز)، سهم زبان‌ها، ۱۵ پروژه‌ی بزرگ‌تر و ضربان ماهانه‌ی کامیت‌ها؛ بدون هیچ کتابخانه‌ی نمودار — SVG دست‌ساز، دوزبانه و آفلاین.
+**📊 آمار و رشد** — صفحه‌ی [stats.html](https://abolfazlrwm.github.io/awesome-scripts/stats.html) کل تاریخچه را مستقیم از گیت اندازه می‌گیرد: یک نقطه به‌ازای هر ریلیز (۳۸ پروژه/۵۳ هزار خط در v1.0.0 → ۱۹۲/۴۲۵ هزار خط امروز)، سهم زبان‌ها، ۱۵ پروژه‌ی بزرگ‌تر و ضربان ماهانه‌ی کامیت‌ها؛ بدون هیچ کتابخانه‌ی نمودار — SVG دست‌ساز، دوزبانه و آفلاین.
 
 
 ## 🎬 Try it in one click — محصولات شاخص
@@ -74,7 +74,7 @@ Six of the flagship web tools — every thumbnail is clickable: **▶ opens the 
 
 ## ✨ About
 
-Every project here is a **complete, runnable application** — not a snippet. Projects are grouped by type — [`bots/`](./bots) (87 Telegram bots), [`web/`](./web) (44 browser tools) and [`desktop/`](./desktop) (7 utilities) — open any folder, follow its README, and you have a working bot, tool or site in minutes. The collection spans **11 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, HTML/CSS/JS) and everything is released under MIT.
+Every project here is a **complete, runnable application** — not a snippet. Projects are grouped by type — [`bots/`](./bots) (136 Telegram bots), [`web/`](./web) (49 browser tools) and [`desktop/`](./desktop) (7 utilities) — open any folder, follow its README, and you have a working bot, tool or site in minutes. The collection spans **12 languages** (Python, JavaScript, Node.js, PHP, C#, Java, C++, PowerShell, Lua, HTML/CSS/JS) and everything is released under MIT.
 
 > 🧭 Prefer browsing? Open the **[interactive catalog](https://abolfazlrwm.github.io/awesome-scripts/)** — live search, category/language filters, dark mode and full Persian (RTL) mode. Stable versions are published under [Releases](https://github.com/Abolfazlrwm/awesome-scripts/releases).
 
@@ -82,9 +82,9 @@ Every project here is a **complete, runnable application** — not a snippet. Pr
 
 ```text
 awesome-scripts/
-├── bots/        # 63 Telegram bots (Python · PHP · Node.js)
-├── web/         # 40 browser tools — offline single-file HTML apps
-├── desktop/     # 6 desktop utilities
+├── bots/        # 136 Telegram bots (Python · PHP · Node.js · Lua)
+├── web/         # 49 browser tools — offline single-file HTML apps
+├── desktop/     # 7 desktop utilities
 ├── index.html   # interactive live gallery (GitHub Pages)
 ├── compare.html # ⚖️ project matrix — per-project stats, filters, 4-way compare
 ├── search.html  # 🔍 grep-style code search across every source file
@@ -124,7 +124,7 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 
 ## 📦 Catalog
 
-### 🤖 Telegram bots — 87
+### 🤖 Telegram bots — 136
 
 | Project | Lang | What it does |
 | --- | --- | --- |
@@ -216,7 +216,57 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [kaj-anonymous-bot](./bots/kaj-anonymous-bot) | PHP | Anonymous chat with per-character pricing — first 7 chars free, Zarinpal gateway, Jalali dates |
 | [coin-bet-game-bot](./bots/coin-bet-game-bot) | PHP | Coin-flip betting game — balances, deposit/withdraw requests, transfers, admin panel (in-game currency only) |
 
-### 🌐 Web tools — 44
+| [chronicle-selfbot](./bots/chronicle-selfbot) | Python | CLI Telethon selfbot with a terminal panel and general userbot tooling |
+| [cloudflare-manager-bot](./bots/cloudflare-manager-bot) | Python | Manage Cloudflare DNS/account from Telegram via the REST API |
+| [anti-login-selfbot](./bots/anti-login-selfbot) | Python | Guard your session — `antilogin on/off` kills unknown active logins |
+| [channel-username-tool](./bots/channel-username-tool) | Python | Bulk-create channels and claim usernames with FloodWait handling |
+| [python-uploader-bot](./bots/python-uploader-bot) | Python | File uploader with an inline admin panel (captions, start message) |
+| [hideme-chat-bot](./bots/hideme-chat-bot) | Python | Anonymous chat with gender picker, coin/cash referrals, admin panel |
+| [save-media-bot](./bots/save-media-bot) | PHP | Mirror channel media into a storage channel with link previews |
+| [parsi-support-bot](./bots/parsi-support-bot) | PHP | Support desk bot — user messages reach support, replies go straight back |
+| [cloudflare-ip-bot](./bots/cloudflare-ip-bot) | PHP | Fetch and serve healthy Cloudflare edge IPs |
+| [github-search-bot](./bots/github-search-bot) | Python | Search GitHub repos, read READMEs and trends inside Telegram |
+| [media-compressor-bot](./bots/media-compressor-bot) | Python | Compress video (H.265) and images with ffmpeg |
+| [quick-search-bot](./bots/quick-search-bot) | PHP | Minimal search bot — user text becomes a query, results come back |
+| [telegram-post-worker](./bots/telegram-post-worker) | JavaScript | Serverless post manager on Cloudflare Workers — staged posts, targets, admin panel |
+| [remote-admin-bot](./bots/remote-admin-bot) | Python | Remote-control connected accounts with file routing, admin-only |
+| [telethon-pro-selfbot](./bots/telethon-pro-selfbot) | Python | Profile tools, reactions, group calls and cron scheduling on Telethon |
+| [selfsaz-plugin-selfbot](./bots/selfsaz-plugin-selfbot) | Python | Telethon selfbot with a dynamic plugin loader and 87 ready plugins |
+| [ultra-self-bot](./bots/ultra-self-bot) | Python | Lightweight Ultra Self V1.0 Telethon selfbot with a separate config |
+| [hxd3-selfbot](./bots/hxd3-selfbot) | Python | Third lightweight iteration of the HxD Pyrogram family |
+| [clock-bio-userbot](./bots/clock-bio-userbot) | Python | Live clock with colored hearts in your name/bio, auto-updated each minute |
+| [tron-deposit-bot](./bots/tron-deposit-bot) | Python | TRON gateway bot — per-user wallets, TRX/Toman withdrawals, admin panel |
+| [parsi-ai-chat-bot](./bots/parsi-ai-chat-bot) | PHP | Private AI chat with per-user usage counting and daily stats |
+| [pirce-currency-bot](./bots/pirce-currency-bot) | PHP | Currency rates with half/double/refresh buttons and a `calc` command |
+| [proxy-join-toolkit](./bots/proxy-join-toolkit) | PHP | Proxy bot + force-join check widget returning JSON |
+| [channel-mirror-bot](./bots/channel-mirror-bot) | PHP | Auto-mirror posts from source channels into one target channel |
+| [botbiso-wheel-game-bot](./bots/botbiso-wheel-game-bot) | PHP | Wheel-of-fortune coin game with rounds, referrals and an admin panel |
+| [faker-profile-bot](./bots/faker-profile-bot) | Python | Faker(fa) profiles + channel joins across multiple accounts |
+| [channel-media-manager-bot](./bots/channel-media-manager-bot) | PHP | Channel media manager — captions, auto-seen, timed deletion |
+| [clash-clan-bot](./bots/clash-clan-bot) | PHP | Clan registration bot for Clash Royale / Clash of Clans |
+| [nextpay-vpn-seller](./bots/nextpay-vpn-seller) | PHP | VPN subscription seller wired to the Nextpay gateway |
+| [markov-text-model](./bots/markov-text-model) | Python | Markov-chain text model with a Wikipedia data receiver |
+| [pinterest-downloader-bot](./bots/pinterest-downloader-bot) | PHP | Extract and send original images from Pinterest pins |
+| [xshare2bot](./bots/xshare2bot) | PHP | Save & share Telegram posts with short links and view counts |
+| [source-arz-selfbot](./bots/source-arz-selfbot) | Python | Telethon selfbot shipping 186 independent plugins |
+| [ptb-group-manager-bot](./bots/ptb-group-manager-bot) | Python | Full group manager on PTB — admin panel, filters, account-age checks |
+| [whisper-group-bot](./bots/whisper-group-bot) | Python | In-group whisper messages with unique IDs and logging |
+| [virtual-number-shop](./bots/virtual-number-shop) | PHP | Virtual-number shop with a web installer, admin panel and payments |
+| [madeline-tabchi-php](./bots/madeline-tabchi-php) | PHP | Full tabchi on MadelineProto v8 — admin panel, stats, broadcast |
+| [blackdiamond-userbot](./bots/blackdiamond-userbot) | Lua | tdlua-based userbot with role levels, global bans and bundled libs |
+| [currency-rate-php-bot](./bots/currency-rate-php-bot) | PHP | Currency bot with a calc command and a bootstrap web face |
+| [lottery-account-php-bot](./bots/lottery-account-php-bot) | PHP | Lottery bot with LiteSpeed fast-finish responses and Jalali dates |
+| [slow-bet-bot](./bots/slow-bet-bot) | PHP | Large single-file betting panel — balances, Jalali dates, admin tools |
+| [slow-clan-game-bot](./bots/slow-clan-game-bot) | PHP | Clan game with per-room engines, gift codes and daily rewards |
+| [slow-finder-bot](./bots/slow-finder-bot) | PHP | Phone finder by numeric ID with anti-spam cooldown and tutorials |
+| [slow-like-bot](./bots/slow-like-bot) | PHP | Like system with hashed records and channel force-join |
+| [slow-seen-bot](./bots/slow-seen-bot) | PHP | View/seen seller with a standalone ZarinPal payment panel (RTL) |
+| [slow-uploader-bot](./bots/slow-uploader-bot) | PHP | Uploader with auto getMe identification, Jalali dates, fast responses |
+| [mafia-game-bot](./bots/mafia-game-bot) | PHP | Mafia party game — 9/12-player modes, role distribution, day/night |
+| [vak-sms-bot](./bots/vak-sms-bot) | PHP | Buy virtual numbers via the vak-sms service, read OTPs, cancel orders |
+| [makoran-chat-bot](./bots/makoran-chat-bot) | PHP | Anonymous chat with random pairing, reports and an RTL payment panel |
+
+### 🌐 Web tools — 49
 
 | Project | Lang | What it does | Live demo |
 | --- | --- | --- | --- |
@@ -265,6 +315,12 @@ Most bots only need a token from [@BotFather](https://t.me/BotFather) and an adm
 | [temp-mail-api](./web/temp-mail-api) | PHP | Single-file wrapper for the temp-mail.io v2 API — disposable inboxes and message reading, clean JSON output |
 | [vpn-service-landing](./web/vpn-service-landing) | HTML/CSS | Persian VPN-service landing — remaining-service-days display, custom styling | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/vpn-service-landing/) |
 | [login-form-template](./web/login-form-template) | HTML/CSS | Persian RTL login form template — full Vazirmatn font family, modular SCSS sources | [demo](https://abolfazlrwm.github.io/awesome-scripts/web/login-form-template/) |
+| [fake-avatar-fetcher](./web/fake-avatar-fetcher) | PHP | Fetch randomuser.me avatars, store them and return JSON |
+| [arzdigital-price-api](./web/arzdigital-price-api) | PHP | Crypto price JSON API over ArzDigital with file caching |
+| [wireguard-config-panel](./web/wireguard-config-panel) | HTML/CSS/JS | Single-file Persian panel for composing WireGuard configs |
+| [public-api-suite](./web/public-api-suite) | PHP | Bundle of standalone JSON APIs — Digikala search, OCR, temp mail and more |
+| [web-services-directory](./web/web-services-directory) | PHP | Web-services directory site with an admin panel and view stats |
+
 ### 🖥 Desktop tools — 7
 
 | Project | Lang | What it does |
@@ -333,7 +389,7 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 
 ### 📦 فهرست پروژه‌ها
 
-#### 🤖 ربات‌های تلگرام (87)
+#### 🤖 ربات‌های تلگرام (136)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -425,7 +481,57 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [💬 چت ناشناس کاج](./bots/kaj-anonymous-bot) | PHP | چت ناشناس با قیمت per-حرف (۷ حرف مجانی) — درگاه زرین‌پال و تاریخ شمسی |
 | [🎲 شرط سکه](./bots/coin-bet-game-bot) | PHP | بازی شرط سکه‌ای با MySQL — موجودی، برداشت، انتقال و پنل ادمین (فقط ارز درون‌بازی) |
 
-#### 🌐 ابزارهای وب (44)
+| [🧵 سلف Chronicle](./bots/chronicle-selfbot) | Python | سلف CLI با پنل ترمینال و ابزارهای عمومی یوزربات |
+| [🌩 مدیریت کلودفلر](./bots/cloudflare-manager-bot) | Python | مدیریت DNS و اکانت کلودفلر از تلگرام با REST API |
+| [🛡 محافظ نشست](./bots/anti-login-selfbot) | Python | قطع نشست‌های ناشناس اکانت با antilogin روشن/خاموش |
+| [🏷 یوزرنیم کانال](./bots/channel-username-tool) | Python | ساخت گروهی کانال و گرفتن یوزرنیم با مدیریت خطاها |
+| [📤 آپلودر پایتونی](./bots/python-uploader-bot) | Python | آپلودر فایل با پنل ادمین و کپشن دلخواه |
+| [🕵 چت ناشناس HideMe](./bots/hideme-chat-bot) | Python | چت تصادفی با جنسیت، رفال سکه/پول و پنل پیشرفته |
+| [💾 ذخیره مدیا](./bots/save-media-bot) | PHP | فوروارد مدیای کانال‌ها به کانال ذخیره با پیش‌نمایش لینک |
+| [📮 پشتیبانی پارسی](./bots/parsi-support-bot) | PHP | دفتر پشتیبانی — پیام کاربر به پشتیبانی، پاسخ مستقیم به کاربر |
+| [☁️ IP سالم کلودفلر](./bots/cloudflare-ip-bot) | PHP | استخراج و ارسال IPهای سالم کلودفلر |
+| [🔎 جستجوی گیت‌هاب](./bots/github-search-bot) | Python | جستجوی ریپو، خواندن README و ترندها داخل تلگرام |
+| [🗜 فشرده‌ساز مدیا](./bots/media-compressor-bot) | Python | فشرده‌سازی ویدیو H.265 و تصویر با ffmpeg |
+| [⚡ جستجوگر کوچک](./bots/quick-search-bot) | PHP | ربات PHP مینیمال جستجو با پاسخ سریع |
+| [📦 پست Worker](./bots/telegram-post-worker) | JavaScript | مدیریت پست بدون سرور روی Cloudflare Workers |
+| [🎛 کنترل ریموت](./bots/remote-admin-bot) | Python | مدیریت ریموت اکانت‌های متصل با دسترسی ادمین |
+| [🧰 سلف حرفه‌ای Telethon](./bots/telethon-pro-selfbot) | Python | ابزار پروفایل، واکنش، تماس گروهی و زمان‌بندی cron |
+| [🧩 سلف پلاگین SelfSaz](./bots/selfsaz-plugin-selfbot) | Python | لودر پلاگین با ۸۷ پلاگین آماده، سکه و گزارش باگ |
+| [⚡ سلف Ultra](./bots/ultra-self-bot) | Python | سلف سبک Telethon با کانفیگ جدا — Ultra Self V1.0 |
+| [🧪 سلف HxD3](./bots/hxd3-selfbot) | Python | نسخه‌ی سوم سبک خانواده‌ی HxD روی Pyrogram |
+| [🕰 ساعت زنده در بیو](./bots/clock-bio-userbot) | Python | ساعت با قلب‌های رنگی در نام/بیو، به‌روزرسانی هر دقیقه |
+| [💠 درگاه ترون](./bots/tron-deposit-bot) | Python | کیف پول ترون per-user، برداشت ترون/تومان و پنل ادمین |
+| [🤖 چت هوشمند پارسی](./bots/parsi-ai-chat-bot) | PHP | چت AI خصوصی با شمارش مصرف و آمار روزانه |
+| [💱 نرخ ارز Pirce](./bots/pirce-currency-bot) | PHP | دکمه‌های نصف/دوبل/بروزرسانی نرخ و دستور calc |
+| [🧲 پروکسی و جوین](./bots/proxy-join-toolkit) | PHP | ربات پروکسی‌یاب + ویجت چک عضویت با خروجی JSON |
+| [🪞 آینه کانال](./bots/channel-mirror-bot) | PHP | بازنشر خودکار پست کانال‌های مبدأ به کانال مقصد |
+| [🎡 گردونه BotBiso](./bots/botbiso-wheel-game-bot) | PHP | گردونه‌ی سکه با دورها، زیرمجموعه‌گیری و پنل مدیریت |
+| [🎭 پروفایل Faker](./bots/faker-profile-bot) | Python | پروفایل تصادفی فارسی و عضویت چند اکانت با Telethon |
+| [📼 مدیر مدیای کانال](./bots/channel-media-manager-bot) | PHP | کپشن، سین خودکار، حذف زمان‌دار مدیا و تبلیغ |
+| [🏰 ثبت‌نام کلن](./bots/clash-clan-bot) | PHP | ثبت‌نام کلن Clash با قوانین و تصویر بازیکن |
+| [🛰 فروش اشتراک Nextpay](./bots/nextpay-vpn-seller) | PHP | فروش اشتراک VPN با درگاه Nextpay و قیمت یورویی |
+| [🧠 مدل مارکوف](./bots/markov-text-model) | Python | زنجیره‌ی مارکوف با دریافت دیتا از ویکی‌پدیا |
+| [📌 دانلودر پینترست](./bots/pinterest-downloader-bot) | PHP | استخراج و ارسال تصویر اصلی پین‌های پینترست |
+| [🔗 XShare2](./bots/xshare2bot) | PHP | ذخیره و اشتراک پست با لینک کوتاه و آمار بازدید |
+| [🧱 سلف Source-Arz](./bots/source-arz-selfbot) | Python | یوزربات Telethon با ۱۸۶ پلاگین مستقل |
+| [👮 مدیر گروه PTB](./bots/ptb-group-manager-bot) | Python | پنل ادمین، فیلترها، سن اکانت و ماژول نرخ ارز |
+| [🤫 نجوا](./bots/whisper-group-bot) | Python | پیام خصوصی داخل گروه با شناسه‌ی یکتا و لاگ |
+| [📱 فروشگاه شماره مجازی](./bots/virtual-number-shop) | PHP | نصب‌کننده‌ی وب، پنل مدیریت و بخش پرداخت |
+| [📣 تبچی MadelineProto](./bots/madeline-tabchi-php) | PHP | تبچی کامل PHP با پنل، آمار و ارسال همگانی |
+| [🖤 BlackDiamond Lua](./bots/blackdiamond-userbot) | Lua | یوزربات tdlua با سطوح دسترسی، بن گلوبال و کتابخانه‌ها |
+| [📈 نرخ ارز PHP](./bots/currency-rate-php-bot) | PHP | استعلام و calc ارز با رابط وب bootstrap |
+| [🎟 قرعه‌کشی PHP](./bots/lottery-account-php-bot) | PHP | قرعه‌کشی سریع LiteSpeed با تاریخ شمسی |
+| [🎲 شرط‌بندی SlowBet](./bots/slow-bet-bot) | PHP | پنل کامل شرط‌بندی در یک فایل PHP |
+| [🗡 بازی قبیله SlowCreate](./bots/slow-clan-game-bot) | PHP | قبیله، کد هدیه، امتیاز روزانه و شرط‌بندی درون‌بازی |
+| [🔍 جستجوی شماره](./bots/slow-finder-bot) | PHP | جستجوی شماره با ID عددی، ضد-اسپم و آموزش تصویری |
+| [👍 لایک SlowLike](./bots/slow-like-bot) | PHP | سامانه لایک با هش یکتا و عضویت اجباری |
+| [👁 فروش بازدید](./bots/slow-seen-bot) | PHP | فروش سین با پنل پرداخت زرین‌پال و طراحی RTL |
+| [🚀 آپلودر Slow](./bots/slow-uploader-bot) | PHP | آپلودر PHP با getMe خودکار و تاریخ شمسی |
+| [🕵️‍♂️ مافیا](./bots/mafia-game-bot) | PHP | بازی مافیا ۹ و ۱۲ نفره با شب/روز و توزیع نقش |
+| [☎️ شماره vak-sms](./bots/vak-sms-bot) | PHP | خرید شماره مجازی و خواندن OTP از وب‌سرویس |
+| [💬 چت Makoran](./bots/makoran-chat-bot) | PHP | چت ناشناس با گزارش تخلف و پنل پرداخت RTL |
+
+#### 🌐 ابزارهای وب (49)
 
 | پروژه | زبان | توضیح کوتاه |
 | --- | --- | --- |
@@ -474,6 +580,12 @@ Released under the [MIT License](./LICENSE). If this collection saved you time, 
 | [📮 میل موقت](./web/temp-mail-api) | PHP | wrapper تک‌فایلی روی API میل موقت temp-mail.io — صندوق یک‌بارمصرف با خروجی JSON |
 | [🛡 لندینگ VPN](./web/vpn-service-landing) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/vpn-service-landing/) | HTML/CSS | لندینگ فارسی سرویس VPN — نمایش باقی‌مانده‌ی سرویس با استایل اختصاصی |
 | [🔐 فرم ورود فارسی](./web/login-form-template) · [دمو زنده](https://abolfazlrwm.github.io/awesome-scripts/web/login-form-template/) | HTML/CSS | قالب فرم ورود RTL با فونت وزیرمتن و SCSS ماژولار |
+| [🖼 آواتار تصادفی](./web/fake-avatar-fetcher) | PHP | سرویس PHP آواتار تصادفی randomuser با خروجی JSON |
+| [📊 قیمت ارز API](./web/arzdigital-price-api) | PHP | API قیمت ارز دیجیتال با کش فایل ۵ دقیقه‌ای |
+| [🧾 پنل WireGuard](./web/wireguard-config-panel) | HTML/CSS/JS | صفحه‌ی تک‌فایلی فارسی ساخت کانفیگ WireGuard |
+| [🧫 مجموعه API](./web/public-api-suite) | PHP | بسته APIهای مستقل — دیجی‌کالا، OCR، ایمیل موقت و… |
+| [🗂 دایرکتوری وب‌سرویس](./web/web-services-directory) | PHP | سایت مرجع وب‌سرویس‌ها با پنل مدیریت و آمار بازدید |
+
 #### 🖥 ابزارهای دسکتاپ (7)
 
 | پروژه | زبان | توضیح کوتاه |

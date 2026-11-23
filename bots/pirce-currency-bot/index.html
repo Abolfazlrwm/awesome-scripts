@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        #crypto-container {
+            padding: 20px;
+            max-width: 300px;
+            margin: 0 auto;
+            display: none;
+            overflow-x: hidden;
+        }
+
+        #crypto-search {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .crypto-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .crypto-item img {
+            width: 30px;
+            height: 30px;
+            margin-left: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: opacity 0.1s ease-in-out;
+            opacity: 0; /* نمایش سریع‌تر تصویر */
+        }
+
+        .crypto-item span {
+            font-size: 16px;
+        }
+
+        .crypto-item:hover {
+            color: #007bff;
+            background-color: #f0f0f0;
+        }
+
+        .crypto-name {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .crypto-price {
+            text-align: right;
+            margin-left: 10px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="crypto-container">
+        <input type="text" id="crypto-search" placeholder="Search for cryptocurrency...">
+        <div id="crypto-list"></div>
+    </div>
+
+    <div class="loading" id="loading">Loading...</div>
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cachedData = localStorage.getItem('cryptoData');
+            if (cachedData) {
+                displayCryptos(JSON.parse(cachedData));
+            } else {
+                fetchCryptoData();
+            }
+
+            const searchInput = document.getElementById('crypto-search');
+            searchInput.addEventListener('input', filterCryptos);
+
+            setInterval(fetchCryptoData, 10000);
+        });
+
+        async function fetchCryptoData() {
+            const perPage = 250;
+            const pages = 4;
+            let allData = [];
+
+            try {
+                const loading = document.getElementById('loading');
+                loading.style.display = 'block';
+
+                const requests = [];
+                for (let i = 1; i <= pages; i++) {
+                    requests.push(fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=${i}`).then(res => res.json()));
+                }
+                const results = await Promise.all(requests);
+                results.forEach(data => {
+                    allData = allData.concat(data);
+                });
+
+                localStorage.setItem('cryptoData', JSON.stringify(allData));
+
+                displayCryptos(allData);
+            } catch (error) {
+                console.error('Error fetching cryptocurrency data:', error);
+            }
+        }
+
+        function displayCryptos(data) {
+            const cryptoContainer = document.getElementById('crypto-container');
+            const cryptoList = document.getElementById('crypto-list');
+            const loading = document.getElementById('loading');
+
+            cryptoList.innerHTML = '';
+
+            data.forEach(crypto => {
+                const cryptoItem = document.createElement('div');
+                cryptoItem.className = 'crypto-item';
+                cryptoItem.innerHTML = `
+                    <div class="crypto-name">
+                        <img src="${crypto.image}" alt="${crypto.name}" onload="this.style.opacity=1;">
+                        <span>${crypto.name}</span>
+                    </div>
+                    <div class="crypto-price">
+                        <span>${crypto.current_price} USD</span>
+                    </div>
+                `;
+
+                // انتقال به صفحه بارش لوگو با پارامتر image
+                cryptoItem.addEventListener('click', () => {
+                    window.location.href = `rain.html?image=${crypto.image}`;
+                });
+
+                cryptoList.appendChild(cryptoItem);
+            });
+
+            loading.style.display = 'none';
+            cryptoContainer.style.display = 'block';
+            cryptoContainer.style.opacity = 0;
+            setTimeout(() => {
+                cryptoContainer.style.transition = 'opacity 0.5s ease';
+                cryptoContainer.style.opacity = 1;
+            }, 50);
+        }
+
+        function filterCryptos() {
+            const searchValue = document.getElementById('crypto-search').value.toLowerCase();
+            const cryptoItems = document.querySelectorAll('.crypto-item');
+
+            cryptoItems.forEach(item => {
+                const cryptoName = item.querySelector('.crypto-name span').textContent.toLowerCase();
+                if (cryptoName.includes(searchValue)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

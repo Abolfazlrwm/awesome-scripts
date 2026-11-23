@@ -1,0 +1,294 @@
+#!/usr/bin/env bash
+GRE='\033[92m' # Green Light
+RD='\033[91m' # Red Light
+YLW='\033[93m' # Yellow Light
+NC='\033[0m' # White
+trap "exit 1" TERM
+export TOP_PID=$$
+THIS_DIR=$(cd "$(dirname "$0")"; pwd)
+function Update_CH {
+if ! { sudo apt update && sudo apt upgrade -y echo E: update failed; } | grep -q '^[WE]:'; then
+echo success
+else
+echo failure
+exit 1
+fi
+echo ""
+}
+function MOREPAK {
+rslv
+sudo apt install git redis-server lua5.3 liblua5.3-dev lua-lgi libnotify-dev unzip tmux -y 
+sudo apt install libconfig++9v5 libstdc++6
+sudo apt autoremove
+sudo apt install gcc-4.9
+sudo apt --yes install wget libconfig9 libjansson4 liblua5.3 make unzip g++ whois fortune fortunes
+sudo apt install g++-4.7 -y c++-4.7 -y
+sudo apt install libreadline-dev -y libconfig-dev - y libssl-dev -y lua5.3 -y liblua5.3-dev -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y
+sudo apt install screen -y
+if [ "$?" != "0" ]; then
+exit 1
+fi
+}
+function luarocksinstall { 
+wget https://luarocks.org/releases/luarocks-3.3.1.tar.gz --no-check-certificate
+tar zxpf luarocks-3.3.1.tar.gz
+ cd luarocks-3.3.1
+./configure && make && sudo make install
+./configure --lua-version=5.3
+make build
+sudo make install
+cd ..
+if ["$?" != "0"]; then
+exit 1 
+fi 
+}
+function luarocksPACK { 
+sudo luarocks install dkjson
+sudo luarocks install redis-lua
+sudo luarocks install serpent 
+sudo luarocks install lua-sec
+sudo luarocks install lua-requests
+sudo luarocks install luasocket
+sudo luarocks install luasec
+sudo luarocks install lunajson
+sudo luarocks install luautf8
+if ["$?" != "0"]; then
+exit 1 
+fi 
+}
+function openss { 
+cd /usr/src
+sudo wget 'https://www.openssl.org/source/openssl-1.1.1c.tar.gz'
+sudo tar -zxf openssl-1.1.1c.tar.gz
+cd openssl-1.1.1c
+sudo ./config
+sudo make
+sudo make test
+sudo make install
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
+sudo ldconfig
+if ["$?" != "0"]; then
+exit 1 
+fi 
+}
+function loading {
+spin[0]="-"
+spin[1]="\\"
+spin[2]="|"
+spin[3]="/"
+PID=$!
+echo -n "${spin[0]}"
+while [ -d /proc/$PID ]
+do
+for i in "${spin[@]}"
+do
+echo -ne "\b$i"
+sleep 0.1
+done
+done
+wait $PID
+if [ $? -ne 0 ]; then
+echo -e "\n${RD}Failed to install !"
+kill -s TERM $TOP_PID
+else
+echo -e "\b${GRE}Done."
+fi
+}
+if [ "$1" = "Install" ]; then
+echo -ne "\e[1m\e[97mUpdating Packages...  "
+Update_CH >> /dev/null 2>&1 & loading
+sleep 2
+echo -ne "\n\e[1m\e[97mInstalling  Packages...  "
+MOREPAK >> /dev/null 2>&1 & loading
+sleep 2
+echo -ne "\n\e[1m\e[97mUpdating Packages...  "
+Update_CH >> /dev/null 2>&1 & loading
+echo -ne "\n\e[1m\e[97mInstalling luarocks .."
+luarocksinstall >> /dev/null 2>&1 & loading
+echo -ne "\n\e[1m\e[97mInstalling Packages from luarocks .."
+luarocksPACK >> /dev/null 2>&1 & loading
+echo -ne "\n\e[1m\e[97mInstalling Openssl-1 .."
+openss >> /dev/null 2>&1 & loading
+echo -e "\e[1m\e[97m==> Installing TDlua .."
+sudo rm -rf /usr/lib/x86_64-linux-gnu/lua/5.3/tdlua.so
+sleep 2
+unzip $THIS_DIR/tdlua.zip >> /dev/null 2>&1
+sudo mv ./tdlua.so /usr/lib/x86_64-linux-gnu/lua/5.3/ >> /dev/null 2>&1 & loading
+sleep 2
+sudo mv ./luatele.lua /usr/local/share/lua/5.3/ >> /dev/null 2>&1 & loading
+echo -e "\e[1m\e[97m==> TDLUA successfully installed "
+#-----------------------------------------------------------------------------------------
+elif [ "$1" = "Update" ]; then
+echo -e "\e[1m\e[97m==> Updateing TDlua .."
+sudo rm -rf /usr/lib/x86_64-linux-gnu/lua/5.3/tdlua.so
+sleep 2
+unzip $THIS_DIR/tdlua.zip >> /dev/null 2>&1
+sudo mv ./tdlua.so /usr/lib/x86_64-linux-gnu/lua/5.3/ >> /dev/null 2>&1 & loading
+echo -e "\e[1m\e[97m==> TDLUA successfully Updated "
+exit 1
+elif [ "$1" = "Cleaner" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+lua5.3 Cli.lua $BOT
+echo "File Cli "$BOT" Created !"
+exit
+#------------------------------------------------------------------------------------------
+elif [ "$1" = "+" ]; then
+lua5.3 Run.lua "+"
+elif [ "$1" = "-" ]; then
+lua5.3 Run.lua "-"
+elif [ "$1" = "ONALL" ]; then
+if [ "$2" ]; then
+tmux kill-session -t Bot$2
+tmux new -s Bot$2 -d
+tmux send-keys -t Bot$2 "$THIS_DIR/launch Bot $2" C-m
+tmux kill-session -t Cli$2
+tmux new -s Cli$2 -d
+tmux send-keys -t Cli$2 "$THIS_DIR/launch Cli $2" C-m
+tmux kill-session -t Api$2
+tmux new -s Api$2 -d
+tmux send-keys -t Api$2 "$THIS_DIR/launch Api $2" C-m
+printf ">> [Bot | Cleaner] "$2" Launched !\n"
+exit 1
+fi
+elif [ "$1" = "OFFALL" ]; then
+if [ "$2" ]; then
+tmux kill-session -t Bot$2
+tmux kill-session -t Cli$2
+tmux kill-session -t Api$2
+printf ">> [Bot | Cleaner] "$2" Offed !\n"
+exit 1
+fi
+elif [ "$1" = "Off" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+tmux kill-session -t Bot$BOT
+tmux kill-session -t Cli$BOT
+tmux kill-session -t Api$BOT
+echo "[Profile] "$BOT" Offed !"
+exit 1
+elif [ "$1" = "Auto" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+tmux kill-session -t Bot$BOT
+tmux kill-session -t Cli$BOT
+tmux kill-session -t Api$BOT
+sleep 1s
+tmux new -s Bot$BOT -d
+tmux new -s Cli$BOT -d
+tmux new -s Api$BOT -d
+tmux send-keys -t Bot$BOT "$THIS_DIR/launch Bot $BOT" C-m
+echo "[BOT] "$BOT" Launched !"
+sleep 1s
+tmux send-keys -t Cli$BOT "$THIS_DIR/launch Cli $BOT" C-m
+echo "[Cli] "$BOT" Launched !"
+sleep 1s
+tmux send-keys -t Api$BOT "$THIS_DIR/launch Api $BOT" C-m
+echo "[Api] "$BOT" Launched !"
+exit 1
+elif [ "$1" = "Bot" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+while true
+do
+lua5.3 Bot.lua $BOT
+done
+elif [ "$1" = "Cli" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+while true
+do
+lua5.3 Cli.lua $BOT
+done
+
+elif [ "$1" = "Api" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+while true
+do
+lua Api.lua $BOT
+done
+
+elif [ "$1" = "Logout" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+tmux kill-session -t Cli-$BOT
+rm -rf .TD/Cli"$BOT"
+echo "Bot-number "$BOT" is Logouted !"
+lua5.3 Cli.lua $BOT
+echo "File Cli "$BOT" Created !"
+exit
+elif [ "$1" = "Sudo" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+redis-cli -n 0 del "$BOT"sudo_id
+redis-cli -n 0 del "$BOT"sudo_username
+echo "Bot-number "$BOT" is Clean Sudo!"
+lua5.3 Bot.lua $BOT
+exit1
+elif [ "$1" = "Channel" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+redis-cli -n 0 del "$BOT"channel_username
+redis-cli -n 0 del "$BOT"link_support
+echo "Bot-number "$BOT" is Clean Channel!"
+lua5.3 Bot.lua $BOT
+exit1
+elif [ "$1" = "Rem" ]; then
+if [ -z "$2" ]; then
+echo "Enter Your Bot-number" 
+read -rp ' ' BOT
+else
+BOT=$2
+fi
+redis-cli -n 0 del "$BOT"token
+redis-cli -n 0 del "$BOT"api_id
+redis-cli -n 0 del "$BOT"api_hash
+redis-cli -n 0 del "$BOT"full_sudo
+redis-cli -n 0 del "$BOT"sudo_id
+redis-cli -n 0 del "$BOT"sudo_username
+redis-cli -n 0 del "$BOT"channel_username
+redis-cli -n 0 del "$BOT"link_support:
+redis-cli -n 0 del "$BOT"cli_id
+rm -rf .TD/Cli"$BOT"
+rm -rf .TD/Api"$BOT"
+echo "Bot-number "$BOT" is Rem!"
+ #------------------------------------------------------------------------------------------
+	fi
+	

@@ -26,7 +26,7 @@ DATA_DIR = REPO_ROOT / "data"
 PROJECT_DIRS = [REPO_ROOT / d for d in ("bots", "web", "desktop")]
 TEHRAN_TZ = timezone(timedelta(hours=3, minutes=30))
 
-CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1", ".html", ".css", ".sql"}
+CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1", ".html", ".lua", ".css", ".sql"}
 
 
 def loc_of(path: Path) -> int:

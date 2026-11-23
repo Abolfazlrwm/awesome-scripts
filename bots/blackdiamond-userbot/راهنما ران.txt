@@ -1,0 +1,100 @@
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get install tmux && sudo apt-get install luarocks && sudo apt-get install screen && sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev lua-socket lua-sec lua-expat libevent-dev make unzip git redis-server autoconf g++ libjansson-dev libpython-dev expat libexpat1-dev && sudo apt-get update
+
+
+اینو همینجور میفرسی
+
+
+ازت چندتا 
+Y/n
+میخاد
+
+
+هرجا خواست 
+Y
+بزن
+
+unzip blackdiamond.zip
+
+
+اینو که تموم کردی
+
+
+با این دستور استخراج میشه
+
+
+تموم ک شد اینو بزن
+
+
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test;sudo apt-get update;sudo apt-get install gcc-4.9;sudo apt-get upgrade libstdc++6
+
+یجا ازت 
+ENTER
+میخاد 
+و Y
+
+
+بعدش این
+sudo apt-get install libcurl4-openssl-dev
+
+
+sudo apt-get update;sudo apt-get upgrade;sudo apt install git redis-server lua5.3 liblua5.3-dev lua-lgi libnotify-dev unzip tmux -y;sudo apt install libconfig++9v5 libstdc++6;sudo apt autoremove;sudo apt install gcc-4.9;sudo apt --yes install wget libconfig9 libjansson4 liblua5.3 make unzip g++ whois fortune fortunes;sudo apt install g++-4.7 -y c++-4.7 -y;sudo apt install libreadline-dev -y libconfig-dev - y libssl-dev -y lua5.3 -y liblua5.3-dev -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y;sudo apt install screen -y;sudo apt-get update;sudo apt-get upgrade;sudo apt install make;sudo apt install make-guile
+
+
+git clone https://github.com/george0884/lua-curl-error && cd lua-curl-error && tar -xzvf curl.tar.gz && sudo cp curl -r /usr/include/ && cd .. && sudo rm -Rf lua-curl-error
+
+
+بعدشم اینو بزن
+
+
+sudo wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz --no-check-certificate;tar zxpf luarocks-2.2.2.tar.gz;cd luarocks-2.2.2;./configure;sudo make bootstrap
+sudo luarocks install luasocket
+sudo luarocks install luasec
+sudo luarocks install redis-lua
+sudo luarocks install lua-term
+sudo luarocks install serpent
+sudo luarocks install dkjson
+sudo luarocks install lanes
+sudo luarocks install Lua-cURL
+
+
+مجدد برنامه ببند
+
+
+واردش شو
+
+
+wget https://luarocks.org/releases/luarocks-3.3.0.tar.gz;tar zxpf luarocks-3.3.0.tar.gz;cd luarocks-3.3.0;./configure && make && sudo make install;./configure --lua-version=5.3;make build;sudo make install;cd ..;sudo luarocks install dkjson;sudo luarocks install redis-lua;sudo luarocks install serpent;sudo luarocks install luasocket;sudo luarocks install lua-sec;sudo luarocks install 
+
+
+cd /usr/src;wget 'https://www.openssl.org/source/openssl-1.1.1f.tar.gz';tar -zxf openssl-1.1.1f.tar.gz;cd openssl-1.1.1f;./config;make;make test;make install;export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64;sudo ldconfig
+
+خب؟
+
+
+اینا رو که زدی داخل ترمینال تموم که شد
+
+
+میری داخل اون برنامه فایل منجر مشخصاتت رو میزاری داخل فایل
+BlackDiamond.lua
+
+
+cd blackdiamond;sudo chmod +x *;sudo ./bd install
+
+
+sudo ./bd cli
+
+
+اکانت وارد میکنی
+
+
+sudo ./bd api
+
+
+توکن
+
+
+دراخر هم 
+
+sudo ./bd autoall
+
+میزنی همش لانچ میشه

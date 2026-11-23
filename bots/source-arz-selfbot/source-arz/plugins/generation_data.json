@@ -1,0 +1,1354 @@
+{
+    "mainCurrencies": {
+        "count": 36,
+        "data": [
+            {
+                "currencyName": "دلار",
+                "livePrice": "82710",
+                "change": "(0.58%) 4,800",
+                "lowest": "82210",
+                "highest": "82800",
+                "time": "۱۶:۵۹:۵۶"
+            },
+            {
+                "currencyName": "یورو",
+                "livePrice": "93520",
+                "change": "(0.91%) 8,500",
+                "lowest": "93000",
+                "highest": "93740",
+                "time": "۱۶:۵۹:۴۹"
+            },
+            {
+                "currencyName": "درهم امارات",
+                "livePrice": "22634",
+                "change": "(0.53%) 1,210",
+                "lowest": "22490",
+                "highest": "22650",
+                "time": "۱۶:۵۹:۴۹"
+            },
+            {
+                "currencyName": "پوند انگلیس",
+                "livePrice": "111070",
+                "change": "(0.69%) 7,700",
+                "lowest": "110340",
+                "highest": "111180",
+                "time": "۱۶:۵۹:۱۹"
+            },
+            {
+                "currencyName": "لیر ترکیه",
+                "livePrice": "2130",
+                "change": "(0.94%) 200",
+                "lowest": "2110",
+                "highest": "2130",
+                "time": "۱۴:۱۴:۴۳"
+            },
+            {
+                "currencyName": "فرانک سوئیس",
+                "livePrice": "100130",
+                "change": "(0.65%) 6,500",
+                "lowest": "99600",
+                "highest": "100310",
+                "time": "۱۶:۵۹:۵۵"
+            },
+            {
+                "currencyName": "یوان چین",
+                "livePrice": "11490",
+                "change": "(0.52%) 600",
+                "lowest": "11410",
+                "highest": "11500",
+                "time": "۱۶:۵۸:۳۵"
+            },
+            {
+                "currencyName": "ین ژاپن (100 ین)",
+                "livePrice": "57875",
+                "change": "(0.44%) 2,560",
+                "lowest": "57607",
+                "highest": "58132",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "وون کره جنوبی",
+                "livePrice": "60",
+                "change": "(1.67%) 10",
+                "lowest": "60",
+                "highest": "60",
+                "time": "۱۱:۱۱:۲۹"
+            },
+            {
+                "currencyName": "دلار کانادا",
+                "livePrice": "59630",
+                "change": "(0.94%) 5,600",
+                "lowest": "59310",
+                "highest": "59760",
+                "time": "۱۶:۵۹:۵۱"
+            },
+            {
+                "currencyName": "دلار استرالیا",
+                "livePrice": "53170",
+                "change": "(1.09%) 5,800",
+                "lowest": "52960",
+                "highest": "53430",
+                "time": "۱۶:۵۹:۲۴"
+            },
+            {
+                "currencyName": "دلار نیوزیلند",
+                "livePrice": "48870",
+                "change": "(1.47%) 7,200",
+                "lowest": "48700",
+                "highest": "49130",
+                "time": "۱۶:۵۹:۵۱"
+            },
+            {
+                "currencyName": "دلار سنگاپور",
+                "livePrice": "64110",
+                "change": "(0.86%) 5,500",
+                "lowest": "63750",
+                "highest": "64240",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "روپیه هند",
+                "livePrice": "964",
+                "change": "(0.93%) 90",
+                "lowest": "957",
+                "highest": "965",
+                "time": "۱۶:۵۵:۳۷"
+            },
+            {
+                "currencyName": "روپیه پاکستان",
+                "livePrice": "295.2",
+                "change": "(0.51%) 15",
+                "lowest": "292.8",
+                "highest": "295.5",
+                "time": "۱۶:۵۸:۳۵"
+            },
+            {
+                "currencyName": "دینار عراق",
+                "livePrice": "56.2",
+                "change": "(0.53%) 3",
+                "lowest": "55.8",
+                "highest": "56.2",
+                "time": "۱۴:۱۸:۴۷"
+            },
+            {
+                "currencyName": "پوند سوریه",
+                "livePrice": "6.3",
+                "change": "(1.59%) 1",
+                "lowest": "6.3",
+                "highest": "6.3",
+                "time": "۱۱:۰۴:۳۳"
+            },
+            {
+                "currencyName": "افغانی",
+                "livePrice": "1195",
+                "change": "(1.92%) 230",
+                "lowest": "1184",
+                "highest": "1206",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "کرون دانمارک",
+                "livePrice": "12530",
+                "change": "(0.96%) 1,200",
+                "lowest": "12460",
+                "highest": "12560",
+                "time": "۱۶:۵۹:۰۵"
+            },
+            {
+                "currencyName": "کرون سوئد",
+                "livePrice": "8640",
+                "change": "(0.93%) 800",
+                "lowest": "8580",
+                "highest": "8660",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "کرون نروژ",
+                "livePrice": "8130",
+                "change": "(1.11%) 900",
+                "lowest": "8070",
+                "highest": "8150",
+                "time": "۱۶:۵۹:۴۵"
+            },
+            {
+                "currencyName": "ریال عربستان",
+                "livePrice": "22089",
+                "change": "(0.55%) 1,220",
+                "lowest": "21947",
+                "highest": "22107",
+                "time": "۱۶:۵۹:۵۱"
+            },
+            {
+                "currencyName": "ریال قطر",
+                "livePrice": "23520",
+                "change": "(0.72%) 1,700",
+                "lowest": "23380",
+                "highest": "23550",
+                "time": "۱۶:۵۸:۳۶"
+            },
+            {
+                "currencyName": "ریال عمان",
+                "livePrice": "214960",
+                "change": "(0.57%) 12,300",
+                "lowest": "213580",
+                "highest": "215120",
+                "time": "۱۶:۵۹:۰۱"
+            },
+            {
+                "currencyName": "دینار کویت",
+                "livePrice": "270100",
+                "change": "(0.58%) 15,600",
+                "lowest": "268480",
+                "highest": "270390",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "دینار بحرین",
+                "livePrice": "219520",
+                "change": "(0.55%) 12,000",
+                "lowest": "218120",
+                "highest": "219680",
+                "time": "۱۶:۵۸:۵۷"
+            },
+            {
+                "currencyName": "رینگیت مالزی",
+                "livePrice": "19370",
+                "change": "(0.67%) 1,300",
+                "lowest": "19300",
+                "highest": "19450",
+                "time": "۱۶:۵۸:۳۳"
+            },
+            {
+                "currencyName": "بات تایلند",
+                "livePrice": "2524",
+                "change": "(0.87%) 220",
+                "lowest": "2507",
+                "highest": "2528",
+                "time": "۱۶:۵۹:۵۱"
+            },
+            {
+                "currencyName": "دلار هنگ کنگ",
+                "livePrice": "10570",
+                "change": "(0.57%) 600",
+                "lowest": "10500",
+                "highest": "10580",
+                "time": "۱۶:۵۸:۳۵"
+            },
+            {
+                "currencyName": "روبل روسیه",
+                "livePrice": "1054",
+                "change": "(0.96%) 100",
+                "lowest": "1031",
+                "highest": "1055",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "منات آذربایجان",
+                "livePrice": "48830",
+                "change": "(0.53%) 2,600",
+                "lowest": "48510",
+                "highest": "48860",
+                "time": "۱۶:۵۹:۵۰"
+            },
+            {
+                "currencyName": "درام ارمنستان",
+                "livePrice": "216",
+                "change": "(0.46%) 10",
+                "lowest": "216",
+                "highest": "218",
+                "time": "۱۶:۵۵:۴۶"
+            },
+            {
+                "currencyName": "لاری گرجستان",
+                "livePrice": "30370",
+                "change": "(0.56%) 1,700",
+                "lowest": "30180",
+                "highest": "30390",
+                "time": "۱۶:۵۸:۳۶"
+            },
+            {
+                "currencyName": "سوم قرقیزستان",
+                "livePrice": "946",
+                "change": "(0.63%) 60",
+                "lowest": "940",
+                "highest": "947",
+                "time": "۱۶:۵۵:۱۶"
+            },
+            {
+                "currencyName": "سامانی تاجیکستان",
+                "livePrice": "8220",
+                "change": "(0.37%) 300",
+                "lowest": "8080",
+                "highest": "8230",
+                "time": "۱۶:۵۵:۱۷"
+            },
+            {
+                "currencyName": "منات ترکمنستان",
+                "livePrice": "23680",
+                "change": "(0.55%) 1,300",
+                "lowest": "23530",
+                "highest": "23700",
+                "time": "۱۶:۵۸:۴۱"
+            }
+        ]
+    },
+    "minorCurrencies": {
+        "count": 100,
+        "data": [
+            {
+                "currencyName": "لک آلبانی",
+                "livePrice": "950",
+                "change": "(1.05%) 100",
+                "lowest": "940",
+                "highest": "950",
+                "time": "۱۱:۴۷:۴۳"
+            },
+            {
+                "currencyName": "دلار باربادوس",
+                "livePrice": "41420",
+                "change": "(0.53%) 2,200",
+                "lowest": "41150",
+                "highest": "41450",
+                "time": "۱۶:۵۸:۳۹"
+            },
+            {
+                "currencyName": "تاکا بنگلادش",
+                "livePrice": "682",
+                "change": "(0.59%) 40",
+                "lowest": "678",
+                "highest": "683",
+                "time": "۱۶:۴۷:۵۹"
+            },
+            {
+                "currencyName": "لو بلغارستان",
+                "livePrice": "47800",
+                "change": "(0.96%) 4,600",
+                "lowest": "47550",
+                "highest": "47940",
+                "time": "۱۶:۵۹:۵۳"
+            },
+            {
+                "currencyName": "فرانک بوروندی",
+                "livePrice": "28.1",
+                "change": "(0.71%) 2",
+                "lowest": "27.9",
+                "highest": "28.1",
+                "time": "۱۳:۲۶:۰۲"
+            },
+            {
+                "currencyName": "دلار برونئی",
+                "livePrice": "44224",
+                "change": "(0%) 0",
+                "lowest": "42417",
+                "highest": "44313",
+                "time": "۹ بهمن"
+            },
+            {
+                "currencyName": "دلار باهاماس",
+                "livePrice": "83370",
+                "change": "(0.46%) 3,800",
+                "lowest": "82660",
+                "highest": "83430",
+                "time": "۱۶:۵۸:۵۷"
+            },
+            {
+                "currencyName": "پوله بوتسوانا",
+                "livePrice": "6170",
+                "change": "(0.32%) 200",
+                "lowest": "6140",
+                "highest": "6190",
+                "time": "۱۶:۵۸:۳۹"
+            },
+            {
+                "currencyName": "روبل بلاروس",
+                "livePrice": "25280",
+                "change": "(0.47%) 1,200",
+                "lowest": "25060",
+                "highest": "25300",
+                "time": "۱۶:۵۸:۳۹"
+            },
+            {
+                "currencyName": "دلار بلیز",
+                "livePrice": "41380",
+                "change": "(0.53%) 2,200",
+                "lowest": "41110",
+                "highest": "41410",
+                "time": "۱۶:۵۸:۵۷"
+            },
+            {
+                "currencyName": "پزوی کوبا",
+                "livePrice": "3460",
+                "change": "(0.29%) 100",
+                "lowest": "3430",
+                "highest": "3460",
+                "time": "۱۶:۵۸:۳۹"
+            },
+            {
+                "currencyName": "کرون چک",
+                "livePrice": "3760",
+                "change": "(1.06%) 400",
+                "lowest": "3740",
+                "highest": "3770",
+                "time": "۱۶:۵۸:۱۵"
+            },
+            {
+                "currencyName": "فرانک جیبوتی",
+                "livePrice": "470",
+                "change": "(0%) 0",
+                "lowest": "460",
+                "highest": "470",
+                "time": "۱۳:۲۹:۵۰"
+            },
+            {
+                "currencyName": "پزوی دومنیکن",
+                "livePrice": "1410",
+                "change": "(0%) 0",
+                "lowest": "1400",
+                "highest": "1410",
+                "time": "۱۴:۱۶:۵۰"
+            },
+            {
+                "currencyName": "دینار الجزایر",
+                "livePrice": "630",
+                "change": "(0%) 0",
+                "lowest": "620",
+                "highest": "630",
+                "time": "۱۳:۲۶:۴۵"
+            },
+            {
+                "currencyName": "بیر اتیوپی",
+                "livePrice": "620",
+                "change": "(1.61%) 100",
+                "lowest": "620",
+                "highest": "620",
+                "time": "۱۱:۰۴:۱۹"
+            },
+            {
+                "currencyName": "فرانک گینه",
+                "livePrice": "9.5",
+                "change": "(1.05%) 1",
+                "lowest": "9.5",
+                "highest": "9.6",
+                "time": "۱۶:۴۸:۰۴"
+            },
+            {
+                "currencyName": "گواتزال گواتمالا",
+                "livePrice": "10800",
+                "change": "(0.56%) 600",
+                "lowest": "10730",
+                "highest": "10810",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "دلار گویان",
+                "livePrice": "41380",
+                "change": "(0.56%) 2,300",
+                "lowest": "41120",
+                "highest": "41410",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "لمپیرا هندوراس",
+                "livePrice": "3200",
+                "change": "(0.63%) 200",
+                "lowest": "3180",
+                "highest": "3200",
+                "time": "۱۴:۰۲:۴۹"
+            },
+            {
+                "currencyName": "کونا کرواسی",
+                "livePrice": "12330",
+                "change": "(0.49%) 600",
+                "lowest": "12250",
+                "highest": "12340",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "گورده هایتی",
+                "livePrice": "640",
+                "change": "(0%) 0",
+                "lowest": "630",
+                "highest": "640",
+                "time": "۱۴:۰۸:۴۴"
+            },
+            {
+                "currencyName": "کرونا ایسلند",
+                "livePrice": "650",
+                "change": "(0%) 0",
+                "lowest": "640",
+                "highest": "650",
+                "time": "۱۱:۳۴:۴۸"
+            },
+            {
+                "currencyName": "دلار جامایکا",
+                "livePrice": "520",
+                "change": "(1.92%) 100",
+                "lowest": "520",
+                "highest": "520",
+                "time": "۱۱:۰۴:۲۱"
+            },
+            {
+                "currencyName": "شیلینگ کنیا",
+                "livePrice": "640",
+                "change": "(1.56%) 100",
+                "lowest": "640",
+                "highest": "640",
+                "time": "۱۱:۰۴:۲۱"
+            },
+            {
+                "currencyName": "ریل کامبوج",
+                "livePrice": "21",
+                "change": "(0%) 0",
+                "lowest": "21",
+                "highest": "22",
+                "time": "۳۰ اردیبهشت"
+            },
+            {
+                "currencyName": "فرانک کومور",
+                "livePrice": "189",
+                "change": "(1.06%) 20",
+                "lowest": "188",
+                "highest": "190",
+                "time": "۱۶:۵۳:۱۴"
+            },
+            {
+                "currencyName": "تنگه قزاقستان",
+                "livePrice": "163",
+                "change": "(0.61%) 10",
+                "lowest": "162",
+                "highest": "164",
+                "time": "۱۶:۲۷:۴۸"
+            },
+            {
+                "currencyName": "کیپ لائوس",
+                "livePrice": "4",
+                "change": "(0%) 0",
+                "lowest": "4",
+                "highest": "4",
+                "time": "۲۴ فروردین"
+            },
+            {
+                "currencyName": "پوند لبنان",
+                "livePrice": "1",
+                "change": "(0%) 0",
+                "lowest": "1",
+                "highest": "1",
+                "time": "۲۲ مرداد"
+            },
+            {
+                "currencyName": "روپیه سریلانکا",
+                "livePrice": "276",
+                "change": "(0.72%) 20",
+                "lowest": "275",
+                "highest": "277",
+                "time": "۱۶:۵۳:۵۴"
+            },
+            {
+                "currencyName": "دلار لیبریا",
+                "livePrice": "41380",
+                "change": "(0.56%) 2,300",
+                "lowest": "41120",
+                "highest": "41410",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "لوتی لسوتو",
+                "livePrice": "4600",
+                "change": "(1.3%) 600",
+                "lowest": "4570",
+                "highest": "4620",
+                "time": "۱۶:۵۷:۰۱"
+            },
+            {
+                "currencyName": "دینار لیبی",
+                "livePrice": "15190",
+                "change": "(0.53%) 800",
+                "lowest": "15100",
+                "highest": "15200",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "درهم مراکش",
+                "livePrice": "8970",
+                "change": "(0.78%) 700",
+                "lowest": "8930",
+                "highest": "8990",
+                "time": "۱۶:۵۹:۵۴"
+            },
+            {
+                "currencyName": "لئو مولداوی",
+                "livePrice": "4800",
+                "change": "(1.04%) 500",
+                "lowest": "4770",
+                "highest": "4810",
+                "time": "۱۶:۴۶:۰۴"
+            },
+            {
+                "currencyName": "آریاری ماداگاسکار",
+                "livePrice": "19",
+                "change": "(0%) 0",
+                "lowest": "18",
+                "highest": "19",
+                "time": "۳۰ اردیبهشت"
+            },
+            {
+                "currencyName": "دینار مقدونیه",
+                "livePrice": "1530",
+                "change": "(0.65%) 100",
+                "lowest": "1520",
+                "highest": "1530",
+                "time": "۱۳:۲۸:۳۳"
+            },
+            {
+                "currencyName": "کیات میانمار",
+                "livePrice": "26",
+                "change": "(0%) 0",
+                "lowest": "26",
+                "highest": "27",
+                "time": "۳۰ اردیبهشت"
+            },
+            {
+                "currencyName": "پاتاکا ماکائو",
+                "livePrice": "10270",
+                "change": "(0.39%) 400",
+                "lowest": "10200",
+                "highest": "10280",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "روپیه موریس",
+                "livePrice": "1820",
+                "change": "(1.1%) 200",
+                "lowest": "1810",
+                "highest": "1820",
+                "time": "۱۴:۰۹:۳۰"
+            },
+            {
+                "currencyName": "روفیا مالدیو",
+                "livePrice": "5370",
+                "change": "(0.56%) 300",
+                "lowest": "5330",
+                "highest": "5370",
+                "time": "۱۴:۱۸:۵۴"
+            },
+            {
+                "currencyName": "کواچا مالاوی",
+                "livePrice": "48",
+                "change": "(2.08%) 10",
+                "lowest": "48",
+                "highest": "48",
+                "time": "۱۱:۰۴:۲۳"
+            },
+            {
+                "currencyName": "متیکال موزامبیک",
+                "livePrice": "1310",
+                "change": "(0.76%) 100",
+                "lowest": "1300",
+                "highest": "1310",
+                "time": "۱۴:۰۲:۲۳"
+            },
+            {
+                "currencyName": "دلار نامبیا",
+                "livePrice": "4590",
+                "change": "(1.31%) 600",
+                "lowest": "4570",
+                "highest": "4620",
+                "time": "۱۶:۵۱:۴۸"
+            },
+            {
+                "currencyName": "نیرا نیجریه",
+                "livePrice": "52",
+                "change": "(0%) 0",
+                "lowest": "52",
+                "highest": "54",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "روپیه نپال",
+                "livePrice": "610",
+                "change": "(1.64%) 100",
+                "lowest": "610",
+                "highest": "610",
+                "time": "۱۱:۰۴:۲۶"
+            },
+            {
+                "currencyName": "بولبوئا پاناما",
+                "livePrice": "84490",
+                "change": "(0.63%) 5,300",
+                "lowest": "84130",
+                "highest": "84740",
+                "time": "۱۶:۵۷:۴۵"
+            },
+            {
+                "currencyName": "کینا پاپوا گینه نو",
+                "livePrice": "20570",
+                "change": "(0.44%) 900",
+                "lowest": "20390",
+                "highest": "20580",
+                "time": "۱۶:۵۷:۴۵"
+            },
+            {
+                "currencyName": "پزوی فیلیپین",
+                "livePrice": "1490",
+                "change": "(0.67%) 100",
+                "lowest": "1480",
+                "highest": "1490",
+                "time": "۱۴:۱۳:۵۱"
+            },
+            {
+                "currencyName": "لئو رومانی",
+                "livePrice": "18490",
+                "change": "(0.7%) 1,300",
+                "lowest": "18350",
+                "highest": "18530",
+                "time": "۱۶:۵۹:۰۳"
+            },
+            {
+                "currencyName": "دینار صربستان",
+                "livePrice": "806",
+                "change": "(0.87%) 70",
+                "lowest": "803",
+                "highest": "808",
+                "time": "۱۶:۵۳:۵۵"
+            },
+            {
+                "currencyName": "فرانک رواندا",
+                "livePrice": "58",
+                "change": "(1.72%) 10",
+                "lowest": "58",
+                "highest": "58",
+                "time": "۱۱:۰۴:۳۲"
+            },
+            {
+                "currencyName": "روپیه سیشل",
+                "livePrice": "6210",
+                "change": "(0.48%) 300",
+                "lowest": "6170",
+                "highest": "6210",
+                "time": "۱۶:۵۸:۴۰"
+            },
+            {
+                "currencyName": "پوند سودان",
+                "livePrice": "138",
+                "change": "(0.72%) 10",
+                "lowest": "137",
+                "highest": "138",
+                "time": "۱۱:۳۹:۲۲"
+            },
+            {
+                "currencyName": "پوند سینت هلنا",
+                "livePrice": "41380",
+                "change": "(0.56%) 2,300",
+                "lowest": "41120",
+                "highest": "41410",
+                "time": "۱۶:۵۸:۴۱"
+            },
+            {
+                "currencyName": "شیلینگ سومالی",
+                "livePrice": "155",
+                "change": "(0%) 0",
+                "lowest": "153",
+                "highest": "155",
+                "time": "۱۶:۲۷:۲۰"
+            },
+            {
+                "currencyName": "کولون السالوادور",
+                "livePrice": "9710",
+                "change": "(0.41%) 400",
+                "lowest": "9620",
+                "highest": "9710",
+                "time": "۱۶:۵۹:۵۴"
+            },
+            {
+                "currencyName": "لیلانگی سوازیلند",
+                "livePrice": "4640",
+                "change": "(1.29%) 600",
+                "lowest": "4640",
+                "highest": "4680",
+                "time": "۱۶:۵۲:۵۴"
+            },
+            {
+                "currencyName": "سامانی تاجیکستان",
+                "livePrice": "8220",
+                "change": "(0.37%) 300",
+                "lowest": "8080",
+                "highest": "8230",
+                "time": "۱۶:۵۵:۱۷"
+            },
+            {
+                "currencyName": "منات ترکمنستان",
+                "livePrice": "23680",
+                "change": "(0.55%) 1,300",
+                "lowest": "23530",
+                "highest": "23700",
+                "time": "۱۶:۵۸:۴۱"
+            },
+            {
+                "currencyName": "دینار تونس",
+                "livePrice": "27830",
+                "change": "(0.36%) 1,000",
+                "lowest": "27580",
+                "highest": "27850",
+                "time": "۱۶:۵۸:۴۱"
+            },
+            {
+                "currencyName": "دلار ترینیداد و توباگو",
+                "livePrice": "12430",
+                "change": "(0.56%) 700",
+                "lowest": "12330",
+                "highest": "12440",
+                "time": "۱۶:۴۴:۵۱"
+            },
+            {
+                "currencyName": "شیلینگ تانزانیا",
+                "livePrice": "31",
+                "change": "(0%) 0",
+                "lowest": "31",
+                "highest": "32",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "شیلینگ اوگاندا",
+                "livePrice": "23",
+                "change": "(0%) 0",
+                "lowest": "23",
+                "highest": "24",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "ریال یمن",
+                "livePrice": "340",
+                "change": "(0.59%) 20",
+                "lowest": "338",
+                "highest": "340",
+                "time": "۱۴:۱۷:۴۱"
+            },
+            {
+                "currencyName": "کواچا زامبیا",
+                "livePrice": "3040",
+                "change": "(0.66%) 200",
+                "lowest": "3030",
+                "highest": "3050",
+                "time": "۱۶:۲۷:۲۶"
+            },
+            {
+                "currencyName": "سدی غنا",
+                "livePrice": "7130",
+                "change": "(0.71%) 500",
+                "lowest": "6920",
+                "highest": "7130",
+                "time": "۱۶:۵۸:۴۱"
+            },
+            {
+                "currencyName": "سول پرو",
+                "livePrice": "22970",
+                "change": "(1.55%) 3,500",
+                "lowest": "22720",
+                "highest": "22990",
+                "time": "۱۶:۵۷:۴۵"
+            },
+            {
+                "currencyName": "پزوی شیلی",
+                "livePrice": "87",
+                "change": "(1.15%) 10",
+                "lowest": "87",
+                "highest": "88",
+                "time": "۱۶:۵۹:۵۴"
+            },
+            {
+                "currencyName": "پوند مصر",
+                "livePrice": "1660",
+                "change": "(0.6%) 100",
+                "lowest": "1650",
+                "highest": "1660",
+                "time": "۱۳:۲۶:۴۵"
+            },
+            {
+                "currencyName": "پزوی مکزیک",
+                "livePrice": "4260",
+                "change": "(1.17%) 500",
+                "lowest": "4250",
+                "highest": "4280",
+                "time": "۱۶:۵۹:۵۴"
+            },
+            {
+                "currencyName": "دینار اردن",
+                "livePrice": "116890",
+                "change": "(0.55%) 6,400",
+                "lowest": "116140",
+                "highest": "116980",
+                "time": "۱۶:۵۸:۴۱"
+            },
+            {
+                "currencyName": "رئال برزیل",
+                "livePrice": "14650",
+                "change": "(0.48%) 700",
+                "lowest": "14570",
+                "highest": "14680",
+                "time": "۱۶:۵۷:۴۲"
+            },
+            {
+                "currencyName": "پزوی اروگوئه",
+                "livePrice": "2020",
+                "change": "(0%) 0",
+                "lowest": "2000",
+                "highest": "2020",
+                "time": "۱۶:۲۷:۲۴"
+            },
+            {
+                "currencyName": "پزوی کلمبیا",
+                "livePrice": "20",
+                "change": "(0%) 0",
+                "lowest": "20",
+                "highest": "21",
+                "time": "۳۰ اردیبهشت"
+            },
+            {
+                "currencyName": "زلوتی لهستان",
+                "livePrice": "22000",
+                "change": "(1.18%) 2,600",
+                "lowest": "21910",
+                "highest": "22100",
+                "time": "۱۶:۵۹:۵۴"
+            },
+            {
+                "currencyName": "پزوی آرژانتین",
+                "livePrice": "72",
+                "change": "(1.39%) 10",
+                "lowest": "72",
+                "highest": "72",
+                "time": "۱۱:۰۴:۱۵"
+            },
+            {
+                "currencyName": "دلار جزایر کیمن",
+                "livePrice": "41380",
+                "change": "(0.56%) 2,300",
+                "lowest": "41120",
+                "highest": "41410",
+                "time": "۱۶:۵۸:۴۲"
+            },
+            {
+                "currencyName": "فورینت مجارستان",
+                "livePrice": "232",
+                "change": "(1.29%) 30",
+                "lowest": "231",
+                "highest": "233",
+                "time": "۱۶:۳۰:۲۷"
+            },
+            {
+                "currencyName": "گورانی پاراگوئه",
+                "livePrice": "11",
+                "change": "(0%) 0",
+                "lowest": "10",
+                "highest": "11",
+                "time": "۱۱:۴۰:۵۷"
+            },
+            {
+                "currencyName": "هریونیا اوکراین",
+                "livePrice": "2010",
+                "change": "(0.5%) 100",
+                "lowest": "2000",
+                "highest": "2010",
+                "time": "۱۴:۰۲:۵۲"
+            },
+            {
+                "currencyName": "رند آفریقای جنوبی",
+                "livePrice": "4590",
+                "change": "(1.31%) 600",
+                "lowest": "4570",
+                "highest": "4610",
+                "time": "۱۶:۵۴:۳۲"
+            },
+            {
+                "currencyName": "کوردوبا نیکاراگوئه",
+                "livePrice": "2280",
+                "change": "(0.44%) 100",
+                "lowest": "2260",
+                "highest": "2280",
+                "time": "۱۶:۲۷:۰۸"
+            },
+            {
+                "currencyName": "دلار فیجی",
+                "livePrice": "36970",
+                "change": "(0.95%) 3,500",
+                "lowest": "36790",
+                "highest": "37080",
+                "time": "۱۶:۵۸:۴۲"
+            },
+            {
+                "currencyName": "دلار تایوان",
+                "livePrice": "2760",
+                "change": "(0.36%) 100",
+                "lowest": "2740",
+                "highest": "2760",
+                "time": "۱۶:۵۸:۳۴"
+            },
+            {
+                "currencyName": "وون کره جنوبی",
+                "livePrice": "60",
+                "change": "(1.67%) 10",
+                "lowest": "60",
+                "highest": "60",
+                "time": "۱۱:۱۱:۲۹"
+            },
+            {
+                "currencyName": "سوم ازبکستان",
+                "livePrice": "6",
+                "change": "(16.67%) 10",
+                "lowest": "6",
+                "highest": "6",
+                "time": "۱۱:۰۴:۳۴"
+            },
+            {
+                "currencyName": "روپیه اندونزی",
+                "livePrice": "5",
+                "change": "(0%) 0",
+                "lowest": "5",
+                "highest": "5",
+                "time": "۲۴ فروردین"
+            },
+            {
+                "currencyName": "فرانک آفریقای غربی",
+                "livePrice": "143",
+                "change": "(0.7%) 10",
+                "lowest": "142",
+                "highest": "143",
+                "time": "۱۳:۲۵:۴۴"
+            },
+            {
+                "currencyName": "فرانک اقیانوسیه",
+                "livePrice": "780",
+                "change": "(1.28%) 100",
+                "lowest": "780",
+                "highest": "790",
+                "time": "۱۶:۴۲:۵۰"
+            },
+            {
+                "currencyName": "دونگ ویتنام",
+                "livePrice": "3",
+                "change": "(0%) 0",
+                "lowest": "3",
+                "highest": "4",
+                "time": "۲۶ فروردین"
+            },
+            {
+                "currencyName": "دلاسی گامبیا",
+                "livePrice": "1140",
+                "change": "(0.88%) 100",
+                "lowest": "1140",
+                "highest": "1140",
+                "time": "۱۱:۰۴:۲۰"
+            },
+            {
+                "currencyName": "فرانک آفریقا",
+                "livePrice": "143",
+                "change": "(0.7%) 10",
+                "lowest": "142",
+                "highest": "143",
+                "time": "۱۳:۲۵:۴۴"
+            },
+            {
+                "currencyName": "وانواتو واتو",
+                "livePrice": "700",
+                "change": "(0%) 0",
+                "lowest": "690",
+                "highest": "700",
+                "time": "۱۳:۳۰:۲۹"
+            },
+            {
+                "currencyName": "سوم قرقیزستان",
+                "livePrice": "946",
+                "change": "(0.63%) 60",
+                "lowest": "940",
+                "highest": "947",
+                "time": "۱۶:۵۵:۱۶"
+            },
+            {
+                "currencyName": "اوگویا موریتانا",
+                "livePrice": "2290",
+                "change": "(0.44%) 100",
+                "lowest": "2270",
+                "highest": "2290",
+                "time": "۱۶:۵۸:۴۲"
+            },
+            {
+                "currencyName": "آنتیل گیلدر هلند",
+                "livePrice": "47450",
+                "change": "(0.55%) 2,600",
+                "lowest": "47150",
+                "highest": "47490",
+                "time": "۱۶:۵۸:۵۵"
+            },
+            {
+                "currencyName": "دوبرا سائوتومه و پرنسیپ",
+                "livePrice": "3810",
+                "change": "(0.52%) 200",
+                "lowest": "3780",
+                "highest": "3810",
+                "time": "۱۴:۰۹:۳۲"
+            },
+            {
+                "currencyName": "دلار کارائیب شرقی",
+                "livePrice": "30770",
+                "change": "(0.52%) 1,600",
+                "lowest": "30570",
+                "highest": "30790",
+                "time": "۱۶:۵۹:۵۵"
+            }
+        ]
+    },
+    "GoldType": {
+        "count": 31,
+        "data": [
+            {
+                "currencyName": "انس طلا",
+                "livePrice": "329.312",
+                "change": "(0.74%) 24.42",
+                "lowest": "328.106",
+                "highest": "334.46",
+                "time": "۱۷:۴۴:۱۹"
+            },
+            {
+                "currencyName": "انس نقره",
+                "livePrice": "3.2909999999999995",
+                "change": "(1.75%) 0.58",
+                "lowest": "3.2659999999999996",
+                "highest": "3.37",
+                "time": "۱۷:۴۴:۲۰"
+            },
+            {
+                "currencyName": "انس پلاتین",
+                "livePrice": "108.175",
+                "change": "(0.09%) 1.00",
+                "lowest": "106.655",
+                "highest": "108.92",
+                "time": "۱۷:۴۴:۲۱"
+            },
+            {
+                "currencyName": "انس پالادیوم",
+                "livePrice": "101.725",
+                "change": "(2.21%) 22.50",
+                "lowest": "101.325",
+                "highest": "104.7",
+                "time": "۱۷:۴۴:۲۱"
+            },
+            {
+                "currencyName": "طلای 18 عیار",
+                "livePrice": "6531700",
+                "change": "(0.77%) 499,000",
+                "lowest": "6480900",
+                "highest": "6550100",
+                "time": "۱۶:۵۹:۴۸"
+            },
+            {
+                "currencyName": "طلای 24 عیار",
+                "livePrice": "8708800",
+                "change": "(0.77%) 665,000",
+                "lowest": "8641100",
+                "highest": "8733400",
+                "time": "۱۶:۵۹:۴۸"
+            },
+            {
+                "currencyName": "طلای دست دوم",
+                "livePrice": "6444568",
+                "change": "(0.77%) 492,030",
+                "lowest": "6394454",
+                "highest": "6462791",
+                "time": "۱۶:۵۹:۴۸"
+            },
+            {
+                "currencyName": "گرم نقره ۹۹۹",
+                "livePrice": "98120",
+                "change": "(1.31%) 12,900",
+                "lowest": "98060",
+                "highest": "100060",
+                "time": "۱۶:۴۳:۳۹"
+            },
+            {
+                "currencyName": "مثقال طلا",
+                "livePrice": "28283000",
+                "change": "(0.71%) 2,000,000",
+                "lowest": "28045000",
+                "highest": "28374000",
+                "time": "۱۶:۵۹:۵۵"
+            },
+            {
+                "currencyName": "آبشده نقدی",
+                "livePrice": "28291000",
+                "change": "(0.77%) 2,150,000",
+                "lowest": "28054000",
+                "highest": "28375000",
+                "time": "۱۶:۵۹:۵۶"
+            },
+            {
+                "currencyName": "حباب آبشده",
+                "livePrice": "326433.4",
+                "change": "(117.01%) 3,819,553",
+                "lowest": "111874.4",
+                "highest": "638648.2",
+                "time": "۱۶:۵۹:۴۷"
+            },
+            {
+                "currencyName": "مثقال / بدون حباب",
+                "livePrice": "28644200",
+                "change": "(0.51%) 1,465,000",
+                "lowest": "28413900",
+                "highest": "28753900",
+                "time": "۱۶:۵۹:۴۹"
+            },
+            {
+                "currencyName": "صندوق طلای مفید",
+                "livePrice": "18196",
+                "change": "(0%) 0",
+                "lowest": "18136.1",
+                "highest": "18684.1",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "صندوق طلای لوتوس",
+                "livePrice": "47280",
+                "change": "(0%) 0",
+                "lowest": "47205.1",
+                "highest": "48799.5",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "صندوق طلای مثقال",
+                "livePrice": "5327.9",
+                "change": "(0%) 0",
+                "lowest": "5305.4",
+                "highest": "5452",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "صندوق طلای گوهر",
+                "livePrice": "31839",
+                "change": "(0%) 0",
+                "lowest": "31800.2",
+                "highest": "32800",
+                "time": "۳۱ اردیبهشت"
+            },
+            {
+                "currencyName": "سکه امامی",
+                "livePrice": "74005000",
+                "change": "(0.82%) 6,000,000",
+                "lowest": "73280000",
+                "highest": "74160000",
+                "time": "۱۶:۵۹:۵۶"
+            },
+            {
+                "currencyName": "سکه بهار آزادی",
+                "livePrice": "68880000",
+                "change": "(0.89%) 6,100,000",
+                "lowest": "68480000",
+                "highest": "69220000",
+                "time": "۱۶:۵۹:۵۵"
+            },
+            {
+                "currencyName": "نیم سکه",
+                "livePrice": "42700000",
+                "change": "(0.7%) 3,000,000",
+                "lowest": "42500000",
+                "highest": "42700000",
+                "time": "۱۴:۰۴:۱۶"
+            },
+            {
+                "currencyName": "ربع سکه",
+                "livePrice": "24900000",
+                "change": "(0.4%) 1,000,000",
+                "lowest": "24600000",
+                "highest": "24900000",
+                "time": "۱۴:۵۴:۲۰"
+            },
+            {
+                "currencyName": "سکه گرمی",
+                "livePrice": "13600000",
+                "change": "(0.74%) 1,000,000",
+                "lowest": "13600000",
+                "highest": "13600000",
+                "time": "۱۱:۰۱:۱۰"
+            },
+            {
+                "currencyName": "حباب سکه امامی",
+                "livePrice": "9427000",
+                "change": "(11.14%) 9,450,000",
+                "lowest": "8753000",
+                "highest": "9997000",
+                "time": "۱۶:۵۹:۴۹"
+            },
+            {
+                "currencyName": "حباب سکه بهار آزادی",
+                "livePrice": "4322000",
+                "change": "(6.36%) 2,750,000",
+                "lowest": "3675000",
+                "highest": "4893000",
+                "time": "۱۶:۵۹:۴۹"
+            },
+            {
+                "currencyName": "حباب نیم سکه",
+                "livePrice": "10425000",
+                "change": "(1.29%) 1,350,000",
+                "lowest": "10102000",
+                "highest": "10711000",
+                "time": "۱۶:۵۹:۴۸"
+            },
+            {
+                "currencyName": "حباب ربع سکه",
+                "livePrice": "8760000",
+                "change": "(0.21%) 180,000",
+                "lowest": "8398000",
+                "highest": "8863000",
+                "time": "۱۶:۵۹:۴۹"
+            },
+            {
+                "currencyName": "حباب سکه گرمی",
+                "livePrice": "5660000",
+                "change": "(1.04%) 590,000",
+                "lowest": "5629000",
+                "highest": "5723000",
+                "time": "۱۶:۵۹:۴۷"
+            },
+            {
+                "currencyName": "سکه امامی",
+                "livePrice": "74150000",
+                "change": "(0.84%) 6,200,000",
+                "lowest": "73450000",
+                "highest": "74310000",
+                "time": "۱۶:۵۹:۵۵"
+            },
+            {
+                "currencyName": "سکه بهار آزادی",
+                "livePrice": "68980000",
+                "change": "(0.88%) 6,100,000",
+                "lowest": "68580000",
+                "highest": "69580000",
+                "time": "۱۶:۵۹:۵۵"
+            },
+            {
+                "currencyName": "نیم سکه",
+                "livePrice": "42760000",
+                "change": "(0.7%) 3,000,000",
+                "lowest": "42560000",
+                "highest": "42760000",
+                "time": "۱۴:۰۵:۲۱"
+            },
+            {
+                "currencyName": "ربع سکه",
+                "livePrice": "24960000",
+                "change": "(0.4%) 1,000,000",
+                "lowest": "24660000",
+                "highest": "24960000",
+                "time": "۱۴:۵۵:۴۷"
+            },
+            {
+                "currencyName": "سکه گرمی",
+                "livePrice": "13630000",
+                "change": "(0.73%) 1,000,000",
+                "lowest": "13630000",
+                "highest": "13630000",
+                "time": "۱۱:۰۰:۴۶"
+            }
+        ]
+    },
+    "totalCount": 167
+}

@@ -26,7 +26,7 @@ PROJECT_DIRS = ("bots", "web", "desktop")
 # older releases kept every project under src/ — include it so the whole
 # history is measurable with one rule
 HISTORY_ROOTS = ("bots", "web", "desktop", "src")
-CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1",
+CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1", ".lua",
              ".html", ".css", ".sql"}
 SKIP_DIRS = {"__pycache__", "node_modules", ".git"}
 LANG_OF = {".py": "Python", ".js": "JavaScript", ".html": "HTML", ".css": "CSS",

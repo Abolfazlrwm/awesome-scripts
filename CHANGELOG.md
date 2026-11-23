@@ -8,6 +8,14 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.28.0] — ۱۹۲ پروژه
+
+- **۵۴ پروژه‌ی جدید از دسته‌ی پنجم آپلودها**: ۴۹ بات تلگرام و ۵ ابزار وب — از سلف‌های پلاگین‌محور (SelfSaz با ۸۷ پلاگین، Source-Arz با ۱۸۶ پلاگین)، تبچی MadelineProto و بازی مافیا تا یوزربات Lua با موتور tdlua، APIهای عمومی و دایرکتوری وب‌سرویس
+- **زبان جدید Lua** به مجموعه اضافه شد (اکنون ۱۲ زبان) و ابزارهای آماری/جستجو برای آن به‌روزرسانی شدند
+- **بهداشت سکرت‌ها**: ۲۵ توکن بات، ۶ api_hash، ۸ api_id، ۸ رمز دیتابیس و کلیدهای سرویس در سورس‌های اصلی placeholder شدند
+- **پاک‌سازی حرفه‌ای**: باینری ۵۲ مگابایتی tdlua و دیتاهای اجرایی (db/pyc/room-data) حذف، بنر ۴.۷ مگابایتی فشرده، vendor با composer بازسازی می‌شود
+- همه‌ی پروژه‌ها attribution و بخش «🔒 ذکر منبع» دارند؛ ۵ آیتم هم‌خانواده‌ی پروژه‌های موجود اضافه نشد و افزونه‌ی تجاری Dokan Pro به‌دلیل کپی‌رایت منتشر نشد
+
 ## [v1.27.0] — 2026-11-23 — 📦 21 new projects from the second upload batch — 117 → 138
 
 - **17 new Telegram bots**: Telethon tabchi CLI, time-based auto-lock, group broadcast, DIO/krals/reload/plus/Jackmor selfbot panels (all documented as userbots, run at your own risk), story downloader, two scheduled post-copiers, staking-deposit tracker, group duel game, getID3 audio tools, an anonymous-chat platform with a web installer, the per-character-priced Kaj anonymous chat (original author: AbolfazlKaj) and a coin-bet game (in-game currency only).

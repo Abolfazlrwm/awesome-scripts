@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-23T12:08:42+03:30",
+  "generated_at": "2026-11-23T13:03:08+03:30",
   "totals": {
-    "files": 841,
-    "loc": 210799,
-    "bytes": 26790286
+    "files": 1748,
+    "loc": 389441,
+    "bytes": 49199962
   },
   "projects": {
     "2048-web": {
@@ -41,6 +41,16 @@
       "loc": 5509,
       "bytes": 725495
     },
+    "anti-login-selfbot": {
+      "files": 2,
+      "loc": 143,
+      "bytes": 9664
+    },
+    "arzdigital-price-api": {
+      "files": 2,
+      "loc": 204,
+      "bytes": 9642
+    },
     "ascii-art-generator-web": {
       "files": 3,
       "loc": 433,
@@ -60,6 +70,16 @@
       "files": 3,
       "loc": 467,
       "bytes": 79259
+    },
+    "blackdiamond-userbot": {
+      "files": 24,
+      "loc": 21233,
+      "bytes": 1010469
+    },
+    "botbiso-wheel-game-bot": {
+      "files": 4,
+      "loc": 375,
+      "bytes": 22777
     },
     "breakout-web": {
       "files": 3,
@@ -91,6 +111,16 @@
       "loc": 106,
       "bytes": 40943
     },
+    "channel-media-manager-bot": {
+      "files": 5,
+      "loc": 2449,
+      "bytes": 77815
+    },
+    "channel-mirror-bot": {
+      "files": 2,
+      "loc": 260,
+      "bytes": 9722
+    },
     "channel-submission-bot": {
       "files": 4,
       "loc": 953,
@@ -106,15 +136,45 @@
       "loc": 671,
       "bytes": 107866
     },
+    "channel-username-tool": {
+      "files": 2,
+      "loc": 401,
+      "bytes": 20464
+    },
+    "chronicle-selfbot": {
+      "files": 2,
+      "loc": 1479,
+      "bytes": 103756
+    },
     "city-builder-bot": {
       "files": 5,
       "loc": 3110,
       "bytes": 251576
     },
+    "clash-clan-bot": {
+      "files": 6,
+      "loc": 2280,
+      "bytes": 74429
+    },
     "clipboard-history-manager": {
       "files": 4,
       "loc": 228,
       "bytes": 23538
+    },
+    "clock-bio-userbot": {
+      "files": 4,
+      "loc": 328,
+      "bytes": 15552
+    },
+    "cloudflare-ip-bot": {
+      "files": 2,
+      "loc": 229,
+      "bytes": 11011
+    },
+    "cloudflare-manager-bot": {
+      "files": 2,
+      "loc": 211,
+      "bytes": 14513
     },
     "code-share-bot": {
       "files": 6,
@@ -145,6 +205,11 @@
       "files": 3,
       "loc": 239,
       "bytes": 184754
+    },
+    "currency-rate-php-bot": {
+      "files": 15,
+      "loc": 5612,
+      "bytes": 587744
     },
     "dice-duel-bot": {
       "files": 4,
@@ -201,6 +266,16 @@
       "loc": 304,
       "bytes": 49049
     },
+    "fake-avatar-fetcher": {
+      "files": 2,
+      "loc": 56,
+      "bytes": 3779
+    },
+    "faker-profile-bot": {
+      "files": 4,
+      "loc": 305,
+      "bytes": 14932
+    },
     "file-store-bot": {
       "files": 4,
       "loc": 177,
@@ -246,6 +321,11 @@
       "loc": 971,
       "bytes": 116466
     },
+    "github-search-bot": {
+      "files": 2,
+      "loc": 942,
+      "bytes": 61192
+    },
     "group-broadcast-bot": {
       "files": 3,
       "loc": 394,
@@ -261,10 +341,20 @@
       "loc": 8434,
       "bytes": 526666
     },
+    "hideme-chat-bot": {
+      "files": 2,
+      "loc": 1491,
+      "bytes": 76879
+    },
     "hxd-post-copier": {
       "files": 3,
       "loc": 258,
       "bytes": 18502
+    },
+    "hxd3-selfbot": {
+      "files": 5,
+      "loc": 255,
+      "bytes": 15513
     },
     "image-compressor-web": {
       "files": 3,
@@ -331,20 +421,50 @@
       "loc": 241,
       "bytes": 856623
     },
+    "lottery-account-php-bot": {
+      "files": 3,
+      "loc": 2427,
+      "bytes": 78476
+    },
     "lottery-giveaway-bot": {
       "files": 6,
       "loc": 2919,
       "bytes": 227414
+    },
+    "madeline-tabchi-php": {
+      "files": 84,
+      "loc": 2455,
+      "bytes": 5450257
+    },
+    "mafia-game-bot": {
+      "files": 8,
+      "loc": 7732,
+      "bytes": 290311
+    },
+    "makoran-chat-bot": {
+      "files": 68,
+      "loc": 15859,
+      "bytes": 2307222
     },
     "markdown-editor-web": {
       "files": 3,
       "loc": 200,
       "bytes": 148906
     },
+    "markov-text-model": {
+      "files": 5,
+      "loc": 98,
+      "bytes": 9722
+    },
     "matrix-rain-web": {
       "files": 3,
       "loc": 259,
       "bytes": 318894
+    },
+    "media-compressor-bot": {
+      "files": 2,
+      "loc": 691,
+      "bytes": 41343
     },
     "member-tag-manager-bot": {
       "files": 5,
@@ -376,10 +496,25 @@
       "loc": 2303,
       "bytes": 262454
     },
+    "nextpay-vpn-seller": {
+      "files": 6,
+      "loc": 715,
+      "bytes": 32601
+    },
     "noise-art-web": {
       "files": 3,
       "loc": 250,
       "bytes": 743971
+    },
+    "parsi-ai-chat-bot": {
+      "files": 4,
+      "loc": 733,
+      "bytes": 40273
+    },
+    "parsi-support-bot": {
+      "files": 2,
+      "loc": 432,
+      "bytes": 20655
     },
     "password-forge": {
       "files": 3,
@@ -405,6 +540,16 @@
       "files": 8,
       "loc": 3438,
       "bytes": 145478
+    },
+    "pinterest-downloader-bot": {
+      "files": 8,
+      "loc": 1151,
+      "bytes": 58980
+    },
+    "pirce-currency-bot": {
+      "files": 6,
+      "loc": 1024,
+      "bytes": 39459
     },
     "pixel-art-studio": {
       "files": 3,
@@ -441,10 +586,25 @@
       "loc": 203,
       "bytes": 97418
     },
+    "proxy-join-toolkit": {
+      "files": 4,
+      "loc": 267,
+      "bytes": 13152
+    },
     "proxy-scraper-bot": {
       "files": 2,
       "loc": 90,
       "bytes": 7072
+    },
+    "ptb-group-manager-bot": {
+      "files": 12,
+      "loc": 4503,
+      "bytes": 243567
+    },
+    "public-api-suite": {
+      "files": 27,
+      "loc": 1199,
+      "bytes": 1519662
     },
     "pyautogui-automation-demo": {
       "files": 4,
@@ -461,10 +621,20 @@
       "loc": 916,
       "bytes": 125598
     },
+    "python-uploader-bot": {
+      "files": 2,
+      "loc": 616,
+      "bytes": 32294
+    },
     "qr-code-studio": {
       "files": 4,
       "loc": 415,
       "bytes": 123306
+    },
+    "quick-search-bot": {
+      "files": 2,
+      "loc": 75,
+      "bytes": 4266
     },
     "quiz-trivia-bot": {
       "files": 5,
@@ -481,10 +651,20 @@
       "loc": 266,
       "bytes": 113043
     },
+    "remote-admin-bot": {
+      "files": 3,
+      "loc": 218,
+      "bytes": 13394
+    },
     "rss-news-bot": {
       "files": 4,
       "loc": 204,
       "bytes": 96504
+    },
+    "save-media-bot": {
+      "files": 2,
+      "loc": 545,
+      "bytes": 24542
     },
     "self-cli-php-bot": {
       "files": 3,
@@ -496,6 +676,41 @@
       "loc": 1337,
       "bytes": 89186
     },
+    "selfsaz-plugin-selfbot": {
+      "files": 113,
+      "loc": 20841,
+      "bytes": 2324574
+    },
+    "slow-bet-bot": {
+      "files": 5,
+      "loc": 10390,
+      "bytes": 459410
+    },
+    "slow-clan-game-bot": {
+      "files": 25,
+      "loc": 24425,
+      "bytes": 963855
+    },
+    "slow-finder-bot": {
+      "files": 11,
+      "loc": 4939,
+      "bytes": 183374
+    },
+    "slow-like-bot": {
+      "files": 3,
+      "loc": 538,
+      "bytes": 18672
+    },
+    "slow-seen-bot": {
+      "files": 58,
+      "loc": 8421,
+      "bytes": 1544868
+    },
+    "slow-uploader-bot": {
+      "files": 4,
+      "loc": 2841,
+      "bytes": 96674
+    },
     "snake-game-web": {
       "files": 3,
       "loc": 246,
@@ -505,6 +720,11 @@
       "files": 3,
       "loc": 744,
       "bytes": 123019
+    },
+    "source-arz-selfbot": {
+      "files": 217,
+      "loc": 9544,
+      "bytes": 1715388
     },
     "spotify-music-bot": {
       "files": 9,
@@ -566,10 +786,20 @@
       "loc": 879,
       "bytes": 97987
     },
+    "telegram-post-worker": {
+      "files": 2,
+      "loc": 1232,
+      "bytes": 79174
+    },
     "telegram-selfbot-panel": {
       "files": 8,
       "loc": 3463,
       "bytes": 381150
+    },
+    "telethon-pro-selfbot": {
+      "files": 4,
+      "loc": 975,
+      "bytes": 282872
     },
     "telethon-session-manager": {
       "files": 4,
@@ -621,6 +851,11 @@
       "loc": 59,
       "bytes": 79190
     },
+    "tron-deposit-bot": {
+      "files": 8,
+      "loc": 1465,
+      "bytes": 73747
+    },
     "twitter-media-api": {
       "files": 6,
       "loc": 243,
@@ -630,6 +865,11 @@
       "files": 3,
       "loc": 409,
       "bytes": 65021
+    },
+    "ultra-self-bot": {
+      "files": 4,
+      "loc": 678,
+      "bytes": 38459
     },
     "unit-converter-web": {
       "files": 3,
@@ -656,6 +896,16 @@
       "loc": 1923,
       "bytes": 185358
     },
+    "vak-sms-bot": {
+      "files": 2,
+      "loc": 355,
+      "bytes": 13807
+    },
+    "virtual-number-shop": {
+      "files": 72,
+      "loc": 9845,
+      "bytes": 1855343
+    },
     "voicecall-userbot": {
       "files": 15,
       "loc": 1436,
@@ -666,15 +916,30 @@
       "loc": 501,
       "bytes": 61068
     },
+    "web-services-directory": {
+      "files": 5,
+      "loc": 1327,
+      "bytes": 210810
+    },
     "wheel-of-actions": {
       "files": 3,
       "loc": 5764,
       "bytes": 280014
     },
+    "whisper-group-bot": {
+      "files": 5,
+      "loc": 827,
+      "bytes": 42596
+    },
     "winland-giveaway-bot": {
       "files": 4,
       "loc": 1019,
       "bytes": 98855
+    },
+    "wireguard-config-panel": {
+      "files": 2,
+      "loc": 93,
+      "bytes": 4868
     },
     "wordle-fa-bot": {
       "files": 4,
@@ -690,6 +955,11 @@
       "files": 5,
       "loc": 2766,
       "bytes": 213748
+    },
+    "xshare2bot": {
+      "files": 32,
+      "loc": 913,
+      "bytes": 141156
     },
     "youtube-downloader-bot": {
       "files": 3,

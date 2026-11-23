@@ -1,0 +1,7 @@
+pip install pyrogram
+pip install pyromod
+pip install tronpy
+pip install urllib3==1.26.6
+pip install --upgrade pip
+pip install cryptocompare
+pip install pymysql

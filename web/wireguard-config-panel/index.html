@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل ساخت کانفیگ WireGuard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://cdnimg.wisgoon.com/3Cqobxhv6Kbew6Htc9Q4so2BBtMLGV5UHEgu8FPirws/fill/500/707/no/1/aHR0cHM6Ly9pcnMwMS53aXNnb29uLmNvbS9pcnMwMS8wNy8zOS9kNi9jMi9pcnMwMV9zM29sZF8xNjA5NzA1NDI4MzM5NzQ5NjMzLmpwZw.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        input, button, textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📁 ساخت کانفیگ WireGuard</h2>
+        <label for="configName">نام کانفیگ:</label>
+        <input type="text" id="configName" placeholder="">
+
+        <button onclick="generateConfig()">✅️ ساخت و دانلود</button>
+
+        <textarea id="output" rows="12" readonly></textarea>
+    </div>
+
+    <script>
+        function randomIPv6() {
+            let hex = "abcdef0123456789";
+            let ip = "2008:d980";
+            for (let i = 0; i < 6; i++) {
+                ip += ":" + Array(4).fill(0).map(() => hex[Math.floor(Math.random() * hex.length)]).join('');
+            }
+            return ip + "/32";
+        }
+
+        function randomIPv4() {
+            return `${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}`;
+        }
+
+        function generateKey() {
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let key = Array(44).fill(0).map(() => chars[Math.floor(Math.random() * chars.length)]).join('');
+            return key.slice(0, 42) + "c=";
+        }
+
+        function generateConfig() {
+            let configName = document.getElementById("configName").value || "WireGuard_Config";
+            
+            let config = `[Interface]
+Address = ${randomIPv6()}
+DNS = 10.202.10.10,10.202.10.11, ${randomIPv4()}
+PrivateKey = ${generateKey()}
+
+[Peer]
+AllowedIPs = ${randomIPv4()}/32
+Endpoint = 88.14.79.122:891
+PreSharedKey = ${generateKey()}
+PublicKey = ${generateKey()}
+`;
+
+            document.getElementById("output").value = config;
+            
+            let blob = new Blob([config], { type: "/plain" });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `${configName}.conf`;
+            link.click();
+        }
+    </script>
+</body>
+</html>

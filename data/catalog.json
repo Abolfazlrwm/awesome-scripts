@@ -2,20 +2,21 @@
   "repo": "Abolfazlrwm/awesome-scripts",
   "repo_url": "https://github.com/Abolfazlrwm/awesome-scripts",
   "site_url": "https://abolfazlrwm.github.io/awesome-scripts/",
-  "generated_at": "2026-11-23T11:52:09+03:30",
-  "count": 138,
+  "generated_at": "2026-11-23T12:59:36+03:30",
+  "count": 192,
   "stats": {
     "categories": {
-      "web-tool": 44,
-      "telegram-bot": 87,
+      "web-tool": 49,
+      "telegram-bot": 136,
       "desktop-tool": 7
     },
     "languages": {
-      "HTML/CSS/JS": 38,
-      "Python": 57,
-      "PHP": 27,
+      "HTML/CSS/JS": 39,
+      "Python": 77,
+      "PHP": 58,
+      "Lua": 1,
       "C": 1,
-      "JavaScript": 4,
+      "JavaScript": 5,
       "PowerShell": 1,
       "Node.js": 5,
       "HTML/CSS": 2,
@@ -120,6 +121,30 @@
       "preview": null
     },
     {
+      "slug": "anti-login-selfbot",
+      "path": "bots/anti-login-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Anti Login Selfbot",
+      "description_en": "Guard your session — `antilogin on/off` kills unknown active logins",
+      "demo": null,
+      "name_fa": "محافظ نشست",
+      "description_fa": "قطع نشست‌های ناشناس اکانت با antilogin روشن/خاموش",
+      "preview": null
+    },
+    {
+      "slug": "arzdigital-price-api",
+      "path": "web/arzdigital-price-api",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "ArzDigital Price API",
+      "description_en": "Crypto price JSON API over ArzDigital with file caching",
+      "demo": null,
+      "name_fa": "قیمت ارز API",
+      "description_fa": "API قیمت ارز دیجیتال با کش فایل ۵ دقیقه‌ای",
+      "preview": null
+    },
+    {
       "slug": "ascii-art-generator-web",
       "path": "web/ascii-art-generator-web",
       "category": "web-tool",
@@ -165,6 +190,30 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/backend-dev-portfolio/",
       "name_fa": "رزومه بک‌اند",
       "description_fa": "رزومه‌ی تک‌فایلی تیره برای توسعه‌دهنده بک‌اند و ربات‌نویس",
+      "preview": null
+    },
+    {
+      "slug": "blackdiamond-userbot",
+      "path": "bots/blackdiamond-userbot",
+      "category": "telegram-bot",
+      "language": "Lua",
+      "name_en": "BlackDiamond Userbot",
+      "description_en": "tdlua-based userbot with role levels, global bans and bundled libs",
+      "demo": null,
+      "name_fa": "BlackDiamond Lua",
+      "description_fa": "یوزربات tdlua با سطوح دسترسی، بن گلوبال و کتابخانه‌ها",
+      "preview": null
+    },
+    {
+      "slug": "botbiso-wheel-game-bot",
+      "path": "bots/botbiso-wheel-game-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Botbiso Wheel Game Bot",
+      "description_en": "Wheel-of-fortune coin game with rounds, referrals and an admin panel",
+      "demo": null,
+      "name_fa": "گردونه BotBiso",
+      "description_fa": "گردونه‌ی سکه با دورها، زیرمجموعه‌گیری و پنل مدیریت",
       "preview": null
     },
     {
@@ -240,6 +289,30 @@
       "preview": "bots/channel-likes-bot/docs/preview.png"
     },
     {
+      "slug": "channel-media-manager-bot",
+      "path": "bots/channel-media-manager-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Channel Media Manager Bot",
+      "description_en": "Channel media manager — captions, auto-seen, timed deletion",
+      "demo": null,
+      "name_fa": "مدیر مدیای کانال",
+      "description_fa": "کپشن، سین خودکار، حذف زمان‌دار مدیا و تبلیغ",
+      "preview": null
+    },
+    {
+      "slug": "channel-mirror-bot",
+      "path": "bots/channel-mirror-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Channel Mirror Bot",
+      "description_en": "Auto-mirror posts from source channels into one target channel",
+      "demo": null,
+      "name_fa": "آینه کانال",
+      "description_fa": "بازنشر خودکار پست کانال‌های مبدأ به کانال مقصد",
+      "preview": null
+    },
+    {
       "slug": "channel-submission-bot",
       "path": "bots/channel-submission-bot",
       "category": "telegram-bot",
@@ -276,6 +349,30 @@
       "preview": "bots/channel-translate-worker/docs/preview.png"
     },
     {
+      "slug": "channel-username-tool",
+      "path": "bots/channel-username-tool",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Channel Username Tool",
+      "description_en": "Bulk-create channels and claim usernames with FloodWait handling",
+      "demo": null,
+      "name_fa": "یوزرنیم کانال",
+      "description_fa": "ساخت گروهی کانال و گرفتن یوزرنیم با مدیریت خطاها",
+      "preview": null
+    },
+    {
+      "slug": "chronicle-selfbot",
+      "path": "bots/chronicle-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Chronicle Selfbot",
+      "description_en": "CLI Telethon selfbot with a terminal panel and general userbot tooling",
+      "demo": null,
+      "name_fa": "سلف Chronicle",
+      "description_fa": "سلف CLI با پنل ترمینال و ابزارهای عمومی یوزربات",
+      "preview": null
+    },
+    {
       "slug": "city-builder-bot",
       "path": "bots/city-builder-bot",
       "category": "telegram-bot",
@@ -288,6 +385,18 @@
       "preview": "bots/city-builder-bot/docs/preview.png"
     },
     {
+      "slug": "clash-clan-bot",
+      "path": "bots/clash-clan-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Clash Clan Bot",
+      "description_en": "Clan registration bot for Clash Royale / Clash of Clans",
+      "demo": null,
+      "name_fa": "ثبت‌نام کلن",
+      "description_fa": "ثبت‌نام کلن Clash با قوانین و تصویر بازیکن",
+      "preview": null
+    },
+    {
       "slug": "clipboard-history-manager",
       "path": "desktop/clipboard-history-manager",
       "category": "desktop-tool",
@@ -298,6 +407,42 @@
       "name_fa": "تاریخچه کلیپ‌بورد",
       "description_fa": "تاریخچه‌ی قابل‌جستجوی کلیپ‌بورد با سنجاق، حذف تکراری و ذخیره‌سازی JSON",
       "preview": "desktop/clipboard-history-manager/docs/preview.png"
+    },
+    {
+      "slug": "clock-bio-userbot",
+      "path": "bots/clock-bio-userbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Clock Bio Userbot",
+      "description_en": "Live clock with colored hearts in your name/bio, auto-updated each minute",
+      "demo": null,
+      "name_fa": "ساعت زنده در بیو",
+      "description_fa": "ساعت با قلب‌های رنگی در نام/بیو، به‌روزرسانی هر دقیقه",
+      "preview": null
+    },
+    {
+      "slug": "cloudflare-ip-bot",
+      "path": "bots/cloudflare-ip-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Cloudflare Ip Bot",
+      "description_en": "Fetch and serve healthy Cloudflare edge IPs",
+      "demo": null,
+      "name_fa": "IP سالم کلودفلر",
+      "description_fa": "استخراج و ارسال IPهای سالم کلودفلر",
+      "preview": null
+    },
+    {
+      "slug": "cloudflare-manager-bot",
+      "path": "bots/cloudflare-manager-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Cloudflare Manager Bot",
+      "description_en": "Manage Cloudflare DNS/account from Telegram via the REST API",
+      "demo": null,
+      "name_fa": "مدیریت کلودفلر",
+      "description_fa": "مدیریت DNS و اکانت کلودفلر از تلگرام با REST API",
+      "preview": null
     },
     {
       "slug": "code-share-bot",
@@ -370,6 +515,18 @@
       "name_fa": "توضیح‌گر Cron",
       "description_fa": "توضیح فارسی عبارت cron و ۵ اجرای بعدی",
       "preview": "web/cron-explainer-web/docs/preview.png"
+    },
+    {
+      "slug": "currency-rate-php-bot",
+      "path": "bots/currency-rate-php-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Currency Rate PHP Bot",
+      "description_en": "Currency bot with a calc command and a bootstrap web face",
+      "demo": null,
+      "name_fa": "نرخ ارز PHP",
+      "description_fa": "استعلام و calc ارز با رابط وب bootstrap",
+      "preview": null
     },
     {
       "slug": "dice-duel-bot",
@@ -504,6 +661,30 @@
       "preview": "bots/expense-splitter-bot/docs/preview.png"
     },
     {
+      "slug": "fake-avatar-fetcher",
+      "path": "web/fake-avatar-fetcher",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "Fake Avatar Fetcher",
+      "description_en": "Fetch randomuser.me avatars, store them and return JSON",
+      "demo": null,
+      "name_fa": "آواتار تصادفی",
+      "description_fa": "سرویس PHP آواتار تصادفی randomuser با خروجی JSON",
+      "preview": null
+    },
+    {
+      "slug": "faker-profile-bot",
+      "path": "bots/faker-profile-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Faker Profile Bot",
+      "description_en": "Faker(fa) profiles + channel joins across multiple accounts",
+      "demo": null,
+      "name_fa": "پروفایل Faker",
+      "description_fa": "پروفایل تصادفی فارسی و عضویت چند اکانت با Telethon",
+      "preview": null
+    },
+    {
       "slug": "file-store-bot",
       "path": "bots/file-store-bot",
       "category": "telegram-bot",
@@ -612,6 +793,18 @@
       "preview": "bots/giftix-stars-shop-bot/docs/preview.png"
     },
     {
+      "slug": "github-search-bot",
+      "path": "bots/github-search-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Github Search Bot",
+      "description_en": "Search GitHub repos, read READMEs and trends inside Telegram",
+      "demo": null,
+      "name_fa": "جستجوی گیت‌هاب",
+      "description_fa": "جستجوی ریپو، خواندن README و ترندها داخل تلگرام",
+      "preview": null
+    },
+    {
       "slug": "group-broadcast-bot",
       "path": "bots/group-broadcast-bot",
       "category": "telegram-bot",
@@ -648,6 +841,18 @@
       "preview": "bots/happydog-economy-bot/docs/preview.png"
     },
     {
+      "slug": "hideme-chat-bot",
+      "path": "bots/hideme-chat-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "HideMe Chat Bot",
+      "description_en": "Anonymous chat with gender picker, coin/cash referrals, admin panel",
+      "demo": null,
+      "name_fa": "چت ناشناس HideMe",
+      "description_fa": "چت تصادفی با جنسیت، رفال سکه/پول و پنل پیشرفته",
+      "preview": null
+    },
+    {
       "slug": "hxd-post-copier",
       "path": "bots/hxd-post-copier",
       "category": "telegram-bot",
@@ -657,6 +862,18 @@
       "demo": null,
       "name_fa": "کپی‌کن HxD",
       "description_fa": "نسخه‌ی جمع‌وجورتر کپی‌کن پست — ست‌آپ تعاملی در اولین اجرا",
+      "preview": null
+    },
+    {
+      "slug": "hxd3-selfbot",
+      "path": "bots/hxd3-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "HxD3 Selfbot",
+      "description_en": "Third lightweight iteration of the HxD Pyrogram family",
+      "demo": null,
+      "name_fa": "سلف HxD3",
+      "description_fa": "نسخه‌ی سوم سبک خانواده‌ی HxD روی Pyrogram",
       "preview": null
     },
     {
@@ -816,6 +1033,18 @@
       "preview": null
     },
     {
+      "slug": "lottery-account-php-bot",
+      "path": "bots/lottery-account-php-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Lottery Account PHP Bot",
+      "description_en": "Lottery bot with LiteSpeed fast-finish responses and Jalali dates",
+      "demo": null,
+      "name_fa": "قرعه‌کشی PHP",
+      "description_fa": "قرعه‌کشی سریع LiteSpeed با تاریخ شمسی",
+      "preview": null
+    },
+    {
       "slug": "lottery-giveaway-bot",
       "path": "bots/lottery-giveaway-bot",
       "category": "telegram-bot",
@@ -826,6 +1055,42 @@
       "name_fa": "قرعه‌کشی و گیوای",
       "description_fa": "ساخت و مدیریت قرعه‌کشی با عضویت اجباری، رفرال و پنل مدیریت کامل",
       "preview": "bots/lottery-giveaway-bot/docs/preview.png"
+    },
+    {
+      "slug": "madeline-tabchi-php",
+      "path": "bots/madeline-tabchi-php",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Madeline Tabchi PHP",
+      "description_en": "Full tabchi on MadelineProto v8 — admin panel, stats, broadcast",
+      "demo": null,
+      "name_fa": "تبچی MadelineProto",
+      "description_fa": "تبچی کامل PHP با پنل، آمار و ارسال همگانی",
+      "preview": null
+    },
+    {
+      "slug": "mafia-game-bot",
+      "path": "bots/mafia-game-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Mafia Game Bot",
+      "description_en": "Mafia party game — 9/12-player modes, role distribution, day/night",
+      "demo": null,
+      "name_fa": "مافیا",
+      "description_fa": "بازی مافیا ۹ و ۱۲ نفره با شب/روز و توزیع نقش",
+      "preview": null
+    },
+    {
+      "slug": "makoran-chat-bot",
+      "path": "bots/makoran-chat-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Makoran Chat Bot",
+      "description_en": "Anonymous chat with random pairing, reports and an RTL payment panel",
+      "demo": null,
+      "name_fa": "چت Makoran",
+      "description_fa": "چت ناشناس با گزارش تخلف و پنل پرداخت RTL",
+      "preview": null
     },
     {
       "slug": "markdown-editor-web",
@@ -840,6 +1105,18 @@
       "preview": "web/markdown-editor-web/docs/preview.png"
     },
     {
+      "slug": "markov-text-model",
+      "path": "bots/markov-text-model",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Markov Text Model",
+      "description_en": "Markov-chain text model with a Wikipedia data receiver",
+      "demo": null,
+      "name_fa": "مدل مارکوف",
+      "description_fa": "زنجیره‌ی مارکوف با دریافت دیتا از ویکی‌پدیا",
+      "preview": null
+    },
+    {
       "slug": "matrix-rain-web",
       "path": "web/matrix-rain-web",
       "category": "web-tool",
@@ -850,6 +1127,18 @@
       "name_fa": "بارش ماتریکس",
       "description_fa": "باران نئونی گلیف‌ها با حالت «نمایان شدن پیام تو»",
       "preview": "web/matrix-rain-web/docs/preview.png"
+    },
+    {
+      "slug": "media-compressor-bot",
+      "path": "bots/media-compressor-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Media Compressor Bot",
+      "description_en": "Compress video (H.265) and images with ffmpeg",
+      "demo": null,
+      "name_fa": "فشرده‌ساز مدیا",
+      "description_fa": "فشرده‌سازی ویدیو H.265 و تصویر با ffmpeg",
+      "preview": null
     },
     {
       "slug": "member-tag-manager-bot",
@@ -924,6 +1213,18 @@
       "preview": "bots/multi-account-manager/docs/preview.png"
     },
     {
+      "slug": "nextpay-vpn-seller",
+      "path": "bots/nextpay-vpn-seller",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Nextpay VPN Seller",
+      "description_en": "VPN subscription seller wired to the Nextpay gateway",
+      "demo": null,
+      "name_fa": "فروش اشتراک Nextpay",
+      "description_fa": "فروش اشتراک VPN با درگاه Nextpay و قیمت یورویی",
+      "preview": null
+    },
+    {
       "slug": "noise-art-web",
       "path": "web/noise-art-web",
       "category": "web-tool",
@@ -934,6 +1235,30 @@
       "name_fa": "هنر نویز",
       "description_fa": "هنر مولد — میدان گرادینتی پرلین و جریان هزاران ذره",
       "preview": "web/noise-art-web/docs/preview.png"
+    },
+    {
+      "slug": "parsi-ai-chat-bot",
+      "path": "bots/parsi-ai-chat-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Parsi AI Chat Bot",
+      "description_en": "Private AI chat with per-user usage counting and daily stats",
+      "demo": null,
+      "name_fa": "چت هوشمند پارسی",
+      "description_fa": "چت AI خصوصی با شمارش مصرف و آمار روزانه",
+      "preview": null
+    },
+    {
+      "slug": "parsi-support-bot",
+      "path": "bots/parsi-support-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Parsi Support Bot",
+      "description_en": "Support desk bot — user messages reach support, replies go straight back",
+      "demo": null,
+      "name_fa": "پشتیبانی پارسی",
+      "description_fa": "دفتر پشتیبانی — پیام کاربر به پشتیبانی، پاسخ مستقیم به کاربر",
+      "preview": null
     },
     {
       "slug": "password-forge",
@@ -993,6 +1318,30 @@
       "demo": null,
       "name_fa": "آپلودر PHP",
       "description_fa": "لینک بده، فایل را در تلگرام بگیر — MySQL، پنل ادمین، حذف پیام از کانال، تاریخ شمسی و اجازه‌ی IP تلگرام",
+      "preview": null
+    },
+    {
+      "slug": "pinterest-downloader-bot",
+      "path": "bots/pinterest-downloader-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Pinterest Downloader Bot",
+      "description_en": "Extract and send original images from Pinterest pins",
+      "demo": null,
+      "name_fa": "دانلودر پینترست",
+      "description_fa": "استخراج و ارسال تصویر اصلی پین‌های پینترست",
+      "preview": null
+    },
+    {
+      "slug": "pirce-currency-bot",
+      "path": "bots/pirce-currency-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Pirce Currency Bot",
+      "description_en": "Currency rates with half/double/refresh buttons and a `calc` command",
+      "demo": null,
+      "name_fa": "نرخ ارز Pirce",
+      "description_fa": "دکمه‌های نصف/دوبل/بروزرسانی نرخ و دستور calc",
       "preview": null
     },
     {
@@ -1080,6 +1429,18 @@
       "preview": "bots/price-ticker-bot/docs/preview.png"
     },
     {
+      "slug": "proxy-join-toolkit",
+      "path": "bots/proxy-join-toolkit",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Proxy Join Toolkit",
+      "description_en": "Proxy bot + force-join check widget returning JSON",
+      "demo": null,
+      "name_fa": "پروکسی و جوین",
+      "description_fa": "ربات پروکسی‌یاب + ویجت چک عضویت با خروجی JSON",
+      "preview": null
+    },
+    {
       "slug": "proxy-scraper-bot",
       "path": "bots/proxy-scraper-bot",
       "category": "telegram-bot",
@@ -1089,6 +1450,30 @@
       "demo": null,
       "name_fa": "ربات اسکراپر پروکسی",
       "description_fa": "با /start ده پروکسی MTProto تازه از API می‌گیرد و به‌صورت دکمه‌ی لینک نشان می‌دهد — وب‌هوک با محدودسازی IP تلگرام",
+      "preview": null
+    },
+    {
+      "slug": "ptb-group-manager-bot",
+      "path": "bots/ptb-group-manager-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "PTB Group Manager Bot",
+      "description_en": "Full group manager on PTB — admin panel, filters, account-age checks",
+      "demo": null,
+      "name_fa": "مدیر گروه PTB",
+      "description_fa": "پنل ادمین، فیلترها، سن اکانت و ماژول نرخ ارز",
+      "preview": null
+    },
+    {
+      "slug": "public-api-suite",
+      "path": "web/public-api-suite",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "Public API Suite",
+      "description_en": "Bundle of standalone JSON APIs — Digikala search, OCR, temp mail and more",
+      "demo": null,
+      "name_fa": "مجموعه API",
+      "description_fa": "بسته APIهای مستقل — دیجی‌کالا، OCR، ایمیل موقت و…",
       "preview": null
     },
     {
@@ -1128,6 +1513,18 @@
       "preview": "bots/pyrogram-selfbot-manager/docs/preview.png"
     },
     {
+      "slug": "python-uploader-bot",
+      "path": "bots/python-uploader-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Python Uploader Bot",
+      "description_en": "File uploader with an inline admin panel (captions, start message)",
+      "demo": null,
+      "name_fa": "آپلودر پایتونی",
+      "description_fa": "آپلودر فایل با پنل ادمین و کپشن دلخواه",
+      "preview": null
+    },
+    {
       "slug": "qr-code-studio",
       "path": "web/qr-code-studio",
       "category": "web-tool",
@@ -1137,6 +1534,18 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/qr-code-studio/",
       "name_fa": "QR Code Studio",
       "description_fa": "ساخت QR سفارشی با رنگ/گرادینت/لوگو و خروجی PNG/SVG",
+      "preview": null
+    },
+    {
+      "slug": "quick-search-bot",
+      "path": "bots/quick-search-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Quick Search Bot",
+      "description_en": "Minimal search bot — user text becomes a query, results come back",
+      "demo": null,
+      "name_fa": "جستجوگر کوچک",
+      "description_fa": "ربات PHP مینیمال جستجو با پاسخ سریع",
       "preview": null
     },
     {
@@ -1176,6 +1585,18 @@
       "preview": "bots/reminder-task-bot/docs/preview.png"
     },
     {
+      "slug": "remote-admin-bot",
+      "path": "bots/remote-admin-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Remote Admin Bot",
+      "description_en": "Remote-control connected accounts with file routing, admin-only",
+      "demo": null,
+      "name_fa": "کنترل ریموت",
+      "description_fa": "مدیریت ریموت اکانت‌های متصل با دسترسی ادمین",
+      "preview": null
+    },
+    {
       "slug": "rss-news-bot",
       "path": "bots/rss-news-bot",
       "category": "telegram-bot",
@@ -1186,6 +1607,18 @@
       "name_fa": "اعلان RSS",
       "description_fa": "پست خودکار مطالب جدید فید به کانال",
       "preview": "bots/rss-news-bot/docs/preview.png"
+    },
+    {
+      "slug": "save-media-bot",
+      "path": "bots/save-media-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Save Media Bot",
+      "description_en": "Mirror channel media into a storage channel with link previews",
+      "demo": null,
+      "name_fa": "ذخیره مدیا",
+      "description_fa": "فوروارد مدیای کانال‌ها به کانال ذخیره با پیش‌نمایش لینک",
+      "preview": null
     },
     {
       "slug": "self-cli-php-bot",
@@ -1212,6 +1645,90 @@
       "preview": null
     },
     {
+      "slug": "selfsaz-plugin-selfbot",
+      "path": "bots/selfsaz-plugin-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "SelfSaz Plugin Selfbot",
+      "description_en": "Telethon selfbot with a dynamic plugin loader and 87 ready plugins",
+      "demo": null,
+      "name_fa": "سلف پلاگین SelfSaz",
+      "description_fa": "لودر پلاگین با ۸۷ پلاگین آماده، سکه و گزارش باگ",
+      "preview": null
+    },
+    {
+      "slug": "slow-bet-bot",
+      "path": "bots/slow-bet-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Slow Bet Bot",
+      "description_en": "Large single-file betting panel — balances, Jalali dates, admin tools",
+      "demo": null,
+      "name_fa": "شرط‌بندی SlowBet",
+      "description_fa": "پنل کامل شرط‌بندی در یک فایل PHP",
+      "preview": null
+    },
+    {
+      "slug": "slow-clan-game-bot",
+      "path": "bots/slow-clan-game-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Slow Clan Game Bot",
+      "description_en": "Clan game with per-room engines, gift codes and daily rewards",
+      "demo": null,
+      "name_fa": "بازی قبیله SlowCreate",
+      "description_fa": "قبیله، کد هدیه، امتیاز روزانه و شرط‌بندی درون‌بازی",
+      "preview": null
+    },
+    {
+      "slug": "slow-finder-bot",
+      "path": "bots/slow-finder-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Slow Finder Bot",
+      "description_en": "Phone finder by numeric ID with anti-spam cooldown and tutorials",
+      "demo": null,
+      "name_fa": "جستجوی شماره",
+      "description_fa": "جستجوی شماره با ID عددی، ضد-اسپم و آموزش تصویری",
+      "preview": null
+    },
+    {
+      "slug": "slow-like-bot",
+      "path": "bots/slow-like-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Slow Like Bot",
+      "description_en": "Like system with hashed records and channel force-join",
+      "demo": null,
+      "name_fa": "لایک SlowLike",
+      "description_fa": "سامانه لایک با هش یکتا و عضویت اجباری",
+      "preview": null
+    },
+    {
+      "slug": "slow-seen-bot",
+      "path": "bots/slow-seen-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Slow Seen Bot",
+      "description_en": "View/seen seller with a standalone ZarinPal payment panel (RTL)",
+      "demo": null,
+      "name_fa": "فروش بازدید",
+      "description_fa": "فروش سین با پنل پرداخت زرین‌پال و طراحی RTL",
+      "preview": null
+    },
+    {
+      "slug": "slow-uploader-bot",
+      "path": "bots/slow-uploader-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Slow Uploader Bot",
+      "description_en": "Uploader with auto getMe identification, Jalali dates, fast responses",
+      "demo": null,
+      "name_fa": "آپلودر Slow",
+      "description_fa": "آپلودر PHP با getMe خودکار و تاریخ شمسی",
+      "preview": null
+    },
+    {
       "slug": "snake-game-web",
       "path": "web/snake-game-web",
       "category": "web-tool",
@@ -1233,6 +1750,18 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/solar-explorer-3d/",
       "name_fa": "کاوشگر سه‌بعدی منظومه شمسی",
       "description_fa": "شبیه‌سازی سه‌بعدی تعاملی منظومه شمسی با Three.js، کنترل سرعت زمان و پنل اطلاعات سیارات",
+      "preview": null
+    },
+    {
+      "slug": "source-arz-selfbot",
+      "path": "bots/source-arz-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Source Arz Selfbot",
+      "description_en": "Telethon selfbot shipping 186 independent plugins",
+      "demo": null,
+      "name_fa": "سلف Source-Arz",
+      "description_fa": "یوزربات Telethon با ۱۸۶ پلاگین مستقل",
       "preview": null
     },
     {
@@ -1380,6 +1909,18 @@
       "preview": null
     },
     {
+      "slug": "telegram-post-worker",
+      "path": "bots/telegram-post-worker",
+      "category": "telegram-bot",
+      "language": "JavaScript",
+      "name_en": "Telegram Post Worker (CF Worker)",
+      "description_en": "Serverless post manager on Cloudflare Workers — staged posts, targets, admin panel",
+      "demo": null,
+      "name_fa": "پست Worker",
+      "description_fa": "مدیریت پست بدون سرور روی Cloudflare Workers",
+      "preview": null
+    },
+    {
       "slug": "telegram-selfbot-panel",
       "path": "bots/telegram-selfbot-panel",
       "category": "telegram-bot",
@@ -1390,6 +1931,18 @@
       "name_fa": "سلف‌بات پنل‌دار",
       "description_fa": "سلف‌بات ۴۲+ قابلیت — پنل اینلاین، ساعت زنده روی اسم، ذخیره مدیا، QR/لوگو، AI، زمان‌بندی",
       "preview": "bots/telegram-selfbot-panel/docs/preview.png"
+    },
+    {
+      "slug": "telethon-pro-selfbot",
+      "path": "bots/telethon-pro-selfbot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Telethon Pro Selfbot",
+      "description_en": "Profile tools, reactions, group calls and cron scheduling on Telethon",
+      "demo": null,
+      "name_fa": "سلف حرفه‌ای Telethon",
+      "description_fa": "ابزار پروفایل، واکنش، تماس گروهی و زمان‌بندی cron",
+      "preview": null
     },
     {
       "slug": "telethon-session-manager",
@@ -1512,6 +2065,18 @@
       "preview": "bots/translator-bot/docs/preview.png"
     },
     {
+      "slug": "tron-deposit-bot",
+      "path": "bots/tron-deposit-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Tron Deposit Bot",
+      "description_en": "TRON gateway bot — per-user wallets, TRX/Toman withdrawals, admin panel",
+      "demo": null,
+      "name_fa": "درگاه ترون",
+      "description_fa": "کیف پول ترون per-user، برداشت ترون/تومان و پنل ادمین",
+      "preview": null
+    },
+    {
       "slug": "twitter-media-api",
       "path": "web/twitter-media-api",
       "category": "web-tool",
@@ -1534,6 +2099,18 @@
       "name_fa": "مسابقه‌ی تایپ",
       "description_fa": "تست سرعت تایپ فارسی/انگلیسی — رنگ‌بندی حرف‌به‌حرف، نمودار زنده WPM و تاریخچه نتایج",
       "preview": "web/typing-speed-race/docs/preview.png"
+    },
+    {
+      "slug": "ultra-self-bot",
+      "path": "bots/ultra-self-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Ultra Self Bot",
+      "description_en": "Lightweight Ultra Self V1.0 Telethon selfbot with a separate config",
+      "demo": null,
+      "name_fa": "سلف Ultra",
+      "description_fa": "سلف سبک Telethon با کانفیگ جدا — Ultra Self V1.0",
+      "preview": null
     },
     {
       "slug": "unit-converter-web",
@@ -1596,6 +2173,30 @@
       "preview": "bots/v2ray-shop-bot/docs/preview.png"
     },
     {
+      "slug": "vak-sms-bot",
+      "path": "bots/vak-sms-bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Vak SMS Bot",
+      "description_en": "Buy virtual numbers via the vak-sms service, read OTPs, cancel orders",
+      "demo": null,
+      "name_fa": "شماره vak-sms",
+      "description_fa": "خرید شماره مجازی و خواندن OTP از وب‌سرویس",
+      "preview": null
+    },
+    {
+      "slug": "virtual-number-shop",
+      "path": "bots/virtual-number-shop",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "Virtual Number Shop",
+      "description_en": "Virtual-number shop with a web installer, admin panel and payments",
+      "demo": null,
+      "name_fa": "فروشگاه شماره مجازی",
+      "description_fa": "نصب‌کننده‌ی وب، پنل مدیریت و بخش پرداخت",
+      "preview": null
+    },
+    {
       "slug": "voicecall-userbot",
       "path": "bots/voicecall-userbot",
       "category": "telegram-bot",
@@ -1620,6 +2221,18 @@
       "preview": null
     },
     {
+      "slug": "web-services-directory",
+      "path": "web/web-services-directory",
+      "category": "web-tool",
+      "language": "PHP",
+      "name_en": "Web Services Directory",
+      "description_en": "Web-services directory site with an admin panel and view stats",
+      "demo": null,
+      "name_fa": "دایرکتوری وب‌سرویس",
+      "description_fa": "سایت مرجع وب‌سرویس‌ها با پنل مدیریت و آمار بازدید",
+      "preview": null
+    },
+    {
       "slug": "wheel-of-actions",
       "path": "web/wheel-of-actions",
       "category": "web-tool",
@@ -1629,6 +2242,18 @@
       "demo": "https://abolfazlrwm.github.io/awesome-scripts/web/wheel-of-actions/",
       "name_fa": "Wheel of Actions",
       "description_fa": "ابزار وب برای اولویت‌بندی و چرخوندن تسک‌های روزانه",
+      "preview": null
+    },
+    {
+      "slug": "whisper-group-bot",
+      "path": "bots/whisper-group-bot",
+      "category": "telegram-bot",
+      "language": "Python",
+      "name_en": "Whisper Group Bot",
+      "description_en": "In-group whisper messages with unique IDs and logging",
+      "demo": null,
+      "name_fa": "نجوا",
+      "description_fa": "پیام خصوصی داخل گروه با شناسه‌ی یکتا و لاگ",
       "preview": null
     },
     {
@@ -1642,6 +2267,18 @@
       "name_fa": "گیوای وین‌لند",
       "description_fa": "گیوای و قرعه‌کشی به سبک WinLand — چند گیوای همزمان، امتیاز رفرال، عضویت اجباری و پنل ادمین",
       "preview": "bots/winland-giveaway-bot/docs/preview.png"
+    },
+    {
+      "slug": "wireguard-config-panel",
+      "path": "web/wireguard-config-panel",
+      "category": "web-tool",
+      "language": "HTML/CSS/JS",
+      "name_en": "Wireguard Config Panel",
+      "description_en": "Single-file Persian panel for composing WireGuard configs",
+      "demo": null,
+      "name_fa": "پنل WireGuard",
+      "description_fa": "صفحه‌ی تک‌فایلی فارسی ساخت کانفیگ WireGuard",
+      "preview": null
     },
     {
       "slug": "wordle-fa-bot",
@@ -1678,6 +2315,18 @@
       "name_fa": "ربات جنگ جهانی",
       "description_fa": "شبیه‌ساز ژئوپلیتیک — کشورسازی، حمله به NPC و حمله اتمی، بازار نفت/تسلیحات/سهام، کلن و VIP",
       "preview": "bots/world-war-game-bot/docs/preview.png"
+    },
+    {
+      "slug": "xshare2bot",
+      "path": "bots/xshare2bot",
+      "category": "telegram-bot",
+      "language": "PHP",
+      "name_en": "XShare2 Bot",
+      "description_en": "Save & share Telegram posts with short links and view counts",
+      "demo": null,
+      "name_fa": "XShare2",
+      "description_fa": "ذخیره و اشتراک پست با لینک کوتاه و آمار بازدید",
+      "preview": null
     },
     {
       "slug": "youtube-downloader-bot",

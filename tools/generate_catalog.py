@@ -97,7 +97,19 @@ NAME_OVERRIDES = {
     "hxd-post-copier": "HxD Post Copier",
     "supertabchi-copy-bot": "SuperTabchi Copy Bot",
     "duel-game-bot": "Robot Duel Game Bot",
-    "anonymous-platform": "Anonymous Chat Platform",
+        "anonymous-platform": "Anonymous Chat Platform",
+    "hxd3-selfbot": "HxD3 Selfbot",
+    "ptb-group-manager-bot": "PTB Group Manager Bot",
+    "selfsaz-plugin-selfbot": "SelfSaz Plugin Selfbot",
+    "blackdiamond-userbot": "BlackDiamond Userbot",
+    "xshare2bot": "XShare2 Bot",
+    "hideme-chat-bot": "HideMe Chat Bot",
+    "vak-sms-bot": "Vak SMS Bot",
+    "public-api-suite": "Public API Suite",
+    "arzdigital-price-api": "ArzDigital Price API",
+    "fake-avatar-fetcher": "Fake Avatar Fetcher",
+    "telegram-post-worker": "Telegram Post Worker (CF Worker)",
+    "madeline-tabchi-php": "Madeline Tabchi PHP",
 }
 ACRONYMS = {"ai", "3d", "qr", "id", "vip", "rss", "gui", "vpn", "url", "php", "v2ray"}
 

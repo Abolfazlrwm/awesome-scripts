@@ -1,0 +1,4 @@
+telethon
+asyncio
+faker
+aiosqlite

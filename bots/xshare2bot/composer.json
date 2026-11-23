@@ -1,0 +1,27 @@
+{
+    "name": "devdasher/xshare2bot",
+    "description": "A Telegram bot for sharing posts",
+    "type": "project",
+    "require": {
+        "nutgram/nutgram": "4.10.0",
+        "illuminate/database": "10.28.0",
+        "symfony/cache": "6.3.5"
+    },
+    "homepage": "https://github.com/devdasher/xshare2bot",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "DevDasher\\XShare2Bot\\": "app/"
+        },
+        "files": [
+            "config/funcs.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "devdasher",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable"
+}

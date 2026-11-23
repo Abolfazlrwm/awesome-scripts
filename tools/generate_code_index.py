@@ -20,7 +20,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECT_DIRS = [REPO_ROOT / d for d in ("bots", "web", "desktop")]
 SKIP_DIRS = {"__pycache__", "node_modules", ".git", ".venv", "venv"}
-CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1",
+CODE_EXTS = {".py", ".js", ".php", ".java", ".cs", ".cpp", ".cc", ".h", ".ps1", ".lua",
              ".html", ".css", ".sql", ".md", ".json", ".yml", ".yaml", ".txt"}
 MAX_FILE_BYTES = 400_000
 DF_CAP = 1500      # tokens with more postings are treated as stopwords

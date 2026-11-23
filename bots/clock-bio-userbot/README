@@ -1,0 +1,7 @@
+
+# INSTALL
+pip install pyrogram
+pip install tgcrypto
+
+# RUN
+python main.py
