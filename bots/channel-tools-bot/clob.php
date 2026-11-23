@@ -22,7 +22,7 @@ foreach ($telegram_ip_ranges as $telegram_ip_range) if (!$ok) {
 
 $token      = "[*[TOKEN]*]"; #bot token
 $channel = file_get_contents("ch.txt"); #username Channel bedon @
-$admin    = [*[ADMIN]*]; #Admin
+$admin    = 0; #Admin ID — آیدی عددی ادمین را اینجا بگذارید (مثل 123456789)
 $idbot      = "[*[User]*]"; #IDbot bedon @
 #__________________________________________________________________#
 if(!file_exists("ch.txt")){

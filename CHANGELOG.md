@@ -15,6 +15,7 @@ All notable releases of this repository. Every entry matches a published [GitHub
 - **2 uploads were refused on purpose**: `script2-php.php` is an explicit SMS bomber (OTP harassment) and `Sender.py` is a Rubika bulk-forwarder to random chats across multiple sessions — both are spam/abuse tools and do not belong in this collection.
 - **Secrets hygiene** — a live OpenWeatherMap key in the self-bot source and a truncated bot-token prefix in the esrrar source were replaced with documented placeholders before commit (the leaked Rubika token lives only in the upload folder — revoke it).
 - Counters updated everywhere: README headline/badge/tables, hero, search placeholder, OG/Twitter descriptions, catalog fallback — 70 bots · 41 web tools · 117 total.
+- **CI fix within the release** — two decorative placeholder lines shipped as invalid PHP (`array(,,)` in the uploader config and an unquoted `[ *[ADMIN]* ]` bracket in channel-tools) are now parse-clean, so `php -l` passes on every PHP file in the repository.
 
 هشت پروژه‌ی جدید از فایل‌های آپلودی اضافه شد (۷ بات PHP + ۱ ابزار وب با دموی زنده)؛ دو فایل به‌دلیل اسپم/آزار (SMS Bomber و ارسال‌کننده‌ی انبوه روبیکا) عمداً رد شدند؛ کلید و پیش‌توکن نشت‌شده قبل از کامیت با جای‌نگهدار پاک شدند؛ همه‌ی شمارنده‌ها به ۱۱۷ به‌روزرسانی شدند.
 
