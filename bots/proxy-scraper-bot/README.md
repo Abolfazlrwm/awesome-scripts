@@ -47,3 +47,10 @@ https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://YOUR-DOMAIN/proxy-scr
 
 ---
 **EN:** A single-file PHP webhook bot: `/start` fetches 10 fresh MTProto proxies from a public proxy API and shows them as tappable URL buttons. Telegram-IP allow-list included, no database, config via two variables (`$token`, `$channelprox`). Original source by @devbc (Sourcekade), released under MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

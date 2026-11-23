@@ -44,3 +44,10 @@ https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://YOUR-DOMAIN/anonymous
 
 ---
 **EN:** Classic Telegram anonymous-messaging bot: every user gets a personal `/link`; anyone opening it can send texts or media that arrive without sender identity. Admin panel, mandatory channel join, file-based storage, webhook hardening. Original source by Dr Amir (Sourcekade), MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

@@ -108,3 +108,10 @@ Classic-era script: keep it on an **isolated test host**, use a dedicated DB use
 **Maintained by [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)** · MIT License
 
 </div>
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

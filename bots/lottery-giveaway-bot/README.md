@@ -67,3 +67,10 @@ A full-featured Telegram giveaway/lottery bot. Any user can create their own giv
 **Setup:** `pip install -r requirements.txt`, copy `.env.example` to `.env`, fill in `BOT_TOKEN` and `ADMIN_ID`, then `python bot.py`.
 
 **Note:** this bot only manages entry chances for a giveaway — it has no payment gateway or real-money transactions.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

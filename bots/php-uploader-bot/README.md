@@ -50,3 +50,10 @@ https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://YOUR-DOMAIN/php-uploa
 
 ---
 **EN:** PHP+MySQL uploader bot: send a link, receive the file inside Telegram. Admin panel, per-message delete control, DB stats table, Jalali dates, webhook IP allow-list, and a Persian video-less step-by-step tutorial in `docs/run-tutorial.docx`. Config via `config.php`. Original by Sourcekade, MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

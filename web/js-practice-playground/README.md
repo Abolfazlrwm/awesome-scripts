@@ -32,3 +32,10 @@
 
 ---
 **EN:** Classic beginner JavaScript exercises — star triangle & pyramid builders and a number-guessing game — packaged as a runnable, dependency-free browser page. The original `Game.js` ships untouched; `index.html` re-renders the same logic with DOM output. Live demo served from GitHub Pages. Exercises by @ixAmirCom, MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

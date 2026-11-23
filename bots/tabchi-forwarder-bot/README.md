@@ -44,3 +44,10 @@ php Tabchi.php
 
 ---
 **EN:** The classic Tabchi auto-forwarder on MadelineProto v8: pipes new posts from your source channels to destination channels, multi-tabche support with per-tab data and media cache folders (Voice/Sticker/Gif). Userbot — only forward channels you own or administer. Original by @Mahdi_a_8 (Sourcekade), MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

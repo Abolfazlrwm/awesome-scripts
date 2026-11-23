@@ -46,3 +46,10 @@ https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://YOUR-DOMAIN/channel-t
 
 ---
 **EN:** Single-file PHP channel-side utility bot: membership gate before `/start` content, member log (`allmember.txt`), pin/edit/delete controls, an on/off switch, transparent `g-id` link buttons and file-based per-chat state. Config via the `#Edit` block at the top. Original from the Sourcekade collection, MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

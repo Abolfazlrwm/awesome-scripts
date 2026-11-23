@@ -58,3 +58,10 @@ perfect-ai-chat-bot/
 ## 📄 License — لایسنس
 
 MIT — see the repository root.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

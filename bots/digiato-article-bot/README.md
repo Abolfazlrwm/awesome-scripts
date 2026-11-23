@@ -55,3 +55,10 @@ $env:PYTHONWARNINGS = "default"
 $env:LOGLEVEL = "INFO"
 ```
 - در صورت تغییر ساختار HTML سایت، سلکتورها را در `digiato_scraper.py` به‌روزرسانی کنید. 
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

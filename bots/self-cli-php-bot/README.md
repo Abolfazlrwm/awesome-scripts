@@ -45,3 +45,10 @@ php Self.php    # هندلر رویدادها روی اکانت شما بالا 
 
 ---
 **EN:** A MadelineProto v8 self-bot panel for your **own** Telegram account: name/bio tools, timers, forwards, saving, a `/weather` command and text utilities, event-driven via SimpleEventHandler. Login once with `Api.php`, run with `Self.php`. It is a userbot — Telegram may limit such accounts; use at your own risk. Original by @Mahdi_a_8 (Sourcekade), MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

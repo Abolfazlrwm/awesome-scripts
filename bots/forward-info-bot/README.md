@@ -57,3 +57,10 @@ A lightweight Telegram bot that reveals the original sender's info (user ID, nam
 **Setup:** upload `bot.php` to any PHP 7.4+ HTTPS host, set the `BOT_TOKEN` environment variable, then register the webhook with the Telegram Bot API (see the `setWebhook` call above). No database required.
 
 **Security:** never hardcode your bot token in source control — always use an environment variable, and keep `members.txt` (runtime data) out of git via `.gitignore`.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

@@ -36,3 +36,10 @@
 ## English
 
 A single-file, modern, responsive landing page for showcasing a Telegram channel or brand — complete with a hero section, about, team, features, and contact sections. Just open `index.html`, swap in your own copy and links, and deploy to any static host. No dependencies or build step required.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

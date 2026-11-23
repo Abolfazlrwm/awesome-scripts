@@ -48,3 +48,10 @@
 ## English
 
 A collection of **12 ready-made, responsive landing pages** for introducing and promoting a mobile app. Each file is a fully self-contained page (inline HTML/CSS/JS) — open the one you like, swap in your app's copy, screenshots, and store links, and deploy anywhere as a static page (GitHub Pages, Netlify, Vercel, etc.). No build step or framework required.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.

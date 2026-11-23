@@ -48,3 +48,10 @@ python run.py   # سرویس Flask بالا می‌آید؛ طبق متن آمو
 
 ---
 **EN:** Anonymous two-way chat bot: users talk to each other or to the seller/admin without revealing identities, plus admin broadcast, mandatory channel join and Persian (Jalali) dates. Ships a Telethon/Flask session runner (`run.py`). Original by Sourcekade (@ESRRAR), MIT.
+
+
+## 🔒 ذکر منبع
+
+> 📬 **Telegram:** [@Abolfazl_rwm](https://t.me/Abolfazl_rwm)
+
+استفاده، ویرایش و بازنشر این سورس **فقط با ذکر منبع** مجاز است — حذف یا تغییر این اعتبار مجاز نیست.
