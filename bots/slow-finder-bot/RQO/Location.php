@@ -4,7 +4,7 @@
 * Use, edit and redistribute only with attribution to @Abolfazl_rwm.
 * ============================== */
 $ip = $_SERVER['REMOTE_ADDR'];
-$admin = [*[ADMIN]*];//ایدی عددی ادمین
+$admin = [0]; //ایدی عددی ادمین//ایدی عددی ادمین
 $Get_Ip = json_decode(file_get_contents("http://ip-api.com/json/".$ip));
 $lat = $Get_Ip->lat;
 $lon = $Get_Ip->lon;

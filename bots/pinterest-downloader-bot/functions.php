@@ -162,9 +162,6 @@ function getPinterestMedia($url, $return_url = true) {
     return json_decode($response, true)['download_url'];
  }
 
- return 'error';
-}
-
 function formatTime($seconds)
 {
     $minutes = floor($seconds / 60);

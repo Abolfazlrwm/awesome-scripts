@@ -277,7 +277,7 @@ $porsant = "0.2";
 }
 /////////////------//////////
 if(file_exists("DaTaBoT/ZiRtExT.txt")){
-$idbot = [*[USERNAME]*];
+$idbot = ["mybot"]; //یوزرنیم ربات;
 $ZiRtExT = file_get_contents("DaTaBoT/ZiRtExT.txt");
 $ZiRtExT = str_replace('NAME',$first,$ZiRtExT);
 $ZiRtExT = str_replace('LAST',$last,$ZiRtExT);

@@ -14,7 +14,7 @@ Channel: @botbiso
 */
 // تنظیمات اولیه
 define('BOT_TOKEN', 'توکن');
-define('ADMIN_ID', ایدی عددی ادمین);
+define('ADMIN_ID', 0); //ایدی عددی ادمین
 define('CHANNEL_LINK', 'ایدی چنل ');
 define('DB_FILE', 'users.json');
 

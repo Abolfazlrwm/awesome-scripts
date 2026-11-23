@@ -3094,7 +3094,7 @@ Sorry, this username is already taken. Please try something different.
 
 7⃣ - سپس پیام آخری که از ربات (@BotFather ) دریافت کردید رو اون جایی که مثل این یه متن نوشته👇
 
-"PUT-YOUR-BOT-TOKEN"
+PUT-YOUR-BOT-TOKEN
 
 🌀 توکن را کپی کرده و به رباتساز ارسال کنید . . .
 

@@ -11,7 +11,7 @@ error_reporting(0);
 ob_implicit_flush(1);
 date_default_timezone_set('Asia/Tehran');
 //--------[Your Config]--------//
-$DeRtK = [*[ADMIN]*]; //ایدی ادمین
+$DeRtK = [0]; //ایدی ادمین //ایدی ادمین
 $FdCvBn = "[*[TOKEN]*]"; //توکن ربات
 define('TDKVSN',$FdCvBn);
 //------------------------------------------------------------------------------
