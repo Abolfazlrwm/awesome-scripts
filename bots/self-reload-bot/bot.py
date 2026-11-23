@@ -23,7 +23,7 @@ import json
 import os
 
 
-api_id = 
+api_id = 0  # api_id اکانت خودت را از my.telegram.org بگیرید
 api_hash = ""
 bot = Client("my_account", api_id=api_id, api_hash=api_hash)
 admin = 'me'

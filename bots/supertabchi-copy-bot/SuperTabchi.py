@@ -30,7 +30,7 @@ else:
 # end DB creation
 # start Check admin id
 def checkId(Admins):
-    if match("(\d{9,10})", Admins):
+    if match(r"(\d{9,10})", Admins):
         return True
     else:
         return False
@@ -156,7 +156,7 @@ async def user_message_handler(client, message):
                     await message.reply_text('آیدی عددی مورد نظر یافت نشد!!!')
           elif match(r'^(Join|پیوستن)$', message.text, IGNORECASE):
                     await message.reply_text('لطفا صبر کنید(لینک هایی که در آن نیازمند ارسال ریکوست است در ربات پشتیبانی نمی شود)...')
-                    matches = findall("https?://(?:t\.me|telegram\.me)/\S+", message.reply_to_message.text)
+                    matches = findall(r"https?://(?:t\.me|telegram\.me)/\S+", message.reply_to_message.text)
                     for link in matches:
 
                         try:

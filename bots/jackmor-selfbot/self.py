@@ -2445,7 +2445,7 @@ async def evaluation_curr(app, m: Message):
     curr2 = m.text.split(None, 3)[3].upper()
     try:
         conv = c.convert(int(value), curr1, curr2)
-        text = "**Currency Converter**▬▬▬▬\n\n\{} {} = {} {}\n\n▬▬▬▬**Currency Converter**".format(curr1, value, curr2, f'{conv:,.2f}')
+        text = "**Currency Converter**▬▬▬▬\n\n\\{} {} = {} {}\n\n▬▬▬▬**Currency Converter**".format(curr1, value, curr2, f'{conv:,.2f}')
         await app.send_message(m.chat.id,text, reply_to_message_id=m.id)
     except ValueError as err:
         await m.edit(str(err))
@@ -3281,7 +3281,7 @@ NOBLE = [
     "┏━╮\n┃▔┃▂▂┏━━┓┏━┳━━━┓\n┃▂┣━━┻━╮┃┃▂┃▂┏━╯\n┃▔┃▔╭╮▔┃┃┃▔┃▔┗━┓\n┃▂┃▂╰╯▂┃┗╯▂┃▂▂▂┃\n┃▔┗━━━╮┃▔▔▔┃▔┏━╯\n┃▂▂▂▂▂┣╯▂▂▂┃▂┗━╮\n┗━━━━━┻━━━━┻━━━┛",
     "┏┓┏━┳━┳━┳━┓\n┃┗┫╋┣┓┃┏┫┻┫\n┗━┻━┛┗━┛┗━┛\n────­­­­­­­­­YOU────",
     "╦──╔╗─╗╔─╔ ─\n║──║║─║║─╠ ─\n╚═─╚╝─╚╝─╚ ─\n╦─╦─╔╗─╦╦   \n╚╦╝─║║─║║ \n─╩──╚╝─╚╝",
-    "╔══╗....<3 \n╚╗╔╝..('\../') \n╔╝╚╗..( •.• ) \n╚══╝..(,,)(,,) \n╔╗╔═╦╦╦═╗ ╔╗╔╗ \n║╚╣║║║║╩╣ ║╚╝║ \n╚═╩═╩═╩═╝ ╚══╝",
+    "╔══╗....<3 \n╚╗╔╝..('\\../') \n╔╝╚╗..( •.• ) \n╚══╝..(,,)(,,) \n╔╗╔═╦╦╦═╗ ╔╗╔╗ \n║╚╣║║║║╩╣ ║╚╝║ \n╚═╩═╩═╩═╝ ╚══╝",
     "░I░L░O░V░E░Y░O░U░",
     "┈┈╭━╱▔▔▔▔╲━╮┈┈┈\n┈┈╰╱╭▅╮╭▅╮╲╯┈┈┈\n╳┈┈▏╰┈▅▅┈╯▕┈┈┈┈\n┈┈┈╲┈╰━━╯┈╱┈┈╳┈\n┈┈┈╱╱▔╲╱▔╲╲┈┈┈┈\n┈╭━╮▔▏┊┊▕▔╭━╮┈╳\n┈┃┊┣▔╲┊┊╱▔┫┊┃┈┈\n┈╰━━━━╲╱━━━━╯┈╳",
     "╔ღ═╗╔╗\n╚╗╔╝║║ღ═╦╦╦═ღ\n╔╝╚╗ღ╚╣║║║║╠╣\n╚═ღ╝╚═╩═╩ღ╩═╝",
@@ -4605,7 +4605,7 @@ async def shutdown_bot(app, message: Message):
 @app.on_message(filters.command(["latex"], ".") & filters.me)
 async def latex(client, message):
         import urllib.parse
-        escaped_text = urllib.parse.quote("\dpi{1000}" + message.text[1+5+1:])
+        escaped_text = urllib.parse.quote("\\dpi{1000}" + message.text[1+5+1:])
         try:
             r = requests.get("https://latex.codecogs.com/png.image?" + escaped_text).content
             with Image.open(BytesIO(r)) as im:
@@ -7416,18 +7416,18 @@ def updates(app, m:Message):
 #________________________Spam_______________________________
  elif text.startswith(".spam"):
   try:
-   if x := (findall(".spam \d+",text)[0]):
-     ui = findall("\d+",x)[0]
-     sts = findall("\d+\s+.+",text)[0].replace(ui,"")
+   if x := (findall(".spam \\d+",text)[0]):
+     ui = findall("\\d+",x)[0]
+     sts = findall("\\d+\\s+.+",text)[0].replace(ui,"")
    for i in range(0,int(ui)):
     app.send_message(m.chat.id , sts)
   except Exception as er:
    m.edit_text(er)
  elif text.startswith("اسپم"):
   try:
-   if x := (findall("اسپم \d+",text)[0]):
-     ui = findall("\d+",x)[0]
-     sts = findall("\d+\s+.+",text)[0].replace(ui,"")
+   if x := (findall("اسپم \\d+",text)[0]):
+     ui = findall("\\d+",x)[0]
+     sts = findall("\\d+\\s+.+",text)[0].replace(ui,"")
    for i in range(0,int(ui)):
     app.send_message(m.chat.id , sts)
   except Exception as er:
@@ -7435,9 +7435,9 @@ def updates(app, m:Message):
    
  elif text.startswith(".spm"):
   try:
-   if x := (findall(".spm \d+",text)[0]):
-     ui = findall("\d+",x)[0]
-     sts = findall("\d+\s+.+",text)[0].replace(ui,"")
+   if x := (findall(".spm \\d+",text)[0]):
+     ui = findall("\\d+",x)[0]
+     sts = findall("\\d+\\s+.+",text)[0].replace(ui,"")
    for i in range(0,int(ui)):
     if m.reply_to_message:
      app.send_message(m.chat.id , sts, reply_to_message_id=m.id)
@@ -7447,9 +7447,9 @@ def updates(app, m:Message):
    m.edit_text(er)
  elif text.startswith("ادیت اسپم"):
   try:
-   if x := (findall("ادیت اسپم \d+",text)[0]):
-     ui = findall("\d+",x)[0]
-     sts = findall("\d+\s+.+",text)[0].replace(ui,"")
+   if x := (findall("ادیت اسپم \\d+",text)[0]):
+     ui = findall("\\d+",x)[0]
+     sts = findall("\\d+\\s+.+",text)[0].replace(ui,"")
    for i in range(0,int(ui)):
     if m.reply_to_message:
      app.send_message(m.chat.id , sts, reply_to_message_id=m.id)

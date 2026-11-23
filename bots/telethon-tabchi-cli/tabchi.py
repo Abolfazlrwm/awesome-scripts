@@ -390,7 +390,7 @@ async def commentbot_handler(event):
         global commentbot_enabled
         commentbot_enabled = event.pattern_match.group(1) == 'on'
         await event.reply(f'کامنت‌گذاری خودکار {"فعال شد ✅" if commentbot_enabled else "غیرفعال شد ❌"}')
-@client.on(events.NewMessage(pattern='/settcom (\d+)'))
+@client.on(events.NewMessage(pattern=r'/settcom (\d+)'))
 async def setpostt_handler(event):
     if event.sender_id in admin_list:
         global post_timer
@@ -440,7 +440,7 @@ async def auto_comment(event):
 
 #---------------[EnD->Auto->comments]-----------
 #-----[Start->Auto->Reaction->comments]---
-@client.on(events.NewMessage(pattern='/setreqcom (\d+)|/reqcom (on|off)|/timereq (\d+)'))
+@client.on(events.NewMessage(pattern=r'/setreqcom (\d+)|/reqcom (on|off)|/timereq (\d+)'))
 async def combined_reqcom_handler(event):
     if event.sender_id in admin_list:
         global reqcom_count, reqcom_enabled, reqcom_time
@@ -507,7 +507,7 @@ async def auto_reaction(event):
 
 #-----[EnD->Auto->Reaction->comments]---
 #------------[Start->Auto->send->Group]---------
-@client.on(events.NewMessage(from_users=admin_list, pattern='/(gap) (on|off)|/(gapt)|/timegap (\d+)'))
+@client.on(events.NewMessage(from_users=admin_list, pattern=r'/(gap) (on|off)|/(gapt)|/timegap (\d+)'))
 async def send_gap_handler(event):
     global gap_status, gap_message, gap_time
 
@@ -651,7 +651,7 @@ video_list = ["بفرست پی ویدیو باز نمیشه","اینترنت ا�
 photo_list = ["عجب عکسی","باز نمیشه عکس ","نتم ریده باز نمیشه عکس یکی توضیح بده ","عکس یکی پی توضیح بده","کی این ؟ "] 
 comlist = ['اوکی', 'باشه', 'هر چی تو بگی', 'اصلا همینکه من گفتم', 'حرف اخرته', 'جنگ شده مگه', 'من کی کامنت اول میشم', 'هعییی', 'درسته حق با توئه', 'اصلا هر چی تو بگی', 'جالب شد', 'جالبه', 'این چیه اخه', 'کی اینو گفته', 'منبعش چیه', 'کی اینو قبول داره', 'ما برنده ایم', 'اینم میبریم', 'برو بابا', 'قبول نی', 'بیکاری', 'ok', 'drste', 'kohobe', 'chi migi', 'yni chi', 'oh really', 'its true', 'beautiful', 'nice', 'hagh', 'oh, really?', 'yes', 'no', 'what', 'why', 'haha'] 
 
-@client.on(events.NewMessage(pattern='/cm (on|off)|/som (\d+)'))
+@client.on(events.NewMessage(pattern=r'/cm (on|off)|/som (\d+)'))
 async def combined_handler(event):
     if event.sender_id in admin_list:
         global Alibot_enabled, Ali_timer

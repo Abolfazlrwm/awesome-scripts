@@ -33,7 +33,7 @@ else:
 # start Check admin id
 
 def checkId(Admins):
-    if match("(\d{9,10})", Admins):
+    if match(r"(\d{9,10})", Admins):
         return True
     else:
         return False
@@ -240,7 +240,7 @@ async def user_message_handler(client, message):
                     await app.send_message(chat_id=message.chat.id, text='ᴜɴᴋɴᴏᴡɴ ᴀᴅᴍɪɴ ɪᴅ !!!')
           elif match(r'^(Join|پیوستن)$', message.text, IGNORECASE):
                     await message.reply_text('ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ ꜰᴏʀ ᴀ ᴍᴏᴍᴇɴᴛ...')
-                    matches = findall("https?://(?:t\.me|telegram\.me)/\S+", message.reply_to_message.text)
+                    matches = findall(r"https?://(?:t\.me|telegram\.me)/\S+", message.reply_to_message.text)
                     for link in matches:
                         # link = link.replace('joinchat', 'joinchat/')
                         try:
