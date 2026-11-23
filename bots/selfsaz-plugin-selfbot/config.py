@@ -4,7 +4,7 @@
 # ==============================
 API_ID = '0'
 API_HASH = 'PUT-YOUR-API-HASH'
-BOT_TOKEN = '"PUT-YOUR-BOT-TOKEN"'
+BOT_TOKEN = 'PUT-YOUR-BOT-TOKEN'
 SESSIONS_DIR = 'sessions'
 TEHRAN_TIMEZONE = 'Asia/Tehran'
 MAX_CONCURRENT_UPDATES = 5

@@ -8,7 +8,7 @@ from pyrogram.raw import functions , types
 
 api_id = 0
 api_hash ='4f40ae9ebdbef07caaaae' 
-token = '"PUT-YOUR-BOT-TOKEN"'
+token = 'PUT-YOUR-BOT-TOKEN'
 app = Client('CRL' ,bot_token= token, api_id = api_id , api_hash = api_hash)
 if not os.path.isdir('files') : os.mkdir('files')
 if not os.path.isdir('accounts') : os.mkdir('accounts')

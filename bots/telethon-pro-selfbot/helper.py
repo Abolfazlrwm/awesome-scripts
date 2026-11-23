@@ -7,7 +7,7 @@ from flask import Flask , request
 
 app = Flask(__name__)
 
-token = '"PUT-YOUR-BOT-TOKEN"'
+token = 'PUT-YOUR-BOT-TOKEN'
 admins = [1725955696,2113629872]
 
 async def get(file):
