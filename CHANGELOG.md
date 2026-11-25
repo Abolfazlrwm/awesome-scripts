@@ -8,6 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
+## [v1.29.0] — 2026-11-25 — 🛠 Professional Polish — vector banners & metadata refresh
+
+- **New vector banner** (`assets/banner.svg`) now heads the root README — crisp on any screen, and the numbers finally match the catalog: the terminal reads `validate: 192/192 projects green` (was 49/49) and the language chips show `+8 more` (was +5)
+- **`banner.png` and `og-banner.png` re-rendered** from the same design, so every page and card that embeds them (site header/og images, stats, search, compare) shows correct counters too; `og-banner.svg` is added as the editable source of the social preview
+- **Repo metadata refresh** — description now advertises 192 projects (was 109) and topics gained `telethon`, `aiogram`, `userbot`, `lua` for search discoverability
+- **Changelog consistency** — the v1.28.0 entry was completed to the house format (date, `138 → 192` range, English summary mirroring the Persian bullets)
+
+بنر برداری جدید با شمارنده‌های به‌روز (۱۹۲/۱۹۲ و ۱۲ زبان) سرِ README نشست؛ نسخه‌های PNG و بنر social preview از همان طرح بازتولید شدند تا همه‌جا اعداد درست باشند؛ توضیحات ریپو به ۱۹۲ پروژه به‌روز شد و تاپیک‌های telethon/aiogram/userbot/lua برای جست‌وجو اضافه شدند؛ ورودی v1.28.0 نیز به قالب استاندارد CHANGELOG کامل شد.
+
 ## [v1.28.0] — 2026-11-23 — 📦 54 new projects from the fifth upload batch — 138 → 192
 
 - **۵۴ پروژه‌ی جدید از دسته‌ی پنجم آپلودها**: ۴۹ بات تلگرام و ۵ ابزار وب — از سلف‌های پلاگین‌محور (SelfSaz با ۸۷ پلاگین، Source-Arz با ۱۸۶ پلاگین)، تبچی MadelineProto و بازی مافیا تا یوزربات Lua با موتور tdlua، APIهای عمومی و دایرکتوری وب‌سرویس
