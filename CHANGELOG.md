@@ -8,13 +8,15 @@ All notable releases of this repository. Every entry matches a published [GitHub
 
 ---
 
-## [v1.28.0] — ۱۹۲ پروژه
+## [v1.28.0] — 2026-11-23 — 📦 54 new projects from the fifth upload batch — 138 → 192
 
 - **۵۴ پروژه‌ی جدید از دسته‌ی پنجم آپلودها**: ۴۹ بات تلگرام و ۵ ابزار وب — از سلف‌های پلاگین‌محور (SelfSaz با ۸۷ پلاگین، Source-Arz با ۱۸۶ پلاگین)، تبچی MadelineProto و بازی مافیا تا یوزربات Lua با موتور tdlua، APIهای عمومی و دایرکتوری وب‌سرویس
 - **زبان جدید Lua** به مجموعه اضافه شد (اکنون ۱۲ زبان) و ابزارهای آماری/جستجو برای آن به‌روزرسانی شدند
 - **بهداشت سکرت‌ها**: ۲۵ توکن بات، ۶ api_hash، ۸ api_id، ۸ رمز دیتابیس و کلیدهای سرویس در سورس‌های اصلی placeholder شدند
 - **پاک‌سازی حرفه‌ای**: باینری ۵۲ مگابایتی tdlua و دیتاهای اجرایی (db/pyc/room-data) حذف، بنر ۴.۷ مگابایتی فشرده، vendor با composer بازسازی می‌شود
 - همه‌ی پروژه‌ها attribution و بخش «🔒 ذکر منبع» دارند؛ ۵ آیتم هم‌خانواده‌ی پروژه‌های موجود اضافه نشد و افزونه‌ی تجاری Dokan Pro به‌دلیل کپی‌رایت منتشر نشد
+
+Fifty-four new projects from the fifth upload batch — 49 Telegram bots and 5 web tools — brought the catalog from 138 to 192; **Lua** joins the language list (now 12). Secrets hygiene: 25 bot tokens, 6 api_hash values, 8 api_id values, 8 database passwords and service keys were replaced with documented placeholders — revoke the originals. Cleanup: the 52 MB tdlua binary, runtime data (db/pyc/room-data) and a 4.7 MB banner were dropped; composer vendor directories are rebuilt on install. Every project README carries attribution and a 🔒 "ذکر منبع" section; 5 near-duplicate items and the commercial Dokan Pro plugin were refused on purpose.
 
 ## [v1.27.0] — 2026-11-23 — 📦 21 new projects from the second upload batch — 117 → 138
 

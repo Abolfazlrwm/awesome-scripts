@@ -2,7 +2,7 @@
 
 # 🤖 Awesome Scripts
 
-<p align="center"><img src="assets/banner.png" alt="awesome-scripts banner" width="100%"></p>
+<p align="center"><img src="assets/banner.svg" alt="awesome-scripts banner" width="100%"></p>
 **192 complete, ready-to-run projects — Telegram bots, web tools & desktop utilities — each in its own folder with a step-by-step setup guide.**
 
 <p align="center"><img src="assets/gallery.png" alt="project gallery" width="88%"></p>
